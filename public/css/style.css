@@ -6,7 +6,7 @@
 }
 body {
     background-color: var(--putih-idl);
-    overflow-x: hidaden;
+    overflow-x: hidden;
 }
 * {
     margin: 0;
