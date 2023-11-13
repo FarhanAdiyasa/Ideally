@@ -6,6 +6,7 @@
 }
 body {
     background-color: var(--putih-idl);
+    overflow-x: hidden;
 }
 * {
     margin: 0;
