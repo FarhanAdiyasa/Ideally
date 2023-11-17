@@ -18,6 +18,15 @@ class JawabanSurveyFactory extends Factory
     {
         return [
             //
+            'jawaban' => $faker->word,
+            'id_user' => function () {
+                return factory(App\User::class)->create()->user_id;
+            },
+            'id_pertanyaan_survey' => function () {
+                return factory(App\PertanyaanSurvey::class)->create()->id_pertanyaan_survey;
+            },
+            'created_at' => now(),
+            'updated_at' => now(),
         ];
     }
 }

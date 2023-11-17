@@ -9,7 +9,15 @@ class Batunesia extends Model
 {
     use HasFactory;
 
-    protected $fillable = [
+    protected $guarded = ['id_batu'];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+
+    /*protected $fillable = [
         'id_batu',
         'nama_produk',
         'slug',
@@ -38,6 +46,6 @@ class Batunesia extends Model
         'created_at',
         'updated_at',
         'deleted_at',
-    ];
+    ];*/
 
 }

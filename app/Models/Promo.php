@@ -9,7 +9,15 @@ class Promo extends Model
 {
     use HasFactory;
 
-    protected $fillable = [
+    protected $guarded = ['id_promo'];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+
+    /*protected $fillable = [
         'id_promo',
         'judul_promo',
         'deskripsi_promo',
@@ -19,6 +27,6 @@ class Promo extends Model
         'updated_at',
         'satuan_potongan',
         'jumlah_potongan',
-    ];
+    ];*/
 
 }

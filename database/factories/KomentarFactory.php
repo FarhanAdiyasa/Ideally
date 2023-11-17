@@ -18,6 +18,19 @@ class KomentarFactory extends Factory
     {
         return [
             //
+            'isi_komentar' => $faker->text,
+            'created_at' => now(),
+            'updated_at' => now(),
+            'deleted_at' => null,
+            'created_by' => function () {
+                return factory(App\User::class)->create()->user_id;
+            },
+            'updated_by' => function () {
+                return factory(App\User::class)->create()->user_id;
+            },
+            'deleted_by' => function () {
+                return factory(App\User::class)->create()->user_id;
+            },
         ];
     }
 }

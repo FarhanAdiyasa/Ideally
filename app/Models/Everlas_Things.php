@@ -9,7 +9,15 @@ class Everlas_Things extends Model
 {
     use HasFactory;
 
-    protected $fillable = [
+    protected $guarded = ['id_everlas_things'];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+
+    /*protected $fillable = [
         'id_everlas_things',
         'seri',
         'nama_produk',
@@ -41,6 +49,6 @@ class Everlas_Things extends Model
         'created_at',
         'updated_at',
         'deleted_at',
-    ];
+    ];*/
 
 }

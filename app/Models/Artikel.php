@@ -9,7 +9,25 @@ class Artikel extends Model
 {
     use HasFactory;
 
-    protected $fillable = [
+    protected $guarded = ['id_artikel'];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    public function kategori_artikel()
+    {
+        return $this->belongsTo(Kategori_Artikel::class);
+    }
+
+    public function detail()
+    {
+        return $this->hasOne(detail_komentar::class);
+    }
+
+    
+    /*protected $fillable = [
         'id_artikel',
         'judul_artikel',
         'slug',
@@ -22,6 +40,6 @@ class Artikel extends Model
         'created_at',
         'updated_at',
         'deleted_at',
-    ];
+    ];*/
 
 }

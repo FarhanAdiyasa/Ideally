@@ -12,7 +12,28 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('pertanyaan__surveys', function (Blueprint $table) {
-            $table->id();
+            $table->id('id_pertanyaan_survey');
+            $table->string('pertanyaan_survey');
+
+            $table->timestamp('created_at')->useCurrent();
+            $table->timestamp('updated_at')->useCurrent();
+            $table->timestamp('deleted_at')->nullable();// Menggunakan 'nullable' untuk mengizinkan kolom 'deleted_date' bernilai null
+            
+            $table->unsignedBigInteger('id_survey');
+            $table->unsignedBigInteger('created_by');
+            $table->unsignedBigInteger('updated_by');
+            $table->unsignedBigInteger('deleted_by');
+        
+            $table->foreign('id_survey')->references('id_survey')->on('surveys');
+            // Menghubungkan kolom 'created_date' dengan tabel 'users'
+            $table->foreign('created_by')->references('user_id')->on('users');
+
+            // Menghubungkan kolom 'updated_date' dengan tabel 'users'
+            $table->foreign('updated_by')->references('user_id')->on('users');
+
+            // Menghubungkan kolom 'deleted_date' dengan tabel 'users'
+            $table->foreign('deleted_by')->references('user_id')->on('users');
+
             $table->timestamps();
         });
     }

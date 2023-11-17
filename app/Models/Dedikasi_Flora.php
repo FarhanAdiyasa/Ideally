@@ -9,7 +9,15 @@ class Dedikasi_Flora extends Model
 {
     use HasFactory;
 
-    protected $fillable = [
+    protected $guarded = ['id_nurseri'];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+
+    /*protected $fillable = [
         'id_nurseri',
         'nama_latin',
         'nama_lokal',
@@ -44,6 +52,6 @@ class Dedikasi_Flora extends Model
         'created_at',
         'updated_at',
         'deleted_at',
-    ];
+    ];*/
 
 }

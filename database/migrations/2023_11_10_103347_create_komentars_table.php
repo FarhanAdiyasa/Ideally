@@ -12,8 +12,26 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('komentars', function (Blueprint $table) {
-            $table->id();
+            $table->id('id_komentar');
+            $table->text('isi_komentar'); // Menggunakan tipe data 'text' untuk isi komentar yang panjang
+            $table->timestamp('created_at')->useCurrent(); // Menggunakan 'useCurrent' untuk mengisi otomatis tanggal pembuatan
+            $table->timestamp('updated_at')->useCurrent(); // Menggunakan 'useCurrent' untuk mengisi otomatis tanggal pembaruan
+            $table->timestamp('deleted_at')->nullable();// Menggunakan 'nullable' untuk mengizinkan kolom 'deleted_date' bernilai null
+
             $table->timestamps();
+
+            $table->unsignedBigInteger('created_by');
+            $table->unsignedBigInteger('updated_by');
+            $table->unsignedBigInteger('deleted_by');
+    
+            $table->foreign('created_by')->references('user_id')->on('users');
+
+            // Menghubungkan kolom 'updated_date' dengan tabel 'users'
+            $table->foreign('updated_by')->references('user_id')->on('users');
+
+            // Menghubungkan kolom 'deleted_date' dengan tabel 'users'
+            $table->foreign('deleted_by')->references('user_id')->on('users');
+
         });
     }
 

@@ -9,7 +9,15 @@ class Shineage extends Model
 {
     use HasFactory;
 
-    protected $fillable = [
+    protected $guarded = ['id_shineage'];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+
+    /*protected $fillable = [
         'id_shineage',
         'seri',
         'nama_produk',
@@ -41,6 +49,6 @@ class Shineage extends Model
         'created_at',
         'updated_at',
         'deleted_at',
-    ];
+    ];*/
 
 }

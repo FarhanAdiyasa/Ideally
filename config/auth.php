@@ -40,7 +40,82 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
+
+        'agrigard' => [
+            'driver' => 'session',
+            'provider' => 'agrigards',
+        ],
+
+        'artikel' => [
+            'driver' => 'session',
+            'provider' => 'artikels',
+        ],
+
+        'batunesia' => [
+            'driver' => 'session',
+            'provider' => 'batunesias',
+        ],
+
+        'dedikasi__flora' => [
+            'driver' => 'session',
+            'provider' => 'dedikasi__floras',
+        ],
+
+        'everlas__thing' => [
+            'driver' => 'session',
+            'provider' => 'everlas__things',
+        ],
+
+        'jawaban__survey' => [
+            'driver' => 'session',
+            'provider' => 'jawaban__surveys',
+        ],
+
+        'kategori__artikel' => [
+            'driver' => 'session',
+            'provider' => 'kategori__artikels',
+        ],
+
+        'komentar' => [
+            'driver' => 'session',
+            'provider' => 'komentars',
+        ],
+
+        'konkurito' => [
+            'driver' => 'session',
+            'provider' => 'konkuritos',
+        ],
+
+        'pertanyaan__survey' => [
+            'driver' => 'session',
+            'provider' => 'pertanyaan__surveys',
+        ],
+
+        'promo' => [
+            'driver' => 'session',
+            'provider' => 'promos',
+        ],
+
+        'shineage' => [
+            'driver' => 'session',
+            'provider' => 'shineages',
+        ],
+
+        'survey' => [
+            'driver' => 'session',
+            'provider' => 'surveys',
+        ],
+
+        'detail_komentar' => [
+            'driver' => 'session',
+            'provider' => 'detail_komentars',
+        ],
+
+
     ],
+
+
+
 
     /*
     |--------------------------------------------------------------------------
@@ -69,6 +144,77 @@ return [
         //     'driver' => 'database',
         //     'table' => 'users',
         // ],
+
+        'agrigard' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Agrigard::class,
+        ],
+
+        'artikel' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Artikel::class,
+        ],
+
+        'batunesia' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Batunesia::class,
+        ],
+
+        'dedikasi__flora' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Dedikasi_Flora::class,
+        ],
+
+        'everlas__thing' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Everlas_Thing::class,
+        ],
+
+        'jawaban__survey' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Jawaban_Survey::class,
+        ],
+
+        'kategori__artikel' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Kategori_Artikel::class,
+        ],
+
+        'komentar' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Komentar::class,
+        ],
+
+        'konkurito' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Konkurito::class,
+        ],
+
+        'pertanyaan__survey' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Pertanyaan_Survey::class,
+        ],
+
+        'promo' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Promo::class,
+        ],
+
+        'shineage' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Shineage::class,
+        ],
+
+        'survey' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Survey::class,
+        ],
+
+        'detail_komentar' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Detail_Komentar::class,
+        ],
+
     ],
 
     /*

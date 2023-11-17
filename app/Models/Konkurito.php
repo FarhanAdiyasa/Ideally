@@ -9,7 +9,15 @@ class Konkurito extends Model
 {
     use HasFactory;
 
-    protected $fillable = [
+    protected $guarded = ['id_konkurito'];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+
+    /*protected $fillable = [
         'id_konkurito',
         'nama_produk',
         'slug',
@@ -40,6 +48,6 @@ class Konkurito extends Model
         'created_at',
         'updated_at',
         'deleted_at',
-    ];
+    ];*/
 
 }

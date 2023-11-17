@@ -9,6 +9,15 @@ class Agrigard extends Model
 {
     use HasFactory;
 
+    protected $guarded = ['id_agrigard'];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+
+    /*
     protected $fillable = [
         'id_agrigard',
         'kategori',
@@ -36,6 +45,8 @@ class Agrigard extends Model
         'created_at',
         'updated_at',
         'deleted_at',
-    ];
+    ];*/
+
+
 
 }

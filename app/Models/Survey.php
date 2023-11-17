@@ -9,19 +9,27 @@ class Survey extends Model
 {
     use HasFactory;
 
-    protected $fillable = [
-        'user_id',
-        'email',
-        'password',
-        'firstname',
-        'lastname',
-        'address',
-        'telephone_number',
-        'birthdate',
-        'gender',
-        'profile_picture',
+    protected $guarded = ['id_survey'];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    public function pertanyaan_survey()
+    {
+        return $this->hasMany(Pertanyaan_Survey::class);
+    }
+
+
+    /*protected $fillable = [
+        'id_survey',
+        'judul_survey',
+        'deskripsi_survey',
         'created_date',
-        'modified_date',
-    ];
+        'updated_date',
+        'deleted_date',
+        
+    ];*/
 
 }

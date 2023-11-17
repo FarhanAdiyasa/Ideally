@@ -18,6 +18,22 @@ class PertanyaanSurveyFactory extends Factory
     {
         return [
             //
+            'pertanyaan_survey' => $faker->sentence,
+            'created_at' => now(),
+            'updated_at' => now(),
+            'deleted_at' => null,
+            'id_survey' => function () {
+                return factory(App\Survey::class)->create()->id_survey;
+            },
+            'created_by' => function () {
+                return factory(App\User::class)->create()->user_id;
+            },
+            'updated_by' => function () {
+                return factory(App\User::class)->create()->user_id;
+            },
+            'deleted_by' => function () {
+                return factory(App\User::class)->create()->user_id;
+            },
         ];
     }
 }
