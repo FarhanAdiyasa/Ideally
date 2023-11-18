@@ -78,6 +78,9 @@ body {
     background-image: url("../img/header/daftar-artikel.png");
     background-size: cover;
 }
+
+/* MAIN */
+/* TOP-MAIN */
 .main-content {
     display: flex;
     align-items: center;
@@ -88,48 +91,20 @@ body {
 .centre {
     background-color: var(--putih-idl);
     margin-top: -3.5rem;
-    margin-left: 12.6rem;
-    margin-right: 12.6rem;
+    margin-left: 14vw;
+    margin-right: 14vw;
     width: 100%;
     height: 100%;
     border-radius: 1.5rem;
-    flex-wrap: wrap;
-}
-.top-main .row {
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-}
-.top-main,
-.main-main {
-    width: 100%;
-    justify-content: center;
-    height: max-content;
-    margin: 0;
 }
 
-.search-card {
-    width: max-content;
-    display: inline-block;
-    margin-left: 0;
-}
-.search-card label {
-    color: var(--nf-idl);
-    font-family: Montserrat, "Source Sans Pro";
-    font-size: 12px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
-    margin-top: 0.5rem;
-    margin-left: 8.6rem;
-}
 .search-bar {
-    margin-top: 3.5rem;
-    margin-left: 6.6rem;
-    display: inline-flex;
+    margin-top: 4em;
+    margin-left: 8vw;
+    margin-right: 0px;
+    width: calc(100% - 8vw);
     padding-left: 1rem;
-    height: 25px;
-    width: 565px;
+    height: 2em;
     align-items: center;
     flex-shrink: 0;
     border-radius: 25px;
@@ -138,54 +113,44 @@ body {
 .search-bar::placeholder {
     color: #cacaca;
     font-family: Montserrat, "Source Sans Pro";
-    font-size: 12px;
+    font-size: 0.75rem;
     font-style: normal;
     font-weight: 400;
     line-height: normal;
 }
-.filter-card {
-    flex: 1;
-}
-.card-filter {
-    margin-top: 3.5rem;
-    margin-left: 0;
-    width: 13rem;
-    height: 25px;
-    border-radius: 25px;
-    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.15) inset;
-    flex: 1;
+.lbl-search {
+    margin-left: 10vw;
+    font-family: Montserrat, "Source Sans Pro";
+    color: #cacaca;
 }
 
+.card-filter {
+    margin-top: 4em;
+    width: calc(100% - 7vw);
+    height: 2em;
+    border-radius: 25px;
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.15) inset;
+}
+
+/*MAIN CONTENT*/
 .main-main .row {
     align-items: center;
     flex-direction: row;
     width: 100%;
 }
-.left-widget {
-    margin-left: -11.5rem;
-    width: 18rem;
-    height: 35rem;
-    align-items: center;
-    display: flex;
-    flex-direction: column;
-    flex-shrink: 0;
+.article-view {
+    margin-left: -12.5vw;
+    margin-right: -12.5vw;
+    width: calc(100% + 25vw);
+}
+.side-widget {
+    width: calc(100% + 6vw);
 }
 
-.right-widget {
-    background-color: var(--abu-idl);
-    margin-right: -11rem;
-    width: 17rem;
-    height: 35rem;
-    align-items: center;
-    display: flex;
-    flex-direction: column;
-    flex-shrink: 0;
-}
 .artikel-terbaru {
-    margin-bottom: 3.3rem;
-    box-sizing: border-box;
-    width: 100%;
+    margin-bottom: 2em;
     height: max-content;
+    box-sizing: border-box;
     align-items: center;
     display: flex;
     flex-direction: column;
@@ -195,35 +160,33 @@ body {
     flex-shrink: 0;
 }
 .artikel-terbaru .div-title {
-    align-items: flex-start;
-    margin-top: 1.5rem;
-    margin-left: 15px;
     width: 100%;
-    font-size: 15px;
+    margin-top: 3vh;
+    margin-left: 1vw;
+    font-size: 1rem;
     font-style: normal;
     font-weight: 700;
     line-height: normal;
     font-family: Montserrat, "Source Sans Pro";
     white-space: nowrap;
     flex-shrink: 0;
-    margin-bottom: 1.5rem;
+    margin-bottom: 1.5em;
 }
-.artikel-terbaru .larticle-group {
+.artikel-terbaru .article-group {
     display: flex;
     flex-direction: column;
-    align-items: baseline;
     height: 6rem;
     margin-left: 0.6rem;
 }
-.desk-larticle {
-    font-size: 0.75rem;
-    font-size: 11.8px;
+.desk-article {
+    font-size: 0.725rem;
     margin-right: 1rem;
     font-style: normal;
     font-weight: 400;
     color: var(--abu-idl);
     line-height: 0.8rem;
     height: max-content;
+    padding-left: 0.5em;
 }
 .info-article {
     box-sizing: border-box;
@@ -238,7 +201,7 @@ body {
     gap: 0.5rem;
     margin-top: -0.5rem;
 }
-.tgl-larticle {
+.tgl-article {
     margin-top: 1.1rem;
     font-size: 0.7rem;
     font-weight: 700;
@@ -250,6 +213,90 @@ body {
 .info-article .icon-star {
     height: 1rem;
     width: 1rem;
+}
+
+.main-article {
+    padding-left: 4em;
+}
+.main-article img {
+    border-radius: 1rem;
+    width: calc(100% + 2vw);
+    height: 100%;
+}
+.info-main-article {
+    padding-left: 1em;
+}
+.title-main-article {
+    font-family: Montserrat, "Source Sans Pro";
+    font-size: 0.74rem;
+    font-weight: 700;
+    line-height: 1.2175;
+}
+.desc-main-article {
+    box-sizing: border-box;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 0.2em;
+}
+.desc-main-article .bottom {
+    display: flex;
+}
+.desc-item {
+    align-items: center;
+    background-color: #06c194;
+    width: max-content;
+    border-radius: 3rem;
+    font-family: Montserrat, "Source Sans Pro";
+    font-size: 0.7rem;
+    font-weight: 700;
+    color: #ffffff;
+    display: flex;
+    padding: 0 0.7em 0 0.7em;
+}
+.ellipse {
+    margin-right: 0.2em;
+    width: 1em;
+    height: 1em;
+    background-color: #ffffff;
+    border-radius: 0.6rem;
+}
+.main-artikel-pagination {
+    width: max-content;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.main-artikel-page {
+    font-size: 0.6rem;
+    font-weight: 700;
+    color: #ffffff;
+    font-family: Montserrat, "Source Sans Pro";
+    white-space: nowrap;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #c9c9c9;
+    border-radius: 3rem;
+    width: 5em;
+    padding: 0.2em 0 0.2em 0;
+    margin-right: 0.5em;
+}
+
+@media (max-width: 991.98px) {
+    :root {
+        font-size: 9px;
+    }
+}
+/* .right-widget {
+    background-color: var(--abu-idl);
+    margin-right: -11rem;
+    width: 17rem;
+    height: 35rem;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    flex-shrink: 0;
 }
 
 .cnt {
@@ -274,4 +321,4 @@ body {
     height: 100%;
     display: flex;
     align-items: center;
-}
+} */
