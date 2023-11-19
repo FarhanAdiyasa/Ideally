@@ -285,7 +285,19 @@ body {
 
 @media (max-width: 991.98px) {
     :root {
-        font-size: 9px;
+        font-size: 12px;
+    }
+}
+@media (max-width: 767.98px) {
+    :root {
+        font-size: 7px;
+    }
+    .article-view {
+        margin: 0;
+        width: 100%;
+    }
+    .side-widget {
+        width: calc(100% + 3vw);
     }
 }
 /* .right-widget {

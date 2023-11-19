@@ -22,11 +22,8 @@ return new class extends Migration
             $table->date('birthdate'); // Menggunakan tipe data 'date' untuk tanggal lahir
             $table->string('gender');
             $table->string('profile_picture');
-            $table->timestamp('created_date');
-            $table->timestamp('modified_date');
-            $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
             $table->rememberToken();
+            $table->string('deleted_at');
             $table->timestamps();
         });
     }

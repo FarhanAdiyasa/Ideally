@@ -12,7 +12,6 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('detail_komentars', function (Blueprint $table) {
-            $table->timestamps();
 
             $table->unsignedBigInteger('id_komentar');
             $table->unsignedBigInteger('id_artikel');

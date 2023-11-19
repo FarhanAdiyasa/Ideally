@@ -26,8 +26,7 @@ return new class extends Migration
             $table->foreign('created_by')->references('user_id')->on('users');
             $table->foreign('updated_by')->references('user_id')->on('users');
             $table->foreign('deleted_by')->references('user_id')->on('users');
-            
-            $table->timestamps();
+
         });
     }
 

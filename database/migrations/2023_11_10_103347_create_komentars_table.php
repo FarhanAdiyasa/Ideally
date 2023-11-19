@@ -18,7 +18,6 @@ return new class extends Migration
             $table->timestamp('updated_at')->useCurrent(); // Menggunakan 'useCurrent' untuk mengisi otomatis tanggal pembaruan
             $table->timestamp('deleted_at')->nullable();// Menggunakan 'nullable' untuk mengizinkan kolom 'deleted_date' bernilai null
 
-            $table->timestamps();
 
             $table->unsignedBigInteger('created_by');
             $table->unsignedBigInteger('updated_by');

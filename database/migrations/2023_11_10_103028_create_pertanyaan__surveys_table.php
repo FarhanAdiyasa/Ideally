@@ -34,7 +34,6 @@ return new class extends Migration
             // Menghubungkan kolom 'deleted_date' dengan tabel 'users'
             $table->foreign('deleted_by')->references('user_id')->on('users');
 
-            $table->timestamps();
         });
     }
 
