@@ -24,7 +24,7 @@ return new class extends Migration
             $table->string('profesi');
             $table->string('profile_picture');
             $table->rememberToken();
-            $table->string('deleted_at');
+            $table->string('deleted_at')->nullable();
             $table->timestamps();
         });
     }
