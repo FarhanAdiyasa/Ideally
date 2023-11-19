@@ -56,24 +56,24 @@ return [
             'provider' => 'batunesias',
         ],
 
-        'dedikasi__flora' => [
+        'dedikasi_flora' => [
             'driver' => 'session',
-            'provider' => 'dedikasi__floras',
+            'provider' => 'dedikas_floras',
         ],
 
-        'everlas__thing' => [
+        'everlas_thing' => [
             'driver' => 'session',
-            'provider' => 'everlas__things',
+            'provider' => 'everlas_things',
         ],
 
-        'jawaban__survey' => [
+        'jawaban_survey' => [
             'driver' => 'session',
-            'provider' => 'jawaban__surveys',
+            'provider' => 'jawaban_surveys',
         ],
 
-        'kategori__artikel' => [
+        'kategori_artikel' => [
             'driver' => 'session',
-            'provider' => 'kategori__artikels',
+            'provider' => 'kategori_artikels',
         ],
 
         'komentar' => [
@@ -86,9 +86,9 @@ return [
             'provider' => 'konkuritos',
         ],
 
-        'pertanyaan__survey' => [
+        'pertanyaan_survey' => [
             'driver' => 'session',
-            'provider' => 'pertanyaan__surveys',
+            'provider' => 'pertanyaan_surveys',
         ],
 
         'promo' => [
@@ -160,22 +160,22 @@ return [
             'model' => App\Models\Batunesia::class,
         ],
 
-        'dedikasi__flora' => [
+        'dedikasi_flora' => [
             'driver' => 'eloquent',
             'model' => App\Models\Dedikasi_Flora::class,
         ],
 
-        'everlas__thing' => [
+        'everlas_thing' => [
             'driver' => 'eloquent',
             'model' => App\Models\Everlas_Thing::class,
         ],
 
-        'jawaban__survey' => [
+        'jawaban_survey' => [
             'driver' => 'eloquent',
             'model' => App\Models\Jawaban_Survey::class,
         ],
 
-        'kategori__artikel' => [
+        'kategori_artikel' => [
             'driver' => 'eloquent',
             'model' => App\Models\Kategori_Artikel::class,
         ],
@@ -190,7 +190,7 @@ return [
             'model' => App\Models\Konkurito::class,
         ],
 
-        'pertanyaan__survey' => [
+        'pertanyaan_survey' => [
             'driver' => 'eloquent',
             'model' => App\Models\Pertanyaan_Survey::class,
         ],

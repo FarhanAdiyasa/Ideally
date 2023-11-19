@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Factories\Factory;
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Kategori_Artikel>
  */
-class KategoriArtikelFactory extends Factory
+class Kategori_ArtikelFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -18,7 +18,7 @@ class KategoriArtikelFactory extends Factory
     {
         return [
             //
-            'nama_kategori_artikel' => $faker->word,
+            'nama_kategori_artikel' => $this->faker->word(),
             'created_at' => now(),
             'updated_at' => now(),
         ];

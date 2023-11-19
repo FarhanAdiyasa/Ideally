@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use Illuminate\Support\Str;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -14,32 +15,23 @@ class ArtikelFactory extends Factory
      *
      * @return array<string, mixed>
      */
-    public function definition(): array
+    public function definition()
     {
         return [
-            //
-
-            'judul_artikel' => $faker->sentence,
-            'slug' => $faker->slug,
-            'deskripsi_artikel' => $faker->text,
-            'isi_artikel' => $faker->paragraphs(3, true),
-            'penulis_artikel' => $faker->name,
-            'gambar_artikel' => $faker->imageUrl(),
-            'keywords' => $faker->words(5, true),
-            'tanggal_publikasi' => $faker->dateTimeThisMonth,
-            'created_by' => function () {
-                return factory(App\User::class)->create()->id;
-            },
-            'updated_by' => function () {
-                return factory(App\User::class)->create()->id;
-            },
-            'deleted_by' => null,
-            'id_kategori_artikel' => function () {
-                return factory(App\KategoriArtikel::class)->create()->id_kategori;
-            },
+            'judul_artikel' => $this->faker->sentence,
+            'slug' => Str::slug($this->faker->sentence),
+            'deskripsi_artikel' => $this->faker->paragraph,
+            'isi_artikel' => $this->faker->text,
+            'penulis_artikel' => $this->faker->name,
+            'gambar_artikel' => $this->faker->imageUrl(),
+            'keywords' => $this->faker->words(3, true),
+            'tanggal_publikasi' => $this->faker->dateTimeThisMonth,
+            'created_by' => $this->faker->numberBetween(1, 10),
+            'updated_by' => $this->faker->numberBetween(1, 10),
+            'deleted_by' => null, // assuming it can be null
+            'id_kategori_artikel' => 1,
             'created_at' => now(),
             'updated_at' => now(),
-            'deleted_at' => null,
         ];
     }
 }

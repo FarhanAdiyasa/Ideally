@@ -11,12 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('everlas_things', function (Blueprint $table) {
-            $table->id('id_everlas_things');
+        Schema::create('shineages', function (Blueprint $table) {
+            $table->id('id_shineage');
             $table->string('seri');
             $table->string('nama_produk');
             $table->string('slug');
-            $table->string('satuan');
             $table->string('jenis');
             $table->string('garansi');
             $table->string('warna');
@@ -24,10 +23,11 @@ return new class extends Migration
             $table->string('material_pendukung');
             $table->string('finishing');
             $table->string('gambar');
+            $table->string('video');
             $table->text('deskripsi_singkat'); // Menggunakan tipe data 'text' untuk deskripsi yang panjang
             $table->integer('stok'); // Menggunakan tipe data 'integer' untuk stok
             $table->integer('item_terjual');
-            $table->decimal('hpp', 10, 2); // Menggunakan tipe data 'decimal' untuk harga pokok produksi dengan 2 digit desimal
+            $table->decimal('hpp', 10, 2); // Menggunakan tipe data 'decimal' untuk harga dengan 2 digit desimal
             $table->decimal('harga_b2I_11+_unit', 10, 2);
             $table->decimal('harga_b2I_1+_unit', 10, 2);
             $table->decimal('harga_b2B_11+_unit', 10, 2);
@@ -48,7 +48,6 @@ return new class extends Migration
             $table->foreign('updated_by')->references('user_id')->on('users');
             $table->foreign('deleted_by')->references('user_id')->on('users');
 
-            
         });
     }
 
@@ -57,6 +56,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('everlas__things');
+        Schema::dropIfExists('shineages');
     }
 };
