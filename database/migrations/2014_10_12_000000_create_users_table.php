@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('telephone_number');
             $table->date('birthdate'); // Menggunakan tipe data 'date' untuk tanggal lahir
             $table->string('gender');
+            $table->string('profesi');
             $table->string('profile_picture');
             $table->rememberToken();
             $table->string('deleted_at');
@@ -33,6 +34,10 @@ return new class extends Migration
      */
     public function down(): void
     {
+        Schema::dropIfExists('dedikasi_floras');
+        Schema::dropIfExists('everlas_things');
+        Schema::dropIfExists('artikels');
+        Schema::dropIfExists('promos');
         Schema::dropIfExists('users');
     }
 };

@@ -25,15 +25,13 @@ return new class extends Migration
             $table->unsignedBigInteger('updated_by'); // Kolom foreign key untuk yang memperbarui artikel
             $table->unsignedBigInteger('deleted_by')->nullable(); // Kolom foreign key untuk yang menghapus artikel (nullable karena belum tentu setiap artikel dihapus)
             $table->unsignedBigInteger('id_kategori_artikel'); // Kolom foreign key untuk kategori artikel
-            $table->timestamp('created_at')->useCurrent();
-            $table->timestamp('updated_at')->useCurrent();
             $table->timestamps();
 
             // Menambahkan constraint foreign key
-            $table->foreign('created_by')->references('id')->on('users');
-            $table->foreign('updated_by')->references('id')->on('users');
-            $table->foreign('deleted_by')->references('id')->on('users');
-            $table->foreign('id_kategori_artikel')->references('id_kategori')->on('kategori_artikels');
+            $table->foreign('created_by')->references('user_id')->on('users');
+            $table->foreign('updated_by')->references('user_id')->on('users');
+            $table->foreign('deleted_by')->references('user_id')->on('users');
+            $table->foreign('id_kategori_artikel')->references('id_kategori_artikel')->on('kategori_artikels');
         });
     }
 

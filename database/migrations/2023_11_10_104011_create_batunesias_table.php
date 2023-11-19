@@ -19,9 +19,7 @@ return new class extends Migration
             $table->string('spek');
             $table->string('satuan');
             $table->string('warna');
-            $table->string('gambar_1');
-            $table->string('gambar_2');
-            $table->string('gambar_3');
+            $table->string('gambar');
             $table->string('video');
             $table->integer('stok'); // Menggunakan tipe data 'integer' untuk stok
             $table->integer('item_terjual');
@@ -37,7 +35,6 @@ return new class extends Migration
             $table->decimal('harga_b2C_11+_unit', 10, 2);
             $table->decimal('harga_b2C_1+_unit', 10, 2);
             $table->timestamp('tanggal_publikasi');
-            $table->timestamps();
 
             $table->timestamp('created_at')->useCurrent(); // Menggunakan 'useCurrent' untuk mengisi otomatis tanggal pembuatan
             $table->timestamp('updated_at')->useCurrent(); // Menggunakan 'useCurrent' untuk mengisi otomatis tanggal pembaruan
@@ -59,6 +56,7 @@ return new class extends Migration
      */
     public function down(): void
     {
+        Schema::dropIfExists('promos');
         Schema::dropIfExists('batunesias');
     }
 };

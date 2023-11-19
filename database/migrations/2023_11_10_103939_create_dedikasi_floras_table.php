@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('dedikasi__floras', function (Blueprint $table) {
+        Schema::create('dedikasi_floras', function (Blueprint $table) {
             $table->id('id_nurseri');
             $table->string('nama_latin');
             $table->string('nama_lokal');
@@ -26,9 +26,7 @@ return new class extends Migration
             $table->string('penyiraman');
             $table->string('penyinaran');
             $table->string('pemupukan');
-            $table->string('gambar_1');
-            $table->string('gambar_2');
-            $table->string('gambar_3');
+            $table->string('gambar');
             $table->string('video');
             $table->integer('stok'); // Menggunakan tipe data 'integer' untuk stok
             $table->integer('item_terjual');
@@ -43,7 +41,6 @@ return new class extends Migration
             $table->decimal('harga_b2C_11+_unit', 10, 2);
             $table->decimal('harga_b2C_1+_unit', 10, 2);
             $table->timestamp('tanggal_publikasi');
-            $table->timestamps();
 
             $table->timestamp('created_at')->useCurrent(); // Menggunakan 'useCurrent' untuk mengisi otomatis tanggal pembuatan
             $table->timestamp('updated_at')->useCurrent(); // Menggunakan 'useCurrent' untuk mengisi otomatis tanggal pembaruan

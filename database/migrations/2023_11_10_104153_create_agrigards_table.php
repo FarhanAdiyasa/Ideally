@@ -17,9 +17,7 @@ return new class extends Migration
             $table->string('nama_produk');
             $table->string('slug');
             $table->string('satuan');
-            $table->string('gambar_1');
-            $table->string('gambar_2');
-            $table->string('gambar_3');
+            $table->string('gambar');
             $table->string('video');
             $table->text('deskripsi_singkat'); // Menggunakan tipe data 'text' untuk deskripsi yang panjang
             $table->integer('stok'); // Menggunakan tipe data 'integer' untuk stok
@@ -34,8 +32,7 @@ return new class extends Migration
             $table->decimal('harga_b2C_31+_unit', 10, 2);
             $table->decimal('harga_b2C_11+_unit', 10, 2);
             $table->decimal('harga_b2C_1+_unit', 10, 2);
-            $table->timestamp('tanggal_publikasi');            
-            $table->timestamps();
+            $table->timestamp('tanggal_publikasi');       
         });
     }
 

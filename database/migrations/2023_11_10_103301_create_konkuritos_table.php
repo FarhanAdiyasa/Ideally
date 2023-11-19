@@ -22,11 +22,7 @@ return new class extends Migration
             $table->string('warna_1');
             $table->string('warna_2');
             $table->string('dimensi');
-            $table->string('gambar_1');
-            $table->string('gambar_2');
-            $table->string('gambar_3');
-            $table->string('gambar_4');
-            $table->string('gambar_5');
+            $table->string('gambar');
             $table->string('video');
             $table->integer('stok'); // Menggunakan tipe data 'integer' untuk stok
             $table->integer('item_terjual');

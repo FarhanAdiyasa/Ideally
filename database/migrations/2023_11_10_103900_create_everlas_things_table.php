@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('everlas__things', function (Blueprint $table) {
+        Schema::create('everlas_things', function (Blueprint $table) {
             $table->id('id_everlas_things');
             $table->string('seri');
             $table->string('nama_produk');
@@ -23,12 +23,7 @@ return new class extends Migration
             $table->string('dimensi');
             $table->string('material_pendukung');
             $table->string('finishing');
-            $table->string('gambar_1');
-            $table->string('gambar_2');
-            $table->string('gambar_3');
-            $table->string('gambar_4');
-            $table->string('gambar_5');
-            $table->string('gambar_6');
+            $table->string('gambar');
             $table->text('deskripsi_singkat'); // Menggunakan tipe data 'text' untuk deskripsi yang panjang
             $table->integer('stok'); // Menggunakan tipe data 'integer' untuk stok
             $table->integer('item_terjual');
@@ -40,7 +35,6 @@ return new class extends Migration
             $table->decimal('harga_b2C_11+_unit', 10, 2);
             $table->decimal('harga_b2C_1+_unit', 10, 2);
             $table->timestamp('tanggal_publikasi');
-            $table->timestamps();
 
             $table->timestamp('created_at')->useCurrent(); // Menggunakan 'useCurrent' untuk mengisi otomatis tanggal pembuatan
             $table->timestamp('updated_at')->useCurrent(); // Menggunakan 'useCurrent' untuk mengisi otomatis tanggal pembaruan

@@ -22,12 +22,7 @@ return new class extends Migration
             $table->string('dimensi');
             $table->string('material_pendukung');
             $table->string('finishing');
-            $table->string('gambar_1');
-            $table->string('gambar_2');
-            $table->string('gambar_3');
-            $table->string('gambar_4');
-            $table->string('gambar_5');
-            $table->string('gambar_6');
+            $table->string('gambar');
             $table->string('video');
             $table->text('deskripsi_singkat'); // Menggunakan tipe data 'text' untuk deskripsi yang panjang
             $table->integer('stok'); // Menggunakan tipe data 'integer' untuk stok
