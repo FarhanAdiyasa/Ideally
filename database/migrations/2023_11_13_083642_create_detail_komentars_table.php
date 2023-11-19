@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('detail_komentars', function (Blueprint $table) {
 
-            $table->unsignedBigInteger('id_komentar');
-            $table->unsignedBigInteger('id_artikel');
+            $table->foreignId('id_komentar');
+            $table->foreignId('id_artikel');
             
             $table->foreign('id_komentar')->references('id_komentar')->on('komentars');
             

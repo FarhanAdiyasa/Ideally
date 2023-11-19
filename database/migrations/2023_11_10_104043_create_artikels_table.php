@@ -21,10 +21,10 @@ return new class extends Migration
             $table->string('gambar_artikel');
             $table->string('keywords');
             $table->timestamp('tanggal_publikasi');
-            $table->unsignedBigInteger('created_by'); // Kolom foreign key untuk pembuat artikel
-            $table->unsignedBigInteger('updated_by'); // Kolom foreign key untuk yang memperbarui artikel
-            $table->unsignedBigInteger('deleted_by')->nullable(); // Kolom foreign key untuk yang menghapus artikel (nullable karena belum tentu setiap artikel dihapus)
-            $table->unsignedBigInteger('id_kategori_artikel'); // Kolom foreign key untuk kategori artikel
+            $table->foreignId('created_by'); // Kolom foreign key untuk pembuat artikel
+            $table->foreignId('updated_by'); // Kolom foreign key untuk yang memperbarui artikel
+            $table->foreignId('deleted_by')->nullable(); // Kolom foreign key untuk yang menghapus artikel (nullable karena belum tentu setiap artikel dihapus)
+            $table->foreignId('id_kategori_artikel'); // Kolom foreign key untuk kategori artikel
             $table->timestamps();
 
             // Menambahkan constraint foreign key

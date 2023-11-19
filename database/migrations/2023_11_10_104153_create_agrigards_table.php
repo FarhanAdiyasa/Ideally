@@ -32,7 +32,18 @@ return new class extends Migration
             $table->decimal('harga_b2C_31+_unit', 10, 2);
             $table->decimal('harga_b2C_11+_unit', 10, 2);
             $table->decimal('harga_b2C_1+_unit', 10, 2);
-            $table->timestamp('tanggal_publikasi');       
+            $table->timestamp('tanggal_publikasi');  
+            $table->timestamp('created_at')->useCurrent(); // Menggunakan 'useCurrent' untuk mengisi otomatis tanggal pembuatan
+            $table->timestamp('updated_at')->useCurrent(); // Menggunakan 'useCurrent' untuk mengisi otomatis tanggal pembaruan
+            $table->timestamp('deleted_at')->nullable();// Menggunakan 'nullable' untuk mengizinkan kolom 'deleted_date' bernilai null
+
+            $table->foreignId('created_by');
+            $table->foreignId('updated_by');
+            $table->foreignId('deleted_by');
+    
+            $table->foreign('created_by')->references('user_id')->on('users');
+            $table->foreign('updated_by')->references('user_id')->on('users');
+            $table->foreign('deleted_by')->references('user_id')->on('users');     
         });
     }
 

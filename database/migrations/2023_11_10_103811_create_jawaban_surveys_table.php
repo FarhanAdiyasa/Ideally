@@ -15,8 +15,8 @@ return new class extends Migration
             $table->id('id_jawaban_survey');
             $table->string('jawaban');
 
-            $table->unsignedBigInteger('id_user');
-            $table->unsignedBigInteger('id_pertanyaan_survey');
+            $table->foreignId('id_user');
+            $table->foreignId('id_pertanyaan_survey');
 
 
 

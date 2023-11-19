@@ -19,10 +19,10 @@ return new class extends Migration
             $table->timestamp('updated_at')->useCurrent();
             $table->timestamp('deleted_at')->nullable();// Menggunakan 'nullable' untuk mengizinkan kolom 'deleted_date' bernilai null
             
-            $table->unsignedBigInteger('id_survey');
-            $table->unsignedBigInteger('created_by');
-            $table->unsignedBigInteger('updated_by');
-            $table->unsignedBigInteger('deleted_by');
+            $table->foreignId('id_survey');
+            $table->foreignId('created_by');
+            $table->foreignId('updated_by');
+            $table->foreignId('deleted_by');
         
             $table->foreign('id_survey')->references('id_survey')->on('surveys');
             // Menghubungkan kolom 'created_date' dengan tabel 'users'
