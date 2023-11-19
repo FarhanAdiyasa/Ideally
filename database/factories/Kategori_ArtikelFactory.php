@@ -18,9 +18,7 @@ class Kategori_ArtikelFactory extends Factory
     {
         return [
             //
-            'nama_kategori_artikel' => $this->faker->word(),
-            'created_at' => now(),
-            'updated_at' => now(),
+            'nama_kategori_artikel' => $this->faker->word()
         ];
     }
 }
