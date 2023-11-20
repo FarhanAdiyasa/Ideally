@@ -20,7 +20,15 @@
     align-items: center;
     flex-direction: column;
 }
-
+.btn-overlay-footer {
+    position: absolute;
+    margin-top: 1%;
+    top: 35%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 10;
+    /* Atur nilai z-index */
+}
 .search-bar {
     margin-top: 0px;
     margin-left: 8vw;

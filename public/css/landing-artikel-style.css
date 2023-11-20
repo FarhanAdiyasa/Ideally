@@ -1,7 +1,5 @@
 body,
 img {
-    padding-top: 100px;
-    /* Sesuaikan dengan tinggi navbar Anda */
     margin: 0;
     padding: 0;
 }
@@ -329,6 +327,15 @@ footer p {
     z-index: 10;
     /* Atur nilai z-index */
 }
+.btn-overlay-header {
+    position: absolute;
+    margin-top: 1%;
+    bottom: 17%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 10;
+    /* Atur nilai z-index */
+}
 
 .text-overlay-footer {
     position: absolute;
@@ -369,9 +376,25 @@ footer p {
     font-weight: 700;
     white-space: nowrap;
 }
+.btn-overlay-header button:hover {
+    background-color: #fff;
+    color: #06c195;
+    font-weight: 700;
+    white-space: nowrap;
+}
 
 /* CSS untuk tombol default */
 .btn-overlay-footer button {
+    color: #555555;
+    background-color: #fff;
+    font-weight: normal;
+    padding-left: 20px;
+    padding-right: 20px;
+    white-space: nowrap;
+    transition: font-weight 0.3s ease;
+    /* Animasi perubahan font-weight */
+}
+.btn-overlay-header button {
     color: #555555;
     background-color: #fff;
     font-weight: normal;

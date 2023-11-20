@@ -21,7 +21,7 @@
     {{-- Navbar Section --}}
     @include('layouts.navbar')
     {{-- End of Navbar Section --}}
-
+    
     {{-- Page Header --}}
       @include('layouts.artikel-header')
     {{-- End of Page Header --}}
