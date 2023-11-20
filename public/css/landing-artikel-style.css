@@ -1,0 +1,383 @@
+body,
+img {
+    padding-top: 100px;
+    /* Sesuaikan dengan tinggi navbar Anda */
+    margin: 0;
+    padding: 0;
+}
+
+.container-fluid {
+    position: relative;
+    z-index: 1;
+    padding: 0;
+    margin-top: 50px;
+    /* Sesuaikan dengan tinggi navbar Anda */
+}
+
+.vertical-divider {
+    border-left: 3px solid #d2d2d2;
+    /* Warna dan gaya garis bisa disesuaikan */
+    height: 20px;
+    /* Sesuaikan tinggi garis vertikal sesuai kebutuhan */
+    margin: 0 auto;
+}
+
+.link-body-emphasis {
+    font-weight: 700;
+    text-decoration: none;
+    /* Menghapus garis bawah */
+    color: #808080 !important;
+    transition: color 0.3s;
+}
+
+.link-body-emphasis:hover {
+    color: #06c195 !important;
+    /* Warna teks pada hover menjadi #06C195 */
+}
+
+.nav-item a {
+    color: #808080 !important;
+    white-space: nowrap;
+    /* Gunakan !important untuk memastikan gaya ini diutamakan */
+}
+
+.navbar-nav .nav-link {
+    color: #808080 !important;
+    margin-right: 20px;
+    /* Default font weight */
+    transition: color 0.3s, font-weight 0.3s;
+    /* Animasi perubahan warna dan font weight selama 0.3 detik */
+}
+
+.navbar-nav .nav-link:hover {
+    color: #06c195 !important;
+    /* Warna teks pada hover menjadi #06C195 */
+}
+
+.navbar-nav .nav-link.active {
+    font-weight: 700;
+    /* Font weight ketika tautan sedang aktif (diklik) */
+    color: #06c195 !important;
+    /* Warna teks ketika tautan sedang aktif */
+}
+
+/* Remove default blue color on click */
+.dropdown-item:focus,
+.dropdown-item:active {
+    background-color: transparent !important;
+}
+
+/* Add hover effect */
+.dropdown-item:hover {
+    background-color: #f8f9fa;
+    font-weight: 700;
+    /* Change to your preferred hover background color */
+    color: #555555 !important;
+    /* Change to your preferred hover text color */
+}
+
+.dropdown-image {
+    max-width: 50px;
+    /* Adjust the maximum width of the image */
+    margin-left: 10px;
+    /* Add spacing between the image and the list items */
+    vertical-align: middle;
+    /* Align the image vertically with the text */
+}
+
+/* styles.css */
+.PopupProdukDefault {
+    width: 581px;
+    height: 354px;
+    position: relative;
+}
+
+.Union {
+    width: 280px;
+    height: 280px;
+    left: 25px;
+    top: 25px;
+    position: absolute;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.25);
+}
+
+.Group414 {
+    width: 280px;
+    height: 280px;
+    left: 25px;
+    top: 25px;
+    /* Adjusted top value to create a 25px gap */
+    position: absolute;
+}
+
+.Group426 {
+    width: 227px;
+    height: 235px;
+    left: 329px;
+    top: 25px;
+    /* Adjusted top value to create a 25px gap */
+    position: absolute;
+}
+
+.header-container {
+    position: relative;
+}
+
+.text-overlay {
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: white;
+    /* Sesuaikan dengan warna teks yang sesuai dengan gambar */
+}
+
+.text-background-headline {
+    background-color: white;
+    padding-top: 5px;
+    padding-left: 50px;
+    padding-right: 50px;
+    border-radius: 100px;
+    padding-bottom: 5px;
+    display: inline-block;
+}
+
+.text-background-headline span {
+    color: #06c195;
+    font-weight: 700;
+    font-size: 30px;
+    font-family: Quicksand;
+}
+
+.main-content-container {
+    margin-top: -35px !important;
+    padding-left: 18% !important;
+    padding-right: 18% !important;
+}
+
+.category-portaledukasi-btn {
+    background-color: #727272;
+    color: #ffffff;
+    font-size: 15px;
+    padding-left: 20px;
+    padding-right: 20px;
+    /* Text color */
+    transition: background-color 0.3s, color 0.3s;
+    /* Add smooth transition */
+}
+
+.category-portaledukasi-btn:hover,
+.category-portaledukasi-btn:active {
+    background-color: #06c195;
+    color: #ffffff;
+    font-weight: 600;
+    /* Text color on hover or active */
+}
+
+.category-content {
+    background-color: white;
+    border-radius: 15px;
+    /* Adjust the border-radius as needed */
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.25);
+    /* Adjust the box-shadow as needed */
+    padding: 50px;
+    /* Add padding to the container */
+    margin-top: 20px;
+    /* Add margin to separate from the buttons */
+}
+
+.category-portaledukasi-btn-jelajahi {
+    background-color: #06c195;
+    color: #ffffff;
+    font-size: 15px;
+    padding-left: 40px;
+    padding-right: 40px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.category-portaledukasi-btn-jelajahi:hover {
+    background-color: #079473;
+    color: #ffffff;
+    font-weight: 600;
+    /* Text color on hover or active */
+}
+
+.card {
+    margin-top: 40px;
+    margin-right: 40px;
+    /* Add margin at the top of the card (adjust as needed) */
+}
+
+.info-card-category,
+.info-card-category-icon {
+    margin-top: 2px;
+    margin-bottom: 2px;
+}
+
+.keterangan-additional-text-container {
+    margin-bottom: 2px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.additional-text-container {
+    background-color: #06c195;
+    color: white;
+    margin-right: 7px;
+}
+
+.gambar-card-category {
+    position: relative;
+    overflow: hidden;
+    padding-top: 66.6667%;
+}
+
+.gambar-only-card-category {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* CARD CAROUSEL CATEGORY */
+.cards-wrapper {
+    display: flex;
+    justify-content: center;
+}
+
+.card img {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.carousel-inner {
+    padding: 1em;
+}
+
+.carousel-control-prev,
+.carousel-control-next {
+    background-color: #06c195;
+    width: 5vh;
+    height: 5vh;
+    border-radius: 50%;
+    top: 50%;
+}
+
+@media (min-width: 768px) {
+    .card img {
+        height: 11em;
+    }
+}
+
+.artikel-baru {
+    padding-top: 5%;
+}
+
+.gambar-card-artikel-baru {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    height: 0;
+    padding-top: 100%;
+}
+
+.gambar-only-card-artikel-baru {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.cards-wrapper {
+    margin-left: -15px;
+}
+
+.komentar {
+    background-color: white;
+    border-radius: 15px;
+    /* Adjust the border-radius as needed */
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.25);
+    /* Adjust the box-shadow as needed */
+    padding-left: 40px;
+    padding-right: 40px;
+    padding-top: 1px;
+    padding-bottom: 20px;
+}
+
+footer p {
+    margin-bottom: 50px;
+    /* Menambah jarak antara tulisan copyright dan tombol */
+}
+
+.image-footer-container {
+    position: relative;
+    width: 100%;
+}
+
+.btn-overlay-footer {
+    position: absolute;
+    margin-top: 1%;
+    top: 35%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 10;
+    /* Atur nilai z-index */
+}
+
+.text-overlay-footer {
+    position: absolute;
+    margin-top: 1%;
+    top: 55%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: white;
+    z-index: 5;
+    /* Atur nilai z-index yang lebih rendah dari .btn-overlay-footer */
+}
+
+.text-overlay-footer p {
+    font-family: Quicksand;
+    font-weight: 700;
+    margin: 0;
+    display: inline-block;
+    /* Menjadikan elemen inline-block */
+}
+
+.text-overlay-footer .Semuabisatahu {
+    font-size: 75px;
+    margin-bottom: -25%;
+}
+
+.text-overlay-footer .Hashtag {
+    font-size: 150px;
+    color: rgba(255, 255, 255, 0.5);
+    margin-right: -50px;
+    transform: translateY(12%);
+    /* OVERPOWERED BRO! */
+}
+
+.btn-overlay-footer button:hover {
+    background-color: #fff;
+    color: #06c195;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+/* CSS untuk tombol default */
+.btn-overlay-footer button {
+    color: #555555;
+    background-color: #fff;
+    font-weight: normal;
+    padding-left: 20px;
+    padding-right: 20px;
+    white-space: nowrap;
+    transition: font-weight 0.3s ease;
+    /* Animasi perubahan font-weight */
+}

@@ -13,76 +13,17 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Quicksand%3A700"/>
   @vite(['resources/sass/app.scss', 'resources/js/app.js']);
   
+  <link rel="stylesheet" href="/css/daftar-artikel-style.css"/>
   <link rel="stylesheet" href="/css/style.css"/>
+  <link rel="stylesheet" href="/css/landing-artikel-style.css"/>
 </head>
 <body>
     {{-- Navbar Section --}}
-    <nav>
-        <div class="nvr navbar-expand-lg">
-          <div class="row">
-            <div class="col">
-              <div class="logo-navbar">
-                <a href="#">
-                    <img src="/assets/logo-ideally-bsN.png"/>
-                </a>
-              </div>
-            </div>
-            <div class="col-md-auto">
-              <div class="navigation">
-                <ul class="item">
-                  <li>
-                    <a class="nav-link" href="#">Beranda</a>
-                  </li>
-                  <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                      Portal Edukasi
-                    </a>
-                    <ul class="dropdown-menu">
-                      <li><a class="dropdown-item" href="#">Action</a></li>
-                      <li><a class="dropdown-item" href="#">Another action</a></li>
-                      <li><hr class="dropdown-divider"></li>
-                      <li><a class="dropdown-item" href="#">Something else here</a></li>
-                    </ul>
-                  </li>
-                  <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                      Produk
-                    </a>
-                    <ul class="dropdown-menu">
-                      <li><a class="dropdown-item" href="#">Action</a></li>
-                      <li><a class="dropdown-item" href="#">Another action</a></li>
-                      <li><hr class="dropdown-divider"></li>
-                      <li><a class="dropdown-item" href="#">Something else here</a></li>
-                    </ul>
-                  </li>
-                  <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                      Layanan
-                    </a>
-                    <ul class="dropdown-menu">
-                      <li><a class="dropdown-item" href="#">Action</a></li>
-                      <li><a class="dropdown-item" href="#">Another action</a></li>
-                      <li><hr class="dropdown-divider"></li>
-                      <li><a class="dropdown-item" href="#">Something else here</a></li>
-                    </ul>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link disabled" href="#">Disabled</a>
-                  </li>
-                </ul>
-              </div>
-            </div>
-            <div class="col">
-            </div>
-          </div>
-          </div>
-        </nav>
+    @include('layouts.navbar')
     {{-- End of Navbar Section --}}
+
     {{-- Page Header --}}
-    <section class="header">
-      <div class="row">
-      </div>
-    </section>
+      @include('layouts.artikel-header')
     {{-- End of Page Header --}}
       <section class="main-content">
         <div class="centre">
@@ -116,7 +57,7 @@
                       <div class="article-group">
                         <p class="desk-article">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi non risus at nibh fringilla dapibus. </p>
                         <div class="info-article">
-                          <img class="icon-star" src="/icon/Star.png"/>
+                          <img class="icon-star" src="/icons/Star.png"/>
                           <p class="tgl-article">20 Okt 2023</p>
                         </div>
                         <svg xmlns="http://www.w3.org/2000/svg" class="mt-2" width="215" height="4" viewBox="0 0 304 4" fill="none">
@@ -126,7 +67,7 @@
                       <div class="article-group">
                         <p class="desk-article">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi non risus at nibh fringilla dapibus. </p>
                         <div class="info-article">
-                          <img class="icon-star" src="/icon/Star.png"/>
+                          <img class="icon-star" src="/icons/Star.png"/>
                           <p class="tgl-article">20 Okt 2023</p>
                         </div>
                         <svg xmlns="http://www.w3.org/2000/svg" class="mt-2" width="215" height="4" viewBox="0 0 304 4" fill="none">
@@ -136,7 +77,7 @@
                       <div class="article-group">
                         <p class="desk-article">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi non risus at nibh fringilla dapibus. </p>
                         <div class="info-article">
-                          <img class="icon-star" src="/icon/Star.png"/>
+                          <img class="icon-star" src="/icons/Star.png"/>
                           <p class="tgl-article">20 Okt 2023</p>
                         </div>
                         <svg xmlns="http://www.w3.org/2000/svg" class="mt-2" width="215" height="4" viewBox="0 0 304 4" fill="none">
@@ -146,7 +87,7 @@
                       <div class="article-group">
                         <p class="desk-article">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi non risus at nibh fringilla dapibus. </p>
                         <div class="info-article">
-                          <img class="icon-star" src="/icon/Star.png"/>
+                          <img class="icon-star" src="/icons/Star.png"/>
                           <p class="tgl-article">20 Okt 2023</p>
                         </div>
                         <svg xmlns="http://www.w3.org/2000/svg" class="mt-2" width="215" height="4" viewBox="0 0 304 4" fill="none">
@@ -159,7 +100,7 @@
                       <div class="article-group">
                         <p class="desk-article">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi non risus at nibh fringilla dapibus. </p>
                         <div class="info-article">
-                          <img class="icon-star" src="/icon/Star.png"/>
+                          <img class="icon-star" src="/icons/Star.png"/>
                           <p class="tgl-article">20 Okt 2023</p>
                         </div>
                         <svg xmlns="http://www.w3.org/2000/svg" class="mt-2" width="215" height="4" viewBox="0 0 304 4" fill="none">
@@ -169,7 +110,7 @@
                       <div class="article-group">
                         <p class="desk-article">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi non risus at nibh fringilla dapibus. </p>
                         <div class="info-article">
-                          <img class="icon-star" src="/icon/Star.png"/>
+                          <img class="icon-star" src="/icons/Star.png"/>
                           <p class="tgl-article">20 Okt 2023</p>
                         </div>
                         <svg xmlns="http://www.w3.org/2000/svg" class="mt-2" width="215" height="4" viewBox="0 0 304 4" fill="none">
@@ -179,7 +120,7 @@
                       <div class="article-group">
                         <p class="desk-article">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi non risus at nibh fringilla dapibus. </p>
                         <div class="info-article">
-                          <img class="icon-star" src="/icon/Star.png"/>
+                          <img class="icon-star" src="/icons/Star.png"/>
                           <p class="tgl-article">20 Okt 2023</p>
                         </div>
                         <svg xmlns="http://www.w3.org/2000/svg" class="mt-2" width="215" height="4" viewBox="0 0 304 4" fill="none">
@@ -189,7 +130,7 @@
                       <div class="article-group">
                         <p class="desk-article">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi non risus at nibh fringilla dapibus. </p>
                         <div class="info-article">
-                          <img class="icon-star" src="/icon/Star.png"/>
+                          <img class="icon-star" src="/icons/Star.png"/>
                           <p class="tgl-article">20 Okt 2023</p>
                         </div>
                         <svg xmlns="http://www.w3.org/2000/svg" class="mt-2" width="215" height="4" viewBox="0 0 304 4" fill="none">
@@ -274,7 +215,7 @@
                         <div class="article-group">
                           <p class="desk-article">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi non risus at nibh fringilla dapibus. </p>
                           <div class="info-article">
-                            <img class="icon-star" src="/icon/Star.png"/>
+                            <img class="icon-star" src="/icons/Star.png"/>
                             <p class="tgl-article">20 Okt 2023</p>
                           </div>
                           <svg xmlns="http://www.w3.org/2000/svg" class="mt-2" width="215" height="4" viewBox="0 0 304 4" fill="none">
@@ -284,7 +225,7 @@
                         <div class="article-group">
                           <p class="desk-article">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi non risus at nibh fringilla dapibus. </p>
                           <div class="info-article">
-                            <img class="icon-star" src="/icon/Star.png"/>
+                            <img class="icon-star" src="/icons/Star.png"/>
                             <p class="tgl-article">20 Okt 2023</p>
                           </div>
                           <svg xmlns="http://www.w3.org/2000/svg" class="mt-2" width="215" height="4" viewBox="0 0 304 4" fill="none">
@@ -294,7 +235,7 @@
                         <div class="article-group">
                           <p class="desk-article">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi non risus at nibh fringilla dapibus. </p>
                           <div class="info-article">
-                            <img class="icon-star" src="/icon/Star.png"/>
+                            <img class="icon-star" src="/icons/Star.png"/>
                             <p class="tgl-article">20 Okt 2023</p>
                           </div>
                           <svg xmlns="http://www.w3.org/2000/svg" class="mt-2" width="215" height="4" viewBox="0 0 304 4" fill="none">
@@ -304,7 +245,7 @@
                         <div class="article-group">
                           <p class="desk-article">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi non risus at nibh fringilla dapibus. </p>
                           <div class="info-article">
-                            <img class="icon-star" src="/icon/Star.png"/>
+                            <img class="icon-star" src="/icons/Star.png"/>
                             <p class="tgl-article">20 Okt 2023</p>
                           </div>
                           <svg xmlns="http://www.w3.org/2000/svg" class="mt-2" width="215" height="4" viewBox="0 0 304 4" fill="none">
@@ -317,7 +258,7 @@
                         <div class="article-group">
                           <p class="desk-article">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi non risus at nibh fringilla dapibus. </p>
                           <div class="info-article">
-                            <img class="icon-star" src="/icon/Star.png"/>
+                            <img class="icon-star" src="/icons/Star.png"/>
                             <p class="tgl-article">20 Okt 2023</p>
                           </div>
                           <svg xmlns="http://www.w3.org/2000/svg" class="mt-2" width="215" height="4" viewBox="0 0 304 4" fill="none">
@@ -327,7 +268,7 @@
                         <div class="article-group">
                           <p class="desk-article">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi non risus at nibh fringilla dapibus. </p>
                           <div class="info-article">
-                            <img class="icon-star" src="/icon/Star.png"/>
+                            <img class="icon-star" src="/icons/Star.png"/>
                             <p class="tgl-article">20 Okt 2023</p>
                           </div>
                           <svg xmlns="http://www.w3.org/2000/svg" class="mt-2" width="215" height="4" viewBox="0 0 304 4" fill="none">
@@ -337,7 +278,7 @@
                         <div class="article-group">
                           <p class="desk-article">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi non risus at nibh fringilla dapibus. </p>
                           <div class="info-article">
-                            <img class="icon-star" src="/icon/Star.png"/>
+                            <img class="icon-star" src="/icons/Star.png"/>
                             <p class="tgl-article">20 Okt 2023</p>
                           </div>
                           <svg xmlns="http://www.w3.org/2000/svg" class="mt-2" width="215" height="4" viewBox="0 0 304 4" fill="none">
@@ -347,7 +288,7 @@
                         <div class="article-group">
                           <p class="desk-article">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi non risus at nibh fringilla dapibus. </p>
                           <div class="info-article">
-                            <img class="icon-star" src="/icon/Star.png"/>
+                            <img class="icon-star" src="/icons/Star.png"/>
                             <p class="tgl-article">20 Okt 2023</p>
                           </div>
                           <svg xmlns="http://www.w3.org/2000/svg" class="mt-2" width="215" height="4" viewBox="0 0 304 4" fill="none">
@@ -364,4 +305,5 @@
           </div>
         </div>
       </section>
+      @include('layouts.artikel-footer')
 </body>
