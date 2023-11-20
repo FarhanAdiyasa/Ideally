@@ -8,12 +8,13 @@ use Illuminate\Database\Eloquent\Model;
 class Artikel extends Model
 {
     use HasFactory;
-
+    protected $table = 'artikels';
     protected $guarded = ['id_artikel'];
+    protected $with = ['createdBy'];
 
-    public function user()
+    public function createdBy()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class, 'created_by', 'user_id');
     }
 
     public function kategori_artikel()
