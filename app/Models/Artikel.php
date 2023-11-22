@@ -10,12 +10,23 @@ class Artikel extends Model
     use HasFactory;
     protected $table = 'artikels';
     protected $guarded = ['id_artikel'];
-    protected $with = ['createdBy'];
+    protected $with = ['createdBy', 'updatedBy', 'deletedBy'];
 
     public function createdBy()
     {
         return $this->belongsTo(User::class, 'created_by', 'user_id');
     }
+
+    public function updatedBy()
+    {
+        return $this->belongsTo(User::class, 'updated_by', 'user_id');
+    }
+
+    public function deletedBy()
+    {
+        return $this->belongsTo(User::class, 'deleted_by', 'user_id');
+    }
+
 
     public function kategori_artikel()
     {
