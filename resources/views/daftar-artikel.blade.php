@@ -16,6 +16,7 @@
   <link rel="stylesheet" href="/css/daftar-artikel-style.css"/>
   <link rel="stylesheet" href="/css/style.css"/>
   <link rel="stylesheet" href="/css/landing-artikel-style.css"/>
+  <link rel="stylesheet" href="/css/artikel-pagination-style.css"/>
 </head>
 <body>
     {{-- Navbar Section --}}
@@ -30,20 +31,20 @@
             <div class="container">
               <div class="row">
               <div class="col-8">
-                  <form id="search-article" role="search">
-                    <input class="search-bar"type="search" placeholder="Pencarian" aria-label="Search">
+                  <form id="search-article" role="search" method="get" action="{{ route('daftar-artikel') }}">
+                    @csrf
+                    <input class="search-bar"type="search" placeholder="Pencarian" name="cari_artikel_onKategori" value="{{ request('cari_artikel_onKategori') }}" aria-label="Search">
                   </form>
-                  <label class="lbl-search" for="search-article">Tersedia sekitar </label>
+                  <label class="lbl-search" for="search-article">Tersedia sekitar {{$jumlah}} artikel.</label>
               </div>
               <div class="col-4">
-                <form role="search">
-                  <select class="card-filter">
-                    <option value="">Urutkan dari yang terbaru</option>
-                    <option value="saab">Saab</option>
-                    <option value="opel">Opel</option>
-                    <option value="audi">Audi</option>
+                <form role="search" method="get" action="{{ route('daftar-artikel') }}" id="sortForm">
+                  @csrf
+                  <select class="card-filter" name="filter_artikel_onKategori" onchange="document.getElementById('sortForm').submit()">
+                      <option value="desc" {{ $sort == 'desc' ? 'selected' : '' }}>Urutkan dari yang terbaru</option>
+                      <option value="asc" {{ $sort == 'asc' ? 'selected' : '' }}>Urutkan dari yang terlama</option>
                   </select>
-                </form>
+              </form>              
               </div>
             </div>
         </div>
@@ -52,91 +53,43 @@
               <div class="col-lg-2 col-md-3 col-sm-12" style="place-items: center" >   
                 <div class="container">
                   <div class="row side-widget">
-                    <div class="artikel-terbaru">
+                    <div class="artikel-samping">
                       <p class="div-title">Artikel Terbaru</p>
-                      <div class="article-group">
-                        <p class="desk-article">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi non risus at nibh fringilla dapibus. </p>
-                        <div class="info-article">
-                          <img class="icon-star" src="/icons/Star.png"/>
-                          <p class="tgl-article">20 Okt 2023</p>
+                      @if($articles_terbaru->count())
+                        @foreach($articles_terbaru as $article)
+                        <div class="article-group">
+                          <p class="desk-article">{{$article->judul_artikel}}</p>
+                          <div class="info-article">
+                            <img class="icon-star" src="/icons/Star.png"/>
+                            <p class="tgl-article">{{ date('d M Y', strtotime($article->tanggal_publikasi));}} </p>
+                          </div>
+                          <svg xmlns="http://www.w3.org/2000/svg" class="mt-2" width="215" height="4" viewBox="0 0 304 4" fill="none">
+                            <path d="M2 2L302 2.00003" stroke="#F0F0F0" stroke-width="3" stroke-linecap="round"/>
+                          </svg>
                         </div>
-                        <svg xmlns="http://www.w3.org/2000/svg" class="mt-2" width="215" height="4" viewBox="0 0 304 4" fill="none">
-                          <path d="M2 2L302 2.00003" stroke="#F0F0F0" stroke-width="3" stroke-linecap="round"/>
-                        </svg>
-                      </div>
-                      <div class="article-group">
-                        <p class="desk-article">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi non risus at nibh fringilla dapibus. </p>
-                        <div class="info-article">
-                          <img class="icon-star" src="/icons/Star.png"/>
-                          <p class="tgl-article">20 Okt 2023</p>
-                        </div>
-                        <svg xmlns="http://www.w3.org/2000/svg" class="mt-2" width="215" height="4" viewBox="0 0 304 4" fill="none">
-                          <path d="M2 2L302 2.00003" stroke="#F0F0F0" stroke-width="3" stroke-linecap="round"/>
-                        </svg>
-                      </div>
-                      <div class="article-group">
-                        <p class="desk-article">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi non risus at nibh fringilla dapibus. </p>
-                        <div class="info-article">
-                          <img class="icon-star" src="/icons/Star.png"/>
-                          <p class="tgl-article">20 Okt 2023</p>
-                        </div>
-                        <svg xmlns="http://www.w3.org/2000/svg" class="mt-2" width="215" height="4" viewBox="0 0 304 4" fill="none">
-                          <path d="M2 2L302 2.00003" stroke="#F0F0F0" stroke-width="3" stroke-linecap="round"/>
-                        </svg>
-                      </div>
-                      <div class="article-group">
-                        <p class="desk-article">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi non risus at nibh fringilla dapibus. </p>
-                        <div class="info-article">
-                          <img class="icon-star" src="/icons/Star.png"/>
-                          <p class="tgl-article">20 Okt 2023</p>
-                        </div>
-                        <svg xmlns="http://www.w3.org/2000/svg" class="mt-2" width="215" height="4" viewBox="0 0 304 4" fill="none">
-                          <path d="M2 2L302 2.00003" stroke="#F0F0F0" stroke-width="3" stroke-linecap="round"/>
-                        </svg>
-                      </div>
+                        @endforeach
+                      @else
+                      <p class="text-center fs-4">No Posts Found</p>
+                      @endif
                     </div>
-                    <div class="artikel-terbaru">
-                      <p class="div-title">Artikel Terbaru</p>
+                    <div class="artikel-samping">
+                      <p class="div-title">Artikel Acak</p>
+                      @if($articles_acak->count())
+                      @foreach($articles_acak as $article)
                       <div class="article-group">
-                        <p class="desk-article">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi non risus at nibh fringilla dapibus. </p>
+                        <p class="desk-article">{{$article->judul_artikel}}</p>
                         <div class="info-article">
                           <img class="icon-star" src="/icons/Star.png"/>
-                          <p class="tgl-article">20 Okt 2023</p>
+                          <p class="tgl-article">{{ date('d M Y', strtotime($article->tanggal_publikasi));}} </p>
                         </div>
                         <svg xmlns="http://www.w3.org/2000/svg" class="mt-2" width="215" height="4" viewBox="0 0 304 4" fill="none">
                           <path d="M2 2L302 2.00003" stroke="#F0F0F0" stroke-width="3" stroke-linecap="round"/>
                         </svg>
                       </div>
-                      <div class="article-group">
-                        <p class="desk-article">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi non risus at nibh fringilla dapibus. </p>
-                        <div class="info-article">
-                          <img class="icon-star" src="/icons/Star.png"/>
-                          <p class="tgl-article">20 Okt 2023</p>
-                        </div>
-                        <svg xmlns="http://www.w3.org/2000/svg" class="mt-2" width="215" height="4" viewBox="0 0 304 4" fill="none">
-                          <path d="M2 2L302 2.00003" stroke="#F0F0F0" stroke-width="3" stroke-linecap="round"/>
-                        </svg>
-                      </div>
-                      <div class="article-group">
-                        <p class="desk-article">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi non risus at nibh fringilla dapibus. </p>
-                        <div class="info-article">
-                          <img class="icon-star" src="/icons/Star.png"/>
-                          <p class="tgl-article">20 Okt 2023</p>
-                        </div>
-                        <svg xmlns="http://www.w3.org/2000/svg" class="mt-2" width="215" height="4" viewBox="0 0 304 4" fill="none">
-                          <path d="M2 2L302 2.00003" stroke="#F0F0F0" stroke-width="3" stroke-linecap="round"/>
-                        </svg>
-                      </div>
-                      <div class="article-group">
-                        <p class="desk-article">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi non risus at nibh fringilla dapibus. </p>
-                        <div class="info-article">
-                          <img class="icon-star" src="/icons/Star.png"/>
-                          <p class="tgl-article">20 Okt 2023</p>
-                        </div>
-                        <svg xmlns="http://www.w3.org/2000/svg" class="mt-2" width="215" height="4" viewBox="0 0 304 4" fill="none">
-                          <path d="M2 2L302 2.00003" stroke="#F0F0F0" stroke-width="3" stroke-linecap="round"/>
-                        </svg>
-                      </div>
+                      @endforeach
+                    @else
+                    <p class="text-center fs-4">No Posts Found</p>
+                    @endif
                     </div>
                   </div>
                 </div>
@@ -166,7 +119,7 @@
                                 <div class="desc-item">
                                   <div class="ellipse">
                                   </div>
-                                  {{$article->created_at->diffForHumans()}}
+                                  {{ date('d M Y', strtotime($article->tanggal_publikasi));}}
                                 </div>
                                 <div class="bottom">
                                   <div class="desc-item">
@@ -177,7 +130,7 @@
                                     <div class="desc-item">
                                       <div class="ellipse">
                                       </div>
-                                      1,58
+                                      {{ number_format($article->pengunjung ?? 0) }}
                                     </div>
                                 </div>
                                 </div>
@@ -187,114 +140,59 @@
                         </div>
                       </div>
                       @endforeach
+                      <div class="container">
+                        <div class="row" style="display: flex; justify-content: center;">
+                            <div class="main-artikel-pagination">
+                              {{ $articles->appends(['filter_artikel_onKategori' => $sort])->links('layouts.artikel-pagination') }}
+                          </div>
+                        </div>
+                    </div>
                     @else
                     <p class="text-center fs-4">No Posts Found</p>
                     @endif
-                    <div class="container">
-                      <div class="row" style="display: flex;
-    justify-content: center;">
-                        <div class="main-artikel-pagination">
-                          <div class="main-artikel-page">1</div>
-                          <div class="main-artikel-page">2</div>
-                          <div class="main-artikel-page">3</div>
-                          <div class="main-artikel-page">4</div>
-                          <div class="main-artikel-page">5</div>
-                          <div class="main-artikel-page">6</div>
-                          <div class="main-artikel-page">7</div>
-                        </div>
-                      </div>
-                    </div>
                     </div>
                   </div>
                 </div>
                 <div class="col-lg-2 col-md-3 col-sm-12">
                   <div class="container">
                     <div class="row side-widget">
-                      <div class="artikel-terbaru">
-                        <p class="div-title">Artikel Terbaru</p>
-                        <div class="article-group">
-                          <p class="desk-article">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi non risus at nibh fringilla dapibus. </p>
-                          <div class="info-article">
-                            <img class="icon-star" src="/icons/Star.png"/>
-                            <p class="tgl-article">20 Okt 2023</p>
-                          </div>
-                          <svg xmlns="http://www.w3.org/2000/svg" class="mt-2" width="215" height="4" viewBox="0 0 304 4" fill="none">
-                            <path d="M2 2L302 2.00003" stroke="#F0F0F0" stroke-width="3" stroke-linecap="round"/>
-                          </svg>
+                      <div class="artikel-samping">
+                        <p class="div-title">Artikel Terpopuler</p>
+                        @if($articles_terpopuler->count())
+                      @foreach($articles_terpopuler as $article)
+                      <div class="article-group">
+                        <p class="desk-article">{{$article->judul_artikel}}</p>
+                        <div class="info-article">
+                          <img class="icon-star" src="/icons/Star.png"/>
+                          <p class="tgl-article">{{ date('d M Y', strtotime($article->tanggal_publikasi));}} </p>
                         </div>
-                        <div class="article-group">
-                          <p class="desk-article">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi non risus at nibh fringilla dapibus. </p>
-                          <div class="info-article">
-                            <img class="icon-star" src="/icons/Star.png"/>
-                            <p class="tgl-article">20 Okt 2023</p>
-                          </div>
-                          <svg xmlns="http://www.w3.org/2000/svg" class="mt-2" width="215" height="4" viewBox="0 0 304 4" fill="none">
-                            <path d="M2 2L302 2.00003" stroke="#F0F0F0" stroke-width="3" stroke-linecap="round"/>
-                          </svg>
-                        </div>
-                        <div class="article-group">
-                          <p class="desk-article">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi non risus at nibh fringilla dapibus. </p>
-                          <div class="info-article">
-                            <img class="icon-star" src="/icons/Star.png"/>
-                            <p class="tgl-article">20 Okt 2023</p>
-                          </div>
-                          <svg xmlns="http://www.w3.org/2000/svg" class="mt-2" width="215" height="4" viewBox="0 0 304 4" fill="none">
-                            <path d="M2 2L302 2.00003" stroke="#F0F0F0" stroke-width="3" stroke-linecap="round"/>
-                          </svg>
-                        </div>
-                        <div class="article-group">
-                          <p class="desk-article">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi non risus at nibh fringilla dapibus. </p>
-                          <div class="info-article">
-                            <img class="icon-star" src="/icons/Star.png"/>
-                            <p class="tgl-article">20 Okt 2023</p>
-                          </div>
-                          <svg xmlns="http://www.w3.org/2000/svg" class="mt-2" width="215" height="4" viewBox="0 0 304 4" fill="none">
-                            <path d="M2 2L302 2.00003" stroke="#F0F0F0" stroke-width="3" stroke-linecap="round"/>
-                          </svg>
-                        </div>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="mt-2" width="215" height="4" viewBox="0 0 304 4" fill="none">
+                          <path d="M2 2L302 2.00003" stroke="#F0F0F0" stroke-width="3" stroke-linecap="round"/>
+                        </svg>
                       </div>
-                      <div class="artikel-terbaru">
-                        <p class="div-title">Artikel Terbaru</p>
+                      @endforeach
+                    @else
+                    <p class="text-center fs-4">No Posts Found</p>
+                    @endif
+                      </div>
+                      <div class="artikel-samping">
+                        <p class="div-title">Artikel Acak</p>
+                          @if($articles_acak2->count())
+                        @foreach($articles_acak2 as $article)
                         <div class="article-group">
-                          <p class="desk-article">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi non risus at nibh fringilla dapibus. </p>
+                          <p class="desk-article">{{$article->judul_artikel}}</p>
                           <div class="info-article">
                             <img class="icon-star" src="/icons/Star.png"/>
-                            <p class="tgl-article">20 Okt 2023</p>
+                            <p class="tgl-article">{{ date('d M Y', strtotime($article->tanggal_publikasi));}} </p>
                           </div>
                           <svg xmlns="http://www.w3.org/2000/svg" class="mt-2" width="215" height="4" viewBox="0 0 304 4" fill="none">
                             <path d="M2 2L302 2.00003" stroke="#F0F0F0" stroke-width="3" stroke-linecap="round"/>
                           </svg>
                         </div>
-                        <div class="article-group">
-                          <p class="desk-article">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi non risus at nibh fringilla dapibus. </p>
-                          <div class="info-article">
-                            <img class="icon-star" src="/icons/Star.png"/>
-                            <p class="tgl-article">20 Okt 2023</p>
-                          </div>
-                          <svg xmlns="http://www.w3.org/2000/svg" class="mt-2" width="215" height="4" viewBox="0 0 304 4" fill="none">
-                            <path d="M2 2L302 2.00003" stroke="#F0F0F0" stroke-width="3" stroke-linecap="round"/>
-                          </svg>
-                        </div>
-                        <div class="article-group">
-                          <p class="desk-article">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi non risus at nibh fringilla dapibus. </p>
-                          <div class="info-article">
-                            <img class="icon-star" src="/icons/Star.png"/>
-                            <p class="tgl-article">20 Okt 2023</p>
-                          </div>
-                          <svg xmlns="http://www.w3.org/2000/svg" class="mt-2" width="215" height="4" viewBox="0 0 304 4" fill="none">
-                            <path d="M2 2L302 2.00003" stroke="#F0F0F0" stroke-width="3" stroke-linecap="round"/>
-                          </svg>
-                        </div>
-                        <div class="article-group">
-                          <p class="desk-article">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi non risus at nibh fringilla dapibus. </p>
-                          <div class="info-article">
-                            <img class="icon-star" src="/icons/Star.png"/>
-                            <p class="tgl-article">20 Okt 2023</p>
-                          </div>
-                          <svg xmlns="http://www.w3.org/2000/svg" class="mt-2" width="215" height="4" viewBox="0 0 304 4" fill="none">
-                            <path d="M2 2L302 2.00003" stroke="#F0F0F0" stroke-width="3" stroke-linecap="round"/>
-                          </svg>
-                        </div>
+                        @endforeach
+                      @else
+                      <p class="text-center fs-4">No Posts Found</p>
+                      @endif
                       </div>
                     </div>
                   </div>
@@ -306,4 +204,5 @@
         </div>
       </section>
       @include('layouts.artikel-footer')
+      <script src="js/portal-edukasi.js"></script>
 </body>

@@ -22,11 +22,11 @@ return new class extends Migration
             $table->string('dimensi');
             $table->string('material_pendukung');
             $table->string('finishing');
-            $table->string('gambar');
-            $table->string('video');
+            $table->string('gambar')->nullable();
+            $table->string('video')->nullable();
             $table->text('deskripsi_singkat'); // Menggunakan tipe data 'text' untuk deskripsi yang panjang
-            $table->integer('stok'); // Menggunakan tipe data 'integer' untuk stok
-            $table->integer('item_terjual');
+            $table->integer('stok')->default(0); // Menggunakan tipe data 'integer' untuk stok
+            $table->integer('item_terjual')->default(0);
             $table->decimal('hpp', 10, 2); // Menggunakan tipe data 'decimal' untuk harga dengan 2 digit desimal
             $table->decimal('harga_b2I_11+_unit', 10, 2);
             $table->decimal('harga_b2I_1+_unit', 10, 2);
@@ -34,7 +34,7 @@ return new class extends Migration
             $table->decimal('harga_b2B_1+_unit', 10, 2);
             $table->decimal('harga_b2C_11+_unit', 10, 2);
             $table->decimal('harga_b2C_1+_unit', 10, 2);
-            $table->timestamp('tanggal_publikasi');
+            $table->timestamp('tanggal_publikasi')->nullable();
 
             $table->timestamp('created_at')->useCurrent(); // Menggunakan 'useCurrent' untuk mengisi otomatis tanggal pembuatan
             $table->timestamp('updated_at')->useCurrent(); // Menggunakan 'useCurrent' untuk mengisi otomatis tanggal pembaruan

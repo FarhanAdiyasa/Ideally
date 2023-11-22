@@ -24,12 +24,12 @@ return new class extends Migration
             
             $table->foreignId('created_by');
             $table->foreignId('updated_by');
-            $table->foreignId('id_nurseri');
-            $table->foreignId('id_batu');
-            $table->foreignId('id_konkurito');
-            $table->foreignId('id_everlas_things');
-            $table->foreignId('id_shineage');
-            $table->foreignId('id_agrigard');
+            $table->foreignId('id_nurseri')->nullable();
+            $table->foreignId('id_batu')->nullable();
+            $table->foreignId('id_konkurito')->nullable();
+            $table->foreignId('id_everlas_things')->nullable();
+            $table->foreignId('id_shineage')->nullable();
+            $table->foreignId('id_agrigard')->nullable();
             
             $table->foreign('created_by')->references('user_id')->on('users');
 

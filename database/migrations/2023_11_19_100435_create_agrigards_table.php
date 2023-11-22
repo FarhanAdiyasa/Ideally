@@ -17,11 +17,11 @@ return new class extends Migration
             $table->string('nama_produk');
             $table->string('slug');
             $table->string('satuan');
-            $table->string('gambar');
-            $table->string('video');
+            $table->string('gambar')->nullable();
+            $table->string('video')->nullable();
             $table->text('deskripsi_singkat'); // Menggunakan tipe data 'text' untuk deskripsi yang panjang
-            $table->integer('stok'); // Menggunakan tipe data 'integer' untuk stok
-            $table->integer('item_terjual');
+            $table->integer('stok')->default(0); // Menggunakan tipe data 'integer' untuk stok
+            $table->integer('item_terjual')->default(0);
             $table->decimal('hpp', 10, 2); // Menggunakan tipe data 'decimal' untuk harga pokok produksi dengan 2 digit desimal
             $table->decimal('harga_b2I_31+_unit', 10, 2);
             $table->decimal('harga_b2I_11+_unit', 10, 2);
@@ -32,7 +32,7 @@ return new class extends Migration
             $table->decimal('harga_b2C_31+_unit', 10, 2);
             $table->decimal('harga_b2C_11+_unit', 10, 2);
             $table->decimal('harga_b2C_1+_unit', 10, 2);
-            $table->timestamp('tanggal_publikasi');  
+            $table->timestamp('tanggal_publikasi')->nullable();  
             $table->timestamp('created_at')->useCurrent(); // Menggunakan 'useCurrent' untuk mengisi otomatis tanggal pembuatan
             $table->timestamp('updated_at')->useCurrent(); // Menggunakan 'useCurrent' untuk mengisi otomatis tanggal pembaruan
             $table->timestamp('deleted_at')->nullable();// Menggunakan 'nullable' untuk mengizinkan kolom 'deleted_date' bernilai null

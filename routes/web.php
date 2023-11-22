@@ -16,7 +16,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [ArtikelController::class, 'index']);
+Route::get('/', [ArtikelController::class, 'index'])->name('daftar-artikel');
+Route::post('/portal-edukasi/daftar-artikel/sort', [ArtikelController::class, 'index'])->name('daftar-artikel.sort');
+Route::post('/portal-edukasi/daftar-artikel/search', [ArtikelController::class, 'index'])->name('daftar-artikel.search');
 
 Auth::routes();
 

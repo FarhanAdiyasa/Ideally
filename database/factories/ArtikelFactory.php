@@ -25,11 +25,12 @@ class ArtikelFactory extends Factory
             'penulis_artikel' => $this->faker->name,
             'gambar_artikel' => $this->faker->imageUrl(),
             'keywords' => $this->faker->words(3, true),
-            'tanggal_publikasi' => $this->faker->dateTimeThisMonth,
+            'tanggal_publikasi' => $this->faker->dateTimeBetween('-1 year', 'now'),
             'created_by' => $this->faker->numberBetween(1, 10),
             'updated_by' => $this->faker->numberBetween(1, 10),
             'deleted_by' => null, // assuming it can be null
             'id_kategori_artikel' => 1,
+            'pengunjung' => $this->faker->numberBetween(1000, 10000),
             'created_at' => now(),
             'updated_at' => now(),
         ];

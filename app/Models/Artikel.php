@@ -27,20 +27,27 @@ class Artikel extends Model
         return $this->hasOne(detail_komentar::class);
     }
 
-    
-    /*protected $fillable = [
-        'id_artikel',
-        'judul_artikel',
-        'slug',
-        'deskripsi_artikel',
-        'isi_artikel',
-        'penulis_artikel',
-        'gambar_artikel',
-        'keywords',
-        'tanggal_publikasi',
-        'created_at',
-        'updated_at',
-        'deleted_at',
-    ];*/
+    public function scopeFilter($query, array $filter)
+    {
 
+        $query->when($filter['filter_artikel_onKategori'] ??  false, function ($query, $search) {
+            return $query->where(function ($query) use ($search) {
+                $query->where('title', 'like', '%' . $search . '%')
+                    ->orWhere('body', 'like', '%' . $search . '%');
+            });
+        });
+
+        $query->when($filter['category'] ??  false, function ($query, $category) {
+            return $query->whereHas('category', function ($query) use ($category) {
+                $query->where('slug', $category);
+            });
+        });
+
+        $query->when(
+            $filter['author'] ??  false,
+            fn ($query, $author) =>
+            $query->whereHas('author', fn ($query) =>
+            $query->where('username', $author))
+        );
+    }
 }
