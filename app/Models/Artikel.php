@@ -12,6 +12,16 @@ class Artikel extends Model
     protected $guarded = ['id_artikel'];
     protected $with = ['createdBy', 'updatedBy', 'deletedBy'];
 
+    public function scopeFilterByKategori($query, $sort)
+    {
+        return $sort ? $query->orderBy('tanggal_publikasi', $sort) : $query;
+    }
+
+    public function scopeSearchByKategori($query, $searchKeyword)
+    {
+        return $searchKeyword ? $query->where('judul_artikel', 'LIKE', '%' . $searchKeyword . '%') : $query;
+    }
+
     public function createdBy()
     {
         return $this->belongsTo(User::class, 'created_by', 'user_id');

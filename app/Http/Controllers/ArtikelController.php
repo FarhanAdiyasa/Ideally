@@ -13,14 +13,18 @@ class ArtikelController extends Controller
         $sort = '';
         $artikels = Artikel::orderBy('tanggal_publikasi', 'desc');
     
-        if (request('filter_artikel_onKategori')) {
+        /*if (request('filter_artikel_onKategori')) {
             $sort = request()->get('filter_artikel_onKategori');
             $artikels = Artikel::orderBy('tanggal_publikasi', $sort);
         }
         if (request('cari_artikel_onKategori')) {
             $searchKeyword = request()->get('cari_artikel_onKategori');
             $artikels = Artikel::where('judul_artikel', 'LIKE', '%' . $searchKeyword . '%');
-        }
+        }*/
+
+        /*$artikels = Artikel::filterByKategori(request('filter_artikel_onKategori'))
+                      ->searchByKategori(request('cari_artikel_onKategori'))
+                      ->get();*/
     
         return view('daftar-artikel', [
             "articles" => $artikels->paginate(18),
