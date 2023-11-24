@@ -17,6 +17,7 @@
   <link rel="stylesheet" href="/css/style.css"/>
   <link rel="stylesheet" href="/css/landing-artikel-style.css"/>
   <link rel="stylesheet" href="/css/artikel-pagination-style.css"/>
+  <link rel="stylesheet" href="/css/navbar-style.css" rel="stylesheet">
 </head>
 <body>
     {{-- Navbar Section --}}
@@ -205,4 +206,6 @@
       </section>
       @include('layouts.artikel-footer')
       <script src="js/portal-edukasi.js"></script>
+      <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+      <script src="/js/navbar.js"></script>
 </body>

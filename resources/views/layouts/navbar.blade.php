@@ -18,82 +18,100 @@
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">Portal
               Edukasi</a>
-            <ul class="dropdown-menu">
-              <li><a href="#" class="dropdown-item">Belajar Desain Taman</a></li>
-              <li>
-                <hr class="dropdown-divider">
-              </li>
-              <li><a href="#" class="dropdown-item">Belajar Konstruksi Taman</a></li>
-              <li>
-                <hr class="dropdown-divider">
-              </li>
-              <li><a href="#" class="dropdown-item">Belajar Pemeliharaan Taman</a></li>
-              <li>
-                <hr class="dropdown-divider">
-              </li>
-              <li><a href="#" class="dropdown-item">Belajar Tanaman</a></li>
-              <li>
-                <hr class="dropdown-divider">
-              </li>
-              <li><a href="#" class="dropdown-item">Belajar Material</a></li>
-              <li>
-                <hr class="dropdown-divider">
-              </li>
-              <li><a href="#" class="dropdown-item">Belajar Bahan Pelengkap</a></li>
-              <li>
-                <hr class="dropdown-divider">
-              </li>
-              <li><a href="#" class="dropdown-item">Belajar Hal Lainnya</a></li>
+            <ul class="dropdown-menu dropdown-menu-center">
+
+              <div class="custom-shape-1"></div>
+              <div class="dropdown-list">
+                <li><a href="#" class="dropdown-item">Belajar Desain Taman</a></li>
+                <li>
+                  <hr class="dropdown-divider">
+                </li>
+                <li><a href="#" class="dropdown-item">Belajar Konstruksi Taman</a></li>
+                <li>
+                  <hr class="dropdown-divider">
+                </li>
+                <li><a href="#" class="dropdown-item">Belajar Pemeliharaan Taman</a></li>
+                <li>
+                  <hr class="dropdown-divider">
+                </li>
+                <li><a href="#" class="dropdown-item">Belajar Tanaman</a></li>
+                <li>
+                  <hr class="dropdown-divider">
+                </li>
+                <li><a href="#" class="dropdown-item">Belajar Material</a></li>
+                <li>
+                  <hr class="dropdown-divider">
+                </li>
+                <li><a href="#" class="dropdown-item">Belajar Bahan Pelengkap</a></li>
+                <li>
+                  <hr class="dropdown-divider">
+                </li>
+                <li><a href="#" class="dropdown-item">Belajar Hal Lainnya</a></li>
+              </div>
+
             </ul>
+
           </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">Layanan</a>
-            <ul class="dropdown-menu">
-              <li><a href="#" class="dropdown-item">Desain Taman</a></li>
-              <li>
-                <hr class="dropdown-divider">
-              </li>
-              <li><a href="#" class="dropdown-item">Konstruksi Taman</a></li>
-              <li>
-                <hr class="dropdown-divider">
-              </li>
-              <li><a href="#" class="dropdown-item">Pemeliharaan Taman</a></li>
+            <ul class="dropdown-menu dropdown-menu-center">
+              <div class="custom-shape-2"></div>
+              <div class="dropdown-list">
+                <li><a href="#" class="dropdown-item">Desain Taman</a></li>
+                <li>
+                  <hr class="dropdown-divider">
+                </li>
+                <li><a href="#" class="dropdown-item">Konstruksi Taman</a></li>
+                <li>
+                  <hr class="dropdown-divider">
+                </li>
+                <li><a href="#" class="dropdown-item">Pemeliharaan Taman</a></li>
+              </div>
+
             </ul>
           </li>
 
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">Produk</a>
-            <ul class="dropdown-menu">
-              <!-- <li>
-                <div class="PopupProdukDefault">
-                  <img class="Union" src="./img/dropdownlist-img1.png" alt="Placeholder Image">
+            <ul class="dropdown-menu-produk dropdown-menu dropdown-menu-center">
+              <div class="popup-produk">
+                <img id="dropdown-img" src="./img/dropdownlist-img_default.png" alt="Gambar Produk">
+                <div class="custom-shape-3"></div>
+                <div class="produk-list">
+                  <li><a href="#" class="dropdown-item" data-img="./img/dropdownlist-img_default.png">Beranda Produk</a>
+                  </li>
+                  <li>
+                    <hr class="dropdown-divider">
+                  </li>
+                  <li><a href="#" class="dropdown-item" data-img="./img/dropdownlist-img_tanaman.png">Produk Tanaman</a>
+                  </li>
+                  <li>
+                    <hr class="dropdown-divider">
+                  </li>
+                  <li><a href="#" class="dropdown-item" data-img="./img/dropdownlist-img_default.png">Produk Besi dan
+                      Las</a></li>
+                  <li>
+                    <hr class=" dropdown-divider">
+                  </li>
+                  <li><a href="#" class="dropdown-item" data-img="./img/dropdownlist-img_tanaman.png">Produk Batu</a>
+                  </li>
+                  <li>
+                    <hr class="dropdown-divider">
+                  </li>
+                  <li><a href="#" class="dropdown-item" data-img="./img/dropdownlist-img_default.png">Produk Beton</a>
+                  </li>
+                  <li>
+                    <hr class="dropdown-divider">
+                  </li>
+                  <li><a href="#" class="dropdown-item" data-img="./img/dropdownlist-img_tanaman.png">Produk Bahan
+                      Pertanian</a></li>
+                  <li>
+                    <hr class="dropdown-divider">
+                  </li>
+                  <li><a href="#" class="dropdown-item" data-img="./img/dropdownlist-img_default.png">Produk <i>Signage
+                        System</i></a></li>
                 </div>
-              </li> -->
-              <li><a href="#" class="dropdown-item">Beranda Produk</a></li>
-              <li>
-                <hr class="dropdown-divider">
-              </li>
-              <li><a href="#" class="dropdown-item">Produk Tanaman</a></li>
-              <li>
-                <hr class="dropdown-divider">
-              </li>
-              <li><a href="#" class="dropdown-item">Produk Besi dan Las</a></li>
-              <li>
-                <hr class="dropdown-divider">
-              </li>
-              <li><a href="#" class="dropdown-item">Produk Batu</a></li>
-              <li>
-                <hr class="dropdown-divider">
-              </li>
-              <li><a href="#" class="dropdown-item">Produk Beton</a></li>
-              <li>
-                <hr class="dropdown-divider">
-              </li>
-              <li><a href="#" class="dropdown-item">Produk Bahan Pertanian</a></li>
-              <li>
-                <hr class="dropdown-divider">
-              </li>
-              <li><a href="#" class="dropdown-item">Produk <i>Signage System</i></a></li>
+              </div>
             </ul>
           </li>
           <li class="nav-item">

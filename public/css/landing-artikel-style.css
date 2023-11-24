@@ -1,5 +1,7 @@
 body,
 img {
+    padding-top: 56px;
+    /* Sesuaikan dengan tinggi navbar Anda */
     margin: 0;
     padding: 0;
 }
@@ -12,8 +14,9 @@ img {
     /* Sesuaikan dengan tinggi navbar Anda */
 }
 
+
 .vertical-divider {
-    border-left: 3px solid #d2d2d2;
+    border-left: 3px solid #D2D2D2;
     /* Warna dan gaya garis bisa disesuaikan */
     height: 20px;
     /* Sesuaikan tinggi garis vertikal sesuai kebutuhan */
@@ -29,59 +32,12 @@ img {
 }
 
 .link-body-emphasis:hover {
-    color: #06c195 !important;
+    color: #06C195 !important;
     /* Warna teks pada hover menjadi #06C195 */
-}
-
-.nav-item a {
-    color: #808080 !important;
-    white-space: nowrap;
-    /* Gunakan !important untuk memastikan gaya ini diutamakan */
-}
-
-.navbar-nav .nav-link {
-    color: #808080 !important;
-    margin-right: 20px;
-    /* Default font weight */
-    transition: color 0.3s, font-weight 0.3s;
-    /* Animasi perubahan warna dan font weight selama 0.3 detik */
-}
-
-.navbar-nav .nav-link:hover {
-    color: #06c195 !important;
-    /* Warna teks pada hover menjadi #06C195 */
-}
-
-.navbar-nav .nav-link.active {
-    font-weight: 700;
-    /* Font weight ketika tautan sedang aktif (diklik) */
-    color: #06c195 !important;
-    /* Warna teks ketika tautan sedang aktif */
 }
 
 /* Remove default blue color on click */
-.dropdown-item:focus,
-.dropdown-item:active {
-    background-color: transparent !important;
-}
 
-/* Add hover effect */
-.dropdown-item:hover {
-    background-color: #f8f9fa;
-    font-weight: 700;
-    /* Change to your preferred hover background color */
-    color: #555555 !important;
-    /* Change to your preferred hover text color */
-}
-
-.dropdown-image {
-    max-width: 50px;
-    /* Adjust the maximum width of the image */
-    margin-left: 10px;
-    /* Add spacing between the image and the list items */
-    vertical-align: middle;
-    /* Align the image vertically with the text */
-}
 
 /* styles.css */
 .PopupProdukDefault {
@@ -142,7 +98,7 @@ img {
 }
 
 .text-background-headline span {
-    color: #06c195;
+    color: #06C195;
     font-weight: 700;
     font-size: 30px;
     font-family: Quicksand;
@@ -167,7 +123,7 @@ img {
 
 .category-portaledukasi-btn:hover,
 .category-portaledukasi-btn:active {
-    background-color: #06c195;
+    background-color: #06C195;
     color: #ffffff;
     font-weight: 600;
     /* Text color on hover or active */
@@ -186,7 +142,7 @@ img {
 }
 
 .category-portaledukasi-btn-jelajahi {
-    background-color: #06c195;
+    background-color: #06C195;
     color: #ffffff;
     font-size: 15px;
     padding-left: 40px;
@@ -199,13 +155,11 @@ img {
     background-color: #079473;
     color: #ffffff;
     font-weight: 600;
-    /* Text color on hover or active */
 }
 
 .card {
     margin-top: 40px;
     margin-right: 40px;
-    /* Add margin at the top of the card (adjust as needed) */
 }
 
 .info-card-category,
@@ -215,13 +169,14 @@ img {
 }
 
 .keterangan-additional-text-container {
+
     margin-bottom: 2px;
     margin-left: 10px;
     margin-right: 10px;
 }
 
 .additional-text-container {
-    background-color: #06c195;
+    background-color: #06C195;
     color: white;
     margin-right: 7px;
 }
@@ -258,7 +213,7 @@ img {
 
 .carousel-control-prev,
 .carousel-control-next {
-    background-color: #06c195;
+    background-color: #06C195;
     width: 5vh;
     height: 5vh;
     border-radius: 50%;
@@ -272,7 +227,11 @@ img {
 }
 
 .artikel-baru {
-    padding-top: 5%;
+    padding-top: 6%;
+}
+
+.most-visited-artikel {
+    padding-top: 6%;
 }
 
 .gambar-card-artikel-baru {
@@ -327,15 +286,6 @@ footer p {
     z-index: 10;
     /* Atur nilai z-index */
 }
-.btn-overlay-header {
-    position: absolute;
-    margin-top: 1%;
-    bottom: 17%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 10;
-    /* Atur nilai z-index */
-}
 
 .text-overlay-footer {
     position: absolute;
@@ -364,7 +314,7 @@ footer p {
 
 .text-overlay-footer .Hashtag {
     font-size: 150px;
-    color: rgba(255, 255, 255, 0.5);
+    color: rgba(255, 255, 255, 0.50);
     margin-right: -50px;
     transform: translateY(12%);
     /* OVERPOWERED BRO! */
@@ -372,13 +322,7 @@ footer p {
 
 .btn-overlay-footer button:hover {
     background-color: #fff;
-    color: #06c195;
-    font-weight: 700;
-    white-space: nowrap;
-}
-.btn-overlay-header button:hover {
-    background-color: #fff;
-    color: #06c195;
+    color: #06C195;
     font-weight: 700;
     white-space: nowrap;
 }
@@ -394,13 +338,101 @@ footer p {
     transition: font-weight 0.3s ease;
     /* Animasi perubahan font-weight */
 }
-.btn-overlay-header button {
-    color: #555555;
-    background-color: #fff;
-    font-weight: normal;
-    padding-left: 20px;
-    padding-right: 20px;
-    white-space: nowrap;
-    transition: font-weight 0.3s ease;
-    /* Animasi perubahan font-weight */
+
+.list-unstyled {
+    font-size: 16px;
+    color: #727272;
+    list-style: none;
+    padding-left: 0;
+}
+
+.list-unstyled li {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.list-unstyled li svg {
+    margin-right: 10px;
+    /* Jarak antara lingkaran dan teks */
+}
+
+.card {
+    position: relative;
+    overflow: hidden;
+}
+
+.card::before {
+    content: '';
+    position: absolute;
+    top: -10px;
+    /* Sesuaikan posisi vertikal shape putih */
+    right: -10px;
+    /* Sesuaikan posisi horizontal shape putih */
+    width: 50px;
+    /* Sesuaikan lebar shape putih */
+    height: 50px;
+    /* Sesuaikan tinggi shape putih */
+    border-radius: 50%;
+    background-color: white;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+    z-index: 1;
+    /* Pastikan lebih tinggi dari gambar card */
+}
+
+.card:hover::before {
+    opacity: 1;
+}
+
+@media (max-width: 768px) {
+
+    /* Styles for mobile */
+    body,
+    img {
+        padding-top: 56px;
+        margin: 0;
+        padding: 0;
+    }
+
+    .container-fluid {
+        margin-top: 30px;
+        /* Menyesuaikan margin atas */
+    }
+
+    .vertical-divider {
+        display: none;
+        /* Sembunyikan garis vertikal di tampilan mobile */
+    }
+
+    .category-portaledukasi-btn,
+    .category-portaledukasi-btn-jelajahi {
+        padding-left: 15px;
+        padding-right: 15px;
+        /* Sesuaikan ukuran tombol */
+    }
+
+    .main-content-container {
+        padding-left: 5% !important;
+        padding-right: 5% !important;
+        /* Sesuaikan padding untuk konten utama */
+    }
+
+    .text-background-headline {
+        padding-left: 20px;
+        padding-right: 20px;
+        /* Sesuaikan padding untuk teks headline */
+    }
+
+    .list-unstyled li svg {
+        margin-right: 8px;
+        /* Sesuaikan jarak antara lingkaran dan teks pada mobile */
+    }
+
+    .cards-wrapper .card {
+        flex: 0 0 100%;
+        /* Kartu akan memenuhi lebar layar penuh */
+        max-width: 100%;
+        /* Hindari overflow horizontal */
+    }
 }

@@ -1,0 +1,116 @@
+.nav-item a,
+.navbar-nav .nav-link,
+.link-body-emphasis {
+    color: #000 !important;
+}
+
+.nav-item a {
+    color: #808080 !important;
+    white-space: nowrap;
+}
+
+.navbar-nav .nav-link {
+    color: #808080 !important;
+    margin-right: 20px;
+    transition: color 0.3s, font-weight 0.3s;
+}
+
+.navbar-nav .nav-link:hover {
+    color: #06C195 !important;
+}
+
+.navbar-nav .nav-link.active {
+    font-weight: 700;
+    color: #06C195 !important;
+}
+
+.dropdown-item:focus,
+.dropdown-item:active {
+    background-color: transparent !important;
+    display: inline-block;
+    width: 100%;
+}
+
+.dropdown-item:hover {
+    background-color: #f8f9fa;
+    font-weight: 700;
+    color: #555555 !important;
+}
+
+.dropdown-menu-produk {
+    width: 700px;
+}
+
+.dropdown-image {
+    max-width: 50px;
+    margin-left: 10px;
+    vertical-align: middle;
+}
+
+.custom-shape-1,
+.custom-shape-3 {
+    width: 20px;
+    height: 20px;
+    background: white;
+    border-radius: 3px;
+    position: absolute;
+    left: 50%;
+    margin-left: -10px;
+    bottom: 97%;
+    transform: rotate(45deg);
+    z-index: -1;
+    box-shadow: -1px -1px 5px 0px rgba(0, 0, 0, 0.1);
+}
+
+.custom-shape-2 {
+    width: 20px;
+    height: 20px;
+    background: white;
+    border-radius: 3px;
+    position: absolute;
+    left: 50%;
+    margin-left: -10px;
+    bottom: 93%;
+    transform: rotate(45deg);
+    z-index: -1;
+    box-shadow: -1px -1px 5px 0px rgba(0, 0, 0, 0.1);
+}
+
+.dropdown-divider {
+    border-top: 3px solid #F0F0F0;
+}
+
+.dropdown-menu {
+    outline: none;
+    border: none;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+}
+
+.dropdown-menu-center {
+    left: 40% !important;
+    transform: translateX(-50%);
+}
+
+.popup-produk {
+    display: flex;
+}
+
+.popup-produk img {
+    padding: 30px;
+    width: 350px;
+    height: 350px;
+}
+
+.dropdown-list {
+    padding-top: 10px;
+    padding-right: 20px;
+    padding-bottom: 10px;
+    padding-left: 20px;
+}
+
+.produk-list {
+    flex: 1;
+    padding-right: 30px;
+    padding-top: 2%;
+}
