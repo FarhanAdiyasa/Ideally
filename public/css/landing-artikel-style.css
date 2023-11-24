@@ -338,6 +338,16 @@ footer p {
     transition: font-weight 0.3s ease;
     /* Animasi perubahan font-weight */
 }
+.btn-overlay-header button {
+    color: #555555;
+    background-color: #fff;
+    font-weight: normal;
+    padding-left: 20px;
+    padding-right: 20px;
+    white-space: nowrap;
+    transition: font-weight 0.3s ease;
+    /* Animasi perubahan font-weight */
+}
 
 .list-unstyled {
     font-size: 16px;
@@ -435,4 +445,3 @@ footer p {
         max-width: 100%;
         /* Hindari overflow horizontal */
     }
-}

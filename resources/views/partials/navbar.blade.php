@@ -9,7 +9,7 @@
 
       <div class="collapse navbar-collapse d-lg-flex" id="navbarsExample11">
         <a class="navbar-brand col-lg-3 me-0 flex-grow-1" href="#">
-          <img src="img/logo-ideally.png" alt="LogoIdeally" style="max-width: 40%;">
+          <img src="../img/logo-ideally.png" alt="LogoIdeally" style="max-width: 40%;">
         </a>
         <ul class="navbar-nav col-lg-6 justify-content-lg-center">
           <li class="nav-item">

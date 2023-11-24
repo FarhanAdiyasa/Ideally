@@ -29,7 +29,6 @@ class UserFactory extends Factory
             'profesi' => $this->faker->word,
             'profile_picture' => $this->faker->imageUrl(),
             'remember_token' => Str::random(10),
-            'deleted_at' => null,
             'created_at' => now(),
             'updated_at' => now(),
         ];

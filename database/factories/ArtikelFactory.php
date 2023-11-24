@@ -29,7 +29,7 @@ class ArtikelFactory extends Factory
             'created_by' => $this->faker->numberBetween(1, 10),
             'updated_by' => $this->faker->numberBetween(1, 10),
             'deleted_by' => null, // assuming it can be null
-            'id_kategori_artikel' => 1,
+            'id_kategori_artikel' => $this->faker->numberBetween(1, 5),
             'pengunjung' => $this->faker->numberBetween(1000, 10000),
             'created_at' => now(),
             'updated_at' => now(),

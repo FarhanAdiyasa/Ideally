@@ -11,9 +11,21 @@ class Pertanyaan_Survey extends Model
 
     protected $guarded = ['id_pertanyaan_survey'];
 
-    public function user()
+    protected $with = ['createdBy', 'updatedBy', 'deletedBy'];
+
+    public function createdBy()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class, 'created_by', 'user_id');
+    }
+
+    public function updatedBy()
+    {
+        return $this->belongsTo(User::class, 'updated_by', 'user_id');
+    }
+
+    public function deletedBy()
+    {
+        return $this->belongsTo(User::class, 'deleted_by', 'user_id');
     }
 
     public function jawaban_survey()

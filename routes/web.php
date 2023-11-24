@@ -16,10 +16,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [ArtikelController::class, 'index'])->name('daftar-artikel');
-Route::post('/portal-edukasi/daftar-artikel/sort', [ArtikelController::class, 'index'])->name('daftar-artikel.sort');
-Route::post('/portal-edukasi/daftar-artikel/search', [ArtikelController::class, 'index'])->name('daftar-artikel.search');
+Route::get('/',function () {
+    return view('home');
+});
+Route::get('/daftar-artikel', [ArtikelController::class, 'byKategori'])->name('daftar-artikel');
 
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home/show/{kategori}', [App\Http\Controllers\ArtikelController::class, 'show'])->name('home.show');
+
