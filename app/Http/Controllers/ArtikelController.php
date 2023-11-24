@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Artikel;
+use App\Models\Komentar;
 use Illuminate\Http\Request;
 
 
@@ -19,7 +20,7 @@ class ArtikelController extends Controller
     
         return view('daftar-artikel', [
             "articles" => Artikel::kategori(request(['kategori'])),
-            "jumlah" => Artikel::count(),
+            "komentars" => Komentar::all()->limit(15),
             "active" => $kategori,
             "articles_terbaru" => Artikel::orderBy('tanggal_publikasi', 'desc')->limit(15)->get(),
             "articles_terpopuler" => Artikel::orderBy('pengunjung', 'desc')->limit(15)->get(),
@@ -53,5 +54,6 @@ class ArtikelController extends Controller
             "articles_terpopuler" => Artikel::orderBy('pengunjung', 'desc')->limit(4)->get(),
         ]);
     }
+    
       
 }
