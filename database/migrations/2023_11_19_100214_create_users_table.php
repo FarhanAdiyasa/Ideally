@@ -3,7 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
-
+use Illuminate\Database\Eloquent\SoftDeletes;
 return new class extends Migration
 {
     /**
@@ -12,6 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('users', function (Blueprint $table) {
+            
             $table->id('user_id');
             $table->string('email')->unique(); // Menandai kolom email sebagai unik
             $table->string('password'); // Gunakan tipe data yang sesuai untuk menyimpan password yang telah di-hash
@@ -24,7 +25,7 @@ return new class extends Migration
             $table->string('profesi')->nullable();
             $table->string('profile_picture')->nullable();
             $table->rememberToken();
-            $table->string('softDelete')->nullable();
+            $table->softDeletes();
             $table->timestamps();
         });
     }
