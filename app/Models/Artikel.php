@@ -5,22 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
+
 class Artikel extends Model
 {
     use HasFactory;
     protected $table = 'artikels';
     protected $guarded = ['id_artikel'];
     protected $with = ['createdBy', 'updatedBy', 'deletedBy'];
-
-    public function scopeFilterByKategori($query, $sort)
-    {
-        return $sort ? $query->orderBy('tanggal_publikasi', $sort) : $query;
-    }
-
-    public function scopeSearchByKategori($query, $searchKeyword)
-    {
-        return $searchKeyword ? $query->where('judul_artikel', 'LIKE', '%' . $searchKeyword . '%') : $query;
-    }
 
     public function createdBy()
     {
@@ -40,35 +31,31 @@ class Artikel extends Model
 
     public function kategori_artikel()
     {
-        return $this->belongsTo(Kategori_Artikel::class);
+        return $this->belongsTo(Kategori_Artikel::class, 'id_kategori_artikel', 'id_kategori_artikel');
     }
+    
 
     public function detail()
     {
         return $this->hasOne(detail_komentar::class);
     }
-
+    public function scopeKategori($query, $filter = [])
+    {
+        $query->when($filter['kategori'] ?? false, function ($query, $kategori) {
+            return $query->whereHas('kategori_artikel', function ($query) use ($kategori) {
+                $query->where('nama_kategori_artikel', $kategori);
+            });
+        });
+    }
+    
     public function scopeFilter($query, array $filter)
     {
-
-        $query->when($filter['filter_artikel_onKategori'] ??  false, function ($query, $search) {
-            return $query->where(function ($query) use ($search) {
-                $query->where('title', 'like', '%' . $search . '%')
-                    ->orWhere('body', 'like', '%' . $search . '%');
-            });
+        $query->when($filter['filter_artikel_onKategori'] ??  false, function ($query, $filter_artikel_onKategori) {
+            return $query->orderBy('tanggal_publikasi', $filter_artikel_onKategori);
         });
-
-        $query->when($filter['category'] ??  false, function ($query, $category) {
-            return $query->whereHas('category', function ($query) use ($category) {
-                $query->where('slug', $category);
-            });
+        $query->when($filter['cari_artikel_onKategori'] ??  false, function ($query, $cari_artikel_onKategori) {
+            return $query->where('judul_artikel', 'like', '%' . $cari_artikel_onKategori . '%')
+            ->orWhere('isi_artikel', 'like', '%' . $cari_artikel_onKategori . '%');
         });
-
-        $query->when(
-            $filter['author'] ??  false,
-            fn ($query, $author) =>
-            $query->whereHas('author', fn ($query) =>
-            $query->where('username', $author))
-        );
     }
 }

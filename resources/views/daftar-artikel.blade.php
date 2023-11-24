@@ -20,11 +20,11 @@
 </head>
 <body>
     {{-- Navbar Section --}}
-    @include('layouts.navbar')
+    @include('partials.navbar')
     {{-- End of Navbar Section --}}
     
     {{-- Page Header --}}
-      @include('layouts.artikel-header')
+      @include('partials.artikel-header')
     {{-- End of Page Header --}}
       <section class="main-content">
         <div class="centre">
@@ -33,6 +33,10 @@
               <div class="col-8">
                   <form id="search-article" role="search" method="get" action="{{ route('daftar-artikel') }}">
                     @csrf
+                    @if (request('filter_artikel_onKategori'))
+                    <input type="hidden" name="filter_artikel_onKategori" value="{{ request('filter_artikel_onKategori') }}">
+                    @endif
+                    <input type="hidden" name="kategori" value="{{ $active }}">
                     <input class="search-bar"type="search" placeholder="Pencarian" name="cari_artikel_onKategori" value="{{ request('cari_artikel_onKategori') }}" aria-label="Search">
                   </form>
                   <label class="lbl-search" for="search-article">Tersedia sekitar {{$jumlah}} artikel.</label>
@@ -40,6 +44,10 @@
               <div class="col-4">
                 <form role="search" method="get" action="{{ route('daftar-artikel') }}" id="sortForm">
                   @csrf
+                  @if (request('cari_artikel_onKategori'))
+                  <input type="hidden" name="cari_artikel_onKategori" value="{{ request('cari_artikel_onKategori') }}">
+                  @endif
+                  <input type="hidden" name="kategori" value="{{ $active }}">
                   <select class="card-filter" name="filter_artikel_onKategori" onchange="document.getElementById('sortForm').submit()">
                       <option value="desc" {{ $sort == 'desc' ? 'selected' : '' }}>Urutkan dari yang terbaru</option>
                       <option value="asc" {{ $sort == 'asc' ? 'selected' : '' }}>Urutkan dari yang terlama</option>
@@ -143,7 +151,7 @@
                       <div class="container">
                         <div class="row" style="display: flex; justify-content: center;">
                             <div class="main-artikel-pagination">
-                              {{ $articles->appends(['filter_artikel_onKategori' => $sort])->links('layouts.artikel-pagination') }}
+                              {{ $articles->appends(['filter_artikel_onKategori' => $sort])->links('partials.artikel-pagination') }}
                           </div>
                         </div>
                     </div>
@@ -203,6 +211,6 @@
           </div>
         </div>
       </section>
-      @include('layouts.artikel-footer')
+      @include('partials.artikel-footer')
       <script src="js/portal-edukasi.js"></script>
 </body>

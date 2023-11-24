@@ -404,3 +404,15 @@ footer p {
     transition: font-weight 0.3s ease;
     /* Animasi perubahan font-weight */
 }
+.btn-overlay-header .btn-on {
+    background-color: #fff;
+    color: #06c195;
+    font-weight: 700;
+    white-space: nowrap;
+}
+.btn-overlay-footer .btn-on {
+    background-color: #fff;
+    color: #06c195;
+    font-weight: 700;
+    white-space: nowrap;
+}

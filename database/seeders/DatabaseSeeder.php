@@ -17,7 +17,22 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         User::factory(10)->create();
-        Kategori_Artikel::factory(10)->create();
-        Artikel::factory(50)->create();
+        
+        Kategori_Artikel::create([
+            'nama_kategori_artikel' => 'Desain-Taman'
+        ]);
+        Kategori_Artikel::create([
+            'nama_kategori_artikel' => 'Konstruksi-Taman'
+        ]);
+        Kategori_Artikel::create([
+            'nama_kategori_artikel' => 'Tanaman'
+        ]);
+        Kategori_Artikel::create([
+            'nama_kategori_artikel' => 'Material'
+        ]);
+        Kategori_Artikel::create([
+            'nama_kategori_artikel' => 'Pemeliharaan-Taman'
+        ]);
+        Artikel::factory(70)->create();
     }
 }
