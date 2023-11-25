@@ -19,7 +19,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/',function () {
     return view('home');
 });
-Route::get('/daftar-artikel', [ArtikelController::class, 'byKategori'])->name('daftar-artikel');
+Route::get('/portal-edukasi/{kategori}', [ArtikelController::class, 'byKategori'])->name('landing-artikel.kategori');
+Route::get('/portal-edukasi', [ArtikelController::class, 'liat'])->name('landing-artikel');
 
 Auth::routes();
 

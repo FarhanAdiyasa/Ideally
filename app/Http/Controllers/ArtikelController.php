@@ -10,10 +10,9 @@ use Illuminate\Http\Request;
 class ArtikelController extends Controller
 {
     
-    public function index()
+    public function index($kategori)
     {
         $sort = '';
-        $kategori = request('kategori');
         if (request('filter_artikel_onKategori')) {
             $sort = request()->get('filter_artikel_onKategori');
         }
@@ -52,6 +51,11 @@ class ArtikelController extends Controller
             "articles_acak2" => Artikel::inRandomOrder()->limit(4)->get(),
             "articles_terbaru" => Artikel::orderBy('tanggal_publikasi', 'desc')->limit(4)->get(),
             "articles_terpopuler" => Artikel::orderBy('pengunjung', 'desc')->limit(4)->get(),
+        ]);
+    }
+    public function liat(){
+        return view('landing-artikel',[
+            'active'=>'',
         ]);
     }
     

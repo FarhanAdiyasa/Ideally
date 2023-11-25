@@ -4,19 +4,19 @@
 
     <div class="btn-overlay-footer">
       <div class="d-flex justify-content-center">
-        <a href="{{ route('daftar-artikel', ['kategori' => 'Desain-Taman']) }}">
+        <a href="{{ route('landing-artikel.kategori', ['kategori' => 'Desain-Taman']) }}">
           <button type="button" class="btn rounded-pill m-2 {{ $active === "Desain-Taman" ? 'btn-on' : '' }}" style="font-size: 14px;">Desain Taman</button>
       </a>
-      <a href="{{ route('daftar-artikel', ['kategori' => 'Konstruksi-Taman']) }}">
+      <a href="{{ route('landing-artikel.kategori', ['kategori' => 'Konstruksi-Taman']) }}">
         <button type="button" class="btn rounded-pill m-2 {{ $active === "Konstruksi-Taman" ? 'btn-on' : '' }}" style="font-size: 14px;">Konstruksi Taman</button>
       </a>
-      <a href="{{ route('daftar-artikel', ['kategori' => 'Pemeliharaan-Taman']) }}">
+      <a href="{{ route('landing-artikel.kategori', ['kategori' => 'Pemeliharaan-Taman']) }}">
         <button type="button" class="btn rounded-pill m-2 {{ $active === "Pemeliharaan-Taman" ? 'btn-on' : '' }}" style="font-size: 14px;">Pemeliharaan Taman</button>
       </a>
-      <a href="{{ route('daftar-artikel', ['kategori' => 'Tanaman']) }}">
+      <a href="{{ route('landing-artikel.kategori', ['kategori' => 'Tanaman']) }}">
         <button type="button" class="btn rounded-pill m-2 {{ $active === "Tanaman" ? 'btn-on' : '' }}" style="font-size: 14px;">Tanaman</button>
       </a>
-      <a href="{{ route('daftar-artikel', ['kategori' => 'Material']) }}">
+      <a href="{{ route('landing-artikel.kategori', ['kategori' => 'Material']) }}">
         <button type="button" class="btn rounded-pill m-2 {{ $active === "Material" ? 'btn-on' : '' }}" style="font-size: 14px;">Material</button>
       </a>
         <button type="button" class="btn rounded-pill m-2" style="font-size: 14px;">Lainnya</button>

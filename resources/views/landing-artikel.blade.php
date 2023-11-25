@@ -7,9 +7,11 @@
   <title>Ideally - Portal Edukasi</title>
 
   <!--Stylesheet -->
-  <link href="/css/bootstrap.min.css" rel="stylesheet">
-  <link href="/css/style.css" rel="stylesheet">
-  <link href="/css/navbar-style.css" rel="stylesheet">
+  @vite(['resources/sass/app.scss', 'resources/js/app.js']);
+  <link rel="stylesheet" href="/css/style.css"/>
+  <link rel="stylesheet" href="/css/landing-artikel-style.css"/>
+  <link rel="stylesheet" href="/css/artikel-pagination-style.css"/>
+  <link rel="stylesheet" href="/css/navbar-style.css" rel="stylesheet">
 
   <!-- Font -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
@@ -24,18 +26,18 @@
 
 <body>
     {{-- Navbar Section --}}
-    @include('layouts.navbar')
+    @include('partials.navbar')
     {{-- End of Navbar Section --}}
     
     {{-- Page Header --}}
-      @include('layouts.artikel-header')
+      @include('partials.artikel-header-noButton')
     {{-- End of Page Header --}}
 
   <!-- Main Content -->
   <div class="main-content-container">
 
     <!-- Category Bar -->
-    <p style="color: black; font-size: 20px; font-weight: 700;">Lorem ipsum dolor sit amet</p>
+    <p class="mt-4" style="color: black; font-size: 20px; font-weight: 700;">Lorem ipsum dolor sit amet</p>
     <p style="color: #727272">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet,
       consectetur adipiscing elit.</p>
 
@@ -57,8 +59,8 @@
         elementum felis convallis. Aenean lobortis velit ac maximus fermentum. Vivamus enim risus, tincidunt at cursus
         id,
         fringilla at nunc.</p>
-      <button type="button" class="btn rounded-pill mx-1 category-portaledukasi-btn-jelajahi">Jelajahi Artikel Desain
-        Taman!</button>
+        <a href="{{ route('landing-artikel.kategori', ['kategori' => 'Desain-Taman']) }}"><button type="button" class="btn rounded-pill mx-1 category-portaledukasi-btn-jelajahi">Jelajahi Artikel Desain
+        Taman!</button></a>
       <div id="carousel-category-content" class="carousel slide" data-ride="carousel">
         <div class="carousel-inner">
           <div class="carousel-item active">
@@ -1685,11 +1687,9 @@
   </div>
   <!-- End of Main Content -->
 
-  @include('layouts.artikel-footer')
+  @include('partials.artikel-footer')
 
   <!-- Javascript -->
-  <script src="js/bootstrap.bundle.min.js"></script>
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script>
     $('.dropdown-item').hover(function () {
 

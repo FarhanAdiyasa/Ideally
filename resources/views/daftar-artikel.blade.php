@@ -32,23 +32,21 @@
             <div class="container">
               <div class="row">
               <div class="col-8">
-                  <form id="search-article" role="search" method="get" action="{{ route('daftar-artikel') }}">
+                <form id="search-article" role="search" method="get" action="{{ route('landing-artikel.kategori', ['kategori' => $active]) }}">
                     @csrf
                     @if (request('filter_artikel_onKategori'))
                     <input type="hidden" name="filter_artikel_onKategori" value="{{ request('filter_artikel_onKategori') }}">
                     @endif
-                    <input type="hidden" name="kategori" value="{{ $active }}">
                     <input class="search-bar"type="search" placeholder="Pencarian" name="cari_artikel_onKategori" value="{{ request('cari_artikel_onKategori') }}" aria-label="Search">
                   </form>
                   <label class="lbl-search" for="search-article">Tersedia sekitar {{$jumlah}} artikel.</label>
               </div>
               <div class="col-4">
-                <form role="search" method="get" action="{{ route('daftar-artikel') }}" id="sortForm">
+                <form role="search" method="get" action="{{ route('landing-artikel.kategori', ['kategori' => $active]) }}" id="sortForm">
                   @csrf
                   @if (request('cari_artikel_onKategori'))
                   <input type="hidden" name="cari_artikel_onKategori" value="{{ request('cari_artikel_onKategori') }}">
                   @endif
-                  <input type="hidden" name="kategori" value="{{ $active }}">
                   <select class="card-filter" name="filter_artikel_onKategori" onchange="document.getElementById('sortForm').submit()">
                       <option value="desc" {{ $sort == 'desc' ? 'selected' : '' }}>Urutkan dari yang terbaru</option>
                       <option value="asc" {{ $sort == 'asc' ? 'selected' : '' }}>Urutkan dari yang terlama</option>
