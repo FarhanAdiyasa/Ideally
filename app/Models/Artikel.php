@@ -35,9 +35,9 @@ class Artikel extends Model
     }
     
 
-    public function detail()
+    public function komentar()
     {
-        return $this->hasOne(detail_komentar::class);
+        return $this->hasOne(Komentar::class);
     }
     public function scopeKategori($query, $filter = [])
     {
@@ -50,12 +50,12 @@ class Artikel extends Model
     
     public function scopeFilter($query, array $filter)
     {
-        $query->when($filter['filter_artikel_onKategori'] ??  false, function ($query, $filter_artikel_onKategori) {
-            return $query->orderBy('tanggal_publikasi', $filter_artikel_onKategori);
+        $query->when($filter['sort'] ??  false, function ($query, $sort) {
+            return $query->orderBy('tanggal_publikasi', $sort);
         });
-        $query->when($filter['cari_artikel_onKategori'] ??  false, function ($query, $cari_artikel_onKategori) {
-            return $query->where('judul_artikel', 'like', '%' . $cari_artikel_onKategori . '%')
-            ->orWhere('isi_artikel', 'like', '%' . $cari_artikel_onKategori . '%');
+        $query->when($filter['search'] ??  false, function ($query, $search) {
+            return $query->where('judul_artikel', 'like', '%' . $search . '%')
+            ->orWhere('isi_artikel', 'like', '%' . $search . '%');
         });
     }
 }

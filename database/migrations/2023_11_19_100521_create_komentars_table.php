@@ -14,16 +14,19 @@ return new class extends Migration
         Schema::create('komentars', function (Blueprint $table) {
             $table->id('id_komentar');
             $table->text('isi_komentar'); // Menggunakan tipe data 'text' untuk isi komentar yang panjang
-            $table->timestamp('created_at')->useCurrent(); // Menggunakan 'useCurrent' untuk mengisi otomatis tanggal pembuatan
-            $table->timestamp('updated_at')->useCurrent(); // Menggunakan 'useCurrent' untuk mengisi otomatis tanggal pembaruan
-            $table->timestamp('softDelete')->nullable();// Menggunakan 'nullable' untuk mengizinkan kolom 'deleted_date' bernilai null
-
+            $table->timestamps();
+            $table->softDeletes();
 
             $table->foreignId('created_by');
             $table->foreignId('updated_by');
-            $table->foreignId('deleted_by');
+            $table->foreignId('deleted_by')->nullable();
+       
+            $table->integer('status_tampil');
+            
     
             $table->foreign('created_by')->references('user_id')->on('users');
+
+            
 
             // Menghubungkan kolom 'updated_date' dengan tabel 'users'
             $table->foreign('updated_by')->references('user_id')->on('users');

@@ -33,21 +33,19 @@
               <div class="row">
               <div class="col-8">
                 <form id="search-article" role="search" method="get" action="{{ route('landing-artikel.kategori', ['kategori' => $active]) }}">
-                    @csrf
-                    @if (request('filter_artikel_onKategori'))
-                    <input type="hidden" name="filter_artikel_onKategori" value="{{ request('filter_artikel_onKategori') }}">
+                    @if (request('sort'))
+                    <input type="hidden" name="sort" value="{{ request('sort') }}">
                     @endif
-                    <input class="search-bar"type="search" placeholder="Pencarian" name="cari_artikel_onKategori" value="{{ request('cari_artikel_onKategori') }}" aria-label="Search">
+                    <input class="search-bar"type="search" placeholder="Pencarian" name="search" value="{{ request('search') }}" aria-label="Search">
                   </form>
                   <label class="lbl-search" for="search-article">Tersedia sekitar {{$jumlah}} artikel.</label>
               </div>
               <div class="col-4">
                 <form role="search" method="get" action="{{ route('landing-artikel.kategori', ['kategori' => $active]) }}" id="sortForm">
-                  @csrf
-                  @if (request('cari_artikel_onKategori'))
-                  <input type="hidden" name="cari_artikel_onKategori" value="{{ request('cari_artikel_onKategori') }}">
+                  @if (request('search'))
+                  <input type="hidden" name="search" value="{{ request('search') }}">
                   @endif
-                  <select class="card-filter" name="filter_artikel_onKategori" onchange="document.getElementById('sortForm').submit()">
+                  <select class="card-filter" name="sort" onchange="document.getElementById('sortForm').submit()">
                       <option value="desc" {{ $sort == 'desc' ? 'selected' : '' }}>Urutkan dari yang terbaru</option>
                       <option value="asc" {{ $sort == 'asc' ? 'selected' : '' }}>Urutkan dari yang terlama</option>
                   </select>
@@ -150,7 +148,7 @@
                       <div class="container">
                         <div class="row" style="display: flex; justify-content: center;">
                             <div class="main-artikel-pagination">
-                              {{ $articles->appends(['filter_artikel_onKategori' => $sort])->links('partials.artikel-pagination') }}
+                              {{ $articles->appends(['sort' => $sort])->links('partials.artikel-pagination') }}
                           </div>
                         </div>
                     </div>

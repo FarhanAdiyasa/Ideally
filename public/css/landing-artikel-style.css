@@ -14,9 +14,8 @@ img {
     /* Sesuaikan dengan tinggi navbar Anda */
 }
 
-
 .vertical-divider {
-    border-left: 3px solid #D2D2D2;
+    border-left: 3px solid #d2d2d2;
     /* Warna dan gaya garis bisa disesuaikan */
     height: 20px;
     /* Sesuaikan tinggi garis vertikal sesuai kebutuhan */
@@ -32,12 +31,11 @@ img {
 }
 
 .link-body-emphasis:hover {
-    color: #06C195 !important;
+    color: #06c195 !important;
     /* Warna teks pada hover menjadi #06C195 */
 }
 
 /* Remove default blue color on click */
-
 
 /* styles.css */
 .PopupProdukDefault {
@@ -98,7 +96,7 @@ img {
 }
 
 .text-background-headline span {
-    color: #06C195;
+    color: #06c195;
     font-weight: 700;
     font-size: 30px;
     font-family: Quicksand;
@@ -122,11 +120,10 @@ img {
 }
 
 .category-portaledukasi-btn:hover,
-.category-portaledukasi-btn:active {
-    background-color: #06C195;
+.clicked {
+    background-color: #06c195;
     color: #ffffff;
     font-weight: 600;
-    /* Text color on hover or active */
 }
 
 .category-content {
@@ -142,7 +139,7 @@ img {
 }
 
 .category-portaledukasi-btn-jelajahi {
-    background-color: #06C195;
+    background-color: #06c195;
     color: #ffffff;
     font-size: 15px;
     padding-left: 40px;
@@ -169,14 +166,13 @@ img {
 }
 
 .keterangan-additional-text-container {
-
     margin-bottom: 2px;
     margin-left: 10px;
     margin-right: 10px;
 }
 
 .additional-text-container {
-    background-color: #06C195;
+    background-color: #06c195;
     color: white;
     margin-right: 7px;
 }
@@ -213,7 +209,7 @@ img {
 
 .carousel-control-prev,
 .carousel-control-next {
-    background-color: #06C195;
+    background-color: #06c195;
     width: 5vh;
     height: 5vh;
     border-radius: 50%;
@@ -314,7 +310,7 @@ footer p {
 
 .text-overlay-footer .Hashtag {
     font-size: 150px;
-    color: rgba(255, 255, 255, 0.50);
+    color: rgba(255, 255, 255, 0.5);
     margin-right: -50px;
     transform: translateY(12%);
     /* OVERPOWERED BRO! */
@@ -322,7 +318,7 @@ footer p {
 
 .btn-overlay-footer button:hover {
     background-color: #fff;
-    color: #06C195;
+    color: #06c195;
     font-weight: 700;
     white-space: nowrap;
 }
@@ -373,7 +369,7 @@ footer p {
 }
 
 .card::before {
-    content: '';
+    content: "";
     position: absolute;
     top: -10px;
     /* Sesuaikan posisi vertikal shape putih */
@@ -396,7 +392,6 @@ footer p {
 }
 
 @media (max-width: 768px) {
-
     /* Styles for mobile */
     body,
     img {
@@ -445,3 +440,4 @@ footer p {
         max-width: 100%;
         /* Hindari overflow horizontal */
     }
+}
