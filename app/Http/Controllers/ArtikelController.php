@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Artikel;
+use App\Models\Kategori_Artikel;
 use App\Models\Komentar;
 use Illuminate\Http\Request;
 
@@ -10,17 +11,11 @@ use Illuminate\Http\Request;
 class ArtikelController extends Controller
 {
     
-    public function index($kategori)
+    public function index()
     {
-        $sort = '';
-        if (request('filter_artikel_onKategori')) {
-            $sort = request()->get('filter_artikel_onKategori');
-        }
-    
-        return view('daftar-artikel', [
-            "articles" => Artikel::kategori(request(['kategori'])),
-            "komentars" => Komentar::all()->limit(15),
-            "active" => $kategori,
+        return view('landing-artikel', [
+            "komentars" => Komentar::limit(15)->get(),
+            "active" => '',
             "articles_terbaru" => Artikel::orderBy('tanggal_publikasi', 'desc')->limit(15)->get(),
             "articles_terpopuler" => Artikel::orderBy('pengunjung', 'desc')->limit(15)->get(),
         ]);
@@ -29,8 +24,9 @@ class ArtikelController extends Controller
     {
         $data = Artikel::whereHas('kategori_artikel', function ($query) use ($kategori) {
             $query->where('nama_kategori_artikel', $kategori);
-        })->limit(15)->get();
+        })->limit(12)->get();
         return view('Artikel-byKategori',[
+            'kategori'=>Kategori_Artikel::where('nama_kategori_artikel', $kategori)->first(),
             'data' => $data
         ]);
     }
@@ -38,12 +34,12 @@ class ArtikelController extends Controller
     {
         $sort = '';
         $kategori = request('kategori');
-        if (request('filter_artikel_onKategori')) {
-            $sort = request()->get('filter_artikel_onKategori');
+        if (request('sort')) {
+            $sort = request()->get('sort');
         }
     
         return view('daftar-artikel', [
-            "articles" => Artikel::kategori(request(['kategori']))->filter(request(['filter_artikel_onKategori', 'cari_artikel_onKategori']))->paginate(18),
+            "articles" => Artikel::kategori(request(['kategori']))->filter(request(['sort', 'search']))->paginate(18),
             "jumlah" => Artikel::count(),
             "active" => $kategori,
             "sort" => $sort,
@@ -53,11 +49,7 @@ class ArtikelController extends Controller
             "articles_terpopuler" => Artikel::orderBy('pengunjung', 'desc')->limit(4)->get(),
         ]);
     }
-    public function liat(){
-        return view('landing-artikel',[
-            'active'=>'',
-        ]);
-    }
+
     
       
 }

@@ -11,13 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('detail_komentars', function (Blueprint $table) {
-
-            $table->foreignId('id_komentar');
+        Schema::table('komentars', function (Blueprint $table) {
             $table->foreignId('id_artikel');
-            
-            $table->foreign('id_komentar')->references('id_komentar')->on('komentars');
-            
             $table->foreign('id_artikel')->references('id_artikel')->on('artikels');
         });
     }
@@ -27,6 +22,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('detail_komentars');
+        //
     }
 };
