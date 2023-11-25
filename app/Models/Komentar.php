@@ -11,7 +11,7 @@ class Komentar extends Model
 
     protected $guarded = ['id_komentar'];
 
-    protected $with = ['createdBy', 'updatedBy', 'deletedBy'];
+    protected $with = ['createdBy', 'updatedBy', 'deletedBy', 'artikel'];
 
     public function createdBy()
     {
@@ -28,10 +28,11 @@ class Komentar extends Model
         return $this->belongsTo(User::class, 'deleted_by', 'user_id');
     }
 
-    public function detail()
+    public function artikel()
     {
-        return $this->hasOne(detail_komentar::class);
+        return $this->belongsTo(Artikel::class, 'id_artikel', 'id_artikel');
     }
+
 
     /*protected $fillable = [
         'id_komentar',

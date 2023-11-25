@@ -14,7 +14,7 @@
         <div class="row">
             <div class="col-lg-8">
                 <h1>TUTORIAL CRUD DENGAN JQUERY AJAX </h1>
-                <a href="{{ route('landing-artikel.kategori', ['kategori' => 'Material']) }}" class="text-white text-decoration-none">
+                <a href="{{ route('landing-artikel') }}" class="text-white text-decoration-none">
                     <button class="btn btn-primary">Suspicit</button>
                 </a>
             </div>
