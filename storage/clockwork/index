@@ -1126,3 +1126,6 @@
 1702175754-4605-2045126504,1702175754.2542,GET,/daftar-produk,"App\Http\Controllers\AgrigardController@index",200,421.49686813354,request
 1702175795-1605-1224700920,1702175794.9575,GET,/daftar-produk,"App\Http\Controllers\AgrigardController@index",200,428.45416069031,request
 1702175797-6334-581473086,1702175797.5099,GET,/edit-produk/11,"App\Http\Controllers\AgrigardController@edit",200,292.58608818054,request
+1702176127-9225-1167931538,1702176127.726,GET,/,Closure,500,771.15106582642,request
+1702176131-7403-1925917364,1702176131.5545,GET,/daftar-produk,"App\Http\Controllers\AgrigardController@index",200,343.39499473572,request
+1702176165-8475-1569904009,1702176165.608,GET,/tambah-produk,"App\Http\Controllers\AgrigardController@create",200,420.49407958984,request
