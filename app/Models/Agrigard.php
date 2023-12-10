@@ -2,16 +2,19 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Agrigard extends Model
 {
     use HasFactory;
+    use SoftDeletes;
 
     protected $guarded = ['id_agrigard'];
-
+    protected $primaryKey = 'id_agrigard'; 
     protected $with = ['createdBy', 'updatedBy', 'deletedBy'];
+    
 
     public function createdBy()
     {
@@ -27,7 +30,7 @@ class Agrigard extends Model
     {
         return $this->belongsTo(User::class, 'deleted_by', 'user_id');
     }
-
+    
 
 
     /*

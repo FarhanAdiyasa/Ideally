@@ -16,3 +16,91 @@ body {
     border: none;
     text-decoration: none;
 }
+#imagePreviewContainer {
+    text-align: center;
+    visibility: collapse;
+}
+.img-prv {
+    box-sizing: border-box;
+    border-radius: 8px;
+    height: 12rem;
+    cursor: pointer;
+    border: 2px dashed var(--N100, #dbdee2);
+    transition: all 0.25s ease 0s;
+    position: relative;
+    align-items: center;
+    justify-content: center;
+}
+.img-prv:hover img:not([src=""]) + button {
+    visibility: visible;
+}
+.img-prv button:hover {
+    color: var(--hijau-idl);
+}
+
+.img-prv button {
+    visibility: hidden;
+    position: absolute;
+    bottom: 0;
+    background-color: var(--putih-idl);
+    left: 50%;
+    opacity: 50%;
+    transform: translateX(-50%);
+}
+.img-prv img {
+    margin: 0.3rem;
+}
+.file-input-label {
+    display: none; /* Menyembunyikan label */
+}
+#imageInput::placeholder {
+    color: rebeccapurple;
+}
+.harga-input {
+    height: 40px;
+    border-radius: 8px;
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    flex: 1 1 0%;
+    position: relative;
+    overflow: hidden;
+    transition: border-color 280ms ease 0s;
+    background-color: var(--color-page-background, #ffffff);
+    border: 1px solid var(--color-border, #e5e7e9);
+}
+.rp {
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 20px;
+    white-space: nowrap;
+    display: flex;
+    align-self: stretch;
+    -webkit-box-align: center;
+    align-items: center;
+    padding-left: 12px;
+    background-color: var(--color-chip-disabled, #f3f4f5);
+    color: var(--color-text-low, rgba(49, 53, 59, 0.68));
+    padding-right: 12px;
+}
+
+.harga-input .rupiah {
+    padding-right: 12px;
+    padding-left: 12px;
+}
+
+.css-3017qm {
+    min-width: 0px;
+    min-height: 0px;
+    width: 100%;
+    color: var(--NN950, #212121);
+    font-family: inherit;
+    background-color: transparent;
+    line-height: 20px;
+    border: none;
+    outline: none;
+    height: auto;
+    font-size: 14px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+}
