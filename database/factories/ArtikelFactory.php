@@ -21,9 +21,13 @@ class ArtikelFactory extends Factory
             'judul_artikel' => $this->faker->sentence,
             'slug' => Str::slug($this->faker->sentence),
             'deskripsi_artikel' => $this->faker->paragraph,
-            'isi_artikel' => $this->faker->text,
+            'isi_artikel' => collect($this->faker->paragraphs(mt_rand(10, 15)))
+            ->prepend("<h5>Your H5 Title Goes Here</h5>")
+            ->map(fn ($p) => "<p>$p</p>")
+            ->implode(''),
             'penulis_artikel' => $this->faker->name,
             'gambar_artikel' => $this->faker->imageUrl(),
+            'keterangan_gambar_artikel' => $this->faker->sentence,
             'keywords' => $this->faker->words(3, true),
             'tanggal_publikasi' => $this->faker->dateTimeBetween('-1 year', 'now'),
             'created_by' => $this->faker->numberBetween(1, 10),

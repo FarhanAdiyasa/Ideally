@@ -19,6 +19,7 @@ return new class extends Migration
             $table->text('isi_artikel');
             $table->string('penulis_artikel');
             $table->string('gambar_artikel')->nullable();
+            $table->string('keterangan_gambar_artikel')->nullable();
             $table->string('keywords');
             $table->timestamp('tanggal_publikasi')->nullable();
             $table->integer('pengunjung')->nullable()->default(0);

@@ -9,7 +9,7 @@
 
         <div class="collapse navbar-collapse d-lg-flex" id="navbarsExample11">
             <a class="navbar-brand col-lg-3 me-0 flex-grow-1" href="#">
-                <img src="../img/logo-ideally.png" alt="LogoIdeally" style="max-width: 40%;">
+                <img src="{{asset('/img/logo-ideally.png')}}" alt="LogoIdeally" style="max-width: 40%;">
             </a>
             <ul class="navbar-nav col-lg-6 justify-content-lg-center">
                 <li class="nav-item">
@@ -78,47 +78,47 @@
                         aria-expanded="false">Produk</a>
                     <ul class="dropdown-menu-produk dropdown-menu dropdown-menu-center">
                         <div class="popup-produk">
-                            <img id="dropdown-img" src="/../img/dropdownlist-img_default.png" alt="Gambar Produk">
+                            <img id="dropdown-img" src="{{asset('/img/dropdownlist-img_default.png')}}" alt="Gambar Produk">
                             <div class="custom-shape-3"></div>
                             <div class="produk-list">
                                 <li><a href="#" class="dropdown-item"
-                                        data-img="/../img/dropdownlist-img_default.png">Beranda Produk</a>
+                                        data-img="{{asset('/img/dropdownlist-img_default.png')}}">Beranda Produk</a>
                                 </li>
                                 <li>
                                     <hr class="dropdown-divider">
                                 </li>
                                 <li><a href="#" class="dropdown-item"
-                                        data-img="/../img/dropdownlist-img_tanaman.png">Produk Tanaman</a>
+                                        data-img="{{asset('/img/dropdownlist-img_tanaman.png')}}">Produk Tanaman</a>
                                 </li>
                                 <li>
                                     <hr class="dropdown-divider">
                                 </li>
                                 <li><a href="#" class="dropdown-item"
-                                        data-img="/../img/dropdownlist-img_everlasthings.png">Produk Besi dan
+                                        data-img="{{asset('/img/dropdownlist-img_everlasthings.png')}}">Produk Besi dan
                                         Las</a></li>
                                 <li>
                                     <hr class=" dropdown-divider">
                                 </li>
                                 <li><a href="#" class="dropdown-item"
-                                        data-img="/../img/dropdownlist-img_batu.png">Produk Batu</a>
+                                        data-img="{{asset('/img/dropdownlist-img_batu.png')}}">Produk Batu</a>
                                 </li>
                                 <li>
                                     <hr class="dropdown-divider">
                                 </li>
                                 <li><a href="#" class="dropdown-item"
-                                        data-img="/../img/dropdownlist-img_default.png">Produk Beton</a>
+                                        data-img="{{asset('/img/dropdownlist-img_default.png')}}">Produk Beton</a>
                                 </li>
                                 <li>
                                     <hr class="dropdown-divider">
                                 </li>
                                 <li><a href="#" class="dropdown-item"
-                                        data-img="/../img/dropdownlist-img_agrigard.png">Produk Bahan
+                                        data-img="{{asset('/img/dropdownlist-img_agrigard.png')}}">Produk Bahan
                                         Pertanian</a></li>
                                 <li>
                                     <hr class="dropdown-divider">
                                 </li>
                                 <li><a href="#" class="dropdown-item"
-                                        data-img="/../img/dropdownlist-img_shineage.png">Produk <i>Signage
+                                        data-img="{{asset('/img/dropdownlist-img_shineage.png')}}/img/dropdownlist-img_shineage.png">Produk <i>Signage
                                             System</i></a></li>
                             </div>
                         </div>

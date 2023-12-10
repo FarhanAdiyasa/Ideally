@@ -30,7 +30,7 @@ class Komentar extends Model
 
     public function artikel()
     {
-        return $this->belongsTo(Artikel::class, 'id_artikel', 'id_artikel');
+        return $this->belongsTo(Artikel::class, 'id_artikel');
     }
 
 

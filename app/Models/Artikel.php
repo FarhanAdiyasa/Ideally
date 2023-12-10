@@ -11,6 +11,7 @@ class Artikel extends Model
     use HasFactory;
     protected $table = 'artikels';
     protected $guarded = ['id_artikel'];
+    protected $primaryKey = 'id_artikel'; 
     protected $with = ['createdBy', 'updatedBy', 'deletedBy'];
 
     public function createdBy()
@@ -38,6 +39,10 @@ class Artikel extends Model
     public function komentar()
     {
         return $this->hasOne(Komentar::class);
+    }
+    public function sumberArtikel()
+    {
+        return $this->hasMany(Sumber_Artikel::class, 'id_artikel');
     }
     public function scopeByKategori($query, $kategori)
     {

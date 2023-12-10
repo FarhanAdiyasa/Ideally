@@ -22,7 +22,7 @@ Route::get('/',function () {
 });
 Route::get('/portal-edukasi/{kategori}', [ArtikelController::class, 'byKategori'])->name('landing-artikel.kategori');
 Route::get('/portal-edukasi', [ArtikelController::class, 'index'])->name('landing-artikel');
-Route::get('/baca-edukasi', [ArtikelController::class, 'baca'])->name('landing-artikel');
+Route::get('/portal-edukasi/baca/{slug}', [ArtikelController::class, 'baca'])->name('baca-artikel');
 
 Auth::routes();
 

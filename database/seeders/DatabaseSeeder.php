@@ -8,6 +8,7 @@ use App\Models\Artikel;
 use App\Models\detail_komentar;
 use App\Models\Kategori_Artikel;
 use App\Models\Komentar;
+use App\Models\Sumber_Artikel;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 
@@ -47,5 +48,6 @@ class DatabaseSeeder extends Seeder
         ]);
         Artikel::factory(20)->create();
         Komentar::factory(30)->create();
+        Sumber_Artikel::factory(40)->create();
     }
 }

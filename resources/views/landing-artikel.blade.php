@@ -8,12 +8,12 @@
 
   <!--Stylesheet -->
   @vite(['resources/sass/app.scss', 'resources/js/app.js']);
-  <link rel="stylesheet" href="/css/style.css"/>
-  <link rel="stylesheet" href="/css/landing-artikel-style.css"/>
-  <link rel="stylesheet" href="/css/artikel-pagination-style.css"/>
-  <link rel="stylesheet" href="/css/navbar-style.css">
-  <link rel="stylesheet" href="/css/header-artikel-style.css">
-  <link rel="stylesheet" href="/css/footer-artikel-style.css">
+  <link rel="stylesheet" href="{{asset('/css/style.css')}}"/>
+  <link rel="stylesheet" href="{{asset('/css/landing-artikel-style.css')}}"/>
+  <link rel="stylesheet" href="{{asset('/css/artikel-pagination-style.css')}}"/>
+  <link rel="stylesheet" href="{{asset('/css/navbar-style.css')}}">
+  <link rel="stylesheet" href="{{asset('/css/header-artikel-style.css')}}">
+  <link rel="stylesheet" href="{{asset('/css/footer-artikel-style.css')}}">
 
   <!-- Font -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
@@ -82,7 +82,7 @@
                               <div class="d-flex">
                                 <div class="additional-text-container rounded-pill d-inline-block">
                                   <div class="keterangan-additional-text-container">
-                                    <img class="info-card-category-icon" src="./icons/rate-category.svg" alt="Rate Icon"
+                                    <img class="info-card-category-icon" src="{{asset('icons/rate-category.svg')}}" alt="Rate Icon"
                                       style="width: 12px; height: 12px;">
                                     <span class="info-card-category" style="font-size: 12px; font-weight: 700;">4.7</span>
                                   </div>
@@ -90,7 +90,7 @@
                                 <div class="additional-text-container rounded-pill d-inline-block"
                                   style="background-color: #06C195; color: white;">
                                   <div class="keterangan-additional-text-container">
-                                    <img class="info-card-category-icon" src="./icons/comment-category.svg" alt="Rate Icon"
+                                    <img class="info-card-category-icon" src="{{asset('icons/comment-category.svg')}}" alt="Rate Icon"
                                       style="width: 12px; height: 12px;">
                                     <span class="info-card-category" style="font-size: 12px; font-weight: 700;">{{$article->pengunjung}}</span>
                                   </div>
@@ -134,7 +134,7 @@
                           <div style="padding-bottom: 50px;"></div>
                           <div class="rounded-pill d-inline-block" style="color: white; background-color: black;">
                             <div class="keterangan-additional-text-container">
-                              <img class="info-card-category-icon" src="./icons/comment-category.svg" alt="Rate Icon"
+                              <img class="info-card-category-icon" src="{{asset('icons/comment-category.svg')}}" alt="Rate Icon"
                                 style="width: 12px; height: 12px;"> <span class="info-card-category"
                                 style="font-size: 12px; font-weight: 700; padding-left: 5px; padding-right: 5px;">{{ $komentar->createdBy->firstname }} {{ $komentar->createdBy->lastname }}</span>
                             </div>
@@ -172,7 +172,7 @@
             <div class="cards-wrapper">
               <div class="card border-0" style="width: 18rem;">
                 <div class="gambar-card-artikel-baru">
-                  <img src="./img/placeholder-category-card.png"
+                  <img src="{{asset('img/placeholder-category-card.png')}}"
                     class="card-img-top rounded-5 gambar-only-card-artikel-baru" alt="..."
                     style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover;">
                 </div>
@@ -185,7 +185,7 @@
                   <div class="d-flex">
                     <div class="additional-text-container rounded-pill d-inline-block">
                       <div class="keterangan-additional-text-container">
-                        <img class="info-card-category-icon" src="./icons/rate-category.svg" alt="Rate Icon"
+                        <img class="info-card-category-icon" src="{{asset('icons/rate-category.svg')}}" alt="Rate Icon"
                           style="width: 12px; height: 12px;">
                         <span class="info-card-category" style="font-size: 12px; font-weight: 700;">4.7</span>
                       </div>
@@ -193,7 +193,7 @@
                     <div class="additional-text-container rounded-pill d-inline-block"
                       style="background-color: #06C195; color: white;">
                       <div class="keterangan-additional-text-container">
-                        <img class="info-card-category-icon" src="./icons/comment-category.svg" alt="Rate Icon"
+                        <img class="info-card-category-icon" src="{{asset('icons/comment-category.svg')}}" alt="Rate Icon"
                           style="width: 12px; height: 12px;">
                         <span class="info-card-category" style="font-size: 12px; font-weight: 700;">1,586</span>
                       </div>
@@ -203,7 +203,7 @@
               </div>
               <div class="card border-0" style="width: 18rem;">
                 <div class="gambar-card-artikel-baru">
-                  <img src="./img/placeholder-category-card.png"
+                  <img src="{{asset('img/placeholder-category-card.png')}}"
                     class="card-img-top rounded-5 gambar-only-card-artikel-baru" alt="..."
                     style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover;">
                 </div>
@@ -216,7 +216,7 @@
                   <div class="d-flex">
                     <div class="additional-text-container rounded-pill d-inline-block">
                       <div class="keterangan-additional-text-container">
-                        <img class="info-card-category-icon" src="./icons/rate-category.svg" alt="Rate Icon"
+                        <img class="info-card-category-icon" src="{{asset('icons/rate-category.svg')}}" alt="Rate Icon"
                           style="width: 12px; height: 12px;">
                         <span class="info-card-category" style="font-size: 12px; font-weight: 700;">4.7</span>
                       </div>
@@ -224,7 +224,7 @@
                     <div class="additional-text-container rounded-pill d-inline-block"
                       style="background-color: #06C195; color: white;">
                       <div class="keterangan-additional-text-container">
-                        <img class="info-card-category-icon" src="./icons/comment-category.svg" alt="Rate Icon"
+                        <img class="info-card-category-icon" src="{{asset('icons/comment-category.svg')}}" alt="Rate Icon"
                           style="width: 12px; height: 12px;">
                         <span class="info-card-category" style="font-size: 12px; font-weight: 700;">1,586</span>
                       </div>
@@ -234,7 +234,7 @@
               </div>
               <div class="card border-0" style="width: 18rem;">
                 <div class="gambar-card-artikel-baru">
-                  <img src="./img/placeholder-category-card.png"
+                  <img src="{{asset('img/placeholder-category-card.png')}}"
                     class="card-img-top rounded-5 gambar-only-card-artikel-baru" alt="..."
                     style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover;">
                 </div>
@@ -247,7 +247,7 @@
                   <div class="d-flex">
                     <div class="additional-text-container rounded-pill d-inline-block">
                       <div class="keterangan-additional-text-container">
-                        <img class="info-card-category-icon" src="./icons/rate-category.svg" alt="Rate Icon"
+                        <img class="info-card-category-icon" src="{{asset('icons/rate-category.svg')}}" alt="Rate Icon"
                           style="width: 12px; height: 12px;">
                         <span class="info-card-category" style="font-size: 12px; font-weight: 700;">4.7</span>
                       </div>
@@ -255,7 +255,7 @@
                     <div class="additional-text-container rounded-pill d-inline-block"
                       style="background-color: #06C195; color: white;">
                       <div class="keterangan-additional-text-container">
-                        <img class="info-card-category-icon" src="./icons/comment-category.svg" alt="Rate Icon"
+                        <img class="info-card-category-icon" src="{{asset('icons/comment-category.svg')}}" alt="Rate Icon"
                           style="width: 12px; height: 12px;">
                         <span class="info-card-category" style="font-size: 12px; font-weight: 700;">1,586</span>
                       </div>
@@ -265,7 +265,7 @@
               </div>
               <div class="card border-0" style="width: 18rem;">
                 <div class="gambar-card-artikel-baru">
-                  <img src="./img/placeholder-category-card.png"
+                  <img src="{{asset('img/placeholder-category-card.png')}}"
                     class="card-img-top rounded-5 gambar-only-card-artikel-baru" alt="..."
                     style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover;">
                 </div>
@@ -278,7 +278,7 @@
                   <div class="d-flex">
                     <div class="additional-text-container rounded-pill d-inline-block">
                       <div class="keterangan-additional-text-container">
-                        <img class="info-card-category-icon" src="./icons/rate-category.svg" alt="Rate Icon"
+                        <img class="info-card-category-icon" src="{{asset('icons/rate-category.svg')}}" alt="Rate Icon"
                           style="width: 12px; height: 12px;">
                         <span class="info-card-category" style="font-size: 12px; font-weight: 700;">4.7</span>
                       </div>
@@ -286,7 +286,7 @@
                     <div class="additional-text-container rounded-pill d-inline-block"
                       style="background-color: #06C195; color: white;">
                       <div class="keterangan-additional-text-container">
-                        <img class="info-card-category-icon" src="./icons/comment-category.svg" alt="Rate Icon"
+                        <img class="info-card-category-icon" src="{{asset('icons/comment-category.svg')}}" alt="Rate Icon"
                           style="width: 12px; height: 12px;">
                         <span class="info-card-category" style="font-size: 12px; font-weight: 700;">1,586</span>
                       </div>
@@ -300,7 +300,7 @@
             <div class="cards-wrapper">
               <div class="card border-0" style="width: 18rem;">
                 <div class="gambar-card-artikel-baru">
-                  <img src="./img/placeholder-category-card.png"
+                  <img src="{{asset('img/placeholder-category-card.png')}}"
                     class="card-img-top rounded-5 gambar-only-card-artikel-baru" alt="..."
                     style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover;">
                 </div>
@@ -313,7 +313,7 @@
                   <div class="d-flex">
                     <div class="additional-text-container rounded-pill d-inline-block">
                       <div class="keterangan-additional-text-container">
-                        <img class="info-card-category-icon" src="./icons/rate-category.svg" alt="Rate Icon"
+                        <img class="info-card-category-icon" src="{{asset('icons/rate-category.svg')}}" alt="Rate Icon"
                           style="width: 12px; height: 12px;">
                         <span class="info-card-category" style="font-size: 12px; font-weight: 700;">4.7</span>
                       </div>
@@ -321,7 +321,7 @@
                     <div class="additional-text-container rounded-pill d-inline-block"
                       style="background-color: #06C195; color: white;">
                       <div class="keterangan-additional-text-container">
-                        <img class="info-card-category-icon" src="./icons/comment-category.svg" alt="Rate Icon"
+                        <img class="info-card-category-icon" src="{{asset('icons/comment-category.svg')}}" alt="Rate Icon"
                           style="width: 12px; height: 12px;">
                         <span class="info-card-category" style="font-size: 12px; font-weight: 700;">1,586</span>
                       </div>
@@ -331,7 +331,7 @@
               </div>
               <div class="card border-0" style="width: 18rem;">
                 <div class="gambar-card-artikel-baru">
-                  <img src="./img/placeholder-category-card.png"
+                  <img src="{{asset('img/placeholder-category-card.png')}}"
                     class="card-img-top rounded-5 gambar-only-card-artikel-baru" alt="..."
                     style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover;">
                 </div>
@@ -344,7 +344,7 @@
                   <div class="d-flex">
                     <div class="additional-text-container rounded-pill d-inline-block">
                       <div class="keterangan-additional-text-container">
-                        <img class="info-card-category-icon" src="./icons/rate-category.svg" alt="Rate Icon"
+                        <img class="info-card-category-icon" src="{{asset('icons/rate-category.svg')}}" alt="Rate Icon"
                           style="width: 12px; height: 12px;">
                         <span class="info-card-category" style="font-size: 12px; font-weight: 700;">4.7</span>
                       </div>
@@ -352,7 +352,7 @@
                     <div class="additional-text-container rounded-pill d-inline-block"
                       style="background-color: #06C195; color: white;">
                       <div class="keterangan-additional-text-container">
-                        <img class="info-card-category-icon" src="./icons/comment-category.svg" alt="Rate Icon"
+                        <img class="info-card-category-icon" src="{{asset('icons/comment-category.svg')}}" alt="Rate Icon"
                           style="width: 12px; height: 12px;">
                         <span class="info-card-category" style="font-size: 12px; font-weight: 700;">1,586</span>
                       </div>
@@ -362,7 +362,7 @@
               </div>
               <div class="card border-0" style="width: 18rem;">
                 <div class="gambar-card-artikel-baru">
-                  <img src="./img/placeholder-category-card.png"
+                  <img src="{{asset('img/placeholder-category-card.png')}}"
                     class="card-img-top rounded-5 gambar-only-card-artikel-baru" alt="..."
                     style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover;">
                 </div>
@@ -375,7 +375,7 @@
                   <div class="d-flex">
                     <div class="additional-text-container rounded-pill d-inline-block">
                       <div class="keterangan-additional-text-container">
-                        <img class="info-card-category-icon" src="./icons/rate-category.svg" alt="Rate Icon"
+                        <img class="info-card-category-icon" src="{{asset('icons/rate-category.svg')}}" alt="Rate Icon"
                           style="width: 12px; height: 12px;">
                         <span class="info-card-category" style="font-size: 12px; font-weight: 700;">4.7</span>
                       </div>
@@ -383,7 +383,7 @@
                     <div class="additional-text-container rounded-pill d-inline-block"
                       style="background-color: #06C195; color: white;">
                       <div class="keterangan-additional-text-container">
-                        <img class="info-card-category-icon" src="./icons/comment-category.svg" alt="Rate Icon"
+                        <img class="info-card-category-icon" src="{{asset('icons/comment-category.svg')}}" alt="Rate Icon"
                           style="width: 12px; height: 12px;">
                         <span class="info-card-category" style="font-size: 12px; font-weight: 700;">1,586</span>
                       </div>
@@ -393,7 +393,7 @@
               </div>
               <div class="card border-0" style="width: 18rem;">
                 <div class="gambar-card-artikel-baru">
-                  <img src="./img/placeholder-category-card.png"
+                  <img src="{{asset('img/placeholder-category-card.png')}}"
                     class="card-img-top rounded-5 gambar-only-card-artikel-baru" alt="..."
                     style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover;">
                 </div>
@@ -406,7 +406,7 @@
                   <div class="d-flex">
                     <div class="additional-text-container rounded-pill d-inline-block">
                       <div class="keterangan-additional-text-container">
-                        <img class="info-card-category-icon" src="./icons/rate-category.svg" alt="Rate Icon"
+                        <img class="info-card-category-icon" src="{{asset('icons/rate-category.svg')}}" alt="Rate Icon"
                           style="width: 12px; height: 12px;">
                         <span class="info-card-category" style="font-size: 12px; font-weight: 700;">4.7</span>
                       </div>
@@ -414,7 +414,7 @@
                     <div class="additional-text-container rounded-pill d-inline-block"
                       style="background-color: #06C195; color: white;">
                       <div class="keterangan-additional-text-container">
-                        <img class="info-card-category-icon" src="./icons/comment-category.svg" alt="Rate Icon"
+                        <img class="info-card-category-icon" src="{{asset('icons/comment-category.svg')}}" alt="Rate Icon"
                           style="width: 12px; height: 12px;">
                         <span class="info-card-category" style="font-size: 12px; font-weight: 700;">1,586</span>
                       </div>
@@ -428,7 +428,7 @@
             <div class="cards-wrapper">
               <div class="card border-0" style="width: 18rem;">
                 <div class="gambar-card-artikel-baru">
-                  <img src="./img/placeholder-category-card.png"
+                  <img src="{{asset('img/placeholder-category-card.png')}}"
                     class="card-img-top rounded-5 gambar-only-card-artikel-baru" alt="..."
                     style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover;">
                 </div>
@@ -441,7 +441,7 @@
                   <div class="d-flex">
                     <div class="additional-text-container rounded-pill d-inline-block">
                       <div class="keterangan-additional-text-container">
-                        <img class="info-card-category-icon" src="./icons/rate-category.svg" alt="Rate Icon"
+                        <img class="info-card-category-icon" src="{{asset('icons/rate-category.svg')}}" alt="Rate Icon"
                           style="width: 12px; height: 12px;">
                         <span class="info-card-category" style="font-size: 12px; font-weight: 700;">4.7</span>
                       </div>
@@ -449,7 +449,7 @@
                     <div class="additional-text-container rounded-pill d-inline-block"
                       style="background-color: #06C195; color: white;">
                       <div class="keterangan-additional-text-container">
-                        <img class="info-card-category-icon" src="./icons/comment-category.svg" alt="Rate Icon"
+                        <img class="info-card-category-icon" src="{{asset('icons/comment-category.svg')}}" alt="Rate Icon"
                           style="width: 12px; height: 12px;">
                         <span class="info-card-category" style="font-size: 12px; font-weight: 700;">1,586</span>
                       </div>
@@ -459,7 +459,7 @@
               </div>
               <div class="card border-0" style="width: 18rem;">
                 <div class="gambar-card-artikel-baru">
-                  <img src="./img/placeholder-category-card.png"
+                  <img src="{{asset('img/placeholder-category-card.png')}}"
                     class="card-img-top rounded-5 gambar-only-card-artikel-baru" alt="..."
                     style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover;">
                 </div>
@@ -472,7 +472,7 @@
                   <div class="d-flex">
                     <div class="additional-text-container rounded-pill d-inline-block">
                       <div class="keterangan-additional-text-container">
-                        <img class="info-card-category-icon" src="./icons/rate-category.svg" alt="Rate Icon"
+                        <img class="info-card-category-icon" src="{{asset('icons/rate-category.svg')}}" alt="Rate Icon"
                           style="width: 12px; height: 12px;">
                         <span class="info-card-category" style="font-size: 12px; font-weight: 700;">4.7</span>
                       </div>
@@ -480,7 +480,7 @@
                     <div class="additional-text-container rounded-pill d-inline-block"
                       style="background-color: #06C195; color: white;">
                       <div class="keterangan-additional-text-container">
-                        <img class="info-card-category-icon" src="./icons/comment-category.svg" alt="Rate Icon"
+                        <img class="info-card-category-icon" src="{{asset('icons/comment-category.svg')}}" alt="Rate Icon"
                           style="width: 12px; height: 12px;">
                         <span class="info-card-category" style="font-size: 12px; font-weight: 700;">1,586</span>
                       </div>
@@ -490,7 +490,7 @@
               </div>
               <div class="card border-0" style="width: 18rem;">
                 <div class="gambar-card-artikel-baru">
-                  <img src="./img/placeholder-category-card.png"
+                  <img src="{{asset('img/placeholder-category-card.png')}}"
                     class="card-img-top rounded-5 gambar-only-card-artikel-baru" alt="..."
                     style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover;">
                 </div>
@@ -503,7 +503,7 @@
                   <div class="d-flex">
                     <div class="additional-text-container rounded-pill d-inline-block">
                       <div class="keterangan-additional-text-container">
-                        <img class="info-card-category-icon" src="./icons/rate-category.svg" alt="Rate Icon"
+                        <img class="info-card-category-icon" src="{{asset('icons/rate-category.svg')}}" alt="Rate Icon"
                           style="width: 12px; height: 12px;">
                         <span class="info-card-category" style="font-size: 12px; font-weight: 700;">4.7</span>
                       </div>
@@ -511,7 +511,7 @@
                     <div class="additional-text-container rounded-pill d-inline-block"
                       style="background-color: #06C195; color: white;">
                       <div class="keterangan-additional-text-container">
-                        <img class="info-card-category-icon" src="./icons/comment-category.svg" alt="Rate Icon"
+                        <img class="info-card-category-icon" src="{{asset('icons/comment-category.svg')}}" alt="Rate Icon"
                           style="width: 12px; height: 12px;">
                         <span class="info-card-category" style="font-size: 12px; font-weight: 700;">1,586</span>
                       </div>
@@ -521,7 +521,7 @@
               </div>
               <div class="card border-0" style="width: 18rem;">
                 <div class="gambar-card-artikel-baru">
-                  <img src="./img/placeholder-category-card.png"
+                  <img src="{{asset('img/placeholder-category-card.png')}}"
                     class="card-img-top rounded-5 gambar-only-card-artikel-baru" alt="..."
                     style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover;">
                 </div>
@@ -534,7 +534,7 @@
                   <div class="d-flex">
                     <div class="additional-text-container rounded-pill d-inline-block">
                       <div class="keterangan-additional-text-container">
-                        <img class="info-card-category-icon" src="./icons/rate-category.svg" alt="Rate Icon"
+                        <img class="info-card-category-icon" src="{{asset('icons/rate-category.svg')}}" alt="Rate Icon"
                           style="width: 12px; height: 12px;">
                         <span class="info-card-category" style="font-size: 12px; font-weight: 700;">4.7</span>
                       </div>
@@ -542,7 +542,7 @@
                     <div class="additional-text-container rounded-pill d-inline-block"
                       style="background-color: #06C195; color: white;">
                       <div class="keterangan-additional-text-container">
-                        <img class="info-card-category-icon" src="./icons/comment-category.svg" alt="Rate Icon"
+                        <img class="info-card-category-icon" src="{{asset('icons/comment-category.svg')}}" alt="Rate Icon"
                           style="width: 12px; height: 12px;">
                         <span class="info-card-category" style="font-size: 12px; font-weight: 700;">1,586</span>
                       </div>
@@ -602,7 +602,7 @@
 
                   <div class="position-relative" style="margin-top: 25%;">
 
-                    <img src="/img/img_dukungan_beliau.png" class="rounded-circle" style="width: 220px; height: 220px;"
+                    <img src="{{asset('/img/img_dukungan_beliau.png')}}" class="rounded-circle" style="width: 220px; height: 220px;"
                       alt="Foto Dukungan Beliau">
 
                     <div class="position-relative top-0 start-50 translate-middle-x mt-4" style="padding-top: 5%;">
@@ -647,7 +647,7 @@
 
                   <div class="position-relative" style="margin-top: 25%;">
 
-                    <img src="./img/img_dukungan_beliau.png" class="rounded-circle" style="width: 220px; height: 220px;"
+                    <img src="{{asset('img/img_dukungan_beliau.png')}}" class="rounded-circle" style="width: 220px; height: 220px;"
                       alt="Foto Dukungan Beliau">
 
                     <div class="position-relative top-0 start-50 translate-middle-x mt-4" style="padding-top: 5%;">
@@ -692,7 +692,7 @@
 
                   <div class="position-relative" style="margin-top: 25%;">
 
-                    <img src="./img/img_dukungan_beliau.png" class="rounded-circle" style="width: 220px; height: 220px;"
+                    <img src="{{asset('img/img_dukungan_beliau.png')}}" class="rounded-circle" style="width: 220px; height: 220px;"
                       alt="Foto Dukungan Beliau">
 
                     <div class="position-relative top-0 start-50 translate-middle-x mt-4" style="padding-top: 5%;">
@@ -727,7 +727,7 @@
 
       <div class="row align-items-center">
         <div class="col-md-5">
-          <img src="/img/img_cta.png" class="img-fluid rounded-4" alt="Foto CTA">
+          <img src="{{asset('/img/img_cta.png')}}" class="img-fluid rounded-4" alt="Foto CTA">
         </div>
 
         <div class="col-md-7 text-center text-md-start">

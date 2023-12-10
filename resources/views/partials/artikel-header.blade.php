@@ -1,5 +1,5 @@
 <div class="container-fluid pb-3 header-container">
-        <img src="/img/Background-Headline.png" style="width: 100%; " alt="Foto Header">
+        <img src="{{asset('/img/Background-Headline.png')}}" style="width: 100%; " alt="Foto Header">
 
         <!-- Tambahkan teks di atas gambar -->
         <div class="text-overlay">
