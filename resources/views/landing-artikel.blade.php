@@ -11,7 +11,9 @@
   <link rel="stylesheet" href="/css/style.css"/>
   <link rel="stylesheet" href="/css/landing-artikel-style.css"/>
   <link rel="stylesheet" href="/css/artikel-pagination-style.css"/>
-  <link rel="stylesheet" href="/css/navbar-style.css" rel="stylesheet">
+  <link rel="stylesheet" href="/css/navbar-style.css">
+  <link rel="stylesheet" href="/css/header-artikel-style.css">
+  <link rel="stylesheet" href="/css/footer-artikel-style.css">
 
   <!-- Font -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
@@ -791,18 +793,19 @@
     </script>
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <script>
-      show('Desain-Taman')
-      function show(kategori) {
+
+    function show(kategori) {
     $.get("{{ url('/home/show') }}/" + kategori, {}, function(data, status) {
         $("#category-content").html(data);
         setActiveButton(); // Ensure setActiveButton is called after content is updated
     });
 }
+      show('Desain-Taman')
+
 
 function getKategori() {
     let htmlContent = $('.category-portaledukasi-btn-jelajahi').html();
     let modifiedContent = htmlContent.replace('Jelajahi Artikel ', '').replace(' !','').replace(/\s+/g, '').replace('Taman', '');
-    console.log(modifiedContent);
     return modifiedContent;
 }
 
@@ -810,7 +813,6 @@ function setActiveButton() {
     let kategori = getKategori();
     $('.category-portaledukasi-btn').removeClass('clicked');
     $(`.category-portaledukasi-btn:contains('${kategori}')`).addClass('clicked');
-    console.log(kategori);
 }
 
 

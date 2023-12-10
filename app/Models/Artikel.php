@@ -39,12 +39,10 @@ class Artikel extends Model
     {
         return $this->hasOne(Komentar::class);
     }
-    public function scopeKategori($query, $filter = [])
+    public function scopeByKategori($query, $kategori)
     {
-        $query->when($filter['kategori'] ?? false, function ($query, $kategori) {
-            return $query->whereHas('kategori_artikel', function ($query) use ($kategori) {
-                $query->where('nama_kategori_artikel', $kategori);
-            });
+        return $query->whereHas('kategori_artikel', function ($query) use ($kategori) {
+            $query->where('nama_kategori_artikel', $kategori);
         });
     }
     

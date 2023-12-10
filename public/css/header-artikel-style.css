@@ -18,7 +18,7 @@
 
 .btn-overlay-header button:hover {
     font-size: 14px;
-    color: #06C195;
+    color: #06c195;
     font-weight: 700;
     background-color: #fff;
     font-weight: normal;
@@ -31,7 +31,7 @@
     /* Animasi perubahan font-weight */
 }
 
-.btn-overlay-header .active-header {
+.btn-overlay-header .btn-on {
     font-weight: 700;
-    color: #06C195;
+    color: #06c195;
 }

@@ -1,6 +1,8 @@
 import "./bootstrap";
 import * as FilePond from "filepond";
 import "filepond/dist/filepond.min.css";
+import jQuery from "jquery";
+window.$ = jQuery;
 
 const inputElement = document.querySelector('input[type="file"].filepond');
 

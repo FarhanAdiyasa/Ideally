@@ -9,7 +9,6 @@
   <title>Ideally</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat%3A400%2C700"/>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro%3A400%2C700"/>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Arial%3A400%2C700"/>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Quicksand%3A700"/>
   @vite(['resources/sass/app.scss', 'resources/js/app.js']);
   
@@ -17,15 +16,17 @@
   <link rel="stylesheet" href="/css/style.css"/>
   <link rel="stylesheet" href="/css/landing-artikel-style.css"/>
   <link rel="stylesheet" href="/css/artikel-pagination-style.css"/>
-  <link rel="stylesheet" href="/css/navbar-style.css" rel="stylesheet">
+  <link rel="stylesheet" href="/css/navbar-style.css">
+  <link rel="stylesheet" href="/css/header-artikel-style.css">
+  <link rel="stylesheet" href="/css/footer-artikel-style.css">
 </head>
 <body>
     {{-- Navbar Section --}}
     @include('partials.navbar')
-    {{-- End of Navbar Section --}}
-    
-    {{-- Page Header --}}
-      @include('partials.artikel-header')
+    <!-- End of Navbar -->
+
+    <!-- Headline  -->
+    @include('partials.artikel-header')
     {{-- End of Page Header --}}
       <section class="main-content">
         <div class="centre">
@@ -209,7 +210,7 @@
         </div>
       </section>
       @include('partials.artikel-footer')
-      <script src="js/portal-edukasi.js"></script>
       <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+      <script src="../js/portal-edukasi.js"></script>
       <script src="/js/navbar.js"></script>
 </body>

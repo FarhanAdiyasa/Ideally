@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ideally - Portal Edukasi</title>
-
+    @vite(['resources/sass/app.scss', 'resources/js/app.js']);
     <!--Stylesheet -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/baca-artikel-style.css" rel="stylesheet">
@@ -29,170 +29,11 @@
 
 <body>
     <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg fixed-top bg-body-tertiary rounded" aria-label="Thirteenth navbar example">
-        <div class="container-md">
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample11"
-                aria-controls="navbarsExample11" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-
-            </button>
-
-            <div class="collapse navbar-collapse d-lg-flex" id="navbarsExample11">
-                <a class="navbar-brand col-lg-3 me-0 flex-grow-1" href="#">
-                    <img src="img/logo-ideally.png" alt="LogoIdeally" style="max-width: 40%;">
-                </a>
-                <ul class="navbar-nav col-lg-6 justify-content-lg-center">
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">Beranda</a>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown"
-                            aria-expanded="false">Portal
-                            Edukasi</a>
-                        <ul class="dropdown-menu dropdown-menu-center">
-
-                            <div class="custom-shape-1"></div>
-                            <div class="dropdown-list">
-                                <li><a href="#" class="dropdown-item">Belajar Desain Taman</a></li>
-                                <li>
-                                    <hr class="dropdown-divider">
-                                </li>
-                                <li><a href="#" class="dropdown-item">Belajar Konstruksi Taman</a></li>
-                                <li>
-                                    <hr class="dropdown-divider">
-                                </li>
-                                <li><a href="#" class="dropdown-item">Belajar Pemeliharaan Taman</a></li>
-                                <li>
-                                    <hr class="dropdown-divider">
-                                </li>
-                                <li><a href="#" class="dropdown-item">Belajar Tanaman</a></li>
-                                <li>
-                                    <hr class="dropdown-divider">
-                                </li>
-                                <li><a href="#" class="dropdown-item">Belajar Material</a></li>
-                                <li>
-                                    <hr class="dropdown-divider">
-                                </li>
-                                <li><a href="#" class="dropdown-item">Belajar Bahan Pelengkap</a></li>
-                                <li>
-                                    <hr class="dropdown-divider">
-                                </li>
-                                <li><a href="#" class="dropdown-item">Belajar Hal Lainnya</a></li>
-                            </div>
-
-                        </ul>
-
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown"
-                            aria-expanded="false">Layanan</a>
-                        <ul class="dropdown-menu dropdown-menu-center">
-                            <div class="custom-shape-2"></div>
-                            <div class="dropdown-list">
-                                <li><a href="#" class="dropdown-item">Desain Taman</a></li>
-                                <li>
-                                    <hr class="dropdown-divider">
-                                </li>
-                                <li><a href="#" class="dropdown-item">Konstruksi Taman</a></li>
-                                <li>
-                                    <hr class="dropdown-divider">
-                                </li>
-                                <li><a href="#" class="dropdown-item">Pemeliharaan Taman</a></li>
-                            </div>
-
-                        </ul>
-                    </li>
-
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown"
-                            aria-expanded="false">Produk</a>
-                        <ul class="dropdown-menu-produk dropdown-menu dropdown-menu-center">
-                            <div class="popup-produk">
-                                <img id="dropdown-img" src="./img/dropdownlist-img_default.png" alt="Gambar Produk">
-                                <div class="custom-shape-3"></div>
-                                <div class="produk-list">
-                                    <li><a href="#" class="dropdown-item"
-                                            data-img="./img/dropdownlist-img_default.png">Beranda Produk</a>
-                                    </li>
-                                    <li>
-                                        <hr class="dropdown-divider">
-                                    </li>
-                                    <li><a href="#" class="dropdown-item"
-                                            data-img="./img/dropdownlist-img_tanaman.png">Produk Tanaman</a>
-                                    </li>
-                                    <li>
-                                        <hr class="dropdown-divider">
-                                    </li>
-                                    <li><a href="#" class="dropdown-item"
-                                            data-img="./img/dropdownlist-img_everlasthings.png">Produk Besi dan
-                                            Las</a></li>
-                                    <li>
-                                        <hr class=" dropdown-divider">
-                                    </li>
-                                    <li><a href="#" class="dropdown-item"
-                                            data-img="./img/dropdownlist-img_batu.png">Produk Batu</a>
-                                    </li>
-                                    <li>
-                                        <hr class="dropdown-divider">
-                                    </li>
-                                    <li><a href="#" class="dropdown-item"
-                                            data-img="./img/dropdownlist-img_default.png">Produk Beton</a>
-                                    </li>
-                                    <li>
-                                        <hr class="dropdown-divider">
-                                    </li>
-                                    <li><a href="#" class="dropdown-item"
-                                            data-img="./img/dropdownlist-img_agrigard.png">Produk Bahan
-                                            Pertanian</a></li>
-                                    <li>
-                                        <hr class="dropdown-divider">
-                                    </li>
-                                    <li><a href="#" class="dropdown-item"
-                                            data-img="./img/dropdownlist-img_shineage.png">Produk <i>Signage
-                                                System</i></a></li>
-                                </div>
-                            </div>
-                        </ul>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="#">Tentang Kami</a>
-                    </li>
-                </ul>
-                <div class="col-lg-3 text-end">
-                    <a href="#" class="link-body-emphasis px-3">Daftar Akun</a>
-                    <span class="vertical-divider"></span>
-                    <a href="#" class="link-body-emphasis px-3">Masuk</a>
-                </div>
-            </div>
-        </div>
-    </nav>
+    @include('partials.navbar')
     <!-- End of Navbar -->
 
     <!-- Headline  -->
-    <div class="container-fluid pb-3 header-container">
-        <img src="./img/Background-Headline.png" style="width: 100%; " alt="Foto Header">
-
-        <!-- Tambahkan teks di atas gambar -->
-        <div class="text-overlay">
-            <div class="text-background-headline">
-                <span>Portal Edukasi</span>
-            </div>
-            <h3
-                style="text-align: center; color: white; font-size: 65px; font-family: Quicksand; font-weight: 700; word-wrap: break-word">
-                Arsitektur Lanskap</h3>
-            <div class="btn-overlay-header">
-                <div class="d-flex justify-content-center">
-                    <button type="button" class="btn rounded-pill m-2">Desain Taman</button>
-                    <button type="button" class="btn rounded-pill m-2">Konstruksi Taman</button>
-                    <button type="button" class="btn rounded-pill m-2 active-header">Pemeliharaan Taman</button>
-                    <button type="button" class="btn rounded-pill m-2">Tanaman</button>
-                    <button type="button" class="btn rounded-pill m-2">Material</button>
-                    <button type="button" class="btn rounded-pill m-2">Lainnya</button>
-                </div>
-            </div>
-        </div>
-    </div>
+    @include('partials.artikel-header')
     <!-- End of Headline  -->
     <div class="container">
 
@@ -945,8 +786,6 @@
     <!-- End of Footer -->
 
     <!-- Javascript -->
-    <script src="js/bootstrap.bundle.min.js"></script>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="js/navbar.js"></script>
     <script src="js/baca-artikel.js"></script>
 
