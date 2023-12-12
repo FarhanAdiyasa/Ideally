@@ -16,45 +16,32 @@ class BatunesiaFactory extends Factory
      */
     public function definition(): array
     {
-        return [
-            //
-
-            'nama_produk' => $faker->words(2, true),
-            'slug' => $faker->slug,
-            'kategori' => $faker->word,
-            'spek' => $faker->word,
-            'satuan' => $faker->word,
-            'warna' => $faker->colorName,
-            'gambar_1' => $faker->imageUrl(),
-            'gambar_2' => $faker->imageUrl(),
-            'gambar_3' => $faker->imageUrl(),
-            'video' => $faker->url,
-            'stok' => $faker->numberBetween(0, 100),
-            'item_terjual' => $faker->numberBetween(0, 100),
-            'deskripsi_singkat' => $faker->text,
-            'hpp' => $faker->randomFloat(2, 10, 100),
-            'harga_b2I_31+_unit' => $faker->randomFloat(2, 10, 100),
-            'harga_b2I_11+_unit' => $faker->randomFloat(2, 10, 100),
-            'harga_b2I_1+_unit' => $faker->randomFloat(2, 10, 100),
-            'harga_b2B_31+_unit' => $faker->randomFloat(2, 10, 100),
-            'harga_b2B_11+_unit' => $faker->randomFloat(2, 10, 100),
-            'harga_b2B_1+_unit' => $faker->randomFloat(2, 10, 100),
-            'harga_b2C_31+_unit' => $faker->randomFloat(2, 10, 100),
-            'harga_b2C_11+_unit' => $faker->randomFloat(2, 10, 100),
-            'harga_b2C_1+_unit' => $faker->randomFloat(2, 10, 100),
-            'tanggal_publikasi' => $faker->dateTimeThisMonth,
+    return [
+            'nama_produk' => $this->faker->words(2, true),
+            'slug' => $this->faker->slug,
+            'kategori' => $this->faker->word,
+            'spek' => $this->faker->word,
+            'satuan' => $this->faker->word,
+            'warna' => $this->faker->colorName,
+            'gambar_1' => $this->faker->imageUrl(),
+            'gambar_2' => $this->faker->imageUrl(),
+            'gambar_3' => $this->faker->imageUrl(),
+            'video' => $this->faker->url,
+            'stok' => $this->faker->numberBetween(0, 100),
+            'item_terjual' => $this->faker->numberBetween(0, 100),
+            'deskripsi_singkat' => $this->faker->text,
+            'harga_b2I_31_unit' => $this->faker->randomFloat(2, 10, 100),
+            'harga_b2I_11_unit' => $this->faker->randomFloat(2, 10, 100),
+            'harga_b2I_1_unit' => $this->faker->randomFloat(2, 10, 100),
+            'harga_b2B_31_unit' => $this->faker->randomFloat(2, 10, 100),
+            'harga_b2B_11_unit' => $this->faker->randomFloat(2, 10, 100),
+            'harga_b2B_1_unit' => $this->faker->randomFloat(2, 10, 100),
+            'harga_b2C_31_unit' => $this->faker->randomFloat(2, 10, 100),
+            'harga_b2C_11_unit' => $this->faker->randomFloat(2, 10, 100),
+            'harga_b2C_1_unit' => $this->faker->randomFloat(2, 10, 100),
+            'tanggal_publikasi' => $this->faker->dateTimeThisMonth,
             'created_at' => now(),
-            'updated_at' => now(),
-            'deleted_at' => null,
-            'created_by' => function () {
-                return factory(App\User::class)->create()->user_id;
-            },
-            'updated_by' => function () {
-                return factory(App\User::class)->create()->user_id;
-            },
-            'deleted_by' => function () {
-                return factory(App\User::class)->create()->user_id;
-            },
+            'created_by' => $this->faker->numberBetween(1, 5)
         ];
     }
 }

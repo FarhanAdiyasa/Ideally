@@ -45,7 +45,7 @@ footer p {
 
 .text-overlay-footer .Hashtag {
     font-size: 150px;
-    color: rgba(255, 255, 255, 0.50);
+    color: rgba(255, 255, 255, 0.5);
     margin-right: -50px;
     transform: translateY(12%);
     /* OVERPOWERED BRO! */
@@ -53,9 +53,13 @@ footer p {
 
 .btn-overlay-footer button:hover {
     background-color: #fff;
-    color: #06C195;
+    color: #06c195;
     font-weight: 700;
     white-space: nowrap;
+}
+.btn-overlay-footer .btn-on {
+    font-weight: 700;
+    color: #06c195;
 }
 
 /* CSS untuk tombol default */
@@ -72,7 +76,7 @@ footer p {
 
 .more-information {
     margin-right: 5px;
-    background-color: #06C195;
+    background-color: #06c195;
     color: white;
 }
 

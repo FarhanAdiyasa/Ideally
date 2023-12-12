@@ -1,5 +1,5 @@
 <div class="image-footer-container">
-    <img src="../img/Background-Footer.png" style="width: 100%;">
+    <img src="{{asset('/img/Background-Footer.png')}}" style="width: 100%;">
 
 
     <div class="btn-overlay-footer">

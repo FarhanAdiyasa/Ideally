@@ -427,8 +427,6 @@
   <!-- /.control-sidebar -->
 </div>
 <!-- ./wrapper -->
-<script src="{{ asset('js/admin_side.js')}}"></script>
-@yield('scripts')
 
 <!-- jQuery -->
 <script src="{{ asset('lte/plugins/jquery/jquery.min.js')}}"></script>
@@ -544,6 +542,7 @@
 
  
 </script>
+<script src="{{ asset('js/admin_side.js')}}"></script>
 @yield('scripts_all')
 
 </body>

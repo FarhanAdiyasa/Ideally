@@ -104,3 +104,13 @@ body {
     padding-top: 8px;
     padding-bottom: 8px;
 }
+.hpLink {
+    color: inherit;
+    text-decoration: none;
+}
+.hpLink:hover {
+    color: var(--hijau-idl);
+}
+.hpLink:hover p {
+    color: var(--hijau-idl);
+}

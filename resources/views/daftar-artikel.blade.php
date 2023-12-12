@@ -64,7 +64,7 @@
                       @if($articles_terbaru->count())
                         @foreach($articles_terbaru as $article)
                         <div class="article-group">
-                          <p class="desk-article">{{$article->judul_artikel}}</p>
+                          <a href="/portal-edukasi/baca/{{$article->slug}}" class="hpLink"><p class="desk-article">{{$article->judul_artikel}}</p></a>
                           <div class="info-article">
                             <img class="icon-star" src="/icons/Star.png"/>
                             <p class="tgl-article">{{ date('d M Y', strtotime($article->tanggal_publikasi));}} </p>
@@ -83,7 +83,7 @@
                       @if($articles_acak->count())
                       @foreach($articles_acak as $article)
                       <div class="article-group">
-                        <p class="desk-article">{{$article->judul_artikel}}</p>
+                        <a href="/portal-edukasi/baca/{{$article->slug}}" class="hpLink"><p class="desk-article">{{$article->judul_artikel}}</p></a>
                         <div class="info-article">
                           <img class="icon-star" src="/icons/Star.png"/>
                           <p class="tgl-article">{{ date('d M Y', strtotime($article->tanggal_publikasi));}} </p>
@@ -113,9 +113,9 @@
                           </div>
                           <div class="col-7">
                             <div class="info-main-article">
-                              <p class="title-main-article">
+                              <a href="/portal-edukasi/baca/{{$article->slug}}" class="hpLink"><p class="title-main-article">
                                 {{$article->judul_artikel}}
-                              </p>
+                              </p></a>
                               <div class="desc-main-article">
                                 <div class="desc-item">
                                   <div class="ellipse">
@@ -167,8 +167,8 @@
                         @if($articles_terpopuler->count())
                       @foreach($articles_terpopuler as $article)
                       <div class="article-group">
-                        <p class="desk-article">{{$article->judul_artikel}}</p>
-                        <div class="info-article">
+                        <a href="/portal-edukasi/baca/{{$article->slug}}" class="hpLink"><p class="desk-article">{{$article->judul_artikel}}</p>
+                        <div class="info-article"></a>
                           <img class="icon-star" src="/icons/Star.png"/>
                           <p class="tgl-article">{{ date('d M Y', strtotime($article->tanggal_publikasi));}} </p>
                         </div>
@@ -186,7 +186,7 @@
                           @if($articles_acak2->count())
                         @foreach($articles_acak2 as $article)
                         <div class="article-group">
-                          <p class="desk-article">{{$article->judul_artikel}}</p>
+                          <a href="/portal-edukasi/baca/{{$article->slug}}" class="hpLink"><p class="desk-article">{{$article->judul_artikel}}</p></a>
                           <div class="info-article">
                             <img class="icon-star" src="/icons/Star.png"/>
                             <p class="tgl-article">{{ date('d M Y', strtotime($article->tanggal_publikasi));}} </p>

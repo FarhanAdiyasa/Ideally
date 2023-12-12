@@ -15,8 +15,8 @@
                             style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover;">
                         </div>
                         <div class="card-body">
-                          <h5 class="card-title" style="font-weight: 700;">{{$article->judul_artikel}}
-                          </h5>
+                          <a href="/portal-edukasi/baca/{{$article->slug}}" class="hpLink"><h5 class="card-title" style="font-weight: 700;">{{$article->judul_artikel}}
+                          </h5></a>
                           <p class="card-text" style="font-size: small; color: #999999;">{{ $article->createdBy->firstname }} {{ $article->createdBy->lastname }}</p>
         
                           <div class="d-flex">

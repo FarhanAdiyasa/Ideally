@@ -7,11 +7,15 @@
     <title>Ideally - Portal Edukasi</title>
     @vite(['resources/sass/app.scss', 'resources/js/app.js']);
     <!--Stylesheet -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/baca-artikel-style.css" rel="stylesheet">
-    <link href="css/navbar-style.css" rel="stylesheet">
-    <link href="css/header-artikel-style.css" rel="stylesheet">
-    <link href="css/footer-style.css" rel="stylesheet">
+    <link href="{{asset('/css/bootstrap.min.css')}}" rel="stylesheet">
+    <link href="{{asset('/css/style.css')}}" rel="stylesheet">
+    <link href="{{asset('/css/baca-artikel-style.css')}}" rel="stylesheet">
+    <link href="{{asset('/css/navbar-style.css')}}" rel="stylesheet">
+    <link href="{{asset('/css/header-artikel-style.css')}}" rel="stylesheet">
+    <link href="{{asset('/css/footer-artikel-style.css')}}" rel="stylesheet">
+    
+    <!-- Include jQuery from a CDN (Content Delivery Network) -->
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 
     <!-- Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
@@ -42,58 +46,59 @@
             <div class="col-md-8 main-content-container">
                 <!-- Title -->
                 <div class="d-flex" style=" padding-bottom: 20px;">
-                    <div class="additional-text-container rounded-pill d-inline-block"
+                    {{-- <div class="additional-text-container rounded-pill d-inline-block"
                         style="background-color: #727272; color: white;">
                         <div class="keterangan-additional-text-container">
-                            <img class="info-card-category-icon" src="./icons/rate-category.svg" alt="Rate Icon"
+                            <img class="info-card-category-icon" src="{{asset('icons/rate-category.svg')}}" alt="Rate Icon"
                                 style="width: 12px; height: 12px;">
                             <span class="info-card-category" style="font-size: 12px; font-weight: 700;">4.7</span>
                         </div>
-                    </div>
+                    </div> --}}
                     <div class="additional-text-container rounded-pill d-inline-block"
                         style="background-color: #727272; color: white;">
                         <div class="keterangan-additional-text-container">
-                            <img class="info-card-category-icon" src="./icons/comment-category.svg" alt="Rate Icon"
+                            <img class="info-card-category-icon" src="{{asset('icons/comment-category.svg')}}" alt="Rate Icon"
                                 style="width: 12px; height: 12px;">
-                            <span class="info-card-category" style="font-size: 12px; font-weight: 700;">1,586</span>
+                            <span class="info-card-category" style="font-size: 12px; font-weight: 700;">{{$artikel->kategori_artikel->nama_kategori_artikel}}</span>
                         </div>
                     </div>
                 </div>
-                <h2 style="color: black; font-size: 28px; font-weight: 700;">Lorem ipsum dolor sit amet, consectetur
-                    adipiscing elit. Morbi non risus at nibh fringilla dapibus.</h2>
+                <h2 style="color: black; font-size: 28px; font-weight: 700;">{{$artikel->judul_artikel}}</h2>
 
                 <div class="d-flex" style="padding-top: 20px;">
                     <div class="additional-text-container rounded-pill d-inline-block">
                         <div class="keterangan-additional-text-container">
-                            <img class="info-card-category-icon-title2" src="./icons/rate-category.svg" alt="Rate Icon"
+                            <img class="info-card-category-icon-title2" src="{{asset('icons/rate-category.svg')}}" alt="Rate Icon"
                                 style="width: 12px; height: 12px;">
-                            <span class="info-card-category-title2" style="font-size: 14px; font-weight: 700;">Fabian
-                                Khalaf S</span>
+                            <span class="info-card-category-title2" style="font-size: 14px; font-weight: 700;"> {{$artikel->createdBy->firstname}}{{$artikel->createdBy->lastname}}</span>
                         </div>
                     </div>
                     <div class="additional-text-container rounded-pill d-inline-block"
                         style="background-color: #06C195; color: white;">
                         <div class="keterangan-additional-text-container">
-                            <img class="info-card-category-icon-title2" src="./icons/rate-category.svg" alt="Rate Icon"
+                            <img class="info-card-category-icon-title2" src="{{asset('icons/rate-category.svg')}}" alt="Rate Icon"
                                 style="width: 12px; height: 12px;">
-                            <span class="info-card-category-title2" style="font-size: 14px; font-weight: 700;">20 Okt
-                                2023</span>
+                            <span class="info-card-category-title2" style="font-size: 14px; font-weight: 700;"> {{ date('d M Y', strtotime($artikel->tanggal_publikasi));}}</span>
                         </div>
                     </div>
                     <div class="additional-text-container rounded-pill d-inline-block">
                         <div class="keterangan-additional-text-container">
-                            <img class="info-card-category-icon-title2" src="./icons/comment-category.svg"
+                            <img class="info-card-category-icon-title2" src="{{asset('icons/comment-category.svg')}}"
                                 alt="Rate Icon" style="width: 12px; height: 12px;">
                             <span class="info-card-category-title2"
-                                style="font-size: 14px; font-weight: 700;">1,586</span>
+                                style="font-size: 14px; font-weight: 700;">{{ number_format($artikel->pengunjung ?? 0) }}</span>
                         </div>
                     </div>
+                    @php
+                        $averageRating = $artikel->ratingArtikel->avg('rating_artikel');
+                        $averageRating = number_format($averageRating, 1) 
+                    @endphp
                     <div class="additional-text-container rounded-pill d-inline-block">
                         <div class="keterangan-additional-text-container">
-                            <img class="info-card-category-icon-title2" src="./icons/rate-category.svg" alt="Rate Icon"
+                            <img class="info-card-category-icon-title2" src="{{asset('icons/rate-category.svg')}}" alt="Rate Icon"
                                 style="width: 12px; height: 12px;">
                             <span class="info-card-category-title2"
-                                style="font-size: 14px; font-weight: 700;">4.7</span>
+                                style="font-size: 14px; font-weight: 700;">{{$averageRating}}</span>
                         </div>
                     </div>
                 </div>
@@ -101,115 +106,21 @@
 
                 <!-- Body Article -->
                 <div class="body-article">
-                    <img src="./img/img_body-article.png" alt="Gambar Artikel" width="100%">
-
+                    <img src="{{asset($artikel->gambar_artikel)}}" alt="Gambar Artikel" width="100%">
+                    @if ($artikel->keterangan_gambar_artikel)
                     <div class="keterangan-gambar-article">
-                        Vestibulum semper ex id urna vulputate viverra. Vivamus ac risus maximus, volutpat velit non,
-                        mattis dolor.</div>
+                        {{$artikel->keterangan_gambar_artikel}}.</div>
+                    @endif
 
                     <hr class="hr-body-article">
 
                     <div class="isi-article">
-                        <p>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean porta sagittis velit, non
-                            ultricies mauris cursus et.
-                            Proin efficitur egestas dui, non tristique est tincidunt ut. In dictum velit neque, sit amet
-                            scelerisque purus volutpat
-                            quis. In mattis interdum efficitur.
-                        </p>
-
-                        <p>
-                            Morbi efficitur metus ex, vel <span class="highlighted-text">elementum
-                                massa</span> vulputate eget. Donec vel sollicitudin metus.
-                            Ut at purus quis mi
-                            vulputate mollis. Ut massa dui, <span class="highlighted-text">tincidunt</span> ut libero
-                            at, interdum pretium risus.
-                        </p>
-
-                        <p>
-                            Nam euismod finibus ante a venenatis. Donec iaculis ligula eros, at vestibulum tortor
-                            vestibulum id. Aliquam eget velit
-                            eget dolor tempus mollis. Vivamus quis luctus mi. Praesent nisl lacus, accumsan ac tristique
-                            at, sollicitudin sit amet
-                            lectus. Vestibulum ac elementum nisi. Nunc auctor sodales turpis aliquam ultrices. Nulla
-                            facilisi. Nullam et mollis ex.
-                            Aliquam et malesuada arcu. Duis vitae ligula justo. Sed sit amet luctus quam.
-                        </p>
-
-                        <h5 class="sub-header-content-article">Vestibulum semper</h5>
-
-                        <p>
-                            Ex id urna vulputate viverra. Vivamus ac risus maximus, volutpat velit non, mattis
-                            dolor.
-                            <span class="highlighted-text">Pellentesque</span> malesuada, lectus
-                            vitae congue dignissim, nunc neque sagittis nibh, eu consectetur ligula est posuere
-                            dolor.
-                            Aenean vel nulla et tellus
-                            pellentesque tempus ut eu enim.
-                        </p>
-
-                        <p>
-                            Pellentesque ullamcorper sodales nibh, sit amet vehicula leo placerat viverra.
-                            Praesent
-                            tempor dui nulla, id aliquam
-                            ligula pulvinar vel. Morbi lobortis, lectus eu ultricies rhoncus, justo nisl
-                            condimentum
-                            diam, in interdum orci felis eu
-                            enim. Quisque sit amet sodales nulla, id condimentum sem. Ut id mattis dolor.
-                        </p>
-
-                        <p>
-                            Mauris dapibus quam magna, sit amet posuere tortor fermentum vel. Aenean vel finibus
-                            erat,
-                            in volutpat arcu. Nullam at
-                            arcu eleifend felis dictum pharetra ac condimentum lorem. <span
-                                class="highlighted-text">Curabitur pellentesque</span>
-                            cursus
-                            sapien, venenatis venenatis
-                            dolor tincidunt eleifend. Sed ornare lacus eu lorem tempor, a tincidunt urna rutrum.
-                            Cras
-                            dignissim ligula in semper
-                            porta.
-                        </p>
-
-                        <img src="./img/img-isi-artikel.png" alt="Gambar Content Artikel" style="width: 100%;">
-                        <div class="keterangan-gambar-article">
-                            Vestibulum semper ex id urna vulputate viverra. Vivamus ac risus maximus, volutpat velit
-                            non,
-                            mattis dolor.</div>
-
-                        <hr class="hr-body-article" style="padding-bottom: 20px;">
-
-                        <p>
-                            Integer dapibus risus in nibh cursus, semper facilisis massa mattis. Ut venenatis est eget
-                            nunc ultricies, ut vehicula
-                            sem lacinia. Phasellus rhoncus tempus orci, vitae ultricies leo <span
-                                class="highlighted-text">maximus eget</span>. Nam nec
-                            sagittis nisi, nec consectetur
-                            erat. Vestibulum sed faucibus felis.
-                        </p>
-                        <h5 class="sub-header-content-article">Quisque sollicitudin</h5>
-                        <p>
-                            Nisl sit amet mauris volutpat rutrum. Curabitur aliquam molestie leo sed varius. Maecenas
-                            vel felis sed dui vestibulum
-                            fermentum.
-                        </p>
-
-                        <p>
-                            Quisque bibendum ac purus nec ornare. Class aptent taciti sociosqu ad litora torquent
-                            per
-                            conubia nostra, per inceptos
-                            himenaeos. Donec vel viverra magna. Vestibulum feugiat sem ipsum, vel sodales ipsum
-                            tempor
-                            in. Ut enim est, congue eget
-                            porta vitae, tincidunt <span class="highlighted-text">facilisis purus</span>. Morbi
-                            nulla
-                            tortor, fringilla sed nisl et, mattis
-                            mollis urna. Quisque quis odio
-                            vel orci faucibus ullamcorper sed id mi. In accumsan mi vitae enim interdum sagittis.
-                        </p>
+                        {!!$artikel->isi_artikel!!}
                     </div>
-
+                    <div class="v-yt container mb-4" >
+                        <!-- Use the full YouTube video URL or the embed URL -->
+                        <iframe src="https://www.youtube.com/embed/8w_U6qEZat0" height="300" width="470"></iframe>
+                    </div>
                 </div>
                 <!-- End of Body Article -->
 
@@ -217,12 +128,9 @@
                 <div class="source">
                     <h5 style="font-weight: 700; color: #06C195;">Source</h5>
                     <ol style="font-style: italic; font-size: 14px;">
-                        <li>Nur Ilman, Luthfi. 2023. Judul artikel acuan. IPB University: Bogor.</li>
-                        <li>Nur Ilman, Luthfi. 2023. Judul artikel acuan. IPB University: Bogor.</li>
-                        <li>Nur Ilman, Luthfi. 2023. Judul artikel acuan. IPB University: Bogor.</li>
-                        <li>Nur Ilman, Luthfi. 2023. Judul artikel acuan. IPB University: Bogor.</li>
-                        <li>Nur Ilman, Luthfi. 2023. Judul artikel acuan. IPB University: Bogor.</li>
-                        <li>Nur Ilman, Luthfi. 2023. Judul artikel acuan. IPB University: Bogor.</li>
+                        @foreach($artikel->sumberArtikel as $sumberArtikel)
+                        <li>{{ $sumberArtikel->sumber_artikel}} </li>
+                        @endforeach
                     </ol>
 
                 </div>
@@ -236,7 +144,7 @@
 
                             <div class="col-2">
                                 <div class="avatar">
-                                    <img src="./img/img-penulis.png" class="rounded-circle" alt="...">
+                                    <img src="{{asset('img/img-penulis.png')}}" class="rounded-circle" alt="...">
                                 </div>
                             </div>
 
@@ -261,19 +169,29 @@
                 <h4 style="color: black; font-size: 20px; font-weight: 700; padding-top: 20px;">Beri Penilaian</h4>
                 <div class="additional-text-container rounded-pill d-inline-block"
                     style="background-color: #06C195; color: white; width: 100%;">
-                    <div class="rating">
-                        <input type="radio" name="rating" value="5" id="5">
-                        <label for="5">☆</label>
-                        <input type="radio" name="rating" value="4" id="4">
-                        <label for="4">☆</label>
-                        <input type="radio" name="rating" value="3" id="3">
-                        <label for="3">☆</label>
-                        <input type="radio" name="rating" value="2" id="2">
-                        <label for="2">☆</label>
-                        <input type="radio" name="rating" value="1" id="1">
-                        <label for="1">☆</label>
-                    </div>
+                    <form id="ratingForm" action="{{ route('rating-artikel', ['slug' => $artikel->slug]) }}" method="post">
+                        @csrf
+                        <div class="rating">
+                            <input type="radio" name="rating" value="5" id="5" @if ($rating && $rating->rating_artikel == 5) checked @endif>
+                            <label for="5" onclick="submitForm(5,'{{$artikel->slug}}')">☆</label>
+                            
+                            <input type="radio" name="rating" value="4" id="4"  @if ($rating && $rating->rating_artikel == 4) checked @endif>
+                            <label for="4" onclick="submitForm(4,'{{$artikel->slug}}')">☆</label>
+                            
+                            <input type="radio" name="rating" value="3" id="3"  @if ($rating && $rating->rating_artikel == 3) checked @endif>
+                            <label for="3" onclick="submitForm(3,'{{$artikel->slug}}')">☆</label>
+                            
+                            <input type="radio" name="rating" value="2" id="2"  @if ($rating && $rating->rating_artikel == 2) checked @endif>
+                            <label for="2" onclick="submitForm(2,'{{$artikel->slug}}')">☆</label>
+                            
+                            <input type="radio" name="rating" value="1" id="1"  @if ($rating && $rating->rating_artikel == 1) checked @endif>
+                            <label for="1" onclick="submitForm(1,'{{$artikel->slug}}')">☆</label>
+                            
+                        </div>
+                    </form>
                 </div>
+                <div class="success" id="suksesRate" style="visibility: hidden"><small>
+                    Terimakasih !</small></div>
                 <hr class="hr-custom">
                 <!-- End of Rating -->
 
@@ -282,174 +200,60 @@
                     <h4
                         style="color: black; font-size: 20px; font-weight: 700; padding-top: 20px; margin-bottom: -35px;">
                         Artikel Terkait</h4>
+                        
+
                     <div id="carousel-artikel-terkait" class="carousel slide" data-ride="carousel">
                         <div class="carousel-inner">
-                            <div class="carousel-item active">
+                            @if($articles_terkait->count())
+                            @foreach ($articles_terkait->chunk(2) as $key => $chunk)
+                            <div class="carousel-item{{ $key === 0 ? ' active' : '' }}">
                                 <div class="cards-wrapper">
+                                    @foreach ($chunk as $article)
                                     <div class="card border-0" style="width: 18rem;">
                                         <div class="gambar-card-artikel-terkait">
-                                            <img src="./img/placeholder-category-card.png"
+                                            <img src="{{asset($article->gambar_artikel)}}"
                                                 class="card-img-top rounded-5 gambar-only-card-artikel-terkait"
                                                 alt="..."
                                                 style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover;">
                                         </div>
                                         <div class="card-body">
-                                            <h5 class="card-title" style="font-weight: 700;">Llorem
-                                                ipsum dolor sit
-                                                amet, consectetur
-                                                adipiscing
-                                                elit.
+                                            <a href="/portal-edukasi/baca/{{$article->slug}}" class="hpLink"><h5 class="card-title" style="font-weight: 700;">{{$article->judul_artikel}}</a>
                                             </h5>
-                                            <p class="card-text">Fabian Khalaf
-                                                S</p>
-
+                                            <p class="card-text">{{$article->createdBy->firstname}} {{$article->createdBy->lastname}}</p>
+                                            @php
+                                            $averageRating = $article->ratingArtikel->avg('rating_artikel');
+                                            $averageRating = number_format($averageRating, 1) 
+                                            @endphp
                                             <div class="d-flex">
                                                 <div class="additional-text-container rounded-pill d-inline-block">
                                                     <div class="keterangan-additional-text-container">
                                                         <img class="info-card-category-icon"
-                                                            src="./icons/rate-category.svg" alt="Rate Icon"
+                                                            src="{{asset('icons/rate-category.svg')}}" alt="Rate Icon"
                                                             style="width: 12px; height: 12px;">
                                                         <span class="info-card-category"
-                                                            style="font-size: 12px; font-weight: 700;">4.7</span>
+                                                            style="font-size: 12px; font-weight: 700;">{{ $averageRating}}</span>
                                                     </div>
                                                 </div>
                                                 <div class="additional-text-container rounded-pill d-inline-block"
                                                     style="background-color: #06C195; color: white;">
                                                     <div class="keterangan-additional-text-container">
                                                         <img class="info-card-category-icon"
-                                                            src="./icons/comment-category.svg" alt="Rate Icon"
+                                                            src="{{asset('icons/comment-category.svg')}}" alt="Rate Icon"
                                                             style="width: 12px; height: 12px;">
                                                         <span class="info-card-category"
-                                                            style="font-size: 12px; font-weight: 700;">1,586</span>
+                                                            style="font-size: 12px; font-weight: 700;">{{$article->pengunjung}}</span>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="card border-0" style="width: 18rem;">
-                                        <div class="gambar-card-artikel-terkait">
-                                            <img src="./img/placeholder-category-card.png"
-                                                class="card-img-top rounded-5 gambar-only-card-artikel-terkait"
-                                                alt="..."
-                                                style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover;">
-                                        </div>
-                                        <div class="card-body">
-                                            <h5 class="card-title" style="font-weight: 700;">Llorem ipsum dolor sit
-                                                amet, consectetur
-                                                adipiscing
-                                                elit.
-                                            </h5>
-                                            <p class="card-text">Fabian Khalaf
-                                                S</p>
-
-                                            <div class="d-flex">
-                                                <div class="additional-text-container rounded-pill d-inline-block">
-                                                    <div class="keterangan-additional-text-container">
-                                                        <img class="info-card-category-icon"
-                                                            src="./icons/rate-category.svg" alt="Rate Icon"
-                                                            style="width: 12px; height: 12px;">
-                                                        <span class="info-card-category"
-                                                            style="font-size: 12px; font-weight: 700;">4.7</span>
-                                                    </div>
-                                                </div>
-                                                <div class="additional-text-container rounded-pill d-inline-block"
-                                                    style="background-color: #06C195; color: white;">
-                                                    <div class="keterangan-additional-text-container">
-                                                        <img class="info-card-category-icon"
-                                                            src="./icons/comment-category.svg" alt="Rate Icon"
-                                                            style="width: 12px; height: 12px;">
-                                                        <span class="info-card-category"
-                                                            style="font-size: 12px; font-weight: 700;">1,586</span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+                                    @endforeach
                                 </div>
                             </div>
-                            <div class="carousel-item">
-                                <div class="cards-wrapper">
-                                    <div class="card border-0" style="width: 18rem;">
-                                        <div class="gambar-card-artikel-terkait">
-                                            <img src="./img/placeholder-category-card.png"
-                                                class="card-img-top rounded-5 gambar-only-card-artikel-terkait"
-                                                alt="..."
-                                                style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover;">
-                                        </div>
-                                        <div class="card-body">
-                                            <h5 class="card-title" style="font-weight: 700;">Llorem
-                                                ipsum dolor sit
-                                                amet, consectetur
-                                                adipiscing
-                                                elit.
-                                            </h5>
-                                            <p class="card-text">Fabian Khalaf
-                                                S</p>
-
-                                            <div class="d-flex">
-                                                <div class="additional-text-container rounded-pill d-inline-block">
-                                                    <div class="keterangan-additional-text-container">
-                                                        <img class="info-card-category-icon"
-                                                            src="./icons/rate-category.svg" alt="Rate Icon"
-                                                            style="width: 12px; height: 12px;">
-                                                        <span class="info-card-category"
-                                                            style="font-size: 12px; font-weight: 700;">4.7</span>
-                                                    </div>
-                                                </div>
-                                                <div class="additional-text-container rounded-pill d-inline-block"
-                                                    style="background-color: #06C195; color: white;">
-                                                    <div class="keterangan-additional-text-container">
-                                                        <img class="info-card-category-icon"
-                                                            src="./icons/comment-category.svg" alt="Rate Icon"
-                                                            style="width: 12px; height: 12px;">
-                                                        <span class="info-card-category"
-                                                            style="font-size: 12px; font-weight: 700;">1,586</span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="card border-0" style="width: 18rem;">
-                                        <div class="gambar-card-artikel-terkait">
-                                            <img src="./img/placeholder-category-card.png"
-                                                class="card-img-top rounded-5 gambar-only-card-artikel-terkait"
-                                                alt="..."
-                                                style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover;">
-                                        </div>
-                                        <div class="card-body">
-                                            <h5 class="card-title" style="font-weight: 700;">Llorem ipsum dolor sit
-                                                amet, consectetur
-                                                adipiscing
-                                                elit.
-                                            </h5>
-                                            <p class="card-text">Fabian Khalaf
-                                                S</p>
-
-                                            <div class="d-flex">
-                                                <div class="additional-text-container rounded-pill d-inline-block">
-                                                    <div class="keterangan-additional-text-container">
-                                                        <img class="info-card-category-icon"
-                                                            src="./icons/rate-category.svg" alt="Rate Icon"
-                                                            style="width: 12px; height: 12px;">
-                                                        <span class="info-card-category"
-                                                            style="font-size: 12px; font-weight: 700;">4.7</span>
-                                                    </div>
-                                                </div>
-                                                <div class="additional-text-container rounded-pill d-inline-block"
-                                                    style="background-color: #06C195; color: white;">
-                                                    <div class="keterangan-additional-text-container">
-                                                        <img class="info-card-category-icon"
-                                                            src="./icons/comment-category.svg" alt="Rate Icon"
-                                                            style="width: 12px; height: 12px;">
-                                                        <span class="info-card-category"
-                                                            style="font-size: 12px; font-weight: 700;">1,586</span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                          @endforeach
+                            @else
+                            <p class="text-center fs-4">No Posts Found</p>
+                            @endif
                         </div>
                         <button class="carousel-control-prev" type="button" data-bs-target="#carousel-artikel-terkait"
                             data-bs-slide="prev">
@@ -469,13 +273,16 @@
 
                 <!-- Komentar -->
                 <div class="komentar">
-                    <h4 style="color: black; font-size: 20px; font-weight: 700;">Komentar</h4>
-                    <div class="container-lg-10">
+                    <h4 style="color: black; font-size: 20px; font-weight: 700; margin-bottom:2rem">Komentar</h4>
+                    <div id="commentsSection">
+                   
+                    </div>
+                    {{-- <div class="container-lg-10">
                         <div class="row align-items-center">
 
                             <div class="col-2">
                                 <div class="avatar">
-                                    <img src="./img/img-penulis.png" class="rounded-circle" alt="...">
+                                    <img src="{{asset('img/img-penulis.png')}}" class="rounded-circle" alt="...">
                                 </div>
                             </div>
 
@@ -498,7 +305,7 @@
 
                             <div class="col-2">
                                 <div class="avatar">
-                                    <img src="./img/img-penulis.png" class="rounded-circle" alt="...">
+                                    <img src="{{asset('img/img-penulis.png')}}" class="rounded-circle" alt="...">
                                 </div>
                             </div>
 
@@ -513,7 +320,7 @@
                             </div>
                             <div class="mb-4"></div>
                         </div>
-                    </div>
+                    </div> --}}
 
                     <div class="add-comment">
                         <h5 style="font-weight: 700; color: #06C195;">Tambahkan Komentar</h5>
@@ -521,7 +328,7 @@
 
                             <div class="col-3">
                                 <div class="avatar">
-                                    <img src="./img/img-penulis.png" class="rounded-circle" alt="...">
+                                    <img src="{{asset('img/img-penulis.png')}}" class="rounded-circle" alt="...">
                                 </div>
                             </div>
 
@@ -532,16 +339,21 @@
                             <div class="mb-4"></div>
 
                         </div>
-
-                        <div class="textbox-komentar">
-                            <textarea class="input-textbox-komentar" type="text" placeholder="Tambahkan Komentar Anda!"
-                                id="textarea-komentar"></textarea>
-                            <div class="submit-btn">
-                                <button class="btn rounded-circle" style="background-color: #06C195; color: white;">
-                                    <i class="fa fa-plus"></i>
-                                </button>
+                        @if (session('error'))
+                        <div class="alert alert-warning">{{ session('error') }}</div>
+                    @endif
+                        <form id="komenForm" action="{{ route('komentar-artikel', ['slug' => $artikel->slug]) }}" method="post">
+                            @csrf
+                            <div class="textbox-komentar">
+                                <textarea class="input-textbox-komentar" type="text" name="komentar" placeholder="Tambahkan Komentar Anda!"
+                                    id="textarea-komentar"></textarea>
+                                <div class="submit-btn">
+                                    <button type="button" class="btn rounded-circle" style="background-color: #06C195; color: white;" onclick="submitKomentar('{{$artikel->slug}}')">
+                                        <i class="fa fa-plus"></i>
+                                    </button>                                    
+                                </div>
                             </div>
-                        </div>
+                        </form>
                     </div>
                 </div>
                 <!-- End of Komentar -->
@@ -565,168 +377,76 @@
                         <div class="content-card-widget">
                             <div class="card-text" id="category-baru">
                                 <!-- Konten floating widget -->
+                                @if($articles_terbaru->count())
+                                 @foreach($articles_terbaru as $article)
                                 <div class="mb-3 content-widget-floating">
-                                    <div style="padding-bottom: 13px;">
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi non risus
-                                        at nibh
-                                        fringilla dapibus.
-                                    </div>
+                                    <a href="/portal-edukasi/baca/{{$article->slug}}" class="hpLink"><div style="padding-bottom: 13px;">
+                                        {{$article->judul_artikel}}
+                                    </div></a>
                                     <div class="additional-text-container rounded-pill d-inline-block"
                                         style="background-color: #06C195; color: white;">
                                         <div class="keterangan-additional-text-container d-flex">
-                                            <img class="info-card-category-icon-widget" src="./icons/rate-category.svg"
+                                            <img class="info-card-category-icon-widget" src="{{asset('icons/rate-category.svg')}}"
                                                 alt="Rate Icon" style="width: 16px; height: 16px;">
                                             <p class="info-card-category-widget tes"
-                                                style="font-size: 14px; font-weight: 700;">20
-                                                Okt 2023</p>
+                                                style="font-size: 14px; font-weight: 700;">{{ date('d M Y', strtotime($article->tanggal_publikasi));}}</p>
                                         </div>
                                     </div>
                                 </div>
                                 <hr class="hr-floating-widget">
-                                <!-- Konten floating widget -->
-                                <div class="mb-3 content-widget-floating">
-                                    <div style="padding-bottom: 13px;">
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi non risus
-                                        at nibh
-                                        fringilla dapibus.
-                                    </div>
-                                    <div class="additional-text-container rounded-pill d-inline-block"
-                                        style="background-color: #06C195; color: white;">
-                                        <div class="keterangan-additional-text-container d-flex">
-                                            <img class="info-card-category-icon-widget" src="./icons/rate-category.svg"
-                                                alt="Rate Icon" style="width: 16px; height: 16px;">
-                                            <p class="info-card-category-widget tes"
-                                                style="font-size: 14px; font-weight: 700;">20
-                                                Okt 2023</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <hr class="hr-floating-widget">
-                                <!-- Konten floating widget -->
-                                <div class="mb-3 content-widget-floating">
-                                    <div style="padding-bottom: 13px;">
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi non risus
-                                        at nibh
-                                        fringilla dapibus.
-                                    </div>
-                                    <div class="additional-text-container rounded-pill d-inline-block"
-                                        style="background-color: #06C195; color: white;">
-                                        <div class="keterangan-additional-text-container d-flex">
-                                            <img class="info-card-category-icon-widget" src="./icons/rate-category.svg"
-                                                alt="Rate Icon" style="width: 16px; height: 16px;">
-                                            <p class="info-card-category-widget tes"
-                                                style="font-size: 14px; font-weight: 700;">20
-                                                Okt 2023</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <hr class="hr-floating-widget">
+                                @endforeach
+                                @else
+                                <p class="text-center fs-4">No Posts Found</p>
+                                @endif
                             </div>
                             <div class="card-text" id="category-populer">
+                                @if($articles_terpopuler->count())
+                                @foreach($articles_terpopuler as $article)
                                 <!-- Konten floating widget -->
                                 <div class="mb-3 content-widget-floating">
-                                    <div style="padding-bottom: 13px;">
-                                        Ini isi artikel Terpopuler
-                                    </div>
+                                    <a href="/portal-edukasi/baca/{{$article->slug}}" class="hpLink"><div style="padding-bottom: 13px;">
+                                        {{$article->judul_artikel}}
+                                    </div></a>
                                     <div class="additional-text-container rounded-pill d-inline-block"
                                         style="background-color: #06C195; color: white;">
                                         <div class="keterangan-additional-text-container d-flex">
-                                            <img class="info-card-category-icon-widget" src="./icons/rate-category.svg"
+                                            <img class="info-card-category-icon-widget" src="{{asset('icons/rate-category.svg')}}"
                                                 alt="Rate Icon" style="width: 16px; height: 16px;">
                                             <p class="info-card-category-widget tes"
-                                                style="font-size: 14px; font-weight: 700;">20
-                                                Okt 2023</p>
+                                                style="font-size: 14px; font-weight: 700;">{{ date('d M Y', strtotime($article->tanggal_publikasi));}}</p>
                                         </div>
                                     </div>
                                 </div>
                                 <hr class="hr-floating-widget">
+                                @endforeach
+                                @else
+                                <p class="text-center fs-4">No Posts Found</p>
+                                @endif
                                 <!-- Konten floating widget -->
-                                <div class="mb-3 content-widget-floating">
-                                    <div style="padding-bottom: 13px;">
-                                        Ini isi artikel Terpopuler
-                                    </div>
-                                    <div class="additional-text-container rounded-pill d-inline-block"
-                                        style="background-color: #06C195; color: white;">
-                                        <div class="keterangan-additional-text-container d-flex">
-                                            <img class="info-card-category-icon-widget" src="./icons/rate-category.svg"
-                                                alt="Rate Icon" style="width: 16px; height: 16px;">
-                                            <p class="info-card-category-widget tes"
-                                                style="font-size: 14px; font-weight: 700;">20
-                                                Okt 2023</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <hr class="hr-floating-widget">
-                                <!-- Konten floating widget -->
-                                <div class="mb-3 content-widget-floating">
-                                    <div style="padding-bottom: 13px;">
-                                        Ini isi artikel Terpopuler
-                                    </div>
-                                    <div class="additional-text-container rounded-pill d-inline-block"
-                                        style="background-color: #06C195; color: white;">
-                                        <div class="keterangan-additional-text-container d-flex">
-                                            <img class="info-card-category-icon-widget" src="./icons/rate-category.svg"
-                                                alt="Rate Icon" style="width: 16px; height: 16px;">
-                                            <p class="info-card-category-widget tes"
-                                                style="font-size: 14px; font-weight: 700;">20
-                                                Okt 2023</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <hr class="hr-floating-widget">
                             </div>
                             <div class="card-text" id="category-acak">
                                 <!-- Konten floating widget -->
+                                @if($articles_acak->count())
+                                @foreach($articles_acak as $article)
                                 <div class="mb-3 content-widget-floating">
-                                    <div style="padding-bottom: 13px;">
-                                        Ini isi artikel Acak
-                                    </div>
+                                    <a href="/portal-edukasi/baca/{{$article->slug}}" class="hpLink"><div style="padding-bottom: 13px;">
+                                        {{$article->judul_artikel}}
+                                    </div></a>
                                     <div class="additional-text-container rounded-pill d-inline-block"
                                         style="background-color: #06C195; color: white;">
                                         <div class="keterangan-additional-text-container d-flex">
-                                            <img class="info-card-category-icon-widget" src="./icons/rate-category.svg"
+                                            <img class="info-card-category-icon-widget" src="{{asset('icons/rate-category.svg')}}"
                                                 alt="Rate Icon" style="width: 16px; height: 16px;">
                                             <p class="info-card-category-widget tes"
-                                                style="font-size: 14px; font-weight: 700;">20
-                                                Okt 2023</p>
+                                                style="font-size: 14px; font-weight: 700;">{{ date('d M Y', strtotime($article->tanggal_publikasi));}}</p>
                                         </div>
                                     </div>
                                 </div>
                                 <hr class="hr-floating-widget">
-                                <!-- Konten floating widget -->
-                                <div class="mb-3 content-widget-floating">
-                                    <div style="padding-bottom: 13px;">
-                                        Ini isi artikel Acak
-                                    </div>
-                                    <div class="additional-text-container rounded-pill d-inline-block"
-                                        style="background-color: #06C195; color: white;">
-                                        <div class="keterangan-additional-text-container d-flex">
-                                            <img class="info-card-category-icon-widget" src="./icons/rate-category.svg"
-                                                alt="Rate Icon" style="width: 16px; height: 16px;">
-                                            <p class="info-card-category-widget tes"
-                                                style="font-size: 14px; font-weight: 700;">20
-                                                Okt 2023</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <hr class="hr-floating-widget">
-                                <!-- Konten floating widget -->
-                                <div class="mb-3 content-widget-floating">
-                                    <div style="padding-bottom: 13px;">
-                                        Ini isi artikel Acak
-                                    </div>
-                                    <div class="additional-text-container rounded-pill d-inline-block"
-                                        style="background-color: #06C195; color: white;">
-                                        <div class="keterangan-additional-text-container d-flex">
-                                            <img class="info-card-category-icon-widget" src="./icons/rate-category.svg"
-                                                alt="Rate Icon" style="width: 16px; height: 16px;">
-                                            <p class="info-card-category-widget tes"
-                                                style="font-size: 14px; font-weight: 700;">20
-                                                Okt 2023</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <hr class="hr-floating-widget">
+                                @endforeach
+                                @else
+                                <p class="text-center fs-4">No Posts Found</p>
+                                @endif
                             </div>
                         </div>
 
@@ -737,56 +457,83 @@
         </div>
     </div>
     <!-- Footer -->
-    <div class="image-footer-container">
-        <img src="./img/Background-Footer.png" style="width: 100%;" alt="Foto Footer">
-
-
-        <div class="btn-overlay-footer">
-            <div class="d-flex justify-content-center">
-                <button type="button" class="btn rounded-pill m-2" style="font-size: 14px;">Desain
-                    Taman</button>
-                <button type="button" class="btn rounded-pill m-2" style="font-size: 14px;">Konstruksi</button>
-                <button type="button" class="btn rounded-pill m-2" style="font-size: 14px;">Pemeliharaan
-                    Taman</button>
-                <button type="button" class="btn rounded-pill m-2" style="font-size: 14px;">Tanaman</button>
-                <button type="button" class="btn rounded-pill m-2" style="font-size: 14px;">Material</button>
-                <button type="button" class="btn rounded-pill m-2" style="font-size: 14px;">Lainnya</button>
-            </div>
-        </div>
-
-        <div class="text-overlay-footer">
-            <p class="Hashtag">#</p>
-            <p class="Semuabisatahu">SemuaBisaTahu</p>
-        </div>
-    </div>
-    <footer
-        style="background-color: #303030; color: white; height: 243px; display: flex; justify-content: center; align-items: center;  bottom: 0; width: 100%;">
-        <div class="container text-center">
-            <p><span style="font-weight: 700;"><span style="text-decoration: underline;">&copy;</span> PT
-                    Lanskap
-                    Indonesia
-                    Ideal</span> 2023.</p>
-            <a href="https://www.instagram.com/ideally.indonesia/" target="_blank"
-                class="more-information btn rounded-pill">
-                <i class="fab fa-instagram"></i>
-            </a>
-            <a href="#" class="more-information btn rounded-pill" target="_blank">
-                <i class="fab fa-tiktok"></i>
-            </a>
-            <a href="https://id.linkedin.com/company/ideally-indonesia" target="_blank"
-                class="more-information btn rounded-pill">
-                <i class="fab fa-linkedin"></i>
-            </a>
-            <a href="#" class="more-information btn rounded-pill">
-                <i class="fab fa-whatsapp"></i>
-                <p class="information-text">Informasi Lebih Lanjut</p>
-            </a>
-        </div>
-    </footer>
+    @include('partials.artikel-footer')
     <!-- End of Footer -->
 
     <!-- Javascript -->
-    <script src="js/navbar.js"></script>
-    <script src="js/baca-artikel.js"></script>
+    <script src="{{asset('/js/navbar.js')}}"></script>
+    <script src="{{asset('/js/baca-artikel.js')}}"></script>
+    <script>
+
+        function submitForm(rating, slug) {
+
+        var hiddenInput = document.createElement("input");
+        hiddenInput.setAttribute("type", "hidden");
+        hiddenInput.setAttribute("name", "rating");
+        hiddenInput.setAttribute("value", rating);
+
+        document.getElementById("ratingForm").appendChild(hiddenInput);
+            $.ajax({
+            type: "POST",
+            url: "{{ url('/portal-edukasi/rating/') }}/" + slug,
+            headers: {
+                'X-CSRF-TOKEN': "{{ csrf_token() }}",
+            },
+            data: {
+                rating: rating,
+            },
+            success: function (response) {
+                // Handle the success response, if needed
+                // console.log(response);
+                document.getElementById('suksesRate').style.visibility = 'visible';
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+                console.error("AJAX Error:", textStatus, errorThrown);
+            },
+        });
+    } 
+    $(document).ready(function() {
+    // Get the initial slug from the URL or set it to a default value
+        var initialSlug = window.location.pathname.split('/').pop();
+        
+        // Call the 'show' function with the initial slug
+        show(initialSlug);
+        console.log(initialSlug);
+    });
+    function show(slug) {
+        $.get("{{ url('/portal-edukasi/komentar/') }}/" + slug, {}, function(data, status) {
+            $("#commentsSection").html(data);
+        });
+    }
+
+
+    function submitKomentar(slug) {
+    var komentar = $('#textarea-komentar').val();
+    $.ajax({
+        type: "POST",
+        url: "{{ url('/portal-edukasi/komentar/') }}/" + slug,
+        headers: {
+            'X-CSRF-TOKEN': "{{ csrf_token() }}",
+        },
+        data: {
+            komentar: komentar,
+        },
+        success: function (response) {
+            document.getElementById('suksesRate').style.visibility = 'visible';
+
+            // Call the 'show' function with the provided slug
+            show(slug);
+
+            // Optional: Clear the form after submission
+            $('#komenForm')[0].reset();
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+            console.error("AJAX Error:", textStatus, errorThrown);
+        },
+    });
+    return false; // Prevent the default form submission
+    }
+  
+    </script>
 
 </body>
