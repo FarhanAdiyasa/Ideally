@@ -18,15 +18,12 @@ return new class extends Migration
             $table->softDeletes();
 
             $table->foreignId('created_by');
-            $table->foreignId('updated_by');
+            $table->foreignId('updated_by')->nullable();
             $table->foreignId('deleted_by')->nullable();
        
-            $table->integer('status_tampil');
+            $table->integer('status_tampil')->default(0);
             
-    
             $table->foreign('created_by')->references('user_id')->on('users');
-
-            
 
             // Menghubungkan kolom 'updated_date' dengan tabel 'users'
             $table->foreign('updated_by')->references('user_id')->on('users');

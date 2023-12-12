@@ -75,8 +75,8 @@
                                 style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover;">
                             </div>
                             <div class="card-body">
-                              <h5 class="card-title" style="font-weight: 700;">{{$article->judul_artikel}}
-                              </h5>
+                              <a href="/portal-edukasi/baca/{{$article->slug}}" class="hpLink"><h5 class="card-title" style="font-weight: 700;">{{$article->judul_artikel}}
+                              </h5></a>
                               <p class="card-text" style="font-size: small; color: #999999;">{{ $article->createdBy->firstname }} {{ $article->createdBy->lastname }}</p>
             
                               <div class="d-flex">
@@ -142,7 +142,7 @@
         
                           <!-- Separator -->
                           <hr style="border-top: 3px solid grey; ">
-                          <span style="font-size: 14px; font-weight: 700; color: #06C195;">{{$komentar->artikel->judul_artikel}}</span>
+                          <a href="/portal-edukasi/baca/{{$article->slug}}" class="hpLink"><span style="font-size: 14px; font-weight: 700; color: #06C195;">{{$komentar->artikel->judul_artikel}}</span></a>
                         </div>
                       </div>
                       @endforeach
@@ -168,390 +168,44 @@
       <p style="color: #727272; margin-bottom: -15px;">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
       <div id="carousel-most-visited-artikel" class="carousel slide" data-ride="carousel">
         <div class="carousel-inner">
-          <div class="carousel-item active">
-            <div class="cards-wrapper">
-              <div class="card border-0" style="width: 18rem;">
-                <div class="gambar-card-artikel-baru">
-                  <img src="{{asset('img/placeholder-category-card.png')}}"
-                    class="card-img-top rounded-5 gambar-only-card-artikel-baru" alt="..."
-                    style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover;">
-                </div>
-                <div class="card-body">
-                  <h5 class="card-title" style="font-weight: 700;">Llorem ipsum dolor sit amet, consectetur adipiscing
-                    elit.
-                  </h5>
-                  <p class="card-text" style="font-size: small; color: #999999;">Fabian Khalaf S</p>
-
-                  <div class="d-flex">
-                    <div class="additional-text-container rounded-pill d-inline-block">
-                      <div class="keterangan-additional-text-container">
-                        <img class="info-card-category-icon" src="{{asset('icons/rate-category.svg')}}" alt="Rate Icon"
-                          style="width: 12px; height: 12px;">
-                        <span class="info-card-category" style="font-size: 12px; font-weight: 700;">4.7</span>
+          @foreach ($articles_terpopuler->chunk(3) as $key => $chunk)
+          <div class="carousel-item{{ $key === 0 ? ' active' : '' }}">
+              <div class="cards-wrapper">
+                  @foreach ($chunk as $article)
+                      <div class="card border-0" style="width: 18rem;">
+                        <div class="gambar-card-artikel-baru">
+                          <img src="{{$article->gambar_artikel}}"
+                            class="card-img-top rounded-5 gambar-only-card-artikel-baru" alt="..."
+                            style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover;">
+                        </div>
+                        <div class="card-body">
+                          <a href="/portal-edukasi/baca/{{$article->slug}}" class="hpLink"><h5 class="card-title" style="font-weight: 700;">{{$article->judul_artikel}}
+                          </h5></a>
+                          <p class="card-text" style="font-size: small; color: #999999;">{{ $article->createdBy->firstname }} {{ $article->createdBy->lastname }}</p>
+        
+                          <div class="d-flex">
+                            <div class="additional-text-container rounded-pill d-inline-block">
+                              <div class="keterangan-additional-text-container">
+                                <img class="info-card-category-icon" src="{{asset('icons/rate-category.svg')}}" alt="Rate Icon"
+                                  style="width: 12px; height: 12px;">
+                                <span class="info-card-category" style="font-size: 12px; font-weight: 700;">4.7</span>
+                              </div>
+                            </div>
+                            <div class="additional-text-container rounded-pill d-inline-block"
+                              style="background-color: #06C195; color: white;">
+                              <div class="keterangan-additional-text-container">
+                                <img class="info-card-category-icon" src="{{asset('icons/comment-category.svg')}}" alt="Rate Icon"
+                                  style="width: 12px; height: 12px;">
+                                <span class="info-card-category" style="font-size: 12px; font-weight: 700;">{{$article->pengunjung}}</span>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
                       </div>
-                    </div>
-                    <div class="additional-text-container rounded-pill d-inline-block"
-                      style="background-color: #06C195; color: white;">
-                      <div class="keterangan-additional-text-container">
-                        <img class="info-card-category-icon" src="{{asset('icons/comment-category.svg')}}" alt="Rate Icon"
-                          style="width: 12px; height: 12px;">
-                        <span class="info-card-category" style="font-size: 12px; font-weight: 700;">1,586</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+                  @endforeach
               </div>
-              <div class="card border-0" style="width: 18rem;">
-                <div class="gambar-card-artikel-baru">
-                  <img src="{{asset('img/placeholder-category-card.png')}}"
-                    class="card-img-top rounded-5 gambar-only-card-artikel-baru" alt="..."
-                    style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover;">
-                </div>
-                <div class="card-body">
-                  <h5 class="card-title" style="font-weight: 700;">Llorem ipsum dolor sit amet, consectetur adipiscing
-                    elit.
-                  </h5>
-                  <p class="card-text" style="font-size: small; color: #999999;">Fabian Khalaf S</p>
-
-                  <div class="d-flex">
-                    <div class="additional-text-container rounded-pill d-inline-block">
-                      <div class="keterangan-additional-text-container">
-                        <img class="info-card-category-icon" src="{{asset('icons/rate-category.svg')}}" alt="Rate Icon"
-                          style="width: 12px; height: 12px;">
-                        <span class="info-card-category" style="font-size: 12px; font-weight: 700;">4.7</span>
-                      </div>
-                    </div>
-                    <div class="additional-text-container rounded-pill d-inline-block"
-                      style="background-color: #06C195; color: white;">
-                      <div class="keterangan-additional-text-container">
-                        <img class="info-card-category-icon" src="{{asset('icons/comment-category.svg')}}" alt="Rate Icon"
-                          style="width: 12px; height: 12px;">
-                        <span class="info-card-category" style="font-size: 12px; font-weight: 700;">1,586</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="card border-0" style="width: 18rem;">
-                <div class="gambar-card-artikel-baru">
-                  <img src="{{asset('img/placeholder-category-card.png')}}"
-                    class="card-img-top rounded-5 gambar-only-card-artikel-baru" alt="..."
-                    style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover;">
-                </div>
-                <div class="card-body">
-                  <h5 class="card-title" style="font-weight: 700;">Lorem ipsum dolor sit amet, consectetur adipiscing
-                    elit.
-                  </h5>
-                  <p class="card-text" style="font-size: small; color: #999999;">Fabian Khalaf S</p>
-
-                  <div class="d-flex">
-                    <div class="additional-text-container rounded-pill d-inline-block">
-                      <div class="keterangan-additional-text-container">
-                        <img class="info-card-category-icon" src="{{asset('icons/rate-category.svg')}}" alt="Rate Icon"
-                          style="width: 12px; height: 12px;">
-                        <span class="info-card-category" style="font-size: 12px; font-weight: 700;">4.7</span>
-                      </div>
-                    </div>
-                    <div class="additional-text-container rounded-pill d-inline-block"
-                      style="background-color: #06C195; color: white;">
-                      <div class="keterangan-additional-text-container">
-                        <img class="info-card-category-icon" src="{{asset('icons/comment-category.svg')}}" alt="Rate Icon"
-                          style="width: 12px; height: 12px;">
-                        <span class="info-card-category" style="font-size: 12px; font-weight: 700;">1,586</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="card border-0" style="width: 18rem;">
-                <div class="gambar-card-artikel-baru">
-                  <img src="{{asset('img/placeholder-category-card.png')}}"
-                    class="card-img-top rounded-5 gambar-only-card-artikel-baru" alt="..."
-                    style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover;">
-                </div>
-                <div class="card-body">
-                  <h5 class="card-title" style="font-weight: 700;">Lorem ipsum dolor sit amet, consectetur adipiscing
-                    elit.
-                  </h5>
-                  <p class="card-text" style="font-size: small; color: #999999;">Fabian Khalaf S</p>
-
-                  <div class="d-flex">
-                    <div class="additional-text-container rounded-pill d-inline-block">
-                      <div class="keterangan-additional-text-container">
-                        <img class="info-card-category-icon" src="{{asset('icons/rate-category.svg')}}" alt="Rate Icon"
-                          style="width: 12px; height: 12px;">
-                        <span class="info-card-category" style="font-size: 12px; font-weight: 700;">4.7</span>
-                      </div>
-                    </div>
-                    <div class="additional-text-container rounded-pill d-inline-block"
-                      style="background-color: #06C195; color: white;">
-                      <div class="keterangan-additional-text-container">
-                        <img class="info-card-category-icon" src="{{asset('icons/comment-category.svg')}}" alt="Rate Icon"
-                          style="width: 12px; height: 12px;">
-                        <span class="info-card-category" style="font-size: 12px; font-weight: 700;">1,586</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
           </div>
-          <div class="carousel-item">
-            <div class="cards-wrapper">
-              <div class="card border-0" style="width: 18rem;">
-                <div class="gambar-card-artikel-baru">
-                  <img src="{{asset('img/placeholder-category-card.png')}}"
-                    class="card-img-top rounded-5 gambar-only-card-artikel-baru" alt="..."
-                    style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover;">
-                </div>
-                <div class="card-body">
-                  <h5 class="card-title" style="font-weight: 700;">Lorem ipsum dolor sit amet, consectetur adipiscing
-                    elit.
-                  </h5>
-                  <p class="card-text" style="font-size: small; color: #999999;">Fabian Khalaf S</p>
-
-                  <div class="d-flex">
-                    <div class="additional-text-container rounded-pill d-inline-block">
-                      <div class="keterangan-additional-text-container">
-                        <img class="info-card-category-icon" src="{{asset('icons/rate-category.svg')}}" alt="Rate Icon"
-                          style="width: 12px; height: 12px;">
-                        <span class="info-card-category" style="font-size: 12px; font-weight: 700;">4.7</span>
-                      </div>
-                    </div>
-                    <div class="additional-text-container rounded-pill d-inline-block"
-                      style="background-color: #06C195; color: white;">
-                      <div class="keterangan-additional-text-container">
-                        <img class="info-card-category-icon" src="{{asset('icons/comment-category.svg')}}" alt="Rate Icon"
-                          style="width: 12px; height: 12px;">
-                        <span class="info-card-category" style="font-size: 12px; font-weight: 700;">1,586</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="card border-0" style="width: 18rem;">
-                <div class="gambar-card-artikel-baru">
-                  <img src="{{asset('img/placeholder-category-card.png')}}"
-                    class="card-img-top rounded-5 gambar-only-card-artikel-baru" alt="..."
-                    style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover;">
-                </div>
-                <div class="card-body">
-                  <h5 class="card-title" style="font-weight: 700;">Lorem ipsum dolor sit amet, consectetur adipiscing
-                    elit.
-                  </h5>
-                  <p class="card-text" style="font-size: small; color: #999999;">Fabian Khalaf S</p>
-
-                  <div class="d-flex">
-                    <div class="additional-text-container rounded-pill d-inline-block">
-                      <div class="keterangan-additional-text-container">
-                        <img class="info-card-category-icon" src="{{asset('icons/rate-category.svg')}}" alt="Rate Icon"
-                          style="width: 12px; height: 12px;">
-                        <span class="info-card-category" style="font-size: 12px; font-weight: 700;">4.7</span>
-                      </div>
-                    </div>
-                    <div class="additional-text-container rounded-pill d-inline-block"
-                      style="background-color: #06C195; color: white;">
-                      <div class="keterangan-additional-text-container">
-                        <img class="info-card-category-icon" src="{{asset('icons/comment-category.svg')}}" alt="Rate Icon"
-                          style="width: 12px; height: 12px;">
-                        <span class="info-card-category" style="font-size: 12px; font-weight: 700;">1,586</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="card border-0" style="width: 18rem;">
-                <div class="gambar-card-artikel-baru">
-                  <img src="{{asset('img/placeholder-category-card.png')}}"
-                    class="card-img-top rounded-5 gambar-only-card-artikel-baru" alt="..."
-                    style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover;">
-                </div>
-                <div class="card-body">
-                  <h5 class="card-title" style="font-weight: 700;">Lorem ipsum dolor sit amet, consectetur adipiscing
-                    elit.
-                  </h5>
-                  <p class="card-text" style="font-size: small; color: #999999;">Fabian Khalaf S</p>
-
-                  <div class="d-flex">
-                    <div class="additional-text-container rounded-pill d-inline-block">
-                      <div class="keterangan-additional-text-container">
-                        <img class="info-card-category-icon" src="{{asset('icons/rate-category.svg')}}" alt="Rate Icon"
-                          style="width: 12px; height: 12px;">
-                        <span class="info-card-category" style="font-size: 12px; font-weight: 700;">4.7</span>
-                      </div>
-                    </div>
-                    <div class="additional-text-container rounded-pill d-inline-block"
-                      style="background-color: #06C195; color: white;">
-                      <div class="keterangan-additional-text-container">
-                        <img class="info-card-category-icon" src="{{asset('icons/comment-category.svg')}}" alt="Rate Icon"
-                          style="width: 12px; height: 12px;">
-                        <span class="info-card-category" style="font-size: 12px; font-weight: 700;">1,586</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="card border-0" style="width: 18rem;">
-                <div class="gambar-card-artikel-baru">
-                  <img src="{{asset('img/placeholder-category-card.png')}}"
-                    class="card-img-top rounded-5 gambar-only-card-artikel-baru" alt="..."
-                    style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover;">
-                </div>
-                <div class="card-body">
-                  <h5 class="card-title" style="font-weight: 700;">Lorem ipsum dolor sit amet, consectetur adipiscing
-                    elit.
-                  </h5>
-                  <p class="card-text" style="font-size: small; color: #999999;">Fabian Khalaf S</p>
-
-                  <div class="d-flex">
-                    <div class="additional-text-container rounded-pill d-inline-block">
-                      <div class="keterangan-additional-text-container">
-                        <img class="info-card-category-icon" src="{{asset('icons/rate-category.svg')}}" alt="Rate Icon"
-                          style="width: 12px; height: 12px;">
-                        <span class="info-card-category" style="font-size: 12px; font-weight: 700;">4.7</span>
-                      </div>
-                    </div>
-                    <div class="additional-text-container rounded-pill d-inline-block"
-                      style="background-color: #06C195; color: white;">
-                      <div class="keterangan-additional-text-container">
-                        <img class="info-card-category-icon" src="{{asset('icons/comment-category.svg')}}" alt="Rate Icon"
-                          style="width: 12px; height: 12px;">
-                        <span class="info-card-category" style="font-size: 12px; font-weight: 700;">1,586</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="carousel-item">
-            <div class="cards-wrapper">
-              <div class="card border-0" style="width: 18rem;">
-                <div class="gambar-card-artikel-baru">
-                  <img src="{{asset('img/placeholder-category-card.png')}}"
-                    class="card-img-top rounded-5 gambar-only-card-artikel-baru" alt="..."
-                    style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover;">
-                </div>
-                <div class="card-body">
-                  <h5 class="card-title" style="font-weight: 700;">Lorem ipsum dolor sit amet, consectetur adipiscing
-                    elit.
-                  </h5>
-                  <p class="card-text" style="font-size: small; color: #999999;">Fabian Khalaf S</p>
-
-                  <div class="d-flex">
-                    <div class="additional-text-container rounded-pill d-inline-block">
-                      <div class="keterangan-additional-text-container">
-                        <img class="info-card-category-icon" src="{{asset('icons/rate-category.svg')}}" alt="Rate Icon"
-                          style="width: 12px; height: 12px;">
-                        <span class="info-card-category" style="font-size: 12px; font-weight: 700;">4.7</span>
-                      </div>
-                    </div>
-                    <div class="additional-text-container rounded-pill d-inline-block"
-                      style="background-color: #06C195; color: white;">
-                      <div class="keterangan-additional-text-container">
-                        <img class="info-card-category-icon" src="{{asset('icons/comment-category.svg')}}" alt="Rate Icon"
-                          style="width: 12px; height: 12px;">
-                        <span class="info-card-category" style="font-size: 12px; font-weight: 700;">1,586</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="card border-0" style="width: 18rem;">
-                <div class="gambar-card-artikel-baru">
-                  <img src="{{asset('img/placeholder-category-card.png')}}"
-                    class="card-img-top rounded-5 gambar-only-card-artikel-baru" alt="..."
-                    style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover;">
-                </div>
-                <div class="card-body">
-                  <h5 class="card-title" style="font-weight: 700;">Lorem ipsum dolor sit amet, consectetur adipiscing
-                    elit.
-                  </h5>
-                  <p class="card-text" style="font-size: small; color: #999999;">Fabian Khalaf S</p>
-
-                  <div class="d-flex">
-                    <div class="additional-text-container rounded-pill d-inline-block">
-                      <div class="keterangan-additional-text-container">
-                        <img class="info-card-category-icon" src="{{asset('icons/rate-category.svg')}}" alt="Rate Icon"
-                          style="width: 12px; height: 12px;">
-                        <span class="info-card-category" style="font-size: 12px; font-weight: 700;">4.7</span>
-                      </div>
-                    </div>
-                    <div class="additional-text-container rounded-pill d-inline-block"
-                      style="background-color: #06C195; color: white;">
-                      <div class="keterangan-additional-text-container">
-                        <img class="info-card-category-icon" src="{{asset('icons/comment-category.svg')}}" alt="Rate Icon"
-                          style="width: 12px; height: 12px;">
-                        <span class="info-card-category" style="font-size: 12px; font-weight: 700;">1,586</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="card border-0" style="width: 18rem;">
-                <div class="gambar-card-artikel-baru">
-                  <img src="{{asset('img/placeholder-category-card.png')}}"
-                    class="card-img-top rounded-5 gambar-only-card-artikel-baru" alt="..."
-                    style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover;">
-                </div>
-                <div class="card-body">
-                  <h5 class="card-title" style="font-weight: 700;">Lorem ipsum dolor sit amet, consectetur adipiscing
-                    elit.
-                  </h5>
-                  <p class="card-text" style="font-size: small; color: #999999;">Fabian Khalaf S</p>
-
-                  <div class="d-flex">
-                    <div class="additional-text-container rounded-pill d-inline-block">
-                      <div class="keterangan-additional-text-container">
-                        <img class="info-card-category-icon" src="{{asset('icons/rate-category.svg')}}" alt="Rate Icon"
-                          style="width: 12px; height: 12px;">
-                        <span class="info-card-category" style="font-size: 12px; font-weight: 700;">4.7</span>
-                      </div>
-                    </div>
-                    <div class="additional-text-container rounded-pill d-inline-block"
-                      style="background-color: #06C195; color: white;">
-                      <div class="keterangan-additional-text-container">
-                        <img class="info-card-category-icon" src="{{asset('icons/comment-category.svg')}}" alt="Rate Icon"
-                          style="width: 12px; height: 12px;">
-                        <span class="info-card-category" style="font-size: 12px; font-weight: 700;">1,586</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="card border-0" style="width: 18rem;">
-                <div class="gambar-card-artikel-baru">
-                  <img src="{{asset('img/placeholder-category-card.png')}}"
-                    class="card-img-top rounded-5 gambar-only-card-artikel-baru" alt="..."
-                    style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover;">
-                </div>
-                <div class="card-body">
-                  <h5 class="card-title" style="font-weight: 700;">Lorem ipsum dolor sit amet, consectetur adipiscing
-                    elit.
-                  </h5>
-                  <p class="card-text" style="font-size: small; color: #999999;">Fabian Khalaf S</p>
-
-                  <div class="d-flex">
-                    <div class="additional-text-container rounded-pill d-inline-block">
-                      <div class="keterangan-additional-text-container">
-                        <img class="info-card-category-icon" src="{{asset('icons/rate-category.svg')}}" alt="Rate Icon"
-                          style="width: 12px; height: 12px;">
-                        <span class="info-card-category" style="font-size: 12px; font-weight: 700;">4.7</span>
-                      </div>
-                    </div>
-                    <div class="additional-text-container rounded-pill d-inline-block"
-                      style="background-color: #06C195; color: white;">
-                      <div class="keterangan-additional-text-container">
-                        <img class="info-card-category-icon" src="{{asset('icons/comment-category.svg')}}" alt="Rate Icon"
-                          style="width: 12px; height: 12px;">
-                        <span class="info-card-category" style="font-size: 12px; font-weight: 700;">1,586</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+        @endforeach
         </div>
         <button class="carousel-control-prev" type="button" data-bs-target="#carousel-most-visited-artikel"
           data-bs-slide="prev">

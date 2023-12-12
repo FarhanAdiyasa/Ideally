@@ -10,7 +10,7 @@ class Dedikasi_Flora extends Model
     use HasFactory;
 
     protected $guarded = ['id_nurseri'];
-
+    protected $table = "dedikasi_floras";
     protected $with = ['createdBy', 'updatedBy', 'deletedBy'];
 
     public function createdBy()
