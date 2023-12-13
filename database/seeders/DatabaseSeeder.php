@@ -62,9 +62,16 @@ class DatabaseSeeder extends Seeder
         Agrigard::factory(40)->create();
         Konkurito::factory(40)->create();
         Dedikasi_Flora::factory(40)->create();
-        Batunesia::factory(40)->create();
+        // Batunesia::factory(40)->create();
         Shineage::factory(40)->create();
         Everlas_Things::factory(40)->create();
-        // Promo::factory(40)->create();
+        // Promo::factory(10)->create()->each(function ($promo) {
+        //     $promo->nurseris()->attach(Dedikasi_Flora::pluck('id_nurseri')->toArray());
+        //     $promo->batunesias()->attach(Batunesia::pluck('id_batu')->toArray());
+        //     $promo->konkuritos()->attach(Konkurito::pluck('id_konkurito')->toArray());
+        //     $promo->everlass()->attach(Everlas_Things::pluck('id_everlas_things')->toArray());
+        //     $promo->shineages()->attach(Shineage::pluck('id_shineage')->toArray());
+        //     $promo->agrigards()->attach(Agrigard::pluck('id_agrigard')->toArray());
+        // });
     }
 }

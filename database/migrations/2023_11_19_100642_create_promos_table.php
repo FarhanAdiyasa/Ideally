@@ -15,10 +15,10 @@ return new class extends Migration
             $table->id('id_promo');
             $table->string('nama_promo');
             $table->string('jenis_promo');
-            $table->string('target_promo_b2i')->nullable();
-            $table->string('target_promo_b2c')->nullable();
-            $table->string('target_promo_b2b')->nullable();
-            $table->string('tipe_promo');
+            $table->boolean('target_promo_b2i')->nullable();
+            $table->boolean('target_promo_b2c')->nullable();
+            $table->boolean('target_promo_b2b')->nullable();
+            $table->string('tipe_promo')->default("diskon");
             $table->string('tipe_potongan');
             $table->decimal('persentase_promo')->nullable();
             $table->decimal('nominal_promo');
@@ -26,10 +26,12 @@ return new class extends Migration
             $table->integer('kuota');
             $table->datetime('tanggal_mulai');
             $table->datetime('tanggal_selesai');
-            
+            $table->timestamp('tanggal_publikasi')->nullable();  
+
             $table->foreignId('created_by');
             $table->foreignId('updated_by')->nullable();
             $table->foreignId('deleted_by')->nullable();
+
             $table->timestamps();
             $table->softDeletes();
             
@@ -42,8 +44,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('id_promo');
             $table->foreignId('id_nurseri');
-            $table->timestamps();
-            $table->softDeletes();
+            
             
             $table->foreign('id_promo')->references('id_promo')->on('promos');
             $table->foreign('id_nurseri')->references('id_nurseri')->on('dedikasi_floras');
@@ -52,8 +53,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('id_promo');
             $table->foreignId('id_batu');
-            $table->timestamps();
-            $table->softDeletes();
+            
 
             $table->foreign('id_promo')->references('id_promo')->on('promos');
             $table->foreign('id_batu')->references('id_batu')->on('batunesias');
@@ -62,8 +62,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('id_promo');
             $table->foreignId('id_konkurito');
-            $table->timestamps();
-            $table->softDeletes();
+            
             
             $table->foreign('id_promo')->references('id_promo')->on('promos');
             $table->foreign('id_konkurito')->references('id_konkurito')->on('konkuritos');
@@ -72,8 +71,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('id_promo');
             $table->foreignId('id_everlas_things');
-            $table->timestamps();
-            $table->softDeletes();
+            
 
             $table->foreign('id_promo')->references('id_promo')->on('promos');
             $table->foreign('id_everlas_things')->references('id_everlas_things')->on('everlas_things');
@@ -82,8 +80,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('id_promo');
             $table->foreignId('id_shineage');
-            $table->timestamps();
-            $table->softDeletes();
+            
 
             $table->foreign('id_promo')->references('id_promo')->on('promos');
             $table->foreign('id_shineage')->references('id_shineage')->on('shineages');
@@ -92,8 +89,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('id_promo');
             $table->foreignId('id_agrigard');
-            $table->timestamps();
-            $table->softDeletes();
+            
 
             $table->foreign('id_promo')->references('id_promo')->on('promos');
             $table->foreign('id_agrigard')->references('id_agrigard')->on('agrigards');

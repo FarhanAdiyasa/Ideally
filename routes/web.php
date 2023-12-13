@@ -48,4 +48,6 @@ Route::get('/daftar-promo', [PromoController::class, 'index'])->name('daftar-pro
 Route::get('/tambah-promo', [PromoController::class, 'create'])->name('daftar-promo.tambah');
 Route::post('/tambah-promo/store', [PromoController::class, 'store'])->name('daftar-promo.save');
 Route::get('/tambah-promo/{brand}', [PromoController::class, 'show'])->name('promo-show.product');
+Route::get('/edit-promo/{id}', [PromoController::class, 'edit'])->name('daftar-promo.edit');
+Route::put('/edit-promo/{id}', [PromoController::class, 'update'])->name('daftar-promo.update');
 

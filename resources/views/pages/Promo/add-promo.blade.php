@@ -93,8 +93,8 @@
         <div class="col-md-9">
           <div class="form-group">
             <div class="form-check form-check-inline">
-                <input class="form-check-input" type="checkbox" id="b21" name="target_promo[]" value="b21" @if (is_array(old('target_promo')) && in_array('b21', old('target_promo'))) checked @endif>
-                <label class="form-check-label" for="b21">Business To Individu</label>
+                <input class="form-check-input" type="checkbox" id="b2i" name="target_promo[]" value="b2i" @if (is_array(old('target_promo')) && in_array('b21', old('target_promo'))) checked @endif>
+                <label class="form-check-label" for="b2i">Business To Individu</label>
             </div>
             <div class="form-check form-check-inline">
                 <input class="form-check-input" type="checkbox" id="b2c" name="target_promo[]" value="b2c" @if (is_array(old('target_promo')) && in_array('b2c', old('target_promo'))) checked @endif>
