@@ -1,11 +1,11 @@
-<table id="products-ss" class="table table-striped table-bordered text-center">
+<table id="products-ss" class="table table-hover table-bordered text-center">
     <thead>
         <tr>
             <th data-orderable="false">
                 <label for="all">All</label>
                 <input type="checkbox" name="" value="" id="all" class="check-all">
             </th> 
-            <th>Info Agrigard</th>
+            <th>Info {{$brand}}</th>
             <th>Harga</th>
             <th>Stok</th>
         </tr>

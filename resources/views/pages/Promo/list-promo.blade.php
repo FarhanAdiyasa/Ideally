@@ -5,7 +5,7 @@
         <div class="container">
             <div class="card mt-5">
                 <div class="card-header">
-                    <h3>List Products</h3>
+                    <h3>List Promos</h3>
                 </div>
                 <div class="card-body">
                     @if (session('success'))
@@ -17,9 +17,9 @@
                     @endif
 
                     <p>
-                        <a href="{{ route('daftar-produk.tambah') }}" class="btn btn-primary">New Product</a>
+                        <a href="{{ route('daftar-promo.tambah') }}" class="btn btn-primary">New Promo</a>
                     </p>
-                    <table id="products-table" class="table table-striped table-bordered text-center">
+                    <table id="promos-table" class="table table-hover table-bordered text-center">
                         <thead>
                             <tr>
                                 <th>Info Promo</th>
@@ -33,26 +33,25 @@
                             @forelse ($promos as $promo)
                                 <tr>
                                     <td>
-                                        <div class=""> {{$promo->judul_promo}}</div>
-                                        <div class=""> {{$promo->deskripsi_promo}}</div>
+                                        <div class=""> {{$promo->nama_promo}}</div>
                                     </td>
                                     <td>
-                                      @if ($promo->satuan_potongan == "uang")
-                                      Rp. {{$promo->jumlah_potongan}} 
+                                      @if ($promo->tipe_potongan == "nominal")
+                                      Rp. {{$promo->nominal_promo}} 
                                       @else
-                                      {{$promo->jumlah_potongan}} %
+                                      {{$promo->persentase_promo}} %
                                       @endif
                                     </td>
                                     <td>
                                         {{$promo->tanggal_mulai}} -  {{$promo->tanggal_selesai}}
                                     </td>
                                     <td>
-                                        {{ $agrigard->tanggal_publikasi == null ? 'Tidak Aktif' : 'Aktif' }} 
+                                        {{ $promo->tanggal_publikasi == null ? 'Tidak Aktif' : 'Aktif' }} 
                                         <div class="form-check form-switch">
                                             <form method="post" id="statForm" action="{{ route('daftar-produk.status')}}">
                                                 @csrf
-                                                <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked" name="status" onchange="store()" value="{{ $agrigard->tanggal_publikasi == null ? 'true' : 'false' }}" @if ($agrigard->tanggal_publikasi !== null) checked @endif>
-                                                <input type="hidden" name="agrigard_id" id="agrigard_id" value="{{ $agrigard->id_agrigard }}">
+                                                <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked" name="status" onchange="store()" value="{{ $promo->tanggal_publikasi == null ? 'true' : 'false' }}" @if ($promo->tanggal_publikasi !== null) checked @endif>
+                                                <input type="hidden" name="promo_id" id="promo_id" value="{{ $promo->id_promo }}">
                                             </form>
                                         </div>
                                     </td>                                      
@@ -136,7 +135,7 @@
     });  
     function store() {
     var status = $("#flexSwitchCheckChecked").prop('checked') ? 'true' : 'false';
-    var id = $("#agrigard_id").val();
+    var id = $("#promo_id").val();
     console.log(status, id);
     $("#statForm").submit();
 

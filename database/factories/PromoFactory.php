@@ -1,38 +1,41 @@
 <?php
 
 namespace Database\Factories;
-
+// factories/PromoFactory.php
+use App\Models\Promo;
+use App\Models\DedikasiFlora;
+use App\Models\Batunesia;
+use App\Models\Konkurito;
+use App\Models\EverlasThing;
+use App\Models\Shineage;
+use App\Models\Agrigard;
+use App\Models\Dedikasi_Flora;
+use App\Models\Everlas_Things;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-/**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Promo>
- */
 class PromoFactory extends Factory
 {
-    /**
-     * Define the model's default state.
-     *
-     * @return array<string, mixed>
-     */
-    public function definition(): array
+    protected $model = Promo::class;
+
+    public function definition()
     {
-        $satuanPotongan = $this->faker->randomElement(['uang', 'persenan']);
         return [
-         'judul_promo' => $this->faker->word,
-        'deskripsi_promo' => $this->faker->text,
-        'tanggal_mulai' => $this->faker->dateTimeThisMonth,
-        'tanggal_selesai' => $this->faker->dateTimeThisMonth,
-        'created_at' => now(),
-        'updated_at' => now(),
-        'satuan_potongan' => $satuanPotongan,
-        'jumlah_potongan' => $satuanPotongan === 'uang' ? $this->faker->randomFloat(2, 1, 100) : $this->faker->randomFloat(2, 1, 100),
-        'created_by' =>$this->faker->numberBetween(1, 5),
-        'id_nurseri' =>null,
-        'id_batu' =>null,
-        'id_konkurito' =>null,
-        'id_everlas_things' =>null,
-        'id_shineage' =>null,
-        'id_agrigard' =>$this->faker->numberBetween(1, 5),
+            'nama_promo' => $this->faker->words(2, true),
+            'jenis_promo' => $this->faker->randomElement(['Brand', 'Produk']), // Sesuaikan dengan jenis promo yang diinginkan
+            'target_promo_b2i' => $this->faker->boolean,
+            'target_promo_b2c' => $this->faker->boolean,
+            'target_promo_b2b' => $this->faker->boolean,
+            'tipe_promo' => $this->faker->randomElement(['diskon', 'cashback']),
+            'tipe_potongan' => $this->faker->randomElement(['nominal', 'persentase']),
+            'persentase_promo' => $this->faker->randomFloat(2, 0, 100),
+            'nominal_promo' => $this->faker->randomNumber(4),
+            'minimum_pembelian' => $this->faker->randomNumber(3),
+            'kuota' => $this->faker->randomNumber(2),
+            'tanggal_mulai' => $this->faker->dateTimeBetween('now', '+1 week'),
+            'tanggal_selesai' => $this->faker->dateTimeBetween('+2 weeks', '+4 weeks'),
+            'tanggal_publikasi' => $this->faker->boolean ? $this->faker->dateTimeBetween('-1 week', 'now') : null,
+            'created_by' => 1, // Sesuaikan dengan user ID yang diinginkan
         ];
     }
+    
 }

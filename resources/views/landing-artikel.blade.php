@@ -64,7 +64,7 @@
       <p style="color: #727272; margin-bottom: -15px;">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
       <div id="carousel-artikel-baru" class="carousel slide" data-ride="carousel">
         <div class="carousel-inner">
-            @foreach ($articles_terbaru->chunk(3) as $key => $chunk)
+            @foreach ($articles_terbaru->chunk(4) as $key => $chunk)
               <div class="carousel-item{{ $key === 0 ? ' active' : '' }}">
                   <div class="cards-wrapper">
                       @foreach ($chunk as $article)
@@ -168,7 +168,7 @@
       <p style="color: #727272; margin-bottom: -15px;">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
       <div id="carousel-most-visited-artikel" class="carousel slide" data-ride="carousel">
         <div class="carousel-inner">
-          @foreach ($articles_terpopuler->chunk(3) as $key => $chunk)
+          @foreach ($articles_terpopuler->chunk(4) as $key => $chunk)
           <div class="carousel-item{{ $key === 0 ? ' active' : '' }}">
               <div class="cards-wrapper">
                   @foreach ($chunk as $article)

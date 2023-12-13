@@ -26,9 +26,8 @@ class PromoRequest extends FormRequest
         return [
             'nama_promo' => 'required|string|max:255',
             'jenis_promo' => 'required|string|max:255',
-            'target_promo_b2i' => 'nullable|string|max:255',
-            'target_promo_b2c' => 'nullable|string|max:255',
-            'target_promo_b2b' => 'nullable|string|max:255',
+            'target_promo' => 'required|array',
+            'target_promo.*' => 'required|string|max:255',
             'tipe_promo' => 'required|string|max:255',
             'tipe_potongan' => 'required|string|max:255',
             'persentase_promo' => 'nullable|numeric',
@@ -39,4 +38,18 @@ class PromoRequest extends FormRequest
             'tanggal_selesai' => 'required|date|after_or_equal:tanggal_mulai',
         ];
     }
+    public function withValidator($validator)
+    {
+        $validator->sometimes('jenis_brand', 'required', function ($input) {
+            return $input->jenis_promo == 'Brand';
+        });
+        $validator->sometimes('jenis_produk', 'required', function ($input) {
+            return $input->jenis_promo == 'Produk';
+        });
+        $validator->sometimes('persentase_promo', 'required', function ($input) {
+            return $input->tipe_potongan == 'persentase';
+        });
+    }
+    
+
 }

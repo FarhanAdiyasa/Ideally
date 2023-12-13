@@ -10,7 +10,7 @@ class Shineage extends Model
     use HasFactory;
 
     protected $guarded = ['id_shineage'];
-
+    protected $primaryKey = 'id_shineage'; 
     protected $with = ['createdBy', 'updatedBy', 'deletedBy'];
 
     public function createdBy()
@@ -26,6 +26,10 @@ class Shineage extends Model
     public function deletedBy()
     {
         return $this->belongsTo(User::class, 'deleted_by', 'user_id');
+    }
+    public function promos()
+    {
+        return $this->belongsToMany(Promo::class, 'shineages_promos', 'id_shineage', 'id_promo');
     }
 
 
