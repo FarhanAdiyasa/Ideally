@@ -19,7 +19,7 @@
                     <p>
                         <a href="{{ route('daftar-produk.tambah') }}" class="btn btn-primary">New Product</a>
                     </p>
-                    <table id="products-table" class="table table-striped table-bordered text-center">
+                    <table id="products-table" class="table table-hover table-bordered text-center">
                         <thead>
                             <tr>
                                 <th>Info Agrigard</th>
