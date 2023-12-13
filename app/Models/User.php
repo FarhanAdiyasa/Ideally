@@ -17,6 +17,12 @@ class User extends Authenticatable
      *
      * @var array<int, string>
      */
+    protected $primaryKey = 'user_id';
+    
+    protected $fillable = [
+        'user_id','email','password', 'google_id','firstname','lastname','address','telephone_number','birthdate','gender', 'profesi','provinsi','kabupaten','kelurahan','kecamatan'
+    ];
+
     protected $guarded = [
         'user_id',
     ];
@@ -27,7 +33,6 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $hidden = [
-        'password',
         'remember_token',
     ];
 
