@@ -33,7 +33,8 @@
 <section class="content">
 <div class="container-fluid">
   <!-- SELECT2 EXAMPLE -->
-  <form method="post" action="{{ route('daftar-promo.save')}} " enctype="multipart/form-data" id="proForm">
+  <form method="post" action="{{ route('daftar-promo.update', $promo->id_promo)}} " enctype="multipart/form-data" id="proForm">
+    @method("PUT")
     @csrf
   <div class="card card-default">
     <div class="card-header">
@@ -61,12 +62,12 @@
           <div class="form-group">
             <div class="form-check form-check-inline">
                 <input class="form-check-input" type="radio" id="jenis_promo_brand" name="jenis_promo" value="Brand" 
-                       @if (old('jenis_promo') == 'Brand' || !old('jenis_promo')) checked @endif>
+                       @if (old('jenis_promo') == 'Brand' || !old('jenis_promo') || $promo->jenis_promo == "Brand") checked @endif>
                 <label class="form-check-label" for="jenis_promo_brand">Brand</label>
             </div>
             <div class="form-check form-check-inline">
                 <input class="form-check-input" type="radio" id="jenis_promo_produk" name="jenis_promo" value="Produk"
-                       @if (old('jenis_promo') == 'Produk') checked @endif>
+                       @if (old('jenis_promo') == 'Produk' || $promo->jenis_promo == "Produk") checked @endif>
                 <label class="form-check-label" for="jenis_promo_produk">Produk</label>
             </div>
             @error('jenis_promo')
@@ -93,15 +94,15 @@
         <div class="col-md-9">
           <div class="form-group">
             <div class="form-check form-check-inline">
-                <input class="form-check-input" type="checkbox" id="b2i" name="target_promo[]" value="b2i" @if (is_array(old('target_promo')) && in_array('b21', old('target_promo'))) checked @endif>
+                <input class="form-check-input" type="checkbox" id="b2i" name="target_promo[]" value="b2i" @if (is_array(old('target_promo')) && in_array('b21', old('target_promo')) || $promo->target_promo_b2i == true) checked @endif>
                 <label class="form-check-label" for="b2i">Business To Individu</label>
             </div>
             <div class="form-check form-check-inline">
-                <input class="form-check-input" type="checkbox" id="b2c" name="target_promo[]" value="b2c" @if (is_array(old('target_promo')) && in_array('b2c', old('target_promo'))) checked @endif>
+                <input class="form-check-input" type="checkbox" id="b2c" name="target_promo[]" value="b2c" @if (is_array(old('target_promo')) && in_array('b2c', old('target_promo')) || $promo->target_promo_b2c == true) checked @endif>
                 <label class="form-check-label" for="b2c">Business To Customer</label>
             </div>
             <div class="form-check form-check-inline">
-                <input class="form-check-input" type="checkbox" id="b2b" name="target_promo[]" value="b2b" @if (is_array(old('target_promo')) && in_array('b2b', old('target_promo'))) checked @endif>
+                <input class="form-check-input" type="checkbox" id="b2b" name="target_promo[]" value="b2b" @if (is_array(old('target_promo')) && in_array('b2b', old('target_promo')) || $promo->target_promo_b2b == true) checked @endif>
                 <label class="form-check-label" for="b2b">Business To Business</label>
             </div>  
             @error('target_promo[]')
@@ -123,7 +124,7 @@
         <!-- /.col -->
         <div class="col-md-9">
           <div class="form-group">
-            <input class="form-control" type="text" placeholder="Contoh: Diskon 17 Agustus" name="nama_promo" value="{{old('nama_promo')}}"/>
+            <input class="form-control" type="text" placeholder="Contoh: Diskon 17 Agustus" name="nama_promo" value="{{old('nama_promo', $promo->nama_promo) }}"/>
                @error('nama_promo')
             <small class="text-danger">{{ $message }}</small>
             @enderror
@@ -139,7 +140,7 @@
               <label for="tanggal_mulai" class="col-md-4 col-form-label text-md-right">{{ __('Mulai Tanggal') }}</label>
 
               <div class="col-md-6">
-                  <input id="tanggal_mulai" type="datetime-local" class="form-control @error('tanggal_mulai') is-invalid @enderror" name="tanggal_mulai" value="{{ old('tanggal_mulai') }}" required autocomplete="tanggal_mulai" autofocus>
+                  <input id="tanggal_mulai" type="datetime-local" class="form-control @error('tanggal_mulai') is-invalid @enderror" name="tanggal_mulai" value="{{ old('tanggal_mulai', $promo->tanggal_mulai) }}" required autocomplete="tanggal_mulai" autofocus>
 
                   @error('tanggal_mulai')
                       <span class="invalid-feedback" role="alert">
@@ -157,7 +158,7 @@
               <label for="tanggal_selesai" class="col-md-4 col-form-label text-md-right">{{ __('Berakhir Tanggal') }}</label>
 
               <div class="col-md-6">
-                  <input id="tanggal_selesai" type="datetime-local" class="form-control @error('tanggal_selesai') is-invalid @enderror" name="tanggal_selesai" value="{{ old('tanggal_selesai') }}" required autocomplete="tanggal_selesai">
+                  <input id="tanggal_selesai" type="datetime-local" class="form-control @error('tanggal_selesai') is-invalid @enderror" name="tanggal_selesai" value="{{ old('tanggal_selesai', $promo->tanggal_selesai) }}" required autocomplete="tanggal_selesai">
 
                   @error('tanggal_selesai')
                       <span class="invalid-feedback" role="alert">
@@ -232,19 +233,19 @@
           <div class="form-group" id="pilih-jenis">
             <div class="form-check form-check-inline">
                 <input class="form-check-input" type="radio" id="nominal" name="tipe_potongan" value="nominal" 
-                       @if (old('tipe_potongan') == 'nominal' || !old('tipe_potongan')) checked @endif>
+                       @if (old('tipe_potongan', $promo->tipe_potongan) == 'nominal' || !old('tipe_potongan')) checked @endif>
                 <label class="form-check-label" for="nominal">Nominal</label>
             </div>
             <div class="form-check form-check-inline">
                 <input class="form-check-input" type="radio" id="persentase" name="tipe_potongan" value="persentase"
-                       @if (old('tipe_potongan') == 'persentase') checked @endif>
+                       @if (old('tipe_potongan', $promo->tipe_potongan) == 'persentase') checked @endif>
                 <label class="form-check-label" for="persentase">Persentase</label>
             </div>
             @error('tipe_potongan')
             <div class="text-danger">{{ $message }}</div>
             @enderror
         </div>
-        
+          
           <!-- /.form-group -->
         </div>
         <!-- /.col -->
@@ -263,7 +264,7 @@
           <div class="form-group">
             <div class="harga-input">
               <div class="rp">Rp</div>
-              <input data-unify="TextField" placeholder="Masukkan Harga" type="numeric"  class="css-3017qm rupiah" name="nominal_promo" value="{{old('nominal_promo')}}">
+              <input data-unify="TextField" placeholder="Masukkan Harga" type="numeric"  class="css-3017qm rupiah" name="nominal_promo" value="{{old('nominal_promo', number_format($promo->nominal_promo, 0, ',', '.'))}}">
             </div>
                @error('nominal_promo')
               <small class="text-danger">{{ $message }}</small>
@@ -286,9 +287,8 @@
           <div class="form-group">
             <div class="harga-input">
               <div class="rp">Rp</div>
-              <input data-unify="TextField" placeholder="Masukkan Harga" type="numeric"  class="css-3017qm rupiah" name="minimum_pembelian" value="{{old('minimum_pembelian')}}">
+              <input data-unify="TextField" placeholder="Masukkan Harga" type="numeric"  class="css-3017qm rupiah" name="minimum_pembelian" value="{{old('minimum_pembelian', number_format($promo->minimum_pembelian, 0, ',', '.'))}}">
             </div>
-            
                @error('minimum_pembelian')
               <small class="text-danger">{{ $message }}</small>
               @enderror
@@ -307,9 +307,9 @@
           <!-- /.form-group -->
         </div>
         <!-- /.col -->
-        <div class="col-md-9">
+        <div class="col-md-4">
           <div class="form-group">
-              <input class="form-control"  id=""  type="number" placeholder="Masukkan Kuota Dalam Bentuk Angka" name="kuota" value="{{old('kuota')}}"/>
+              <input class="form-control"  id=""  type="number" placeholder="Masukkan Kuota Dalam Bentuk Angka" name="kuota" value="{{old('kuota', $promo->kuota)}}"/>
                  @error('kuota')
               <small class="text-danger">{{ $message }}</small>
               @enderror
@@ -338,27 +338,27 @@
       <div class="row" id="brandOrproduct">
           <div class="form-group">
             <div class="form-check form-check-inline">
-                <input class="form-check-input" type="checkbox" id="nurseri" name="jenis_brand[]" value="nurseri" @if (old('nurseri'))checked @endif>
-                <label class="form-check-label" for="nurseri">Nurseri</label>
-            </div>
+              <input class="form-check-input" type="checkbox" id="nurseri" name="jenis_brand[]" value="nurseri" @if (in_array('nurseri', old('jenis_brand') ?? []) || in_array('nurseri', $brands)) checked @endif>
+              <label class="form-check-label" for="nurseri">Nurseri</label>              
+          </div>
             <div class="form-check form-check-inline">
-                <input class="form-check-input" type="checkbox" id="batunesia" name="jenis_brand[]" value="batunesia" @if (old('batunesia'))checked @endif>
+                <input class="form-check-input" type="checkbox" id="batunesia" name="jenis_brand[]" value="batunesia" @if (in_array('batunesia', old('jenis_brand') ?? []) || in_array('batunesia', $brands)) checked @endif>
                 <label class="form-check-label" for="batunesia">Batunesia</label>
             </div>
             <div class="form-check form-check-inline">
-                <input class="form-check-input" type="checkbox" id="konkurito" name="jenis_brand[]" value="konkurito" @if (old('konkurito'))checked @endif>
+                <input class="form-check-input" type="checkbox" id="konkurito" name="jenis_brand[]" value="konkurito" @if (in_array('konkurito', old('jenis_brand') ?? []) || in_array('konkurito', $brands)) checked @endif>
                 <label class="form-check-label" for="konkurito">Konkurito</label>
             </div>  
             <div class="form-check form-check-inline">
-                <input class="form-check-input" type="checkbox" id="everlas_thing" name="jenis_brand[]" value="everlas_thing" @if (old('everlas_thing'))checked @endif>
+              <input class="form-check-input" type="checkbox" id="everlas_thing" name="jenis_brand[]" value="everlas_thing" @if (in_array('everlas_thing', old('jenis_brand') ?? []) || in_array('everlas_thing', $brands)) checked @endif>
                 <label class="form-check-label" for="everlas_thing">Everlas Thing</label>
             </div>  
             <div class="form-check form-check-inline">
-                <input class="form-check-input" type="checkbox" id="shineage" name="jenis_brand[]" value="shineage" @if (old('shineage'))checked @endif>
+              <input class="form-check-input" type="checkbox" id="shineage" name="jenis_brand[]" value="shineage" @if (in_array('shineage', old('jenis_brand') ?? []) || in_array('shineage', $brands)) checked @endif>
                 <label class="form-check-label" for="shineage">Shineage</label>
             </div>  
             <div class="form-check form-check-inline">
-                <input class="form-check-input" type="checkbox" id="agrigard" name="jenis_brand[]" value="agrigard" @if (old('agrigard'))checked @endif>
+              <input class="form-check-input" type="checkbox" id="agrigard" name="jenis_brand[]" value="agrigard" @if (in_array('agrigard', old('jenis_brand') ?? []) || in_array('agrigard', $brands)) checked @endif>
                 <label class="form-check-label" for="agrigard">Agrigard</label>
             </div>  
             @error('jenis_brand')
@@ -407,12 +407,13 @@
                   container.innerHTML = '<div class="col-md-3">' +
               '<div class="form-group">' +
               '<label id="desk-promo">Persentase Promo</label>' +
+              ' <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sed, odit ab eum enim illo minima deleniti quae ducimus repudiandae sit!</p>'+
               '</div>' +
               '</div>' +
               '<div class="col-md-3">' +
               '<div class="form-group">' +
               '<div class="harga-input">' +
-              '<input data-unify="TextField" placeholder="Masukkan Persentase" type="numeric"  class="css-3017qm px-2" name="persentase_promo" value="{{old("persentase_promo")}}">' +
+              '<input placeholder="Masukkan Persentase" type="number" class="css-3017qm px-2" name="persentase_promo" value="{{ old("persentase_promo", $promo->persentase_promo) }}">' +
               '<div class="rp">%</div>' +
               '</div>' +
               '@error("persentase_promo")' +
@@ -463,27 +464,27 @@ document.addEventListener('DOMContentLoaded', function () {
             if (value == "Brand") {
                   container.innerHTML = '<div class="form-group">' +
                       '<div class="form-check form-check-inline">' +
-                      '<input class="form-check-input" type="checkbox" id="nurseri" name="jenis_brand[]" value="nurseri" @if (old('nurseri'))checked @endif>' +
+                      '<input class="form-check-input" type="checkbox" id="nurseri" name="jenis_brand[]" value="nurseri" @if (in_array('nurseri', old('jenis_brand') ?? []) || in_array('nurseri', $brands)) checked @endif>' +
                       '<label class="form-check-label" for="nurseri">Nurseri</label>' +
                       '</div>' +
                       '<div class="form-check form-check-inline">' +
-                      '<input class="form-check-input" type="checkbox" id="batunesia" name="jenis_brand[]" value="batunesia" @if (old('batunesia'))checked @endif>' +
+                      '<input class="form-check-input" type="checkbox" id="batunesia" name="jenis_brand[]" value="batunesia" @if (in_array('batunesia', old('jenis_brand') ?? []) || in_array('batunesia', $brands)) checked @endif>' +
                       '<label class="form-check-label" for="batunesia">Batunesia</label>' +
                       '</div>' +
                       '<div class="form-check form-check-inline">' +
-                      '<input class="form-check-input" type="checkbox" id="konkurito" name="jenis_brand[]" value="konkurito" @if (old('konkurito'))checked @endif>' +
+                      '<input class="form-check-input" type="checkbox" id="konkurito" name="jenis_brand[]" value="konkurito" @if (in_array('konkurito', old('jenis_brand') ?? []) || in_array('konkurito', $brands)) checked @endif>' +
                       '<label class="form-check-label" for="konkurito">Konkurito</label>' +
                       '</div>' +
                       '<div class="form-check form-check-inline">' +
-                      '<input class="form-check-input" type="checkbox" id="everlas_thing" name="jenis_brand[]" value="everlas_thing" @if (old('everlas_thing'))checked @endif>' +
+                      '<input class="form-check-input" type="checkbox" id="everlas_thing" name="jenis_brand[]" value="everlas_thing" @if (in_array('everlas_thing', old('jenis_brand') ?? []) || in_array('everlas_thing', $brands)) checked @endif>' +
                       '<label class="form-check-label" for="everlas_thing">Everlas Thing</label>' +
                       '</div>' +
                       '<div class="form-check form-check-inline">' +
-                      '<input class="form-check-input" type="checkbox" id="shineage" name="jenis_brand[]" value="shineage" @if (old('shineage'))checked @endif>' +
+                      '<input class="form-check-input" type="checkbox" id="shineage" name="jenis_brand[]" value="shineage" @if (in_array('shineage', old('jenis_brand') ?? []) || in_array('shineage', $brands)) checked @endif>' +
                       '<label class="form-check-label" for="shineage">Shineage</label>' +
                       '</div>' +
                       '<div class="form-check form-check-inline">' +
-                      '<input class="form-check-input" type="checkbox" id="agrigard" name="jenis_brand[]" value="agrigard" @if (old('agrigard'))checked @endif>' +
+                      '<input class="form-check-input" type="checkbox" id="agrigard" name="jenis_brand[]" value="agrigard" @if (in_array('agrigard', old('jenis_brand') ?? []) || in_array('agrigard', $brands)) checked @endif>' +
                       '<label class="form-check-label" for="agrigard">Agrigard</label>' +
                       '</div>' +
                       '@error('jenis_brand')' +
@@ -502,33 +503,32 @@ document.addEventListener('DOMContentLoaded', function () {
                       <div class="col-md-8">
                         <div class="form-group">
                               <div class="form-check form-check-inline">
-                                  <input class="form-check-input" type="radio" id="jenis_produk_agrigard" name="jenis_produk" value="agrigard" 
-                                        @if (old('jenis_produk') == 'agrigard') checked @endif>
+                                  <input class="form-check-input" type="radio" id="jenis_produk_agrigard" name="jenis_produk" value="agrigard" @if(old('jenis_produk') == 'agrigard'|| in_array('agrigard', $brands)) checked @endif>
                                   <label class="form-check-label" for="jenis_produk_agrigard">agrigard</label>
                               </div>
                               <div class="form-check form-check-inline">
                                   <input class="form-check-input" type="radio" id="jenis_produk_shineage" name="jenis_produk" value="shineage"
-                                        @if (old('jenis_produk') == 'shineage' || !old('jenis_produk')) checked @endif>
+                                        @if (old('jenis_produk') == 'shineage'|| in_array('shineage', $brands)) checked @endif>
                                   <label class="form-check-label" for="jenis_produk_shineage">shineage</label>
                               </div>
                               <div class="form-check form-check-inline">
                                   <input class="form-check-input" type="radio" id="jenis_produk_batunesia" name="jenis_produk" value="batunesia"
-                                        @if (old('jenis_produk') == 'batunesia') checked @endif>
+                                        @if (old('jenis_produk') == 'batunesia'|| in_array('batunesia', $brands)) checked @endif>
                                   <label class="form-check-label" for="jenis_produk_batunesia">batunesia</label>
                               </div>
                               <div class="form-check form-check-inline">
                                   <input class="form-check-input" type="radio" id="jenis_produk_konkurito" name="jenis_produk" value="konkurito"
-                                        @if (old('jenis_produk') == 'konkurito') checked @endif>
+                                        @if (old('jenis_produk') == 'konkurito'|| in_array('konkurito', $brands)) checked @endif>
                                   <label class="form-check-label" for="jenis_produk_konkurito">konkurito</label>
                               </div>
                               <div class="form-check form-check-inline">
                                   <input class="form-check-input" type="radio" id="jenis_produk_everlasthing" name="jenis_produk" value="everlasthing"
-                                        @if (old('jenis_produk') == 'everlasthing') checked @endif>
+                                        @if (old('jenis_produk') == 'everlasthing'|| in_array('everlasthing', $brands)) checked @endif>
                                   <label class="form-check-label" for="jenis_produk_everlasthing">everlasthing</label>
                               </div>
                               <div class="form-check form-check-inline">
                                   <input class="form-check-input" type="radio" id="jenis_produk_nurseri" name="jenis_produk" value="nurseri"
-                                        @if (old('jenis_produk') == 'nurseri') checked @endif>
+                                        @if (old('jenis_produk') == 'nurseri'|| in_array('nurseri', $brands)) checked @endif>
                                   <label class="form-check-label" for="jenis_produk_nurseri">nurseri</label>
                               </div>
                               @error('jenis_produk')
@@ -546,27 +546,31 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 const loadProduk =  ()=> {
-  console.log("value");
   var radioButtons = document.getElementsByName('jenis_produk');
   var container = document.getElementById('brandOrproduct'); 
   var title = document.getElementById('brandOrproductT'); 
+  var currentUrl = window.location.href;
+        var urlParts = currentUrl.split('/');
+        var promoId = urlParts[urlParts.length - 1];  
 
   radioButtons.forEach(function (radioButton) {
       radioButton.addEventListener('change', function () {
-        showBrand(this.value)
+        showBrandEdit(this.value, promoId)
       });
   });
   var checkedRadioButton = document.querySelector('input[name="jenis_produk"]:checked');
-  showBrand(checkedRadioButton.value)
+  showBrandEdit(checkedRadioButton.value, promoId)
 };
-function showBrand(brand) {
-    $.get("{{ url('/tambah-promo/') }}/" + brand, {}, function(data, status) {
+
+function showBrandEdit(brand, id) {
+  $.get("{{ url('/edit-promo/') }}/" + id + "/" + brand, {}, function(data, status) {
         $("#brandOrproduct").html(data);
     })
     .fail(function(xhr, status, error) {
         console.error("Error: " + error);
     });
 }
+
 function submitPromo(action) {
     var selectedIds = [];
     var table = $('#products-ss').DataTable();
@@ -582,6 +586,5 @@ function submitPromo(action) {
 }
 
     </script>
-    
 @endsection
 

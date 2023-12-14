@@ -31,23 +31,34 @@ Auth::routes();
 Route::get('/home/show/{kategori}', [ArtikelController::class, 'show'])->name('home.show');
 Route::get('/portal-edukasi/komentar/{kategori}', [ArtikelController::class, 'sKomentar'])->name('komentar.show');
 
+
+//Agrigard
 Route::get('/daftar-produk', [AgrigardController::class, 'index'])->name('daftar-produk');
+Route::get('/daftar-produk/{id}', [AgrigardController::class, 'view'])->name('daftar-produk.view');
+
 Route::get('/tambah-produk', [AgrigardController::class, 'create'])->name('daftar-produk.tambah');
 Route::post('/tambah-produk/store', [AgrigardController::class, 'store'])->name('daftar-produk.save');
+
 Route::get('/edit-produk/{id}', [AgrigardController::class, 'edit'])->name('daftar-produk.edit');
 Route::put('/edit-produk/{id}', [AgrigardController::class, 'update'])->name('daftar-produk.update');
 Route::post('/post-produk', [AgrigardController::class, 'post'])->name('daftar-produk.status');
 
-Route::get('/daftar-produk/{id}', [AgrigardController::class, 'view'])->name('daftar-produk.view');
 Route::get('/delete-produk/{id}', [AgrigardController::class, 'delete'])->name('daftar-produk.delete');
 Route::delete('/destroy-produk/{id}', [AgrigardController::class, 'destroy'])->name('daftar-produk.destroy');
 
 
-
+//Promo
 Route::get('/daftar-promo', [PromoController::class, 'index'])->name('daftar-promo');
+
 Route::get('/tambah-promo', [PromoController::class, 'create'])->name('daftar-promo.tambah');
 Route::post('/tambah-promo/store', [PromoController::class, 'store'])->name('daftar-promo.save');
 Route::get('/tambah-promo/{brand}', [PromoController::class, 'show'])->name('promo-show.product');
+
+Route::get('/edit-promo/{id}/{brand}', [PromoController::class, 'showEdit'])->name('promo-show-edit.product');
 Route::get('/edit-promo/{id}', [PromoController::class, 'edit'])->name('daftar-promo.edit');
 Route::put('/edit-promo/{id}', [PromoController::class, 'update'])->name('daftar-promo.update');
+Route::post('/post-promo', [PromoController::class, 'post'])->name('daftar-promo.status');
+
+Route::get('/delete-promo/{id}', [PromoController::class, 'delete'])->name('daftar-promo.delete');
+Route::delete('/destroy-promo/{id}', [PromoController::class, 'destroy'])->name('daftar-promo.destroy');
 
