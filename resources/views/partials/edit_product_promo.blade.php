@@ -1,5 +1,5 @@
 <table id="products-ss" class="table table-hover table-bordered text-center">
-    <h5>0 Produk Dipilih</h5>
+    <h5 class="text-center" id="jumlah_checked">0 Produk Dipilih</h5>
     <thead>
         <tr>
             <th data-orderable="false">
@@ -16,7 +16,10 @@
             <tr>
                 <td>
                     <div class="row">
-                        <input type="checkbox" name="id_{{ $brand }}[]" value="{{ $product->{'id_'.$brand} }}">
+                        <input type="checkbox" name="id_{{ $brand }}[]" value="{{ $product->{'id_'.$brand} }}" 
+                        @if(in_array($product->{'id_'.$brand}, $ids) && in_array($brand, $brand_produk)) 
+                            checked 
+                        @endif>
                     </div>
                 </td>
                 <td>

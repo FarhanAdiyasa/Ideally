@@ -46,8 +46,8 @@ return new class extends Migration
             $table->foreignId('id_nurseri');
             
             
-            $table->foreign('id_promo')->references('id_promo')->on('promos');
-            $table->foreign('id_nurseri')->references('id_nurseri')->on('dedikasi_floras');
+            $table->foreign('id_promo')->references('id_promo')->on('promos')->delete('cascade');
+            $table->foreign('id_nurseri')->references('id_nurseri')->on('dedikasi_floras')->delete('cascade');
         });
         Schema::create('batunesias_promos', function (Blueprint $table) {
             $table->id();
@@ -55,8 +55,8 @@ return new class extends Migration
             $table->foreignId('id_batu');
             
 
-            $table->foreign('id_promo')->references('id_promo')->on('promos');
-            $table->foreign('id_batu')->references('id_batu')->on('batunesias');
+            $table->foreign('id_promo')->references('id_promo')->on('promos')->delete('cascade');
+            $table->foreign('id_batu')->references('id_batu')->on('batunesias')->delete('cascade');
         });
         Schema::create('konkuritos_promos', function (Blueprint $table) {
             $table->id();
@@ -64,8 +64,8 @@ return new class extends Migration
             $table->foreignId('id_konkurito');
             
             
-            $table->foreign('id_promo')->references('id_promo')->on('promos');
-            $table->foreign('id_konkurito')->references('id_konkurito')->on('konkuritos');
+            $table->foreign('id_promo')->references('id_promo')->on('promos')->delete('cascade');
+            $table->foreign('id_konkurito')->references('id_konkurito')->on('konkuritos')->delete('cascade');
         });
         Schema::create('everlas_things_promos', function (Blueprint $table) {
             $table->id();
@@ -73,26 +73,26 @@ return new class extends Migration
             $table->foreignId('id_everlas_things');
             
 
-            $table->foreign('id_promo')->references('id_promo')->on('promos');
-            $table->foreign('id_everlas_things')->references('id_everlas_things')->on('everlas_things');
+            $table->foreign('id_promo')->references('id_promo')->on('promos')->delete('cascade');
+            $table->foreign('id_everlas_things')->references('id_everlas_things')->on('everlas_things')->delete('cascade');
         });
         Schema::create('shineages_promos', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('id_promo');
-            $table->foreignId('id_shineage');
+            $table->foreignId('id_promo')->delete('cascade');
+            $table->foreignId('id_shineage')->delete('cascade');
             
 
-            $table->foreign('id_promo')->references('id_promo')->on('promos');
-            $table->foreign('id_shineage')->references('id_shineage')->on('shineages');
+            $table->foreign('id_promo')->references('id_promo')->on('promos')->delete('cascade');
+            $table->foreign('id_shineage')->references('id_shineage')->on('shineages')->delete('cascade');
         });
         Schema::create('agrigards_promos', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('id_promo');
-            $table->foreignId('id_agrigard');
+            $table->foreignId('id_promo')->delete('cascade');
+            $table->foreignId('id_agrigard')->delete('cascade');
             
 
-            $table->foreign('id_promo')->references('id_promo')->on('promos');
-            $table->foreign('id_agrigard')->references('id_agrigard')->on('agrigards');
+            $table->foreign('id_promo')->references('id_promo')->on('promos')->delete('cascade');
+            $table->foreign('id_agrigard')->references('id_agrigard')->on('agrigards')->delete('cascade');
         });
     }
 

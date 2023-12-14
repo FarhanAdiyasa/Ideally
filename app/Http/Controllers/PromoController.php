@@ -93,34 +93,34 @@ class PromoController extends Controller
                     $relation = $modelMappings[$jenisProduk];
                     $promo->$relation()->sync($produk_ids);
                 }
-            }            
-            if($request['jenis_promo'] && $request['jenis_promo']=="Brand"){
+            } else if($request['jenis_promo'] && $request['jenis_promo']=="Brand"){
                 foreach($request['jenis_brand'] as $jenis_brand){
-                    if ($jenis_brand == "agrigard") {
-                        $agrigardIds = Agrigard::pluck('id_agrigard')->toArray();
-                        $promo->agrigards()->sync($agrigardIds);
+                    if (isset($jenis_brand)) {
+                        if ($jenis_brand == "agrigard") {
+                            $agrigardIds = Agrigard::pluck('id_agrigard')->toArray();
+                            $promo->agrigards()->sync($agrigardIds);
+                        }
+                        else if ($jenis_brand == "shineage") {
+                            $shineageIds = Shineage::pluck('id_shineage')->toArray();
+                            $promo->shineages()->sync($shineageIds);
+                        }
+                        else if ($jenis_brand == "nurseri") {
+                            $nurseriIds = Dedikasi_Flora::pluck('id_nurseri')->toArray();
+                            $promo->nurseris()->sync($nurseriIds);
+                        }
+                        // else if ($jenis_brand == "batunesia") {
+                        //     $batunesiaIds = Batunesia::pluck('id_batu')->toArray();
+                        //     $promo->batunesias()->sync($batunesiaIds);
+                        // }
+                        else if ($jenis_brand == "everlas_thing") {
+                            $everlassIds = Everlas_Things::pluck('id_everlas_things')->toArray();
+                            $promo->everlass()->sync($everlassIds);
+                        }
+                        else if ($jenis_brand == "konkurito") {
+                            $konkuritoIds = Konkurito::pluck('id_konkurito')->toArray();
+                            $promo->konkuritos()->sync($konkuritoIds);
+                        }
                     }
-                    else if ($jenis_brand == "shinege") {
-                        $shineageIds = Shineage::pluck('id_shineage')->toArray();
-                        $promo->shineages()->sync($shineageIds);
-                    }
-                    else if ($jenis_brand == "nurseris") {
-                        $nurseriIds = Dedikasi_Flora::pluck('id_nurseri')->toArray();
-                        $promo->nurseris()->sync($nurseriIds);
-                    }
-                    else if ($jenis_brand == "batunesias") {
-                        $batunesiaIds = Dedikasi_Flora::pluck('id_batu')->toArray();
-                        $promo->batunesias()->sync($batunesiaIds);
-                    }
-                    else if ($jenis_brand == "everlas_thing") {
-                        $everlassIds = Dedikasi_Flora::pluck('id_everlas_things')->toArray();
-                        $promo->everlass()->sync($everlassIds);
-                    }
-                    else if ($jenis_brand == "konkuritos") {
-                        $konkuritoIds = Dedikasi_Flora::pluck('id_konkurito')->toArray();
-                        $promo->konkuritos()->sync($konkuritoIds);
-                    }
-                    
                 }
             }
 
@@ -183,6 +183,58 @@ class PromoController extends Controller
         
         return view('partials/add_product_promo', ['products'=>$products,'brand'=>$brand]);
     }
+    public function showEdit($id, $brand)
+    {
+        $products = "";
+        if($brand == "agrigard"){
+            $products = Agrigard::whereNotNull('tanggal_publikasi')->get();
+        }else if($brand == "batunesia"){
+            $products = Batunesia::whereNotNull('tanggal_publikasi')->get();
+        }else if($brand == "nurseri"){
+            $products = Dedikasi_Flora::whereNotNull('tanggal_publikasi')->get();
+        }else if($brand == "konkurito"){
+            $products = Konkurito::whereNotNull('tanggal_publikasi')->get();
+        }else if($brand == "everlas_thing"){
+            $products = Everlas_Things::whereNotNull('tanggal_publikasi')->get();
+        }else if($brand == "shineage"){
+            $products = Shineage::whereNotNull('tanggal_publikasi')->get();
+        }
+        foreach ($products as $product) {
+            $hargaRanges = [];
+
+            $columnPrefix = 'harga_';
+    
+            $min = null;
+            $max = null;
+
+            for ($i = 1; $i <= 3; $i++) {  
+                $columnName = $columnPrefix . 'b2I_' . $i . '_unit';
+                $harga = $product->{$columnName};
+    
+                if ($harga !== null) {
+                    if ($min === null || $harga < $min) {
+                        $min = $harga;
+                    }
+    
+                    if ($max === null || $harga > $max) {
+                        $max = $harga;
+                    }
+                }
+            }
+    
+            $hargaRanges[] = $min !== null && $max !== null ? $min . ' - ' . $max : 'No data';
+    
+            $product->harga_ranges = $hargaRanges;
+        }
+        $idsProdu = DB::table('view_product_promo')
+        ->where('id_promo', $id)
+        ->get();
+        $idsProduk = collect($idsProdu)->pluck('id_produk')->toArray();
+        $brandProduk = collect($idsProdu)->pluck('brand_produk')->toArray();
+        
+        return view('partials/edit_product_promo', ['products'=>$products,'brand'=>$brand,'ids'=>$idsProduk, 'brand_produk'=>$brandProduk]);
+    }
+    
 
     /**
      * Show the form for editing the specified resource.
@@ -190,163 +242,144 @@ class PromoController extends Controller
     public function edit($id)
     {
         $promo = Promo::findOrFail($id);
-        return view('Pages/Product/edit-product', ['promo'=>$promo]);
+        $results = DB::select('SELECT DISTINCT id_promo, brand_produk FROM view_product_promo WHERE id_promo = :id_promo', ['id_promo' => $promo->id_promo]);
+        $brands = array_column($results, 'brand_produk');
+        return view('Pages/Promo/edit-promo', ['promo'=>$promo, "brands"=>$brands]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateAgrigard $request, $id)
+    public function update(PromoRequest $request, $id)
     {
        
         $validatedData = $request->validated();
-        $idx=0;
         try {
             DB::beginTransaction();
-            $photoPaths = [];
-            $photoPaths = explode(',', $request->input('existing_images'));
+            
+                $promo = Promo::findOrFail($id);
+                $promo->fill($validatedData);
+                $targetPromo = $request->input('target_promo');
+                $promo->target_promo_b2i = in_array('b2i', $targetPromo);
+                $promo->target_promo_b2c = in_array('b2c', $targetPromo);
+                $promo->target_promo_b2b = in_array('b2b', $targetPromo);
 
-            if ($request->hasFile('photos')) {
-                $photoPaths = [];
-                $photoPaths = explode(',', $request->input('existing_images'));
-                foreach ($request->file('photos') as $photo) {
-                    $filename = $photo->getClientOriginalName();
-                    foreach ($photoPaths as $index => $photoPath) {
-                        if (strpos($photoPath, $filename) !== false) {
-                            $photo->storeAs('photos', $photoPath);
+                
+                $nominal_promo = str_replace(['.', ''], '', $request['nominal_promo']);
+                $promo->nominal_promo= $nominal_promo;
+
+                $minimum_pembelian = str_replace(['.', ''], '', $request['minimum_pembelian']);
+                $promo->minimum_pembelian= $minimum_pembelian;
+
+                if($request->tanggal_publikasi == "true"){
+                    $promo->tanggal_publikasi = now();
+                }
+                $promo->created_by = 1;
+                
+                $promo->save();
+                $promo->agrigards()->detach();
+                $promo->shineages()->detach();
+                $promo->nurseris()->detach();
+                // ... detach for other relationships ...
+                $promo->everlass()->detach();
+                $promo->konkuritos()->detach();
+                $produk_ids = array_map('intval', explode(",", $request->input('selected_ids')));
+                if ($request['jenis_promo'] && $request['jenis_promo'] == "Produk") {
+                    $jenisProduk = $request['jenis_produk'];
+                    
+                    $modelMappings = [
+                        'agrigard' => 'agrigards',
+                        'shineage' => 'shineages',
+                        'nurseri' => 'nurseris',
+                        'batunesia' => 'batunesias',
+                        'everlas_thing' => 'everlass',
+                        'konkurito' => 'konkuritos',
+                    ];
+                
+                    if (array_key_exists($jenisProduk, $modelMappings)) {
+                        $relation = $modelMappings[$jenisProduk];
+                        $promo->$relation()->sync($produk_ids);
+                    }
+                } else if($request['jenis_promo'] && $request['jenis_promo']=="Brand"){
+                    foreach($request['jenis_brand'] as $jenis_brand){
+                        if (isset($jenis_brand)) {
+                            if ($jenis_brand == "agrigard") {
+                                $agrigardIds = Agrigard::pluck('id_agrigard')->toArray();
+                                $promo->agrigards()->sync($agrigardIds);
+                            }
+                            else if ($jenis_brand == "shineage") {
+                                $shineageIds = Shineage::pluck('id_shineage')->toArray();
+                                $promo->shineages()->sync($shineageIds);
+                            }
+                            else if ($jenis_brand == "nurseri") {
+                                $nurseriIds = Dedikasi_Flora::pluck('id_nurseri')->toArray();
+                                $promo->nurseris()->sync($nurseriIds);
+                            }
+                            // else if ($jenis_brand == "batunesia") {
+                            //     $batunesiaIds = Batunesia::pluck('id_batu')->toArray();
+                            //     $promo->batunesias()->sync($batunesiaIds);
+                            // }
+                            else if ($jenis_brand == "everlas_thing") {
+                                $everlassIds = Everlas_Things::pluck('id_everlas_things')->toArray();
+                                $promo->everlass()->sync($everlassIds);
+                            }
+                            else if ($jenis_brand == "konkurito") {
+                                $konkuritoIds = Konkurito::pluck('id_konkurito')->toArray();
+                                $promo->konkuritos()->sync($konkuritoIds);
+                            }
                         }
                     }
                 }
-            }
-            foreach ($photoPaths as $index => $photoPath) {
-                $photoPaths[$index] = "photos/" . $photoPaths[$index];
-            }
-                $agrigard = Agrigard::findOrFail($id);
-                $imagePathsFromDatabase = [
-                    "gambar_1" => $agrigard->gambar_1,
-                    "gambar_2" => $agrigard->gambar_2,
-                    "gambar_3" => $agrigard->gambar_3,
-                    "gambar_4" => $agrigard->gambar_4,
-                ];
-                foreach ($imagePathsFromDatabase as $key => $imagePath) {
-                    if ($imagePath !== null && !in_array($imagePath, $photoPaths)) {
-                        // Hapus file dari penyimpanan
-                        Storage::delete($imagePath);
-                
-                        // Set nilai $imagePath di database menjadi null
-                        $imagePathsFromDatabase[$key] = null;
-                    }
-                }
-                $agrigard->fill($validatedData);
-                
-                $agrigard->gambar_1 = $photoPaths[0] ?? null;
-                $agrigard->gambar_2 = $photoPaths[1] ?? null;
-                $agrigard->gambar_3 = $photoPaths[2] ?? null;
-                $agrigard->gambar_4 = $photoPaths[3] ?? null;
-                if($request->tanggal_publikasi == "true"){
-                    $agrigard->tanggal_publikasi = now();
-                }
-                // Harga_b2I_1+_unit
-                $harga_b2I_1_unit = str_replace(['.', ''], '', $request['harga_b2I_1_unit']);
-                $agrigard->harga_b2I_1_unit= $harga_b2I_1_unit;
-    
-                // Harga_b2I_11+_unit
-                $harga_b2I_11_unit = str_replace(['.', ''], '', $request['harga_b2I_11_unit']);
-                $agrigard->harga_b2I_11_unit = $harga_b2I_11_unit;
-    
-                $harga_b2I_31_unit = str_replace(['.', ''], '', $request['harga_b2I_31_unit']);
-                $agrigard->harga_b2I_31_unit = $harga_b2I_31_unit;
 
-                // Harga_b2B_1+_unit
-                $harga_b2B_1_unit = str_replace(['.', ''], '', $request['harga_b2B_1_unit']);
-                $agrigard->harga_b2B_1_unit = $harga_b2B_1_unit;
-    
-                // Harga_b2B_11+_unit
-                $harga_b2B_11_unit = str_replace(['.', ''], '', $request['harga_b2B_11_unit']);
-                $agrigard->harga_b2B_11_unit = $harga_b2B_11_unit;
-    
-                $harga_b2B_31_unit = str_replace(['.', ''], '', $request['harga_b2B_31_unit']);
-                $agrigard->harga_b2B_31_unit = $harga_b2B_31_unit;
-    
-                // Harga_b2C_1+_unit
-                $harga_b2C_1_unit = str_replace(['.', ''], '', $request['harga_b2C_1_unit']);
-                $agrigard->harga_b2C_1_unit = $harga_b2C_1_unit;
-    
-                // Harga_b2C_11+_unit
-                $harga_b2C_11_unit = str_replace(['.', ''], '', $request['harga_b2C_11_unit']);
-                $agrigard->harga_b2C_11_unit = $harga_b2C_11_unit;
-    
-                // Harga_b2C_31+_unit
-                $harga_b2C_31_unit = str_replace(['.', ','], '', $request['harga_b2C_31_unit']);
-                $agrigard->harga_b2C_31_unit = $harga_b2C_31_unit;
 
-                $agrigard->save();
+                
                 DB::commit();
-            
-    
+
         } catch (\Exception $e) {
+            dd($e->getMessage());
             DB::rollback();
-           return redirect()->back()->with('error', 'Terjadi kesalahan. Silakan coba lagi nanti.');
+        return redirect()->back()->with('error', 'Terjadi kesalahan. Silakan coba lagi nanti.');
         }
-        return redirect()->route('daftar-produk')->with('success', 'Data has been successfully stored.');
+        return redirect()->route('daftar-promo')->with('success', 'Data has been successfully stored.');
     }
 
     public function delete($id)
     {
-        $agrigard = Agrigard::findOrFail($id);
-        return view('Pages/Product/delete-product', ['agrigard'=>$agrigard]);
+        $promo = Promo::findOrFail($id);
+        return view('Pages/Promo/delete-promo', ['promo'=>$promo]);
     }
 
     public function destroy($id)
     {
         try {
             DB::beginTransaction();
-            $agrigard = Agrigard::findOrFail($id);
-
-            $oldPath = $agrigard->gambar_1;
-            if ($oldPath !== null && $oldPath !== '') {
-                Storage::delete($oldPath);
-            }
-
-            $oldPath = $agrigard->gambar_2;
-            if ($oldPath !== null && $oldPath !== '') {
-                Storage::delete($oldPath);
-            }
-
-            $oldPath = $agrigard->gambar_3;
-            if ($oldPath !== null && $oldPath !== '') {
-                Storage::delete($oldPath);
-            }
-
-            $oldPath = $agrigard->gambar_4;
-            if ($oldPath !== null && $oldPath !== '') {
-                Storage::delete($oldPath);
-            }
-
-            $agrigard->delete();
+            $promo = Promo::findOrFail($id);
+            $promo->delete();
             DB::commit();
         } catch (\Exception $e) {
+            dd($e->getMessage());
             DB::rollback();
             return redirect()->back()->with('error', 'Terjadi kesalahan. Silakan coba lagi nanti.');
         }
 
-        return redirect()->route('daftar-produk')->with('success', 'Data has been successfully deleted.');
+        return redirect()->route('daftar-promo')->with('success', 'Data has been successfully deleted.');
     }
 
     public function post(Request $request)
     {
-        $id = $request->input('agrigard_id');
+        $id = $request->input('id_promo');
         try {
             DB::beginTransaction();
-            $agrigard = Agrigard::findOrFail($id);
-            $agrigard->tanggal_publikasi = $request->input('status') == "true" ? now() : null;
-            $agrigard->save();
+            $promo = Promo::findOrFail($id);
+            $promo->tanggal_publikasi = $request->input('status') == "true" ? now() : null;
+            $promo->save();
             DB::commit();
         } catch (\Exception $e) {
+            dd($e->getMessage());
             DB::rollback();
             return redirect()->back()->with('error', 'Terjadi kesalahan. Silakan coba lagi nanti.');
         }
-        return redirect()->route('daftar-produk')->with('success', 'Data status has been successfully changed .');
+        return redirect()->route('daftar-promo')->with('success', 'Data status has been successfully changed .');
     }
     
 }
