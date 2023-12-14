@@ -119,7 +119,7 @@
                     </div>
                     <div class="v-yt container mb-4" >
                         <!-- Use the full YouTube video URL or the embed URL -->
-                        <iframe src="https://www.youtube.com/embed/8w_U6qEZat0" height="300" width="470"></iframe>
+                        <iframe src="https://youtu.be/a3ICNMQW7Ok?si=7R8onn6JMD8CUo3f" height="300" width="470"></iframe>
                     </div>
                 </div>
                 <!-- End of Body Article -->

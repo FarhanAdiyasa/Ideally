@@ -34,7 +34,7 @@
                                 <tr>
                                     <td>
                                         <div class="row">
-                                            <div class="col-4"><img src="{{  $agrigard->gambar_1}}" width="56" height="56" alt="Product Image"></div>
+                                            <div class="col-4"><img src="{{  asset('storage/' . $agrigard->gambar_1)}}" width="56" height="56" alt="Product Image"></div>
                                             <div class="col-8">
                                                 <div>
                                                      {{ $agrigard->nama_produk }}

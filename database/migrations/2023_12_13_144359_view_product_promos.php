@@ -89,6 +89,7 @@ return new class extends Migration
      */
     public function down(): void
     {
-        //
+        $sql = "DROP VIEW IF EXISTS view_product_promo;";
+        DB::statement($sql);
     }
 };
