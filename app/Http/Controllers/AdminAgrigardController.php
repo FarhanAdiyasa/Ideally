@@ -13,7 +13,7 @@ use App\Http\Requests\UpdateAgrigard;
 use App\Http\Requests\AgrigardRequest;
 use Illuminate\Support\Facades\Storage;
 
-class AgrigardController extends Controller
+class AdminAgrigardController extends Controller
 {
     /**
      * Display a listing of the resource.

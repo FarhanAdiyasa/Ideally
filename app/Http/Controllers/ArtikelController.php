@@ -62,13 +62,13 @@ class ArtikelController extends Controller
     {
         $artikel = Artikel::FirstWhere('slug',$slug);
         return view('baca-artikel', [
-            "active"=>$artikel->kategori_artikel->nama_kategori_artikel,
+            "active"=>$artikel->kategori_artikel[0]->nama_kategori_artikel,
             "artikel"=>$artikel,
             "rating"=>Rating_Artikel::where(['id_artikel' => $artikel->id_artikel, 'user_id' => 1])->first(),
             "articles_acak" => Artikel::inRandomOrder()->limit(4)->get(),
             "articles_terbaru" => Artikel::orderBy('tanggal_publikasi', 'desc')->limit(4)->get(),
             "articles_terpopuler" => Artikel::orderBy('pengunjung', 'desc')->limit(4)->get(),
-            "articles_terkait" => Artikel::byKategori($artikel->kategori_artikel->nama_kategori_artikel)->get(),
+            "articles_terkait" => Artikel::byKategori($artikel->kategori_artikel[0]->nama_kategori_artikel)->get(),
         ]);
     }
     public function rating(Request $request, $slug)

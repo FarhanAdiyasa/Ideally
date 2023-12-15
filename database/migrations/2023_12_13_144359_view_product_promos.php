@@ -84,12 +84,9 @@ return new class extends Migration
         DB::statement($sql);
     }
 
-    /**
-     * Reverse the migrations.
-     */
     public function down(): void
     {
-        $sql = "DROP VIEW IF EXISTS view_product_promo;";
+        $sql = "DROP VIEW view_product_promo;";
         DB::statement($sql);
     }
 };

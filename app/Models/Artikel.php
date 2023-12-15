@@ -28,12 +28,10 @@ class Artikel extends Model
     {
         return $this->belongsTo(User::class, 'deleted_by', 'user_id');
     }
-
-
     public function kategori_artikel()
     {
-        return $this->belongsTo(Kategori_Artikel::class, 'id_kategori_artikel', 'id_kategori_artikel');
-    }
+        return $this->belongsToMany(Kategori_Artikel::class, 'artikel_kategoris', 'id_artikel', 'id_kategori_artikel');
+    }    
     public function komentar()
     {
         return $this->hasMany(Komentar::class, 'id_artikel');
@@ -51,8 +49,7 @@ class Artikel extends Model
         return $query->whereHas('kategori_artikel', function ($query) use ($kategori) {
             $query->where('nama_kategori_artikel', $kategori);
         });
-    }
-    
+    }    
     public function scopeFilter($query, array $filter)
     {
         $query->when($filter['sort'] ??  false, function ($query, $sort) {
