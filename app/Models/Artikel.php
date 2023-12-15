@@ -11,6 +11,7 @@ class Artikel extends Model
     use HasFactory;
     protected $table = 'artikels';
     protected $guarded = ['id_artikel'];
+    protected $primaryKey = 'id_artikel'; 
     protected $with = ['createdBy', 'updatedBy', 'deletedBy'];
 
     public function createdBy()
@@ -33,18 +34,22 @@ class Artikel extends Model
     {
         return $this->belongsTo(Kategori_Artikel::class, 'id_kategori_artikel', 'id_kategori_artikel');
     }
-    
-
     public function komentar()
     {
-        return $this->hasOne(Komentar::class);
+        return $this->hasMany(Komentar::class, 'id_artikel');
     }
-    public function scopeKategori($query, $filter = [])
+    public function sumberArtikel()
     {
-        $query->when($filter['kategori'] ?? false, function ($query, $kategori) {
-            return $query->whereHas('kategori_artikel', function ($query) use ($kategori) {
-                $query->where('nama_kategori_artikel', $kategori);
-            });
+        return $this->hasMany(Sumber_Artikel::class, 'id_artikel');
+    }
+    public function ratingArtikel()
+    {
+        return $this->hasMany(Rating_Artikel::class, 'id_artikel');
+    }
+    public function scopeByKategori($query, $kategori)
+    {
+        return $query->whereHas('kategori_artikel', function ($query) use ($kategori) {
+            $query->where('nama_kategori_artikel', $kategori);
         });
     }
     

@@ -1,0 +1,30 @@
+.brand-link {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+a.active,
+button.active {
+    background-color: #06C195 !important;
+    color: white !important;
+}
+
+#exTab2 h3 {
+    color: white;
+    background-color: #428bca;
+    padding: 5px 15px;
+}
+
+.container-article {
+    padding: 15px;
+}
+
+.nav-link {
+    color: grey !important;
+}
+
+.navTab.active {
+    background-color: white !important;
+    color: grey !important;
+}

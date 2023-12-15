@@ -1,10 +1,7 @@
 $(document).ready(function () {
-    $('.dropdown-item').hover(function () {
+    $(".dropdown-item").hover(function () {
+        var imgSrc = $(this).data("img");
 
-        var imgSrc = $(this).data('img');
-
-        $('#dropdown-img').attr('src', imgSrc);
-
+        $("#dropdown-img").attr("src", imgSrc);
     });
 });
-

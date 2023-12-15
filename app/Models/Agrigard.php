@@ -2,16 +2,19 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Agrigard extends Model
 {
     use HasFactory;
+    use SoftDeletes;
 
     protected $guarded = ['id_agrigard'];
-
+    protected $primaryKey = 'id_agrigard'; 
     protected $with = ['createdBy', 'updatedBy', 'deletedBy'];
+    
 
     public function createdBy()
     {
@@ -27,39 +30,10 @@ class Agrigard extends Model
     {
         return $this->belongsTo(User::class, 'deleted_by', 'user_id');
     }
-
-
-
-    /*
-    protected $fillable = [
-        'id_agrigard',
-        'kategori',
-        'nama_produk',
-        'slug',
-        'satuan',
-        'gambar_1',
-        'gambar_2',
-        'gambar_3',
-        'video',
-        'deskripsi_singkat',
-        'stok',
-        'item_terjual',
-        'hpp',
-        'harga_b2I_31+_unit',
-        'harga_b2I_11+_unit',
-        'harga_b2I_1+_unit',
-        'harga_b2B_31+_unit',
-        'harga_b2B_11+_unit',
-        'harga_b2B_1+_unit',
-        'harga_b2C_31+_unit',
-        'harga_b2C_11+_unit',
-        'harga_b2C_1+_unit',
-        'tanggal_publikasi',
-        'created_at',
-        'updated_at',
-        'deleted_at',
-    ];*/
-
-
+    
+    public function promos()
+    {
+        return $this->belongsToMany(Promo::class, 'agrigards_promos', 'id_agrigard', 'id_promo');
+    }
 
 }

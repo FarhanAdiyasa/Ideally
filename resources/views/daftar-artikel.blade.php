@@ -9,7 +9,6 @@
   <title>Ideally</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat%3A400%2C700"/>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro%3A400%2C700"/>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Arial%3A400%2C700"/>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Quicksand%3A700"/>
   @vite(['resources/sass/app.scss', 'resources/js/app.js']);
   
@@ -17,15 +16,17 @@
   <link rel="stylesheet" href="/css/style.css"/>
   <link rel="stylesheet" href="/css/landing-artikel-style.css"/>
   <link rel="stylesheet" href="/css/artikel-pagination-style.css"/>
-  <link rel="stylesheet" href="/css/navbar-style.css" rel="stylesheet">
+  <link rel="stylesheet" href="/css/navbar-style.css">
+  <link rel="stylesheet" href="/css/header-artikel-style.css">
+  <link rel="stylesheet" href="/css/footer-artikel-style.css">
 </head>
 <body>
     {{-- Navbar Section --}}
     @include('partials.navbar')
-    {{-- End of Navbar Section --}}
-    
-    {{-- Page Header --}}
-      @include('partials.artikel-header')
+    <!-- End of Navbar -->
+
+    <!-- Headline  -->
+    @include('partials.artikel-header')
     {{-- End of Page Header --}}
       <section class="main-content">
         <div class="centre">
@@ -63,7 +64,7 @@
                       @if($articles_terbaru->count())
                         @foreach($articles_terbaru as $article)
                         <div class="article-group">
-                          <p class="desk-article">{{$article->judul_artikel}}</p>
+                          <a href="/portal-edukasi/baca/{{$article->slug}}" class="hpLink"><p class="desk-article">{{$article->judul_artikel}}</p></a>
                           <div class="info-article">
                             <img class="icon-star" src="/icons/Star.png"/>
                             <p class="tgl-article">{{ date('d M Y', strtotime($article->tanggal_publikasi));}} </p>
@@ -82,7 +83,7 @@
                       @if($articles_acak->count())
                       @foreach($articles_acak as $article)
                       <div class="article-group">
-                        <p class="desk-article">{{$article->judul_artikel}}</p>
+                        <a href="/portal-edukasi/baca/{{$article->slug}}" class="hpLink"><p class="desk-article">{{$article->judul_artikel}}</p></a>
                         <div class="info-article">
                           <img class="icon-star" src="/icons/Star.png"/>
                           <p class="tgl-article">{{ date('d M Y', strtotime($article->tanggal_publikasi));}} </p>
@@ -112,9 +113,9 @@
                           </div>
                           <div class="col-7">
                             <div class="info-main-article">
-                              <p class="title-main-article">
+                              <a href="/portal-edukasi/baca/{{$article->slug}}" class="hpLink"><p class="title-main-article">
                                 {{$article->judul_artikel}}
-                              </p>
+                              </p></a>
                               <div class="desc-main-article">
                                 <div class="desc-item">
                                   <div class="ellipse">
@@ -166,8 +167,8 @@
                         @if($articles_terpopuler->count())
                       @foreach($articles_terpopuler as $article)
                       <div class="article-group">
-                        <p class="desk-article">{{$article->judul_artikel}}</p>
-                        <div class="info-article">
+                        <a href="/portal-edukasi/baca/{{$article->slug}}" class="hpLink"><p class="desk-article">{{$article->judul_artikel}}</p>
+                        <div class="info-article"></a>
                           <img class="icon-star" src="/icons/Star.png"/>
                           <p class="tgl-article">{{ date('d M Y', strtotime($article->tanggal_publikasi));}} </p>
                         </div>
@@ -185,7 +186,7 @@
                           @if($articles_acak2->count())
                         @foreach($articles_acak2 as $article)
                         <div class="article-group">
-                          <p class="desk-article">{{$article->judul_artikel}}</p>
+                          <a href="/portal-edukasi/baca/{{$article->slug}}" class="hpLink"><p class="desk-article">{{$article->judul_artikel}}</p></a>
                           <div class="info-article">
                             <img class="icon-star" src="/icons/Star.png"/>
                             <p class="tgl-article">{{ date('d M Y', strtotime($article->tanggal_publikasi));}} </p>
@@ -209,7 +210,7 @@
         </div>
       </section>
       @include('partials.artikel-footer')
-      <script src="js/portal-edukasi.js"></script>
       <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+      <script src="../js/portal-edukasi.js"></script>
       <script src="/js/navbar.js"></script>
 </body>
