@@ -30,6 +30,7 @@ class AuthController extends Controller
 
     function callback() {
         $user = Socialite::driver('google')->user();
+        dd($user);
         $id = $user->user_id;
         $email = $user->email;
         $name = $user->name;
