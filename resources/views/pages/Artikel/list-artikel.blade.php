@@ -46,15 +46,15 @@
                                            {{ $artikel->penulis_artikel }}
                                     </td>
                                     <td>
-                                        {{ $artikel->tanggal_publikasi == null ? 'Tidak Aktif' : 'Aktif' }} 
                                         <div class="form-check form-switch">
-                                            <form method="post" id="statForm" action="{{ route('artikels.post')}}">
+                                            <form method="post" id="statForm{{ $artikel->id_artikel }}" action="{{ route('artikels.post')}}">
                                                 @csrf
-                                                <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked" name="status" onchange="store()" value="{{ $artikel->tanggal_publikasi == null ? 'true' : 'false' }}" @if ($artikel->tanggal_publikasi !== null) checked @endif>
-                                                <input type="hidden" name="id_artikel" id="id_artikel" value="{{ $artikel->id_artikel }}">
+                                                <input type="hidden" name="id_artikel" id="id_artikel{{ $artikel->id_artikel }}" value="{{ $artikel->id_artikel }}">
+                                                <input type="hidden" name="status" id="status{{ $artikel->id_artikel }}" value="{{ $artikel->tanggal_publikasi == null ? 'true' : 'false' }}">
+                                                <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked{{ $artikel->id_artikel }}" onchange="store({{ $artikel->id_artikel }})" @if ($artikel->tanggal_publikasi !== null) checked @endif>
                                             </form>
                                         </div>
-                                    </td>                               
+                                    </td>                
                                     <td>
                                         <a href="{{ route('artikels.preview', $artikel->slug)}}" target="_blank">
                                             <button type="button" class="btn btn-primary" onclick="" ><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye-fill" viewBox="0 0 16 16">
@@ -125,8 +125,12 @@
         $('#products-table').DataTable();
     }); 
 
-    function store() {
-        $("#statForm").submit();
-    }
+    function store(articleId) {
+    // Submit the form
+    $("#statForm" + articleId).submit();
+}
+
+
+
 </script>
 @endsection

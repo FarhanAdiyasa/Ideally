@@ -61,10 +61,11 @@
                                     <td>
                                         {{ $agrigard->tanggal_publikasi == null ? 'Tidak Aktif' : 'Aktif' }} 
                                         <div class="form-check form-switch">
-                                            <form method="post" id="statForm" action="{{ route('daftar-produk.status')}}">
+                                            <form method="post" id="statForm{{ $agrigard->id_agrigard }}" action="{{ route('daftar-produk.status')}}">
                                                 @csrf
-                                                <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked" name="status" onchange="store()" value="{{ $agrigard->tanggal_publikasi == null ? 'true' : 'false' }}" @if ($agrigard->tanggal_publikasi !== null) checked @endif>
-                                                <input type="hidden" name="agrigard_id" id="agrigard_id" value="{{ $agrigard->id_agrigard }}">
+                                                <input type="hidden" name="agrigard_id" id="agrigard_id{{ $agrigard->id_agrigard }}" value="{{ $agrigard->id_agrigard }}">
+                                                <input type="hidden" name="status" id="status{{ $agrigard->id_agrigard }}" value="{{ $agrigard->tanggal_publikasi == null ? 'true' : 'false' }}">
+                                                <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked{{ $agrigard->id_agrigard }}" onchange="store({{ $agrigard->id_agrigard }})" @if ($agrigard->tanggal_publikasi !== null) checked @endif>
                                             </form>
                                         </div>
                                     </td>                                      
@@ -146,11 +147,8 @@
     $(document).ready(function() {
         $('#products-table').DataTable();
     });  
-    function store() {
-    var status = $("#flexSwitchCheckChecked").prop('checked') ? 'true' : 'false';
-    var id = $("#agrigard_id").val();
-    console.log(status, id);
-    $("#statForm").submit();
+    function store(id) {
+    $("#statForm" + id).submit();
 
     }
     $(document).ready(function() {

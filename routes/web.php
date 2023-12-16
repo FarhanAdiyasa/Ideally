@@ -53,7 +53,7 @@ Route::delete('/destroy-produk/{id}', [AdminAgrigardController::class, 'destroy'
 Route::get('/daftar-promo', [PromoController::class, 'index'])->name('daftar-promo');
 
 Route::get('/tambah-promo', [PromoController::class, 'create'])->name('daftar-promo.tambah');
-Route::post('/tambah-promoc', [PromoController::class, 'store'])->name('daftar-promo.save');
+Route::post('/tambah-promo', [PromoController::class, 'store'])->name('daftar-promo.save');
 Route::get('/tambah-promo/{brand}', [PromoController::class, 'show'])->name('promo-show.product');
 
 Route::get('/edit-promo/{id}/{brand}', [PromoController::class, 'showEdit'])->name('promo-show-edit.product');

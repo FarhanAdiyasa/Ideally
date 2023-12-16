@@ -180,21 +180,23 @@ $(document).ready(function () {
         reverse: true,
     });
 });
-document.getElementById("default").addEventListener("input", function () {
-    var count = this.value.length;
-    var characterCountElement = document.getElementById("characterCount");
+if (document.getElementById("default")) {
+    document.getElementById("default").addEventListener("input", function () {
+        var count = this.value.length;
+        var characterCountElement = document.getElementById("characterCount");
 
-    characterCountElement.innerText = count;
+        characterCountElement.innerText = count;
 
-    if (count > 70) {
-        this.value = this.value.substring(0, 70);
-        characterCountElement.textContent = 70;
-    }
-});
-document.getElementById("default").addEventListener("input", function () {
-    // Get the current character count
-    var count = this.value.length;
+        if (count > 70) {
+            this.value = this.value.substring(0, 70);
+            characterCountElement.textContent = 70;
+        }
+    });
+    document.getElementById("default").addEventListener("input", function () {
+        // Get the current character count
+        var count = this.value.length;
 
-    // Update the counter element
-    document.getElementById("characterCount").innerText = count;
-});
+        // Update the counter element
+        document.getElementById("characterCount").innerText = count;
+    });
+}
