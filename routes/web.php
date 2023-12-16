@@ -9,6 +9,11 @@ use App\Http\Controllers\AgrigardController;
 use App\Http\Controllers\AdminAgrigardController;
 use App\Http\Controllers\AdminArtikelController;
 
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\ArtikelController;
+use App\Http\Controllers\everlastThingController;
+use App\Http\Controllers\verificationController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -64,15 +69,40 @@ Route::post('/post-promo', [PromoController::class, 'post'])->name('daftar-promo
 Route::get('/delete-promo/{id}', [PromoController::class, 'delete'])->name('daftar-promo.delete');
 Route::delete('/destroy-promo/{id}', [PromoController::class, 'destroy'])->name('daftar-promo.destroy');
 
+//batunesia
+Route::get('/batunesia/index', [App\Http\Controllers\BatunesiaController::class, 'index'])->name('batunesia.index');
+Route::get('/batunesia/index/showByWhite', [App\Http\Controllers\BatunesiaController::class, 'filterByWhite'])->name('batunesia.filterByWhite');
+Route::get('/batunesia/index/showByBlack', [App\Http\Controllers\BatunesiaController::class, 'filterByBlack'])->name('batunesia.filterByBlack');
+Route::get('/batunesia/index/showByCream', [App\Http\Controllers\BatunesiaController::class, 'filterByCream'])->name('batunesia.filterByCream');
+Route::get('/batunesia/index/showByGrey', [App\Http\Controllers\BatunesiaController::class, 'filterByGrey'])->name('batunesia.filterByGrey');
+Route::get('/batunesia/index/showByBrown', [App\Http\Controllers\BatunesiaController::class, 'filterByBrown'])->name('batunesia.filterByBrown');
+Route::get('/batunesia/index/showByPancawarna', [App\Http\Controllers\BatunesiaController::class, 'filterByPancawarna'])->name('batunesia.filterByPancawarna');
+Route::get('/batunesia/index/showByBatuHampar', [App\Http\Controllers\BatunesiaController::class, 'filterByBatuHampar'])->name('batunesia.filterByBatuHampar');
+Route::get('/batunesia/index/showByBatuTempel', [App\Http\Controllers\BatunesiaController::class, 'filterByBatuTempel'])->name('batunesia.filterByBatuTempel');
+Route::get('/batunesia/index/showByBatuHias', [App\Http\Controllers\BatunesiaController::class, 'filterByBatuHias'])->name('batunesia.filterByBatuHias');
+Route::get('/batunesia/index/showByOrnamenBatu', [App\Http\Controllers\BatunesiaController::class, 'filterByOrnamenBatu'])->name('batunesia.filterByOrnamenBatu');
+Route::get('/batunesia/index/showByPotBatu', [App\Http\Controllers\BatunesiaController::class, 'filterByPotBatu'])->name('batunesia.filterByPotBatu');
 
-//Artikel
-Route::get('/daftar-artikel', [AdminArtikelController::class, 'index'])->name('artikels');
-Route::get('/tambah-artikel', [AdminArtikelController::class, 'create'])->name('artikels.create');
-Route::post('/tambah-artikel/store', [AdminArtikelController::class, 'store'])->name('artikels.save');
-Route::get('/daftar-artikel/preview/{slug}', [AdminArtikelController::class, 'preview'])->name('artikels.preview');
+//everlasthing
+Route::get('/everlasthings/detailProduct', [everlastThingController::class, 'detailProduct'])->name('everlasthings.detailProduct');
 
-Route::get('/edit-artikel/{id}', [AdminArtikelController::class, 'edit'])->name('artikels.edit');
-Route::put('/edit-artikel/{id}', [AdminArtikelController::class, 'update'])->name('artikels.update');
-Route::get('/delete-artikel/{id}', [AdminArtikelController::class, 'delete'])->name('artikels.delete');
-Route::delete('/destroy-artikel/{id}', [AdminArtikelController::class, 'destroy'])->name('artikels.destroy');
-Route::post('/post-artikel', [AdminArtikelController::class, 'post'])->name('artikels.post');
+//authentikasi login & regis
+Route::get('/auth/redirect',[AuthController::class, "redirect"])->middleware('guest');
+Route::get('/auth',[AuthController::class, "index"])->name('login')->middleware('guest');
+Route::get('/auth/callback',[AuthController::class, "callback"])->middleware('guest');
+Route::get('/auth/logout',[AuthController::class,"logout"]);
+Route::get('/auth/register', [AuthController::class, 'register'])->name('auth.register');
+Route::post('/auth/create',[AuthController::class,"create"]);
+Route::post('/auth/login',[AuthController::class,"login"]);
+Route::get('/auth/dashboard/{id}', [AuthController::class, "dashboard"])->middleware('auth');
+
+//route lupa password
+Route::get('forget-password', [AuthController::class, "forgetPassword"])->name('forget.password');
+Route::post('forget-password', [AuthController::class, "forgetPasswordPost"])->name('forget.password.post');
+Route::get('reset-password/{token}', [AuthController::class, "resetPassword"])->name("reset.password");
+Route::post('reset-password', [AuthController::class, "resetPasswordPost"])->name("reset.password.post");
+
+
+//route verifikasi
+Route::get('/email/verify/need-verification', [verificationController::class, 'notice'])->middleware('auth')->name('verification.notice');
+Route::get('/email/verify/{id}/{hash}', [verificationController::class, 'verify'])->middleware('auth','signed')->name('verification.verify');

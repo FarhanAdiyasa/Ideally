@@ -15,15 +15,21 @@ return new class extends Migration
             
             $table->id('user_id');
             $table->string('email')->unique(); // Menandai kolom email sebagai unik
-            $table->string('password'); // Gunakan tipe data yang sesuai untuk menyimpan password yang telah di-hash
+            $table->string('password');
+            $table->string('google_id'); 
             $table->string('firstname');
             $table->string('lastname');
             $table->string('address');
             $table->string('telephone_number');
-            $table->date('birthdate'); // Menggunakan tipe data 'date' untuk tanggal lahir
+            $table->date('birthdate'); 
             $table->string('gender');
             $table->string('profesi')->nullable();
             $table->string('profile_picture')->nullable();
+            $table->string('provinsi');
+            $table->string('kabupaten');
+            $table->string('kecamatan');
+            $table->string('kelurahan');
+            $table->string('email_verified_at');
             $table->rememberToken();
             $table->softDeletes();
             $table->timestamps();

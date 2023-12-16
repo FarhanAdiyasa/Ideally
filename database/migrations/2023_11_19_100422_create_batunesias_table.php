@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('spek');
             $table->string('satuan');
             $table->string('warna');
-            $table->string('gambar_1')->nullable();
+            $table->string('gambar_1')->nullable(); 
             $table->string('gambar_2')->nullable();
             $table->string('gambar_3')->nullable();
             $table->string('video')->nullable();

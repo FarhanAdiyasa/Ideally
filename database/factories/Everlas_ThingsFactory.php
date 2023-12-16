@@ -1,8 +1,9 @@
 <?php
 
 namespace Database\Factories;
-
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Faker\Factory as Faker;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Everlas_Things>
@@ -16,7 +17,7 @@ class Everlas_ThingsFactory extends Factory
      */
     public function definition(): array
     {
-        return [
+      return [
             //
 
             'seri' => $this->faker->word,
@@ -47,6 +48,7 @@ class Everlas_ThingsFactory extends Factory
             'tanggal_publikasi' => $this->faker->dateTimeThisMonth,
             'created_at' => now(),
             'created_by' => $this->faker->numberBetween(1, 5)
+
         ];
     }
 }
