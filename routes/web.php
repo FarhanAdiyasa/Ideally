@@ -66,5 +66,13 @@ Route::delete('/destroy-promo/{id}', [PromoController::class, 'destroy'])->name(
 
 
 //Artikel
-Route::get('/tambah-artikel', [AdminArtikelController::class, 'create'])->name('artikels');
+Route::get('/daftar-artikel', [AdminArtikelController::class, 'index'])->name('artikels');
+Route::get('/tambah-artikel', [AdminArtikelController::class, 'create'])->name('artikels.create');
 Route::post('/tambah-artikel/store', [AdminArtikelController::class, 'store'])->name('artikels.save');
+Route::get('/daftar-artikel/preview/{slug}', [AdminArtikelController::class, 'preview'])->name('artikels.preview');
+
+Route::get('/edit-artikel/{id}', [AdminArtikelController::class, 'edit'])->name('artikels.edit');
+Route::put('/edit-artikel/{id}', [AdminArtikelController::class, 'update'])->name('artikels.update');
+Route::get('/delete-artikel/{id}', [AdminArtikelController::class, 'delete'])->name('artikels.delete');
+Route::delete('/destroy-artikel/{id}', [AdminArtikelController::class, 'destroy'])->name('artikels.destroy');
+Route::post('/post-artikel', [AdminArtikelController::class, 'post'])->name('artikels.post');

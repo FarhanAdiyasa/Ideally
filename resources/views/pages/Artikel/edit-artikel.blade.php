@@ -22,7 +22,7 @@
   <div class="container-fluid">
     <div class="row mb-2">
       <div class="col-sm-6">
-        <h1>Tambah Artikel</h1>
+        <h1>Edit Artikel</h1>
       </div>
       <div class="col-sm-6">
         <ol class="breadcrumb float-sm-right">
@@ -36,7 +36,8 @@
 <section class="content">
 <div class="container-fluid">
   <!-- SELECT2 EXAMPLE -->
-  <form method="post" action="{{ route('artikels.save')}} " enctype="multipart/form-data" id="agrForm">
+  <form method="post" action="{{ route('artikels.update', $artikel->id_artikel)}} " enctype="multipart/form-data" id="agrForm">
+    @method("PUT")
     @csrf
   <div class="card card-default">
     <div class="card-header">
@@ -62,7 +63,7 @@
         <!-- /.col -->
         <div class="col-md-9">
           <div class="form-group">
-              <input id="default" type="text" class="form-control" placeholder="Placeholder text" name="judul_artikel" id="judul_artikel" value="{{old('judul_artikel')}}">
+              <input id="default" type="text" class="form-control" placeholder="Placeholder text" name="judul_artikel" id="judul_artikel" value="{{old('judul_artikel', $artikel->judul_artikel)}}">
               @error('judul_artikel')
               <small class="text-danger">{{ $message }}</small>
               @enderror
@@ -93,7 +94,7 @@
                       <strong>{{ $message }}</strong>
                   </span>
               @enderror
-              <img id="preview" src="#" alt="your image" class="mt-3" height="300" width="470" style="display:none;"/>
+              <img id="preview" src="{{ asset('storage/' . $artikel->gambar_artikel) }}"  alt="{{$artikel->keterangan_gambar_artikel}}" class="mt-3" height="300" width="470"/>
           <!-- /.form-group -->
         </div>
         <!-- /.col -->
@@ -103,7 +104,7 @@
         <div class="col-12 col-sm-6">
           <div class="form-group">
             <label>Keterangan Gambar</label>
-              <input type="text" class="form-control" placeholder="Placeholder text" name="keterangan_gambar_artikel" value="{{old('keterangan_gambar_artikel')}}">
+              <input type="text" class="form-control" placeholder="Placeholder text" name="keterangan_gambar_artikel" value="{{old('keterangan_gambar_artikel', $artikel->keterangan_gambar_artikel)}}">
                  @error('keterangan_gambar_artikel')
               <small class="text-danger">{{ $message }}</small>
               @enderror
@@ -115,7 +116,7 @@
           <div class="form-group">
             <label>Keywords Artikel</label>
             <div class="select2-purple">
-                <input type="text" class="form-control" placeholder="Placeholder text" name="keywords" value="{{old('keywords')}}">
+                <input type="text" class="form-control" placeholder="Placeholder text" name="keywords" value="{{old('keywords', $artikel->keywords)}}">
                    @error('keywords')
               <small class="text-danger">{{ $message }}</small>
               @enderror
@@ -137,11 +138,15 @@
         <div class="col-md-9">
           <div class="form-group">
             @foreach ($categories as $category)
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="checkbox" id="{{ $category->nama_kategori_artikel }}" name="kategori_artikel[]" value="{{ $category->id_kategori_artikel }}" @if (is_array(old('kategori_artikel')) && in_array($category->id_kategori_artikel, old('kategori_artikel'))) checked @endif>
-                    <label class="form-check-label" for="{{ $category->nama_kategori_artikel }}">{{ $category->nama_kategori_artikel }}</label>
-                </div>
-            @endforeach      
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="checkbox" id="{{ $category->nama_kategori_artikel }}" name="kategori_artikel[]" value="{{ $category->id_kategori_artikel }}"
+                    @if ((is_array(old('kategori_artikel')) && in_array($category->id_kategori_artikel, old('kategori_artikel'))) ||
+                        (is_array($artikel->kategori_artikel->pluck('id_kategori_artikel')->toArray()) && in_array($category->id_kategori_artikel, $artikel->kategori_artikel->pluck('id_kategori_artikel')->toArray())))
+                        checked
+                    @endif>
+                <label class="form-check-label" for="{{ $category->nama_kategori_artikel }}">{{ $category->nama_kategori_artikel }}</label>
+            </div>
+            @endforeach           
             @error('kategori_artikel[]')
             <div class="text-danger">{{ $message }}</div>
             @enderror
@@ -170,7 +175,7 @@
             <div class="col-md-12">
                 <div class="form-group">
                     <label>Deskripsi Artikel</label>
-                      <input type="text" class="form-control" placeholder="Placeholder text" name="deskripsi_artikel" value="{{old('deskripsi_artikel')}}">
+                      <input type="text" class="form-control" placeholder="Placeholder text" name="deskripsi_artikel" value="{{old('deskripsi_artikel', $artikel->deskripsi_artikel)}}">
                          @error('deskripsi_artikel')
                       <small class="text-danger">{{ $message }}</small>
                       @enderror
@@ -181,7 +186,7 @@
             <div class="col-md-12">
                 <div class="form-group">
                     <label for="">Description:</label>
-                    <textarea name="isi_artikel" id="isi_artikel" cols="30" rows="10"></textarea>
+                    <textarea name="isi_artikel" id="isi_artikel" cols="30" rows="10">{{$artikel->isi_artikel}}</textarea>
                     @error('isi_artikel')
                     <small class="text-danger">{{ $message }}</small>
                     @enderror
@@ -210,12 +215,12 @@
               <div class="form-group">
                 <div class="form-check form-check-inline">
                     <input class="form-check-input" type="radio" id="author_sendiri" name="author" value="sendiri" 
-                           @if (old('author') == 'sendiri' || !old('author')) checked @endif>
+                          @if (old('author') == 'sendiri' || $author== 'sendiri') checked @endif>
                     <label class="form-check-label" for="author_sendiri">Artikel Saya</label>
                 </div>
                 <div class="form-check form-check-inline">
                     <input class="form-check-input" type="radio" id="author_lain" name="author" value="lain"
-                           @if (old('author') == 'lain') checked @endif>
+                          @if (old('author') == 'lain' || $author== 'lain') checked @endif>
                     <label class="form-check-label" for="author_lain">Bukan Artikel Saya</label>
                 </div>
                 @error('author')
@@ -318,7 +323,7 @@
                         <div class="form-group">
                           <label>Nama Penulis Artikel</label>
                           <div class="select2-purple">
-                              <input type="text" class="form-control" placeholder="Placeholder text" name="penulis_artikel" value="{{ old('penulis_artikel') }}">
+                              <input type="text" class="form-control" placeholder="Placeholder text" name="penulis_artikel" value="{{ old('penulis_artikel', $artikel->penulis_artikel) }}">
                               @error('penulis_artikel')
                                   <small class="text-danger">{{ $message }}</small>
                               @enderror
@@ -327,7 +332,7 @@
                       <div class="form-group">
                           <label>Profesi Penulis Artikel</label>
                           <div class="select2-purple">
-                              <input type="text" class="form-control" placeholder="Placeholder text" name="profesi_penulis_artikel" value="{{ old('profesi_penulis_artikel') }}">
+                              <input type="text" class="form-control" placeholder="Placeholder text" name="profesi_penulis_artikel" value="{{ old('profesi_penulis_artikel', $artikel->profesi_penulis_artikel) }}">
                               @error('profesi_penulis_artikel')
                                   <small class="text-danger">{{ $message }}</small>
                               @enderror
@@ -337,7 +342,7 @@
                       <div class="col-12 col-sm-6">
                         <div class="form-group">
                           <label>Deskripsi Singkat Penulis Artikel</label>
-                          <textarea type="text" class="form-control" placeholder="Placeholder text" name="deskripsi_singkat_penulis_artikel" rows="5">{{ old('deskripsi_singkat_penulis_artikel') }}</textarea>
+                          <textarea type="text" class="form-control" placeholder="Placeholder text" name="deskripsi_singkat_penulis_artikel" rows="5">{{ old('deskripsi_singkat_penulis_artikel', $artikel->deskripsi_singkat_penulis_artikel) }}</textarea>
                           @error('deskripsi_singkat_penulis_artikel')
                               <small class="text-danger">{{ $message }}</small>
                           @enderror

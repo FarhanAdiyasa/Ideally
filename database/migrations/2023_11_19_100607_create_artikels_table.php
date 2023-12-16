@@ -26,10 +26,11 @@ return new class extends Migration
             $table->timestamp('tanggal_publikasi')->nullable();
             $table->integer('pengunjung')->default(0);
             $table->foreignId('created_by'); // Kolom foreign key untuk pembuat artikel
-            $table->foreignId('updated_by'); // Kolom foreign key untuk yang memperbarui artikel
+            $table->foreignId('updated_by')->nullable(); // Kolom foreign key untuk yang memperbarui artikel
             $table->foreignId('deleted_by')->nullable(); // Kolom foreign key untuk yang menghapus artikel (nullable karena belum tentu setiap artikel dihapus)
             
             $table->timestamps();
+            $table->softDeletes();
 
             // Menambahkan constraint foreign key
             $table->foreign('created_by')->references('user_id')->on('users');
@@ -43,8 +44,8 @@ return new class extends Migration
             $table->foreignId('id_kategori_artikel');
             $table->timestamps();
 
-            $table->foreign('id_kategori_artikel')->references('id_kategori_artikel')->on('kategori_artikels');
-            $table->foreign('id_artikel')->references('id_artikel')->on('artikels');
+            $table->foreign('id_kategori_artikel')->references('id_kategori_artikel')->on('kategori_artikels')->delete('cascade');
+            $table->foreign('id_artikel')->references('id_artikel')->on('artikels')->delete('cascade');
         });
     }
 
