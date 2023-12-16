@@ -3654,3 +3654,14 @@
 1702514098-0890-592746104,1702514097.884,GET,/portal-edukasi/Desain-Taman,"App\Http\Controllers\ArtikelController@byKategori",200,548.0329990387,request
 1702514117-8811-1647996783,1702514117.6435,GET,/portal-edukasi/baca/harum-ipsum-aut-modi-nulla-molestiae-minus-ea-laudantium,"App\Http\Controllers\ArtikelController@baca",200,576.25293731689,request
 1702514118-9634-1007844392,1702514118.6399,GET,/portal-edukasi/komentar/harum-ipsum-aut-modi-nulla-molestiae-minus-ea-laudantium,"App\Http\Controllers\ArtikelController@sKomentar",200,741.48607254028,request
+1702636268-4916-697465369,1702636268.2617,GET,/,Closure,500,921.75698280334,request
+1702636272-4059-329684406,1702636272.2481,GET,/portal-edukasi,"App\Http\Controllers\ArtikelController@index",200,310.59217453003,request
+1702636272-9584-1842234033,1702636272.7375,GET,/home/show/Desain-Taman,"App\Http\Controllers\ArtikelController@show",500,442.80409812927,request
+1702636465-8734-1437398969,1702636465.617,GET,/,Closure,500,955.33204078674,request
+1702636470-3118-379400931,1702636470.1416,GET,/tambah-produk,AgrigardController@create,500,612.96415328979,request
+1702636516-5860-1522543787,1702636516.4281,GET,/tambah-produk,"App\Http\Controllers\AgrigardController@create",200,288.87891769409,request
+1702636516-9905-1996665507,1702636516.8189,GET,/dist/img/user1-128x128.jpg,,404,284.24501419067,request
+1702636517-2553-204812177,1702636517.1138,GET,/dist/img/user8-128x128.jpg,,404,277.92692184448,request
+1702636517-5461-1044974229,1702636517.404,GET,/dist/img/user3-128x128.jpg,,404,277.07314491272,request
+1702636536-3349-2124325910,1702636536.2073,GET,/daftar-produk,"App\Http\Controllers\AgrigardController@index",302,230.02505302429,request
+1702636536-5878-948310844,1702636536.4538,GET,/auth,"App\Http\Controllers\AuthController@index",200,274.96600151062,request

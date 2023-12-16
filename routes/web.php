@@ -5,9 +5,11 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\PromoController;
 use App\Http\Controllers\ArtikelController;
-use App\Http\Controllers\everlastThingController;
+use App\Http\Controllers\AgrigardController;
 use App\Http\Controllers\verificationController;
+use App\Http\Controllers\everlastThingController;
 
 /*
 |--------------------------------------------------------------------------
@@ -35,7 +37,7 @@ Route::get('/portal-edukasi/komentar/{kategori}', [ArtikelController::class, 'sK
 
 
 //Agrigard
-Route::get('/daftar-produk', [AgrigardController::class, 'index'])->name('daftar-produk');
+Route::get('/daftar-produk', [AgrigardController::class, 'index'])->name('daftar-produk')->middleware('auth');
 Route::get('/daftar-produk/{id}', [AgrigardController::class, 'view'])->name('daftar-produk.view');
 
 Route::get('/tambah-produk', [AgrigardController::class, 'create'])->name('daftar-produk.tambah');

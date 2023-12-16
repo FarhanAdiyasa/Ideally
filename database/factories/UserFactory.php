@@ -19,18 +19,22 @@ class UserFactory extends Factory
     {
         return [
             'email' => $this->faker->unique()->safeEmail,
-            'password' => bcrypt('password'), // example password
+            'password' => bcrypt('password'), // You may want to use Hash::make() instead
+            'google_id' => $this->faker->uuid,
             'firstname' => $this->faker->firstName,
             'lastname' => $this->faker->lastName,
             'address' => $this->faker->address,
             'telephone_number' => $this->faker->phoneNumber,
             'birthdate' => $this->faker->date,
-            'gender' => $this->faker->randomElement(['Male', 'Female']),
-            'profesi' => $this->faker->word,
-            'profile_picture' => $this->faker->imageUrl(),
+            'gender' => $this->faker->randomElement(['male', 'female']),
+            'profesi' => $this->faker->optional()->word,
+            'profile_picture' => $this->faker->optional()->imageUrl(),
+            'provinsi' => $this->faker->word,
+            'kabupaten' => $this->faker->word,
+            'kecamatan' => $this->faker->word,
+            'kelurahan' => $this->faker->word,
+            'email_verified_at' => now(),
             'remember_token' => Str::random(10),
-            'created_at' => now(),
-            'updated_at' => now(),
         ];
     }
 
