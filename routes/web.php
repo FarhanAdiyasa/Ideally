@@ -3,6 +3,11 @@
 use App\Models\Artikel;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PromoController;
+use App\Http\Controllers\ArtikelController;
+use App\Http\Controllers\AgrigardController;
+use App\Http\Controllers\AdminAgrigardController;
+use App\Http\Controllers\AdminArtikelController;
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ArtikelController;
@@ -35,25 +40,25 @@ Route::get('/portal-edukasi/komentar/{kategori}', [ArtikelController::class, 'sK
 
 
 //Agrigard
-Route::get('/daftar-produk', [AgrigardController::class, 'index'])->name('daftar-produk');
-Route::get('/daftar-produk/{id}', [AgrigardController::class, 'view'])->name('daftar-produk.view');
+Route::get('/daftar-produk', [AdminAgrigardController::class, 'index'])->name('daftar-produk');
+Route::get('/daftar-produk/{id}', [AdminAgrigardController::class, 'view'])->name('daftar-produk.view');
 
-Route::get('/tambah-produk', [AgrigardController::class, 'create'])->name('daftar-produk.tambah');
-Route::post('/tambah-produk/store', [AgrigardController::class, 'store'])->name('daftar-produk.save');
+Route::get('/tambah-produk', [AdminAgrigardController::class, 'create'])->name('daftar-produk.tambah');
+Route::post('/tambah-produk/store', [AdminAgrigardController::class, 'store'])->name('daftar-produk.save');
 
-Route::get('/edit-produk/{id}', [AgrigardController::class, 'edit'])->name('daftar-produk.edit');
-Route::put('/edit-produk/{id}', [AgrigardController::class, 'update'])->name('daftar-produk.update');
-Route::post('/post-produk', [AgrigardController::class, 'post'])->name('daftar-produk.status');
+Route::get('/edit-produk/{id}', [AdminAgrigardController::class, 'edit'])->name('daftar-produk.edit');
+Route::put('/edit-produk/{id}', [AdminAgrigardController::class, 'update'])->name('daftar-produk.update');
+Route::post('/post-produk', [AdminAgrigardController::class, 'post'])->name('daftar-produk.status');
 
-Route::get('/delete-produk/{id}', [AgrigardController::class, 'delete'])->name('daftar-produk.delete');
-Route::delete('/destroy-produk/{id}', [AgrigardController::class, 'destroy'])->name('daftar-produk.destroy');
+Route::get('/delete-produk/{id}', [AdminAgrigardController::class, 'delete'])->name('daftar-produk.delete');
+Route::delete('/destroy-produk/{id}', [AdminAgrigardController::class, 'destroy'])->name('daftar-produk.destroy');
 
 
 //Promo
 Route::get('/daftar-promo', [PromoController::class, 'index'])->name('daftar-promo');
 
 Route::get('/tambah-promo', [PromoController::class, 'create'])->name('daftar-promo.tambah');
-Route::post('/tambah-promo/store', [PromoController::class, 'store'])->name('daftar-promo.save');
+Route::post('/tambah-promo', [PromoController::class, 'store'])->name('daftar-promo.save');
 Route::get('/tambah-promo/{brand}', [PromoController::class, 'show'])->name('promo-show.product');
 
 Route::get('/edit-promo/{id}/{brand}', [PromoController::class, 'showEdit'])->name('promo-show-edit.product');

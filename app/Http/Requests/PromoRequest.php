@@ -29,7 +29,6 @@ class PromoRequest extends FormRequest
             'target_promo' => 'required|array',
             'target_promo.*' => 'required|string|max:255',
             'tipe_potongan' => 'required|string|max:255',
-            'persentase_promo' => 'required|regex:/^\d+(\.\d{1,2})?$/',
             'nominal_promo' => 'required|numeric',
             'minimum_pembelian' => 'required|numeric',
             'kuota' => 'required|integer',

@@ -19,7 +19,7 @@ class AgrigardRequest extends FormRequest
             'spesifikasi' => 'required|string',
             'satuan' => 'required|string',
             'photos' => 'required|array',
-            'photos.*' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'photos.*' => 'required|image|mimes:jpeg,png,jpg|max:2048',
             'video' => 'nullable|url',
             'deskripsi_singkat' => 'required|string',
             'stok' => 'required|integer',

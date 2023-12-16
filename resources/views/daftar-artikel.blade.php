@@ -109,7 +109,7 @@
                       <div class="container" >
                         <div class="row">
                           <div class="col-5" >
-                            <img src="{{$article->gambar_artikel}}"/>
+                            <img src="{{asset('storage/' .$article->gambar_artikel)}}"/>
                           </div>
                           <div class="col-7">
                             <div class="info-main-article">

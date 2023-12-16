@@ -170,8 +170,6 @@
                 <h4 style="color: black; font-size: 20px; font-weight: 700; padding-top: 20px;">Beri Penilaian</h4>
                 <div class="additional-text-container rounded-pill d-inline-block"
                     style="background-color: #06C195; color: white; width: 100%;">
-                    <form id="ratingForm" action="{{ route('rating-artikel', ['slug' => $artikel->slug]) }}" method="post">
-                        @csrf
                         <div class="rating">
                             <input type="radio" name="rating" value="5" id="5" @if ($rating && $rating->rating_artikel == 5) checked @endif>
                             <label for="5" onclick="submitForm(5,'{{$artikel->slug}}')">☆</label>
@@ -187,9 +185,7 @@
                             
                             <input type="radio" name="rating" value="1" id="1"  @if ($rating && $rating->rating_artikel == 1) checked @endif>
                             <label for="1" onclick="submitForm(1,'{{$artikel->slug}}')">☆</label>
-                            
                         </div>
-                    </form>
                 </div>
                 <div class="success" id="suksesRate" style="visibility: hidden"><small>
                     Terimakasih !</small></div>
@@ -218,8 +214,7 @@
                                                 style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover;">
                                         </div>
                                         <div class="card-body">
-                                            <a href="/portal-edukasi/baca/{{$article->slug}}" class="hpLink"><h5 class="card-title" style="font-weight: 700;">{{$article->judul_artikel}}</a>
-                                            </h5>
+                                           </h5>
                                             <p class="card-text">{{$article->createdBy->firstname}} {{$article->createdBy->lastname}}</p>
                                             @php
                                             $averageRating = $article->ratingArtikel->avg('rating_artikel');
@@ -343,8 +338,6 @@
                         @if (session('error'))
                         <div class="alert alert-warning">{{ session('error') }}</div>
                     @endif
-                        <form id="komenForm" action="{{ route('komentar-artikel', ['slug' => $artikel->slug]) }}" method="post">
-                            @csrf
                             <div class="textbox-komentar">
                                 <textarea class="input-textbox-komentar" type="text" name="komentar" placeholder="Tambahkan Komentar Anda!"
                                     id="textarea-komentar"></textarea>
@@ -354,7 +347,6 @@
                                     </button>                                    
                                 </div>
                             </div>
-                        </form>
                     </div>
                 </div>
                 <!-- End of Komentar -->
@@ -381,9 +373,9 @@
                                 @if($articles_terbaru->count())
                                  @foreach($articles_terbaru as $article)
                                 <div class="mb-3 content-widget-floating">
-                                    <a href="/portal-edukasi/baca/{{$article->slug}}" class="hpLink"><div style="padding-bottom: 13px;">
+                                    <div style="padding-bottom: 13px;">
                                         {{$article->judul_artikel}}
-                                    </div></a>
+                                    </div>
                                     <div class="additional-text-container rounded-pill d-inline-block"
                                         style="background-color: #06C195; color: white;">
                                         <div class="keterangan-additional-text-container d-flex">
@@ -405,9 +397,9 @@
                                 @foreach($articles_terpopuler as $article)
                                 <!-- Konten floating widget -->
                                 <div class="mb-3 content-widget-floating">
-                                    <a href="/portal-edukasi/baca/{{$article->slug}}" class="hpLink"><div style="padding-bottom: 13px;">
+                                    <div style="padding-bottom: 13px;">
                                         {{$article->judul_artikel}}
-                                    </div></a>
+                                    </div>
                                     <div class="additional-text-container rounded-pill d-inline-block"
                                         style="background-color: #06C195; color: white;">
                                         <div class="keterangan-additional-text-container d-flex">
@@ -430,9 +422,9 @@
                                 @if($articles_acak->count())
                                 @foreach($articles_acak as $article)
                                 <div class="mb-3 content-widget-floating">
-                                    <a href="/portal-edukasi/baca/{{$article->slug}}" class="hpLink"><div style="padding-bottom: 13px;">
+                                    <div style="padding-bottom: 13px;">
                                         {{$article->judul_artikel}}
-                                    </div></a>
+                                    </div>
                                     <div class="additional-text-container rounded-pill d-inline-block"
                                         style="background-color: #06C195; color: white;">
                                         <div class="keterangan-additional-text-container d-flex">
@@ -466,33 +458,6 @@
     <script src="{{asset('/js/baca-artikel.js')}}"></script>
     <script>
 
-        function submitForm(rating, slug) {
-
-        var hiddenInput = document.createElement("input");
-        hiddenInput.setAttribute("type", "hidden");
-        hiddenInput.setAttribute("name", "rating");
-        hiddenInput.setAttribute("value", rating);
-
-        document.getElementById("ratingForm").appendChild(hiddenInput);
-            $.ajax({
-            type: "POST",
-            url: "{{ url('/portal-edukasi/rating/') }}/" + slug,
-            headers: {
-                'X-CSRF-TOKEN': "{{ csrf_token() }}",
-            },
-            data: {
-                rating: rating,
-            },
-            success: function (response) {
-                // Handle the success response, if needed
-                // console.log(response);
-                document.getElementById('suksesRate').style.visibility = 'visible';
-            },
-            error: function (jqXHR, textStatus, errorThrown) {
-                console.error("AJAX Error:", textStatus, errorThrown);
-            },
-        });
-    } 
     $(document).ready(function() {
     // Get the initial slug from the URL or set it to a default value
         var initialSlug = window.location.pathname.split('/').pop();
@@ -507,34 +472,6 @@
         });
     }
 
-
-    function submitKomentar(slug) {
-    var komentar = $('#textarea-komentar').val();
-    $.ajax({
-        type: "POST",
-        url: "{{ url('/portal-edukasi/komentar/') }}/" + slug,
-        headers: {
-            'X-CSRF-TOKEN': "{{ csrf_token() }}",
-        },
-        data: {
-            komentar: komentar,
-        },
-        success: function (response) {
-            document.getElementById('suksesRate').style.visibility = 'visible';
-
-            // Call the 'show' function with the provided slug
-            show(slug);
-
-            // Optional: Clear the form after submission
-            $('#komenForm')[0].reset();
-        },
-        error: function (jqXHR, textStatus, errorThrown) {
-            console.error("AJAX Error:", textStatus, errorThrown);
-        },
-    });
-    return false; // Prevent the default form submission
-    }
-  
     </script>
 
 </body>
