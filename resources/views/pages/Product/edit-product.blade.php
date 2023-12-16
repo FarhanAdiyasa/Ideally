@@ -490,7 +490,7 @@
 </section>
 
 @endsection
-@section('scripts')
+@section('scripts_all')
 <script>imgStyling()</script>
 <script>
     addExistingImagesToPhotos()

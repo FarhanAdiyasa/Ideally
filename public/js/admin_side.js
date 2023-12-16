@@ -1,7 +1,8 @@
 const imageInput = document.getElementById("imageInput");
 const imgElements = document.querySelectorAll("#imagePreviewContainer img");
-
-imageInput.addEventListener("change", handleImageUpload);
+if (imageInput) {
+    imageInput.addEventListener("change", handleImageUpload);
+}
 const bodyElement = document.getElementById("body");
 if (bodyElement) {
     bodyElement.classList.add("sidebar-collapse");

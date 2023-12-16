@@ -40,6 +40,8 @@
 <!-- DataTables CSS -->
 <link href="https://cdn.datatables.net/1.11.5/css/dataTables.bootstrap5.min.css" rel="stylesheet">
 
+@yield('head-src')
+
 
     <!-- CDN Bootstrap CSS -->
 
@@ -340,13 +342,13 @@
               </a>
               <ul class="nav nav-treeview">
                 <li class="nav-item">
-                  <a href="pages/mailbox/mailbox.html" class="nav-link">
+                  <a href="{{ route('daftar-produk.tambah') }}" class="nav-link">
                     <i class="far nav-icon"></i>
                     <p>Tambah Produk</p>
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a href="pages/mailbox/compose.html" class="nav-link">
+                  <a href="{{ route('daftar-produk') }}" class="nav-link">
                     <i class="far   nav-icon"></i>
                     <p>Daftar Produk</p>
                   </a>
@@ -378,7 +380,7 @@
             </li>
             <li class="nav-header">Edukasi</li>
             <li class="nav-item">
-              <a href="#" class="nav-link active">
+              <a href="#" class="nav-link">
                 <i class="nav-icon fa fa-file-text-o"></i>
                 <p>
                   Artikel
@@ -396,6 +398,30 @@
                   <a href="#" class="nav-link">
                     <i class="far nav-icon"></i>
                     <p>Daftar Artikel</p>
+                  </a>
+                </li>
+              </ul>
+            </li>
+            <li class="nav-header">Promo</li>
+            <li class="nav-item">
+              <a href="#" class="nav-link">
+                <i class="nav-icon fa fa-file-text-o"></i>
+                <p>
+                  Promo
+                  <i class="fas fa-angle-left right"></i>
+                </p>
+              </a>
+              <ul class="nav nav-treeview">
+                <li class="nav-item">
+                  <a href="{{ route('daftar-promo.tambah') }}" class="nav-link">
+                    <i class="far nav-icon"></i>
+                    <p>Tambah Promo</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="{{ route('daftar-promo') }}" class="nav-link">
+                    <i class="far nav-icon"></i>
+                    <p>Daftar Promo</p>
                   </a>
                 </li>
               </ul>
