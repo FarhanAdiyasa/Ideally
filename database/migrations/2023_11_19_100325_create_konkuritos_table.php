@@ -31,12 +31,12 @@ return new class extends Migration
             $table->integer('stok')->default(0); // Menggunakan tipe data 'integer' untuk stok
             $table->integer('item_terjual')->default(0);
             $table->text('deskripsi_singkat');
-            $table->decimal('harga_b2I_11_unit', 10, 2);
-            $table->decimal('harga_b2I_1_unit', 10, 2);
-            $table->decimal('harga_b2B_11_unit', 10, 2);
-            $table->decimal('harga_b2B_1_unit', 10, 2);
-            $table->decimal('harga_b2C_11_unit', 10, 2);
-            $table->decimal('harga_b2C_1_unit', 10, 2);
+            $table->decimal('harga_b2I_11', 10, 2);
+            $table->decimal('harga_b2I_1', 10, 2);
+            $table->decimal('harga_b2B_11', 10, 2);
+            $table->decimal('harga_b2B_1', 10, 2);
+            $table->decimal('harga_b2C_11', 10, 2);
+            $table->decimal('harga_b2C_1', 10, 2);
             $table->timestamp('tanggal_publikasi')->nullable();
 
             $table->timestamps();

@@ -1,0 +1,314 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;700;900&display=swap');
+
+body {
+    background-image: url(../../img/LATAR.png);
+    background-size: 100% auto;
+    background-repeat: no-repeat;
+    font-family: 'Noto Sans', sans-serif;
+}
+
+.container {
+    padding: 0 11em;
+    padding-top: 8.78em;
+}
+
+.bg-yellow {
+    background-color: #FFC700;
+}
+
+.bg-blue {
+    background-color: #2196D9;
+}
+
+.bg-grey {
+    background-color: #EFEFEF;
+}
+
+/* Hero & Navbar */
+
+#hero-navbar .col-sm-6 {
+    padding: 12px;
+    padding-bottom: 0;
+}
+
+#hero-navbar .col-6 .action {
+    padding: 2rem 0.5rem;
+}
+
+#hero-navbar .col-6 .action {
+    padding: 2rem 0.5rem;
+}
+
+.hero-logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%; /* Menyesuaikan tinggi div */
+}
+
+.hero-logo img {
+    max-height: 100%;
+    max-width: 100%;
+}
+
+.action .title p {
+    font-size: 13px;
+    font-weight: 900;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    
+}
+
+.action .deskripsi p {
+    font-size: 11px;
+}
+
+.action .btn {
+    color: #FFFFFF;
+    font-size: 11px;
+    text-transform: uppercase;
+    padding: 4px 16px;
+    margin-top: 1rem;
+    border-radius: 0;
+    background-color: #180b01;
+    transition: 0.3s ease;
+}
+
+.action .btn:hover {
+    background-color: #311602;
+}
+
+.right-side .col-6 {
+    padding: 1.5rem 1rem;
+}
+
+#hero-navbar .right-side {
+    margin-top: 25%;
+}
+
+#hero-navbar .navbar {
+    padding: 0;
+}
+
+#hero-navbar .navbar .nav-link {
+    color: #00b7ff;
+    font-size: 11px;
+    padding: 6.3px 0;
+    text-transform: uppercase;
+    font-weight: 900;
+    transition: 0.3s ease;
+}
+
+#hero-navbar .navbar .nav-link:hover {
+    color: #0082b5;
+}
+
+#hero-navbar .text-icon {
+    background-color: #FFFFFF;
+    padding: 4px 1rem;
+    display: flex;
+    justify-content: space-between;
+}
+
+#hero-navbar .navbar .dropdown-item {
+    font-size: 11px;
+    text-transform: uppercase;
+    font-weight: 900;
+    color: #291D0B;
+    padding: 0.5rem 1rem;
+}
+
+#hero-navbar .navbar .dropdown-item:hover {
+    color: #C0C0C0;
+}
+
+#hero-navbar .dropdown-toggle::after {
+    display: none;
+}
+
+.custom-dropdwon .dropdown-menu {
+    position: absolute;
+    left: 118%;
+    border: none;
+    border-radius: 0;
+    padding: 6px 1rem 15px 1rem;
+    width: 200px;
+}
+
+.custom-dropdwon .dropdown-menu.first {
+    top: -70%;
+}
+
+.custom-dropdwon .dropdown-menu.second {
+    top: -170%;
+}
+
+.custom-dropdwon .dropdown-menu.third {
+    top: -270%;
+}
+
+.custom-dropdwon .dropdown-menu.last {
+    top: -370%;
+}
+
+.dropdown-divider {
+    border: 1.5px solid #C0C0C0; /* Mengatur ketebalan dan jenis garis */
+    margin: 0 16px; /* Menambahkan margin di atas dan bawah */
+}
+
+/* Overview */
+.row .col-6 {
+    height: 200px;
+}
+
+.description-box {
+    padding: 2rem 1.5rem 2rem 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.description-box.geser-kiri {
+    padding-left: 1.5rem;
+    padding-right: 2.3rem;
+}
+
+.description-box.geser-kanan {
+    padding-left: 2.5rem;
+}
+
+.title p {
+    font-size: 12px;
+    text-transform: uppercase;
+    font-weight: 900;
+    margin: 0;
+}
+
+.deskripsi p {
+    font-size: 11px;
+    text-align: justify;
+    margin: 0;
+}
+
+.title-line {
+    border: 1.5px solid #180b01; /* Gunakan warna hitam */
+    margin: 5px 0;
+    margin-right: 70px;
+    opacity: 1; /* Pastikan opasitas penuh */
+}
+
+#carouselOne .carousel-control-next,
+#carouselTwo .carousel-control-next {
+    right: 68%;
+    top: 65%;
+    height: fit-content;
+}
+
+#carouselOne .carousel-control-prev,
+#carouselTwo .carousel-control-prev {
+    left: 17%;
+    top: 78%;
+    height: fit-content;
+}
+
+/* Orientation */
+.title h6 {
+    margin: 0;
+    padding-top: 1rem;
+    text-transform: uppercase;
+    font-weight: 700;
+}
+
+.card-profile {
+    margin-left: 2rem;
+    margin-bottom: 1rem;
+}
+
+.card-profile .card-body {
+    padding-left: 1rem;
+}
+
+.card-profile .card-title {
+    font-size: 12px;
+    text-transform: uppercase;
+    font-weight: 900;
+}
+
+.card-profile .card-text {
+    font-size: 10px;
+    margin: 0;
+}
+
+#orientation .search-bar {
+    padding: 0;
+}
+
+.search-input {
+    position: absolute;
+    z-index: 999;
+    width: 25%;
+    margin-top: -9.5%;
+    margin-left: 3.5%;
+}
+
+#orientation input {
+    border: none;
+    border-radius: 0;
+}
+
+#orientation .testimoni p {
+    font-size: 11px;
+    text-align: justify;
+    margin: 0;
+    padding: 0 1rem;
+    line-height: 14px;
+}
+
+/* Keunggulan & Carousel */
+.long-description-box {
+    height: 400px;
+    padding: 2rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+/* Call to action */
+#cta .action {
+    padding: 6rem 7rem;
+}
+
+#cta .action .btn {
+    color: #180b01;
+    font-size: 13px;
+    text-transform: uppercase;
+    font-weight: 900;
+    padding: 0.5rem 2rem;
+    border-radius: 0;
+    background-color: #FFC700;
+    margin-top: 4em;
+    transition: 0.3s ease;
+}
+
+#cta .action .btn:hover {
+    background-color: rgb(188, 150, 14);
+}
+
+
+.latar-carousel {
+    position: relative;
+    z-index: 0;
+    margin-top: -78.2%;
+}
+
+#carouselBig .carousel-control-next {
+    right: 17.5%;
+    top: 64%;
+    height: fit-content;   
+}
+
+#carouselBig .carousel-control-prev {
+    left: 68%;
+    top: 77%;
+    height: fit-content;   
+}
