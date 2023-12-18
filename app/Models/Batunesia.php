@@ -10,6 +10,7 @@ class Batunesia extends Model
     use HasFactory;
 
     protected $guarded = ['id_batu'];
+    protected $primaryKey = 'id_batu';
     protected $with = ['createdBy', 'updatedBy', 'deletedBy'];
 
     public function createdBy()

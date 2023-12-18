@@ -2,8 +2,9 @@
 
 namespace Database\Factories;
 
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
-
+use Faker\Factory as Faker;
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Batunesia>
  */
@@ -16,12 +17,11 @@ class BatunesiaFactory extends Factory
      */
     public function definition(): array
     {
+        $faker = Faker::create();
         return [
-            //
-
             'nama_produk' => $faker->words(2, true),
             'slug' => $faker->slug,
-            'kategori' => $faker->word,
+            'kategori' => $faker->randomElement(['Batu Hias', 'Batu Hampar', 'Ornamen Batu', 'Batu Tempel']),
             'spek' => $faker->word,
             'satuan' => $faker->word,
             'warna' => $faker->colorName,
@@ -32,29 +32,21 @@ class BatunesiaFactory extends Factory
             'stok' => $faker->numberBetween(0, 100),
             'item_terjual' => $faker->numberBetween(0, 100),
             'deskripsi_singkat' => $faker->text,
-            'hpp' => $faker->randomFloat(2, 10, 100),
-            'harga_b2I_31+_unit' => $faker->randomFloat(2, 10, 100),
-            'harga_b2I_11+_unit' => $faker->randomFloat(2, 10, 100),
-            'harga_b2I_1+_unit' => $faker->randomFloat(2, 10, 100),
-            'harga_b2B_31+_unit' => $faker->randomFloat(2, 10, 100),
-            'harga_b2B_11+_unit' => $faker->randomFloat(2, 10, 100),
-            'harga_b2B_1+_unit' => $faker->randomFloat(2, 10, 100),
-            'harga_b2C_31+_unit' => $faker->randomFloat(2, 10, 100),
-            'harga_b2C_11+_unit' => $faker->randomFloat(2, 10, 100),
-            'harga_b2C_1+_unit' => $faker->randomFloat(2, 10, 100),
+            'hpp' => 90000, 
+            'harga_b2I_31+_unit' => 90000,
+            'harga_b2I_11+_unit' => 90000, 
+            'harga_b2I_1+_unit' => 90000,
+            'harga_b2B_31+_unit' => 90000,
+            'harga_b2B_11+_unit' => 90000,
+            'harga_b2B_1+_unit' => 90000, 
+            'harga_b2C_31+_unit' => 90000,
+            'harga_b2C_11+_unit' => 90000,
+            'harga_b2C_1+_unit' => 90000,
             'tanggal_publikasi' => $faker->dateTimeThisMonth,
-            'created_at' => now(),
-            'updated_at' => now(),
-            'deleted_at' => null,
-            'created_by' => function () {
-                return factory(App\User::class)->create()->user_id;
-            },
-            'updated_by' => function () {
-                return factory(App\User::class)->create()->user_id;
-            },
-            'deleted_by' => function () {
-                return factory(App\User::class)->create()->user_id;
-            },
+            'created_by' => User::factory()->create()->id,
+            'updated_by' => User::factory()->create()->id,
+            'deleted_by' => User::factory()->create()->id,
         ];
+        
     }
 }
