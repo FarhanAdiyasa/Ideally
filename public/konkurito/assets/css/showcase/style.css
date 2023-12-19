@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;700;900&display=swap');
 
+
 body {
     background-image: url(../../img/LATAR2.png);
     background-size: 100% auto;
@@ -124,6 +125,11 @@ body {
 
 .card-product {
     margin-bottom: 1rem;
+}
+
+.card-product a {
+    text-decoration: none;
+    color: #000000;
 }
 
 .card-body {

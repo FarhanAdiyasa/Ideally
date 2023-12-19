@@ -297,18 +297,20 @@ body {
 
 .latar-carousel {
     position: relative;
-    z-index: 0;
+    z-index: 1;
     margin-top: -78.2%;
 }
 
 #carouselBig .carousel-control-next {
     right: 17.5%;
     top: 64%;
-    height: fit-content;   
+    height: fit-content; 
+    z-index: 999;  
 }
 
 #carouselBig .carousel-control-prev {
     left: 68%;
     top: 77%;
-    height: fit-content;   
+    height: fit-content; 
+    z-index: 999;  
 }

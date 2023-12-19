@@ -48,27 +48,13 @@
                                     <hr class="title-line">
                                 </div>
                                 <div class="kategori">
-                                    <a href="">
-                                        <p>Paving</p>
-                                    </a>
-                                    <a href="">
-                                        <p>U-Ditch</p>
-                                    </a>
-                                    <a href="">
-                                        <p>Box Culvert</p>
-                                    </a>
-                                    <a href="">
-                                        <p>Buis Beton</p>
-                                    </a>
-                                    <a href="">
-                                        <p>Panel Pagar</p>
-                                    </a>
-                                    <a href="">
-                                        <p>Tiang Pagar</p>
-                                    </a>
-                                    <a href="">
-                                        <p>Sitecast</p>
-                                    </a>
+                                    <a href=""><p>Paving</p></a>
+                                    <a href=""><p>U-Ditch</p></a>
+                                    <a href=""><p>Box Culvert</p></a>
+                                    <a href=""><p>Buis Beton</p></a>
+                                    <a href=""><p>Panel Pagar</p></a>
+                                    <a href=""><p>Tiang Pagar</p></a>
+                                    <a href=""><p>Sitecast</p></a>
                                 </div>
                             </div>
                         </div>
@@ -94,65 +80,72 @@
                     @endphp
 
                     @foreach($konkuritoshowcase as $index => $konkurito)
-                    @if($index < $halfItems) 
-                    
-                    <div class="card-product">
-                            <div class="row g-0">
-                                <div class="col-sm-6 pe-2">
-                                    <div class="img-container">
-                                        <img src="{{ asset($konkurito->gambar) }}" alt="{{ $konkurito->nama_produk }}">
-                                    </div>
-                                </div>
-                                <div class="col-sm-6 ps-2">
-                                    <div class="card-body">
-                                        <div class="title">
-                                            <p>{{ $konkurito->nama_produk }}</p>
-                                        </div>
-                                        <div class="deskripsi">
-                                            <p>{{ $konkurito->deskripsi_singkat }} - {{ $konkurito->dimensi }}</p>
-                                        </div>
-                                        <div class="harga">
-                                            <p>Rp {{ number_format($konkurito->harga_b2I_11, 0, ',', '.') }}</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                </div>
-                @endif
-                @endforeach
-            </div>
+                    @if($index < $halfItems)
 
-            <div class="col-sm-6">
-                @foreach($konkuritoshowcase as $index => $konkurito)
-                @if($index >= $halfItems)
-                <div class="card-product">
-                    <div class="row g-0">
-                        <div class="col-sm-6 pe-2">
-                            <div class="img-container">
-                                <img src="{{ asset($konkurito->gambar) }}" alt="{{ $konkurito->nama_produk }}">
+                    <div class="card-product">
+                        <a href="{{ route('konkurito.detail', ['id_konkurito' => $konkurito->id_konkurito]) }}"
+                            class="card-product">
+                        <div class="row g-0">
+                            <div class="col-sm-6 pe-2">
+                                <div class="img-container">
+                                    <img src="{{ $konkurito->gambar_1 }}" alt="{{ $konkurito->nama_produk }}">
+                                </div>
                             </div>
-                        </div>
-                        <div class="col-sm-6 ps-2">
-                            <div class="card-body">
-                                <div class="title">
-                                    <p>{{ $konkurito->nama_produk }}</p>
-                                </div>
-                                <div class="deskripsi">
-                                    <p>{{ $konkurito->deskripsi_singkat }} - {{ $konkurito->dimensi }}</p>
-                                </div>
-                                <div class="harga">
-                                    <p>Rp {{ number_format($konkurito->harga_b2I_11, 0, ',', '.') }}</p>
+                            <div class="col-sm-6 ps-2">
+                                <div class="card-body">
+                                    <div class="title">
+                                        <p>{{ $konkurito->nama_produk }}</p>
+                                    </div>
+                                    <div class="deskripsi">
+                                        <p>{{ substr($konkurito->deskripsi_singkat, 0, 40) }} - {{
+                                                $konkurito->dimensi }}</p>
+                                    </div>
+                                    <div class="harga">
+                                        <p>Rp {{ number_format($konkurito->harga_b2I_11, 0, ',', '.') }}</p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
+                    @endif
+                    @endforeach
                 </div>
-                @endif
-                @endforeach
+
+                <div class="col-sm-6">
+                    @foreach($konkuritoshowcase as $index => $konkurito)
+                    @if($index >= $halfItems)
+                    <div class="card-product">
+                        <a href="{{ route('konkurito.detail', ['id_konkurito' => $konkurito->id_konkurito]) }}"
+                            class="card-product">
+                        <div class="row g-0">
+                            <div class="col-sm-6 pe-2">
+                                <div class="img-container">
+                                    <img src="{{ $konkurito->gambar_1 }}" alt="{{ $konkurito->nama_produk }}">
+                                </div>
+                            </div>
+                            <div class="col-sm-6 ps-2">
+                                <div class="card-body">
+                                    <div class="title">
+                                        <p>{{ $konkurito->nama_produk }}</p>
+                                    </div>
+                                    <div class="deskripsi">
+                                        <p>{{ substr($konkurito->deskripsi_singkat, 0, 40) }} - {{ $konkurito->dimensi
+                                            }}
+                                        </p>
+                                    </div>
+                                    <div class="harga">
+                                        <p>Rp {{ number_format($konkurito->harga_b2I_11, 0, ',', '.') }}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    @endif
+                    @endforeach
+                </div>
             </div>
-    </div>
-    </section>
-    <!-- End Showcase -->
+        </section>
+        <!-- End Showcase -->
 
     <section id="penawaran">
         <div class="row">
@@ -295,7 +288,7 @@
         $(document).ready(function () {
             // Fungsi untuk melakukan pencarian
             $('#search').on('keyup', function () {
-                var value = $(this).val().til nilai dari input dan mengonversi ke huruf kecil
+                var value = $(this).val().toLowerCase(); // Mengambil nilai dari input dan mengonversi ke huruf kecil
                 $('.card-product').filter(function () {
                     $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1); // Menampilkan/menyembunyikan card sesuai dengan hasil pencarian
                 });

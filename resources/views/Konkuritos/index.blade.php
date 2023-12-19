@@ -7,17 +7,17 @@
     <title>Konkurito</title>
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="{{ asset ('konkurito/assets/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
 
     <!-- Bootstrap Icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css">
 
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="{{ asset ('konkurito/assets/css/index/style.css') }}">
+    <link rel="stylesheet" href="assets/css/index/style.css">
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Bootstrap JS -->
-    <script src="{{ asset ('konkurito/assets/js/bootstrap.min.js') }}"></script>
+    <script src="assets/js/bootstrap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
     <!-- JQuery -->
@@ -33,7 +33,7 @@
                     <div class="row">
                         <div class="col-6 bg-white">
                             <div class="hero-logo">
-                                <img src="{{ asset ('konkurito/assets/img/LOGO.png') }}" alt="" style="width: 100%;">
+                                <img src="assets/img/LOGO.png" alt="" style="width: 100%;">
                             </div>
                         </div>
                         <div class="col-6 bg-yellow">
@@ -221,7 +221,7 @@
                                             </div>
                                         </div>
                                         <div class="col-6 p-0">
-                                            <img src="{{ asset ('konkurito/assets/img/SLIDER1-1.png') }}" alt=""
+                                            <img src="assets/img/SLIDER1-1.png" alt=""
                                                 style="width: 100%; max-height: 100%;">
                                         </div>
                                         <div class="col-6"></div>
@@ -251,7 +251,7 @@
                                             </div>
                                         </div>
                                         <div class="col-6 p-0">
-                                            <img src="{{ asset ('konkurito/assets/img/SLIDER2-1.png') }}" alt=""
+                                            <img src="assets/img/SLIDER2-1.png" alt=""
                                                 style="width: 100%; max-height: 100%;">
                                         </div>
                                         <div class="col-6"></div>
@@ -281,7 +281,7 @@
                                             </div>
                                         </div>
                                         <div class="col-6 p-0">
-                                            <img src="{{ asset ('konkurito/assets/img/SLIDER1-1.png') }}" alt=""
+                                            <img src="assets/img/SLIDER1-1.png" alt=""
                                                 style="width: 100%; max-height: 100%;">
                                         </div>
                                         <div class="col-6"></div>
@@ -311,7 +311,7 @@
                                             </div>
                                         </div>
                                         <div class="col-6 p-0">
-                                            <img src="{{ asset ('konkurito/assets/img/SLIDER1-1.png') }}" alt=""
+                                            <img src="assets/img/SLIDER1-1.png" alt=""
                                                 style="width: 100%; max-height: 100%;">
                                         </div>
                                         <div class="col-6"></div>
@@ -341,7 +341,7 @@
                                             </div>
                                         </div>
                                         <div class="col-6 p-0">
-                                            <img src="{{ asset ('konkurito/assets/img/SLIDER1-1.png') }}" alt=""
+                                            <img src="assets/img/SLIDER1-1.png" alt=""
                                                 style="width: 100%; max-height: 100%;">
                                         </div>
                                         <div class="col-6"></div>
@@ -392,10 +392,10 @@
                             </div>
                         </div>
                         <div class="col-6 p-0">
-                            <img src="{{ asset ('konkurito/assets/img/ILUSTRASI1_1-1.png') }}" alt="" style="width: 100%; max-height: 100%;">
+                            <img src="assets/img/ILUSTRASI1_1-1.png" alt="" style="width: 100%; max-height: 100%;">
                         </div>
                         <div class="col-6 p-0">
-                            <img src="{{ asset ('konkurito/assets/img/ILUSTRASI2_1-1.png') }}" alt="" style="width: 100%; max-height: 100%;">
+                            <img src="assets/img/ILUSTRASI2_1-1.png" alt="" style="width: 100%; max-height: 100%;">
                         </div>
                         <div class="col-6 description-box">
                             <div class="title">
@@ -438,7 +438,7 @@
                 <!-- Search Bar -->
                 <div class="col-sm-6 search-bar">
                     <div class="bg-img-cari">
-                        <img src="{{ asset ('konkurito/assets/img/SEARCHING.png') }}" alt="" style="width: 630px; height: 210px;">
+                        <img src="assets/img/SEARCHING.png" alt="" style="width: 630px; height: 210px;">
                     </div>
                     <div class="search-input d-flex align-items-center justify-content-center">
                         <input type="text" name="" id="" class="form-control" placeholder="type to search..">
@@ -451,7 +451,7 @@
                     <div class="card-profile" style="max-width: 200px;">
                         <div class="row g-0">
                             <div class="col-sm-3">
-                                <img src="{{ asset ('konkurito/assets/img/ILUSTRASI1_1-1.png') }}" class="img-fluid" alt="...">
+                                <img src="assets/img/ILUSTRASI1_1-1.png" class="img-fluid" alt="...">
                             </div>
                             <div class="col-sm-9">
                                 <div class="card-body">
@@ -474,7 +474,7 @@
 
                 <!-- Ilustrasi 2:1 -->
                 <div class="col-sm-6 col-6 p-0">
-                    <img src="{{ asset ('konkurito/assets/img/ILUSTRASI3_2-1.png') }}" alt="" style="width: 100%; max-height: 100%;">
+                    <img src="assets/img/ILUSTRASI3_2-1.png" alt="" style="width: 100%; max-height: 100%;">
                 </div>
                 <!-- End Ilustrasi -->
 
@@ -484,7 +484,7 @@
                     <div class="card-profile" style="max-width: 200px;">
                         <div class="row g-0">
                             <div class="col-sm-3">
-                                <img src="{{ asset ('konkurito/assets/img/ILUSTRASI1_1-1.png') }}" class="img-fluid" alt="...">
+                                <img src="assets/img/ILUSTRASI1_1-1.png" class="img-fluid" alt="...">
                             </div>
                             <div class="col-sm-9">
                                 <div class="card-body">
@@ -502,7 +502,7 @@
                             amet consectetur adipisicing elit. Distinctio deserunt consequatur adipisci minima expedita
                             voluptatibus aspernatur animi ex pariatur, assumenda quod quo, sit nisi qui!</p>
                     </div>
-                    <img src="{{ asset ('konkurito/assets/img/ILUSTRASI4_3-1.png') }}" alt=""
+                    <img src="assets/img/ILUSTRASI4_3-1.png" alt=""
                         style="margin-right: 14.6rem; margin-bottom: -2.6rem; margin-top: 2rem; height: 210px; width: auto;">
                 </div>
                 <!-- End Testimoni 2 -->
@@ -526,7 +526,7 @@
                                             </div>
                                         </div>
                                         <div class="col-6 p-0">
-                                            <img src="{{ asset ('konkurito/assets/img/SLIDER1-1.png') }}" alt=""
+                                            <img src="assets/img/SLIDER1-1.png" alt=""
                                                 style="width: 100%; max-height: 100%;">
                                         </div>
                                         <div class="col-6"></div>
@@ -556,7 +556,7 @@
                                             </div>
                                         </div>
                                         <div class="col-6 p-0">
-                                            <img src="{{ asset ('konkurito/assets/img/SLIDER2-1.png') }}" alt=""
+                                            <img src="assets/img/SLIDER2-1.png" alt=""
                                                 style="width: 100%; max-height: 100%;">
                                         </div>
                                         <div class="col-6"></div>
@@ -586,7 +586,7 @@
                                             </div>
                                         </div>
                                         <div class="col-6 p-0">
-                                            <img src="{{ asset ('konkurito/assets/img/SLIDER1-1.png') }}" alt=""
+                                            <img src="assets/img/SLIDER1-1.png" alt=""
                                                 style="width: 100%; max-height: 100%;">
                                         </div>
                                         <div class="col-6"></div>
@@ -616,7 +616,7 @@
                                             </div>
                                         </div>
                                         <div class="col-6 p-0">
-                                            <img src="{{ asset ('konkurito/assets/img/SLIDER1-1.png') }}" alt=""
+                                            <img src="assets/img/SLIDER1-1.png" alt=""
                                                 style="width: 100%; max-height: 100%;">
                                         </div>
                                         <div class="col-6"></div>
@@ -646,7 +646,7 @@
                                             </div>
                                         </div>
                                         <div class="col-6 p-0">
-                                            <img src="{{ asset ('konkurito/assets/img/SLIDER1-1.png') }}" alt=""
+                                            <img src="assets/img/SLIDER1-1.png" alt=""
                                                 style="width: 100%; max-height: 100%;">
                                         </div>
                                         <div class="col-6"></div>
@@ -708,16 +708,16 @@
                     </div>
                 </div>
                 <div class="col-sm-6 p-0">
-                    <div id="carouselBig" class="carousel slide">
+                    <div id="carouselBig" class="carousel slide carousel-fade">
                         <div class="carousel-inner">
                             <div class="carousel-item active">
-                                <img src="{{ asset ('konkurito/assets/img/ILUSTRASI5_1-1.png') }}" alt="" class="d-block w-100">
+                                <img src="assets/img/ILUSTRASI5_1-1.png" alt="" class="d-block w-100">
                             </div>
                             <div class="carousel-item">
-                                <img src="{{ asset ('konkurito/assets/img/ILUSTRASI5_1-1.png') }}" alt="" class="d-block w-100">
+                                <img src="assets/img/ILUSTRASI2_1-1.png" alt="" class="d-block w-100">
                             </div>
                             <div class="carousel-item">
-                                <img src="{{ asset ('konkurito/assets/img/ILUSTRASI5_1-1.png') }}" alt="" class="d-block w-100">
+                                <img src="assets/img/ILUSTRASI5_1-1.png" alt="" class="d-block w-100">
                             </div>
                         </div>
                         <button class="carousel-control-prev" type="button" data-bs-target="#carouselBig"
@@ -749,7 +749,7 @@
                         </div>
                     </div>
                     <div class="img-container">
-                        <img src="{{ asset ('konkurito/assets/img/SLIDER3-1.png') }}" alt="" style="width: 100%;">
+                        <img src="assets/img/SLIDER3-1.png" alt="" style="width: 100%;">
                     </div>
                 </div>
             </div>
@@ -760,7 +760,7 @@
         <section id="cta">
             <div class="row">
                 <div class="col-sm-6 p-0">
-                    <img src="{{ asset ('konkurito/assets/img/CTA1-1.png') }}" alt="" style="width: 100%; max-height: 100%;">
+                    <img src="assets/img/CTA1-1.png" alt="" style="width: 100%; max-height: 100%;">
                 </div>
                 <div class="col-sm-6 p-0">
                     <div class="action">

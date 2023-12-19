@@ -203,7 +203,7 @@
                                 <a href="{{ route('deflo.detail', ['id_nurseri' => $dedikasiFlora->id_nurseri]) }}"
                                     class="card-link">
                                     <div class="card border-0">
-                                        <img src="{{ $dedikasiFlora->gambar }}" class="card-img-top" alt="...">
+                                        <img src="{{ $dedikasiFlora->gambar_1 }}" class="card-img-top" alt="...">
                                         <div class="card-body">
                                             <p class="card-text">{{ $dedikasiFlora->nama_latin }} - Panjang {{
                                                 $dedikasiFlora->tinggi }} cm</p>
@@ -298,7 +298,7 @@
                                         <a href="{{ route('deflo.detail', ['id_nurseri' => $deflo1->id_nurseri]) }}"
                                             class="card-link">
                                             <div class="card border-0">
-                                                <img src="{{ $deflo1->gambar }}" class="card-img-top" alt="...">
+                                                <img src="{{ $deflo1->gambar_1 }}" class="card-img-top" alt="...">
                                                 <div class="card-body">
                                                     <p class="card-text">{{ $deflo1->nama_latin }} - Panjang {{
                                                         $deflo1->panjang }} cm</p>
@@ -328,7 +328,7 @@
                                         <a href="{{ route('deflo.detail', ['id_nurseri' => $deflo2->id_nurseri]) }}"
                                             class="card-link">
                                             <div class="card border-0">
-                                                <img src="{{ $deflo2->gambar }}" class="card-img-top" alt="...">
+                                                <img src="{{ $deflo2->gambar_1 }}" class="card-img-top" alt="...">
                                                 <div class="card-body">
                                                     <p class="card-text">{{ $deflo2->nama_latin }} - Panjang {{
                                                         $deflo2->panjang }} cm</p>

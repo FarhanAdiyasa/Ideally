@@ -56,6 +56,7 @@ class Konkurito extends Model
         'harga_b2B_1',
         'harga_b2C_11',
         'harga_b2C_1',
+        'harga_b2C_31',
         'tanggal_publikasi',
         'created_at',
         'updated_at',

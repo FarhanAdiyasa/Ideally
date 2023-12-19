@@ -71,6 +71,10 @@ body {
     width: 100%;
 }
 
+.table-borderless a {
+    color: black;
+}
+
 .left-align {
     text-align: left;
 }

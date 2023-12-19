@@ -35,8 +35,9 @@ return new class extends Migration
             $table->decimal('harga_b2I_1', 10, 2);
             $table->decimal('harga_b2B_11', 10, 2);
             $table->decimal('harga_b2B_1', 10, 2);
-            $table->decimal('harga_b2C_11', 10, 2);
             $table->decimal('harga_b2C_1', 10, 2);
+            $table->decimal('harga_b2C_11', 10, 2);
+            $table->decimal('harga_b2C_31', 10, 2);
             $table->timestamp('tanggal_publikasi')->nullable();
 
             $table->timestamps();

@@ -42,6 +42,7 @@ class KonkuritoFactory extends Factory
             'harga_b2B_1' => $this->faker->randomFloat(2, 10, 100),
             'harga_b2C_11' => $this->faker->randomFloat(2, 10, 100),
             'harga_b2C_1' => $this->faker->randomFloat(2, 10, 100),
+            'harga_b2C_31' => $this->faker->randomFloat(2, 10, 100),
             'tanggal_publikasi' => $this->faker->dateTimeThisMonth,
             'created_at' => now(),
             'created_by' => $this->faker->numberBetween(1, 5)
