@@ -1,7 +1,7 @@
 @extends('layouts/admin')
 @section('content')
 <section class="content-header">
-  {{-- @if ($errors->any())
+  @if ($errors->any())
     <div class="alert alert-danger">
         <ul>
             @foreach ($errors->all() as $error)
@@ -9,7 +9,7 @@
             @endforeach
         </ul>
     </div>
-@endif --}}
+@endif
 @if(session('success'))
     <div class="alert alert-success">
         {{ session('success') }}
@@ -19,7 +19,7 @@
   <div class="container-fluid">
     <div class="row mb-2">
       <div class="col-sm-6">
-        <h1>Tambah Produk Agrigard</h1>
+        <h1>Tambah Produk Dedikasi Flora</h1>
       </div>
       <div class="col-sm-6">
         <ol class="breadcrumb float-sm-right">
@@ -33,7 +33,7 @@
 <section class="content">
 <div class="container-fluid">
   <!-- SELECT2 EXAMPLE -->
-  <form method="post" action="{{ route('daftar-produk.save')}} " enctype="multipart/form-data" id="agrForm">
+  <form method="post" action="{{ route('dedikasiFloras.save')}} " enctype="multipart/form-data" id="agrForm">
     @csrf
   <div class="card card-default">
     <div class="card-header">
@@ -51,7 +51,7 @@
       <div class="row">
         <div class="col-md-3">
           <div class="form-group">
-            <label>Nama Produk</label>
+            <label>Nama Latin</label>
             <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sed, odit ab eum enim illo minima deleniti quae ducimus repudiandae sit!</p>
           </div>
           <!-- /.form-group -->
@@ -59,8 +59,8 @@
         <!-- /.col -->
         <div class="col-md-9">
           <div class="form-group">
-              <input id="default" type="text" class="form-control" placeholder="Placeholder text" name="nama_produk" id="nama_produk" value="{{old('nama_produk')}}">
-              @error('nama_produk')
+              <input id="default" type="text" class="form-control" placeholder="Placeholder text" name="nama_latin" id="nama_latin" value="{{old('nama_latin')}}">
+              @error('nama_latin')
               <small class="text-danger">{{ $message }}</small>
               @enderror
               <div class="float-right d-none d-sm-block">
@@ -74,7 +74,7 @@
       <div class="row">
         <div class="col-md-3">
           <div class="form-group">
-            <label>Kategori Produk</label>
+            <label>Nama Lokal</label>
             <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sed, odit ab eum enim illo minima deleniti quae ducimus repudiandae sit!</p>
           </div>
           <!-- /.form-group -->
@@ -82,19 +82,13 @@
         <!-- /.col -->
         <div class="col-md-9">
           <div class="form-group">
-            <select class="form-control select2" style="width: 100%;" name="kategori">
-              <option value="Pot Plastik" @selected(old('kategori')=='Pot Plastik')>Pot Plastik</option>
-              <option value="Pot Terracota" @selected(old('kategori')=='Pot Terracota')>Pot Terracota</option>
-              <option value="Benih Tanaman" @selected(old('kategori')=='Benih Tanaman')>Benih Tanaman</option>
-              <option value="Media Tanam" @selected(old('kategori')=='Media Tanam')>Media Tanam</option>
-              <option value="Wadah Tanam" @selected(old('kategori')=='Wadah Tanam')>Wadah Tanam</option>
-              <option value="Obat dan Nutrisi" @selected(old('kategori')=='Obat dan Nutrisi')>Obat dan Nutrisi</option>
-              <option value="Alat Kerja" @selected(old('kategori')=='Alat Kerja')>Alat Kerja</option>
-              <option value="Lainnya" @selected(old('kategori')=='Lainnya')>Lainnya</option>
-          </select>          
-              @error('kategori')
+              <input id="default" type="text" class="form-control" placeholder="Placeholder text" name="nama_lokal" id="nama_lokal" value="{{old('nama_lokal')}}">
+              @error('nama_lokal')
               <small class="text-danger">{{ $message }}</small>
               @enderror
+              <div class="float-right d-none d-sm-block">
+                <span id="characterCount">0</span>/70
+            </div>
           </div>
           <!-- /.form-group -->
         </div>
@@ -117,16 +111,180 @@
           <div class="form-group">
             <label>Satuan Produk</label>
             <div class="select2-purple">
-              <select class="form-control select2" style="width: 100%;" name="satuan">
-                <option value="pcs" @selected(old('satuan')=='pcs')>pcs</option>
-                <option value="botol" @selected(old('satuan')=='botol')>botol</option>
-                <option value="lusin" @selected(old('satuan')=='lusin')>lusin</option>
-                <option value="ikat" @selected(old('satuan')=='ikat')>ikat</option>
-                <option value="karung" @selected(old('satuan')=='karung')>karung</option>
-                <option value="pack" @selected(old('satuan')=='pack')>pack</option>
-                <option value="meter" @selected(old('satuan')=='meter')>meter</option>
-            </select>            
+                <select class="form-control select2" style="width: 100%;" name="satuan">
+                  <option value="plb" @selected(old('satuan') == 'plb')>plb</option>
+                  <option value="btg" @selected(old('satuan') == 'btg')>btg</option>
+                  <option value="m2" @selected(old('satuan') == 'm2')>m2</option>
+                  <option value="mata" @selected(old('satuan') == 'mata')>mata</option>
+                  <option value="rumpun" @selected(old('satuan') == 'rumpun')>rumpun</option>
+                </select>            
                    @error('satuan')
+              <small class="text-danger">{{ $message }}</small>
+              @enderror
+            </div>
+          </div>
+          <!-- /.form-group -->
+        </div>
+        <!-- /.col -->
+      </div>
+      <!-- /.row -->
+      <!-- /.row -->
+    </div>
+    <!-- /.card-body -->
+    {{-- <div class="card-footer">
+      Visit <a href="https://select2.github.io/">Select2 documentation</a> for more examples and information about
+      the plugin.
+    </div> --}}
+  </div>
+  <div class="card card-default">
+    <div class="card-header">
+      <h3 class="card-title">Informasi Produk</h3>
+
+      <div class="card-tools">
+        <button type="button" class="btn btn-tool" data-card-widget="collapse">
+          <i class="fas fa-minus"></i>
+        </button>
+      
+      </div>
+    </div>
+    <!-- /.card-header -->
+    <div class="card-body">
+      <div class="row">
+        <div class="col-12 col-sm-6">
+          <div class="form-group">
+            <label>Diameter Tajuk</label>
+              <input type="text" class="form-control" placeholder="Placeholder text" name="diameter_tajuk" value="{{old('diameter_tajuk')}}">
+                 @error('diameter_tajuk')
+              <small class="text-danger">{{ $message }}</small>
+              @enderror
+          </div>
+          <!-- /.form-group -->
+        </div>
+        <!-- /.col -->
+        <div class="col-12 col-sm-6">
+          <div class="form-group">
+            <label>Strata</label>
+            <div class="select2-purple">
+              <select class="form-control select2" style="width: 100%;" name="strata">
+                <option value="Rumput" @selected(old('strata') == 'Rumput')>Rumput</option>
+                <option value="Penutup Tanah" @selected(old('strata') == 'Penutup Tanah')>Penutup Tanah</option>
+                <option value="Semak" @selected(old('strata') == 'Semak')>Semak</option>
+                <option value="Pohon Kecil" @selected(old('strata') == 'Pohon Kecil')>Pohon Kecil</option>
+                <option value="Pohon Sedang" @selected(old('strata') == 'Pohon Sedang')>Pohon Sedang</option>
+                <option value="Pohon Besar" @selected(old('strata') == 'Pohon Besar')>Pohon Besar</option>
+                <option value="Tanaman Air" @selected(old('strata') == 'Tanaman Air')>Tanaman Air</option>
+                <option value="Merambat Menjuntai" @selected(old('strata') == 'Merambat Menjuntai')>Merambat Menjuntai</option>
+              </select>
+                   @error('strata')
+              <small class="text-danger">{{ $message }}</small>
+              @enderror
+            </div>
+          </div>
+          <!-- /.form-group -->
+        </div>
+        <!-- /.col -->
+      </div>
+      <div class="row">
+        <div class="col-12 col-sm-6">
+          <div class="form-group">
+            <label>Warna Daun</label>
+              <select class="form-control select2" style="width: 100%;" name="warna_daun_1">
+                <option value="Hijau" @selected(old('warna_daun_1') == 'Hijau')>🟩 Hijau</option>
+                <option value="Jingga" @selected(old('warna_daun_1') == 'Jingga')>🟧 Jingga</option>
+                <option value="Putih" @selected(old('warna_daun_1') == 'Putih')>⬜️ Putih</option>
+              </select>
+              <div class="div py-1"></div>
+              <select class="form-control select2" style="width: 100%;" name="warna_daun_2">
+                <option value="Tidak Ada" @selected(old('warna_daun_2') == 'Tidak Ada')>✖️ Tidak ada</option>
+                <option value="Hijau" @selected(old('warna_daun_2') == 'Hijau')>🟩 Hijau</option>
+                <option value="Jingga" @selected(old('warna_daun_2') == 'Jingga')>🟧 Jingga</option>
+                <option value="Putih" @selected(old('warna_daun_2') == 'Putih')>⬜️ Putih</option>
+              </select>
+          </div>
+        </div>
+        <div class="col-12 col-sm-6">
+          <div class="form-group">
+            <label>Warna Bunga</label>
+                <select class="form-control select2" style="width: 100%;" name="warna_bunga_1">
+                  <option value="Merah" @selected(old('warna_bunga_1') == 'Merah')>🟥 Merah</option>
+                  <option value="Kuning" @selected(old('warna_bunga_1') == 'Kuning')>🟨 Kuning</option>
+                  <option value="Hijau" @selected(old('warna_bunga_1') == 'Hijau')>🟩 Hijau</option>
+                  <option value="Jingga" @selected(old('warna_bunga_1') == 'Jingga')>🟧 Jingga</option>
+                  <option value="Biru" @selected(old('warna_bunga_1') == 'Biru')>🟦 Biru</option>
+                  <option value="Ungu" @selected(old('warna_bunga_1') == 'Ungu')>🟪 Ungu</option>
+                  <option value="Putih" @selected(old('warna_bunga_1') == 'Putih')>⬜️ Putih</option>
+                  <option value="Hitam" @selected(old('warna_bunga_1') == 'Hitam')>⬛️ Hitam</option>
+                  <option value="Cokelat" @selected(old('warna_bunga_1') == 'Cokelat')>🟫 Cokelat</option>
+                  <option value="Pink" @selected(old('warna_bunga_1') == 'Pink')>💟 Pink</option>
+              </select>
+              <div class="div py-1"></div>
+              <select class="form-control select2" style="width: 100%;" name="warna_bunga_2">
+                <option value="Tidak Ada" @selected(old('warna_bunga_2') == 'Tidak Ada')>✖️ Tidak ada</option>
+                <option value="Merah" @selected(old('warna_bunga_2') == 'Merah')>🟥 Merah</option>
+                <option value="Kuning" @selected(old('warna_bunga_2') == 'Kuning')>🟨 Kuning</option>
+                <option value="Hijau" @selected(old('warna_bunga_2') == 'Hijau')>🟩 Hijau</option>
+                <option value="Jingga" @selected(old('warna_bunga_2') == 'Jingga')>🟧 Jingga</option>
+                <option value="Biru" @selected(old('warna_bunga_2') == 'Biru')>🟦 Biru</option>
+                <option value="Ungu" @selected(old('warna_bunga_2') == 'Ungu')>🟪 Ungu</option>
+                <option value="Putih" @selected(old('warna_bunga_2') == 'Putih')>⬜️ Putih</option>
+                <option value="Hitam" @selected(old('warna_bunga_2') == 'Hitam')>⬛️ Hitam</option>
+                <option value="Cokelat" @selected(old('warna_bunga_2') == 'Cokelat')>🟫 Cokelat</option>
+                <option value="Pink" @selected(old('warna_bunga_2') == 'Pink')>💟 Pink</option>
+            </select>   
+          <!-- /.form-group -->
+          </div>
+        </div>
+        <!-- /.col -->
+      </div>
+      <div class="row">
+        <div class="col-12 col-sm-6">
+          <div class="form-group">
+            <label>Penyiraman</label>
+            <div class="select2-purple">
+              <select class="form-control select2" style="width: 100%;" name="penyiraman">
+                <option value="Basah" @selected(old('penyiraman') == 'Basah')>🌊 Basah</option>
+                <option value="Intensif" @selected(old('penyiraman') == 'Intensif')>💦 Intensif</option>
+                <option value="Semi Intensif" @selected(old('penyiraman') == 'Semi Intensif')>💧 Semi Intensif</option>
+                <option value="Ekstensif" @selected(old('penyiraman') == 'Ekstensif')>🌫 Ekstensif</option>
+              </select>                           
+                @error('penyiraman')
+              <small class="text-danger">{{ $message }}</small>
+              @enderror
+            </div>
+          </div>
+          <!-- /.form-group -->
+        </div>
+        <!-- /.col -->
+        <div class="col-12 col-sm-6">
+          <div class="form-group">
+            <label>Penyinaran</label>
+            <div class="select2-purple">
+              <select class="form-control select2" style="width: 100%;" name="penyinaran">
+                <option value="Extra Intensif" @selected(old('penyinaran') == 'Extra Intensif')>🍖 Extra Intensif</option>
+                <option value="Intensif" @selected(old('penyinaran') == 'Intensif')>🥩 Intensif</option>
+                <option value="Semi Intensif" @selected(old('penyinaran') == 'Semi Intensif')>🍗 Semi Intensif</option>
+                <option value="Ekstensif" @selected(old('penyinaran') == 'Ekstensif')>🦴 Ekstensif</option>
+              </select>                           
+                @error('penyinaran')
+              <small class="text-danger">{{ $message }}</small>
+              @enderror
+            </div>
+          </div>
+          <!-- /.form-group -->
+        </div>
+        <!-- /.col -->
+      </div>
+      <div class="row">
+        <div class="col-12 col-sm-6">
+          <div class="form-group">
+            <label>Pemupukan</label>
+            <div class="select2-purple">
+              <select class="form-control select2" style="width: 100%;" name="pemupukan">
+                <option value="Penuh" @selected(old('pemupukan') == 'Penuh')>☀️ Penuh</option>
+                <option value="Toleran Naungan" @selected(old('pemupukan') == 'Toleran Naungan')>⛅️ Toleran Naungan</option>
+                <option value="Naungan" @selected(old('pemupukan') == 'Naungan')>☁️ Naungan</option>
+              </select>
+                @error('pemupukan')
               <small class="text-danger">{{ $message }}</small>
               @enderror
             </div>
@@ -175,6 +333,7 @@
                     <td id="1" style="padding:1rem; width: 25%;" class="img-prv"><img alt="" class="previewer"></td>
                     <td id="2" style="padding:1rem; width: 25%;" class="img-prv"><img alt="" class="previewer"></td>
                     <td id="3" style="padding:1rem; width: 25%;" class="img-prv"><img alt="" class="previewer"></td>
+                    <td id="4" style="padding:1rem; width: 25%;" class="img-prv"><img alt="" class="previewer"></td>
                   </tr>
                 </table>
                 <small class="text-danger" id="error-img" style="visibility: hidden">Hanya Bisa 4 Gambar</small>
@@ -282,7 +441,7 @@
       <div class="row">
         <div class="col-md-3">
           <div class="form-group">
-            <p>Harga Jual Projek Ideally </p>
+            <label>Harga Jual Projek Ideally :</label>
           </div>
           <!-- /.form-group -->
         </div>
@@ -321,7 +480,6 @@
               <div class="rp">Rp</div>
               <input data-unify="TextField" placeholder="Masukkan Harga" type="number"  class="css-3017qm rupiah" name="harga_b2I_1_unit" value="{{old('harga_b2I_1_unit')}}">
             </div>
-            
                @error('harga_b2I_1_unit')
               <small class="text-danger">{{ $message }}</small>
               @enderror

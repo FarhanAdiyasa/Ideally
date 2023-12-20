@@ -264,7 +264,7 @@
           <div class="form-group">
             <div class="harga-input">
               <div class="rp">Rp</div>
-              <input data-unify="TextField" placeholder="Masukkan Harga" type="numeric"  class="css-3017qm rupiah" name="nominal_promo" value="{{old('nominal_promo', number_format($promo->nominal_promo, 0, ',', '.'))}}">
+              <input data-unify="TextField" placeholder="Masukkan Harga" type="number"  class="css-3017qm rupiah" name="nominal_promo" value="{{old('nominal_promo', number_format($promo->nominal_promo, 0, ',', '.'))}}">
             </div>
                @error('nominal_promo')
               <small class="text-danger">{{ $message }}</small>
@@ -287,7 +287,7 @@
           <div class="form-group">
             <div class="harga-input">
               <div class="rp">Rp</div>
-              <input data-unify="TextField" placeholder="Masukkan Harga" type="numeric"  class="css-3017qm rupiah" name="minimum_pembelian" value="{{old('minimum_pembelian', number_format($promo->minimum_pembelian, 0, ',', '.'))}}">
+              <input data-unify="TextField" placeholder="Masukkan Harga" type="number"  class="css-3017qm rupiah" name="minimum_pembelian" value="{{old('minimum_pembelian', number_format($promo->minimum_pembelian, 0, ',', '.'))}}">
             </div>
                @error('minimum_pembelian')
               <small class="text-danger">{{ $message }}</small>

@@ -4,42 +4,39 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class UpdateAgrigard extends FormRequest
+class KonkuritoRequest extends FormRequest
 {
-    /**
-     * Determine if the user is authorized to make this request.
-     */
-    public function authorize(): bool
+    public function authorize()
     {
         return true;
     }
 
-    /**
-     * Get the validation rules that apply to the request.
-     *
-     * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array<mixed>|string>
-     */
-    public function rules(): array
+    public function rules()
     {
         return [
-            'kategori' => 'required|string',
             'nama_produk' => 'required|string',
-            'spesifikasi' => 'required|string',
+            'jenis' => 'required|string',
             'satuan' => 'required|string',
-            'existing_images' => 'required|string',
+            'garansi' => 'required|string',
+            'panjang' => 'required|numeric',
+            'lebar' => 'required|numeric',
+            'tinggi' => 'required|numeric',
+            'tebal' => 'required|numeric',
+            'diameter' => 'required|numeric',
+            'warna_1' => 'required|string|max:255',
+            'warna_2' => 'nullable|string|max:255',
+            'photos' => 'required|array',
+            'photos.*' => 'required|image|mimes:jpeg,png,jpg|max:2048',
             'video' => 'nullable|url',
             'deskripsi_singkat' => 'required|string',
             'stok' => 'required|integer',
             'item_terjual' => 'nullable|integer',
             'armada_minimum' => 'required|string',
             'harga_jual_projek_ideally' => 'required|numeric',
-            'harga_b2I_31_unit' => 'required|numeric',
             'harga_b2I_11_unit' => 'required|numeric',
             'harga_b2I_1_unit' => 'required|numeric',
-            'harga_b2B_31_unit' => 'required|numeric',
             'harga_b2B_11_unit' => 'required|numeric',
             'harga_b2B_1_unit' => 'required|numeric',
-            'harga_b2C_31_unit' => 'required|numeric',
             'harga_b2C_11_unit' => 'required|numeric',
             'harga_b2C_1_unit' => 'required|numeric',
         ];

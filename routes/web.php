@@ -12,7 +12,10 @@ use App\Http\Controllers\BatunesiaController;
 use App\Http\Controllers\AdminArtikelController;
 use App\Http\Controllers\verificationController;
 use App\Http\Controllers\AdminAgrigardController;
+use App\Http\Controllers\AdminDedikasiFloraController;
+use App\Http\Controllers\AdminShineageController;
 use App\Http\Controllers\everlastThingController;
+use App\Http\Controllers\AdminKonkuritoController;
 
 /*
 |--------------------------------------------------------------------------
@@ -37,7 +40,7 @@ Route::get('/home/show/{kategori}', [ArtikelController::class, 'show'])->name('h
 Route::get('/portal-edukasi/komentar/{kategori}', [ArtikelController::class, 'sKomentar'])->name('komentar.show');
 
 
-//Agrigard
+//Admin Agrigard
 Route::get('/daftar-produk', [AdminAgrigardController::class, 'index'])->name('daftar-produk');
 Route::get('/daftar-produk/{id}', [AdminAgrigardController::class, 'view'])->name('daftar-produk.view');
 
@@ -50,6 +53,48 @@ Route::post('/post-produk', [AdminAgrigardController::class, 'post'])->name('daf
 
 Route::get('/delete-produk/{id}', [AdminAgrigardController::class, 'delete'])->name('daftar-produk.delete');
 Route::delete('/destroy-produk/{id}', [AdminAgrigardController::class, 'destroy'])->name('daftar-produk.destroy');
+
+//Admin Shineage
+Route::get('/daftar-shineage', [AdminShineageController::class, 'index'])->name('shineages');
+Route::get('/daftar-shineage/{id}', [AdminShineageController::class, 'view'])->name('shineages.view');
+
+Route::get('/tambah-shineage', [AdminShineageController::class, 'create'])->name('shineages.tambah');
+Route::post('/tambah-shineage/store', [AdminShineageController::class, 'store'])->name('shineages.save');
+
+Route::get('/edit-shineage/{id}', [AdminShineageController::class, 'edit'])->name('shineages.edit');
+Route::put('/edit-shineage/{id}', [AdminShineageController::class, 'update'])->name('shineages.update');
+Route::post('/post-shineage', [AdminShineageController::class, 'post'])->name('shineages.status');
+
+Route::get('/delete-shineage/{id}', [AdminShineageController::class, 'delete'])->name('shineages.delete');
+Route::delete('/destroy-shineage/{id}', [AdminShineageController::class, 'destroy'])->name('shineages.destroy');
+
+//Admin Konkurito
+Route::get('/daftar-konkurito', [AdminKonkuritoController::class, 'index'])->name('konkuritos');
+Route::get('/daftar-konkurito/{id}', [AdminKonkuritoController::class, 'view'])->name('konkuritos.view');
+
+Route::get('/tambah-konkurito', [AdminKonkuritoController::class, 'create'])->name('konkuritos.tambah');
+Route::post('/tambah-konkurito/store', [AdminKonkuritoController::class, 'store'])->name('konkuritos.save');
+
+Route::get('/edit-konkurito/{id}', [AdminKonkuritoController::class, 'edit'])->name('konkuritos.edit');
+Route::put('/edit-konkurito/{id}', [AdminKonkuritoController::class, 'update'])->name('konkuritos.update');
+Route::post('/post-konkurito', [AdminKonkuritoController::class, 'post'])->name('konkuritos.status');
+
+Route::get('/delete-konkurito/{id}', [AdminKonkuritoController::class, 'delete'])->name('konkuritos.delete');
+Route::delete('/destroy-konkurito/{id}', [AdminKonkuritoController::class, 'destroy'])->name('konkuritos.destroy');
+
+//Admin dedikasiFlora
+Route::get('/daftar-dedikasiFlora', [AdminDedikasiFloraController::class, 'index'])->name('dedikasiFloras');
+Route::get('/daftar-dedikasiFlora/{id}', [AdmindedikasiFloraController::class, 'view'])->name('dedikasiFloras.view');
+
+Route::get('/tambah-dedikasiFlora', [AdmindedikasiFloraController::class, 'create'])->name('dedikasiFloras.tambah');
+Route::post('/tambah-dedikasiFlora/store', [AdmindedikasiFloraController::class, 'store'])->name('dedikasiFloras.save');
+
+Route::get('/edit-dedikasiFlora/{id}', [AdmindedikasiFloraController::class, 'edit'])->name('dedikasiFloras.edit');
+Route::put('/edit-dedikasiFlora/{id}', [AdmindedikasiFloraController::class, 'update'])->name('dedikasiFloras.update');
+Route::post('/post-dedikasiFlora', [AdmindedikasiFloraController::class, 'post'])->name('dedikasiFloras.status');
+
+Route::get('/delete-dedikasiFlora/{id}', [AdmindedikasiFloraController::class, 'delete'])->name('dedikasiFloras.delete');
+Route::delete('/destroy-dedikasiFlora/{id}', [AdmindedikasiFloraController::class, 'destroy'])->name('dedikasiFloras.destroy');
 
 
 //Promo
