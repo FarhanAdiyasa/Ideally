@@ -4,29 +4,31 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class UpdateAgrigard extends FormRequest
+class UpdateDedikasiFloraRequest extends FormRequest
 {
-    /**
-     * Determine if the user is authorized to make this request.
-     */
-    public function authorize(): bool
+    public function authorize()
     {
         return true;
     }
 
-    /**
-     * Get the validation rules that apply to the request.
-     *
-     * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array<mixed>|string>
-     */
-    public function rules(): array
+    public function rules()
     {
         return [
-            'kategori' => 'required|string',
-            'nama_produk' => 'required|string',
+            'nama_latin' => 'required|string',
+            'nama_lokal' => 'required|string',
             'spesifikasi' => 'required|string',
             'satuan' => 'required|string',
-            'existing_images' => 'required|string',
+            'diameter_tajuk' => 'required|integer',
+            'strata' => 'required|string',
+            'warna_daun_1' => 'required|string',
+            'warna_daun_2' => 'required|string',
+            'warna_bunga_1' => 'required|string',
+            'warna_bunga_2' => 'required|string',
+            'penyiraman' => 'required|string',
+            'penyinaran' => 'required|string',
+            'pemupukan' => 'required|string',
+            'photos' => 'nullable|array',
+            'photos.*' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
             'video' => 'nullable|url',
             'deskripsi_singkat' => 'required|string',
             'stok' => 'required|integer',

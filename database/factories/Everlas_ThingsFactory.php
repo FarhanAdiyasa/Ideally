@@ -18,13 +18,12 @@ class Everlas_ThingsFactory extends Factory
     public function definition(): array
     {
       return [
-            //
-
             'seri' => $this->faker->word,
             'nama_produk' => $this->faker->words(2, true),
             'slug' => $this->faker->slug,
             'satuan' => $this->faker->word,
-            'jenis' => $this->faker->word,
+            'jenis_1' => $this->faker->word,
+            'jenis_2' => $this->faker->word,
             'garansi' => $this->faker->word,
             'warna' => $this->faker->colorName,
             'dimensi' => $this->faker->word,
@@ -36,9 +35,12 @@ class Everlas_ThingsFactory extends Factory
             'gambar_4' => 'photos/contoh.png',
             'gambar_5' => 'photos/contoh.png',
             'gambar_6' => 'photos/contoh.png',
+            'video' => $this->faker->url,
+            'armada_minimum' => $this->faker->word,
             'deskripsi_singkat' => $this->faker->text,
             'stok' => $this->faker->numberBetween(0, 100),
             'item_terjual' => $this->faker->numberBetween(0, 100),
+            'harga_jual_projek_ideally' => $this->faker->randomFloat(2, 10, 100),
             'harga_b2I_11_unit' => $this->faker->randomFloat(2, 10, 100),
             'harga_b2I_1_unit' => $this->faker->randomFloat(2, 10, 100),
             'harga_b2B_11_unit' => $this->faker->randomFloat(2, 10, 100),
