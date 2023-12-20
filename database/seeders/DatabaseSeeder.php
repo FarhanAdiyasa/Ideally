@@ -9,7 +9,6 @@ use App\Models\Artikel;
 use App\Models\Artikel_Kategori;
 use App\Models\Batunesia;
 use App\Models\Dedikasi_Flora;
-use App\Models\detail_komentar;
 use App\Models\Everlas_Things;
 use App\Models\Kategori_Artikel;
 use App\Models\Komentar;
@@ -23,9 +22,6 @@ use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
 {
-    /**
-     * Seed the application's database.
-     */
     public function run(): void
     {
         User::factory(10)->create();
@@ -70,9 +66,9 @@ class DatabaseSeeder extends Seeder
         Agrigard::factory(40)->create();
         Konkurito::factory(40)->create();
         Dedikasi_Flora::factory(40)->create();
-        // Batunesia::factory(40)->create();
         Shineage::factory(40)->create();
         Everlas_Things::factory(40)->create();
+        // Batunesia::factory(40)->create();
         // Promo::factory(10)->create()->each(function ($promo) {
         //     $promo->nurseris()->attach(Dedikasi_Flora::pluck('id_nurseri')->toArray());
         //     $promo->batunesias()->attach(Batunesia::pluck('id_batu')->toArray());

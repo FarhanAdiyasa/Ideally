@@ -21,11 +21,12 @@ return new class extends Migration
             $table->string('gambar_1');
             $table->string('gambar_2')->nullable();
             $table->string('gambar_3')->nullable();
-            $table->string('gambar_4')->nullable();
             $table->string('video')->nullable();
             $table->text('deskripsi_singkat'); 
             $table->integer('stok')->default(0); 
             $table->integer('item_terjual')->default(0);
+            $table->string('armada_minimum')->nullable();
+            $table->decimal('harga_jual_projek_ideally', 10, 2);
             $table->decimal('harga_b2I_31_unit', 10, 2);
             $table->decimal('harga_b2I_11_unit', 10, 2);
             $table->decimal('harga_b2I_1_unit', 10, 2);

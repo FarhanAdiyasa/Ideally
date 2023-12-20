@@ -103,10 +103,11 @@ class AdminAgrigardController extends Controller
             $agrigard->gambar_1 = $photoPaths[0] ?? null;
             $agrigard->gambar_2 = $photoPaths[1] ?? null;
             $agrigard->gambar_3 = $photoPaths[2] ?? null;
-            $agrigard->gambar_4 = $photoPaths[3] ?? null;
             if($request->tanggal_publikasi == "true"){
                 $agrigard->tanggal_publikasi = now();
             }
+            $harga_jual_projek_ideally = str_replace(['.', ''], '', $request['harga_jual_projek_ideally']);
+            $agrigard->harga_jual_projek_ideally = $harga_jual_projek_ideally;
             // Harga_b2I_1+_unit
             $harga_b2I_1_unit = str_replace(['.', ''], '', $request['harga_b2I_1_unit']);
             $agrigard->harga_b2I_1_unit= $harga_b2I_1_unit;
@@ -205,7 +206,6 @@ class AdminAgrigardController extends Controller
                     "gambar_1" => $agrigard->gambar_1,
                     "gambar_2" => $agrigard->gambar_2,
                     "gambar_3" => $agrigard->gambar_3,
-                    "gambar_4" => $agrigard->gambar_4,
                 ];
                 foreach ($imagePathsFromDatabase as $key => $imagePath) {
                     if ($imagePath !== null && !in_array($imagePath, $photoPaths)) {
@@ -221,10 +221,11 @@ class AdminAgrigardController extends Controller
                 $agrigard->gambar_1 = $photoPaths[0] ?? null;
                 $agrigard->gambar_2 = $photoPaths[1] ?? null;
                 $agrigard->gambar_3 = $photoPaths[2] ?? null;
-                $agrigard->gambar_4 = $photoPaths[3] ?? null;
                 if($request->tanggal_publikasi == "true"){
                     $agrigard->tanggal_publikasi = now();
                 }
+                $harga_jual_projek_ideally = str_replace(['.', ''], '', $request['harga_jual_projek_ideally']);
+                $agrigard->harga_jual_projek_ideally = $harga_jual_projek_ideally;
                 // Harga_b2I_1+_unit
                 $harga_b2I_1_unit = str_replace(['.', ''], '', $request['harga_b2I_1_unit']);
                 $agrigard->harga_b2I_1_unit= $harga_b2I_1_unit;
@@ -264,6 +265,7 @@ class AdminAgrigardController extends Controller
             
     
         } catch (\Exception $e) {
+            dd($e->getMessage());
             DB::rollback();
            return redirect()->back()->with('error', 'Terjadi kesalahan. Silakan coba lagi nanti.');
         }

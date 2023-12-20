@@ -5,7 +5,7 @@
         <div class="container">
             <div class="card mt-5">
                 <div class="card-header">
-                    <h3>List Products</h3>
+                    <h3>List Artikel</h3>
                 </div>
                 <div class="card-body">
                     @if (session('success'))
@@ -17,7 +17,7 @@
                     @endif
 
                     <p>
-                        <a href="{{ route('artikels.create') }}" class="btn btn-primary">New Product</a>
+                        <a href="{{ route('artikels.create') }}" class="btn btn-primary">New Artikel</a>
                     </p>
                     <table id="products-table" class="table table-hover table-bordered text-center">
                         <thead>

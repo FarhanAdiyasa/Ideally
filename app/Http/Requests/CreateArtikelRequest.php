@@ -27,7 +27,6 @@ class CreateArtikelRequest extends FormRequest
             'judul_artikel' => 'required|string|max:255',
             'deskripsi_artikel' => 'required|string',
             'isi_artikel' => 'required|string',
-            'penulis_artikel' => 'required|string|max:255',
             'gambar_artikel' => 'required|image|mimes:jpeg,png,jpg|max:2048',
             'keterangan_gambar_artikel' => 'nullable|string',
             'keywords' => 'nullable|string',

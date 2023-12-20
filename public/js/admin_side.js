@@ -4,9 +4,11 @@ if (imageInput) {
     imageInput.addEventListener("change", handleImageUpload);
 }
 const bodyElement = document.getElementById("body");
-if (bodyElement) {
-    bodyElement.classList.add("sidebar-collapse");
-}
+const collapse = () => {
+    if (bodyElement) {
+        bodyElement.classList.add("sidebar-collapse");
+    }
+};
 
 function addExistingImagesToPhotos(originalName = null) {
     var existingImages = $(".img-prv img");
@@ -52,8 +54,8 @@ const imgStyling = () => {
         }
     }
 };
-
 function handleImageUpload() {
+    let jumlahTd = $("#imagePreviewContainer td").length;
     let index = 0;
     document.getElementById("1").style.border =
         "2px dashed var(--N100, #03ac0e)";
@@ -66,7 +68,7 @@ function handleImageUpload() {
     }
     let originalName = [];
     for (const file of imageInput.files) {
-        if (index > 3) {
+        if (index > jumlahTd - 1) {
             document.getElementById("error-img").style.visibility = "visible";
             return;
         }

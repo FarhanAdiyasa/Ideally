@@ -18,6 +18,10 @@ return new class extends Migration
             $table->string('nama_produk');
             $table->string('slug');
             $table->string('jenis');
+            $table->decimal('panjang', 10, 2);
+            $table->decimal('lebar', 10, 2);
+            $table->decimal('diameter', 10, 2);
+            $table->decimal('tinggi', 10, 2);
             $table->string('garansi');
             $table->string('warna');
             $table->string('dimensi');
@@ -30,9 +34,11 @@ return new class extends Migration
             $table->string('gambar_5')->nullable();
             $table->string('gambar_6')->nullable();
             $table->string('video')->nullable();
-            $table->text('deskripsi_singkat'); // Menggunakan tipe data 'text' untuk deskripsi yang panjang
-            $table->integer('stok')->default(0); // Menggunakan tipe data 'integer' untuk stok
+            $table->string('armada_minimum');
+            $table->text('deskripsi_singkat'); 
+            $table->integer('stok')->default(0); 
             $table->integer('item_terjual')->default(0);
+            $table->decimal('harga_jual_projek_ideally', 10, 2);
             $table->decimal('harga_b2I_11_unit', 10, 2);
             $table->decimal('harga_b2I_1_unit', 10, 2);
             $table->decimal('harga_b2B_11_unit', 10, 2);
