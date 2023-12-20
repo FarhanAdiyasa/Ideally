@@ -3,26 +3,28 @@
 namespace App\Http\Controllers;
 
 use Log;
-use App\Models\Agrigard;
+use App\Models\dedikasiFlora;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Str;
 use Termwind\Components\Dd;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use App\Http\Requests\UpdateAgrigard;
-use App\Http\Requests\AgrigardRequest;
+use App\Http\Requests\UpdatededikasiFlora;
+use App\Http\Requests\dedikasiFloraRequest;
+use App\Http\Requests\UpdateDedikasiFloraRequest;
+use App\Models\Dedikasi_Flora;
 use Illuminate\Support\Facades\Storage;
 
-class AdminAgrigardController extends Controller
+class AdminDedikasiFloraController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $agrigards = Agrigard::all();
+        $dedikasiFloras = Dedikasi_Flora::all();
         
-        foreach ($agrigards as $agrigard) {
+        foreach ($dedikasiFloras as $dedikasiFlora) {
             $hargaRanges = [];
     
             // Assuming harga columns have a common prefix
@@ -34,7 +36,7 @@ class AdminAgrigardController extends Controller
             // Iterate over harga columns and compute overall range
             for ($i = 1; $i <= 3; $i++) {  // Assuming 3 levels: b2I, b2B, b2C
                 $columnName = $columnPrefix . 'b2I_' . $i . '_unit';
-                $harga = $agrigard->{$columnName};  // Get the harga value for the current column
+                $harga = $dedikasiFlora->{$columnName};  // Get the harga value for the current column
     
                 if ($harga !== null) {
                     if ($min === null || $harga < $min) {
@@ -47,20 +49,20 @@ class AdminAgrigardController extends Controller
                 }
             }
     
-            // Add the computed range to the agrigard object
+            // Add the computed range to the dedikasiFlora object
             $hargaRanges[] = $min !== null && $max !== null ? $min . ' - ' . $max : 'No data';
     
-            // Add the computed ranges to the agrigard object
-            $agrigard->harga_ranges = $hargaRanges;
+            // Add the computed ranges to the dedikasiFlora object
+            $dedikasiFlora->harga_ranges = $hargaRanges;
         }
     
-        return view('Pages/Product/list-product', ['agrigards' => $agrigards]);
+        return view('Pages/DedikasiFlora/list-dedikasiFlora', ['dedikasiFloras' => $dedikasiFloras]);
     }
     
     public function view($id)
     {
-        $agrigard = Agrigard::findOrFail($id);
-        return view('Pages/Product/detail-product', ['agrigard'=>$agrigard]);
+        $dedikasiFlora = Dedikasi_Flora::findOrFail($id);
+        return view('Pages/DedikasiFlora/detail-dedikasiFlora', ['dedikasiFlora'=>$dedikasiFlora]);
     }
 
     /**
@@ -68,13 +70,13 @@ class AdminAgrigardController extends Controller
      */
     public function create()
     {
-        return view('Pages/Product/add-product');
+        return view('Pages/DedikasiFlora/add-dedikasiFlora');
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(AgrigardRequest $request)
+    public function store(DedikasiFloraRequest $request)
     {
        
     $validatedData = $request->validated();
@@ -98,64 +100,68 @@ class AdminAgrigardController extends Controller
             
             // Simpan path file ke dalam database
            
-            $agrigard = new Agrigard;
-            $agrigard->fill($validatedData);
-            $agrigard->gambar_1 = $photoPaths[0] ?? null;
-            $agrigard->gambar_2 = $photoPaths[1] ?? null;
-            $agrigard->gambar_3 = $photoPaths[2] ?? null;
+            $dedikasiFlora = new Dedikasi_Flora;
+            $dedikasiFlora->fill($validatedData);
+            $dedikasiFlora->gambar_1 = $photoPaths[0] ?? null;
+            $dedikasiFlora->gambar_2 = $photoPaths[1] ?? null;
+            $dedikasiFlora->gambar_3 = $photoPaths[2] ?? null;
             if($request->tanggal_publikasi == "true"){
-                $agrigard->tanggal_publikasi = now();
+                $dedikasiFlora->tanggal_publikasi = now();
             }
             $harga_jual_projek_ideally = str_replace(['.', ''], '', $request['harga_jual_projek_ideally']);
-            $agrigard->harga_jual_projek_ideally = $harga_jual_projek_ideally;
+            $dedikasiFlora->harga_jual_projek_ideally = $harga_jual_projek_ideally;
             // Harga_b2I_1+_unit
             $harga_b2I_1_unit = str_replace(['.', ''], '', $request['harga_b2I_1_unit']);
-            $agrigard->harga_b2I_1_unit= $harga_b2I_1_unit;
+            $dedikasiFlora->harga_b2I_1_unit= $harga_b2I_1_unit;
 
             // Harga_b2I_11+_unit
             $harga_b2I_11_unit = str_replace(['.', ''], '', $request['harga_b2I_11_unit']);
-            $agrigard->harga_b2I_11_unit = $harga_b2I_11_unit;
+            $dedikasiFlora->harga_b2I_11_unit = $harga_b2I_11_unit;
 
             $harga_b2I_31_unit = str_replace(['.', ''], '', $request['harga_b2I_31_unit']);
-            $agrigard->harga_b2I_31_unit = $harga_b2I_31_unit;
+            $dedikasiFlora->harga_b2I_31_unit = $harga_b2I_31_unit;
 
 
             // Harga_b2B_1+_unit
             $harga_b2B_1_unit = str_replace(['.', ''], '', $request['harga_b2B_1_unit']);
-            $agrigard->harga_b2B_1_unit = $harga_b2B_1_unit;
+            $dedikasiFlora->harga_b2B_1_unit = $harga_b2B_1_unit;
 
             // Harga_b2B_11+_unit
             $harga_b2B_11_unit = str_replace(['.', ''], '', $request['harga_b2B_11_unit']);
-            $agrigard->harga_b2B_11_unit = $harga_b2B_11_unit;
+            $dedikasiFlora->harga_b2B_11_unit = $harga_b2B_11_unit;
 
             $harga_b2B_31_unit = str_replace(['.', ''], '', $request['harga_b2B_31_unit']);
-            $agrigard->harga_b2B_31_unit = $harga_b2B_31_unit;
+            $dedikasiFlora->harga_b2B_31_unit = $harga_b2B_31_unit;
 
             // Harga_b2C_1+_unit
             $harga_b2C_1_unit = str_replace(['.', ''], '', $request['harga_b2C_1_unit']);
-            $agrigard->harga_b2C_1_unit = $harga_b2C_1_unit;
+            $dedikasiFlora->harga_b2C_1_unit = $harga_b2C_1_unit;
 
             // Harga_b2C_11+_unit
             $harga_b2C_11_unit = str_replace(['.', ''], '', $request['harga_b2C_11_unit']);
-            $agrigard->harga_b2C_11_unit = $harga_b2C_11_unit;
+            $dedikasiFlora->harga_b2C_11_unit = $harga_b2C_11_unit;
 
             // Harga_b2C_31+_unit
             $harga_b2C_31_unit = str_replace(['.', ','], '', $request['harga_b2C_31_unit']);
-            $agrigard->harga_b2C_31_unit = $harga_b2C_31_unit;
+            $dedikasiFlora->harga_b2C_31_unit = $harga_b2C_31_unit;
 
-            $agrigard->slug =Str::slug($agrigard->nama_produk);
-            $agrigard->created_by = 1;
-            $agrigard->save();
+            $dedikasiFlora->warna_bunga =$request['warna_bunga_1'] ."-". $request['warna_bunga_2'];
+            $dedikasiFlora->warna_daun =$request['warna_daun_1'] ."-". $request['warna_daun_2'];
+
+            $dedikasiFlora->slug =Str::slug($dedikasiFlora->nama_latin);
+            $dedikasiFlora->created_by = 1;
+            $dedikasiFlora->save();
             DB::commit();
         } else {
             // Jika tidak ada gambar, tangani sesuai kebutuhan bisnis Anda
         }
 
     } catch (\Exception $e) {
+        dd($e->getMessage());
         DB::rollback();
        return redirect()->back()->with('error', 'Terjadi kesalahan. Silakan coba lagi nanti.');
     }
-    return redirect()->route('daftar-produk')->with('success', 'Data has been successfully stored.');
+    return redirect()->route('dedikasiFloras')->with('success', 'Data has been successfully stored.');
     }
     
 
@@ -169,14 +175,16 @@ class AdminAgrigardController extends Controller
      */
     public function edit($id)
     {
-        $agrigard = Agrigard::findOrFail($id);
-        return view('Pages/Product/edit-product', ['agrigard'=>$agrigard]);
+        $dedikasiFlora = Dedikasi_Flora::findOrFail($id);
+        list($warna_bunga_1, $warna_bunga_2) = explode('-', $dedikasiFlora->warna_bunga);
+        list($warna_daun_1, $warna_daun_2) = explode('-', $dedikasiFlora->warna_daun);
+        return view('Pages/DedikasiFlora/edit-dedikasiFlora', compact('dedikasiFlora', 'warna_bunga_1', 'warna_bunga_2','warna_daun_1', 'warna_daun_2'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateAgrigard $request, $id)
+    public function update(UpdateDedikasiFloraRequest $request, $id)
     {
        
         $validatedData = $request->validated();
@@ -201,11 +209,11 @@ class AdminAgrigardController extends Controller
             foreach ($photoPaths as $index => $photoPath) {
                 $photoPaths[$index] = "photos/" . $photoPaths[$index];
             }
-                $agrigard = Agrigard::findOrFail($id);
+                $dedikasiFlora = Dedikasi_Flora::findOrFail($id);
                 $imagePathsFromDatabase = [
-                    "gambar_1" => $agrigard->gambar_1,
-                    "gambar_2" => $agrigard->gambar_2,
-                    "gambar_3" => $agrigard->gambar_3,
+                    "gambar_1" => $dedikasiFlora->gambar_1,
+                    "gambar_2" => $dedikasiFlora->gambar_2,
+                    "gambar_3" => $dedikasiFlora->gambar_3,
                 ];
                 foreach ($imagePathsFromDatabase as $key => $imagePath) {
                     if ($imagePath !== null && !in_array($imagePath, $photoPaths)) {
@@ -216,51 +224,51 @@ class AdminAgrigardController extends Controller
                         $imagePathsFromDatabase[$key] = null;
                     }
                 }
-                $agrigard->fill($validatedData);
+                $dedikasiFlora->fill($validatedData);
                 
-                $agrigard->gambar_1 = $photoPaths[0] ?? null;
-                $agrigard->gambar_2 = $photoPaths[1] ?? null;
-                $agrigard->gambar_3 = $photoPaths[2] ?? null;
+                $dedikasiFlora->gambar_1 = $photoPaths[0] ?? null;
+                $dedikasiFlora->gambar_2 = $photoPaths[1] ?? null;
+                $dedikasiFlora->gambar_3 = $photoPaths[2] ?? null;
                 if($request->tanggal_publikasi == "true"){
-                    $agrigard->tanggal_publikasi = now();
+                    $dedikasiFlora->tanggal_publikasi = now();
                 }
                 $harga_jual_projek_ideally = str_replace(['.', ''], '', $request['harga_jual_projek_ideally']);
-                $agrigard->harga_jual_projek_ideally = $harga_jual_projek_ideally;
+                $dedikasiFlora->harga_jual_projek_ideally = $harga_jual_projek_ideally;
                 // Harga_b2I_1+_unit
                 $harga_b2I_1_unit = str_replace(['.', ''], '', $request['harga_b2I_1_unit']);
-                $agrigard->harga_b2I_1_unit= $harga_b2I_1_unit;
+                $dedikasiFlora->harga_b2I_1_unit= $harga_b2I_1_unit;
     
                 // Harga_b2I_11+_unit
                 $harga_b2I_11_unit = str_replace(['.', ''], '', $request['harga_b2I_11_unit']);
-                $agrigard->harga_b2I_11_unit = $harga_b2I_11_unit;
+                $dedikasiFlora->harga_b2I_11_unit = $harga_b2I_11_unit;
     
                 $harga_b2I_31_unit = str_replace(['.', ''], '', $request['harga_b2I_31_unit']);
-                $agrigard->harga_b2I_31_unit = $harga_b2I_31_unit;
+                $dedikasiFlora->harga_b2I_31_unit = $harga_b2I_31_unit;
 
                 // Harga_b2B_1+_unit
                 $harga_b2B_1_unit = str_replace(['.', ''], '', $request['harga_b2B_1_unit']);
-                $agrigard->harga_b2B_1_unit = $harga_b2B_1_unit;
+                $dedikasiFlora->harga_b2B_1_unit = $harga_b2B_1_unit;
     
                 // Harga_b2B_11+_unit
                 $harga_b2B_11_unit = str_replace(['.', ''], '', $request['harga_b2B_11_unit']);
-                $agrigard->harga_b2B_11_unit = $harga_b2B_11_unit;
+                $dedikasiFlora->harga_b2B_11_unit = $harga_b2B_11_unit;
     
                 $harga_b2B_31_unit = str_replace(['.', ''], '', $request['harga_b2B_31_unit']);
-                $agrigard->harga_b2B_31_unit = $harga_b2B_31_unit;
+                $dedikasiFlora->harga_b2B_31_unit = $harga_b2B_31_unit;
     
                 // Harga_b2C_1+_unit
                 $harga_b2C_1_unit = str_replace(['.', ''], '', $request['harga_b2C_1_unit']);
-                $agrigard->harga_b2C_1_unit = $harga_b2C_1_unit;
+                $dedikasiFlora->harga_b2C_1_unit = $harga_b2C_1_unit;
     
                 // Harga_b2C_11+_unit
                 $harga_b2C_11_unit = str_replace(['.', ''], '', $request['harga_b2C_11_unit']);
-                $agrigard->harga_b2C_11_unit = $harga_b2C_11_unit;
+                $dedikasiFlora->harga_b2C_11_unit = $harga_b2C_11_unit;
     
                 // Harga_b2C_31+_unit
                 $harga_b2C_31_unit = str_replace(['.', ','], '', $request['harga_b2C_31_unit']);
-                $agrigard->harga_b2C_31_unit = $harga_b2C_31_unit;
+                $dedikasiFlora->harga_b2C_31_unit = $harga_b2C_31_unit;
 
-                $agrigard->save();
+                $dedikasiFlora->save();
                 DB::commit();
             
     
@@ -269,65 +277,65 @@ class AdminAgrigardController extends Controller
             DB::rollback();
            return redirect()->back()->with('error', 'Terjadi kesalahan. Silakan coba lagi nanti.');
         }
-        return redirect()->route('daftar-produk')->with('success', 'Data has been successfully stored.');
+        return redirect()->route('dedikasiFloras')->with('success', 'Data has been successfully stored.');
     }
 
     public function delete($id)
     {
-        $agrigard = Agrigard::findOrFail($id);
-        return view('Pages/Product/delete-product', ['agrigard'=>$agrigard]);
+        $dedikasiFlora = Dedikasi_Flora::findOrFail($id);
+        return view('Pages/DedikasiFlora/delete-dedikasiFlora', ['dedikasiFlora'=>$dedikasiFlora]);
     }
 
     public function destroy($id)
     {
         try {
             DB::beginTransaction();
-            $agrigard = Agrigard::findOrFail($id);
+            $dedikasiFlora = Dedikasi_Flora::findOrFail($id);
 
-            $oldPath = $agrigard->gambar_1;
+            $oldPath = $dedikasiFlora->gambar_1;
             if ($oldPath !== null && $oldPath !== '') {
                 Storage::delete($oldPath);
             }
 
-            $oldPath = $agrigard->gambar_2;
+            $oldPath = $dedikasiFlora->gambar_2;
             if ($oldPath !== null && $oldPath !== '') {
                 Storage::delete($oldPath);
             }
 
-            $oldPath = $agrigard->gambar_3;
+            $oldPath = $dedikasiFlora->gambar_3;
             if ($oldPath !== null && $oldPath !== '') {
                 Storage::delete($oldPath);
             }
 
-            $oldPath = $agrigard->gambar_4;
+            $oldPath = $dedikasiFlora->gambar_4;
             if ($oldPath !== null && $oldPath !== '') {
                 Storage::delete($oldPath);
             }
 
-            $agrigard->delete();
+            $dedikasiFlora->delete();
             DB::commit();
         } catch (\Exception $e) {
             DB::rollback();
             return redirect()->back()->with('error', 'Terjadi kesalahan. Silakan coba lagi nanti.');
         }
 
-        return redirect()->route('daftar-produk')->with('success', 'Data has been successfully deleted.');
+        return redirect()->route('dedikasiFloras')->with('success', 'Data has been successfully deleted.');
     }
 
     public function post(Request $request)
     {
-        $id = $request->input('agrigard_id');
+        $id = $request->input('dedikasiFlora_id');
         try {
             DB::beginTransaction();
-            $agrigard = Agrigard::findOrFail($id);
-            $agrigard->tanggal_publikasi = $request->input('status') == "true" ? now() : null;
-            $agrigard->save();
+            $dedikasiFlora = Dedikasi_Flora::findOrFail($id);
+            $dedikasiFlora->tanggal_publikasi = $request->input('status') == "true" ? now() : null;
+            $dedikasiFlora->save();
             DB::commit();
         } catch (\Exception $e) {
             DB::rollback();
             return redirect()->back()->with('error', 'Terjadi kesalahan. Silakan coba lagi nanti.');
         }
-        return redirect()->route('daftar-produk')->with('success', 'Data status has been successfully changed .');
+        return redirect()->route('dedikasiFloras')->with('success', 'Data status has been successfully changed .');
     }
     
 }

@@ -5,7 +5,7 @@
         <div class="container" style="padding-top: 25px;">
             <div class="card">
                 <div class="card-header">
-                    <h3>List Articles</h3>
+                    <h3>List Artikel</h3>
                 </div>
                 <div class="card-body">
                     @if (session('success'))
@@ -16,7 +16,7 @@
                         <div class="alert alert-warning">{{ session('error') }}</div>
                     @endif
                     <p>
-                        <a href="{{ route('artikels.create') }}" class="btn btn-primary">New Article</a>
+                        <a href="{{ route('artikels.create') }}" class="btn btn-primary">New Artikel</a>
                     </p>
                     <table id="articles-table" class="table table-bordered text-center">
                         <thead>
