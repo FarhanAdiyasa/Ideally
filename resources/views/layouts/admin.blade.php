@@ -250,13 +250,13 @@
               </a>
               <ul class="nav nav-treeview">
                 <li class="nav-item">
-                  <a href="#" class="nav-link">
+                  <a href="{{ route('dedikasiFloras.tambah') }}" class="nav-link">
                     <i class="far nav-icon"></i>
                     <p>Tambah Produk</p>
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a href="#" class="nav-link">
+                  <a href="{{ route('dedikasiFloras') }}" class="nav-link">
                     <i class="far nav-icon"></i>
                     <p>Daftar Produk</p>
                   </a>
@@ -273,13 +273,13 @@
               </a>
               <ul class="nav nav-treeview">
                 <li class="nav-item">
-                  <a href="pages/mailbox/mailbox.html" class="nav-link">
+                  <a href="{{ route('batunesias.tambah') }}" class="nav-link">
                     <i class="far nav-icon"></i>
                     <p>Tambah Produk</p>
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a href="pages/mailbox/compose.html" class="nav-link">
+                  <a href="{{ route('batunesias') }}" class="nav-link">
                     <i class="far   nav-icon"></i>
                     <p>Daftar Produk</p>
                   </a>
@@ -296,13 +296,13 @@
               </a>
               <ul class="nav nav-treeview">
                 <li class="nav-item">
-                  <a href="pages/mailbox/mailbox.html" class="nav-link">
+                  <a href="{{ route('konkuritos.tambah') }}" class="nav-link">
                     <i class="far nav-icon"></i>
                     <p>Tambah Produk</p>
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a href="pages/mailbox/compose.html" class="nav-link">
+                  <a href="{{ route('konkuritos') }}" class="nav-link">
                     <i class="far   nav-icon"></i>
                     <p>Daftar Produk</p>
                   </a>
@@ -319,13 +319,13 @@
               </a>
               <ul class="nav nav-treeview">
                 <li class="nav-item">
-                  <a href="pages/mailbox/mailbox.html" class="nav-link">
+                  <a href="{{ route('everlasThings.tambah') }}" class="nav-link">
                     <i class="far nav-icon"></i>
                     <p>Tambah Produk</p>
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a href="pages/mailbox/compose.html" class="nav-link">
+                  <a href="{{ route('everlasThings') }}" class="nav-link">
                     <i class="far   nav-icon"></i>
                     <p>Daftar Produk</p>
                   </a>
@@ -389,13 +389,13 @@
               </a>
               <ul class="nav nav-treeview">
                 <li class="nav-item">
-                  <a href="{{ route('artikels') }}" class="nav-link">
+                  <a href="{{ route('artikels.create') }}" class="nav-link">
                     <i class="far nav-icon"></i>
                     <p>Tambah Artikel</p>
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a href="{{ route('artikels.create') }}" class="nav-link">
+                  <a href="{{ route('artikels') }}" class="nav-link">
                     <i class="far nav-icon"></i>
                     <p>Daftar Artikel</p>
                   </a>

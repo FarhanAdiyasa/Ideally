@@ -19,7 +19,7 @@
   <div class="container-fluid">
     <div class="row mb-2">
       <div class="col-sm-6">
-        <h1>Tambah Produk Shineage</h1>
+        <h1>Tambah Produk Konkurito</h1>
       </div>
       <div class="col-sm-6">
         <ol class="breadcrumb float-sm-right">
@@ -33,7 +33,7 @@
 <section class="content">
 <div class="container-fluid">
   <!-- SELECT2 EXAMPLE -->
-  <form method="post" action="{{ route('shineages.save')}} " enctype="multipart/form-data" id="agrForm">
+  <form method="post" action="{{ route('batunesias.save')}} " enctype="multipart/form-data" id="agrForm">
     @csrf
   <div class="card card-default">
     <div class="card-header">
@@ -74,7 +74,7 @@
       <div class="row">
         <div class="col-md-3">
           <div class="form-group">
-            <label>Seri Shineage</label>
+            <label>Jenis Produk</label>
             <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sed, odit ab eum enim illo minima deleniti quae ducimus repudiandae sit!</p>
           </div>
           <!-- /.form-group -->
@@ -82,52 +82,17 @@
         <!-- /.col -->
         <div class="col-md-9">
           <div class="form-group">
-              <input id="default" type="text" class="form-control" placeholder="Placeholder text" name="seri" id="seri" value="{{old('seri')}}">
-              @error('seri')
-              <small class="text-danger">{{ $message }}</small>
-              @enderror
-          </div>
-          <!-- /.form-group -->
-        </div>
-        <!-- /.col -->
-      </div>
-      <!-- /.row -->
-      <div class="row">
-        <div class="col-12 col-sm-6">
-          <div class="form-group">
-            <label>Jenis</label>
-            <select class="form-control select2" style="width: 100%;" name="jenis">
-              <option value="Neon Box" @selected(old('jenis') == 'Neon Box')>Neon Box</option>
-              <option value="Letter Sign" @selected(old('jenis') == 'Letter Sign')>Letter Sign</option>
-              <option value="Produk Akrilik" @selected(old('jenis') == 'Produk Akrilik')>Produk Akrilik</option>
-              <option value="Kelistrikan" @selected(old('jenis') == 'Kelistrikan')>Kelistrikan</option>
-              <option value="Neon Flex" @selected(old('jenis') == 'Neon Flex')>Neon Flex</option>
-              <option value="Info Sign" @selected(old('jenis') == 'Info Sign')>Info Sign</option>
-          </select>          
+            <select class="form-control select2" style="width: 100%;" name="kategori">
+              <option value="Batu Hampar" @selected(old('kategori') == 'Batu Hampar')>Batu Hampar</option>
+              <option value="Batu Tempel" @selected(old('kategori') == 'Batu Tempel')>Batu Tempel</option>
+              <option value="Batu Hias" @selected(old('kategori') == 'Batu Hias')>Batu Hias</option>
+              <option value="Ornamen Batu" @selected(old('kategori') == 'Ornamen Batu')>Ornamen Batu</option>
+              <option value="Pot Batu" @selected(old('kategori') == 'Pot Batu')>Pot Batu</option>
+          </select>            
               @error('jenis')
               <small class="text-danger">{{ $message }}</small>
               @enderror
           </div>
-          <!-- /.form-group -->
-        </div>
-        <!-- /.col -->
-        <div class="col-12 col-sm-6">
-          <div class="form-group">
-            <label>Garansi Produk</label>
-            <div class="select2-purple">
-              <select class="form-control select2" style="width: 100%;" name="garansi">
-                <option value="30 hari" @selected(old('garansi') == '30 hari')>30 hari</option>
-                <option value="60 hari" @selected(old('garansi') == '60 hari')>60 hari</option>
-                <option value="90 hari" @selected(old('garansi') == '90 hari')>90 hari</option>
-                <option value="180 hari" @selected(old('garansi') == '180 hari')>180 hari</option>
-                <option value="360 hari" @selected(old('garansi') == '360 hari')>360 hari</option>
-            </select>            
-                   @error('garansi')
-              <small class="text-danger">{{ $message }}</small>
-              @enderror
-            </div>
-          </div>
-          <!-- /.form-group -->
         </div>
         <!-- /.col -->
       </div>
@@ -135,51 +100,20 @@
       <div class="row">
         <div class="col-12 col-sm-6">
           <div class="form-group">
-            <label>Dimensi Produk</label>
-              <input type="text" class="form-control" placeholder="Placeholder text" name="dimensi" value="{{old('dimensi')}}">
-                 @error('dimensi')
-              <small class="text-danger">{{ $message }}</small>
-              @enderror
-          </div>
-          <!-- /.form-group -->
-        </div>
-        <!-- /.col -->
-        <div class="col-12 col-sm-6">
-          <div class="form-group">
-            <label>Warna Produk</label>
-            <select class="form-control select2" style="width: 100%;" name="warna">
-              <option value="Merah" {{ old('warna') == 'Merah' ? 'selected' : '' }}>
-                  🔴 Merah
-              </option>
-              <option value="Kuning" @selected(old('warna') == 'Kuning')>
-                  🟡 Kuning
-              </option>
-              <option value="Hijau" @selected(old('warna') == 'Hijau' )>
-                  🟢 Hijau
-              </option>
-              <option value="Jingga" @selected(old('warna') == 'Jingga')>
-                  🟠 Jingga
-              </option>
-              <option value="Biru" @selected(old('warna') == 'Biru')>
-                  🔵 Biru
-              </option>
-              <option value="Ungu" @selected(old('warna') == 'Ungu')>
-                  🟣 Ungu
-              </option>
-              <option value="Putih" @selected(old('warna') == 'Putih' )>
-                  ⚪ Putih
-              </option>
-              <option value="Hitam" @selected(old('warna') == 'Hitam' )>
-                  ⚫ Hitam
-              </option>
-              <option value="Cokelat" @selected(old('warna') == 'Cokelat')>
-                  🟤 Cokelat
-              </option>
-              <option value="Pink" @selected(old('warna') == 'Pink')>
-                  💖 Pink
-              </option>
-            </select>      
-              @error('warna')
+            <label>Satuan Produk</label>
+              <select class="form-control select2" style="width: 100%;" name="satuan">
+                <option value="pcs" @selected(old('satuan') == 'pcs')>pcs</option>
+                <option value="karung_5_kg" @selected(old('satuan') == 'karung_5_kg')>karung 5 kg</option>
+                <option value="karung_10_kg" @selected(old('satuan') == 'karung_10_kg')>karung 10 kg</option>
+                <option value="pick_up" @selected(old('satuan') == 'pick_up')>pick up</option>
+                <option value="truk_engkel" @selected(old('satuan') == 'truk_engkel')>truk engkel</option>
+                <option value="dump_truck" @selected(old('satuan') == 'dump_truck')>dump truck</option>
+                <option value="m2" @selected(old('satuan') == 'm2')>m2</option>
+                <option value="karung_30" @selected(old('satuan') == 'karung_30')>karung 30</option>
+                <option value="karung_25" @selected(old('satuan') == 'karung_25')>karung 25</option>
+                <option value="kg" @selected(old('satuan') == 'kg')>kg</option>
+              </select>
+                 @error('satuan')
               <small class="text-danger">{{ $message }}</small>
               @enderror
           </div>
@@ -191,25 +125,39 @@
       <div class="row">
         <div class="col-12 col-sm-6">
           <div class="form-group">
-            <label>Material Pendukung</label>
-              <input type="text" class="form-control" placeholder="Placeholder text" name="material_pendukung" value="{{old('material_pendukung')}}">
-                 @error('material_pendukung')
+            <label>Warna Produk 1</label>
+            <select class="form-control select2" style="width: 100%;" name="warna_1">
+              <option value="Putih" @selected(old('warna_1') == 'Putih')>⚪ Putih</option>
+              <option value="Krem" @selected(old('warna_1') == 'Krem')>🌕 Krem</option>
+              <option value="Abu-abu" @selected(old('warna_1') == 'Abu-abu')>🌑 Abu-abu</option>
+              <option value="Cokelat" @selected(old('warna_1') == 'Cokelat')>🍫 Cokelat</option>
+              <option value="Hitam" @selected(old('warna_1') == 'Hitam')>⚫ Hitam</option>
+              <option value="Pancawarna" @selected(old('warna_1') == 'Pancawarna')>🎨 Pancawarna</option>
+            </select>          
+                   @error('warna_1')
               <small class="text-danger">{{ $message }}</small>
               @enderror
-          </div>
           <!-- /.form-group -->
-        </div>
-        <!-- /.col -->
-        <div class="col-12 col-sm-6">
-          <div class="form-group">
-            <label>Finishing</label>
-              <input type="text" class="form-control" placeholder="Placeholder text" name="finishing" value="{{old('finishing')}}">
-                 @error('finishing')
-              <small class="text-danger">{{ $message }}</small>
-              @enderror
           </div>
-          <!-- /.form-group -->
+      </div>
+      <div class="col-12 col-sm-6">
+        <div class="form-group">
+          <label>Warna Produk 2</label>
+          <select class="form-control select2" style="width: 100%;" name="warna_2">
+            <option value="Tidak Ada" @selected(old('warna_2') == 'Tidak Ada')>✖️ Tidak ada</option>
+            <option value="Putih" @selected(old('warna_2') == 'Putih')>⚪ Putih</option>
+            <option value="Krem" @selected(old('warna_2') == 'Krem')>🌕 Krem</option>
+            <option value="Abu-abu" @selected(old('warna_2') == 'Abu-abu')>🌑 Abu-abu</option>
+            <option value="Cokelat" @selected(old('warna_2') == 'Cokelat')>🍫 Cokelat</option>
+            <option value="Hitam" @selected(old('warna_2') == 'Hitam')>⚫ Hitam</option>
+            <option value="Pancawarna" @selected(old('warna_2') == 'Pancawarna')>🎨 Pancawarna</option>
+          </select>     
+                 @error('warna_2')
+            <small class="text-danger">{{ $message }}</small>
+            @enderror
+        <!-- /.form-group -->
         </div>
+      </div>
         <!-- /.col -->
       </div>
       <!-- /.row -->
@@ -307,26 +255,21 @@
           <div class="form-group">
             <label for="imageInput">Klik / Drag & Drop Dari : </label>
             <input type="file" class="form-control" name="photos[]" id="imageInput" multiple/>
+              <div style="display: flex; flex-wrap: wrap;">
+                <table class="mt-3 col-12">
+                  <tr id="imagePreviewContainer" >
+                    <td id="1" style="padding:1rem; width: 25%;" class="img-prv"><img alt="" class="previewer"></td>
+                    <td id="2" style="padding:1rem; width: 25%;" class="img-prv"><img alt="" class="previewer"></td>
+                    <td id="3" style="padding:1rem; width: 25%;" class="img-prv"><img alt="" class="previewer"></td>
+                  </tr>
+                </table>
+                <small class="text-danger" id="error-img" style="visibility: hidden">Hanya Bisa 4 Gambar</small>
+            </div> 
           </div>
           @error('photos')
           <small class="text-danger">{{ $message }}</small>
           @enderror
           <!-- /.form-group -->
-        </div>
-        <div class="col-12 my-3">
-          <div style="display: flex; flex-wrap: wrap;">
-            <table class="mt-3 col-12">
-              <tr id="imagePreviewContainer">
-                <td id="1" style="padding: 1rem; width: <?= 100 / 6 ?>%;" class="img-prv"><img alt="" class="previewer"></td>
-                <td id="2" style="padding: 1rem; width: <?= 100 / 6 ?>%;" class="img-prv"><img alt="" class="previewer"></td>
-                <td id="3" style="padding: 1rem; width: <?= 100 / 6 ?>%;" class="img-prv"><img alt="" class="previewer"></td>
-                <td id="4" style="padding: 1rem; width: <?= 100 / 6 ?>%;" class="img-prv"><img alt="" class="previewer"></td>
-                <td id="5" style="padding: 1rem; width: <?= 100 / 6 ?>%;" class="img-prv"><img alt="" class="previewer"></td>
-                <td id="6" style="padding: 1rem; width: <?= 100 / 6 ?>%;" class="img-prv"><img alt="" class="previewer"></td>
-            </tr>            
-            </table>
-            <small class="text-danger" id="error-img" style="visibility: hidden">Hanya Bisa 6 Gambar</small>
-          </div> 
         </div>
         <!-- /.col -->
       </div>
@@ -351,6 +294,26 @@
         </div>
         <!-- /.col -->
       </div>
+      <div class="row">
+        <div class="col-md-3">
+          <div class="form-group">
+            <label>Penempatan Produk</label>
+            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sed, odit ab eum enim illo minima deleniti quae ducimus repudiandae sit!</p>
+          </div>
+          <!-- /.form-group -->
+        </div>
+        <!-- /.col -->
+        <div class="col-md-9">
+          <div class="form-group">
+            <textarea class="form-control" id="" rows="3" placeholder="Penempatan Produk" name="penempatan">{{old('penempatan')}}</textarea>
+                 @error('penempatan')
+              <small class="text-danger">{{ $message }}</small>
+              @enderror
+          </div>
+          <!-- /.form-group -->
+        </div>
+        <!-- /.col -->
+      </div>
       <!-- /.row -->
       <div class="row">
         <div class="col-md-3">
@@ -363,7 +326,7 @@
         <!-- /.col -->
         <div class="col-md-9">
           <div class="form-group">
-              <input class="form-control"  id=""  placeholder="Masukkan Url Youtube" name="video"/>
+              <input class="form-control"  id=""  placeholder="Masukkan Url Youtube" name="video"  value="{{old('video')}}"/>
                  @error('video')
               <small class="text-danger">{{ $message }}</small>
               @enderror
@@ -497,6 +460,29 @@
         <!-- /.col -->
       </div>
       <div class="row">
+        <div class="col-md-3">
+          <div class="form-group">
+            <p>31+ Units</p>
+           
+          </div>
+          <!-- /.form-group -->
+        </div>
+        <!-- /.col -->
+        <div class="col-md-6">
+          <div class="form-group">
+            <div class="harga-input">
+              <div class="rp">Rp</div>
+              <input data-unify="TextField" placeholder="Masukkan Harga" type="number"  class="css-3017qm rupiah" name="harga_b2I_31_unit" value="{{old('harga_b2I_31_unit')}}">
+            </div>
+               @error('harga_b2I_31_unit')
+              <small class="text-danger">{{ $message }}</small>
+              @enderror
+          </div>
+          <!-- /.form-group -->
+        </div>
+        <!-- /.col -->
+      </div>
+      <div class="row">
         <label>Harga Business To Business :</label>
       </div>
       <div class="row">
@@ -546,6 +532,29 @@
         <!-- /.col -->
       </div>
       <div class="row">
+        <div class="col-md-3">
+          <div class="form-group">
+            <p>31+ Units</p>
+           
+          </div>
+          <!-- /.form-group -->
+        </div>
+        <!-- /.col -->
+        <div class="col-md-9">
+          <div class="form-group">
+            <div class="harga-input">
+              <div class="rp">Rp</div>
+              <input data-unify="TextField" placeholder="Masukkan Harga" type="number"  class="css-3017qm rupiah" name="harga_b2B_31_unit" value="{{old('harga_b2B_31_unit')}}">
+            </div>
+               @error('harga_b2B_31_unit')
+              <small class="text-danger">{{ $message }}</small>
+              @enderror
+          </div>
+          <!-- /.form-group -->
+        </div>
+        <!-- /.col -->
+      </div>
+      <div class="row">
         <label>Harga Business To Company :</label>
       </div>
       <div class="row">
@@ -587,6 +596,29 @@
               <input data-unify="TextField" placeholder="Masukkan Harga" type="number"  class="css-3017qm rupiah" name="harga_b2C_11_unit" value="{{old('harga_b2C_11_unit')}}">
             </div>
                @error('harga_b2C_11_unit')
+              <small class="text-danger">{{ $message }}</small>
+              @enderror
+          </div>
+          <!-- /.form-group -->
+        </div>
+        <!-- /.col -->
+      </div>
+      <div class="row">
+        <div class="col-md-3">
+          <div class="form-group">
+            <p>31+ Units:</p>
+           
+          </div>
+          <!-- /.form-group -->
+        </div>
+        <!-- /.col -->
+        <div class="col-md-9">
+          <div class="form-group">
+            <div class="harga-input">
+              <div class="rp">Rp</div>
+              <input data-unify="TextField" placeholder="Masukkan Harga" type="number"  class="css-3017qm rupiah" name="harga_b2C_31_unit" value="{{old('harga_b2C_31_unit')}}">
+            </div>
+               @error('harga_b2C_31_unit')
               <small class="text-danger">{{ $message }}</small>
               @enderror
           </div>

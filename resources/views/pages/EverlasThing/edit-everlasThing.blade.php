@@ -20,7 +20,7 @@
   <div class="container-fluid">
     <div class="row mb-2">
       <div class="col-sm-6">
-        <h1>Edit Produk shineage</h1>
+        <h1>Edit Produk everlasThing</h1>
       </div>
       <div class="col-sm-6">
         <ol class="breadcrumb float-sm-right">
@@ -34,7 +34,7 @@
 <section class="content">
 <div class="container-fluid">
   <!-- SELECT2 EXAMPLE -->
-  <form method="post" action="{{ route('shineages.update', $shineage->id_shineage)}} " enctype="multipart/form-data" id="agrForm">
+  <form method="post" action="{{ route('everlasThings.update', $everlasThing->id_everlas_things)}} " enctype="multipart/form-data" id="agrForm">
     @method('PUT')
     @csrf
     <div class="card card-default">
@@ -61,7 +61,7 @@
           <!-- /.col -->
           <div class="col-md-9">
             <div class="form-group">
-                <input id="default" type="text" class="form-control" placeholder="Placeholder text" name="nama_produk" id="nama_produk" value="{{old('nama_produk', $shineage->nama_produk)}}">
+                <input id="default" type="text" class="form-control" placeholder="Placeholder text" name="nama_produk" id="nama_produk" value="{{old('nama_produk', $everlasThing->nama_produk)}}">
                 @error('nama_produk')
                 <small class="text-danger">{{ $message }}</small>
                 @enderror
@@ -76,7 +76,7 @@
         <div class="row">
           <div class="col-md-3">
             <div class="form-group">
-              <label>Seri Shineage</label>
+              <label>Seri Produk</label>
               <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sed, odit ab eum enim illo minima deleniti quae ducimus repudiandae sit!</p>
             </div>
             <!-- /.form-group -->
@@ -84,7 +84,7 @@
           <!-- /.col -->
           <div class="col-md-9">
             <div class="form-group">
-                <input id="default" type="text" class="form-control" placeholder="Placeholder text" name="seri" id="seri" value="{{old('seri', $shineage->seri)}}">
+                <input type="text" class="form-control" placeholder="Placeholder text" name="seri" id="seri" value="{{old('seri', $everlasThing->seri)}}">
                 @error('seri')
                 <small class="text-danger">{{ $message }}</small>
                 @enderror
@@ -97,16 +97,52 @@
         <div class="row">
           <div class="col-12 col-sm-6">
             <div class="form-group">
-              <label>Jenis</label>
-              <select class="form-control select2" style="width: 100%;" name="jenis">
-                <option value="Neon Box" @selected(old('jenis') == 'Neon Box' || $shineage->jenis == 'Neon Box')>Neon Box</option>
-                <option value="Letter Sign" @selected(old('jenis') == 'Letter Sign' || $shineage->jenis == 'Letter Sign')>Letter Sign</option>
-                <option value="Produk Akrilik" @selected(old('jenis') == 'Produk Akrilik' || $shineage->jenis == 'Produk Akrilik')>Produk Akrilik</option>
-                <option value="Kelistrikan" @selected(old('jenis') == 'Kelistrikan' || $shineage->jenis == 'Kelistrikan')>Kelistrikan</option>
-                <option value="Neon Flex" @selected(old('jenis') == 'Neon Flex' || $shineage->jenis == 'Neon Flex')>Neon Flex</option>
-                <option value="Info Sign" @selected(old('jenis') == 'Info Sign' || $shineage->jenis == 'Info Sign')>Info Sign</option>
-            </select>            
-                @error('jenis')
+              <label>Jenis 1</label>
+              <select class="form-control select2" style="width: 100%;" name="jenis_1">
+                <option value="Bangku" @selected(old('jenis_1', $everlasThing->jenis_1) == 'Bangku')>Bangku</option>
+                <option value="Kursi" @selected(old('jenis_1', $everlasThing->jenis_1) == 'Kursi')>Kursi</option>
+                <option value="Meja" @selected(old('jenis_1', $everlasThing->jenis_1) == 'Meja')>Meja</option>
+                <option value="Rak" @selected(old('jenis_1', $everlasThing->jenis_1) == 'Rak')>Rak</option>
+                <option value="Tiang Lampu" @selected(old('jenis_1', $everlasThing->jenis_1) == 'Tiang Lampu')>Tiang Lampu</option>
+                <option value="Ornamen" @selected(old('jenis_1', $everlasThing->jenis_1) == 'Ornamen')>Ornamen</option>
+              </select>               
+                   @error('jenis_1')
+                <small class="text-danger">{{ $message }}</small>
+                @enderror
+            </div>
+            <!-- /.form-group -->
+          </div>
+          <!-- /.col -->
+          <div class="col-12 col-sm-6">
+            <div class="form-group">
+              <label>Jenis 2</label>
+              <div class="select2-purple">
+                <select class="form-control select2" style="width: 100%;" name="jenis_2">
+                  <option value="Bangku" @selected(old('jenis_2', $everlasThing->jenis_2) == 'Bangku')>Bangku</option>
+                  <option value="Kursi" @selected(old('jenis_2', $everlasThing->jenis_2) == 'Kursi')>Kursi</option>
+                  <option value="Meja" @selected(old('jenis_2', $everlasThing->jenis_2) == 'Meja')>Meja</option>
+                  <option value="Rak" @selected(old('jenis_2', $everlasThing->jenis_2) == 'Rak')>Rak</option>
+                  <option value="Tiang Lampu" @selected(old('jenis_2', $everlasThing->jenis_2) == 'Tiang Lampu')>Tiang Lampu</option>
+                  <option value="Ornamen" @selected(old('jenis_2', $everlasThing->jenis_2) == 'Ornamen')>Ornamen</option>
+                </select>                         
+                     @error('jenis_2')
+                <small class="text-danger">{{ $message }}</small>
+                @enderror
+              </div>
+            </div>
+            <!-- /.form-group -->
+          </div>
+          <!-- /.col -->
+        </div>
+        <div class="row">
+          <div class="col-12 col-sm-6">
+            <div class="form-group">
+              <label>Satuan Produk</label>
+              <select class="form-control select2" style="width: 100%;" name="satuan">
+                <option value="unit" @selected(old('satuan', $everlasThing->satuan) == 'unit')>Unit</option>
+                <option value="set" @selected(old('satuan', $everlasThing->satuan) == 'set')>Set</option>
+              </select>            
+                   @error('satuan')
                 <small class="text-danger">{{ $message }}</small>
                 @enderror
             </div>
@@ -118,12 +154,12 @@
               <label>Garansi Produk</label>
               <div class="select2-purple">
                 <select class="form-control select2" style="width: 100%;" name="garansi">
-                  <option value="30 hari" @selected(old('garansi') == '30 hari' || $shineage->garansi == '30 hari')>30 hari</option>
-                  <option value="60 hari" @selected(old('garansi') == '60 hari' || $shineage->garansi == '60 hari')>60 hari</option>
-                  <option value="90 hari" @selected(old('garansi') == '90 hari' || $shineage->garansi == '90 hari')>90 hari</option>
-                  <option value="180 hari" @selected(old('garansi') == '180 hari' || $shineage->garansi == '180 hari')>180 hari</option>
-                  <option value="360 hari" @selected(old('garansi') == '360 hari' || $shineage->garansi == '360 hari')>360 hari</option>
-              </select>              
+                  <option value="1 bulan" @selected(old('garansi', $everlasThing->garansi) == '1 bulan')>1 Bulan</option>
+                  <option value="3 bulan" @selected(old('garansi', $everlasThing->garansi) == '3 bulan')>3 Bulan</option>
+                  <option value="6 bulan" @selected(old('garansi', $everlasThing->garansi) == '6 bulan')>6 Bulan</option>
+                  <option value="9 bulan" @selected(old('garansi', $everlasThing->garansi) == '9 bulan')>9 Bulan</option>
+                  <option value="12 bulan" @selected(old('garansi', $everlasThing->garansi) == '12 bulan')>12 Bulan</option>
+              </select>                   
                      @error('garansi')
                 <small class="text-danger">{{ $message }}</small>
                 @enderror
@@ -137,56 +173,31 @@
         <div class="row">
           <div class="col-12 col-sm-6">
             <div class="form-group">
-              <label>Dimensi Produk</label>
-                <input type="text" class="form-control" placeholder="Placeholder text" name="dimensi" value="{{old('dimensi', $shineage->dimensi)}}">
-                   @error('dimensi')
+              <label>Warna Produk 1</label>
+                <select class="form-control select2" style="width: 100%;" name="warna">
+                  <option value="Hitam" @selected(old('warna', $everlasThing->warna) == 'Hitam')>⚫️ Hitam</option>
+                  <option value="Putih" @selected(old('warna', $everlasThing->warna) == 'Putih')>⚪️ Putih</option>
+                  <option value="Abu-abu" @selected(old('warna', $everlasThing->warna) == 'Abu-abu')>🔘 Abu-abu</option>
+                  <option value="Merah" @selected(old('warna', $everlasThing->warna) == 'Merah')>🔴 Merah</option>
+                  <option value="Jingga" @selected(old('warna', $everlasThing->warna) == 'Jingga')>🟠 Jingga</option>
+                  <option value="Kuning" @selected(old('warna', $everlasThing->warna) == 'Kuning')>🟡 Kuning</option>
+                  <option value="Hijau" @selected(old('warna', $everlasThing->warna) == 'Hijau')>🟢 Hijau</option>
+                </select>
+                     @error('warna')
                 <small class="text-danger">{{ $message }}</small>
                 @enderror
-            </div>
             <!-- /.form-group -->
-          </div>
-          <!-- /.col -->
-          <div class="col-12 col-sm-6">
-            <div class="form-group">
-              <label>Warna Produk</label>
-              <select class="form-control select2" style="width: 100%;" name="warna">
-                <option value="Merah" @selected(old('warna') == 'Merah' || $shineage->warna == 'Merah')>
-                    🔴 Merah
-                </option>
-                <option value="Kuning" @selected(old('warna') == 'Kuning' || $shineage->warna == 'Kuning')>
-                    🟡 Kuning
-                </option>
-                <option value="Hijau" @selected(old('warna') == 'Hijau' || $shineage->warna == 'Hijau')>
-                    🟢 Hijau
-                </option>
-                <option value="Jingga" @selected(old('warna') == 'Jingga' || $shineage->warna == 'Jingga')>
-                    🟠 Jingga
-                </option>
-                <option value="Biru" @selected(old('warna') == 'Biru' || $shineage->warna == 'Biru')>
-                    🔵 Biru
-                </option>
-                <option value="Ungu" @selected(old('warna') == 'Ungu' || $shineage->warna == 'Ungu')>
-                    🟣 Ungu
-                </option>
-                <option value="Putih" @selected(old('warna') == 'Putih' || $shineage->warna == 'Putih')>
-                    ⚪ Putih
-                </option>
-                <option value="Hitam" @selected(old('warna') == 'Hitam' || $shineage->warna == 'Hitam')>
-                    ⚫ Hitam
-                </option>
-                <option value="Cokelat" @selected(old('warna') == 'Cokelat' || $shineage->warna == 'Cokelat')>
-                    🟤 Cokelat
-                </option>
-                <option value="Pink" @selected(old('warna') == 'Pink' || $shineage->warna == 'Pink')>
-                    💖 Pink
-                </option>
-            </select>            
-                @error('warna')
-                <small class="text-danger">{{ $message }}</small>
-                @enderror
             </div>
-            <!-- /.form-group -->
-          </div>
+        </div>
+        <div class="col-12 col-sm-6">
+          <div class="form-group">
+            <label>Dimensi</label>
+            <input type="text" class="form-control" placeholder="Placeholder text" name="dimensi" id="dimensi" value="{{old('dimensi', $everlasThing->dimensi)}}">
+            @error('dimensi')
+            <small class="text-danger">{{ $message }}</small>
+            @enderror
+        </div>
+        </div>
           <!-- /.col -->
         </div>
         <!-- /.row -->
@@ -194,7 +205,7 @@
           <div class="col-12 col-sm-6">
             <div class="form-group">
               <label>Material Pendukung</label>
-                <input type="text" class="form-control" placeholder="Placeholder text" name="material_pendukung" value="{{old('material_pendukung', $shineage->material_pendukung)}}">
+                <input type="text" class="form-control" placeholder="Placeholder text" name="material_pendukung" value="{{old('material_pendukung', $everlasThing->material_pendukung)}}">
                    @error('material_pendukung')
                 <small class="text-danger">{{ $message }}</small>
                 @enderror
@@ -205,7 +216,7 @@
           <div class="col-12 col-sm-6">
             <div class="form-group">
               <label>Finishing</label>
-                <input type="text" class="form-control" placeholder="Placeholder text" name="finishing" value="{{old('finishing', $shineage->finishing)}}">
+                <input type="text" class="form-control" placeholder="Placeholder text" name="finishing" value="{{old('finishing', $everlasThing->finishing)}}">
                    @error('finishing')
                 <small class="text-danger">{{ $message }}</small>
                 @enderror
@@ -214,72 +225,6 @@
           </div>
           <!-- /.col -->
         </div>
-        <!-- /.row -->
-      </div>
-      <!-- /.card-body -->
-    </div>
-    <div class="card card-default">
-      <div class="card-header">
-        <h3 class="card-title">Spesifikasi Produk</h3>
-  
-        <div class="card-tools">
-          <button type="button" class="btn btn-tool" data-card-widget="collapse">
-            <i class="fas fa-minus"></i>
-          </button>
-        
-        </div>
-      </div>
-      <!-- /.card-header -->
-      <div class="card-body">
-        <div class="row">
-          <div class="col-12 col-sm-6">
-            <div class="form-group">
-              <label>Panjang Produk (cm)</label>
-                <input type="number" class="form-control" placeholder="Masukkan Panjang Dalam Bentuk Angka" name="panjang" value="{{old('panjang', $shineage->panjang)}}">
-                   @error('panjang')
-                <small class="text-danger">{{ $message }}</small>
-                @enderror
-            </div>
-            <!-- /.form-group -->
-          </div>
-          <!-- /.col -->
-          <div class="col-12 col-sm-6">
-            <div class="form-group">
-              <label>Lebar Produk (cm)</label>
-                <input type="number" class="form-control" placeholder="Masukkan Lebar Dalam Bentuk Angka" name="lebar" value="{{old('lebar', $shineage->lebar)}}">
-                   @error('lebar')
-                <small class="text-danger">{{ $message }}</small>
-                @enderror
-            </div>
-            <!-- /.form-group -->
-          </div>
-          <!-- /.col -->
-        </div>
-        <div class="row">
-          <div class="col-12 col-sm-6">
-            <div class="form-group">
-              <label>Diameter Produk (cm)</label>
-                <input type="number" class="form-control" placeholder="Masukkan Diameter Dalam Bentuk Angka" name="diameter" value="{{old('diameter', $shineage->diameter)}}">
-                   @error('diameter')
-                <small class="text-danger">{{ $message }}</small>
-                @enderror
-            </div>
-            <!-- /.form-group -->
-          </div>
-          <!-- /.col -->
-          <div class="col-12 col-sm-6">
-            <div class="form-group">
-              <label>Tinggi Produk (cm)</label>
-                <input type="number" class="form-control" placeholder="Masukkan Tinggi Dalam Bentuk Angka" name="tinggi" value="{{old('tinggi', $shineage->tinggi)}}">
-                   @error('tinggi')
-                <small class="text-danger">{{ $message }}</small>
-                @enderror
-            </div>
-            <!-- /.form-group -->
-          </div>
-          <!-- /.col -->
-        </div>
-        
       </div>
       <!-- /.card-body -->
     </div>
@@ -316,21 +261,22 @@
           @enderror
           <!-- /.form-group -->
         </div>
-        <div class="col-md-12">
+        <div class="col-12 my-3">
           <div style="display: flex; flex-wrap: wrap;">
             <table class="mt-3 col-12">
               <tr id="imagePreviewContainer" >
-                <td id="1" style="padding:1rem; width: <?= 100 / 6 ?>%;" class="img-prv"> <img src="{{ asset('storage/' . $shineage->gambar_1) }}" alt="" class="previewer"></td>
-                <td id="2" style="padding:1rem; width: <?= 100 / 6 ?>%;" class="img-prv"> <img @if(!empty($shineage->gambar_2)) src="{{ asset('storage/' . $shineage->gambar_2) }}" @endif alt="" class="previewer"></td>
-                <td id="3" style="padding:1rem; width: <?= 100 / 6 ?>%;" class="img-prv"> <img @if(!empty($shineage->gambar_3)) src="{{ asset('storage/' . $shineage->gambar_3) }}" @endif alt="" class="previewer"></td>
-                <td id="4" style="padding:1rem; width: <?= 100 / 6 ?>%;" class="img-prv"> <img @if(!empty($shineage->gambar_4)) src="{{ asset('storage/' . $shineage->gambar_4) }}" @endif alt="" class="previewer"></td>
-                <td id="5" style="padding:1rem; width: <?= 100 / 6 ?>%;" class="img-prv"> <img @if(!empty($shineage->gambar_5)) src="{{ asset('storage/' . $shineage->gambar_5) }}" @endif alt="" class="previewer"></td>
-                <td id="6" style="padding:1rem; width: <?= 100 / 6 ?>%;" class="img-prv"> <img @if(!empty($shineage->gambar_6)) src="{{ asset('storage/' . $shineage->gambar_6) }}" @endif alt="" class="previewer"></td>
+                <td id="1" style="padding:1rem; width: <?= 100 / 6 ?>%;" class="img-prv"> <img src="{{ asset('storage/' . $everlasThing->gambar_1) }}" alt="" class="previewer"></td>
+                <td id="2" style="padding:1rem; width: <?= 100 / 6 ?>%;" class="img-prv"> <img @if(!empty($everlasThing->gambar_2)) src="{{ asset('storage/' . $everlasThing->gambar_2) }}" @endif alt="" class="previewer"></td>
+                <td id="3" style="padding:1rem; width: <?= 100 / 6 ?>%;" class="img-prv"> <img @if(!empty($everlasThing->gambar_3)) src="{{ asset('storage/' . $everlasThing->gambar_3) }}" @endif alt="" class="previewer"></td>
+                <td id="4" style="padding:1rem; width: <?= 100 / 6 ?>%;" class="img-prv"> <img @if(!empty($everlasThing->gambar_4)) src="{{ asset('storage/' . $everlasThing->gambar_4) }}" @endif alt="" class="previewer"></td>
+                <td id="5" style="padding:1rem; width: <?= 100 / 6 ?>%;" class="img-prv"> <img @if(!empty($everlasThing->gambar_5)) src="{{ asset('storage/' . $everlasThing->gambar_5) }}" @endif alt="" class="previewer"></td>
+                <td id="6" style="padding:1rem; width: <?= 100 / 6 ?>%;" class="img-prv"> <img @if(!empty($everlasThing->gambar_6)) src="{{ asset('storage/' . $everlasThing->gambar_6) }}" @endif alt="" class="previewer"></td>
               </tr>
             </table>  
-            <small class="text-danger" id="error-img" style="visibility: hidden">Hanya Bisa 6 Gambar</small>
-        </div> 
+            <small class="text-danger" id="error-img" style="visibility: hidden">Hanya Bisa 4 Gambar</small>
         </div>
+        <!-- /.form-group -->
+      </div>
         <!-- /.col -->
       </div>
       <!-- /.row -->
@@ -345,7 +291,7 @@
         <!-- /.col -->
         <div class="col-md-9">
           <div class="form-group">
-            <textarea class="form-control" id="" rows="3" placeholder="Detail Produk" name="deskripsi_singkat">{{ old('deskripsi_singkat', $shineage->deskripsi_singkat) }}</textarea>
+            <textarea class="form-control" id="" rows="3" placeholder="Detail Produk" name="deskripsi_singkat">{{ old('deskripsi_singkat', $everlasThing->deskripsi_singkat) }}</textarea>
                  @error('deskripsi_singkat')
               <small class="text-danger">{{ $message }}</small>
               @enderror
@@ -366,7 +312,7 @@
         <!-- /.col -->
         <div class="col-md-9">
           <div class="form-group">
-              <input class="form-control"  id=""  placeholder="Masukkan Url Youtube" name="video" value="{{old('video', $shineage->video)}}">
+              <input class="form-control"  id=""  placeholder="Masukkan Url Youtube" name="video" value="{{old('video', $everlasThing->video)}}">
                  @error('video')
               <small class="text-danger">{{ $message }}</small>
               @enderror
@@ -380,7 +326,7 @@
         <div class="col-12 col-sm-6">
           <div class="form-group">
             <label>Stok Produk</label>
-              <input type="number" class="form-control" placeholder="Masukkan Stok Dalam Bentuk Angka" name="stok" value="{{old('stok', $shineage->stok)}}">
+              <input type="number" class="form-control" placeholder="Masukkan Stok Dalam Bentuk Angka" name="stok" value="{{old('stok', $everlasThing->stok)}}">
                  @error('stok')
               <small class="text-danger">{{ $message }}</small>
               @enderror
@@ -393,11 +339,11 @@
             <label>Armada Minimum</label>
             <div class="select2-purple">
                 <select class="form-control select2" style="width: 100%;" name="armada_minimum">
-                  <option value="Motor" @selected(old('armada_minimum')=='Motor' || $shineage->armada_minimum == 'Motor')>Motor</option>
-                  <option value="Kargo Mobil" @selected(old('armada_minimum')=='Kargo Mobil'|| $shineage->armada_minimum == 'Kargo Mobil')>Kargo Mobil</option>
-                  <option value="Mobil Pick Up" @selected(old('armada_minimum')=='Mobil Pick Up' || $shineage->armada_minimum == 'Mobil Pick Up')>Mobil Pick Up</option>
-                  <option value="Truk Engkel" @selected(old('armada_minimum')=='Truk Engkel' || $shineage->armada_minimum == 'Truk Engkel')>Truk Engkel</option>
-                  <option value="Truk Fuso" @selected(old('armada_minimum')=='Truk Fuso' || $shineage->armada_minimum == 'Truk Fuso')>Truk Fuso</option>
+                  <option value="Motor" @selected(old('armada_minimum')=='Motor' || $everlasThing->armada_minimum == 'Motor')>Motor</option>
+                  <option value="Kargo Mobil" @selected(old('armada_minimum')=='Kargo Mobil'|| $everlasThing->armada_minimum == 'Kargo Mobil')>Kargo Mobil</option>
+                  <option value="Mobil Pick Up" @selected(old('armada_minimum')=='Mobil Pick Up' || $everlasThing->armada_minimum == 'Mobil Pick Up')>Mobil Pick Up</option>
+                  <option value="Truk Engkel" @selected(old('armada_minimum')=='Truk Engkel' || $everlasThing->armada_minimum == 'Truk Engkel')>Truk Engkel</option>
+                  <option value="Truk Fuso" @selected(old('armada_minimum')=='Truk Fuso' || $everlasThing->armada_minimum == 'Truk Fuso')>Truk Fuso</option>
               </select>
                    @error('armada_minimum')
               <small class="text-danger">{{ $message }}</small>
@@ -438,7 +384,7 @@
           <div class="form-group">
             <div class="harga-input">
               <div class="rp">Rp</div>
-              <input data-unify="TextField" placeholder="Masukkan Harga" type="number"  class="css-3017qm rupiah" name="harga_jual_projek_ideally" value="{{old('harga_jual_projek_ideally',  number_format($shineage->harga_jual_projek_ideally, 0, ',', '.'))}}">
+              <input data-unify="TextField" placeholder="Masukkan Harga" type="number"  class="css-3017qm rupiah" name="harga_jual_projek_ideally" value="{{old('harga_jual_projek_ideally',  number_format($everlasThing->harga_jual_projek_ideally, 0, ',', '.'))}}">
             </div>
             
                @error('harga_jual_projek_ideally')
@@ -465,7 +411,7 @@
           <div class="form-group">
             <div class="harga-input">
               <div class="rp">Rp</div>
-              <input data-unify="TextField" placeholder="Masukkan Harga" type="text"  class="css-3017qm rupiah" name="harga_b2I_1_unit" value="{{old('harga_b2I_1_unit',  number_format($shineage->harga_b2I_1_unit, 0, ',', '.'))}}">
+              <input data-unify="TextField" placeholder="Masukkan Harga" type="text"  class="css-3017qm rupiah" name="harga_b2I_1_unit" value="{{old('harga_b2I_1_unit',  number_format($everlasThing->harga_b2I_1_unit, 0, ',', '.'))}}">
             </div>
             
                @error('harga_b2I_1_unit')
@@ -489,7 +435,7 @@
           <div class="form-group">
             <div class="harga-input">
               <div class="rp">Rp</div>
-              <input data-unify="TextField" placeholder="Masukkan Harga" type="text"  class="css-3017qm rupiah" name="harga_b2I_11_unit" value="{{old('harga_b2I_11_unit', number_format($shineage->harga_b2I_11_unit, 0, ',', '.'))}}">
+              <input data-unify="TextField" placeholder="Masukkan Harga" type="text"  class="css-3017qm rupiah" name="harga_b2I_11_unit" value="{{old('harga_b2I_11_unit', number_format($everlasThing->harga_b2I_11_unit, 0, ',', '.'))}}">
             </div>
                @error('harga_b2I_11_unit')
               <small class="text-danger">{{ $message }}</small>
@@ -515,7 +461,7 @@
           <div class="form-group">
             <div class="harga-input">
               <div class="rp">Rp</div>
-              <input data-unify="TextField" placeholder="Masukkan Harga" type="text"  class="css-3017qm rupiah" name="harga_b2B_1_unit" value="{{old('harga_b2B_1_unit',  number_format($shineage->harga_b2B_1_unit, 0, ',', '.'))}}">
+              <input data-unify="TextField" placeholder="Masukkan Harga" type="text"  class="css-3017qm rupiah" name="harga_b2B_1_unit" value="{{old('harga_b2B_1_unit',  number_format($everlasThing->harga_b2B_1_unit, 0, ',', '.'))}}">
             </div>
                @error('harga_b2B_1_unit')
               <small class="text-danger">{{ $message }}</small>
@@ -538,7 +484,7 @@
           <div class="form-group">
             <div class="harga-input">
               <div class="rp">Rp</div>
-              <input data-unify="TextField" placeholder="Masukkan Harga" type="text"  class="css-3017qm rupiah" name="harga_b2B_11_unit" value="{{old('harga_b2B_11_unit',  number_format($shineage->harga_b2B_11_unit, 0, ',', '.'))}}">
+              <input data-unify="TextField" placeholder="Masukkan Harga" type="text"  class="css-3017qm rupiah" name="harga_b2B_11_unit" value="{{old('harga_b2B_11_unit',  number_format($everlasThing->harga_b2B_11_unit, 0, ',', '.'))}}">
             </div>
                @error('harga_b2B_11_unit')
               <small class="text-danger">{{ $message }}</small>
@@ -564,7 +510,7 @@
           <div class="form-group">
             <div class="harga-input">
               <div class="rp">Rp</div>
-              <input data-unify="TextField" placeholder="Masukkan Harga" type="text"  class="css-3017qm rupiah" name="harga_b2C_1_unit" value="{{old('harga_b2C_1_unit',  number_format($shineage->harga_b2C_1_unit, 0, ',', '.'))}}">
+              <input data-unify="TextField" placeholder="Masukkan Harga" type="text"  class="css-3017qm rupiah" name="harga_b2C_1_unit" value="{{old('harga_b2C_1_unit',  number_format($everlasThing->harga_b2C_1_unit, 0, ',', '.'))}}">
             </div>
                @error('harga_b2C_1_unit')
               <small class="text-danger">{{ $message }}</small>
@@ -587,7 +533,7 @@
           <div class="form-group">
             <div class="harga-input">
               <div class="rp">Rp</div>
-              <input data-unify="TextField" placeholder="Masukkan Harga" type="text"  class="css-3017qm rupiah" name="harga_b2C_11_unit" value="{{old('harga_b2C_11_unit',  number_format($shineage->harga_b2C_11_unit, 0, ',', '.'))}}">
+              <input data-unify="TextField" placeholder="Masukkan Harga" type="text"  class="css-3017qm rupiah" name="harga_b2C_11_unit" value="{{old('harga_b2C_11_unit',  number_format($everlasThing->harga_b2C_11_unit, 0, ',', '.'))}}">
             </div>
                @error('harga_b2C_11_unit')
               <small class="text-danger">{{ $message }}</small>
@@ -603,7 +549,7 @@
 </div>  
 <input type="text" name="tanggal_publikasi" id="tanggal_publikasi" class="form-control" style="display:none;">
 <div class="m-3 d-flex justify-content-end">
-  <button class="btn btn-dark mx-5" type="reset" >Cancel</button>
+  <button class="btn btn-dark mx-5" type="reset">Cancel</button>
   <button class="btn btn-dark mx-3" type="button" onclick="submitForm('1')">Submit And Post</button>
   <button class="btn btn-success mx-3" type="button" onclick="submitForm('0')">Submit</button>
 </div>

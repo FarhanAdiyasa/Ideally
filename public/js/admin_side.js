@@ -4,9 +4,11 @@ if (imageInput) {
     imageInput.addEventListener("change", handleImageUpload);
 }
 const bodyElement = document.getElementById("body");
-if (bodyElement) {
-    bodyElement.classList.add("sidebar-collapse");
-}
+const collapse = () => {
+    if (bodyElement) {
+        bodyElement.classList.add("sidebar-collapse");
+    }
+};
 
 function addExistingImagesToPhotos(originalName = null) {
     var existingImages = $(".img-prv img");
