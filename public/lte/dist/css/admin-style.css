@@ -1,3 +1,7 @@
+body {
+    font-family: 'Montserrat', sans-serif !important;
+}
+
 .brand-link {
     display: flex;
     justify-content: center;
@@ -27,4 +31,23 @@ button.active {
 .navTab.active {
     background-color: white !important;
     color: grey !important;
+}
+
+.btn-primary {
+    background-color: #06C195 !important;
+    color: white !important;
+}
+
+.form-switch .form-check-input:checked {
+    background-color: #06C195;
+}
+
+.pagination>li>a,
+.pagination>li>span {
+    background-color: #ffe4c4;
+}
+
+.pagination>.active>a,
+.pagination>.active>span {
+    background-color: #06C195 !important;
 }
