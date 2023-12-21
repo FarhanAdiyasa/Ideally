@@ -48,6 +48,9 @@ Route::post('/post-produk', [AgrigardController::class, 'post'])->name('daftar-p
 Route::get('/delete-produk/{id}', [AgrigardController::class, 'delete'])->name('daftar-produk.delete');
 Route::delete('/destroy-produk/{id}', [AgrigardController::class, 'destroy'])->name('daftar-produk.destroy');
 
+Route::get('agrigard/index',[AgrigardController::class,'indexBrand'])->name('agrigard.utama');
+Route::get('agrigard/showcase',[AgrigardController::class,'showcase'])->name('agrigard.showcase');
+Route::get('agrigard/show/{id_agrigard}',[AgrigardController::class,'details'])->name('agrigard.detail');
 
 //Promo
 Route::get('/daftar-promo', [PromoController::class, 'index'])->name('daftar-promo');
@@ -64,13 +67,13 @@ Route::post('/post-promo', [PromoController::class, 'post'])->name('daftar-promo
 Route::get('/delete-promo/{id}', [PromoController::class, 'delete'])->name('daftar-promo.delete');
 Route::delete('/destroy-promo/{id}', [PromoController::class, 'destroy'])->name('daftar-promo.destroy');
 
-
+//Dedikasi flora
 Route::get('deflo',[DefloController::class,'index'])->name('deflo.utama');
 Route::get('deflo/showcase',[DefloController::class,'showcase'])->name('deflo.showcase');
 Route::get('deflo/showcase/kategori',[DefloController::class,'showcase2'])->name('deflo.kategori');
 Route::get('deflo/show/{id_nurseri}',[DefloController::class,'show'])->name('deflo.detail');
 
-
+//Konkurito
 Route::get('konkurito/index',[KonkuritoController::class,'index'])->name('konkurito.utama');
 Route::get('konkurito/showcase',[KonkuritoController::class,'showcase'])->name('konkurito.showcase');
 Route::get('konkurito/show/{id_konkurito}',[KonkuritoController::class,'show'])->name('konkurito.detail');

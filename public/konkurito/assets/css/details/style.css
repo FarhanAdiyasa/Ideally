@@ -206,6 +206,10 @@ body {
 .card-product {
     margin-bottom: 0;
 }
+.card-product a {
+    text-decoration: none;
+    color: #000000;
+}
 
 .card-body {
     padding-top: 1rem;

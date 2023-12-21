@@ -12,21 +12,21 @@ class DefloController extends Controller
      */
     public function index()
     {
-        $dedikasiFloras = Dedikasi_Flora::inRandomOrder()->take(8)->get();
-        $deflos = Dedikasi_Flora::inRandomOrder()->take(5)->get();
-        $deflos2 = Dedikasi_Flora::inRandomOrder()->take(5)->get();
+        $dedikasiFloras = Dedikasi_Flora::where('stok', '>', 0)->inRandomOrder()->take(8)->get();
+        $deflos = Dedikasi_Flora::where('stok', '>', 0)->inRandomOrder()->take(5)->get();
+        $deflos2 = Dedikasi_Flora::where('stok', '>', 0)->inRandomOrder()->take(5)->get();
         return view('DedikasiFloras.index', compact('dedikasiFloras', 'deflos', 'deflos2'));
     }
 
     public function showcase()
     {
-        $defloShowcase = Dedikasi_Flora::paginate(20);
+        $defloShowcase = Dedikasi_Flora::where('stok', '>', 0)->paginate(20);
         return view('DedikasiFloras.showcase', compact('defloShowcase'));
     }
 
     public function showcase2(Request $request)
     {
-        $defloShowcase = Dedikasi_Flora::when($request->filled('strata'), function ($query) use ($request) {
+        $defloShowcase = Dedikasi_Flora::where('stok', '>', 0)->when($request->filled('strata'), function ($query) use ($request) {
             return $query->where('strata', $request->input('strata'));
         })
             ->when($request->filled('warna_daun'), function ($query) use ($request) {
@@ -61,14 +61,14 @@ class DefloController extends Controller
      */
     public function show($id_nurseri)
     {
-        $defloterkait = Dedikasi_Flora::inRandomOrder()->take(5)->get();
-        $defloterkait2 = Dedikasi_Flora::inRandomOrder()->take(5)->get();
-        $deflorekomendasi = Dedikasi_Flora::inRandomOrder()->take(5)->get();
-        $deflorekomendasi2 = Dedikasi_Flora::inRandomOrder()->take(5)->get();
-        $deflodicari = Dedikasi_Flora::inRandomOrder()->take(5)->get();
-        $deflodicari2 = Dedikasi_Flora::inRandomOrder()->take(5)->get();
-        $defloDetail = Dedikasi_Flora::findOrFail($id_nurseri);
-        $maxId = Dedikasi_Flora::max('id_nurseri');
+        $defloterkait = Dedikasi_Flora::where('stok', '>', 0)->inRandomOrder()->take(5)->get();
+        $defloterkait2 = Dedikasi_Flora::where('stok', '>', 0)->inRandomOrder()->take(5)->get();
+        $deflorekomendasi = Dedikasi_Flora::where('stok', '>', 0)->inRandomOrder()->take(5)->get();
+        $deflorekomendasi2 = Dedikasi_Flora::where('stok', '>', 0)->inRandomOrder()->take(5)->get();
+        $deflodicari = Dedikasi_Flora::where('stok', '>', 0)->inRandomOrder()->take(5)->get();
+        $deflodicari2 = Dedikasi_Flora::where('stok', '>', 0)->inRandomOrder()->take(5)->get();
+        $defloDetail = Dedikasi_Flora::where('stok', '>', 0)->findOrFail($id_nurseri);
+        $maxId = Dedikasi_Flora::where('stok', '>', 0)->max('id_nurseri');
         return view('DedikasiFloras.details',
             compact('defloDetail', 'maxId', 'defloterkait', 'defloterkait2', 'deflorekomendasi',
                 'deflorekomendasi2', 'deflodicari', 'deflodicari2'));
