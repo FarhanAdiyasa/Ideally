@@ -22,49 +22,79 @@
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 
     <style>
-    #galeri {
-      position: relative;
-      width: 636px;
-      height: 574px;
-      overflow: hidden;
-    }
+        #galeri {
+            position: relative;
+            overflow: hidden;
+        }
 
-    .carousel-container {
-      display: flex;
-      transition: transform 0.5s ease-in-out;
-    }
+        .slider-container {
+            width: 480px;
+            height: 400px;
+            position: relative;
+        }
 
-    .carousel-item {
-      width: 636px;
-      height: 574px;
-      flex: 0 0 auto;
-    }
+        .slider {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
 
-    .slide-button {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      width: 40px;
-      height: 40px;
-      background: #382C20;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: white;
-      font-size: 20px;
-      border: 1px white solid;
-    }
+        .slide {
+            width: 100%;
+            height: 100%;
+        }
 
-    .prev {
-      left: 0;
-    }
 
-    .next {
-      right: 0;
-    }
-  </style>
+        #description {
+            position: absolute;
+            width: 499px;
+            left: 8px;
+            top: 483px;
+            color: black;
+            font-size: 14px;
+            font-family: Poppins;
+            font-weight: 400;
+            text-transform: capitalize;
+            word-wrap: break-word;
+        }
 
+        #prev {
+            width: 40px;
+            height: 40px;
+            background: #382C20;
+            position: absolute;
+            top: -23px;
+            left: 410px;
+            cursor: pointer;
+            border-right: 2px solid #fff; /* Garis vertikal */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #next {
+            width: 40px;
+            height: 40px;
+            background: #382C20;
+            position: absolute;
+            left: 50px;
+            top: 5px;
+            right: 0;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #prev img, #next img {
+            width: 20px;
+            height: 20px;
+            position: absolute;
+            top: 10px;
+            left: 10px;
+        }
+    </style>
 </head>
 
 <body>
@@ -580,21 +610,48 @@
                             <a href="" class="btn">Lihat Produk</a>
                         </div>
                     </section>
+
                     <!-- End Overview -->
                     <section id="galeri">
-                        <div style="width: 636px; height: 574px; position: relative">
-                            <div style="left: 5px; top: 0px; position: absolute; color: #804F27; font-size: 25px; font-family: Rubik; font-weight: 400; word-wrap: break-word">GALERI</div>
-                            <div style="width: 499px; left: 8px; top: 483px; position: absolute; color: black; font-size: 14px; font-family: Poppins; font-weight: 400; text-transform: capitalize; word-wrap: break-word">Furniture elegan dari besi dan logam. Desain abadi, keindahan yang tahan lama untuk ruang taman Anda.</div>
-                            <div style="width: 480px; height: 400px; left: 7px; top: 58px; position: absolute; background: #D9D9D9"></div>
-                            <div style="width: 80px; height: 40px; left: 407px; top: 38px; position: absolute">
-                              <div style="width: 80px; height: 40px; left: 0px; top: 0px; position: absolute; background: #382C20"></div>
-                              <div style="width: 20px; height: 0px; left: 40px; top: 30px; position: absolute; transform: rotate(-90deg); transform-origin: 0 0; border: 1px white solid"></div>
-                              <img src="../img/Vector 6.png" style=" left: 13px; top: 10px; position: absolute;">
-                              <img src="../img/Vector 7.png" style=" left: 58px; top: 11px; position: absolute;">
+                    <div style="left: 5px; top: 0px;  color: #804F27; font-size: 25px; font-family: Rubik; font-weight: 400; word-wrap: break-word">GALERI</div>
+                        <div class="slider-container">
+                            <div class="slider">
+                                <div class="slide"><img src="../img/LOGO MojaPisun.png" alt="Image 1"></div>
+                                <div class="slide"><img src="../img/LOGO MojaPisun.png" alt="Image 2"></div>
+                                <div class="slide"><img src="../img/LOGO MojaPisun.png" alt="Image 3"></div>
+                                <div class="slide"><img src="../img/LOGO MojaPisun.png" alt="Image 4"></div>
+                                <div class="slide"><img src="../img/LOGO MojaPisun.png" alt="Image 5"></div>
                             </div>
-                          </div>
+                            <div id="prev" onclick="prevSlide()"><img src="../img/Vector 6.png"></div>
+                            <div id="next" onclick="nextSlide()"><img src="../img/Vector 7.png"></div>
+                        </div>
                     </section>
+                    <div style="width: 499px; left: 8px; top: 483px; color: black; font-size: 14px; 
+                    font-family: Poppins; font-weight: 400; text-transform:
+                    capitalize; word-wrap: break-word">Furniture elegan dari besi dan 
+                    logam. Desain abadi, keindahan yang tahan lama untuk ruang taman Anda.</div>
 
+                    <script>
+                        let currentSlide = 0;
+
+                        function showSlide() {
+                            const slider = document.querySelector('.slider');
+                            const slides = document.querySelectorAll('.slide');
+                            slider.style.transform = `translateX(${-currentSlide * 100}%)`;
+                        }
+
+                        function nextSlide() {
+                            const slides = document.querySelectorAll('.slide');
+                            currentSlide = (currentSlide + 1) % slides.length;
+                            showSlide();
+                        }
+
+                        function prevSlide() {
+                            const slides = document.querySelectorAll('.slide');
+                            currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+                            showSlide();
+                        }
+                    </script>
                     <section id="produk-terbaru">
                         <div style="width: 636px; height: 1098px; left: -65px; position: relative">
                             <div style="width: 501px; height: 125px; left: 69px; top: 53px; position: absolute">

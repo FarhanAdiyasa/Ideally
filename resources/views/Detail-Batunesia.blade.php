@@ -432,12 +432,12 @@
       <div class="Rectangle80" style="width: 56.27px; height: 56.27px; left: 0px; top: 0px; position: absolute; background: white"></div>
       <div style="left: 20px; top: 8px; position: absolute; text-align: center; color: #F35453; font-size: 25px; font-family: Poppins; font-weight: 700; word-wrap: break-word">+</div>
     </div>
-
-    <div class="Button" style="width: 56.27px; height: 56.27px; left: 267.61px; top: 21px; position: absolute">
-      <div class="Rectangle80" style="width: 56.27px; height: 56.27px; left: 0px; top: 0px; position: absolute; background: white"></div>
-      <img class="CSec02Iconshop23" style="width: 30px; height: 30px; left: 13.39px; top: 13px; position: absolute" src="../img/cart.png" />
-    </div>
-
+    <form action="{{ route('tambahKeKeranjang', ['id_batu' => $selectedProduct->id_batu]) }}" method="POST">
+      @csrf 
+      <button type="submit">Tambah ke Keranjang</button>
+  </form>
+  </div>
+  
     <div class="VolumePembelian" style="left: 0px; top: 0px; position: absolute; color: white; font-size: 14px; font-family: Poppins; font-weight: 400; word-wrap: break-word">Volume Pembelian</div>
   </div>
 
