@@ -44,7 +44,7 @@ button.active {
 
 .pagination>li>a,
 .pagination>li>span {
-    background-color: #ffe4c4;
+    background-color: white;
 }
 
 .pagination>.active>a,

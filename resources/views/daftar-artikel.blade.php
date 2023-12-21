@@ -209,6 +209,7 @@
           </div>
         </div>
       </section>
+      <!-- Footer -->
       @include('partials.artikel-footer')
       <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
       <script src="../js/portal-edukasi.js"></script>

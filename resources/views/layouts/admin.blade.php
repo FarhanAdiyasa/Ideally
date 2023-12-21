@@ -246,7 +246,7 @@
             <li class="nav-header">Produk</li>
             <li class="nav-item">
               <a href="#" class="nav-link">
-                <i class="nav-icon fa fa-pagelines"></i>
+                <i class="nav-icon fa fa-solid fa-leaf"></i>
                 <p>
                   Dedikasi Flora
                   <i class="fas fa-angle-left right"></i>
@@ -269,7 +269,7 @@
             </li>
             <li class="nav-item">
               <a href="#" class="nav-link">
-                <i class="nav-icon far"></i>
+                <i class="nav-icon fa fa-solid fa-box-open"></i>
                 <p>
                   Batunesia
                   <i class="fas fa-angle-left right"></i>
@@ -292,7 +292,7 @@
             </li>
             <li class="nav-item">
               <a href="#" class="nav-link">
-                <i class="nav-icon far "></i>
+                <i class="nav-icon fa fa-solid fa-box-open "></i>
                 <p>
                   Konkurito
                   <i class="fas fa-angle-left right"></i>
@@ -315,7 +315,7 @@
             </li>
             <li class="nav-item">
               <a href="#" class="nav-link">
-                <i class="nav-icon far "></i>
+                <i class="nav-icon fa fa-solid fa-chair "></i>
                 <p>
                   Everlas Thing
                   <i class="fas fa-angle-left right"></i>
@@ -338,7 +338,7 @@
             </li>
             <li class="nav-item">
               <a href="#" class="nav-link">
-                <i class="nav-icon far"></i>
+                <i class="nav-icon fa fa-solid fa-box-open"></i>
                 <p>
                   Agrigard
                   <i class="fas fa-angle-left right"></i>
@@ -361,7 +361,7 @@
             </li>
             <li class="nav-item">
               <a href="#" class="nav-link">
-                <i class="nav-icon far"></i>
+                <i class="nav-icon fa fa-solid fa-box-open"></i>
                 <p>
                   Signage
                   <i class="fas fa-angle-left right"></i>
@@ -385,7 +385,7 @@
             <li class="nav-header">Edukasi</li>
             <li class="nav-item">
               <a href="#" class="nav-link">
-                <i class="nav-icon fa fa-file-text-o"></i>
+                <i class="nav-icon fa fa-solid fa-newspaper"></i>
                 <p>
                   Artikel
                   <i class="fas fa-angle-left right"></i>
@@ -409,7 +409,7 @@
             <li class="nav-header">Promo</li>
             <li class="nav-item">
               <a href="#" class="nav-link">
-                <i class="nav-icon fa fa-file-text-o"></i>
+                <i class="nav-icon fa fa-solid fa-percent"></i>
                 <p>
                   Promo
                   <i class="fas fa-angle-left right"></i>

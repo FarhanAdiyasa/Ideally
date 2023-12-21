@@ -8,6 +8,7 @@
 
   <!--Stylesheet -->
   @vite(['resources/sass/app.scss', 'resources/js/app.js']);
+  <link href="{{asset('/css/bootstrap.min.css')}}" rel="stylesheet">
   <link rel="stylesheet" href="{{asset('/css/style.css')}}"/>
   <link rel="stylesheet" href="{{asset('/css/landing-artikel-style.css')}}"/>
   <link rel="stylesheet" href="{{asset('/css/artikel-pagination-style.css')}}"/>
@@ -23,7 +24,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&family=Quicksand:wght@600&display=swap"
     rel="stylesheet">
 
-
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 
 <body>
@@ -419,7 +420,7 @@
 
 
           <a href="#" class="btn btn-lg rounded-pill"
-            style="background-color: #06C195; color: white; font-size: 16px; font-weight: 700; width: 40%;">Informasi
+            style="background-color: #06C195; color: white; font-size: 16px; font-weight: 700;  white-space:nowrap;">Informasi
             Lebih Lanjut</a>
 
 
@@ -434,7 +435,6 @@
   </div>
   <!-- End of Main Content -->
 
-  @include('partials.artikel-footer')
     <!-- JavaScript Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
@@ -442,45 +442,36 @@
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
         integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous">
     </script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"setActiveButton
         integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous">
-    </script>
-    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    </script>    
     <script>
 
     function show(kategori) {
-    $.get("{{ url('/home/show') }}/" + kategori, {}, function(data, status) {
-        $("#category-content").html(data);
-        setActiveButton(); // Ensure setActiveButton is called after content is updated
-    });
-}
+        $.get("{{ url('/home/show') }}/" + kategori, {}, function(data, status) {
+            $("#category-content").html(data);
+            setActiveButton(); // Ensure setActiveButton is called after content is updated
+        });
+    }
       show('Desain-Taman')
 
 
-function getKategori() {
-    let htmlContent = $('.category-portaledukasi-btn-jelajahi').html();
-    let modifiedContent = htmlContent.replace('Jelajahi Artikel ', '').replace(' !','').replace(/\s+/g, '').replace('Taman', '');
-    return modifiedContent;
-}
+    function getKategori() {
+        let htmlContent = $('.category-portaledukasi-btn-jelajahi').html();
+        let modifiedContent = htmlContent.replace('Jelajahi Artikel ', '').replace(' !','').replace(/\s+/g, '').replace('Taman', '');
+        return modifiedContent;
+    }
 
-function setActiveButton() {
-    let kategori = getKategori();
-    $('.category-portaledukasi-btn').removeClass('clicked');
-    $(`.category-portaledukasi-btn:contains('${kategori}')`).addClass('clicked');
-}
-
-
+    function setActiveButton() {
+        let kategori = getKategori();
+        $('.category-portaledukasi-btn').removeClass('clicked');
+        $(`.category-portaledukasi-btn:contains('${kategori}')`).addClass('clicked');
+    }
     </script>
-  <!-- Javascript -->
-  <script>
-    $('.dropdown-item').hover(function () {
 
-      let imgSrc = $(this).data('img');
-
-      $('#dropdown-img').attr('src', imgSrc);
-
-    });
-  </script>
+    
+  <!-- Footer -->
+    @include('partials.artikel-footer')
 </body>
 
 </html>

@@ -1,10 +1,16 @@
-<nav class="navbar navbar-expand-lg fixed-top bg-body-tertiary rounded" aria-label="Thirteenth navbar example">
+<head>
+
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script src="{{asset('/js/navbar.js')}}"></script>
+<script src="{{asset('/js/bootstrap.bundle.min.js')}}"></script>
+
+
+</head>
+<nav class="navbar navbar-expand-lg fixed-top bg-body-tertiary shadow" aria-label="Thirteenth navbar example" style="height: 56px;">
     <div class="container-md">
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample11"
             aria-controls="navbarsExample11" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
-        </button>
-
         </button>
 
         <div class="collapse navbar-collapse d-lg-flex" id="navbarsExample11">
@@ -13,11 +19,11 @@
             </a>
             <ul class="navbar-nav col-lg-6 justify-content-lg-center">
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">Beranda</a>
+                    <a class="nav-link active" aria-current="page" href="#" style="font-family: Montserrat;">Beranda</a>
                 </li>
-                <li class="nav-item dropdown">
+                <li class="nav-item active dropdown">
                     <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown"
-                        aria-expanded="false">Portal
+                        aria-expanded="false" style="font-family: Montserrat;">Portal
                         Edukasi</a>
                     <ul class="dropdown-menu dropdown-menu-center">
 
@@ -51,11 +57,10 @@
                         </div>
 
                     </ul>
-
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown"
-                        aria-expanded="false">Layanan</a>
+                        aria-expanded="false" style="font-family: Montserrat;">Layanan</a>
                     <ul class="dropdown-menu dropdown-menu-center">
                         <div class="custom-shape-2"></div>
                         <div class="dropdown-list">
@@ -72,10 +77,9 @@
 
                     </ul>
                 </li>
-
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown"
-                        aria-expanded="false">Produk</a>
+                        aria-expanded="false" style="font-family: Montserrat;">Produk</a>
                     <ul class="dropdown-menu-produk dropdown-menu dropdown-menu-center">
                         <div class="popup-produk">
                             <img id="dropdown-img" src="{{asset('/img/dropdownlist-img_default.png')}}" alt="Gambar Produk">
@@ -125,14 +129,25 @@
                     </ul>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" aria-current="page" href="#">Tentang Kami</a>
+                    <a class="nav-link" aria-current="page" href="#" style="font-family: Montserrat;">Tentang Kami</a>
                 </li>
             </ul>
             <div class="col-lg-3 text-end">
-                <a href="#" class="link-body-emphasis px-3">Daftar Akun</a>
+                <a href="#" class="link-body-emphasis px-3" style="font-family: Montserrat;">Daftar Akun</a>
                 <span class="vertical-divider"></span>
-                <a href="#" class="link-body-emphasis px-3">Masuk</a>
+                <a href="#" class="link-body-emphasis px-3" style="font-family: Montserrat;">Masuk</a>
             </div>
         </div>
     </div>
 </nav>
+<script>
+    $(document).ready(function () {
+        $('.dropdown-item').hover(function () {
+
+            var imgSrc = $(this).data('img');
+
+            $('#dropdown-img').attr('src', imgSrc);
+
+        });
+    });
+</script>
