@@ -1879,7 +1879,8 @@
             let price = 0;
 
             if (quantity >= 1 && quantity <= 10) {
-                price = {{ $konkuritoDetail->harga_b2C_1 }};
+                pr
+                ice = {{ $konkuritoDetail->harga_b2C_1 }};
             } else if (quantity >= 11 && quantity <= 30) {
                 price = {{ $konkuritoDetail->harga_b2C_11 }};
             } else if (quantity > 30) {
