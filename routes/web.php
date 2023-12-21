@@ -12,10 +12,12 @@ use App\Http\Controllers\BatunesiaController;
 use App\Http\Controllers\AdminArtikelController;
 use App\Http\Controllers\verificationController;
 use App\Http\Controllers\AdminAgrigardController;
-use App\Http\Controllers\AdminDedikasiFloraController;
 use App\Http\Controllers\AdminShineageController;
 use App\Http\Controllers\everlastThingController;
+use App\Http\Controllers\AdminBatunesiaController;
 use App\Http\Controllers\AdminKonkuritoController;
+use App\Http\Controllers\AdminEverlasThingController;
+use App\Http\Controllers\AdminDedikasiFloraController;
 
 /*
 |--------------------------------------------------------------------------
@@ -95,6 +97,34 @@ Route::post('/post-dedikasiFlora', [AdmindedikasiFloraController::class, 'post']
 
 Route::get('/delete-dedikasiFlora/{id}', [AdmindedikasiFloraController::class, 'delete'])->name('dedikasiFloras.delete');
 Route::delete('/destroy-dedikasiFlora/{id}', [AdmindedikasiFloraController::class, 'destroy'])->name('dedikasiFloras.destroy');
+
+//Admin Batunesia
+Route::get('/daftar-batunesia', [AdminBatunesiaController::class, 'index'])->name('batunesias');
+Route::get('/daftar-batunesia/{id}', [AdminBatunesiaController::class, 'view'])->name('batunesias.view');
+
+Route::get('/tambah-batunesia', [AdminBatunesiaController::class, 'create'])->name('batunesias.tambah');
+Route::post('/tambah-batunesia/store', [AdminBatunesiaController::class, 'store'])->name('batunesias.save');
+
+Route::get('/edit-batunesia/{id}', [AdminBatunesiaController::class, 'edit'])->name('batunesias.edit');
+Route::put('/edit-batunesia/{id}', [AdminBatunesiaController::class, 'update'])->name('batunesias.update');
+Route::post('/post-batunesia', [AdminBatunesiaController::class, 'post'])->name('batunesias.status');
+
+Route::get('/delete-batunesia/{id}', [AdminBatunesiaController::class, 'delete'])->name('batunesias.delete');
+Route::delete('/destroy-batunesia/{id}', [AdminBatunesiaController::class, 'destroy'])->name('batunesias.destroy');
+
+//Admin everlasThing
+Route::get('/daftar-everlasThing', [AdminEverlasThingController::class, 'index'])->name('everlasThings');
+Route::get('/daftar-everlasThing/{id}', [AdminEverlasThingController::class, 'view'])->name('everlasThings.view');
+
+Route::get('/tambah-everlasThing', [AdminEverlasThingController::class, 'create'])->name('everlasThings.tambah');
+Route::post('/tambah-everlasThing/store', [AdminEverlasThingController::class, 'store'])->name('everlasThings.save');
+
+Route::get('/edit-everlasThing/{id}', [AdminEverlasThingController::class, 'edit'])->name('everlasThings.edit');
+Route::put('/edit-everlasThing/{id}', [AdminEverlasThingController::class, 'update'])->name('everlasThings.update');
+Route::post('/post-everlasThing', [AdminEverlasThingController::class, 'post'])->name('everlasThings.status');
+
+Route::get('/delete-everlasThing/{id}', [AdminEverlasThingController::class, 'delete'])->name('everlasThings.delete');
+Route::delete('/destroy-everlasThing/{id}', [AdminEverlasThingController::class, 'destroy'])->name('everlasThings.destroy');
 
 
 //Promo

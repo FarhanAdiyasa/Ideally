@@ -354,7 +354,7 @@
         <div class="col-12 col-sm-6">
           <div class="form-group">
             <label>Stok Produk</label>
-              <input type="text" class="form-control" placeholder="Masukkan Stok Dalam Bentuk Angka" name="stok" value="{{old('stok')}}">
+              <input type="number" class="form-control" placeholder="Masukkan Stok Dalam Bentuk Angka" name="stok" value="{{old('stok')}}">
                  @error('stok')
               <small class="text-danger">{{ $message }}</small>
               @enderror

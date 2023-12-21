@@ -333,7 +333,6 @@
                     <td id="1" style="padding:1rem; width: 25%;" class="img-prv"><img alt="" class="previewer"></td>
                     <td id="2" style="padding:1rem; width: 25%;" class="img-prv"><img alt="" class="previewer"></td>
                     <td id="3" style="padding:1rem; width: 25%;" class="img-prv"><img alt="" class="previewer"></td>
-                    <td id="4" style="padding:1rem; width: 25%;" class="img-prv"><img alt="" class="previewer"></td>
                   </tr>
                 </table>
                 <small class="text-danger" id="error-img" style="visibility: hidden">Hanya Bisa 4 Gambar</small>
@@ -393,7 +392,7 @@
         <div class="col-12 col-sm-6">
           <div class="form-group">
             <label>Stok Produk</label>
-              <input type="text" class="form-control" placeholder="Masukkan Stok Dalam Bentuk Angka" name="stok" value="{{old('stok')}}">
+              <input type="numeric" class="form-control" placeholder="Masukkan Stok Dalam Bentuk Angka" name="stok" value="{{old('stok')}}">
                  @error('stok')
               <small class="text-danger">{{ $message }}</small>
               @enderror

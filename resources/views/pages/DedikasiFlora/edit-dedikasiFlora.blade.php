@@ -336,7 +336,6 @@
                     <td id="1" style="padding:1rem; width: 25%;" class="img-prv"> <img src="{{ asset('storage/' . $dedikasiFlora->gambar_1) }}" alt="" class="previewer"></td>
                     <td id="2" style="padding:1rem; width: 25%;" class="img-prv"> <img @if(!empty($dedikasiFlora->gambar_2)) src="{{ asset('storage/' . $dedikasiFlora->gambar_2) }}" @endif alt="" class="previewer"></td>
                     <td id="3" style="padding:1rem; width: 25%;" class="img-prv"> <img @if(!empty($dedikasiFlora->gambar_3)) src="{{ asset('storage/' . $dedikasiFlora->gambar_3) }}" @endif alt="" class="previewer"></td>
-                    <td id="4" style="padding:1rem; width: 25%;" class="img-prv"> <img @if(!empty($dedikasiFlora->gambar_4)) src="{{ asset('storage/' . $dedikasiFlora->gambar_4) }}" @endif alt="" class="previewer"></td>
                   </tr>
                 </table>  
                 <small class="text-danger" id="error-img" style="visibility: hidden">Hanya Bisa 4 Gambar</small>

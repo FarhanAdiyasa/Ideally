@@ -287,24 +287,25 @@
             <label for="imageInput">Klik / Drag & Drop Dari : </label>
             <input type="file" class="form-control" name="photos[]" id="imageInput" multiple/>
             <input type="hidden" name="existing_images" id="existing_images"/>
-              <div style="display: flex; flex-wrap: wrap;">
-                <table class="mt-3 col-12">
-                  <tr id="imagePreviewContainer" >
-                    <td id="1" style="padding:1rem; width: <?= 100 / 6 ?>%;" class="img-prv"> <img src="{{ asset('storage/' . $konkurito->gambar_1) }}" alt="" class="previewer"></td>
-                    <td id="2" style="padding:1rem; width: <?= 100 / 6 ?>%;" class="img-prv"> <img @if(!empty($konkurito->gambar_2)) src="{{ asset('storage/' . $konkurito->gambar_2) }}" @endif alt="" class="previewer"></td>
-                    <td id="3" style="padding:1rem; width: <?= 100 / 6 ?>%;" class="img-prv"> <img @if(!empty($konkurito->gambar_3)) src="{{ asset('storage/' . $konkurito->gambar_3) }}" @endif alt="" class="previewer"></td>
-                    <td id="4" style="padding:1rem; width: <?= 100 / 6 ?>%;" class="img-prv"> <img @if(!empty($konkurito->gambar_4)) src="{{ asset('storage/' . $konkurito->gambar_4) }}" @endif alt="" class="previewer"></td>
-                    <td id="5" style="padding:1rem; width: <?= 100 / 6 ?>%;" class="img-prv"> <img @if(!empty($konkurito->gambar_5)) src="{{ asset('storage/' . $konkurito->gambar_5) }}" @endif alt="" class="previewer"></td>
-                    <td id="6" style="padding:1rem; width: <?= 100 / 6 ?>%;" class="img-prv"> <img @if(!empty($konkurito->gambar_6)) src="{{ asset('storage/' . $konkurito->gambar_6) }}" @endif alt="" class="previewer"></td>
-                  </tr>
-                </table>  
-                <small class="text-danger" id="error-img" style="visibility: hidden">Hanya Bisa 6 Gambar</small>
-            </div> 
           </div>
           @error('photos')
           <small class="text-danger">{{ $message }}</small>
           @enderror
           <!-- /.form-group -->
+        </div>
+        <div class="col-md-12">
+          <div style="display: flex; flex-wrap: wrap;">
+            <table class="mt-3 col-12">
+              <tr id="imagePreviewContainer" >
+                <td id="1" style="padding:1rem; width: <?= 100 / 5 ?>%;" class="img-prv"> <img src="{{ asset('storage/' . $konkurito->gambar_1) }}" alt="" class="previewer"></td>
+                <td id="2" style="padding:1rem; width: <?= 100 / 5 ?>%;" class="img-prv"> <img @if(!empty($konkurito->gambar_2)) src="{{ asset('storage/' . $konkurito->gambar_2) }}" @endif alt="" class="previewer"></td>
+                <td id="3" style="padding:1rem; width: <?= 100 / 5 ?>%;" class="img-prv"> <img @if(!empty($konkurito->gambar_3)) src="{{ asset('storage/' . $konkurito->gambar_3) }}" @endif alt="" class="previewer"></td>
+                <td id="4" style="padding:1rem; width: <?= 100 / 5 ?>%;" class="img-prv"> <img @if(!empty($konkurito->gambar_4)) src="{{ asset('storage/' . $konkurito->gambar_4) }}" @endif alt="" class="previewer"></td>
+                <td id="5" style="padding:1rem; width: <?= 100 / 5 ?>%;" class="img-prv"> <img @if(!empty($konkurito->gambar_5)) src="{{ asset('storage/' . $konkurito->gambar_5) }}" @endif alt="" class="previewer"></td>
+              </tr>
+            </table>  
+            <small class="text-danger" id="error-img" style="visibility: hidden">Hanya Bisa 6 Gambar</small>
+        </div> 
         </div>
         <!-- /.col -->
       </div>
