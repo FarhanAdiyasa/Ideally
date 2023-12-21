@@ -4,11 +4,11 @@
         <span aria-hidden="true">&times;</span>
     </button>
 </div>
-<form action="{{ route('dedikasiFloras.destroy', $dedikasiFlora->id_nurseri) }}" method="post">
+<form action="{{ route('everlasThings.destroy', $everlasThing->id_everlas_things) }}" method="post">
     <div class="modal-body">
         @csrf
         @method('DELETE')
-        <h5 class="text-center">Are you sure you want to delete {{ $dedikasiFlora->nama_lokal }} ?</h5>
+        <h5 class="text-center">Are you sure you want to delete {{ $everlasThing->nama_produk }} ?</h5>
     </div>
     <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
