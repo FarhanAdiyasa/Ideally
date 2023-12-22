@@ -86,14 +86,14 @@
                                                 class="d-block w-50"></a>
                                     </td>
                                 </tr>
-                                @foreach(Session::get('keranjang', []) as $key => $item)
+                                @foreach($keranjang as $item)
                                 <tr class="border-bottom baris-produk">
                                     <td class="d-flex align-items-center" style="height: 52px;">{{ $loop->index + 1 }}</td>
                                     <td class="detail">
                                         <div class="row g-1">
                                             <div class="col-3">
                                                 <div class="img-container">
-                                                    <img src="{{ $item['produk']->gambar_1 }}"" alt="{{ $item['produk']->nama_produk }}">
+                                                    <img src="{{ $item['produk']->gambar_1 }}" alt="{{ $item['produk']->nama_produk }}">
                                                 </div>
                                             </div>
                                             <div class="col-9 d-flex align-items-center">{{ $item['produk']->nama_produk }}</div>
@@ -102,21 +102,26 @@
                                     <td class="jumlah">
                                         <!-- Tambahkan tombol untuk mengatur jumlah produk -->
                                         <span class="p-1"><i class="fa-solid fa-circle-chevron-down"></i></span>
-                                        <input class="form-control quantity" type="text" value="{{ $item['jumlah'] }}" readonly>
+                                        <input class="form-control quantity" type="text" value="{{ $item['quantity'] }}" readonly>
                                         <span class="p-1"><i class="fa-solid fa-circle-chevron-up"></i></span>
                                     </td>
                                     <td class="unit">{{ $item['produk']->satuan }}</td>
                                     <td class="harga">{{ $item['produk']->getAttributes()['harga_b2I_31+_unit'] }}</td>
-                                    <td class="total">{{ $item['jumlah'] * $item['produk']->getAttributes()['harga_b2I_31+_unit'] }}</td>
+                                    <td class="total">{{ $item['quantity'] * $item['produk']->getAttributes()['harga_b2I_31+_unit'] }}</td>
                                     <td class="d-flex align-items-center justify-content-center">
-                                        <a href="#" onclick="hapusItem('{{ route('hapusDariKeranjang', ['id_batu' => $key]) }}')">
-                                            <img src="{{ asset('img/keranjang/Delete Icon.png') }}" alt="Hapus Produk" class="d-block w-50">
-                                        </a>
+                                        {{-- <form action="{{ route('hapusDariKeranjang', ['id_batu' => $key]) }}" method="POST">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" style="border: none; background: none; padding: 0; margin: 0; outline: none;">
+                                                <img src="{{ asset('img/keranjang/Delete Icon.png') }}" alt="Hapus Produk" class="d-block w-50" style="border: none;">
+                                            </button>
+                                        </form> --}}
+                                                                                                                  
                                     </td>
                                 </tr>
-                                @endforeach
-                                
-                                <tr class="border-brand">
+                            @endforeach
+
+                                {{-- <tr class="border-brand">
                                     <th colspan="5" style="text-align: center;">Dedikasi Flora</th>
                                     <th class="total-brand">Total</th>
                                     <td class="d-flex align-items-center justify-content-center">
@@ -149,7 +154,66 @@
                                                 class="d-block w-50"></a>
                                     </td>
                                 </tr>
-                                
+
+                                <tr class="border-bottom baris-produk">
+                                    <td class="d-flex align-items-center" style="height: 52px;">No</td>
+                                    <td class="detail">
+                                        <div class="row g-1">
+                                            <div class="col-3">
+                                                <div class="img-container">
+                                                    <img src="{{ asset('img/keranjang/contoh-produk.jpg') }}" alt="">
+                                                </div>
+                                            </div>
+                                            <div class="col-9 d-flex align-items-center">Beringin Korea</div>
+                                        </div>
+                                    </td>
+                                    <td class="jumlah">
+                                        <span class="p-1"><i class="fa-solid fa-circle-chevron-down"></i></span>
+                                        <input class="form-control quantity" type="text" value="3" readonly>
+                                        <span class="p-1"><i class="fa-solid fa-circle-chevron-up"></i></span>
+                                    </td>
+                                    <td class="unit">Pohon</td>
+                                    <td class="harga">500000</td>
+                                    <td class="total">Total</td>
+                                    <td class="d-flex align-items-center justify-content-center">
+                                        <a href="{{ asset('') }}"><img src="{{ asset('img/keranjang/Delete Icon.png') }}" alt=""
+                                                class="d-block w-50"></a>
+                                    </td>
+                                </tr>
+
+                                <tr class="border-brand">
+                                    <th colspan="5" style="text-align: center;">Everlas Things</th>
+                                    <th class="total-brand">Total</th>
+                                    <td class="d-flex align-items-center justify-content-center">
+                                        <a href="{{ asset('') }}"><img src="{{ asset('img/keranjang/Delete Icon.png') }}" alt=""
+                                                class="d-block w-50"></a>
+                                    </td>
+                                </tr>
+                                <tr class="border-bottom baris-produk">
+                                    <td class="d-flex align-items-center" style="height: 52px;">No</td>
+                                    <td class="detail">
+                                        <div class="row g-1">
+                                            <div class="col-3">
+                                                <div class="img-container">
+                                                    <img src="{{ asset('img/keranjang/contoh-produk.jpg') }}" alt="">
+                                                </div>
+                                            </div>
+                                            <div class="col-9 d-flex align-items-center">Beringin Korea</div>
+                                        </div>
+                                    </td>
+                                    <td class="jumlah">
+                                        <span class="p-1"><i class="fa-solid fa-circle-chevron-down"></i></span>
+                                        <input class="form-control quantity" type="text" value="3" readonly>
+                                        <span class="p-1"><i class="fa-solid fa-circle-chevron-up"></i></span>
+                                    </td>
+                                    <td class="unit">Pohon</td>
+                                    <td class="harga">200000</td>
+                                    <td class="total">Total</td>
+                                    <td class="d-flex align-items-center justify-content-center">
+                                        <a href="{{ asset('') }}"><img src="{{ asset('img/keranjang/Delete Icon.png') }}" alt=""
+                                                class="d-block w-50"></a>
+                                    </td>
+                                </tr> --}}
                             </tbody>
                         </table>
                     </div>
@@ -269,26 +333,6 @@
             }
         });
 
-        function hapusItem(url) {
-                if (confirm('Apakah Anda yakin ingin menghapus item ini?')) {
-                    $.ajax({
-                        url: url,
-                        type: 'DELETE',
-                        headers: {
-                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                        },
-                        success: function (response) {
-                            // Lakukan apa yang diperlukan setelah penghapusan berhasil
-                            // Contoh: reload halaman atau manipulasi DOM untuk mengupdate tampilan
-                            window.location.reload(); // Contoh: reload halaman setelah penghapusan
-                        },
-                        error: function (error) {
-                            console.error('Terjadi kesalahan:', error);
-                            // Handle error jika penghapusan gagal
-                        }
-                    });
-                }
-            }
     </script>
 </body>
 

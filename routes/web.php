@@ -59,6 +59,5 @@ Route::get('/batunesia/index/showByPotBatu', [BatunesiaController::class, 'filte
 
 //transaksi
 Route::get('/keranjang', [TransaksiController::class, 'index'])->name('transaksi.index');
-Route::post('/tambahKeKeranjang/{id_batu}', [TransaksiController::class, 'tambahKeKeranjang'])->name('tambahKeKeranjang');
-Route::match(['get', 'post', 'delete'], '/hapus-dari-keranjang/{id_batu}', [TransaksiController::class, 'hapusDariKeranjang'])->name('hapusDariKeranjang');
-
+Route::get('/tambahKeKeranjang/{id_batu}', [TransaksiController::class, 'tambahKeKeranjang'])->name('tambahKeKeranjang');
+Route::delete('/hapus-dari-keranjang/{id_batu}', [TransaksiController::class, 'remove'])->name('hapusDariKeranjang');

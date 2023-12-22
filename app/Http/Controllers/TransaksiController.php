@@ -9,11 +9,15 @@ use Illuminate\Support\Facades\Session;
 
 class TransaksiController extends Controller
 {
+ 
     public function index()
 {
+    $keranjang = Session::get('keranjang', []);
 
-    return view('transaksi.keranjang');
+    return view('transaksi.keranjang', compact('keranjang'));
 }
+
+
 
     
 
@@ -24,47 +28,69 @@ class TransaksiController extends Controller
 
     public function tambahKeKeranjang($id_batu)
     {
-        $selectedProduct = Batunesia::findOrFail($id_batu);
-        $keranjang = Session::get('keranjang', []);
 
-        $keranjangKey = 'produk_' . $selectedProduct->id;
-
-        // Pengecekan apakah produk sudah ada di keranjang berdasarkan id produk
-        $existingProduct = array_filter($keranjang, function ($item) use ($selectedProduct) {
-            return $item['produk']->id == $selectedProduct->id;
-        });
-
-        // Jika produk sudah ada, tambahkan jumlahnya
-        if (!empty($existingProduct)) {
-            $existingProductKey = key($existingProduct);
-            $keranjang[$existingProductKey]['jumlah']++;
-        } else {
-            // Jika produk belum ada di keranjang, tambahkan produk baru
-            $newProduct = [
-                'produk' => $selectedProduct,
-                'jumlah' => 1,
+        $product = Batunesia::findOrFail($id_batu);
+ 
+        $cart = session()->get('cart', []);
+ 
+        if(isset($cart[$id_batu])) {
+            $cart[$id_batu]['quantity']++;
+        }  else {
+            $cart[$id_batu] = [
+                "produk" => $product,
+                "quantity" => 1
             ];
-
-            // Tambahkan produk baru ke keranjang
-            $keranjang[$keranjangKey] = $newProduct;
         }
+ 
+        session()->put('cart', $cart);
 
-        Session::put('keranjang', $keranjang);
+        // $selectedProduct = Batunesia::findOrFail($id_batu);
+        // $keranjang = Session::get('keranjang', []);
 
-        return redirect()->route('transaksi.index');
+        // $keranjangKey = 'produk_' . $selectedProduct->id;
+
+        
+        // // Pengecekan apakah produk sudah ada di keranjang berdasarkan id produk
+        // $existingProduct = array_filter($keranjang, function ($item) use ($selectedProduct) {
+        //     return $item['produk']->id == $selectedProduct->id;
+        // });
+        
+        // // Jika produk sudah ada, tambahkan jumlahnya
+        // if (!empty($existingProduct)) {
+        //     $existingProductKey = key($existingProduct);
+        //     dump($existingProductKey);
+        //     dump($existingProduct[$existingProductKey]['produk']->id);
+        //     $keranjang[$existingProductKey]['jumlah']++;
+        // } else {
+        //     // Jika produk belum ada di keranjang, tambahkan produk baru
+        //     $newProduct = [
+        //         'produk' => $selectedProduct,
+        //         'jumlah' => 1,
+        //     ];
+
+        //     // Tambahkan produk baru ke keranjang
+        //     $keranjang[$keranjangKey] = $newProduct;
+        // }
+        
+        // Session::put('keranjang', $keranjang);
+        
+        $keranjang = Session::get('cart', []);
+        
+        return view('transaksi.keranjang', compact('keranjang'));
     }
 
-    
-    public function hapusDariKeranjang($id_batu)
-    {
-        $keranjang = Session::get('keranjang', []);
+    public function remove($id_batu)
+{
+    $keranjang = session()->get('keranjang', []);
 
-        // Hapus item dari keranjang belanja berdasarkan $id
+    if (isset($keranjang[$id_batu])) {
         unset($keranjang[$id_batu]);
-
-        Session::put('keranjang', $keranjang);
-
-        return redirect()->route('transaksi.index');
+        session()->put('keranjang', $keranjang);
+        session()->flash('success', 'Product successfully removed from cart!');
     }
+
+    return redirect()->route('transaksi.index');
+}
+
 
 }
