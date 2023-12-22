@@ -3,23 +3,25 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Konkurito;
+use App\Models\Shineage;
 
-class KonkuritoController extends Controller
+class ShineageController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function indexBrand()
     {
-        return view('konkuritos.index');
+        $shineages = Shineage::where('stok', '>', 0)->inRandomOrder()->take(14)->get();
+        return view('shineages.index', compact('shineages'));
     }
 
     public function showcase()
     {
-        $konkuritoshowcase = Konkurito::where('stok', '>', 0)->get();
-        return view('konkuritos.showcase', compact('konkuritoshowcase'));
+        $shineages = Shineage::where('stok', '>', 0)->get();
+        return view('shineages.showcase', compact('shineages'));
     }
+
     /**
      * Show the form for creating a new resource.
      */
@@ -39,11 +41,11 @@ class KonkuritoController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show($id_konkurito)
+    public function show($id_shineage)
     {
-        $konkuritoDetail = Konkurito::findOrFail($id_konkurito);
-        $konkuritoterkait = Konkurito::where('stok', '>', 0)->inRandomOrder()->take(4)->get();
-        return view('konkuritos.details', compact('konkuritoDetail', 'konkuritoterkait'));
+        $shineages = Shineage::findOrFail($id_shineage);
+        $shineageterkait = Shineage::where('stok', '>', 0)->inRandomOrder()->take(9)->get();
+        return view('shineages.details', compact('shineages', 'shineageterkait'));
     }
 
     /**

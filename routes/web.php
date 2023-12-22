@@ -12,6 +12,7 @@ use App\Http\Controllers\AgrigardController;
 use App\Http\Controllers\PromoController;
 use App\Http\Controllers\DefloController;
 use App\Http\Controllers\KonkuritoController;
+use App\Http\Controllers\ShineageController;
 use App\Models\Artikel;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -248,3 +249,9 @@ Route::get('deflo/show/{id_nurseri}',[DefloController::class,'show'])->name('def
 Route::get('konkurito/index',[KonkuritoController::class,'index'])->name('konkurito.utama');
 Route::get('konkurito/showcase',[KonkuritoController::class,'showcase'])->name('konkurito.showcase');
 Route::get('konkurito/show/{id_konkurito}',[KonkuritoController::class,'show'])->name('konkurito.detail');
+
+//Shineage
+Route::get('shineage/index',[ShineageController::class,'indexBrand'])->name('shineage.utama');
+Route::get('shineage/showcase',[ShineageController::class,'showcase'])->name('shineage.showcase');
+Route::get('shineage/show/{id_shineage}',[ShineageController::class,'show'])->name('shineage.detail');
+

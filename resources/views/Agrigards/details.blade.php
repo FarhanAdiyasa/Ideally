@@ -135,6 +135,8 @@
                     @foreach ($agrigardterkait as $terkait)
                     <div class="col-sm-3">
                         <div class="card-product">
+                            <a href="{{ route('agrigard.detail', ['id_agrigard' => $terkait->id_agrigard]) }}"
+                                class="card-link">
                             <div class="img-container">
                                 <img src="{{ $terkait->gambar_1 }}" alt="{{ $terkait->nama_produk }}">
                             </div>
@@ -156,6 +158,7 @@
                                     </div>
                                 </div>
                             </div>
+                            </a>
                         </div>
                     </div>
                     @endforeach
@@ -176,6 +179,8 @@
                     @foreach ($agrigardbaru as $baru)
                     <div class="col-sm-3">
                         <div class="card-product">
+                        <a href="{{ route('agrigard.detail', ['id_agrigard' => $baru->id_agrigard]) }}"
+                                class="card-link">
                             <div class="img-container">
                                 <img src="{{ $baru->gambar_1 }}" alt="{{ $baru->nama_produk }}">
                             </div>
@@ -197,6 +202,7 @@
                                     </div>
                                 </div>
                             </div>
+                            </a>
                         </div>
                     </div>
                     @endforeach
@@ -217,6 +223,8 @@
                     @foreach ($agrigardpilihan as $pilihan)
                     <div class="col-sm-3">
                         <div class="card-product">
+                        <a href="{{ route('agrigard.detail', ['id_agrigard' => $pilihan->id_agrigard]) }}"
+                                class="card-link">
                             <div class="img-container">
                                 <img src="{{ $pilihan->gambar_1 }}" alt="{{ $pilihan->nama_produk }}">
                             </div>
@@ -238,6 +246,7 @@
                                     </div>
                                 </div>
                             </div>
+                            </a>
                         </div>
                     </div>
                     @endforeach
