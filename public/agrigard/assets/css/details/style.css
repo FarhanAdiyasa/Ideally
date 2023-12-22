@@ -241,6 +241,11 @@ body {
     margin: 0;
 }
 
+.card-product a {
+    text-decoration: none;
+    color: #000000;
+}
+
 .card-product .nama-produk,
 .card-product .kategori {
     font-size: 9px;

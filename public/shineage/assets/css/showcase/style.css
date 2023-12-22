@@ -147,10 +147,14 @@ body {
 }
 
 /* Product */
+.card-product a {
+    text-decoration: none;
+    color: #000000;
+}
 
 .card-product .img-container {
     width: 100%;
-    height: 165px;
+    height: 160px;
     overflow: hidden;
 }
 
@@ -159,6 +163,10 @@ body {
     height: 100%;
     object-fit: cover;
     object-position: center;
+}
+
+.card-product .card-body {
+    padding: 5px 10px;
 }
 
 .card-product .card-body p {

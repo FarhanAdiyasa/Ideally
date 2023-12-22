@@ -121,6 +121,10 @@
     </section>
     <!-- End Kategori -->
 
+    @php
+    $totalItems = count($agrigards);
+    $itemsPerSection = ceil($totalItems / 3);
+    @endphp
     <!-- Produk Pilihan -->
     <section id="produk-pilihan">
         <div class="container mt-4">
@@ -129,21 +133,20 @@
                     <h5>Produk Pilihan</h5>
                 </div>
                 <div class="row g-3">
-                    @foreach ($agrigards as $agrigardPilihan)
+                    @foreach($agrigards->take($itemsPerSection) as $pilihan1)
                     <div class="col-sm-3">
                         <div class="card-product">
-                            <a href="{{ route('agrigard.detail', ['id_agrigard' => $agrigardPilihan->id_agrigard]) }}"
+                            <a href="{{ route('agrigard.detail', ['id_agrigard' => $pilihan1->id_agrigard]) }}"
                                 class="card-link">
                                 <div class="img-container">
-                                    <img src="{{ $agrigardPilihan->gambar_1 }}"
-                                        alt="{{ $agrigardPilihan->nama_produk }}">
+                                    <img src="{{ $pilihan1->gambar_1 }}" alt="{{ $pilihan1->nama_produk }}">
                                 </div>
                                 <div class="card-body" style="width: inherit;">
                                     <div class="row g-0">
                                         <div class="col-sm-7">
-                                            <p class="nama-produk">{{ substr($agrigardPilihan->nama_produk, 0, 15) }} 10
-                                                - {{ $agrigardPilihan->satuan }}</p>
-                                            <p class="kategori">{{ $agrigardPilihan->kategori }}</p>
+                                            <p class="nama-produk">{{ substr($pilihan1->nama_produk, 0, 15) }}
+                                                - {{ $pilihan1->satuan }}</p>
+                                            <p class="kategori">{{ $pilihan1->kategori }}</p>
                                             <div class="d-flex justify-content-between mt-1">
                                                 <a class="btn bg-grey text-center">-</a>
                                                 <p class="bg-grey text-center">12</p>
@@ -152,7 +155,7 @@
                                         </div>
                                         <div
                                             class="col-sm-5 d-flex flex-column align-items-end justify-content-between">
-                                            <p class="harga">3,427,000</p>
+                                            <p class="harga">{{ $pilihan1->harga_b2C_1_unit }}</p>
                                             <p class="rating"><span><i class="bi bi-star-fill"></i></span> 4,7</p>
                                             <a class="btn cart bg-green text-center text-white"><i
                                                     class="bi bi-cart-fill"></i></a>
@@ -183,13 +186,12 @@
                             <a href="{{ route('agrigard.detail', ['id_agrigard' => $agrigardBaru->id_agrigard]) }}"
                                 class="card-link">
                                 <div class="img-container">
-                                    <img src="{{ $agrigardBaru->gambar_1 }}"
-                                        alt="{{ $agrigardBaru->nama_produk }}">
+                                    <img src="{{ $agrigardBaru->gambar_1 }}" alt="{{ $agrigardBaru->nama_produk }}">
                                 </div>
                                 <div class="card-body" style="width: inherit;">
                                     <div class="row g-0">
                                         <div class="col-sm-7">
-                                            <p class="nama-produk">{{ substr($agrigardBaru->nama_produk, 0, 15) }} 10
+                                            <p class="nama-produk">{{ substr($agrigardBaru->nama_produk, 0, 15) }}
                                                 - {{ $agrigardBaru->satuan }}</p>
                                             <p class="kategori">{{ $agrigardBaru->kategori }}</p>
                                             <div class="d-flex justify-content-between mt-1">
@@ -200,7 +202,7 @@
                                         </div>
                                         <div
                                             class="col-sm-5 d-flex flex-column align-items-end justify-content-between">
-                                            <p class="harga">3,427,000</p>
+                                            <p class="harga">{{ $agrigardBaru->harga_b2C_1_unit }}</p>
                                             <p class="rating"><span><i class="bi bi-star-fill"></i></span> 4,7</p>
                                             <a class="btn cart bg-green text-center text-white"><i
                                                     class="bi bi-cart-fill"></i></a>
@@ -298,110 +300,39 @@
                     <h5>Paling Banyak Dicari</h5>
                 </div>
                 <div class="row g-3">
+                @foreach($agrigards->slice($itemsPerSection, $itemsPerSection) as $dicari)
                     <div class="col-sm-3">
                         <div class="card-product">
-                            <div class="img-container">
-                                <img src="{{ asset ('agrigard/assets/img/contoh.jpg') }}" alt="">
-                            </div>
-                            <div class="card-body" style="width: inherit;">
-                                <div class="row g-0">
-                                    <div class="col-sm-7">
-                                        <p class="nama-produk">Polybag Hitam 10 - Lusin</p>
-                                        <p class="kategori">Kategori</p>
-                                        <div class="d-flex justify-content-between mt-1">
-                                            <a class="btn bg-grey text-center">-</a>
-                                            <p class="bg-grey text-center">12</p>
-                                            <a class="btn bg-grey text-center">+</a>
+                            <a href="{{ route('agrigard.detail', ['id_agrigard' => $dicari->id_agrigard]) }}"
+                                class="card-link">
+                                <div class="img-container">
+                                    <img src="{{ $dicari->gambar_1 }}" alt="{{ $dicari->nama_produk }}">
+                                </div>
+                                <div class="card-body" style="width: inherit;">
+                                    <div class="row g-0">
+                                        <div class="col-sm-7">
+                                            <p class="nama-produk">{{ substr($dicari->nama_produk, 0, 15) }}
+                                                - {{ $dicari->satuan }}</p>
+                                            <p class="kategori">{{ $dicari->kategori }}</p>
+                                            <div class="d-flex justify-content-between mt-1">
+                                                <a class="btn bg-grey text-center">-</a>
+                                                <p class="bg-grey text-center">12</p>
+                                                <a class="btn bg-grey text-center">+</a>
+                                            </div>
+                                        </div>
+                                        <div
+                                            class="col-sm-5 d-flex flex-column align-items-end justify-content-between">
+                                            <p class="harga">{{ $dicari->harga_b2C_1_unit }}</p>
+                                            <p class="rating"><span><i class="bi bi-star-fill"></i></span> 4,7</p>
+                                            <a class="btn cart bg-green text-center text-white"><i
+                                                    class="bi bi-cart-fill"></i></a>
                                         </div>
                                     </div>
-                                    <div class="col-sm-5 d-flex flex-column align-items-end justify-content-between">
-                                        <p class="harga">3,427,000</p>
-                                        <p class="rating"><span><i class="bi bi-star-fill"></i></span> 4,7</p>
-                                        <a class="btn cart bg-green text-center text-white"><i
-                                                class="bi bi-cart-fill"></i></a>
-                                    </div>
                                 </div>
-                            </div>
+                            </a>
                         </div>
                     </div>
-                    <div class="col-sm-3">
-                        <div class="card-product">
-                            <div class="img-container">
-                                <img src="{{ asset ('agrigard/assets/img/contoh.jpg') }}" alt="">
-                            </div>
-                            <div class="card-body" style="width: inherit;">
-                                <div class="row g-0">
-                                    <div class="col-sm-7">
-                                        <p class="nama-produk">Polybag Hitam 10 - Lusin</p>
-                                        <p class="kategori">Kategori</p>
-                                        <div class="d-flex justify-content-between mt-1">
-                                            <a class="btn bg-grey text-center">-</a>
-                                            <p class="bg-grey text-center">12</p>
-                                            <a class="btn bg-grey text-center">+</a>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-5 d-flex flex-column align-items-end justify-content-between">
-                                        <p class="harga">3,427,000</p>
-                                        <p class="rating"><span><i class="bi bi-star-fill"></i></span> 4,7</p>
-                                        <a class="btn cart bg-green text-center text-white"><i
-                                                class="bi bi-cart-fill"></i></a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-3">
-                        <div class="card-product">
-                            <div class="img-container">
-                                <img src="{{ asset ('agrigard/assets/img/contoh.jpg') }}" alt="">
-                            </div>
-                            <div class="card-body" style="width: inherit;">
-                                <div class="row g-0">
-                                    <div class="col-sm-7">
-                                        <p class="nama-produk">Polybag Hitam 10 - Lusin</p>
-                                        <p class="kategori">Kategori</p>
-                                        <div class="d-flex justify-content-between mt-1">
-                                            <a class="btn bg-grey text-center">-</a>
-                                            <p class="bg-grey text-center">12</p>
-                                            <a class="btn bg-grey text-center">+</a>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-5 d-flex flex-column align-items-end justify-content-between">
-                                        <p class="harga">3,427,000</p>
-                                        <p class="rating"><span><i class="bi bi-star-fill"></i></span> 4,7</p>
-                                        <a class="btn cart bg-green text-center text-white"><i
-                                                class="bi bi-cart-fill"></i></a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-3">
-                        <div class="card-product">
-                            <div class="img-container">
-                                <img src="{{ asset ('agrigard/assets/img/contoh.jpg') }}" alt="">
-                            </div>
-                            <div class="card-body" style="width: inherit;">
-                                <div class="row g-0">
-                                    <div class="col-sm-7">
-                                        <p class="nama-produk">Polybag Hitam 10 - Lusin</p>
-                                        <p class="kategori">Kategori</p>
-                                        <div class="d-flex justify-content-between mt-1">
-                                            <a class="btn bg-grey text-center">-</a>
-                                            <p class="bg-grey text-center">12</p>
-                                            <a class="btn bg-grey text-center">+</a>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-5 d-flex flex-column align-items-end justify-content-between">
-                                        <p class="harga">3,427,000</p>
-                                        <p class="rating"><span><i class="bi bi-star-fill"></i></span> 4,7</p>
-                                        <a class="btn cart bg-green text-center text-white"><i
-                                                class="bi bi-cart-fill"></i></a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    @endforeach
                 </div>
             </div>
         </div>
@@ -416,110 +347,39 @@
                     <h5>Produk Pilihan</h5>
                 </div>
                 <div class="row g-3">
+                @foreach($agrigards->take($itemsPerSection) as $pilihan2)
                     <div class="col-sm-3">
                         <div class="card-product">
-                            <div class="img-container">
-                                <img src="{{ asset ('agrigard/assets/img/contoh.jpg') }}" alt="">
-                            </div>
-                            <div class="card-body" style="width: inherit;">
-                                <div class="row g-0">
-                                    <div class="col-sm-7">
-                                        <p class="nama-produk">Polybag Hitam 10 - Lusin</p>
-                                        <p class="kategori">Kategori</p>
-                                        <div class="d-flex justify-content-between mt-1">
-                                            <a class="btn bg-grey text-center">-</a>
-                                            <p class="bg-grey text-center">12</p>
-                                            <a class="btn bg-grey text-center">+</a>
+                            <a href="{{ route('agrigard.detail', ['id_agrigard' => $pilihan2->id_agrigard]) }}"
+                                class="card-link">
+                                <div class="img-container">
+                                    <img src="{{ $pilihan2->gambar_1 }}" alt="{{ $pilihan2->nama_produk }}">
+                                </div>
+                                <div class="card-body" style="width: inherit;">
+                                    <div class="row g-0">
+                                        <div class="col-sm-7">
+                                            <p class="nama-produk">{{ substr($pilihan2->nama_produk, 0, 15) }}
+                                                - {{ $pilihan2->satuan }}</p>
+                                            <p class="kategori">{{ $pilihan2->kategori }}</p>
+                                            <div class="d-flex justify-content-between mt-1">
+                                                <a class="btn bg-grey text-center">-</a>
+                                                <p class="bg-grey text-center">12</p>
+                                                <a class="btn bg-grey text-center">+</a>
+                                            </div>
+                                        </div>
+                                        <div
+                                            class="col-sm-5 d-flex flex-column align-items-end justify-content-between">
+                                            <p class="harga">{{ $pilihan2->harga_b2C_1_unit }}</p>
+                                            <p class="rating"><span><i class="bi bi-star-fill"></i></span> 4,7</p>
+                                            <a class="btn cart bg-green text-center text-white"><i
+                                                    class="bi bi-cart-fill"></i></a>
                                         </div>
                                     </div>
-                                    <div class="col-sm-5 d-flex flex-column align-items-end justify-content-between">
-                                        <p class="harga">3,427,000</p>
-                                        <p class="rating"><span><i class="bi bi-star-fill"></i></span> 4,7</p>
-                                        <a class="btn cart bg-green text-center text-white"><i
-                                                class="bi bi-cart-fill"></i></a>
-                                    </div>
                                 </div>
-                            </div>
+                            </a>
                         </div>
                     </div>
-                    <div class="col-sm-3">
-                        <div class="card-product">
-                            <div class="img-container">
-                                <img src="{{ asset ('agrigard/assets/img/contoh.jpg') }}" alt="">
-                            </div>
-                            <div class="card-body" style="width: inherit;">
-                                <div class="row g-0">
-                                    <div class="col-sm-7">
-                                        <p class="nama-produk">Polybag Hitam 10 - Lusin</p>
-                                        <p class="kategori">Kategori</p>
-                                        <div class="d-flex justify-content-between mt-1">
-                                            <a class="btn bg-grey text-center">-</a>
-                                            <p class="bg-grey text-center">12</p>
-                                            <a class="btn bg-grey text-center">+</a>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-5 d-flex flex-column align-items-end justify-content-between">
-                                        <p class="harga">3,427,000</p>
-                                        <p class="rating"><span><i class="bi bi-star-fill"></i></span> 4,7</p>
-                                        <a class="btn cart bg-green text-center text-white"><i
-                                                class="bi bi-cart-fill"></i></a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-3">
-                        <div class="card-product">
-                            <div class="img-container">
-                                <img src="{{ asset ('agrigard/assets/img/contoh.jpg') }}" alt="">
-                            </div>
-                            <div class="card-body" style="width: inherit;">
-                                <div class="row g-0">
-                                    <div class="col-sm-7">
-                                        <p class="nama-produk">Polybag Hitam 10 - Lusin</p>
-                                        <p class="kategori">Kategori</p>
-                                        <div class="d-flex justify-content-between mt-1">
-                                            <a class="btn bg-grey text-center">-</a>
-                                            <p class="bg-grey text-center">12</p>
-                                            <a class="btn bg-grey text-center">+</a>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-5 d-flex flex-column align-items-end justify-content-between">
-                                        <p class="harga">3,427,000</p>
-                                        <p class="rating"><span><i class="bi bi-star-fill"></i></span> 4,7</p>
-                                        <a class="btn cart bg-green text-center text-white"><i
-                                                class="bi bi-cart-fill"></i></a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-3">
-                        <div class="card-product">
-                            <div class="img-container">
-                                <img src="{{ asset ('agrigard/assets/img/contoh.jpg') }}" alt="">
-                            </div>
-                            <div class="card-body" style="width: inherit;">
-                                <div class="row g-0">
-                                    <div class="col-sm-7">
-                                        <p class="nama-produk">Polybag Hitam 10 - Lusin</p>
-                                        <p class="kategori">Kategori</p>
-                                        <div class="d-flex justify-content-between mt-1">
-                                            <a class="btn bg-grey text-center">-</a>
-                                            <p class="bg-grey text-center">12</p>
-                                            <a class="btn bg-grey text-center">+</a>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-5 d-flex flex-column align-items-end justify-content-between">
-                                        <p class="harga">3,427,000</p>
-                                        <p class="rating"><span><i class="bi bi-star-fill"></i></span> 4,7</p>
-                                        <a class="btn cart bg-green text-center text-white"><i
-                                                class="bi bi-cart-fill"></i></a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    @endforeach
                 </div>
             </div>
         </div>
@@ -641,10 +501,12 @@
                     <div class="col-sm-7 branding">
                         <div class="text-white">
                             <div class="title">
-                                <p>Jelajahi koleksi produk kami! Temukan solusi dari permasalahan kebun Anda di Agrigard!</p>
+                                <p>Jelajahi koleksi produk kami! Temukan solusi dari permasalahan kebun Anda di
+                                    Agrigard!</p>
                             </div>
                             <div class="deskripsi">
-                                <p>Telusuri keajaiban dan kualitas produk di Agrigard. Setiap produk mencerminkan solusi dan fungsi luar biasa. Temukan lebih banyak di koleksi kami sekarang!</p>
+                                <p>Telusuri keajaiban dan kualitas produk di Agrigard. Setiap produk mencerminkan solusi
+                                    dan fungsi luar biasa. Temukan lebih banyak di koleksi kami sekarang!</p>
                             </div>
                         </div>
                         <div class="action">

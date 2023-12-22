@@ -331,7 +331,7 @@ class AgrigardController extends Controller
 
     public function indexBrand()
     {
-        $agrigards = Agrigard::where('stok', '>', 0)->inRandomOrder()->take(4)->get();
+        $agrigards = Agrigard::where('stok', '>', 0)->inRandomOrder()->take(12)->get();
         $agrigardbaru = Agrigard::where('stok', '>', 0)->latest('created_at')->inRandomOrder()->take(4)->get();
         return view('agrigards.index', compact('agrigards', 'agrigardbaru'));
     }

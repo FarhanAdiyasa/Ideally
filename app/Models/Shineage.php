@@ -33,8 +33,7 @@ class Shineage extends Model
     }
 
 
-
-    /*protected $fillable = [
+    protected $fillable = [
         'id_shineage',
         'seri',
         'nama_produk',
@@ -56,16 +55,16 @@ class Shineage extends Model
         'stok',
         'item_terjual',
         'hpp',
-        'harga_b2I_11+_unit',
-        'harga_b2I_1+_unit',
-        'harga_b2B_11+_unit',
-        'harga_b2B_1+_unit',
-        'harga_b2C_11+_unit',
-        'harga_b2C_1+_unit',
+        'harga_b2I_11_unit',
+        'harga_b2I_1_unit',
+        'harga_b2B_11_unit',
+        'harga_b2B_1_unit',
+        'harga_b2C_11_unit',
+        'harga_b2C_1_unit',
         'tanggal_publikasi',
         'created_at',
         'updated_at',
         'deleted_at',
-    ];*/
+    ];
 
 }
