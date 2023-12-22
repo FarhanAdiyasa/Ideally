@@ -84,11 +84,16 @@
         <!-- /.col -->
         <div class="col-md-9">
           <div class="form-group">
-              <select class="form-control select2 select2-danger" data-dropdown-css-class="select2-danger" style="width: 100%;" name="kategori">
-                <option value="Alabama" @selected(old('kategori') == 'Alabama' || $agrigard->kategori == 'Alabama')>Alabama</option>
-                <option value="Alaska" @selected(old('kategori') == 'Alaska' || $agrigard->kategori == 'Alaska')>Alaska</option>
-                <option value="California" @selected(old('kategori') == 'California' || $agrigard->kategori == 'California')>California</option>
-              </select>
+              <select class="form-control select2" style="width: 100%;" name="kategori">
+                <option value="Pot Plastik" @selected(old('kategori') == 'Pot Plastik' || $agrigard->kategori == 'Pot Plastik')>Pot Plastik</option>
+                <option value="Pot Terracota" @selected(old('kategori') == 'Pot Terracota' || $agrigard->kategori == 'Pot Terracota')>Pot Terracota</option>
+                <option value="Benih Tanaman" @selected(old('kategori') == 'Benih Tanaman' || $agrigard->kategori == 'Benih Tanaman')>Benih Tanaman</option>
+                <option value="Media Tanam" @selected(old('kategori') == 'Media Tanam' || $agrigard->kategori == 'Media Tanam')>Media Tanam</option>
+                <option value="Wadah Tanam" @selected(old('kategori') == 'Wadah Tanam' || $agrigard->kategori == 'Wadah Tanam')>Wadah Tanam</option>
+                <option value="Obat dan Nutrisi" @selected(old('kategori') == 'Obat dan Nutrisi' || $agrigard->kategori == 'Obat dan Nutrisi')>Obat dan Nutrisi</option>
+                <option value="Alat Kerja" @selected(old('kategori') == 'Alat Kerja' || $agrigard->kategori == 'Alat Kerja')>Alat Kerja</option>
+                <option value="Lainnya" @selected(old('kategori') == 'Lainnya' || $agrigard->kategori == 'Lainnya')>Lainnya</option>
+            </select>
               @error('kategori')
               <small class="text-danger">{{ $message }}</small>
               @enderror
@@ -114,7 +119,15 @@
           <div class="form-group">
             <label>Satuan Produk</label>
             <div class="select2-purple">
-                <input type="text" class="form-control" placeholder="Placeholder text" name="satuan" value="{{old('satuan', $agrigard->satuan)}}">
+              <select class="form-control select2" style="width: 100%;" name="satuan">
+                <option value="pcs" @selected(old('satuan') == 'pcs' || $agrigard->satuan == 'pcs')>pcs</option>
+                <option value="botol" @selected(old('satuan') == 'botol' || $agrigard->satuan == 'botol')>botol</option>
+                <option value="lusin" @selected(old('satuan') == 'lusin' || $agrigard->satuan == 'lusin')>lusin</option>
+                <option value="ikat" @selected(old('satuan') == 'ikat' || $agrigard->satuan == 'ikat')>ikat</option>
+                <option value="karung" @selected(old('satuan') == 'karung' || $agrigard->satuan == 'karung')>karung</option>
+                <option value="pack" @selected(old('satuan') == 'pack' || $agrigard->satuan == 'pack')>pack</option>
+                <option value="meter" @selected(old('satuan') == 'meter' || $agrigard->satuan == 'meter')>meter</option>
+            </select>            
                    @error('satuan')
               <small class="text-danger">{{ $message }}</small>
               @enderror
@@ -165,7 +178,6 @@
                     <td id="1" style="padding:1rem; width: 25%;" class="img-prv"> <img src="{{ asset('storage/' . $agrigard->gambar_1) }}" alt="" class="previewer"></td>
                     <td id="2" style="padding:1rem; width: 25%;" class="img-prv"> <img @if(!empty($agrigard->gambar_2)) src="{{ asset('storage/' . $agrigard->gambar_2) }}" @endif alt="" class="previewer"></td>
                     <td id="3" style="padding:1rem; width: 25%;" class="img-prv"> <img @if(!empty($agrigard->gambar_3)) src="{{ asset('storage/' . $agrigard->gambar_3) }}" @endif alt="" class="previewer"></td>
-                    <td id="4" style="padding:1rem; width: 25%;" class="img-prv"> <img @if(!empty($agrigard->gambar_4)) src="{{ asset('storage/' . $agrigard->gambar_4) }}" @endif alt="" class="previewer"></td>
                   </tr>
                 </table>  
                 <small class="text-danger" id="error-img" style="visibility: hidden">Hanya Bisa 4 Gambar</small>
@@ -222,20 +234,32 @@
       </div>
       <!-- /.row -->
       <div class="row">
-        <div class="col-md-3">
+        <div class="col-12 col-sm-6">
           <div class="form-group">
             <label>Stok Produk</label>
-            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sed, odit ab eum enim illo minima deleniti quae ducimus repudiandae sit!</p>
+              <input type="number" class="form-control" placeholder="Masukkan Stok Dalam Bentuk Angka" name="stok" value="{{old('stok', $agrigard->stok)}}">
+                 @error('stok')
+              <small class="text-danger">{{ $message }}</small>
+              @enderror
           </div>
           <!-- /.form-group -->
         </div>
         <!-- /.col -->
-        <div class="col-md-9">
+        <div class="col-12 col-sm-6">
           <div class="form-group">
-              <input class="form-control"  id=""  type="number" placeholder="Masukkan Stok Dalam Bentuk Angka" name="stok" value="{{old('stok', $agrigard->stok)}}"/>
-                 @error('stok')
+            <label>Armada Minimum</label>
+            <div class="select2-purple">
+                <select class="form-control select2" style="width: 100%;" name="armada_minimum">
+                  <option value="Motor" @selected(old('armada_minimum')=='Motor' || $agrigard->armada_minimum == 'Motor')>Motor</option>
+                  <option value="Kargo Mobil" @selected(old('armada_minimum')=='Kargo Mobil'|| $agrigard->armada_minimum == 'Kargo Mobil')>Kargo Mobil</option>
+                  <option value="Mobil Pick Up" @selected(old('armada_minimum')=='Mobil Pick Up' || $agrigard->armada_minimum == 'Mobil Pick Up')>Mobil Pick Up</option>
+                  <option value="Truk Engkel" @selected(old('armada_minimum')=='Truk Engkel' || $agrigard->armada_minimum == 'Truk Engkel')>Truk Engkel</option>
+                  <option value="Truk Fuso" @selected(old('armada_minimum')=='Truk Fuso' || $agrigard->armada_minimum == 'Truk Fuso')>Truk Fuso</option>
+              </select>
+                   @error('armada_minimum')
               <small class="text-danger">{{ $message }}</small>
               @enderror
+            </div>
           </div>
           <!-- /.form-group -->
         </div>
@@ -258,6 +282,29 @@
     </div>
     <!-- /.card-header -->
     <div class="card-body">
+      <div class="row">
+        <div class="col-md-3">
+          <div class="form-group">
+            <p>Harga Jual Projek Ideally </p>
+          </div>
+          <!-- /.form-group -->
+        </div>
+        <!-- /.col -->
+        <div class="col-md-6">
+         
+          <div class="form-group">
+            <div class="harga-input">
+              <div class="rp">Rp</div>
+              <input data-unify="TextField" placeholder="Masukkan Harga" type="number"  class="css-3017qm rupiah" name="harga_jual_projek_ideally" value="{{old('harga_jual_projek_ideally',  number_format($agrigard->harga_jual_projek_ideally, 0, ',', '.'))}}">
+            </div>
+               @error('harga_jual_projek_ideally')
+              <small class="text-danger">{{ $message }}</small>
+              @enderror
+          </div>
+          <!-- /.form-group -->
+        </div>
+        <!-- /.col -->
+      </div>
       <div class="row">
         <label>Harga Business To Individu :</label>
       </div>
@@ -490,7 +537,7 @@
 </section>
 
 @endsection
-@section('scripts')
+@section('scripts_all')
 <script>imgStyling()</script>
 <script>
     addExistingImagesToPhotos()

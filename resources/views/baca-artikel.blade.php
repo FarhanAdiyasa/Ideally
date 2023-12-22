@@ -54,14 +54,17 @@
                             <span class="info-card-category" style="font-size: 12px; font-weight: 700;">4.7</span>
                         </div>
                     </div> --}}
+                    @foreach ($artikel->kategori_artikel as $kategori)
                     <div class="additional-text-container rounded-pill d-inline-block"
-                        style="background-color: #727272; color: white;">
-                        <div class="keterangan-additional-text-container">
-                            <img class="info-card-category-icon" src="{{asset('icons/comment-category.svg')}}" alt="Rate Icon"
-                                style="width: 12px; height: 12px;">
-                            <span class="info-card-category" style="font-size: 12px; font-weight: 700;">{{$artikel->kategori_artikel->nama_kategori_artikel}}</span>
-                        </div>
+                    style="background-color: #727272; color: white;">
+                    <div class="keterangan-additional-text-container ">
+                        <img class="info-card-category-icon" src="{{asset('icons/comment-category.svg')}}" alt="Rate Icon"
+                            style="width: 10px; height: 10px;">
+                        <span class="info-card-category" style="font-size: 10px; font-weight: 700;">{{$kategori->nama_kategori_artikel}}</span>
                     </div>
+                    </div>
+                    @endforeach
+
                 </div>
                 <h2 style="color: black; font-size: 28px; font-weight: 700;">{{$artikel->judul_artikel}}</h2>
 
@@ -70,7 +73,7 @@
                         <div class="keterangan-additional-text-container">
                             <img class="info-card-category-icon-title2" src="{{asset('icons/rate-category.svg')}}" alt="Rate Icon"
                                 style="width: 12px; height: 12px;">
-                            <span class="info-card-category-title2" style="font-size: 14px; font-weight: 700;"> {{$artikel->createdBy->firstname}}{{$artikel->createdBy->lastname}}</span>
+                            <span class="info-card-category-title2" style="font-size: 14px; font-weight: 700;"> {{$artikel->penulis_artikel}}</span>
                         </div>
                     </div>
                     <div class="additional-text-container rounded-pill d-inline-block"
@@ -106,7 +109,7 @@
 
                 <!-- Body Article -->
                 <div class="body-article">
-                    <img src="{{asset($artikel->gambar_artikel)}}" alt="Gambar Artikel" width="100%">
+                    <img src="{{asset('storage/' .$artikel->gambar_artikel)}}" alt="Gambar Artikel" width="100%">
                     @if ($artikel->keterangan_gambar_artikel)
                     <div class="keterangan-gambar-article">
                         {{$artikel->keterangan_gambar_artikel}}.</div>
@@ -119,7 +122,7 @@
                     </div>
                     <div class="v-yt container mb-4" >
                         <!-- Use the full YouTube video URL or the embed URL -->
-                        <iframe src="https://www.youtube.com/embed/8w_U6qEZat0" height="300" width="470"></iframe>
+                        <iframe src="https://youtu.be/a3ICNMQW7Ok?si=7R8onn6JMD8CUo3f" height="300" width="470"></iframe>
                     </div>
                 </div>
                 <!-- End of Body Article -->
@@ -149,14 +152,12 @@
                             </div>
 
                             <div class="col-4">
-                                <h3 class="mb-0">Claudio Amaeda</h3>
-                                <p class="text-muted">Drafter Lanskap</p>
+                                <h3 class="mb-0">{{$artikel->penulis_artikel}}</h3>
+                                <p class="text-muted">{{$artikel->profesi_penulis_artikel}}</p>
                             </div>
 
                             <div class="col-6">
-                                <p>Laki-laki; asal Kota Jakarta Barat, DKI Jakarta; bergabung sejak 04 Juni 2023;
-                                    sebanyak 120 artikel telah
-                                    ditulis.</p>
+                                <p>{{$artikel->deskripsi_singkat_penulis_artikel}}</p>
                             </div>
                             <div class="mb-4"></div>
                         </div>
@@ -211,7 +212,7 @@
                                     @foreach ($chunk as $article)
                                     <div class="card border-0" style="width: 18rem;">
                                         <div class="gambar-card-artikel-terkait">
-                                            <img src="{{asset($article->gambar_artikel)}}"
+                                            <img src="{{asset('storage/' .$article->gambar_artikel)}}"
                                                 class="card-img-top rounded-5 gambar-only-card-artikel-terkait"
                                                 alt="..."
                                                 style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover;">
