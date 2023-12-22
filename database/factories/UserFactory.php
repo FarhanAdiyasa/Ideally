@@ -2,8 +2,9 @@
 
 namespace Database\Factories;
 
-use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\User>
@@ -19,15 +20,21 @@ class UserFactory extends Factory
     {
         return [
             'email' => $this->faker->unique()->safeEmail,
-            'password' => bcrypt('password'), // example password
+            'password' => Hash::make('password'), // Default password is 'password'
+            'google_id' => $this->faker->unique()->uuid,
             'firstname' => $this->faker->firstName,
             'lastname' => $this->faker->lastName,
             'address' => $this->faker->address,
             'telephone_number' => $this->faker->phoneNumber,
             'birthdate' => $this->faker->date,
             'gender' => $this->faker->randomElement(['Male', 'Female']),
-            'profesi' => $this->faker->word,
-            'profile_picture' => $this->faker->imageUrl(),
+            'profesi' => $this->faker->optional()->jobTitle,
+            'profile_picture' => $this->faker->optional()->imageUrl(),
+            'provinsi' => $this->faker->state,
+            'kabupaten' => $this->faker->city,
+            'kecamatan' => $this->faker->word,
+            'kelurahan' => $this->faker->word,
+            'email_verified_at' => now(),
             'remember_token' => Str::random(10),
             'created_at' => now(),
             'updated_at' => now(),

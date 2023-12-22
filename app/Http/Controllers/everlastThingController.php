@@ -68,12 +68,9 @@ class everlastThingController extends Controller
         $everlas_things = everlas_things::paginate(24); // Meminta paginasi langsung dari model
         return view('brand_everlas_things.preview_product', ['everlast' => $everlas_things]);
     }
-
     public function showcase() {
 
         $everlas_things = everlas_things::paginate(25); // Meminta paginasi langsung dari model
         return view('brand_everlas_things.showcase', ['everlast' => $everlas_things]);
     }
-
-
 }

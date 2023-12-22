@@ -21,6 +21,10 @@
     </head>
 
     <body >
+
+    {{-- Navbar Section --}}
+    @include('partials.navbar')
+    {{-- End of Navbar Section --}}
         <header id="hero-navbar">
             <div style="width: 1920px; height: 300px; position: relative">
                 <div style="width: 1920px; height: 300px; left: 0px; top: 0px; position: absolute">
@@ -86,4 +90,5 @@
         </section>
 
    </body>
+   <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/js/bootstrap.bundle.min.js"></script>
 </html>

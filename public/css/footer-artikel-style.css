@@ -1,0 +1,92 @@
+footer p {
+    margin-bottom: 50px;
+    /* Menambah jarak antara tulisan copyright dan tombol */
+}
+
+.image-footer-container {
+    position: relative;
+    width: 100%;
+}
+
+.btn-overlay-footer {
+    position: absolute;
+    margin-top: 1%;
+    top: 35%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 10;
+    /* Atur nilai z-index */
+}
+
+.text-overlay-footer {
+    position: absolute;
+    margin-top: 1%;
+    top: 55%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: white;
+    z-index: 5;
+    /* Atur nilai z-index yang lebih rendah dari .btn-overlay-footer */
+}
+
+.text-overlay-footer p {
+    font-family: Quicksand;
+    font-weight: 700;
+    margin: 0;
+    display: inline-block;
+    /* Menjadikan elemen inline-block */
+}
+
+.text-overlay-footer .Semuabisatahu {
+    font-size: 75px;
+    margin-bottom: -25%;
+}
+
+.text-overlay-footer .Hashtag {
+    font-size: 150px;
+    color: rgba(255, 255, 255, 0.5);
+    margin-right: -50px;
+    transform: translateY(12%);
+    /* OVERPOWERED BRO! */
+}
+
+.btn-overlay-footer button:hover {
+    background-color: #fff;
+    color: #06c195;
+    font-weight: 700;
+    white-space: nowrap;
+}
+.btn-overlay-footer .btn-on {
+    font-weight: 700;
+    color: #06c195;
+}
+
+/* CSS untuk tombol default */
+.btn-overlay-footer button {
+    color: #555555;
+    background-color: #fff;
+    font-weight: normal;
+    padding-left: 20px;
+    padding-right: 20px;
+    white-space: nowrap;
+    transition: font-weight 0.3s ease;
+    /* Animasi perubahan font-weight */
+}
+
+.more-information {
+    margin-right: 5px;
+    background-color: #06c195;
+    color: white;
+}
+
+.information-text {
+    font-size: 18px;
+    font-family: Arial;
+    font-weight: 700;
+    margin: 0;
+    /* menghilangkan margin bawaan */
+    display: inline;
+    /* agar tampil dalam satu baris dengan ikon */
+    padding-left: 10px;
+}

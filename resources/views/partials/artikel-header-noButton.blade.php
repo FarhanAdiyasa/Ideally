@@ -1,5 +1,5 @@
 <div class="container-fluid header-container">
-    <img src="../img/Background-Headline.png" style="width: 100%; ">
+    <img src="{{asset('/img/Background-Headline.png')}}" style="width: 100%; ">
 
     <!-- Tambahkan teks di atas gambar -->
     <div class="text-overlay">

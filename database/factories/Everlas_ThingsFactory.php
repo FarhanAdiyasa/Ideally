@@ -1,7 +1,6 @@
 <?php
 
 namespace Database\Factories;
-
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Faker\Factory as Faker;
@@ -18,42 +17,39 @@ class Everlas_ThingsFactory extends Factory
      */
     public function definition(): array
     {
-        $faker = Faker::create();
-        return [
-            //
-
-            'seri' => $faker->word,
-            'nama_produk' => $faker->words(2, true),
-            'slug' => $faker->slug,
-            'satuan' => $faker->word,
-            'jenis' => $faker->word,
-            'garansi' => $faker->word,
-            'warna' => $faker->colorName,
-            'dimensi' => $faker->word,
-            'material_pendukung' => $faker->word,
-            'finishing' => $faker->word,
-            'gambar_1' => $faker->imageUrl(),
-            'gambar_2' => $faker->imageUrl(),
-            'gambar_3' => $faker->imageUrl(),
-            'gambar_4' => $faker->imageUrl(),
-            'gambar_5' => $faker->imageUrl(),
-            'gambar_6' => $faker->imageUrl(),
-            'deskripsi_singkat' => $faker->text,
-            'stok' => $faker->numberBetween(0, 100),
-            'item_terjual' => $faker->numberBetween(0, 100),
-            'hpp' => $faker->randomFloat(2, 10, 100),
-            'harga_b2I_11+_unit' => 1700000,
-            'harga_b2I_1+_unit' => 1700000,
-            'harga_b2B_11+_unit' => 1700000,
-            'harga_b2B_1+_unit' => 1700000,
-            'harga_b2C_11+_unit' => 1700000,
-            'harga_b2C_1+_unit' => 1700000,
-            'tanggal_publikasi' => $faker->dateTimeThisMonth,
+      return [
+            'seri' => $this->faker->word,
+            'nama_produk' => $this->faker->words(2, true),
+            'slug' => $this->faker->slug,
+            'satuan' => $this->faker->word,
+            'jenis_1' => $this->faker->word,
+            'jenis_2' => $this->faker->word,
+            'garansi' => $this->faker->word,
+            'warna' => $this->faker->colorName,
+            'dimensi' => $this->faker->word,
+            'material_pendukung' => $this->faker->word,
+            'finishing' => $this->faker->word,
+            'gambar_1' => 'photos/contoh.png',
+            'gambar_2' => 'photos/contoh.png',
+            'gambar_3' => 'photos/contoh.png',
+            'gambar_4' => 'photos/contoh.png',
+            'gambar_5' => 'photos/contoh.png',
+            'gambar_6' => 'photos/contoh.png',
+            'video' => $this->faker->url,
+            'armada_minimum' => $this->faker->word,
+            'deskripsi_singkat' => $this->faker->text,
+            'stok' => $this->faker->numberBetween(0, 100),
+            'item_terjual' => $this->faker->numberBetween(0, 100),
+            'harga_jual_projek_ideally' => $this->faker->randomFloat(2, 10, 100),
+            'harga_b2I_11_unit' => $this->faker->randomFloat(2, 10, 100),
+            'harga_b2I_1_unit' => $this->faker->randomFloat(2, 10, 100),
+            'harga_b2B_11_unit' => $this->faker->randomFloat(2, 10, 100),
+            'harga_b2B_1_unit' => $this->faker->randomFloat(2, 10, 100),
+            'harga_b2C_11_unit' => $this->faker->randomFloat(2, 10, 100),
+            'harga_b2C_1_unit' => $this->faker->randomFloat(2, 10, 100),
+            'tanggal_publikasi' => $this->faker->dateTimeThisMonth,
             'created_at' => now(),
-            'updated_at' => now(),
-            'created_by' => User::factory()->create()->user_id,
-            'updated_by' => User::factory()->create()->user_id,
-            'deleted_by' => User::factory()->create()->user_id,
+            'created_by' => $this->faker->numberBetween(1, 5)
         ];
     }
 }
