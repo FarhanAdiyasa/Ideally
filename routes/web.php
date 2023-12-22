@@ -7,6 +7,8 @@ use App\Http\Controllers\BatunesiaController;
 use App\Http\Controllers\DetailController;
 use App\Http\Controllers\everlastThingController;
 
+use App\Http\Controllers\TransaksiController;
+
 use App\Models\Artikel;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -208,19 +210,23 @@ Route::get('/everlasthings/showcase', [everlastThingController::class, 'showcase
 
 
 //batunesia
-Route::get('/batunesia/index', [App\Http\Controllers\BatunesiaController::class, 'index'])->name('batunesia.index');
-Route::get('/batunesia/index/showByWhite', [App\Http\Controllers\BatunesiaController::class, 'filterByWhite'])->name('batunesia.filterByWhite');
-Route::get('/batunesia/index/showByBlack', [App\Http\Controllers\BatunesiaController::class, 'filterByBlack'])->name('batunesia.filterByBlack');
-Route::get('/batunesia/index/showByCream', [App\Http\Controllers\BatunesiaController::class, 'filterByCream'])->name('batunesia.filterByCream');
-Route::get('/batunesia/index/showByGrey', [App\Http\Controllers\BatunesiaController::class, 'filterByGrey'])->name('batunesia.filterByGrey');
-Route::get('/batunesia/index/showByBrown', [App\Http\Controllers\BatunesiaController::class, 'filterByBrown'])->name('batunesia.filterByBrown');
-Route::get('/batunesia/index/showByPancawarna', [App\Http\Controllers\BatunesiaController::class, 'filterByPancawarna'])->name('batunesia.filterByPancawarna');
-Route::get('/batunesia/index/showByBatuHampar', [App\Http\Controllers\BatunesiaController::class, 'filterByBatuHampar'])->name('batunesia.filterByBatuHampar');
-Route::get('/batunesia/index/showByBatuTempel', [App\Http\Controllers\BatunesiaController::class, 'filterByBatuTempel'])->name('batunesia.filterByBatuTempel');
-Route::get('/batunesia/index/showByBatuHias', [App\Http\Controllers\BatunesiaController::class, 'filterByBatuHias'])->name('batunesia.filterByBatuHias');
-Route::get('/batunesia/index/showByOrnamenBatu', [App\Http\Controllers\BatunesiaController::class, 'filterByOrnamenBatu'])->name('batunesia.filterByOrnamenBatu');
-Route::get('/batunesia/index/showByPotBatu', [App\Http\Controllers\BatunesiaController::class, 'filterByPotBatu'])->name('batunesia.filterByPotBatu');
+Route::get('/batunesia/index', [BatunesiaController::class, 'index'])->name('batunesia.index');
+Route::get('/batunesia/index/showByWhite', [BatunesiaController::class, 'filterByWhite'])->name('batunesia.filterByWhite');
+Route::get('/batunesia/index/showByBlack', [BatunesiaController::class, 'filterByBlack'])->name('batunesia.filterByBlack');
+Route::get('/batunesia/index/showByCream', [BatunesiaController::class, 'filterByCream'])->name('batunesia.filterByCream');
+Route::get('/batunesia/index/showByGrey', [BatunesiaController::class, 'filterByGrey'])->name('batunesia.filterByGrey');
+Route::get('/batunesia/index/showByBrown', [BatunesiaController::class, 'filterByBrown'])->name('batunesia.filterByBrown');
+Route::get('/batunesia/index/showByPancawarna', [BatunesiaController::class, 'filterByPancawarna'])->name('batunesia.filterByPancawarna');
+Route::get('/batunesia/index/showByBatuHampar', [BatunesiaController::class, 'filterByBatuHampar'])->name('batunesia.filterByBatuHampar');
+Route::get('/batunesia/index/showByBatuTempel', [BatunesiaController::class, 'filterByBatuTempel'])->name('batunesia.filterByBatuTempel');
+Route::get('/batunesia/index/showByBatuHias', [BatunesiaController::class, 'filterByBatuHias'])->name('batunesia.filterByBatuHias');
+Route::get('/batunesia/index/showByOrnamenBatu', [BatunesiaController::class, 'filterByOrnamenBatu'])->name('batunesia.filterByOrnamenBatu');
+Route::get('/batunesia/index/showByPotBatu', [BatunesiaController::class, 'filterByPotBatu'])->name('batunesia.filterByPotBatu');
+
+//transaksi
+Route::get('/keranjang', [TransaksiController::class, 'index'])->name('transaksi.index');
+Route::get('/tambahKeKeranjang/{id_batu}', [TransaksiController::class, 'tambahKeKeranjang'])->name('tambahKeKeranjang');
+Route::delete('/hapus-dari-keranjang/{id_batu}', [TransaksiController::class, 'remove'])->name('hapusDariKeranjang');
 //route verifikasi
 Route::get('/email/verify/need-verification', [verificationController::class, 'notice'])->middleware('auth')->name('verification.notice');
 Route::get('/email/verify/{id}/{hash}', [verificationController::class, 'verify'])->middleware('auth','signed')->name('verification.verify');
-
