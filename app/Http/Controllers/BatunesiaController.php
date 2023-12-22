@@ -22,47 +22,46 @@ class BatunesiaController extends Controller
         return view('showcase', ['product' => $product]);
     }
 
-    public function filterByWhite()
-    {
-        $batunesias = Batunesia::where('warna', 'white')->paginate(28);
-        $batunesias = Batunesia::paginate(24); // Meminta paginasi langsung dari model
-        return view('brand-batunesia.showcase_batunesia_store', ['batunesias' => $batunesias]);
-    }
+    // public function filterByWhite()
+    // {
+    //     $batunesias = Batunesia::where('warna', 'white')->paginate(28);
+    //     $batunesias = Batunesia::paginate(24); // Meminta paginasi langsung dari model
+    //     return view('brand-batunesia.showcase_batunesia_store', ['batunesias' => $batunesias]);
+    // }
 
     public function filterByWhite()
     {
-        $batunesias = Batunesia::where('warna', 'white')->paginate(24);
+        $batunesias = Batunesia::where('warna_1', 'white')->paginate(24);
         return view('brand-batunesia.showcase_batunesia_store', compact('batunesias'));
     }
 
     public function filterByCream()
     {
-$batunesias = Batunesia::where('warna', 'cream')->paginate(28);
+$batunesias = Batunesia::where('warna_1', 'cream')->paginate(28);
         return view('brand-batunesia.showcase_batunesia_store', compact('batunesias'));
     }
 
     public function filterByBlack()
     {
- $batunesias = Batunesia::where('warna', 'black')->paginate(28);
+ $batunesias = Batunesia::where('warna_1', 'black')->paginate(28);
         return view('brand-batunesia.showcase_batunesia_store', compact('batunesias'));
     }
 
     public function filterByGrey()
     {
- $batunesias = Batunesia::where('warna', 'grey')->paginate(28);
+ $batunesias = Batunesia::where('warna_1', 'grey')->paginate(28);
         return view('brand-batunesia.showcase_batunesia_store', compact('batunesias'));
     }
     
     public function filterByBrown()
     {
-
-$batunesias = Batunesia::where('warna', 'brown')->paginate(28)
+        $batunesias = Batunesia::where('warna_1', 'brown')->paginate(28);
         return view('brand-batunesia.showcase_batunesia_store', compact('batunesias'));
     }
 
     public function filterByPancawarna()
     {
-        $batunesias = Batunesia::where('warna', 'pancawarna')->paginate(28);
+        $batunesias = Batunesia::where('warna_1', 'pancawarna')->paginate(28);
         return view('brand-batunesia.showcase_batunesia_store', compact('batunesias'));
     }
 

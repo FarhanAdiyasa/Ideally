@@ -1,27 +1,21 @@
 <?php
 
 
-use App\Http\Controllers\ArtikelController;
-use App\Http\Controllers\BrandController;
-use App\Http\Controllers\BatunesiaController;
-use App\Http\Controllers\DetailController;
-use App\Http\Controllers\everlastThingController;
-
-use App\Http\Controllers\TransaksiController;
-use App\Http\Controllers\AgrigardController;
-use App\Http\Controllers\PromoController;
-use App\Http\Controllers\DefloController;
-use App\Http\Controllers\KonkuritoController;
-use App\Http\Controllers\ShineageController;
 use App\Models\Artikel;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\BrandController;
+use App\Http\Controllers\DefloController;
 use App\Http\Controllers\PromoController;
+use App\Http\Controllers\DetailController;
 use App\Http\Controllers\ArtikelController;
 use App\Http\Controllers\AgrigardController;
 
+use App\Http\Controllers\ShineageController;
 use App\Http\Controllers\BatunesiaController;
+use App\Http\Controllers\KonkuritoController;
+use App\Http\Controllers\TransaksiController;
 use App\Http\Controllers\AdminArtikelController;
 use App\Http\Controllers\verificationController;
 use App\Http\Controllers\AdminAgrigardController;
@@ -52,9 +46,10 @@ Route::get('/portal-edukasi/baca/{slug}', [ArtikelController::class, 'baca'])->n
 Route::post('/portal-edukasi/rating/{slug}', [ArtikelController::class, 'rating'])->name('rating-artikel');
 Route::post('/portal-edukasi/komentar/{slug}', [ArtikelController::class, 'komentar'])->name('komentar-artikel');
 
-Route::get('/brand', [BrandController::class, 'index'])->name('Brand-Batunesia');
-Route::get('/detail', [DetailController::class, 'index'])->name('Detail-Batunesia');
-Route::get('/detail-batunesia/{id_batu}', [DetailController::class, 'showDetail'])->name('Detail-Batunesia');
+// Route::get('/brand', [BrandController::class, 'index'])->name('Brand-Batunesia');
+// //eror
+// Route::get('/detail', [DetailController::class, 'index'])->name('Detail-Batunesia');
+// Route::get('/detail-batunesia/{id_batu}', [DetailController::class, 'showDetail'])->name('Detail-Batunesia');
 
 Auth::routes();
 Route::get('/home/show/{kategori}', [ArtikelController::class, 'show'])->name('home.show');

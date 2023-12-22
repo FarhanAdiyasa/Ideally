@@ -106,8 +106,8 @@
                                         <span class="p-1"><i class="fa-solid fa-circle-chevron-up"></i></span>
                                     </td>
                                     <td class="unit">{{ $item['produk']->satuan }}</td>
-                                    <td class="harga">{{ $item['produk']->getAttributes()['harga_b2I_31+_unit'] }}</td>
-                                    <td class="total">{{ $item['quantity'] * $item['produk']->getAttributes()['harga_b2I_31+_unit'] }}</td>
+                                    <td class="harga">{{ $item['produk']->harga_b2C_1_unit }}</td>
+                                    <td class="total">{{ $item['quantity'] * $item['produk']->harga_b2C_1_unit }}</td>
                                     <td class="d-flex align-items-center justify-content-center">
                                         {{-- <form action="{{ route('hapusDariKeranjang', ['id_batu' => $key]) }}" method="POST">
                                             @csrf
