@@ -40,6 +40,8 @@
 <!-- DataTables CSS -->
 <link href="https://cdn.datatables.net/1.11.5/css/dataTables.bootstrap5.min.css" rel="stylesheet">
 
+@yield('head-src')
+
 
     <!-- CDN Bootstrap CSS -->
 
@@ -101,7 +103,7 @@
             <a href="#" class="dropdown-item">
               <!-- Message Start -->
               <div class="media">
-                <img src="dist/img/user1-128x128.jpg" alt="User Avatar" class="img-size-50 mr-3 img-circle">
+                <img src="/lte/dist/img/user1-128x128.jpg" alt="User Avatar" class="img-size-50 mr-3 img-circle">
                 <div class="media-body">
                   <h3 class="dropdown-item-title">
                     Brad Diesel
@@ -117,7 +119,7 @@
             <a href="#" class="dropdown-item">
               <!-- Message Start -->
               <div class="media">
-                <img src="dist/img/user8-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
+                <img src="/lte/dist/img/user8-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
                 <div class="media-body">
                   <h3 class="dropdown-item-title">
                     John Pierce
@@ -133,7 +135,7 @@
             <a href="#" class="dropdown-item">
               <!-- Message Start -->
               <div class="media">
-                <img src="dist/img/user3-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
+                <img src="/lte/dist/img/user3-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
                 <div class="media-body">
                   <h3 class="dropdown-item-title">
                     Nora Silvester
@@ -248,13 +250,13 @@
               </a>
               <ul class="nav nav-treeview">
                 <li class="nav-item">
-                  <a href="#" class="nav-link">
+                  <a href="{{ route('dedikasiFloras.tambah') }}" class="nav-link">
                     <i class="far nav-icon"></i>
                     <p>Tambah Produk</p>
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a href="#" class="nav-link">
+                  <a href="{{ route('dedikasiFloras') }}" class="nav-link">
                     <i class="far nav-icon"></i>
                     <p>Daftar Produk</p>
                   </a>
@@ -271,13 +273,13 @@
               </a>
               <ul class="nav nav-treeview">
                 <li class="nav-item">
-                  <a href="pages/mailbox/mailbox.html" class="nav-link">
+                  <a href="{{ route('batunesias.tambah') }}" class="nav-link">
                     <i class="far nav-icon"></i>
                     <p>Tambah Produk</p>
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a href="pages/mailbox/compose.html" class="nav-link">
+                  <a href="{{ route('batunesias') }}" class="nav-link">
                     <i class="far   nav-icon"></i>
                     <p>Daftar Produk</p>
                   </a>
@@ -294,13 +296,13 @@
               </a>
               <ul class="nav nav-treeview">
                 <li class="nav-item">
-                  <a href="pages/mailbox/mailbox.html" class="nav-link">
+                  <a href="{{ route('konkuritos.tambah') }}" class="nav-link">
                     <i class="far nav-icon"></i>
                     <p>Tambah Produk</p>
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a href="pages/mailbox/compose.html" class="nav-link">
+                  <a href="{{ route('konkuritos') }}" class="nav-link">
                     <i class="far   nav-icon"></i>
                     <p>Daftar Produk</p>
                   </a>
@@ -317,13 +319,13 @@
               </a>
               <ul class="nav nav-treeview">
                 <li class="nav-item">
-                  <a href="pages/mailbox/mailbox.html" class="nav-link">
+                  <a href="{{ route('everlasThings.tambah') }}" class="nav-link">
                     <i class="far nav-icon"></i>
                     <p>Tambah Produk</p>
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a href="pages/mailbox/compose.html" class="nav-link">
+                  <a href="{{ route('everlasThings') }}" class="nav-link">
                     <i class="far   nav-icon"></i>
                     <p>Daftar Produk</p>
                   </a>
@@ -340,13 +342,13 @@
               </a>
               <ul class="nav nav-treeview">
                 <li class="nav-item">
-                  <a href="pages/mailbox/mailbox.html" class="nav-link">
+                  <a href="{{ route('daftar-produk.tambah') }}" class="nav-link">
                     <i class="far nav-icon"></i>
                     <p>Tambah Produk</p>
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a href="pages/mailbox/compose.html" class="nav-link">
+                  <a href="{{ route('daftar-produk') }}" class="nav-link">
                     <i class="far   nav-icon"></i>
                     <p>Daftar Produk</p>
                   </a>
@@ -363,13 +365,13 @@
               </a>
               <ul class="nav nav-treeview">
                 <li class="nav-item">
-                  <a href="pages/mailbox/mailbox.html" class="nav-link">
+                  <a href="{{ route('shineages.tambah') }}" class="nav-link">
                     <i class="far nav-icon"></i>
                     <p>Tambah Produk</p>
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a href="pages/mailbox/compose.html" class="nav-link">
+                  <a href="{{ route('shineages') }}" class="nav-link">
                     <i class="far   nav-icon"></i>
                     <p>Daftar Produk</p>
                   </a>
@@ -378,7 +380,7 @@
             </li>
             <li class="nav-header">Edukasi</li>
             <li class="nav-item">
-              <a href="#" class="nav-link active">
+              <a href="#" class="nav-link">
                 <i class="nav-icon fa fa-file-text-o"></i>
                 <p>
                   Artikel
@@ -387,15 +389,39 @@
               </a>
               <ul class="nav nav-treeview">
                 <li class="nav-item">
-                  <a href="#" class="nav-link">
+                  <a href="{{ route('artikels.create') }}" class="nav-link">
                     <i class="far nav-icon"></i>
                     <p>Tambah Artikel</p>
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a href="#" class="nav-link">
+                  <a href="{{ route('artikels') }}" class="nav-link">
                     <i class="far nav-icon"></i>
                     <p>Daftar Artikel</p>
+                  </a>
+                </li>
+              </ul>
+            </li>
+            <li class="nav-header">Promo</li>
+            <li class="nav-item">
+              <a href="#" class="nav-link">
+                <i class="nav-icon fa fa-file-text-o"></i>
+                <p>
+                  Promo
+                  <i class="fas fa-angle-left right"></i>
+                </p>
+              </a>
+              <ul class="nav nav-treeview">
+                <li class="nav-item">
+                  <a href="{{ route('daftar-promo.tambah') }}" class="nav-link">
+                    <i class="far nav-icon"></i>
+                    <p>Tambah Promo</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="{{ route('daftar-promo') }}" class="nav-link">
+                    <i class="far nav-icon"></i>
+                    <p>Daftar Promo</p>
                   </a>
                 </li>
               </ul>
@@ -430,7 +456,7 @@
 
 <!-- jQuery -->
 <script src="{{ asset('lte/plugins/jquery/jquery.min.js')}}"></script>
-<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+{{-- <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script> --}}
 <script src="{{ asset('js/jquery.mask.min.js')}}"></script>
 <!-- Bootstrap 4 -->
 <script src="{{ asset('lte/plugins/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
@@ -458,8 +484,8 @@
 <!-- AdminLTE for demo purposes -->
 <!-- <script src="{{ asset('lte/dist/js/demo.js')}}"></script> -->
 
-<!-- Additional JS -->
- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+{{-- <!-- Additional JS -->
+ <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script> --}}
 
 <!-- Page specific script -->
 <script>
@@ -531,6 +557,11 @@
 
     $('.my-colorpicker2').on('colorpickerChange', function(event) {
       $('.my-colorpicker2 .fa-square').css('color', event.color.toString());
+    })
+    $('.my-colorpicker3').colorpicker()
+
+    $('.my-colorpicker3').on('colorpickerChange', function(event) {
+      $('.my-colorpicker3 .fa-square').css('color', event.color.toString());
     })
 
     $("input[data-bootstrap-switch]").each(function(){

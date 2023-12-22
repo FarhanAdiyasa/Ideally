@@ -70,7 +70,7 @@
                       @foreach ($chunk as $article)
                           <div class="card border-0" style="width: 18rem;">
                             <div class="gambar-card-artikel-baru">
-                              <img src="{{$article->gambar_artikel}}"
+                              <img src="{{asset('storage/' .$article->gambar_artikel)}}"
                                 class="card-img-top rounded-5 gambar-only-card-artikel-baru" alt="..."
                                 style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover;">
                             </div>
@@ -174,7 +174,7 @@
                   @foreach ($chunk as $article)
                       <div class="card border-0" style="width: 18rem;">
                         <div class="gambar-card-artikel-baru">
-                          <img src="{{$article->gambar_artikel}}"
+                          <img src="{{asset('storage/' .$article->gambar_artikel)}}"
                             class="card-img-top rounded-5 gambar-only-card-artikel-baru" alt="..."
                             style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover;">
                         </div>

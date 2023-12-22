@@ -48,10 +48,11 @@
                                     <td>
                                         {{ $promo->tanggal_publikasi == null ? 'Tidak Aktif' : 'Aktif' }} 
                                         <div class="form-check form-switch">
-                                            <form method="post" id="statForm" action="{{ route('daftar-promo.status')}}">
+                                            <form method="post" id="statForm{{ $promo->id_promo }}" action="{{ route('daftar-promo.status')}}">
                                                 @csrf
-                                                <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked" name="status" onchange="store()" value="{{ $promo->tanggal_publikasi == null ? 'true' : 'false' }}" @if ($promo->tanggal_publikasi !== null) checked @endif>
-                                                <input type="hidden" name="id_promo" id="id_promo" value="{{ $promo->id_promo }}">
+                                                <input type="hidden" name="promo_id" id="promo_id{{ $promo->id_promo }}" value="{{ $promo->id_promo }}">
+                                                <input type="hidden" name="status" id="status{{ $promo->id_promo }}" value="{{ $promo->tanggal_publikasi == null ? 'true' : 'false' }}">
+                                                <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked{{ $promo->id_promo }}" onchange="store({{ $promo->id_promo }})" @if ($promo->tanggal_publikasi !== null) checked @endif>
                                             </form>
                                         </div>
                                     </td>                                      
@@ -133,10 +134,9 @@
     $(document).ready(function() {
         $('#promos-table').DataTable();
     });  
-        function store() {
-        var status = $("#flexSwitchCheckChecked").prop('checked') ? 'true' : 'false';
-        var id = $("#id_promo").val();
-        $("#statForm").submit();
+        function store(id) {
+     
+        $("#statForm" +id).submit();
 
         }
     // $(document).ready(function() {

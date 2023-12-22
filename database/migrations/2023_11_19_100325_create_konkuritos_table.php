@@ -16,28 +16,32 @@ return new class extends Migration
             $table->string('nama_produk');
             $table->string('slug');
             $table->string('jenis');
-            $table->text('spesifikasi'); // Menggunakan tipe data 'text' untuk spesifikasi yang panjang
             $table->string('satuan');
+            $table->decimal('panjang', 10, 2);
+            $table->decimal('lebar', 10, 2);
+            $table->decimal('diameter', 10, 2);
+            $table->decimal('tinggi', 10, 2);
+            $table->decimal('tebal', 10, 2);
             $table->string('garansi');
             $table->string('warna_1');
             $table->string('warna_2')->nullable();
-            $table->string('dimensi');
             $table->string('gambar_1');
             $table->string('gambar_2')->nullable();
             $table->string('gambar_3')->nullable();
             $table->string('gambar_4')->nullable();
             $table->string('gambar_5')->nullable();
             $table->string('video')->nullable();
-            $table->integer('stok')->default(0); // Menggunakan tipe data 'integer' untuk stok
+            $table->string('armada_minimum');
+            $table->integer('stok')->default(0);
             $table->integer('item_terjual')->default(0);
             $table->text('deskripsi_singkat');
-            $table->decimal('harga_b2I_11', 10, 2);
-            $table->decimal('harga_b2I_1', 10, 2);
-            $table->decimal('harga_b2B_11', 10, 2);
-            $table->decimal('harga_b2B_1', 10, 2);
-            $table->decimal('harga_b2C_1', 10, 2);
-            $table->decimal('harga_b2C_11', 10, 2);
-            $table->decimal('harga_b2C_31', 10, 2);
+            $table->decimal('harga_jual_projek_ideally', 10, 2);
+            $table->decimal('harga_b2I_11_unit', 10, 2);
+            $table->decimal('harga_b2I_1_unit', 10, 2);
+            $table->decimal('harga_b2B_11_unit', 10, 2);
+            $table->decimal('harga_b2B_1_unit', 10, 2);
+            $table->decimal('harga_b2C_11_unit', 10, 2);
+            $table->decimal('harga_b2C_1_unit', 10, 2);
             $table->timestamp('tanggal_publikasi')->nullable();
 
             $table->timestamps();
