@@ -36,4 +36,32 @@ class Agrigard extends Model
         return $this->belongsToMany(Promo::class, 'agrigards_promos', 'id_agrigard', 'id_promo');
     }
 
+    protected $fillable = [
+        'kategori',
+        'nama_produk',
+        'slug',
+        'spesifikasi',
+        'satuan',
+        'gambar_1',
+        'gambar_2',
+        'gambar_3',
+        'gambar_4',
+        'video',
+        'deskripsi_singkat',
+        'stok',
+        'item_terjual',
+        'harga_b2I_31_unit',
+        'harga_b2I_11_unit',
+        'harga_b2I_1_unit',
+        'harga_b2B_31_unit',
+        'harga_b2B_11_unit',
+        'harga_b2B_1_unit',
+        'harga_b2C_31_unit',
+        'harga_b2C_11_unit',
+        'harga_b2C_1_unit',
+        'tanggal_publikasi',
+        'created_by',
+        'updated_by',
+        'deleted_by',
+    ];
 }

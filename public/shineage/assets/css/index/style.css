@@ -1,0 +1,265 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@800&family=Poppins:wght@400;700&display=swap');
+@font-face {
+    font-family: 'Moon Get';
+    src: url('../../fonts/moon_get-Heavy.ttf') format('truetype'); 
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+}
+
+.moon-get {
+    font-family: 'Moon Get', sans-serif;
+}
+
+.noto-sans {
+    font-family: 'Noto Sans', sans-serif;
+}
+
+.container {
+    padding: 0 9rem;
+}
+
+.bg-yellow {
+    background-color: #FFAB00;
+}
+
+.bg-red {
+    background-color: #FE560D;
+}
+
+.bg-tosca {
+    background-color: #00B09A;
+}
+
+.yellow {
+    color: #FFAB00;
+}
+
+.red {
+    color: #FE560D;
+}
+
+.tosca {
+    color: #00B09A;
+}
+
+/* Logo */
+.logo-container {
+    margin-bottom: 1rem;
+}
+
+.logo-container .noto-sans {
+    font-size: 10px;
+    margin-top: 1.5rem;
+}
+
+#logo .img-logo img {
+    width: 60%;
+}
+
+#logo .col-sm-4 {
+    padding: 0 2rem;
+    padding-top: 4rem;
+}
+
+/* Aside Content */
+/* Carousel */
+
+#carousel-image .carousel-indicators button {
+    width: 8px; /* Ukuran sisi untuk bentuk persegi */
+    height: 8px; /* Ukuran sisi untuk bentuk persegi */
+    border-radius: 0;
+    border: none;
+    background-color: rgb(255, 255, 255); /* Warna latar belakang untuk indicator */
+    margin: 0 1px; /* Jarak antar indicator */
+    margin-bottom: -8px;
+}
+
+#carousel-image .carousel-indicators button.active {
+    width: 24px; /* Ukuran panjang untuk bentuk persegi panjang */
+    height: 8px; /* Ukuran sisi untuk bentuk persegi panjang */
+}
+
+.section-title p {
+    font-size: 14px;
+    margin-bottom: 8px;
+}
+
+.border-red {
+    border-left: 4px solid #FE560D;
+}
+
+.border-tosca {
+    border-left: 4px solid #00B09A;
+}
+
+.border-yellow {
+    border-left: 4px solid #FFAB00;
+}
+
+.line {
+    opacity: 1;
+    margin: 0;
+    margin-bottom: 1rem;
+}
+
+.red-line {
+    border: 1.5px solid #FE560D;
+}
+
+.tosca-line {
+    border: 1.5px solid #00B09A;
+}
+
+.yellow-line {
+    border: 1.5px solid #FFAB00;
+}
+
+.deskripsi {
+    font-size: 10px;
+    margin-bottom: 6px;
+    color: #4e4e4e;
+    line-height: 14px;
+}
+
+.deskripsi-bawah {
+    font-size: 12px;
+}
+
+/* Header Product */
+/* Search */
+.search-bar .search-input {
+    border: none;
+    border-radius: 0;
+    font-size: 10px;
+    padding: 4px;
+    text-align: center;
+}
+
+.search-bar .btn {
+    width: 100%;
+    border: none;
+    border-radius: 0;
+    font-size: 10px;
+    padding: 4px;
+    color: #FE560D;
+    font-weight: 700;
+    transform: ease 0.3s;
+}
+
+.search-bar #searchBtn:hover {
+    color: #4e4e4e;
+}
+
+.search-bar #sortBtn {
+    font-weight: 400;
+}
+
+.search-bar #sortBtn:hover {
+    font-weight: 700;
+}
+
+/* Keunggulan */
+.keunggulan .text-white p {
+    font-size: 10px;
+    text-align: justify;
+    margin: 4px 0;
+    font-weight: 700;
+}
+
+.keunggulan .btn-showcase {
+    background-color: #FFFFFF;
+    color: #00B09A;
+    border: none;
+    border-radius: 0;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 6px;
+    width: 100%;
+    transition: 0.3s ease;
+}
+
+.keunggulan .btn-showcase:hover {
+    background-color: #dcdcdc;
+}
+
+/* Kategori */
+.kategori p {
+    margin-bottom: 0;
+}
+
+.kategori .item-link {
+    text-decoration: none; /* Menghapus garis bawah */
+    color: white; /* Mengatur warna teks menjadi putih */
+    font-size: 10px;
+    font-weight: 700;
+    padding-left: 10px; 
+}
+
+.kategori .item-link:hover {
+    color: #af7500; /* Mengatur warna teks menjadi putih */
+}
+
+.kategori .kategori-list {
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+/* Product */
+
+.card-product .img-container {
+    width: 100%;
+    height: 160px;
+    overflow: hidden;
+}
+
+.card-product .img-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+.card-product .card-body {
+    padding: 5px 10px;
+}
+
+.card-product .card-body p {
+    margin: 0;
+    font-size: 10px;
+}
+
+.card-product .card-body .nama-produk p {
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+
+.content .h-100 {
+    overflow: hidden;
+}
+
+#cta .col-sm-5 {
+    padding: 2rem 1rem;
+    padding-right: 6rem;
+}
+
+#cta .col-sm-5 .title p {
+    font-size: 20px;
+    margin-bottom: 3rem;
+}
+
+#cta .deskripsi-cta p {
+    font-size: 12px;
+    text-align: justify;
+    font-weight: 700;
+    margin-bottom: 2rem;
+}
+
+#cta .action-btn .btn {
+    border-radius: 0;
+    font-weight: 700;
+    font-size: 16px;
+    color: #FE560D;
+    padding: 4px 1rem;
+}

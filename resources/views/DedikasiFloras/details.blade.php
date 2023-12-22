@@ -188,8 +188,8 @@
                                 class="bi bi-chevron-left"></i></a>
                         <div class="d-flex atribute text-white py-2">
                             <div class="rating"><i class="bi bi-star-fill"></i><span> 4,5</span></div>
-                            <div class="seen"><i class="bi bi-eye-fill"></i><span> 
-                                {{ $defloDetail->item_terjual }}</span></div>
+                            <div class="seen"><i class="bi bi-eye-fill"></i><span>
+                                    {{ $defloDetail->item_terjual }}</span></div>
                         </div>
                         <div class="title py-3">
                             <h1>{{ $defloDetail->nama_latin }}</h1>
@@ -259,30 +259,34 @@
                         </div>
                     </div>
                     <div id="harga-details" class="col-sm-4">
-                    <div class="controls text-end mt-5">
+                        <div class="controls text-end mt-5">
                             @php
-                                $prevProduct = \App\Models\Dedikasi_Flora::where('nama_latin', '<', $defloDetail->nama_latin)
+                                $prevProduct = \App\Models\Dedikasi_Flora::where('nama_latin', '<', $defloDetail->
+                                nama_latin)
+                                ->where('stok', '>', 0)
                                 ->orderBy('nama_latin', 'desc')
                                 ->first();
 
-                                $nextProduct = \App\Models\Dedikasi_Flora::where('nama_latin', '>', $defloDetail->nama_latin)
+                                $nextProduct = \App\Models\Dedikasi_Flora::where('nama_latin', '>',
+                                $defloDetail->nama_latin)
+                                ->where('stok', '>', 0)
                                 ->orderBy('nama_latin', 'asc')
                                 ->first();
                             @endphp
 
-                            @if($prevProduct)
+                                @if($prevProduct)
                                 <a href="{{ route('deflo.detail', ['id_nurseri' => $prevProduct->id_nurseri]) }}"
                                     class="btn py-0 text-white px-1">
                                     <span><i class="bi bi-chevron-left"></i></span>
                                 </a>
-                            @endif
+                                @endif
 
-                            @if($nextProduct)
+                                @if($nextProduct)
                                 <a href="{{ route('deflo.detail', ['id_nurseri' => $nextProduct->id_nurseri]) }}"
                                     class="btn py-0 text-white px-1">
                                     <span><i class="bi bi-chevron-right"></i></span>
                                 </a>
-                            @endif
+                                @endif
                         </div>
                         <p class="fw-bold m-0 my-1 text-abu">Daftar Harga</p>
                         <div class="row">
@@ -359,8 +363,8 @@
                                         <span><i class="bi bi-chevron-up"></i></span>
                                     </button>
                                     <div class="my-2 px-2">
-                                        <input type="text" class="form-control form-control-lg w-100" id="quantity" value="1"
-                                            onchange="calculateTotal()">
+                                        <input type="text" class="form-control form-control-lg w-100" id="quantity"
+                                            value="1" onchange="calculateTotal()">
                                     </div>
                                     <button class="btn py-0 text-white px-3" onclick="decrease()">
                                         <span><i class="bi bi-chevron-down"></i></span>
@@ -429,7 +433,8 @@
                                         <a href="{{ route('deflo.detail', ['id_nurseri' => $defloterkait1->id_nurseri]) }}"
                                             class="card-link">
                                             <div class="card border-0">
-                                                <img src="{{ $defloterkait1->gambar_1 }}" class="card-img-top" alt="...">
+                                                <img src="{{ $defloterkait1->gambar_1 }}" class="card-img-top"
+                                                    alt="...">
                                                 <div class="card-body">
                                                     <p class="card-text">{{ $defloterkait1->nama_latin }} - Panjang {{
                                                         $defloterkait1->tinggi }} cm</p>
@@ -459,7 +464,8 @@
                                         <a href="{{ route('deflo.detail', ['id_nurseri' => $defloterkaits2->id_nurseri]) }}"
                                             class="card-link">
                                             <div class="card border-0">
-                                                <img src="{{ $defloterkaits2->gambar_1 }}" class="card-img-top" alt="...">
+                                                <img src="{{ $defloterkaits2->gambar_1 }}" class="card-img-top"
+                                                    alt="...">
                                                 <div class="card-body">
                                                     <p class="card-text">{{ $defloterkaits2->nama_latin }} - Panjang {{
                                                         $defloterkaits2->tinggi }} cm</p>
@@ -608,15 +614,15 @@
                                             <div class="card border-0">
                                                 <img src="{{ $deflodicaris->gambar_1 }}" class="card-img-top" alt="...">
                                                 <div class="card-body">
-                                                    <p class="card-text">{{ $deflodicaris->nama_latin }} - Panjang 
+                                                    <p class="card-text">{{ $deflodicaris->nama_latin }} - Panjang
                                                         {{ $deflodicaris->tinggi }} cm</p>
                                                     <p class="text-harga text-white">Harga Tersembunyi</p>
                                                     <hr>
                                                     <div class="d-flex card-atribute text-white">
                                                         <div class="rating"><i class="bi bi-star-fill"></i><span>
-                                                            {{ $deflodicaris->rating }}</span></div>
+                                                                {{ $deflodicaris->rating }}</span></div>
                                                         <div class="seen"><i class="bi bi-eye-fill"></i><span>
-                                                            {{ $deflodicaris->item_terjual }}</span></div>
+                                                                {{ $deflodicaris->item_terjual }}</span></div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -713,11 +719,11 @@
             let price = 0;
 
             if (quantity >= 1 && quantity <= 10) {
-                price = {{ $defloDetail->harga_b2C_1 }};
+                price = {{ $defloDetail->harga_b2C_1_unit }};
             } else if (quantity >= 11 && quantity <= 30) {
-                price = {{ $defloDetail->harga_b2C_11 }};
+                price = {{ $defloDetail->harga_b2C_11_unit }};
             } else if (quantity > 30) {
-                price = {{ $defloDetail->harga_b2C_31 }};
+                price = {{ $defloDetail->harga_b2C_31_unit }};
             }
 
             const totalPrice = price * quantity;

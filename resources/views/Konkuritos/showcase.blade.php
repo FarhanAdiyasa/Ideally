@@ -48,13 +48,27 @@
                                     <hr class="title-line">
                                 </div>
                                 <div class="kategori">
-                                    <a href=""><p>Paving</p></a>
-                                    <a href=""><p>U-Ditch</p></a>
-                                    <a href=""><p>Box Culvert</p></a>
-                                    <a href=""><p>Buis Beton</p></a>
-                                    <a href=""><p>Panel Pagar</p></a>
-                                    <a href=""><p>Tiang Pagar</p></a>
-                                    <a href=""><p>Sitecast</p></a>
+                                    <a href="">
+                                        <p>Paving</p>
+                                    </a>
+                                    <a href="">
+                                        <p>U-Ditch</p>
+                                    </a>
+                                    <a href="">
+                                        <p>Box Culvert</p>
+                                    </a>
+                                    <a href="">
+                                        <p>Buis Beton</p>
+                                    </a>
+                                    <a href="">
+                                        <p>Panel Pagar</p>
+                                    </a>
+                                    <a href="">
+                                        <p>Tiang Pagar</p>
+                                    </a>
+                                    <a href="">
+                                        <p>Sitecast</p>
+                                    </a>
                                 </div>
                             </div>
                         </div>
@@ -80,43 +94,43 @@
                     @endphp
 
                     @foreach($konkuritoshowcase as $index => $konkurito)
-                    @if($index < $halfItems)
-
+                    @if($index < $halfItems) 
                     <div class="card-product">
                         <a href="{{ route('konkurito.detail', ['id_konkurito' => $konkurito->id_konkurito]) }}"
-                            class="card-product">
-                        <div class="row g-0">
-                            <div class="col-sm-6 pe-2">
-                                <div class="img-container">
-                                    <img src="{{ $konkurito->gambar_1 }}" alt="{{ $konkurito->nama_produk }}">
-                                </div>
-                            </div>
-                            <div class="col-sm-6 ps-2">
-                                <div class="card-body">
-                                    <div class="title">
-                                        <p>{{ $konkurito->nama_produk }}</p>
+                            class="card-product-link">
+                            <div class="row g-0">
+                                <div class="col-sm-6 pe-2">
+                                    <div class="img-container">
+                                        <img src="{{ $konkurito->gambar_1 }}" alt="{{ $konkurito->nama_produk }}">
                                     </div>
-                                    <div class="deskripsi">
-                                        <p>{{ substr($konkurito->deskripsi_singkat, 0, 40) }} - {{
+                                </div>
+                                <div class="col-sm-6 ps-2">
+                                    <div class="card-body">
+                                        <div class="title">
+                                            <p>{{ $konkurito->nama_produk }}</p>
+                                        </div>
+                                        <div class="deskripsi">
+                                            <p>{{ substr($konkurito->deskripsi_singkat, 0, 40) }} - {{
                                                 $konkurito->dimensi }}</p>
-                                    </div>
-                                    <div class="harga">
-                                        <p>Rp {{ number_format($konkurito->harga_b2I_11, 0, ',', '.') }}</p>
+                                        </div>
+                                        <div class="harga">
+                                            <p>Rp {{ number_format($konkurito->harga_b2C_1, 0, ',', '.') }}</p>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </a>
                     </div>
                     @endif
                     @endforeach
                 </div>
 
-                <div class="col-sm-6">
-                    @foreach($konkuritoshowcase as $index => $konkurito)
-                    @if($index >= $halfItems)
-                    <div class="card-product">
-                        <a href="{{ route('konkurito.detail', ['id_konkurito' => $konkurito->id_konkurito]) }}"
-                            class="card-product">
+            <div class="col-sm-6">
+                @foreach($konkuritoshowcase as $index => $konkurito)
+                @if($index >= $halfItems)
+                <div class="card-product">
+                    <a href="{{ route('konkurito.detail', ['id_konkurito' => $konkurito->id_konkurito]) }}"
+                        class="card-product-link">
                         <div class="row g-0">
                             <div class="col-sm-6 pe-2">
                                 <div class="img-container">
@@ -130,19 +144,19 @@
                                     </div>
                                     <div class="deskripsi">
                                         <p>{{ substr($konkurito->deskripsi_singkat, 0, 40) }} - {{ $konkurito->dimensi
-                                            }}
-                                        </p>
+                                            }}</p>
                                     </div>
                                     <div class="harga">
-                                        <p>Rp {{ number_format($konkurito->harga_b2I_11, 0, ',', '.') }}</p>
+                                        <p>Rp {{ number_format($konkurito->harga_b2C_1, 0, ',', '.') }}</p>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    @endif
-                    @endforeach
+                    </a>
                 </div>
+                @endif
+                @endforeach
+            </div>
             </div>
         </section>
         <!-- End Showcase -->

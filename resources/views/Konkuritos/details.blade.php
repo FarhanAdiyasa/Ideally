@@ -49,7 +49,7 @@
             <div class="row">
                 <div class="col-sm-9 p-0 bg-secondary">
                     <div class="img-details">
-                        <img src="{{ asset ('konkurito/assets/img/ILUSTRASI3_2-1.png') }}" alt="">
+                        <img src="{{ $konkuritoDetail->gambar_1 }}" alt="">
                     </div>
                 </div>
                 <div class="col-sm-3 bg-light">
@@ -105,22 +105,22 @@
                     <div class="row">
                         <div class="col-6 other-img">
                             <div class="img-container">
-                                <img src="{{ asset ('konkurito/assets/img/ILUSTRASI3_2-1.png') }}" alt="">
+                                <img src="{{ $konkuritoDetail->gambar_1 }}" alt="">
                             </div>
                         </div>
                         <div class="col-6 other-img">
                             <div class="img-container">
-                                <img src="{{ asset ('konkurito/assets/img/ILUSTRASI1_1-1.png') }}" alt="">
+                                <img src="{{ $konkuritoDetail->gambar_2 }}" alt="">
                             </div>
                         </div>
                         <div class="col-6 other-img">
                             <div class="img-container">
-                                <img src="{{ asset ('konkurito/assets/img/ILUSTRASI2_1-1.png') }}" alt="">
+                                <img src="{{ $konkuritoDetail->gambar_3 }}" alt="">
                             </div>
                         </div>
                         <div class="col-6 other-img">
                             <div class="img-container">
-                                <img src="{{ asset ('konkurito/assets/img/ILUSTRASI5_1-1.png') }}" alt="">
+                                <img src="{{ $konkuritoDetail->gambar_1 }}" alt="">
                             </div>
                         </div>
                     </div>
@@ -209,511 +209,45 @@
                 </div>
                 <div class="col-sm-6 p-0">
                     <div class="bg-img">
-                        <img src="{{ asset ('konkurito/assets/img/ILUSTRASI4_3-1.png') }}" alt="" style="width: 630px; height: 210px;">
+                        <img src="{{ asset ('konkurito/assets/img/ILUSTRASI4_3-1.png') }}" alt=""
+                            style="width: 630px; height: 210px;">
                     </div>
                 </div>
             </div>
             <!-- Carousel Produk 1 -->
             <div id="carouselOne" class="carousel slide carousel-fade p-0 mt-2">
                 <div class="carousel-inner">
-                    <div class="carousel-item active">
-                        <div class="row">
-                            <div class="col-sm-6 p-0">
-                                <div class="card-product">
-                                    <div class="row g-0">
-                                        <div class="col-sm-6">
-                                            <div class="img-container">
-                                                <img src="{{ asset ('konkurito/assets/img/ILUSTRASI3_2-1.png') }}" alt="">
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-6 ps-4">
-                                            <div class="card-body">
-                                                <div class="title">
-                                                    <p>Box Culrvet</p>
-                                                </div>
-                                                <div class="deskripsi">
-                                                    <p>Deskripsi singkat dimensi</p>
-                                                </div>
-                                                <div class="harga">
-                                                    <p>Rp 470,000</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-6 p-0">
-                                <div class="card-product">
-                                    <div class="row g-0">
-                                        <div class="col-sm-6">
-                                            <div class="img-container">
-                                                <img src="{{ asset ('konkurito/assets/img/ILUSTRASI3_2-1.png') }}" alt="">
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-6 ps-4">
-                                            <div class="card-body">
-                                                <div class="title">
-                                                    <p>Box Culrvet</p>
-                                                </div>
-                                                <div class="deskripsi">
-                                                    <p>Deskripsi singkat dimensi</p>
-                                                </div>
-                                                <div class="harga">
-                                                    <p>Rp 470,000</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-6 p-0">
-                                <div class="card-product">
-                                    <div class="row g-0">
-                                        <div class="col-sm-6">
-                                            <div class="img-container">
-                                                <img src="{{ asset ('konkurito/assets/img/ILUSTRASI3_2-1.png') }}" alt="">
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-6 ps-4">
-                                            <div class="card-body">
-                                                <div class="title">
-                                                    <p>Box Culrvet</p>
-                                                </div>
-                                                <div class="deskripsi">
-                                                    <p>Deskripsi singkat dimensi</p>
-                                                </div>
-                                                <div class="harga">
-                                                    <p>Rp 470,000</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-6 p-0">
-                                <div class="card-product">
-                                    <div class="row g-0">
-                                        <div class="col-sm-6">
-                                            <div class="img-container">
-                                                <img src="{{ asset ('konkurito/assets/img/ILUSTRASI3_2-1.png') }}" alt="">
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-6 ps-4">
-                                            <div class="card-body">
-                                                <div class="title">
-                                                    <p>Box Culrvet</p>
-                                                </div>
-                                                <div class="deskripsi">
-                                                    <p>Deskripsi singkat dimensi</p>
-                                                </div>
-                                                <div class="harga">
-                                                    <p>Rp 470,000</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                     <div class="carousel-item">
                         <div class="row">
+                            @foreach($konkuritoterkait as $terkait)
                             <div class="col-sm-6 p-0">
                                 <div class="card-product">
+                                <a href="{{ route('konkurito.detail', ['id_konkurito' => $terkait->id_konkurito]) }}"
+                            class="card-product-link">
                                     <div class="row g-0">
-                                        <div class="col-sm-6">
+                                    <div class="col-sm-6">
                                             <div class="img-container">
-                                                <img src="{{ asset ('konkurito/assets/img/ILUSTRASI3_2-1.png') }}" alt="">
+                                                <img src="{{ $terkait->gambar_1 }}" alt="">
                                             </div>
                                         </div>
                                         <div class="col-sm-6 ps-4">
                                             <div class="card-body">
                                                 <div class="title">
-                                                    <p>Box Culrvet</p>
+                                                    <p>{{ $terkait->nama_produk }}</p>
                                                 </div>
                                                 <div class="deskripsi">
-                                                    <p>Deskripsi singkat dimensi</p>
+                                                    <p>{{ substr($terkait->deskripsi_singkat, 0, 20) }}</p>
                                                 </div>
                                                 <div class="harga">
-                                                    <p>Rp 470,000</p>
+                                                    <p>Rp {{ number_format($terkait->harga_b2C_1, 0, ',', '.') }}</p>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
+                                    </a>
                                 </div>
                             </div>
-                            <div class="col-sm-6 p-0">
-                                <div class="card-product">
-                                    <div class="row g-0">
-                                        <div class="col-sm-6">
-                                            <div class="img-container">
-                                                <img src="{{ asset ('konkurito/assets/img/ILUSTRASI3_2-1.png') }}" alt="">
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-6 ps-4">
-                                            <div class="card-body">
-                                                <div class="title">
-                                                    <p>Box Culrvet</p>
-                                                </div>
-                                                <div class="deskripsi">
-                                                    <p>Deskripsi singkat dimensi</p>
-                                                </div>
-                                                <div class="harga">
-                                                    <p>Rp 470,000</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-6 p-0">
-                                <div class="card-product">
-                                    <div class="row g-0">
-                                        <div class="col-sm-6">
-                                            <div class="img-container">
-                                                <img src="{{ asset ('konkurito/assets/img/ILUSTRASI3_2-1.png') }}" alt="">
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-6 ps-4">
-                                            <div class="card-body">
-                                                <div class="title">
-                                                    <p>Box Culrvet</p>
-                                                </div>
-                                                <div class="deskripsi">
-                                                    <p>Deskripsi singkat dimensi</p>
-                                                </div>
-                                                <div class="harga">
-                                                    <p>Rp 470,000</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-6 p-0">
-                                <div class="card-product">
-                                    <div class="row g-0">
-                                        <div class="col-sm-6">
-                                            <div class="img-container">
-                                                <img src="{{ asset ('konkurito/assets/img/ILUSTRASI3_2-1.png') }}" alt="">
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-6 ps-4">
-                                            <div class="card-body">
-                                                <div class="title">
-                                                    <p>Box Culrvet</p>
-                                                </div>
-                                                <div class="deskripsi">
-                                                    <p>Deskripsi singkat dimensi</p>
-                                                </div>
-                                                <div class="harga">
-                                                    <p>Rp 470,000</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="carousel-item">
-                        <div class="row">
-                            <div class="col-sm-6 p-0">
-                                <div class="card-product">
-                                    <div class="row g-0">
-                                        <div class="col-sm-6">
-                                            <div class="img-container">
-                                                <img src="{{ asset ('konkurito/assets/img/ILUSTRASI3_2-1.png') }}" alt="">
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-6 ps-4">
-                                            <div class="card-body">
-                                                <div class="title">
-                                                    <p>Box Culrvet</p>
-                                                </div>
-                                                <div class="deskripsi">
-                                                    <p>Deskripsi singkat dimensi</p>
-                                                </div>
-                                                <div class="harga">
-                                                    <p>Rp 470,000</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-6 p-0">
-                                <div class="card-product">
-                                    <div class="row g-0">
-                                        <div class="col-sm-6">
-                                            <div class="img-container">
-                                                <img src="{{ asset ('konkurito/assets/img/ILUSTRASI3_2-1.png') }}" alt="">
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-6 ps-4">
-                                            <div class="card-body">
-                                                <div class="title">
-                                                    <p>Box Culrvet</p>
-                                                </div>
-                                                <div class="deskripsi">
-                                                    <p>Deskripsi singkat dimensi</p>
-                                                </div>
-                                                <div class="harga">
-                                                    <p>Rp 470,000</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-6 p-0">
-                                <div class="card-product">
-                                    <div class="row g-0">
-                                        <div class="col-sm-6">
-                                            <div class="img-container">
-                                                <img src="{{ asset ('konkurito/assets/img/ILUSTRASI3_2-1.png') }}" alt="">
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-6 ps-4">
-                                            <div class="card-body">
-                                                <div class="title">
-                                                    <p>Box Culrvet</p>
-                                                </div>
-                                                <div class="deskripsi">
-                                                    <p>Deskripsi singkat dimensi</p>
-                                                </div>
-                                                <div class="harga">
-                                                    <p>Rp 470,000</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-6 p-0">
-                                <div class="card-product">
-                                    <div class="row g-0">
-                                        <div class="col-sm-6">
-                                            <div class="img-container">
-                                                <img src="{{ asset ('konkurito/assets/img/ILUSTRASI3_2-1.png') }}" alt="">
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-6 ps-4">
-                                            <div class="card-body">
-                                                <div class="title">
-                                                    <p>Box Culrvet</p>
-                                                </div>
-                                                <div class="deskripsi">
-                                                    <p>Deskripsi singkat dimensi</p>
-                                                </div>
-                                                <div class="harga">
-                                                    <p>Rp 470,000</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="carousel-item">
-                        <div class="row">
-                            <div class="col-sm-6 p-0">
-                                <div class="card-product">
-                                    <div class="row g-0">
-                                        <div class="col-sm-6">
-                                            <div class="img-container">
-                                                <img src="{{ asset ('konkurito/assets/img/ILUSTRASI3_2-1.png') }}" alt="">
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-6 ps-4">
-                                            <div class="card-body">
-                                                <div class="title">
-                                                    <p>Box Culrvet</p>
-                                                </div>
-                                                <div class="deskripsi">
-                                                    <p>Deskripsi singkat dimensi</p>
-                                                </div>
-                                                <div class="harga">
-                                                    <p>Rp 470,000</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-6 p-0">
-                                <div class="card-product">
-                                    <div class="row g-0">
-                                        <div class="col-sm-6">
-                                            <div class="img-container">
-                                                <img src="{{ asset ('konkurito/assets/img/ILUSTRASI3_2-1.png') }}" alt="">
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-6 ps-4">
-                                            <div class="card-body">
-                                                <div class="title">
-                                                    <p>Box Culrvet</p>
-                                                </div>
-                                                <div class="deskripsi">
-                                                    <p>Deskripsi singkat dimensi</p>
-                                                </div>
-                                                <div class="harga">
-                                                    <p>Rp 470,000</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-6 p-0">
-                                <div class="card-product">
-                                    <div class="row g-0">
-                                        <div class="col-sm-6">
-                                            <div class="img-container">
-                                                <img src="{{ asset ('konkurito/assets/img/ILUSTRASI3_2-1.png') }}" alt="">
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-6 ps-4">
-                                            <div class="card-body">
-                                                <div class="title">
-                                                    <p>Box Culrvet</p>
-                                                </div>
-                                                <div class="deskripsi">
-                                                    <p>Deskripsi singkat dimensi</p>
-                                                </div>
-                                                <div class="harga">
-                                                    <p>Rp 470,000</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-6 p-0">
-                                <div class="card-product">
-                                    <div class="row g-0">
-                                        <div class="col-sm-6">
-                                            <div class="img-container">
-                                                <img src="{{ asset ('konkurito/assets/img/ILUSTRASI3_2-1.png') }}" alt="">
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-6 ps-4">
-                                            <div class="card-body">
-                                                <div class="title">
-                                                    <p>Box Culrvet</p>
-                                                </div>
-                                                <div class="deskripsi">
-                                                    <p>Deskripsi singkat dimensi</p>
-                                                </div>
-                                                <div class="harga">
-                                                    <p>Rp 470,000</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="carousel-item">
-                        <div class="row">
-                            <div class="col-sm-6 p-0">
-                                <div class="card-product">
-                                    <div class="row g-0">
-                                        <div class="col-sm-6">
-                                            <div class="img-container">
-                                                <img src="{{ asset ('konkurito/assets/img/ILUSTRASI3_2-1.png') }}" alt="">
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-6 ps-4">
-                                            <div class="card-body">
-                                                <div class="title">
-                                                    <p>Box Culrvet</p>
-                                                </div>
-                                                <div class="deskripsi">
-                                                    <p>Deskripsi singkat dimensi</p>
-                                                </div>
-                                                <div class="harga">
-                                                    <p>Rp 470,000</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-6 p-0">
-                                <div class="card-product">
-                                    <div class="row g-0">
-                                        <div class="col-sm-6">
-                                            <div class="img-container">
-                                                <img src="{{ asset ('konkurito/assets/img/ILUSTRASI3_2-1.png') }}" alt="">
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-6 ps-4">
-                                            <div class="card-body">
-                                                <div class="title">
-                                                    <p>Box Culrvet</p>
-                                                </div>
-                                                <div class="deskripsi">
-                                                    <p>Deskripsi singkat dimensi</p>
-                                                </div>
-                                                <div class="harga">
-                                                    <p>Rp 470,000</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-6 p-0">
-                                <div class="card-product">
-                                    <div class="row g-0">
-                                        <div class="col-sm-6">
-                                            <div class="img-container">
-                                                <img src="{{ asset ('konkurito/assets/img/ILUSTRASI3_2-1.png') }}" alt="">
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-6 ps-4">
-                                            <div class="card-body">
-                                                <div class="title">
-                                                    <p>Box Culrvet</p>
-                                                </div>
-                                                <div class="deskripsi">
-                                                    <p>Deskripsi singkat dimensi</p>
-                                                </div>
-                                                <div class="harga">
-                                                    <p>Rp 470,000</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-6 p-0">
-                                <div class="card-product">
-                                    <div class="row g-0">
-                                        <div class="col-sm-6">
-                                            <div class="img-container">
-                                                <img src="{{ asset ('konkurito/assets/img/ILUSTRASI3_2-1.png') }}" alt="">
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-6 ps-4">
-                                            <div class="card-body">
-                                                <div class="title">
-                                                    <p>Box Culrvet</p>
-                                                </div>
-                                                <div class="deskripsi">
-                                                    <p>Deskripsi singkat dimensi</p>
-                                                </div>
-                                                <div class="harga">
-                                                    <p>Rp 470,000</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            @endforeach
                         </div>
                     </div>
                 </div>
@@ -737,7 +271,8 @@
             <!-- End Carousel 1 -->
             <div class="row">
                 <div class="col-sm-6 p-0 bg-secondary">
-                    <img src="{{ asset ('konkurito/assets/img/ILUSTRASI4_3-1.png') }}" alt="" style="width: 100%; min-height: 210px; object-fit: cover; object-position: center;">
+                    <img src="{{ asset ('konkurito/assets/img/ILUSTRASI4_3-1.png') }}" alt=""
+                        style="width: 100%; min-height: 210px; object-fit: cover; object-position: center;">
                 </div>
                 <div class="col-sm-3 bg-yellow"></div>
                 <div class="col-sm-3 bg-blue">
@@ -763,7 +298,8 @@
                                     <div class="row g-0">
                                         <div class="col-sm-6">
                                             <div class="img-container">
-                                                <img src="{{ asset ('konkurito/assets/img/ILUSTRASI3_2-1.png') }}" alt="">
+                                                <img src="{{ asset ('konkurito/assets/img/ILUSTRASI3_2-1.png') }}"
+                                                    alt="">
                                             </div>
                                         </div>
                                         <div class="col-sm-6 ps-4">
@@ -787,7 +323,8 @@
                                     <div class="row g-0">
                                         <div class="col-sm-6">
                                             <div class="img-container">
-                                                <img src="{{ asset ('konkurito/assets/img/ILUSTRASI3_2-1.png') }}" alt="">
+                                                <img src="{{ asset ('konkurito/assets/img/ILUSTRASI3_2-1.png') }}"
+                                                    alt="">
                                             </div>
                                         </div>
                                         <div class="col-sm-6 ps-4">
@@ -811,7 +348,8 @@
                                     <div class="row g-0">
                                         <div class="col-sm-6">
                                             <div class="img-container">
-                                                <img src="{{ asset ('konkurito/assets/img/ILUSTRASI3_2-1.png') }}" alt="">
+                                                <img src="{{ asset ('konkurito/assets/img/ILUSTRASI3_2-1.png') }}"
+                                                    alt="">
                                             </div>
                                         </div>
                                         <div class="col-sm-6 ps-4">
@@ -835,107 +373,8 @@
                                     <div class="row g-0">
                                         <div class="col-sm-6">
                                             <div class="img-container">
-                                                <img src="{{ asset ('konkurito/assets/img/ILUSTRASI3_2-1.png') }}" alt="">
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-6 ps-4">
-                                            <div class="card-body">
-                                                <div class="title">
-                                                    <p>Box Culrvet</p>
-                                                </div>
-                                                <div class="deskripsi">
-                                                    <p>Deskripsi singkat dimensi</p>
-                                                </div>
-                                                <div class="harga">
-                                                    <p>Rp 470,000</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="carousel-item">
-                        <div class="row">
-                            <div class="col-sm-6 p-0">
-                                <div class="card-product">
-                                    <div class="row g-0">
-                                        <div class="col-sm-6">
-                                            <div class="img-container">
-                                                <img src="{{ asset ('konkurito/assets/img/ILUSTRASI3_2-1.png') }}" alt="">
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-6 ps-4">
-                                            <div class="card-body">
-                                                <div class="title">
-                                                    <p>Box Culrvet</p>
-                                                </div>
-                                                <div class="deskripsi">
-                                                    <p>Deskripsi singkat dimensi</p>
-                                                </div>
-                                                <div class="harga">
-                                                    <p>Rp 470,000</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-6 p-0">
-                                <div class="card-product">
-                                    <div class="row g-0">
-                                        <div class="col-sm-6">
-                                            <div class="img-container">
-                                                <img src="{{ asset ('konkurito/assets/img/ILUSTRASI3_2-1.png') }}" alt="">
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-6 ps-4">
-                                            <div class="card-body">
-                                                <div class="title">
-                                                    <p>Box Culrvet</p>
-                                                </div>
-                                                <div class="deskripsi">
-                                                    <p>Deskripsi singkat dimensi</p>
-                                                </div>
-                                                <div class="harga">
-                                                    <p>Rp 470,000</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-6 p-0">
-                                <div class="card-product">
-                                    <div class="row g-0">
-                                        <div class="col-sm-6">
-                                            <div class="img-container">
-                                                <img src="{{ asset ('konkurito/assets/img/ILUSTRASI3_2-1.png') }}" alt="">
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-6 ps-4">
-                                            <div class="card-body">
-                                                <div class="title">
-                                                    <p>Box Culrvet</p>
-                                                </div>
-                                                <div class="deskripsi">
-                                                    <p>Deskripsi singkat dimensi</p>
-                                                </div>
-                                                <div class="harga">
-                                                    <p>Rp 470,000</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-6 p-0">
-                                <div class="card-product">
-                                    <div class="row g-0">
-                                        <div class="col-sm-6">
-                                            <div class="img-container">
-                                                <img src="{{ asset ('konkurito/assets/img/ILUSTRASI3_2-1.png') }}" alt="">
+                                                <img src="{{ asset ('konkurito/assets/img/ILUSTRASI3_2-1.png') }}"
+                                                    alt="">
                                             </div>
                                         </div>
                                         <div class="col-sm-6 ps-4">
@@ -963,7 +402,8 @@
                                     <div class="row g-0">
                                         <div class="col-sm-6">
                                             <div class="img-container">
-                                                <img src="{{ asset ('konkurito/assets/img/ILUSTRASI3_2-1.png') }}" alt="">
+                                                <img src="{{ asset ('konkurito/assets/img/ILUSTRASI3_2-1.png') }}"
+                                                    alt="">
                                             </div>
                                         </div>
                                         <div class="col-sm-6 ps-4">
@@ -987,7 +427,8 @@
                                     <div class="row g-0">
                                         <div class="col-sm-6">
                                             <div class="img-container">
-                                                <img src="{{ asset ('konkurito/assets/img/ILUSTRASI3_2-1.png') }}" alt="">
+                                                <img src="{{ asset ('konkurito/assets/img/ILUSTRASI3_2-1.png') }}"
+                                                    alt="">
                                             </div>
                                         </div>
                                         <div class="col-sm-6 ps-4">
@@ -1011,7 +452,8 @@
                                     <div class="row g-0">
                                         <div class="col-sm-6">
                                             <div class="img-container">
-                                                <img src="{{ asset ('konkurito/assets/img/ILUSTRASI3_2-1.png') }}" alt="">
+                                                <img src="{{ asset ('konkurito/assets/img/ILUSTRASI3_2-1.png') }}"
+                                                    alt="">
                                             </div>
                                         </div>
                                         <div class="col-sm-6 ps-4">
@@ -1035,107 +477,8 @@
                                     <div class="row g-0">
                                         <div class="col-sm-6">
                                             <div class="img-container">
-                                                <img src="{{ asset ('konkurito/assets/img/ILUSTRASI3_2-1.png') }}" alt="">
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-6 ps-4">
-                                            <div class="card-body">
-                                                <div class="title">
-                                                    <p>Box Culrvet</p>
-                                                </div>
-                                                <div class="deskripsi">
-                                                    <p>Deskripsi singkat dimensi</p>
-                                                </div>
-                                                <div class="harga">
-                                                    <p>Rp 470,000</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="carousel-item">
-                        <div class="row">
-                            <div class="col-sm-6 p-0">
-                                <div class="card-product">
-                                    <div class="row g-0">
-                                        <div class="col-sm-6">
-                                            <div class="img-container">
-                                                <img src="{{ asset ('konkurito/assets/img/ILUSTRASI3_2-1.png') }}" alt="">
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-6 ps-4">
-                                            <div class="card-body">
-                                                <div class="title">
-                                                    <p>Box Culrvet</p>
-                                                </div>
-                                                <div class="deskripsi">
-                                                    <p>Deskripsi singkat dimensi</p>
-                                                </div>
-                                                <div class="harga">
-                                                    <p>Rp 470,000</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-6 p-0">
-                                <div class="card-product">
-                                    <div class="row g-0">
-                                        <div class="col-sm-6">
-                                            <div class="img-container">
-                                                <img src="{{ asset ('konkurito/assets/img/ILUSTRASI3_2-1.png') }}" alt="">
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-6 ps-4">
-                                            <div class="card-body">
-                                                <div class="title">
-                                                    <p>Box Culrvet</p>
-                                                </div>
-                                                <div class="deskripsi">
-                                                    <p>Deskripsi singkat dimensi</p>
-                                                </div>
-                                                <div class="harga">
-                                                    <p>Rp 470,000</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-6 p-0">
-                                <div class="card-product">
-                                    <div class="row g-0">
-                                        <div class="col-sm-6">
-                                            <div class="img-container">
-                                                <img src="{{ asset ('konkurito/assets/img/ILUSTRASI3_2-1.png') }}" alt="">
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-6 ps-4">
-                                            <div class="card-body">
-                                                <div class="title">
-                                                    <p>Box Culrvet</p>
-                                                </div>
-                                                <div class="deskripsi">
-                                                    <p>Deskripsi singkat dimensi</p>
-                                                </div>
-                                                <div class="harga">
-                                                    <p>Rp 470,000</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-6 p-0">
-                                <div class="card-product">
-                                    <div class="row g-0">
-                                        <div class="col-sm-6">
-                                            <div class="img-container">
-                                                <img src="{{ asset ('konkurito/assets/img/ILUSTRASI3_2-1.png') }}" alt="">
+                                                <img src="{{ asset ('konkurito/assets/img/ILUSTRASI3_2-1.png') }}"
+                                                    alt="">
                                             </div>
                                         </div>
                                         <div class="col-sm-6 ps-4">
@@ -1163,7 +506,8 @@
                                     <div class="row g-0">
                                         <div class="col-sm-6">
                                             <div class="img-container">
-                                                <img src="{{ asset ('konkurito/assets/img/ILUSTRASI3_2-1.png') }}" alt="">
+                                                <img src="{{ asset ('konkurito/assets/img/ILUSTRASI3_2-1.png') }}"
+                                                    alt="">
                                             </div>
                                         </div>
                                         <div class="col-sm-6 ps-4">
@@ -1187,7 +531,8 @@
                                     <div class="row g-0">
                                         <div class="col-sm-6">
                                             <div class="img-container">
-                                                <img src="{{ asset ('konkurito/assets/img/ILUSTRASI3_2-1.png') }}" alt="">
+                                                <img src="{{ asset ('konkurito/assets/img/ILUSTRASI3_2-1.png') }}"
+                                                    alt="">
                                             </div>
                                         </div>
                                         <div class="col-sm-6 ps-4">
@@ -1211,7 +556,8 @@
                                     <div class="row g-0">
                                         <div class="col-sm-6">
                                             <div class="img-container">
-                                                <img src="{{ asset ('konkurito/assets/img/ILUSTRASI3_2-1.png') }}" alt="">
+                                                <img src="{{ asset ('konkurito/assets/img/ILUSTRASI3_2-1.png') }}"
+                                                    alt="">
                                             </div>
                                         </div>
                                         <div class="col-sm-6 ps-4">
@@ -1235,7 +581,216 @@
                                     <div class="row g-0">
                                         <div class="col-sm-6">
                                             <div class="img-container">
-                                                <img src="{{ asset ('konkurito/assets/img/ILUSTRASI3_2-1.png') }}" alt="">
+                                                <img src="{{ asset ('konkurito/assets/img/ILUSTRASI3_2-1.png') }}"
+                                                    alt="">
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6 ps-4">
+                                            <div class="card-body">
+                                                <div class="title">
+                                                    <p>Box Culrvet</p>
+                                                </div>
+                                                <div class="deskripsi">
+                                                    <p>Deskripsi singkat dimensi</p>
+                                                </div>
+                                                <div class="harga">
+                                                    <p>Rp 470,000</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="row">
+                            <div class="col-sm-6 p-0">
+                                <div class="card-product">
+                                    <div class="row g-0">
+                                        <div class="col-sm-6">
+                                            <div class="img-container">
+                                                <img src="{{ asset ('konkurito/assets/img/ILUSTRASI3_2-1.png') }}"
+                                                    alt="">
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6 ps-4">
+                                            <div class="card-body">
+                                                <div class="title">
+                                                    <p>Box Culrvet</p>
+                                                </div>
+                                                <div class="deskripsi">
+                                                    <p>Deskripsi singkat dimensi</p>
+                                                </div>
+                                                <div class="harga">
+                                                    <p>Rp 470,000</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 p-0">
+                                <div class="card-product">
+                                    <div class="row g-0">
+                                        <div class="col-sm-6">
+                                            <div class="img-container">
+                                                <img src="{{ asset ('konkurito/assets/img/ILUSTRASI3_2-1.png') }}"
+                                                    alt="">
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6 ps-4">
+                                            <div class="card-body">
+                                                <div class="title">
+                                                    <p>Box Culrvet</p>
+                                                </div>
+                                                <div class="deskripsi">
+                                                    <p>Deskripsi singkat dimensi</p>
+                                                </div>
+                                                <div class="harga">
+                                                    <p>Rp 470,000</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 p-0">
+                                <div class="card-product">
+                                    <div class="row g-0">
+                                        <div class="col-sm-6">
+                                            <div class="img-container">
+                                                <img src="{{ asset ('konkurito/assets/img/ILUSTRASI3_2-1.png') }}"
+                                                    alt="">
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6 ps-4">
+                                            <div class="card-body">
+                                                <div class="title">
+                                                    <p>Box Culrvet</p>
+                                                </div>
+                                                <div class="deskripsi">
+                                                    <p>Deskripsi singkat dimensi</p>
+                                                </div>
+                                                <div class="harga">
+                                                    <p>Rp 470,000</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 p-0">
+                                <div class="card-product">
+                                    <div class="row g-0">
+                                        <div class="col-sm-6">
+                                            <div class="img-container">
+                                                <img src="{{ asset ('konkurito/assets/img/ILUSTRASI3_2-1.png') }}"
+                                                    alt="">
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6 ps-4">
+                                            <div class="card-body">
+                                                <div class="title">
+                                                    <p>Box Culrvet</p>
+                                                </div>
+                                                <div class="deskripsi">
+                                                    <p>Deskripsi singkat dimensi</p>
+                                                </div>
+                                                <div class="harga">
+                                                    <p>Rp 470,000</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="row">
+                            <div class="col-sm-6 p-0">
+                                <div class="card-product">
+                                    <div class="row g-0">
+                                        <div class="col-sm-6">
+                                            <div class="img-container">
+                                                <img src="{{ asset ('konkurito/assets/img/ILUSTRASI3_2-1.png') }}"
+                                                    alt="">
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6 ps-4">
+                                            <div class="card-body">
+                                                <div class="title">
+                                                    <p>Box Culrvet</p>
+                                                </div>
+                                                <div class="deskripsi">
+                                                    <p>Deskripsi singkat dimensi</p>
+                                                </div>
+                                                <div class="harga">
+                                                    <p>Rp 470,000</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 p-0">
+                                <div class="card-product">
+                                    <div class="row g-0">
+                                        <div class="col-sm-6">
+                                            <div class="img-container">
+                                                <img src="{{ asset ('konkurito/assets/img/ILUSTRASI3_2-1.png') }}"
+                                                    alt="">
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6 ps-4">
+                                            <div class="card-body">
+                                                <div class="title">
+                                                    <p>Box Culrvet</p>
+                                                </div>
+                                                <div class="deskripsi">
+                                                    <p>Deskripsi singkat dimensi</p>
+                                                </div>
+                                                <div class="harga">
+                                                    <p>Rp 470,000</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 p-0">
+                                <div class="card-product">
+                                    <div class="row g-0">
+                                        <div class="col-sm-6">
+                                            <div class="img-container">
+                                                <img src="{{ asset ('konkurito/assets/img/ILUSTRASI3_2-1.png') }}"
+                                                    alt="">
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6 ps-4">
+                                            <div class="card-body">
+                                                <div class="title">
+                                                    <p>Box Culrvet</p>
+                                                </div>
+                                                <div class="deskripsi">
+                                                    <p>Deskripsi singkat dimensi</p>
+                                                </div>
+                                                <div class="harga">
+                                                    <p>Rp 470,000</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 p-0">
+                                <div class="card-product">
+                                    <div class="row g-0">
+                                        <div class="col-sm-6">
+                                            <div class="img-container">
+                                                <img src="{{ asset ('konkurito/assets/img/ILUSTRASI3_2-1.png') }}"
+                                                    alt="">
                                             </div>
                                         </div>
                                         <div class="col-sm-6 ps-4">
@@ -1289,7 +844,8 @@
                     </div>
                 </div>
                 <div class="col-sm-6 p-0 bg-secondary">
-                    <img src="{{ asset ('konkurito/assets/img/ILUSTRASI4_3-1.png') }}" alt="" style="width: 100%; min-height: 210px; object-fit: cover; object-position: center;">
+                    <img src="{{ asset ('konkurito/assets/img/ILUSTRASI4_3-1.png') }}" alt=""
+                        style="width: 100%; min-height: 210px; object-fit: cover; object-position: center;">
                 </div>
                 <div class="col-sm-3 bg-yellow"></div>
             </div>
@@ -1303,7 +859,8 @@
                                     <div class="row g-0">
                                         <div class="col-sm-6">
                                             <div class="img-container">
-                                                <img src="{{ asset ('konkurito/assets/img/ILUSTRASI3_2-1.png') }}" alt="">
+                                                <img src="{{ asset ('konkurito/assets/img/ILUSTRASI3_2-1.png') }}"
+                                                    alt="">
                                             </div>
                                         </div>
                                         <div class="col-sm-6 ps-4">
@@ -1327,7 +884,8 @@
                                     <div class="row g-0">
                                         <div class="col-sm-6">
                                             <div class="img-container">
-                                                <img src="{{ asset ('konkurito/assets/img/ILUSTRASI3_2-1.png') }}" alt="">
+                                                <img src="{{ asset ('konkurito/assets/img/ILUSTRASI3_2-1.png') }}"
+                                                    alt="">
                                             </div>
                                         </div>
                                         <div class="col-sm-6 ps-4">
@@ -1351,7 +909,8 @@
                                     <div class="row g-0">
                                         <div class="col-sm-6">
                                             <div class="img-container">
-                                                <img src="{{ asset ('konkurito/assets/img/ILUSTRASI3_2-1.png') }}" alt="">
+                                                <img src="{{ asset ('konkurito/assets/img/ILUSTRASI3_2-1.png') }}"
+                                                    alt="">
                                             </div>
                                         </div>
                                         <div class="col-sm-6 ps-4">
@@ -1375,107 +934,8 @@
                                     <div class="row g-0">
                                         <div class="col-sm-6">
                                             <div class="img-container">
-                                                <img src="{{ asset ('konkurito/assets/img/ILUSTRASI3_2-1.png') }}" alt="">
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-6 ps-4">
-                                            <div class="card-body">
-                                                <div class="title">
-                                                    <p>Box Culrvet</p>
-                                                </div>
-                                                <div class="deskripsi">
-                                                    <p>Deskripsi singkat dimensi</p>
-                                                </div>
-                                                <div class="harga">
-                                                    <p>Rp 470,000</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="carousel-item">
-                        <div class="row">
-                            <div class="col-sm-6 p-0">
-                                <div class="card-product">
-                                    <div class="row g-0">
-                                        <div class="col-sm-6">
-                                            <div class="img-container">
-                                                <img src="{{ asset ('konkurito/assets/img/ILUSTRASI3_2-1.png') }}" alt="">
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-6 ps-4">
-                                            <div class="card-body">
-                                                <div class="title">
-                                                    <p>Box Culrvet</p>
-                                                </div>
-                                                <div class="deskripsi">
-                                                    <p>Deskripsi singkat dimensi</p>
-                                                </div>
-                                                <div class="harga">
-                                                    <p>Rp 470,000</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-6 p-0">
-                                <div class="card-product">
-                                    <div class="row g-0">
-                                        <div class="col-sm-6">
-                                            <div class="img-container">
-                                                <img src="{{ asset ('konkurito/assets/img/ILUSTRASI3_2-1.png') }}" alt="">
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-6 ps-4">
-                                            <div class="card-body">
-                                                <div class="title">
-                                                    <p>Box Culrvet</p>
-                                                </div>
-                                                <div class="deskripsi">
-                                                    <p>Deskripsi singkat dimensi</p>
-                                                </div>
-                                                <div class="harga">
-                                                    <p>Rp 470,000</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-6 p-0">
-                                <div class="card-product">
-                                    <div class="row g-0">
-                                        <div class="col-sm-6">
-                                            <div class="img-container">
-                                                <img src="{{ asset ('konkurito/assets/img/ILUSTRASI3_2-1.png') }}" alt="">
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-6 ps-4">
-                                            <div class="card-body">
-                                                <div class="title">
-                                                    <p>Box Culrvet</p>
-                                                </div>
-                                                <div class="deskripsi">
-                                                    <p>Deskripsi singkat dimensi</p>
-                                                </div>
-                                                <div class="harga">
-                                                    <p>Rp 470,000</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-6 p-0">
-                                <div class="card-product">
-                                    <div class="row g-0">
-                                        <div class="col-sm-6">
-                                            <div class="img-container">
-                                                <img src="{{ asset ('konkurito/assets/img/ILUSTRASI3_2-1.png') }}" alt="">
+                                                <img src="{{ asset ('konkurito/assets/img/ILUSTRASI3_2-1.png') }}"
+                                                    alt="">
                                             </div>
                                         </div>
                                         <div class="col-sm-6 ps-4">
@@ -1503,7 +963,8 @@
                                     <div class="row g-0">
                                         <div class="col-sm-6">
                                             <div class="img-container">
-                                                <img src="{{ asset ('konkurito/assets/img/ILUSTRASI3_2-1.png') }}" alt="">
+                                                <img src="{{ asset ('konkurito/assets/img/ILUSTRASI3_2-1.png') }}"
+                                                    alt="">
                                             </div>
                                         </div>
                                         <div class="col-sm-6 ps-4">
@@ -1527,7 +988,8 @@
                                     <div class="row g-0">
                                         <div class="col-sm-6">
                                             <div class="img-container">
-                                                <img src="{{ asset ('konkurito/assets/img/ILUSTRASI3_2-1.png') }}" alt="">
+                                                <img src="{{ asset ('konkurito/assets/img/ILUSTRASI3_2-1.png') }}"
+                                                    alt="">
                                             </div>
                                         </div>
                                         <div class="col-sm-6 ps-4">
@@ -1551,7 +1013,8 @@
                                     <div class="row g-0">
                                         <div class="col-sm-6">
                                             <div class="img-container">
-                                                <img src="{{ asset ('konkurito/assets/img/ILUSTRASI3_2-1.png') }}" alt="">
+                                                <img src="{{ asset ('konkurito/assets/img/ILUSTRASI3_2-1.png') }}"
+                                                    alt="">
                                             </div>
                                         </div>
                                         <div class="col-sm-6 ps-4">
@@ -1575,107 +1038,8 @@
                                     <div class="row g-0">
                                         <div class="col-sm-6">
                                             <div class="img-container">
-                                                <img src="{{ asset ('konkurito/assets/img/ILUSTRASI3_2-1.png') }}" alt="">
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-6 ps-4">
-                                            <div class="card-body">
-                                                <div class="title">
-                                                    <p>Box Culrvet</p>
-                                                </div>
-                                                <div class="deskripsi">
-                                                    <p>Deskripsi singkat dimensi</p>
-                                                </div>
-                                                <div class="harga">
-                                                    <p>Rp 470,000</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="carousel-item">
-                        <div class="row">
-                            <div class="col-sm-6 p-0">
-                                <div class="card-product">
-                                    <div class="row g-0">
-                                        <div class="col-sm-6">
-                                            <div class="img-container">
-                                                <img src="{{ asset ('konkurito/assets/img/ILUSTRASI3_2-1.png') }}" alt="">
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-6 ps-4">
-                                            <div class="card-body">
-                                                <div class="title">
-                                                    <p>Box Culrvet</p>
-                                                </div>
-                                                <div class="deskripsi">
-                                                    <p>Deskripsi singkat dimensi</p>
-                                                </div>
-                                                <div class="harga">
-                                                    <p>Rp 470,000</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-6 p-0">
-                                <div class="card-product">
-                                    <div class="row g-0">
-                                        <div class="col-sm-6">
-                                            <div class="img-container">
-                                                <img src="{{ asset ('konkurito/assets/img/ILUSTRASI3_2-1.png') }}" alt="">
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-6 ps-4">
-                                            <div class="card-body">
-                                                <div class="title">
-                                                    <p>Box Culrvet</p>
-                                                </div>
-                                                <div class="deskripsi">
-                                                    <p>Deskripsi singkat dimensi</p>
-                                                </div>
-                                                <div class="harga">
-                                                    <p>Rp 470,000</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-6 p-0">
-                                <div class="card-product">
-                                    <div class="row g-0">
-                                        <div class="col-sm-6">
-                                            <div class="img-container">
-                                                <img src="{{ asset ('konkurito/assets/img/ILUSTRASI3_2-1.png') }}" alt="">
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-6 ps-4">
-                                            <div class="card-body">
-                                                <div class="title">
-                                                    <p>Box Culrvet</p>
-                                                </div>
-                                                <div class="deskripsi">
-                                                    <p>Deskripsi singkat dimensi</p>
-                                                </div>
-                                                <div class="harga">
-                                                    <p>Rp 470,000</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-6 p-0">
-                                <div class="card-product">
-                                    <div class="row g-0">
-                                        <div class="col-sm-6">
-                                            <div class="img-container">
-                                                <img src="{{ asset ('konkurito/assets/img/ILUSTRASI3_2-1.png') }}" alt="">
+                                                <img src="{{ asset ('konkurito/assets/img/ILUSTRASI3_2-1.png') }}"
+                                                    alt="">
                                             </div>
                                         </div>
                                         <div class="col-sm-6 ps-4">
@@ -1703,7 +1067,8 @@
                                     <div class="row g-0">
                                         <div class="col-sm-6">
                                             <div class="img-container">
-                                                <img src="{{ asset ('konkurito/assets/img/ILUSTRASI3_2-1.png') }}" alt="">
+                                                <img src="{{ asset ('konkurito/assets/img/ILUSTRASI3_2-1.png') }}"
+                                                    alt="">
                                             </div>
                                         </div>
                                         <div class="col-sm-6 ps-4">
@@ -1727,7 +1092,8 @@
                                     <div class="row g-0">
                                         <div class="col-sm-6">
                                             <div class="img-container">
-                                                <img src="{{ asset ('konkurito/assets/img/ILUSTRASI3_2-1.png') }}" alt="">
+                                                <img src="{{ asset ('konkurito/assets/img/ILUSTRASI3_2-1.png') }}"
+                                                    alt="">
                                             </div>
                                         </div>
                                         <div class="col-sm-6 ps-4">
@@ -1751,7 +1117,8 @@
                                     <div class="row g-0">
                                         <div class="col-sm-6">
                                             <div class="img-container">
-                                                <img src="{{ asset ('konkurito/assets/img/ILUSTRASI3_2-1.png') }}" alt="">
+                                                <img src="{{ asset ('konkurito/assets/img/ILUSTRASI3_2-1.png') }}"
+                                                    alt="">
                                             </div>
                                         </div>
                                         <div class="col-sm-6 ps-4">
@@ -1775,7 +1142,216 @@
                                     <div class="row g-0">
                                         <div class="col-sm-6">
                                             <div class="img-container">
-                                                <img src="{{ asset ('konkurito/assets/img/ILUSTRASI3_2-1.png') }}" alt="">
+                                                <img src="{{ asset ('konkurito/assets/img/ILUSTRASI3_2-1.png') }}"
+                                                    alt="">
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6 ps-4">
+                                            <div class="card-body">
+                                                <div class="title">
+                                                    <p>Box Culrvet</p>
+                                                </div>
+                                                <div class="deskripsi">
+                                                    <p>Deskripsi singkat dimensi</p>
+                                                </div>
+                                                <div class="harga">
+                                                    <p>Rp 470,000</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="row">
+                            <div class="col-sm-6 p-0">
+                                <div class="card-product">
+                                    <div class="row g-0">
+                                        <div class="col-sm-6">
+                                            <div class="img-container">
+                                                <img src="{{ asset ('konkurito/assets/img/ILUSTRASI3_2-1.png') }}"
+                                                    alt="">
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6 ps-4">
+                                            <div class="card-body">
+                                                <div class="title">
+                                                    <p>Box Culrvet</p>
+                                                </div>
+                                                <div class="deskripsi">
+                                                    <p>Deskripsi singkat dimensi</p>
+                                                </div>
+                                                <div class="harga">
+                                                    <p>Rp 470,000</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 p-0">
+                                <div class="card-product">
+                                    <div class="row g-0">
+                                        <div class="col-sm-6">
+                                            <div class="img-container">
+                                                <img src="{{ asset ('konkurito/assets/img/ILUSTRASI3_2-1.png') }}"
+                                                    alt="">
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6 ps-4">
+                                            <div class="card-body">
+                                                <div class="title">
+                                                    <p>Box Culrvet</p>
+                                                </div>
+                                                <div class="deskripsi">
+                                                    <p>Deskripsi singkat dimensi</p>
+                                                </div>
+                                                <div class="harga">
+                                                    <p>Rp 470,000</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 p-0">
+                                <div class="card-product">
+                                    <div class="row g-0">
+                                        <div class="col-sm-6">
+                                            <div class="img-container">
+                                                <img src="{{ asset ('konkurito/assets/img/ILUSTRASI3_2-1.png') }}"
+                                                    alt="">
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6 ps-4">
+                                            <div class="card-body">
+                                                <div class="title">
+                                                    <p>Box Culrvet</p>
+                                                </div>
+                                                <div class="deskripsi">
+                                                    <p>Deskripsi singkat dimensi</p>
+                                                </div>
+                                                <div class="harga">
+                                                    <p>Rp 470,000</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 p-0">
+                                <div class="card-product">
+                                    <div class="row g-0">
+                                        <div class="col-sm-6">
+                                            <div class="img-container">
+                                                <img src="{{ asset ('konkurito/assets/img/ILUSTRASI3_2-1.png') }}"
+                                                    alt="">
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6 ps-4">
+                                            <div class="card-body">
+                                                <div class="title">
+                                                    <p>Box Culrvet</p>
+                                                </div>
+                                                <div class="deskripsi">
+                                                    <p>Deskripsi singkat dimensi</p>
+                                                </div>
+                                                <div class="harga">
+                                                    <p>Rp 470,000</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="row">
+                            <div class="col-sm-6 p-0">
+                                <div class="card-product">
+                                    <div class="row g-0">
+                                        <div class="col-sm-6">
+                                            <div class="img-container">
+                                                <img src="{{ asset ('konkurito/assets/img/ILUSTRASI3_2-1.png') }}"
+                                                    alt="">
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6 ps-4">
+                                            <div class="card-body">
+                                                <div class="title">
+                                                    <p>Box Culrvet</p>
+                                                </div>
+                                                <div class="deskripsi">
+                                                    <p>Deskripsi singkat dimensi</p>
+                                                </div>
+                                                <div class="harga">
+                                                    <p>Rp 470,000</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 p-0">
+                                <div class="card-product">
+                                    <div class="row g-0">
+                                        <div class="col-sm-6">
+                                            <div class="img-container">
+                                                <img src="{{ asset ('konkurito/assets/img/ILUSTRASI3_2-1.png') }}"
+                                                    alt="">
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6 ps-4">
+                                            <div class="card-body">
+                                                <div class="title">
+                                                    <p>Box Culrvet</p>
+                                                </div>
+                                                <div class="deskripsi">
+                                                    <p>Deskripsi singkat dimensi</p>
+                                                </div>
+                                                <div class="harga">
+                                                    <p>Rp 470,000</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 p-0">
+                                <div class="card-product">
+                                    <div class="row g-0">
+                                        <div class="col-sm-6">
+                                            <div class="img-container">
+                                                <img src="{{ asset ('konkurito/assets/img/ILUSTRASI3_2-1.png') }}"
+                                                    alt="">
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6 ps-4">
+                                            <div class="card-body">
+                                                <div class="title">
+                                                    <p>Box Culrvet</p>
+                                                </div>
+                                                <div class="deskripsi">
+                                                    <p>Deskripsi singkat dimensi</p>
+                                                </div>
+                                                <div class="harga">
+                                                    <p>Rp 470,000</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 p-0">
+                                <div class="card-product">
+                                    <div class="row g-0">
+                                        <div class="col-sm-6">
+                                            <div class="img-container">
+                                                <img src="{{ asset ('konkurito/assets/img/ILUSTRASI3_2-1.png') }}"
+                                                    alt="">
                                             </div>
                                         </div>
                                         <div class="col-sm-6 ps-4">
@@ -1797,7 +1373,8 @@
                         </div>
                     </div>
                 </div>
-                <button class="carousel-control-prev" type="button" data-bs-target="#carouselThree" data-bs-slide="prev">
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselThree"
+                    data-bs-slide="prev">
                     <span class="text-dark">
                         <h3>
                             <i class="bi bi-caret-left-fill"></i>
@@ -1805,7 +1382,8 @@
                     </span>
                     <span class="visually-hidden">Previous</span>
                 </button>
-                <button class="carousel-control-next" type="button" data-bs-target="#carouselThree" data-bs-slide="next">
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselThree"
+                    data-bs-slide="next">
                     <span class="text-dark">
                         <h3>
                             <i class="bi bi-caret-right-fill"></i>
@@ -1821,7 +1399,8 @@
         <section id="cta">
             <div class="row">
                 <div class="col-sm-6 p-0">
-                    <img src="{{ asset ('konkurito/assets/img/CTA1-1.png') }}" alt="" style="width: 100%; max-height: 100%;">
+                    <img src="{{ asset ('konkurito/assets/img/CTA1-1.png') }}" alt=""
+                        style="width: 100%; max-height: 100%;">
                 </div>
                 <div class="col-sm-6 p-0">
                     <div class="action">
@@ -1832,7 +1411,7 @@
                             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis, beatae quo
                                 similique sapiente error provident eius molestias soluta. Ipsum, earum?</p>
                         </div>
-                        <a href="" class="btn">Lihat Produk</a>
+                        <a href="{{ route('konkurito.showcase') }}" class="btn">Lihat Produk</a>
                     </div>
                 </div>
             </div>

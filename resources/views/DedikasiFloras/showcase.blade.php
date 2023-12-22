@@ -392,6 +392,15 @@
                         </div>
                         <!-- Sorting -->
                         <div class="col-sm-3 col-6">
+                        @php
+                        $hargaTinggi = \App\Models\Agrigard::where('stok', '>', 0)
+                        ->orderBy('harga_b2C_1_unit', 'asc')
+                        ->first();
+
+                        $hargaRendah = \App\Models\Agrigard::where('stok', '>', 0)
+                        ->orderBy('harga_b2C_1_unit', 'desc')
+                        ->first();
+                        @endphp
                             <select class="form-select" aria-label="Default select example">
                                 <option selected>Choose</option>
                                 <option value="1">Harga Terendah</option>
