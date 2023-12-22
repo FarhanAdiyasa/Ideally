@@ -8,7 +8,10 @@ use App\Http\Controllers\DetailController;
 use App\Http\Controllers\everlastThingController;
 
 use App\Http\Controllers\TransaksiController;
-
+use App\Http\Controllers\AgrigardController;
+use App\Http\Controllers\PromoController;
+use App\Http\Controllers\DefloController;
+use App\Http\Controllers\KonkuritoController;
 use App\Models\Artikel;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -157,6 +160,7 @@ Route::post('/post-promo', [PromoController::class, 'post'])->name('daftar-promo
 Route::get('/delete-promo/{id}', [PromoController::class, 'delete'])->name('daftar-promo.delete');
 Route::delete('/destroy-promo/{id}', [PromoController::class, 'destroy'])->name('daftar-promo.destroy');
 
+
 //Artikel
 Route::get('/daftar-artikel', [AdminArtikelController::class, 'index'])->name('artikels');
 Route::get('/tambah-artikel', [AdminArtikelController::class, 'create'])->name('artikels.create');
@@ -230,3 +234,14 @@ Route::delete('/hapus-dari-keranjang/{id_batu}', [TransaksiController::class, 'r
 //route verifikasi
 Route::get('/email/verify/need-verification', [verificationController::class, 'notice'])->middleware('auth')->name('verification.notice');
 Route::get('/email/verify/{id}/{hash}', [verificationController::class, 'verify'])->middleware('auth','signed')->name('verification.verify');
+
+//deflo
+Route::get('deflo',[DefloController::class,'index'])->name('deflo.utama');
+Route::get('deflo/showcase',[DefloController::class,'showcase'])->name('deflo.showcase');
+Route::get('deflo/showcase/kategori',[DefloController::class,'showcase2'])->name('deflo.kategori');
+Route::get('deflo/show/{id_nurseri}',[DefloController::class,'show'])->name('deflo.detail');
+
+
+Route::get('konkurito/index',[KonkuritoController::class,'index'])->name('konkurito.utama');
+Route::get('konkurito/showcase',[KonkuritoController::class,'showcase'])->name('konkurito.showcase');
+Route::get('konkurito/show/{id_konkurito}',[KonkuritoController::class,'show'])->name('konkurito.detail');
