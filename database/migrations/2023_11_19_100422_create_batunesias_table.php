@@ -16,16 +16,23 @@ return new class extends Migration
             $table->string('nama_produk');
             $table->string('slug');
             $table->string('kategori');
-            $table->string('spek');
+            $table->decimal('panjang', 10, 2);
+            $table->decimal('lebar', 10, 2);
+            $table->decimal('diameter', 10, 2);
+            $table->decimal('tinggi', 10, 2);
             $table->string('satuan');
-            $table->string('warna');
-            $table->string('gambar_1')->nullable();
+            $table->string('warna_1');
+            $table->string('warna_2');
+            $table->string('gambar_1')->nullable(); 
             $table->string('gambar_2')->nullable();
             $table->string('gambar_3')->nullable();
             $table->string('video')->nullable();
-            $table->integer('stok')->default(0); // Menggunakan tipe data 'integer' untuk stok
+            $table->string('armada_minimum');
+            $table->integer('stok')->default(0); 
             $table->integer('item_terjual')->default(0);
+            $table->string('penempatan'); 
             $table->text('deskripsi_singkat'); 
+            $table->decimal('harga_jual_projek_ideally', 10, 2);
             $table->decimal('harga_b2I_31_unit', 10, 2);
             $table->decimal('harga_b2I_11_unit', 10, 2);
             $table->decimal('harga_b2I_1_unit', 10, 2);
@@ -35,11 +42,9 @@ return new class extends Migration
             $table->decimal('harga_b2C_31_unit', 10, 2);
             $table->decimal('harga_b2C_11_unit', 10, 2);
             $table->decimal('harga_b2C_1_unit', 10, 2);
-            $table->timestamp('tanggal_publikasi')->nullable();
-
-            $table->timestamp('created_at')->useCurrent(); // Menggunakan 'useCurrent' untuk mengisi otomatis tanggal pembuatan
-            $table->timestamp('updated_at')->useCurrent(); // Menggunakan 'useCurrent' untuk mengisi otomatis tanggal pembaruan
-            $table->timestamp('softDelete')->nullable();// Menggunakan 'nullable' untuk mengizinkan kolom 'deleted_date' bernilai null
+            $table->timestamp('tanggal_publikasi')->nullable();  
+            $table->timestamps();
+            $table->softDeletes();
 
             $table->foreignId('created_by');
             $table->foreignId('updated_by')->nullable();
@@ -57,7 +62,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('promos');
         Schema::dropIfExists('batunesias');
     }
 };

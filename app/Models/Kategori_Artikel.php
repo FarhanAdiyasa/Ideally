@@ -9,13 +9,13 @@ class Kategori_Artikel extends Model
 {
     use HasFactory;
     protected $table = 'kategori_artikels';
-
+    protected $primaryKey = 'id_kategori_artikel';
 
     protected $guarded = ['id_kategori_artikel'];
 
-    public function artikel()
+    public function kategori_artikel()
     {
-        return $this->hasMany(Artikel::class);
+        return $this->belongsToMany(Artikel::class, 'artikel_kategoris', 'id_kategori_artikel', 'id_artikel');
     }
 
     /*protected $fillable = [

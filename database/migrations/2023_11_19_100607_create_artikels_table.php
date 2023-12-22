@@ -18,22 +18,34 @@ return new class extends Migration
             $table->text('deskripsi_artikel');
             $table->text('isi_artikel');
             $table->string('penulis_artikel');
-            $table->string('gambar_artikel')->nullable();
+            $table->string('profesi_penulis_artikel');
+            $table->text('deskripsi_singkat_penulis_artikel');
+            $table->string('gambar_artikel');
             $table->string('keterangan_gambar_artikel')->nullable();
-            $table->string('keywords');
+            $table->string('keywords')->nullable();
             $table->timestamp('tanggal_publikasi')->nullable();
-            $table->integer('pengunjung')->nullable()->default(0);
+            $table->integer('pengunjung')->default(0);
             $table->foreignId('created_by'); // Kolom foreign key untuk pembuat artikel
-            $table->foreignId('updated_by'); // Kolom foreign key untuk yang memperbarui artikel
+            $table->foreignId('updated_by')->nullable(); // Kolom foreign key untuk yang memperbarui artikel
             $table->foreignId('deleted_by')->nullable(); // Kolom foreign key untuk yang menghapus artikel (nullable karena belum tentu setiap artikel dihapus)
-            $table->foreignId('id_kategori_artikel'); // Kolom foreign key untuk kategori artikel
+            
             $table->timestamps();
+            $table->softDeletes();
 
             // Menambahkan constraint foreign key
             $table->foreign('created_by')->references('user_id')->on('users');
             $table->foreign('updated_by')->references('user_id')->on('users');
             $table->foreign('deleted_by')->references('user_id')->on('users');
-            $table->foreign('id_kategori_artikel')->references('id_kategori_artikel')->on('kategori_artikels');
+           
+        });
+        Schema::create('artikel_kategoris', function (Blueprint $table) {
+            $table->id();
+            $table->foreignId('id_artikel');
+            $table->foreignId('id_kategori_artikel');
+            $table->timestamps();
+
+            $table->foreign('id_kategori_artikel')->references('id_kategori_artikel')->on('kategori_artikels')->delete('cascade');
+            $table->foreign('id_artikel')->references('id_artikel')->on('artikels')->delete('cascade');
         });
     }
 

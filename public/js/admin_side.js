@@ -1,11 +1,14 @@
 const imageInput = document.getElementById("imageInput");
 const imgElements = document.querySelectorAll("#imagePreviewContainer img");
-
-imageInput.addEventListener("change", handleImageUpload);
-const bodyElement = document.getElementById("body");
-if (bodyElement) {
-    bodyElement.classList.add("sidebar-collapse");
+if (imageInput) {
+    imageInput.addEventListener("change", handleImageUpload);
 }
+const bodyElement = document.getElementById("body");
+const collapse = () => {
+    if (bodyElement) {
+        bodyElement.classList.add("sidebar-collapse");
+    }
+};
 
 function addExistingImagesToPhotos(originalName = null) {
     var existingImages = $(".img-prv img");
@@ -51,8 +54,8 @@ const imgStyling = () => {
         }
     }
 };
-
 function handleImageUpload() {
+    let jumlahTd = $("#imagePreviewContainer td").length;
     let index = 0;
     document.getElementById("1").style.border =
         "2px dashed var(--N100, #03ac0e)";
@@ -65,7 +68,7 @@ function handleImageUpload() {
     }
     let originalName = [];
     for (const file of imageInput.files) {
-        if (index > 3) {
+        if (index > jumlahTd - 1) {
             document.getElementById("error-img").style.visibility = "visible";
             return;
         }
@@ -179,21 +182,23 @@ $(document).ready(function () {
         reverse: true,
     });
 });
-document.getElementById("default").addEventListener("input", function () {
-    var count = this.value.length;
-    var characterCountElement = document.getElementById("characterCount");
+if (document.getElementById("default")) {
+    document.getElementById("default").addEventListener("input", function () {
+        var count = this.value.length;
+        var characterCountElement = document.getElementById("characterCount");
 
-    characterCountElement.innerText = count;
+        characterCountElement.innerText = count;
 
-    if (count > 70) {
-        this.value = this.value.substring(0, 70);
-        characterCountElement.textContent = 70;
-    }
-});
-document.getElementById("default").addEventListener("input", function () {
-    // Get the current character count
-    var count = this.value.length;
+        if (count > 70) {
+            this.value = this.value.substring(0, 70);
+            characterCountElement.textContent = 70;
+        }
+    });
+    document.getElementById("default").addEventListener("input", function () {
+        // Get the current character count
+        var count = this.value.length;
 
-    // Update the counter element
-    document.getElementById("characterCount").innerText = count;
-});
+        // Update the counter element
+        document.getElementById("characterCount").innerText = count;
+    });
+}

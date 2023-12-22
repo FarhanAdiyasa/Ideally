@@ -1,0 +1,427 @@
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.content-container {
+    max-width: 1260px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px; /* Adjust the gap as needed */
+}
+
+/* Add your existing styles here */
+.header-container {
+    width: 100%;
+    height: 250px;
+    padding-right: 1px;
+    display: flex;
+    align-items: center;
+    gap: 290px;
+}
+
+.header-container img {
+    height: 28px;
+    margin-top: 50px;
+}
+
+.logo {
+    width: 250px;
+    height: 80px;
+    margin-top: 30px;
+}
+
+.search-icon img {
+    height: 28px;
+    margin-top: 50px;
+    margin-right: 10px;
+}
+
+.main-container {
+    width: 100%;
+    height: 500px;
+    position: relative;
+}
+
+.background-image {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+.main-content {
+    position: absolute;
+    left: 69px;
+    color: white;
+    font-family: 'Poppins', sans-serif;
+    word-wrap: break-word;
+}
+
+.main-content h1 {
+    font-size: 60px;
+    font-weight: 700;
+    margin-top: 41px;
+}
+
+.main-content p {
+    font-size: 25px;
+    font-weight: 300;
+    margin-top: 6px;
+}
+
+.button-container {
+    width: 269px;
+    height: 52px;
+    left: 69px;
+    top: 406px;
+    position: absolute;
+}
+
+.rectangle {
+    width: 100%;
+    height: 100%;
+    border: 3px white solid;
+}
+
+.Rectangle80 {
+width: 269px;
+height: 52px;
+left: 0px;
+top: 0px;
+position: absolute;
+border: 3px white solid;
+background: transparent;
+cursor: pointer;
+transition: transform 0.3s ease; /* Efek transisi pada transformasi */
+overflow: hidden; /* Menghindari efek overflow jika terjadi perubahan ukuran */
+}
+
+.Rectangle80:hover {
+    transform: scale(1.1); /* Membuat efek zoom saat dihover */
+}
+
+.BacaSelengkapnya {
+    display: inline-block; /* Mengubah teks menjadi elemen inline-block */
+    left: 35px;
+    top: 13px;
+    position: absolute;
+    color: white;
+    font-size: 18px;
+    font-family: Poppins;
+    font-weight: 700;
+    word-wrap: break-word;
+    transition: transform 0.3s ease; /* Efek transisi pada transformasi */
+}
+
+.Rectangle80:hover .BacaSelengkapnya {
+    transform: scale(1.1); /* Menerapkan efek zoom pada teks saat dihover */
+}
+
+
+.read-more {
+    left: 35px;
+    top: 13px;
+    position: absolute;
+    color: white;
+    font-size: 18px;
+    font-weight: 700;
+    word-wrap: break-word;
+}
+
+.article-info {
+    width: 242px;
+    height: 27px;
+    left: 73px;
+    top: 371px;
+    position: absolute;
+    color: white;
+    font-size: 20px;
+    font-weight: 400;
+    word-wrap: break-word;
+}
+
+.clickable {
+    cursor: pointer;
+}
+
+.clickable:hover {
+    transform: scale(1.1);
+    transition: transform 0.3s ease;
+}
+
+
+
+#burgerContainer {
+    width: 1260px;
+    height: 250px;
+    padding-right: 1px;
+    align-items: center;
+    gap: 290px;
+    display: inline-flex;
+    position: relative;
+  }
+
+  #burgerButton {
+    border: none;
+    background: none;
+    cursor: pointer;
+    position: relative; /* Ensure relative positioning for child absolute */
+  }
+
+  .Overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(5px);
+    z-index: 2;
+    
+  }
+
+  .OverlayContent {
+    position: relative;
+    width: 316px;
+    height: 440px;
+    left: 25%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background: #FF6412;
+    padding: 20px;
+    border-radius: 15px;
+    color: white;
+    font-size: 18px;
+    font-family: Poppins;
+    font-weight: 700;
+    word-wrap: break-word;
+    z-index: 3;
+    transition: all 0.3s ease;
+  }
+
+  .Group {
+    width: 210px;
+    height: 56px;
+    position: absolute;
+    overflow: hidden;
+    transition: width 0.3s ease-in-out;
+  }
+
+  .Group:hover {
+    width: 235px; /* Lebar bertambah 15px pada hover */
+  }
+
+  .Button {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+  }
+
+  .Rectangle {
+    width: 100%;
+    height: 56px;
+    position: absolute;
+    border: 3px white solid;
+  }
+
+  .BatuText {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 18px;
+    font-family: Poppins;
+    font-weight: 700;
+    word-wrap: break-word;
+    white-space: nowrap;
+  }
+/* Your existing CSS code here */
+
+
+.slider{
+    width: 1300px;
+    max-width: 100vw;
+    height: 700px;
+    margin: auto;
+    position: relative;
+    overflow: hidden;
+}
+.slider .list{
+    position: absolute;
+    width: max-content;
+    height: 100%;
+    left: 0;
+    top: 0;
+    display: flex;
+    transition: 1s;
+}
+.slider .list img{
+    width: 1300px;
+    max-width: 100vw;
+    height: 100%;
+    object-fit: cover;
+}
+.slider .buttons{
+    position: absolute;
+    top: 45%;
+    left: 5%;
+    width: 90%;
+    display: flex;
+    justify-content: space-between;
+}
+.slider .buttons button{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: #fff5;
+    color: #fff;
+    border: none;
+    font-family: monospace;
+    font-weight: bold;
+}
+.slider .dots{
+    position: absolute;
+    bottom: 10px;
+    left: 0;
+    color: #fff;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+}
+.slider .dots li{
+    list-style: none;
+    width: 10px;
+    height: 10px;
+    background-color: #fff;
+    margin: 10px;
+    border-radius: 20px;
+    transition: 0.5s;
+}
+.slider .dots li.active{
+    width: 30px;
+}
+@media screen and (max-width: 768px){
+    .slider{
+        height: 400px;
+    }
+}
+
+
+/* SEARCH BAR */
+
+    /* Style for the search popup */
+    .PopupSearch {
+        display: none;
+        width: 375px;
+        height: 105px;
+        position: relative;
+      }
+  
+      .Rectangle201 {
+        width: 375px;
+        height: 105px;
+        left: 0px;
+        top: 0px;
+        position: absolute;
+        background: #F35453;
+      }
+  
+      .Rectangle80 {
+        width: 323px;
+        height: 56px;
+        left: 26px;
+        top: 25px;
+        position: absolute;
+        border: 3px white solid;
+      }
+  
+      .Pencarian {
+        left: 132px;
+        top: 39px;
+        position: absolute;
+        text-align: center;
+        color: white;
+        font-size: 18px;
+        font-family: Poppins;
+        font-weight: 700;
+        word-wrap: break-word;
+      }
+  
+      /* Style for the button */
+      .SearchButton {
+        cursor: pointer;
+        border: none;
+        background: none;
+        padding: 0;
+        margin: 0;
+      }
+  
+      .SearchButton img {
+        width: 35px;
+        height: 28px;
+        margin-top: 50px;
+        margin-right: 10px;
+      }
+  
+      /* Style for the popup animation */
+      @keyframes popupAnimation {
+        0% {
+          transform: scale(0);
+        }
+        100% {
+          transform: scale(1);
+        }
+      }
+  
+      .PopupSearch.show {
+        animation: popupAnimation 0.3s ease-out;
+        display: block;
+      }
+
+      #searchInput {
+        font-family: Poppins;
+        font-size: 18px;
+        color: white;
+      }
+
+
+
+
+      /* SLIDER GAMBAR */
+
+      .Slider {
+        overflow: hidden;
+      }
+  
+
+      .Slider .Rectangle81,
+      .Slider .Rectangle82,
+      .Slider .Rectangle83,
+      .Slider .Rectangle84,
+      .Slider .Rectangle85 {
+        cursor: pointer;
+        transition: height 0.3s ease; /* Add smooth transition for height change */
+      }
+  
+      .Slider .Rectangle81:hover,
+      .Slider .Rectangle82:hover,
+      .Slider .Rectangle83:hover,
+      .Slider .Rectangle84:hover,
+      .Slider .Rectangle85:hover {
+        height: 35px; /* Increase height on hover */
+      }

@@ -21,7 +21,7 @@
                 </td>
                 <td>
                     <div class="row">
-                        <div class="col-4"><img src=" {{$product->gambar_1}}" width="56" height="56" alt="Product Image"></div>
+                        <div class="col-4"><img src=" {{asset('storage/' .$product->gambar_1)}}" width="56" height="56" alt="Product Image"></div>
                         <div class="col-8">
                             <div>
                                  {{ $product->nama_produk }}
