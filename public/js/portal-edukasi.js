@@ -1,4 +1,4 @@
-document.ready(function () {
+$(document).ready(function () {
     $('#search-article input[name="search"]').keypress(function (e) {
         if (e.which === 13) {
             // 13 is the key code for Enter

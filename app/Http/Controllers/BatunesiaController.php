@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\Batunesia;
+use Illuminate\Http\Request;
 
 class BatunesiaController extends Controller
 {
@@ -25,30 +25,38 @@ class BatunesiaController extends Controller
     public function filterByWhite()
     {
         $batunesias = Batunesia::where('warna', 'white')->paginate(28);
+        $batunesias = Batunesia::paginate(24); // Meminta paginasi langsung dari model
+        return view('brand-batunesia.showcase_batunesia_store', ['batunesias' => $batunesias]);
+    }
+
+    public function filterByWhite()
+    {
+        $batunesias = Batunesia::where('warna', 'white')->paginate(24);
         return view('brand-batunesia.showcase_batunesia_store', compact('batunesias'));
     }
 
     public function filterByCream()
     {
-        $batunesias = Batunesia::where('warna', 'cream')->paginate(28);
+$batunesias = Batunesia::where('warna', 'cream')->paginate(28);
         return view('brand-batunesia.showcase_batunesia_store', compact('batunesias'));
     }
 
     public function filterByBlack()
     {
-        $batunesias = Batunesia::where('warna', 'black')->paginate(28);
+ $batunesias = Batunesia::where('warna', 'black')->paginate(28);
         return view('brand-batunesia.showcase_batunesia_store', compact('batunesias'));
     }
 
     public function filterByGrey()
     {
-        $batunesias = Batunesia::where('warna', 'grey')->paginate(28);
+ $batunesias = Batunesia::where('warna', 'grey')->paginate(28);
         return view('brand-batunesia.showcase_batunesia_store', compact('batunesias'));
     }
     
     public function filterByBrown()
     {
-        $batunesias = Batunesia::where('warna', 'brown')->paginate(28);
+
+$batunesias = Batunesia::where('warna', 'brown')->paginate(28)
         return view('brand-batunesia.showcase_batunesia_store', compact('batunesias'));
     }
 
@@ -72,13 +80,13 @@ class BatunesiaController extends Controller
 
     public function filterByBatuHias()
     {
-        $batunesias = Batunesia::where('kategori', 'Batu Hias')->paginate(28);
+        $batunesias = Batunesia::where('kategori', 'Batu Hias')->paginate(24);
         return view('brand-batunesia.showcase_batunesia_store', compact('batunesias'));
     }
 
     public function filterByOrnamenBatu()
     {
-        $batunesias = Batunesia::where('kategori', 'Ornamen Batu')->paginate(28);
+        $batunesias = Batunesia::where('kategori', 'Ornamen Batu')->paginate(24);
         return view('brand-batunesia.showcase_batunesia_store', compact('batunesias'));
     }
 
@@ -101,7 +109,7 @@ class BatunesiaController extends Controller
      */
     public function store(Request $request)
     {
-        
+        //
     }
 
     /**

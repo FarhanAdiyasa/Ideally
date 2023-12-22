@@ -2,15 +2,17 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Promo extends Model
 {
     use HasFactory;
+    use SoftDeletes;
 
     protected $guarded = ['id_promo'];
-
+    protected $primaryKey = 'id_promo'; 
     protected $with = ['createdBy', 'updatedBy', 'deletedBy'];
 
     public function createdBy()
@@ -27,19 +29,30 @@ class Promo extends Model
     {
         return $this->belongsTo(User::class, 'deleted_by', 'user_id');
     }
+    public function agrigards()
+    {
+        return $this->belongsToMany(Agrigard::class, 'agrigards_promos', 'id_promo', 'id_agrigard');
+    }
+    public function shineages()
+    {
+        return $this->belongsToMany(Shineage::class, 'shineages_promos', 'id_promo', 'id_shineage');
+    }
+    public function konkuritos()
+    {
+        return $this->belongsToMany(Konkurito::class, 'konkuritos_promos', 'id_promo', 'id_konkurito');
+    }
+    public function batunesias()
+    {
+        return $this->belongsToMany(Batunesia::class, 'batunesias_promos', 'id_promo', 'id_batu');
+    }
+    public function nurseris()
+    {
+        return $this->belongsToMany(Dedikasi_Flora::class, 'dedikasi_floras_promos', 'id_promo', 'id_nurseri');
+    }
+    public function everlass()
+    {
+        return $this->belongsToMany(Everlas_Things::class, 'everlas_things_promos', 'id_promo', 'id_everlas_things');
+    }
 
-
-
-    /*protected $fillable = [
-        'id_promo',
-        'judul_promo',
-        'deskripsi_promo',
-        'tanggal_mulai',
-        'tanggal_selesai',
-        'created_at',
-        'updated_at',
-        'satuan_potongan',
-        'jumlah_potongan',
-    ];*/
 
 }

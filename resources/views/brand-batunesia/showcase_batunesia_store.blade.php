@@ -24,12 +24,14 @@
     rel="stylesheet">
 
 <style>
+
         /* CSS */
 .product-container {
     width: 100%;
     display: flex;
     flex-wrap: wrap;
     gap: 10px;
+
 }   
 
 
@@ -41,7 +43,7 @@
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
     overflow: hidden;
     position: relative;
-           
+
 }
 
 .product-card .product-details {
@@ -128,12 +130,12 @@
     </style>
 </head>
 <body>
-
 {{-- Navbar Section --}}
     @include('partials.navbar')
     {{-- End of Navbar Section --}}
     
     <div style="width: 100%; height: 100%; position: relative; background: #36369f">
+
 
 
         <!--hero-->
@@ -222,6 +224,7 @@
                 <div style="width: 448px; height: 166px; left: 24px; top: 13px; position: absolute; color: white; font-size: 25px; font-family: Poppins; font-weight: 700; word-wrap: break-word">“Kehidupan yang tidak teruji adalah kehidupan yang tidak bernilai.”</div>
                 <div style="width: 303px; height: 58px; left: 24px; top: 189px; position: absolute; color: white; font-size: 18px; font-family: Poppins; font-weight: 400; word-wrap: break-word">Socrates</div>
             </div>
+
             <!--end quotes-->
             
             <!--card-product-->
@@ -247,9 +250,6 @@
                 @endforelse
             </div>
             <!--end card product-->
-
-
-
 
         </div>
         <!--content-->
@@ -300,3 +300,4 @@
     </div>
 </body>
 </html>
+

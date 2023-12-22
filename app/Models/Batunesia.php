@@ -11,6 +11,7 @@ class Batunesia extends Model
 
     protected $guarded = ['id_batu'];
     protected $primaryKey = 'id_batu';
+    protected $table = "batunesias";
     protected $with = ['createdBy', 'updatedBy', 'deletedBy'];
 
     public function createdBy()
@@ -27,38 +28,9 @@ class Batunesia extends Model
     {
         return $this->belongsTo(User::class, 'deleted_by', 'user_id');
     }
-
-
-
-    /*protected $fillable = [
-        'id_batu',
-        'nama_produk',
-        'slug',
-        'kategori',
-        'spek',
-        'satuan',
-        'warna',
-        'gambar_1',
-        'gambar_2',
-        'gambar_3',
-        'video',
-        'stok',
-        'item_terjual',
-        'deskripsi_singkat',
-        'hpp',
-        'harga_b2I_31+_unit',
-        'harga_b2I_11+_unit',
-        'harga_b2I_1+_unit',
-        'harga_b2B_31+_unit',
-        'harga_b2B_11+_unit',
-        'harga_b2B_1+_unit',
-        'harga_b2C_31+_unit',
-        'harga_b2C_11+_unit',
-        'harga_b2C_1+_unit',
-        'tanggal_publikasi',
-        'created_at',
-        'updated_at',
-        'deleted_at',
-    ];*/
+    public function promos()
+    {
+        return $this->belongsToMany(Promo::class, 'batunesias_promos', 'id_batu', 'id_promo');
+    }
 
 }

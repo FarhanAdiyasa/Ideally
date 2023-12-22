@@ -19,12 +19,12 @@
         <script src="../js/bootstrap.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
         <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
     <title>Ideally | preview product everlasThing</title>
     
 </head>
 <body>
 
-    
     <div style="width: 1920px; height: 100px; left: 0px; top: 0px; position: absolute">
         <div style="width: 100%; height: 100%; top: 0px; position: absolute;">
             <img src="{{ asset('img/everlas_things/header-bg.png') }}" alt="">
@@ -210,6 +210,8 @@
             </div>
         </div>
     </div>
+
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/js/bootstrap.bundle.min.js"></script>
+
 </body>
 </html>

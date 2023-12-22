@@ -1,5 +1,5 @@
 <div class="image-footer-container">
-    <img src="../img/Background-Footer.png" style="width: 100%;">
+    <img src="{{asset('/img/Background-Footer.png')}}" style="width: 100%;">
 
 
     <div class="btn-overlay-footer">
@@ -30,11 +30,27 @@
   </div>
 
 
-  <footer
-    style="background-color: #303030; color: white; height: 243px; display: flex; justify-content: center; align-items: center;  bottom: 0; width: 100%;">
-    <div class="container text-center">
-      <p><span style="font-weight: 700;"><span style="text-decoration: underline;">&copy;</span> PT Lanskap Indonesia
-          Ideal</span> 2023.</p>
-      <a href="#" class="btn rounded-pill" style="background-color: #06C195; color: white;">Informasi Lebih Lanjut!</a>
-    </div>
-  </footer>
+<footer
+        style="background-color: #303030; color: white; height: 243px; display: flex; justify-content: center; align-items: center;  bottom: 0; width: 100%;">
+        <div class="container text-center">
+            <p><span style="font-weight: 700;"><span style="text-decoration: underline;">&copy;</span> PT
+                    Lanskap
+                    Indonesia
+                    Ideal</span> 2023.</p>
+            <a href="https://www.instagram.com/ideally.indonesia/" target="_blank"
+                class="more-information btn rounded-pill">
+                <i class="fab fa-instagram"></i>
+            </a>
+            <a href="#" class="more-information btn rounded-pill" target="_blank">
+                <i class="fab fa-tiktok"></i>
+            </a>
+            <a href="https://id.linkedin.com/company/ideally-indonesia" target="_blank"
+                class="more-information btn rounded-pill">
+                <i class="fab fa-linkedin"></i>
+            </a>
+            <a href="#" class="more-information btn rounded-pill">
+                <i class="fab fa-whatsapp"></i>
+                <p class="information-text">Informasi Lebih Lanjut</p>
+            </a>
+        </div>
+    </footer>

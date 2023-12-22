@@ -10,7 +10,8 @@ class Dedikasi_Flora extends Model
     use HasFactory;
 
     protected $guarded = ['id_nurseri'];
-
+    protected $table = "dedikasi_floras";
+    protected $primaryKey = 'id_nurseri'; 
     protected $with = ['createdBy', 'updatedBy', 'deletedBy'];
 
     public function createdBy()
@@ -27,7 +28,10 @@ class Dedikasi_Flora extends Model
     {
         return $this->belongsTo(User::class, 'deleted_by', 'user_id');
     }
-
+    public function promos()
+    {
+        return $this->belongsToMany(Promo::class, 'dedikasi_floras_promos', 'id_nureseri', 'id_promo');
+    }
 
 
     /*protected $fillable = [
