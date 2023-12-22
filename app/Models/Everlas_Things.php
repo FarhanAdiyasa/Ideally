@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Everlas_Things extends Model
 {
     use HasFactory;
-    protected $table = 'everlas_things';
+protected $table = 'everlas_things';
     protected $guarded = ['id_everlas_things'];
     protected $primaryKey = 'id_everlas_things'; 
     protected $with = ['createdBy', 'updatedBy', 'deletedBy'];
