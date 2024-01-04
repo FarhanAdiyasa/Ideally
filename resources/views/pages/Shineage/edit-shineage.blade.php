@@ -95,7 +95,15 @@
         </div>
         <!-- /.row -->
         <div class="row">
-          <div class="col-12 col-sm-6">
+          <div class="col-md-3">
+            <div class="form-group">
+              <label>Jenis Shineage</label>
+              <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sed, odit ab eum enim illo minima deleniti quae ducimus repudiandae sit!</p>
+            </div>
+            <!-- /.form-group -->
+          </div>
+          <!-- /.col -->
+          <div class="col-md-9">
             <div class="form-group">
               <label>Jenis</label>
               <select class="form-control select2" style="width: 100%;" name="jenis">
@@ -110,42 +118,11 @@
                 <small class="text-danger">{{ $message }}</small>
                 @enderror
             </div>
-            <!-- /.form-group -->
-          </div>
-          <!-- /.col -->
-          <div class="col-12 col-sm-6">
-            <div class="form-group">
-              <label>Garansi Produk</label>
-              <div class="select2-purple">
-                <select class="form-control select2" style="width: 100%;" name="garansi">
-                  <option value="30 hari" @selected(old('garansi') == '30 hari' || $shineage->garansi == '30 hari')>30 hari</option>
-                  <option value="60 hari" @selected(old('garansi') == '60 hari' || $shineage->garansi == '60 hari')>60 hari</option>
-                  <option value="90 hari" @selected(old('garansi') == '90 hari' || $shineage->garansi == '90 hari')>90 hari</option>
-                  <option value="180 hari" @selected(old('garansi') == '180 hari' || $shineage->garansi == '180 hari')>180 hari</option>
-                  <option value="360 hari" @selected(old('garansi') == '360 hari' || $shineage->garansi == '360 hari')>360 hari</option>
-              </select>              
-                     @error('garansi')
-                <small class="text-danger">{{ $message }}</small>
-                @enderror
-              </div>
-            </div>
-            <!-- /.form-group -->
           </div>
           <!-- /.col -->
         </div>
         <!-- /.row -->
         <div class="row">
-          <div class="col-12 col-sm-6">
-            <div class="form-group">
-              <label>Dimensi Produk</label>
-                <input type="text" class="form-control" placeholder="Placeholder text" name="dimensi" value="{{old('dimensi', $shineage->dimensi)}}">
-                   @error('dimensi')
-                <small class="text-danger">{{ $message }}</small>
-                @enderror
-            </div>
-            <!-- /.form-group -->
-          </div>
-          <!-- /.col -->
           <div class="col-12 col-sm-6">
             <div class="form-group">
               <label>Warna Produk</label>
@@ -184,6 +161,25 @@
                 @error('warna')
                 <small class="text-danger">{{ $message }}</small>
                 @enderror
+            </div>
+            <!-- /.form-group -->
+          </div>
+          <!-- /.col -->
+          <div class="col-12 col-sm-6">
+            <div class="form-group">
+              <label>Garansi Produk</label>
+              <div class="select2-purple">
+                <select class="form-control select2" style="width: 100%;" name="garansi">
+                  <option value="30 hari" @selected(old('garansi') == '30 hari' || $shineage->garansi == '30 hari')>30 hari</option>
+                  <option value="60 hari" @selected(old('garansi') == '60 hari' || $shineage->garansi == '60 hari')>60 hari</option>
+                  <option value="90 hari" @selected(old('garansi') == '90 hari' || $shineage->garansi == '90 hari')>90 hari</option>
+                  <option value="180 hari" @selected(old('garansi') == '180 hari' || $shineage->garansi == '180 hari')>180 hari</option>
+                  <option value="360 hari" @selected(old('garansi') == '360 hari' || $shineage->garansi == '360 hari')>360 hari</option>
+              </select>              
+                     @error('garansi')
+                <small class="text-danger">{{ $message }}</small>
+                @enderror
+              </div>
             </div>
             <!-- /.form-group -->
           </div>
