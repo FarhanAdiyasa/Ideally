@@ -5,17 +5,20 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
-    <link href="{{ asset('https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/css/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/css/bootstrap.min.css') }}"
+        rel="stylesheet">
 
     <!-- Bootstrap Icons -->
-    <link rel="stylesheet" href="{{ asset('https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css') }}">
+    <link rel="stylesheet"
+        href="{{ asset('https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css') }}">
 
     <!-- Font Awesomes Icons -->
-    <link rel="stylesheet" href="{{ asset('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css') }}">
+    <link rel="stylesheet"
+        href="{{ asset('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css') }}">
 
     <!-- Custom CSS -->
     <link rel="stylesheet" href="{{ asset('css/keranjang/style.css') }}" rel="stylesheet">
-    
+
 
     <!-- Bootstrap JS -->
     <script src="{{ asset('js/bootstrap.min.js') }}"></script>
@@ -78,142 +81,171 @@
                                 </tr>
                             </thead>
                             <tbody>
+                                @php
+                                    $berat_deflo = 0;
+                                    $berat_agrigard = 0;
+                                @endphp
+                                @if ( session()->has('cart_batunesia') )
                                 <tr class="border-brand">
                                     <th colspan="5" style="text-align: center;">Batunesia</th>
                                     <th class="total-brand">Total</th>
                                     <td class="d-flex align-items-center justify-content-center">
-                                        <a href="{{ asset('') }}"><img src="{{ asset('img/keranjang/Delete Icon.png') }}" alt=""
+                                        <a href="{{ asset('') }}"><img
+                                                src="{{ asset('img/keranjang/Delete Icon.png') }}" alt=""
                                                 class="d-block w-50"></a>
                                     </td>
                                 </tr>
-                                @foreach($keranjang as $item)
+                                @foreach($krj_batunesia as $item)
                                 <tr class="border-bottom baris-produk">
-                                    <td class="d-flex align-items-center" style="height: 52px;">{{ $loop->index + 1 }}</td>
+                                    <td class="d-flex align-items-center" style="height: 52px;"></td>
                                     <td class="detail">
                                         <div class="row g-1">
                                             <div class="col-3">
                                                 <div class="img-container">
-                                                    <img src="{{ $item['produk']->gambar_1 }}" alt="{{ $item['produk']->nama_produk }}">
+                                                    <img src="{{ $item['produk']->gambar_1 }}"
+                                                        alt="{{ $item['produk']->nama_produk }}">
                                                 </div>
                                             </div>
-                                            <div class="col-9 d-flex align-items-center">{{ $item['produk']->nama_produk }}</div>
+                                            <div class="col-9 d-flex align-items-center">{{ $item['produk']->nama_produk
+                                                        }}</div>
                                         </div>
                                     </td>
                                     <td class="jumlah">
                                         <!-- Tambahkan tombol untuk mengatur jumlah produk -->
                                         <span class="p-1"><i class="fa-solid fa-circle-chevron-down"></i></span>
-                                        <input class="form-control quantity" type="text" value="{{ $item['quantity'] }}" readonly>
+                                        <input class="form-control quantity" type="text" value="{{ $item['quantity'] }}"
+                                            readonly>
                                         <span class="p-1"><i class="fa-solid fa-circle-chevron-up"></i></span>
                                     </td>
                                     <td class="unit">{{ $item['produk']->satuan }}</td>
                                     <td class="harga">{{ $item['produk']->harga_b2C_1_unit }}</td>
                                     <td class="total">{{ $item['quantity'] * $item['produk']->harga_b2C_1_unit }}</td>
                                     <td class="d-flex align-items-center justify-content-center">
-                                        {{-- <form action="{{ route('hapusDariKeranjang', ['id_batu' => $key]) }}" method="POST">
-                                            @csrf
-                                            @method('DELETE')
-                                            <button type="submit" style="border: none; background: none; padding: 0; margin: 0; outline: none;">
-                                                <img src="{{ asset('img/keranjang/Delete Icon.png') }}" alt="Hapus Produk" class="d-block w-50" style="border: none;">
-                                            </button>
+                                        {{-- <form action="{{ route('hapusDariKeranjang', ['id_batu' => $key]) }}"
+                                        method="POST">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit"
+                                            style="border: none; background: none; padding: 0; margin: 0; outline: none;">
+                                            <img src="{{ asset('img/keranjang/Delete Icon.png') }}" alt="Hapus Produk"
+                                                class="d-block w-50" style="border: none;">
+                                        </button>
                                         </form> --}}
-                                                                                                                  
+
                                     </td>
                                 </tr>
-                            @endforeach
+                                @endforeach
+                                @endif
 
-                                {{-- <tr class="border-brand">
+                                @if ( session()->has('cart_deflo') )
+                                <tr class="border-brand">
                                     <th colspan="5" style="text-align: center;">Dedikasi Flora</th>
                                     <th class="total-brand">Total</th>
                                     <td class="d-flex align-items-center justify-content-center">
-                                        <a href="{{ asset('') }}"><img src="{{ asset('img/keranjang/Delete Icon.png') }}" alt=""
+                                        <a href="{{ asset('') }}"><img
+                                                src="{{ asset('img/keranjang/Delete Icon.png') }}" alt=""
                                                 class="d-block w-50"></a>
                                     </td>
                                 </tr>
+                                @foreach ( session('cart_deflo', []) as $item )
                                 <tr class="border-bottom baris-produk">
-                                    <td class="d-flex align-items-center" style="height: 52px;">No</td>
+                                    <td class="d-flex align-items-center" style="height: 52px;"></td>
                                     <td class="detail">
                                         <div class="row g-1">
                                             <div class="col-3">
                                                 <div class="img-container">
-                                                    <img src="{{ asset('img/keranjang/contoh-produk.jpg') }}" alt="">
+                                                    <img src="{{ $item['produk']->gambar_1 }}"
+                                                        alt="{{ $item['produk']->nama_produk }}">
                                                 </div>
                                             </div>
-                                            <div class="col-9 d-flex align-items-center">Beringin Korea</div>
+                                            <div class="col-9 d-flex align-items-center">{{ $item['produk']->nama_lokal
+                                                        }}</div>
                                         </div>
                                     </td>
                                     <td class="jumlah">
+                                        <!-- Tambahkan tombol untuk mengatur jumlah produk -->
                                         <span class="p-1"><i class="fa-solid fa-circle-chevron-down"></i></span>
-                                        <input class="form-control quantity" type="text" value="3" readonly>
+                                        <input class="form-control quantity" type="text" value="{{ $item['quantity'] }}"
+                                            readonly>
                                         <span class="p-1"><i class="fa-solid fa-circle-chevron-up"></i></span>
                                     </td>
-                                    <td class="unit">Pohon</td>
-                                    <td class="harga">200000</td>
-                                    <td class="total">Total</td>
+                                    <td class="unit">{{ $item['produk']->satuan }}</td>
+                                    <td class="harga">{{ $item['produk']->harga_b2C_1_unit }}</td>
+                                    <td class="total">{{ $item['quantity'] * $item['produk']->harga_b2C_1_unit }}</td>
                                     <td class="d-flex align-items-center justify-content-center">
-                                        <a href="{{ asset('') }}"><img src="{{ asset('img/keranjang/Delete Icon.png') }}" alt=""
-                                                class="d-block w-50"></a>
+                                        {{-- <form action="{{ route('hapusDariKeranjang', ['id_batu' => $key]) }}"
+                                        method="POST">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit"
+                                            style="border: none; background: none; padding: 0; margin: 0; outline: none;">
+                                            <img src="{{ asset('img/keranjang/Delete Icon.png') }}" alt="Hapus Produk"
+                                                class="d-block w-50" style="border: none;">
+                                        </button>
+                                        </form> --}}
+
                                     </td>
                                 </tr>
+                                @php
+                                    $berat_deflo += $item['produk']->berat_gram * $item['quantity'];
+                                @endphp
+                                @endforeach
+                                @endif
 
-                                <tr class="border-bottom baris-produk">
-                                    <td class="d-flex align-items-center" style="height: 52px;">No</td>
-                                    <td class="detail">
-                                        <div class="row g-1">
-                                            <div class="col-3">
-                                                <div class="img-container">
-                                                    <img src="{{ asset('img/keranjang/contoh-produk.jpg') }}" alt="">
-                                                </div>
-                                            </div>
-                                            <div class="col-9 d-flex align-items-center">Beringin Korea</div>
-                                        </div>
-                                    </td>
-                                    <td class="jumlah">
-                                        <span class="p-1"><i class="fa-solid fa-circle-chevron-down"></i></span>
-                                        <input class="form-control quantity" type="text" value="3" readonly>
-                                        <span class="p-1"><i class="fa-solid fa-circle-chevron-up"></i></span>
-                                    </td>
-                                    <td class="unit">Pohon</td>
-                                    <td class="harga">500000</td>
-                                    <td class="total">Total</td>
-                                    <td class="d-flex align-items-center justify-content-center">
-                                        <a href="{{ asset('') }}"><img src="{{ asset('img/keranjang/Delete Icon.png') }}" alt=""
-                                                class="d-block w-50"></a>
-                                    </td>
-                                </tr>
-
+                                @if (session()->has('cart_agrigard'))
                                 <tr class="border-brand">
-                                    <th colspan="5" style="text-align: center;">Everlas Things</th>
+                                    <th colspan="5" style="text-align: center;">Agrigard</th>
                                     <th class="total-brand">Total</th>
                                     <td class="d-flex align-items-center justify-content-center">
-                                        <a href="{{ asset('') }}"><img src="{{ asset('img/keranjang/Delete Icon.png') }}" alt=""
+                                        <a href="{{ asset('') }}"><img
+                                                src="{{ asset('img/keranjang/Delete Icon.png') }}" alt=""
                                                 class="d-block w-50"></a>
                                     </td>
                                 </tr>
+                                @foreach (session('cart_agrigard', []) as $item)
                                 <tr class="border-bottom baris-produk">
-                                    <td class="d-flex align-items-center" style="height: 52px;">No</td>
+                                    <td class="d-flex align-items-center" style="height: 52px;"></td>
                                     <td class="detail">
                                         <div class="row g-1">
                                             <div class="col-3">
                                                 <div class="img-container">
-                                                    <img src="{{ asset('img/keranjang/contoh-produk.jpg') }}" alt="">
+                                                    <img src="{{ $item['produk']->gambar_1 }}"
+                                                        alt="{{ $item['produk']->nama_produk }}">
                                                 </div>
                                             </div>
-                                            <div class="col-9 d-flex align-items-center">Beringin Korea</div>
+                                            <div class="col-9 d-flex align-items-center">{{ $item['produk']->nama_produk
+                                                        }}</div>
                                         </div>
                                     </td>
                                     <td class="jumlah">
+                                        <!-- Tambahkan tombol untuk mengatur jumlah produk -->
                                         <span class="p-1"><i class="fa-solid fa-circle-chevron-down"></i></span>
-                                        <input class="form-control quantity" type="text" value="3" readonly>
+                                        <input class="form-control quantity" type="text" value="{{ $item['quantity'] }}"
+                                            readonly>
                                         <span class="p-1"><i class="fa-solid fa-circle-chevron-up"></i></span>
                                     </td>
-                                    <td class="unit">Pohon</td>
-                                    <td class="harga">200000</td>
-                                    <td class="total">Total</td>
+                                    <td class="unit">{{ $item['produk']->satuan }}</td>
+                                    <td class="harga">{{ $item['produk']->harga_b2C_1_unit }}</td>
+                                    <td class="total">{{ $item['quantity'] * $item['produk']->harga_b2C_1_unit }}</td>
                                     <td class="d-flex align-items-center justify-content-center">
-                                        <a href="{{ asset('') }}"><img src="{{ asset('img/keranjang/Delete Icon.png') }}" alt=""
-                                                class="d-block w-50"></a>
+                                        {{-- <form action="{{ route('hapusDariKeranjang', ['id_batu' => $key]) }}"
+                                        method="POST">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit"
+                                            style="border: none; background: none; padding: 0; margin: 0; outline: none;">
+                                            <img src="{{ asset('img/keranjang/Delete Icon.png') }}" alt="Hapus Produk"
+                                                class="d-block w-50" style="border: none;">
+                                        </button>
+                                        </form> --}}
+
                                     </td>
-                                </tr> --}}
+                                </tr>
+                                @php
+                                    $berat_agrigard += $item['produk']->berat_gram * $item['quantity'];
+                                @endphp
+                                @endforeach
+                                @endif
                             </tbody>
                         </table>
                     </div>
@@ -228,14 +260,34 @@
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td id="total-produk">Total Produk (<span>123</span>)</td>
-                                    <td id="total-harga">123.000</td>
+                                    <td id="total-produk">Total Produk (<span></span>)</td>
+                                    <td id="total-harga"></td>
                                 </tr>
                             </tbody>
                         </table>
+                        <div id="responseContainer"></div>
                         <div class="d-flex flex-column align-items-center">
                             <div class="mt-3">
-                                <a href="{{ asset('') }}" class="btn btn-bayar bg-tosca rounded-5">Lanjutkan Pembayaran</a>
+                                <form action="{{ route('calculate.ongkir') }}" method="post">
+                                    @csrf
+                                    <input type="hidden" value="79" name="origin" id="origin" class="form-control">
+                                    <input type="hidden" value="153" name="destination" id="destination"
+                                        class="form-control">
+                                    <input type="hidden" value="{{ $berat_agrigard+$berat_deflo }}" name="weight"
+                                        id="weight" class="form-control">
+                                    <input type="hidden" value="jne" name="courier" id="courier" class="form-control">
+                                    <input type="submit" value="Cek Ongkir" name="btnCek"
+                                        class="btn btn-bayar bg-tosca rounded-5">
+                                </form>
+                            </div>
+                            <div id="result" class="mt-3">
+                                @if (isset($ongkir))
+                                @foreach ($ongkir[0]['costs'] as $costs)
+                                @if ($costs['service'] == 'REG' )
+                                <label for="name">JNE {{ $costs['cost'][0]['value'] }}</label>
+                                @endif
+                                @endforeach
+                                @endif
                             </div>
                             <div class="mt-4">
                                 <p class="text-center m-0" style="font-size: 10px;">Dukungan Pembayaran</p>
@@ -255,84 +307,89 @@
 
     <script src="{{ asset('https://code.jquery.com/jquery-3.6.0.min.js') }}"></script>
     <script>
-        $(document).ready(function () {
-            // Mengatur nomor urut untuk setiap merek produk
-            $('.table-cart tbody').each(function () {
-                let count = 1;
-                $(this).find('tr').each(function () {
-                    // Cek jika ini adalah baris merek produk baru
-                    if ($(this).find('th').length > 0) {
-                        count = 1; // Reset nomor urut
-                    } else {
-                        $(this).find('td:first').text(('0' + count).slice(-2)); // Mengatur nomor urut dengan format 01, 02, dst.
-                        count++;
-                    }
-                });
-            });
-
-            recalculateTotal();
-
-            // Fungsi untuk menambahkan jumlah
-            $('.fa-circle-chevron-up').on('click', function () {
-                var inputQuantity = $(this).closest('.jumlah').find('.quantity');
-                var currentValue = parseInt(inputQuantity.val());
-                inputQuantity.val(currentValue + 1);
-                recalculateTotal();
-            });
-
-            // Fungsi untuk mengurangi jumlah
-            $('.fa-circle-chevron-down').on('click', function () {
-                var inputQuantity = $(this).closest('.jumlah').find('.quantity');
-                var currentValue = parseInt(inputQuantity.val());
-                if (currentValue > 1) { // Menambahkan kondisi jika nilai lebih besar dari 1
-                    inputQuantity.val(currentValue - 1);
-                    recalculateTotal();
+    $(document).ready(function() {
+        // Mengatur nomor urut untuk setiap merek produk
+        $('.table-cart tbody').each(function() {
+            let count = 1;
+            $(this).find('tr').each(function() {
+                // Cek jika ini adalah baris merek produk baru
+                if ($(this).find('th').length > 0) {
+                    count = 1; // Reset nomor urut
+                } else {
+                    $(this).find('td:first').text(('0' + count).slice(-
+                        2)); // Mengatur nomor urut dengan format 01, 02, dst.
+                    count++;
                 }
             });
+        });
 
-            // Fungsi untuk menghitung ulang total saat nilai diubah
-            function recalculateTotal() {
-                $('.table tbody tr').each(function () {
-                    var jumlah = parseInt($(this).find('.quantity').val()); // Mengambil nilai dari input dengan kelas 'quantity'
-                    var harga = parseInt($(this).find('.harga').text().replace(',', ''));
+        recalculateTotal();
 
-                    var total = jumlah * harga;
-                    $(this).find('.total').text(total.toLocaleString('id-ID')); // Menampilkan total dengan pemisah ribuan
-                });
+        // Fungsi untuk menambahkan jumlah
+        $('.fa-circle-chevron-up').on('click', function() {
+            var inputQuantity = $(this).closest('.jumlah').find('.quantity');
+            var currentValue = parseInt(inputQuantity.val());
+            inputQuantity.val(currentValue + 1);
+            recalculateTotal();
+        });
 
-                $('.total-brand').each(function () {
-                    var totalHargaMerek = 0;
-                    var $currentBrand = $(this).closest('tr'); // Ambil baris merek saat ini
-                    var $brandRows = $currentBrand.nextUntil('tr:has(th)'); // Ambil semua baris produk dalam merek
-
-                    $brandRows.each(function () {
-                        var jumlah = parseInt($(this).find('.quantity').val()); // Mengambil nilai dari input dengan kelas 'quantity'
-                        var harga = parseInt($(this).find('.harga').text().replace(',', ''));
-
-                        var total = jumlah * harga;
-                        totalHargaMerek += total; // Jumlahkan total harga produk dalam satu merek
-                    });
-
-                    $(this).text(totalHargaMerek.toLocaleString('id-ID')); // Tampilkan total harga merek dengan pemisah ribuan
-                });
-
-                var totalProduk = $('.table tbody tr.baris-produk').length;
-                $('#total-produk span').text(totalProduk); // Memperbarui jumlah total produk
-
-                // Menghitung total harga dari semua merek
-                var totalHarga = 0;
-                $('.harga').each(function () {
-                    var jumlah = parseInt($(this).closest('tr').find('.quantity').val());
-                    var harga = parseInt($(this).text().replace(',', ''));
-
-                    var subtotal = jumlah * harga;
-                    totalHarga += subtotal; // Menambahkan subtotal ke total harga
-                });
-
-                $('#total-harga').text(totalHarga.toLocaleString('id-ID'));
+        // Fungsi untuk mengurangi jumlah
+        $('.fa-circle-chevron-down').on('click', function() {
+            var inputQuantity = $(this).closest('.jumlah').find('.quantity');
+            var currentValue = parseInt(inputQuantity.val());
+            if (currentValue > 1) { // Menambahkan kondisi jika nilai lebih besar dari 1
+                inputQuantity.val(currentValue - 1);
+                recalculateTotal();
             }
         });
 
+        // Fungsi untuk menghitung ulang total saat nilai diubah
+        function recalculateTotal() {
+            $('.table tbody tr').each(function() {
+                var jumlah = parseInt($(this).find('.quantity')
+                    .val()); // Mengambil nilai dari input dengan kelas 'quantity'
+                var harga = parseInt($(this).find('.harga').text().replace(',', ''));
+
+                var total = jumlah * harga;
+                $(this).find('.total').text(total.toLocaleString(
+                    'id-ID')); // Menampilkan total dengan pemisah ribuan
+            });
+
+            $('.total-brand').each(function() {
+                var totalHargaMerek = 0;
+                var $currentBrand = $(this).closest('tr'); // Ambil baris merek saat ini
+                var $brandRows = $currentBrand.nextUntil(
+                    'tr:has(th)'); // Ambil semua baris produk dalam merek
+
+                $brandRows.each(function() {
+                    var jumlah = parseInt($(this).find('.quantity')
+                        .val()); // Mengambil nilai dari input dengan kelas 'quantity'
+                    var harga = parseInt($(this).find('.harga').text().replace(',', ''));
+
+                    var total = jumlah * harga;
+                    totalHargaMerek += total; // Jumlahkan total harga produk dalam satu merek
+                });
+
+                $(this).text(totalHargaMerek.toLocaleString(
+                    'id-ID')); // Tampilkan total harga merek dengan pemisah ribuan
+            });
+
+            var totalProduk = $('.table tbody tr.baris-produk').length;
+            $('#total-produk span').text(totalProduk); // Memperbarui jumlah total produk
+
+            // Menghitung total harga dari semua merek
+            var totalHarga = 0;
+            $('.harga').each(function() {
+                var jumlah = parseInt($(this).closest('tr').find('.quantity').val());
+                var harga = parseInt($(this).text().replace(',', ''));
+
+                var subtotal = jumlah * harga;
+                totalHarga += subtotal; // Menambahkan subtotal ke total harga
+            });
+
+            $('#total-harga').text(totalHarga.toLocaleString('id-ID'));
+        }
+    });
     </script>
 </body>
 

@@ -2,7 +2,7 @@
 
 namespace Database\Factories;
 
-use App\Models\User;
+use App\Models\Batunesia;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Faker\Factory as Faker;
 
@@ -14,38 +14,37 @@ class BatunesiaFactory extends Factory
     {
         $faker = Faker::create();
         return [
-
-            'nama_produk' => $this->faker->words,
-            'slug' => [$this->faker->slug],
-            'kategori' => [$this->faker->word],
-            'panjang' => $this->faker->randomFloat(2, 1, 100),
-            'lebar' => $this->faker->randomFloat(2, 1, 100),
-            'diameter' => $this->faker->randomFloat(2, 1, 100),
-            'tinggi' => $this->faker->randomFloat(2, 1, 100),
-            'satuan' => [$this->faker->word],
-            'warna_1' => $this->faker->colorName,
-            'warna_2' => $this->faker->optional()->colorName,
-            'gambar_1' => [$this->faker->imageUrl()],
-            'gambar_2' => [$this->faker->imageUrl()],
-            'gambar_3' => [$this->faker->imageUrl()],
-            'video' => [$this->faker->optional()->url],
-            'armada_minimum' => [$this->faker->word],
-            'stok' => [$this->faker->randomNumber(2)],
-            'item_terjual' => [$this->faker->randomNumber(2)],
-            'penempatan' => $this->faker->word,
-            'deskripsi_singkat' => [$this->faker->paragraph],
-            'harga_b2I_31_unit' => [$this->faker->randomFloat(2, 10, 1000)],
-            'harga_b2I_11_unit' => [$this->faker->randomFloat(2, 10, 1000)],
-            'harga_b2I_1_unit' => [$this->faker->randomFloat(2, 10, 1000)],
-            'harga_b2B_31_unit' => [$this->faker->randomFloat(2, 10, 1000)],
-            'harga_b2B_11_unit' => [$this->faker->randomFloat(2, 10, 1000)],
-            'harga_b2B_1_unit' => [$this->faker->randomFloat(2, 10, 1000)],
-            'harga_b2C_31_unit' => [$this->faker->randomFloat(2, 10, 1000)],
-            'harga_b2C_11_unit' => [$this->faker->randomFloat(2, 10, 1000)],
-            'harga_b2C_1_unit' => [$this->faker->randomFloat(2, 10, 1000)],
-            'tanggal_publikasi' => [$this->faker->optional()->dateTimeThisYear],
-            'created_by' => [$this->faker->numberBetween(1, 5)]
+            'nama_produk' => $faker->words(3, true), // Menggunakan words() untuk mendapatkan kalimat
+            'slug' => $faker->slug,
+            'kategori' => $faker->word,
+            'panjang' => $faker->randomFloat(2, 1, 100),
+            'lebar' => $faker->randomFloat(2, 1, 100),
+            'diameter' => $faker->randomFloat(2, 1, 100),
+            'tinggi' => $faker->randomFloat(2, 1, 100),
+            'satuan' => $faker->word,
+            'warna_1' => $faker->colorName,
+            'warna_2' => $faker->colorName,
+            'gambar_1' => $faker->imageUrl(),
+            'gambar_2' => $faker->imageUrl(),
+            'gambar_3' => $faker->imageUrl(),
+            'video' => $faker->optional()->url,
+            'armada_minimum' => $faker->word,
+            'stok' => $faker->randomNumber(2),
+            'item_terjual' => $faker->randomNumber(2),
+            'penempatan' => $faker->word,
+            'deskripsi_singkat' => $faker->paragraph,
+            'harga_jual_projek_ideally' => $faker->randomFloat(2, 10, 1000),
+            'harga_b2I_31_unit' => $faker->randomFloat(2, 10, 1000),
+            'harga_b2I_11_unit' => $faker->randomFloat(2, 10, 1000),
+            'harga_b2I_1_unit' => $faker->randomFloat(2, 10, 1000),
+            'harga_b2B_31_unit' => $faker->randomFloat(2, 10, 1000),
+            'harga_b2B_11_unit' => $faker->randomFloat(2, 10, 1000),
+            'harga_b2B_1_unit' => $faker->randomFloat(2, 10, 1000),
+            'harga_b2C_31_unit' => $faker->randomFloat(2, 10, 1000),
+            'harga_b2C_11_unit' => $faker->randomFloat(2, 10, 1000),
+            'harga_b2C_1_unit' => $faker->randomFloat(2, 10, 1000),
+            'tanggal_publikasi' => $faker->optional()->dateTimeThisYear,
+            'created_by' => $faker->numberBetween(1, 5),
         ];
-        
     }
 }
