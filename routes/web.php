@@ -180,6 +180,9 @@ Route::get('/auth/register', [AuthController::class, 'register'])->name('auth.re
 Route::post('/auth/create',[AuthController::class,"create"]);
 Route::post('/auth/login',[AuthController::class,"login"]);
 Route::get('/auth/dashboard/{id}', [AuthController::class, "dashboard"])->middleware('auth');
+Route::get('/auth/dashboard', [AuthController::class, "testing"]);
+Route::get('/auth/dashboard', [AuthController::class, "testing"])->name('dashboard');
+
 
 //route lupa password
 Route::get('forget-password', [AuthController::class, "forgetPassword"])->name('forget.password');

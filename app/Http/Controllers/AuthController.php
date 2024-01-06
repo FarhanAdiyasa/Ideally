@@ -150,6 +150,10 @@ class AuthController extends Controller
         return view('sesi/new-password', compact('token'));
     }
 
+    public function testing(){
+         return view('sesi.dashboard');
+    }
+
     // Fungsi untuk mereset password
     public function resetPasswordPost(Request $request)
 {
