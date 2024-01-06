@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Database\Factories\DefloFactory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -34,7 +35,7 @@ class Dedikasi_Flora extends Model
     }
 
 
-    /*protected $fillable = [
+    protected $fillable = [
         'id_nurseri',
         'nama_latin',
         'nama_lokal',
@@ -56,19 +57,19 @@ class Dedikasi_Flora extends Model
         'stok',
         'item_terjual',
         'hpp',
-        'harga_b2I_31+_unit',
-        'harga_b2I_11+_unit',
-        'harga_b2I_1+_unit',
-        'harga_b2B_31+_unit',
-        'harga_b2B_11+_unit',
-        'harga_b2B_1+_unit',
-        'harga_b2C_31+_unit',
-        'harga_b2C_11+_unit',
-        'harga_b2C_1+_unit',
+        'harga_b2I_31',
+        'harga_b2I_11',
+        'harga_b2I_1',
+        'harga_b2B_31',
+        'harga_b2B_11',
+        'harga_b2B_1',
+        'harga_b2C_31',
+        'harga_b2C_11',
+        'harga_b2C_1',
         'tanggal_publikasi',
         'created_at',
         'updated_at',
         'deleted_at',
-    ];*/
+    ];
 
 }

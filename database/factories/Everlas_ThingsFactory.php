@@ -50,7 +50,6 @@ class Everlas_ThingsFactory extends Factory
             'tanggal_publikasi' => $this->faker->dateTimeThisMonth,
             'created_at' => now(),
             'created_by' => $this->faker->numberBetween(1, 5)
-
         ];
     }
 }

@@ -1,0 +1,243 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&family=Rubik:wght@900&display=swap');
+
+body {  
+    font-family: 'Poppins', sans-serif;
+}
+
+.container {
+    padding: 0 9em;
+}
+
+.black-opacity {
+    background: rgba(0, 0, 0, 0.50);
+    height: 482px; 
+    width: 100%; 
+    z-index: -1;
+}
+
+#hero-navbar .container {
+    padding: 0 13em;
+    padding-top: 4rem;
+}
+
+.hero-logo img {
+    width: 30%;
+}
+
+.hero-content {
+    padding-top: 2rem;
+}
+
+.hero-content .deskripsi p {
+    font-size: 14px;
+    text-align: justify;
+    line-height: 18px;
+}
+
+#hero-navbar .navbar {
+    padding: 0;
+}
+
+#hero-navbar .navbar .nav-link {
+    padding: 4px 0 12px 0;
+    font-size: 14px;
+}
+
+#hero-navbar .navbar a {
+    text-transform: uppercase;
+    font-weight: 700;
+    transition: 0.3s ease;
+}
+
+#hero-navbar .navbar .nav-link {
+    color: #FFF;
+}
+
+#hero-navbar .navbar .nav-link:hover {
+    color: #d5530c;
+}
+
+#hero-navbar .navbar .dropdown-item {
+    font-size: 14px;
+    color: #DFDFDF;
+}
+
+#hero-navbar .navbar .dropdown-item:hover {
+    color: #242424;
+}
+
+#hero-navbar .navbar .active {
+    color: #FF6412;
+}
+
+#hero-navbar .dropdown-toggle::after {
+    display: none;
+}
+
+.custom-dropdwon .custom-down {
+    font-size: 10px;
+    color: #FF6412;
+    position: relative;
+    top: -6px;
+}
+
+.custom-dropdwon .dropdown-menu {
+    position: absolute;
+    top: -1px;
+    border-radius: 0;
+}
+
+.custom-dropdwon .dropdown-menu.seri {
+    left: 7rem;
+}
+
+.custom-dropdwon .dropdown-menu.jenis {
+    left: 9.5rem;
+}
+
+.custom-dropdwon .dropdown-menu.warna {
+    left: 5rem;
+}
+
+.dropdown-divider {
+    margin: 0;
+}
+
+/* Start Content */
+.container-utama {
+    margin-top: 9.9%;
+    background-color: #F2F2F2;
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.25);
+}
+
+#random-produk h4 {
+    color: #FF6412;
+    font-family: 'Rubik', sans-serif;
+    margin: 0;
+}
+
+#random-produk .col-sm-2 {
+    padding-left: 28px;
+    padding-top: 10px;
+}
+
+#random-produk .vertical-hr {
+    padding-left: 12px;
+}
+
+#random-produk .card-product-besar {
+    border: none;
+    border-radius: 0;
+}
+
+.card-product-besar .card-body {
+    padding: 8px 12px;
+}
+
+.card-product-besar .card-text {
+    margin: 0;
+}
+
+.card-product-besar .seri {
+    font-size: 10px;
+    margin-bottom: 4px;
+}
+
+.card-product-besar .nama-produk {
+    font-size: 12px;
+    text-transform: uppercase;
+    font-weight: 700;
+    margin-bottom: 12px;
+}
+
+.card-product-besar .harga {
+    font-size: 12px;
+    font-weight: 700;
+    color: #BDAB93;
+}
+
+.overtop-card {
+    padding-left: 0;
+    position: relative;
+    z-index: 999;
+    margin-top: -3rem;
+}
+
+.padding-left-side {
+    padding-left: 1em;
+}
+
+/* Seri Unggulan */
+.section-title h6 {
+    color: #FF6412;
+    font-family: 'Rubik', sans-serif;
+    text-transform: uppercase;
+}
+
+.card-populer .card-body,
+.card-seri-unggulan .card-body {
+    padding: 0;
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+.card-populer .card-body .title,
+.card-seri-unggulan .card-body .title {
+    font-size: 14px;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin: 0;
+    margin-bottom: 8px;
+}
+
+.card-populer .card-body .deskripsi,
+.card-seri-unggulan .card-body .deskripsi {
+    font-size: 11px;
+    margin: 0;
+}
+
+/* Jaminan Kualitas */
+.card-jaminan .card-body {
+    padding: 0;
+    padding-left: 8px;
+    padding-right: 4px;
+}
+
+.card-jaminan .card-body .deskripsi {
+    font-size: 10px;
+    margin: 0;
+}
+
+/* Overview */
+.overview {
+    padding: 2rem 3rem 2rem 1rem;
+}
+
+.overview .title p {
+    color: #804F27;
+    font-family: 'Rubik', sans-serif;
+    font-size: 16px;
+    text-transform: uppercase;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.overview .deskripsi p {
+    color: #000000;
+    font-size: 10px;
+    text-align: justify;
+    line-height: 16px;
+}
+
+.overview .btn {
+    color: #FFF;
+    font-size: 11px;
+    padding: 8px 16px;
+    background-color: #382C20;
+    border-radius: 0;
+    transition: 0.3s ease;
+}
+
+.overview .btn:hover {
+    background-color: #804F27;
+}

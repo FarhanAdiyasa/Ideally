@@ -5,24 +5,45 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Showcase - Batunesia</title>
-    <style>
+
+    <!--Stylesheet -->
+  @vite(['resources/sass/app.scss', 'resources/js/app.js']);
+  <link rel="stylesheet" href="/css/style.css"/>
+  <link rel="stylesheet" href="/css/style-batunesia.css"/>
+  <link rel="stylesheet" href="/css/landing-artikel-style.css"/>
+  <link rel="stylesheet" href="/css/artikel-pagination-style.css"/>
+  <link rel="stylesheet" href="/css/navbar-style.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+
+  <!-- Font -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&family=Quicksand:wght@600&display=swap"
+    rel="stylesheet">
+
+<style>
+
         /* CSS */
 .product-container {
     width: 100%;
     display: flex;
     flex-wrap: wrap;
     gap: 10px;
-}
+
+}   
+
 
 
 .product-card {
-            width: 236px;
-            height: 250px;
-            background: #fff; /* Add a background color for better visibility */            
-            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Optional: Add a shadow */
-            overflow: hidden; /* Prevent image overflow */
-            position: relative; /* Set position */
-           
+    width: calc(25% - 20px);
+    height: 250px;
+    background: #fff;         
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    position: relative;
+
 }
 
 .product-card .product-details {
@@ -109,35 +130,13 @@
     </style>
 </head>
 <body>
+{{-- Navbar Section --}}
+    @include('partials.navbar')
+    {{-- End of Navbar Section --}}
     
     <div style="width: 100%; height: 100%; position: relative; background: #36369f">
-        <!--navbar-->
-        <div style="width: 1920px; height: 56px; left: 0px; top: 0px; position: absolute">
-            <div style="width: 1920px; height: 56px; left: 0px; top: 0px; position: absolute; background: white; box-shadow: 0px 3px 10px 3px rgba(0, 0, 0, 0.25)"></div>
-            <div style="width: 113px; height: 35px; left: 1375px; top: 11px; position: absolute">
-                <div style="left: 45px; top: 9px; position: absolute; text-align: center; color: #808080; font-size: 14px; font-family: Montserrat; font-weight: 700; word-wrap: break-word">Claudio</div>
-                <div style="width: 35px; height: 35px; left: 0px; top: 0px; position: absolute">
-                    <div style="width: 35px; height: 35px; left: 0px; top: 0px; position: absolute; background: #6EE7D1; border-radius: 9999px"></div>
-                    <img style="width: 35px; height: 35px; left: 0px; top: 0px; position: absolute" src="" />
-                </div>
-            </div>
-            <img style="width: 35px; height: 35px; left: 1334px; top: 11px; position: absolute" src="https://via.placeholder.com/35x35" />
-            <div style="width: 577px; height: 17px; left: 672px; top: 20px; position: absolute">
-                <div style="left: 478px; top: 0px; position: absolute; text-align: center; color: #808080; font-size: 14px; font-family: Montserrat; font-weight: 400; word-wrap: break-word">Tentang Kami</div>
-                <div style="width: 68px; height: 17px; left: 373px; top: 0px; position: absolute">
-                    <div style="left: 0px; top: 0px; position: absolute; text-align: center; color: #06C195; font-size: 14px; font-family: Montserrat; font-weight: 700; word-wrap: break-word">Produk</div>
-                </div>
-                <div style="width: 76px; height: 17px; left: 263px; top: 0px; position: absolute">
-                    <div style="left: 0px; top: 0px; position: absolute; text-align: center; color: #808080; font-size: 14px; font-family: Montserrat; font-weight: 400; word-wrap: break-word">Layanan</div>
-                </div>
-                <div style="width: 123px; height: 17px; left: 105px; top: 0px; position: absolute">
-                    <div style="left: 0px; top: 0px; position: absolute; text-align: center; color: #808080; font-size: 14px; font-family: Montserrat; font-weight: 400; word-wrap: break-word">Portal Edukasi</div>
-                </div>
-                <div style="left: 0px; top: 0px; position: absolute; text-align: center; color: #808080; font-size: 14px; font-family: Montserrat; font-weight: 400; text-transform: capitalize; word-wrap: break-word">Beranda</div>
-            </div>
-            <img style="width: 107px; height: 30px; left: 437px; top: 13px; position: absolute" src="https://via.placeholder.com/107x30" />
-        </div>
-        <!--end navbar-->
+
+
 
         <!--hero-->
         <div style="height: 500px; left: 330px; top: 76px; position: absolute">
@@ -212,7 +211,7 @@
         </div>        
         <!--end konsultasi-->
 
-        <!--product terkait-->
+        <!--content-->
         <div style="width: 1004px; height: 1910px; left: 586px; top: 602px; position: absolute">
             <!--quotes-->
             <div style="width: 492px; height: 250px; left: 256px; top: 1109px; position: absolute">
@@ -225,32 +224,36 @@
                 <div style="width: 448px; height: 166px; left: 24px; top: 13px; position: absolute; color: white; font-size: 25px; font-family: Poppins; font-weight: 700; word-wrap: break-word">“Kehidupan yang tidak teruji adalah kehidupan yang tidak bernilai.”</div>
                 <div style="width: 303px; height: 58px; left: 24px; top: 189px; position: absolute; color: white; font-size: 18px; font-family: Poppins; font-weight: 400; word-wrap: break-word">Socrates</div>
             </div>
-            <!--end quotes-->   
+
+            <!--end quotes-->
+            
             <!--card-product-->
-            <div style="width: 100%; box-sizing: border-box; display: flex; flex-wrap: wrap; gap: 26.5px;">
+            <div style="width: 100%; box-sizing: border-box; overflow: hidden; display: flex; flex-wrap: wrap; gap: 26.5px;">
                 @forelse ($batunesias as $batunesia)
-                <div class="product-card" style="width: calc(25% - 20px); /* Ubah ukuran card produk ke 25% lebar dari container */">
-                    <!-- Konten Card Produk -->
-                    <div class="product-details">
-                        <div class="product-image">
-                            <img src="{{ $batunesia->gambar_1 }}" alt="Product Image">
+                    <a href="{{ route('Detail-Batunesia', ['id_batu' => $batunesia->id_batu]) }}" class="product-card" style="width: calc(25% - 20px);">
+                        <!-- Konten Card Produk -->
+                        <div class="product-details">
+                            <div class="product-image">
+                                <img src="{{ $batunesia->gambar_1 }}" alt="Product Image">
+                            </div>
+                            <div class="rating">
+                                <div class="rating-border"></div>
+                                <div class="rating-number">4.5</div>
+                            </div>
+                            <div class="product-title">{{ $batunesia->nama_produk }}</div>
+                            <div class="product-category">{{ $batunesia->nama_produk }}</div>
+                            <div class="hidden-price">{{ $batunesia->{'harga_b2I_31+_unit'} }}</div>
                         </div>
-                        <div class="rating">
-                            <div class="rating-border"></div>
-                            <div class="rating-number">0.0</div>
-                        </div>
-                        <div class="product-title">{{ $batunesia->nama_produk }}</div>
-                        <div class="product-category">{{ $batunesia->nama_produk }}</div>
-                        <div class="hidden-price">{{ $batunesia->{'harga_b2I_31+_unit'} }}</div>
-                    </div>
-                </div>
+                    </a>
                 @empty
                 <p>Data not found, try again.</p>
                 @endforelse
             </div>
             <!--end card product-->
+
         </div>
-        <!--end product terkait-->
+        <!--content-->
+
         <!--paginate-->
         <div style="width: 465px; height: 120px; left: 728px; top: 2556px; position: absolute">
             @if ($batunesias->lastPage() > 1)
@@ -297,3 +300,4 @@
     </div>
 </body>
 </html>
+
