@@ -1,14 +1,21 @@
 <?php
 
+
 use App\Models\Artikel;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\BrandController;
+use App\Http\Controllers\DefloController;
 use App\Http\Controllers\PromoController;
+use App\Http\Controllers\DetailController;
 use App\Http\Controllers\ArtikelController;
 use App\Http\Controllers\AgrigardController;
 
+use App\Http\Controllers\ShineageController;
 use App\Http\Controllers\BatunesiaController;
+use App\Http\Controllers\KonkuritoController;
+use App\Http\Controllers\TransaksiController;
 use App\Http\Controllers\AdminArtikelController;
 use App\Http\Controllers\verificationController;
 use App\Http\Controllers\AdminAgrigardController;
@@ -30,12 +37,19 @@ use App\Http\Controllers\AdminDedikasiFloraController;
 |
 */
 
+
 Route::get('/',[ArtikelController::class, 'index']);
+
 Route::get('/portal-edukasi/{kategori}', [ArtikelController::class, 'byKategori'])->name('landing-artikel.kategori');
 Route::get('/portal-edukasi', [ArtikelController::class, 'index'])->name('landing-artikel');
 Route::get('/portal-edukasi/baca/{slug}', [ArtikelController::class, 'baca'])->name('baca-artikel');
 Route::post('/portal-edukasi/rating/{slug}', [ArtikelController::class, 'rating'])->name('rating-artikel');
 Route::post('/portal-edukasi/komentar/{slug}', [ArtikelController::class, 'komentar'])->name('komentar-artikel');
+
+// Route::get('/brand', [BrandController::class, 'index'])->name('Brand-Batunesia');
+// //eror
+// Route::get('/detail', [DetailController::class, 'index'])->name('Detail-Batunesia');
+// Route::get('/detail-batunesia/{id_batu}', [DetailController::class, 'showDetail'])->name('Detail-Batunesia');
 
 Auth::routes();
 Route::get('/home/show/{kategori}', [ArtikelController::class, 'show'])->name('home.show');
@@ -126,6 +140,9 @@ Route::post('/post-everlasThing', [AdminEverlasThingController::class, 'post'])-
 Route::get('/delete-everlasThing/{id}', [AdminEverlasThingController::class, 'delete'])->name('everlasThings.delete');
 Route::delete('/destroy-everlasThing/{id}', [AdminEverlasThingController::class, 'destroy'])->name('everlasThings.destroy');
 
+Route::get('agrigard/index',[AgrigardController::class,'indexBrand'])->name('agrigard.utama');
+Route::get('agrigard/showcase',[AgrigardController::class,'showcase'])->name('agrigard.showcase');
+Route::get('agrigard/show/{id_agrigard}',[AgrigardController::class,'details'])->name('agrigard.detail');
 
 //Promo
 Route::get('/daftar-promo', [PromoController::class, 'index'])->name('daftar-promo');
@@ -188,6 +205,48 @@ Route::get('reset-password/{token}', [AuthController::class, "resetPassword"])->
 Route::post('reset-password', [AuthController::class, "resetPasswordPost"])->name("reset.password.post");
 
 
+//everlasthing
+Route::get('/everlasthings/brand', [everlastThingController::class, 'index'])->name('everlasthings.brand');
+Route::get('/everlasthings/detailProduct', [everlastThingController::class, 'detailProduct'])->name('everlasthings.detailProduct');
+Route::get('/everlasthings/showcase', [everlastThingController::class, 'showcase'])->name('everlasthings.showcase');
+
+
+//batunesia
+Route::get('/batunesia/index', [BatunesiaController::class, 'index'])->name('batunesia.index');
+Route::get('/batunesia/index/showByWhite', [BatunesiaController::class, 'filterByWhite'])->name('batunesia.filterByWhite');
+Route::get('/batunesia/index/showByBlack', [BatunesiaController::class, 'filterByBlack'])->name('batunesia.filterByBlack');
+Route::get('/batunesia/index/showByCream', [BatunesiaController::class, 'filterByCream'])->name('batunesia.filterByCream');
+Route::get('/batunesia/index/showByGrey', [BatunesiaController::class, 'filterByGrey'])->name('batunesia.filterByGrey');
+Route::get('/batunesia/index/showByBrown', [BatunesiaController::class, 'filterByBrown'])->name('batunesia.filterByBrown');
+Route::get('/batunesia/index/showByPancawarna', [BatunesiaController::class, 'filterByPancawarna'])->name('batunesia.filterByPancawarna');
+Route::get('/batunesia/index/showByBatuHampar', [BatunesiaController::class, 'filterByBatuHampar'])->name('batunesia.filterByBatuHampar');
+Route::get('/batunesia/index/showByBatuTempel', [BatunesiaController::class, 'filterByBatuTempel'])->name('batunesia.filterByBatuTempel');
+Route::get('/batunesia/index/showByBatuHias', [BatunesiaController::class, 'filterByBatuHias'])->name('batunesia.filterByBatuHias');
+Route::get('/batunesia/index/showByOrnamenBatu', [BatunesiaController::class, 'filterByOrnamenBatu'])->name('batunesia.filterByOrnamenBatu');
+Route::get('/batunesia/index/showByPotBatu', [BatunesiaController::class, 'filterByPotBatu'])->name('batunesia.filterByPotBatu');
+
+//transaksi
+Route::get('/keranjang', [TransaksiController::class, 'index'])->name('transaksi.index');
+Route::get('/tambahKeKeranjang/{id_batu}', [TransaksiController::class, 'tambahKeKeranjang'])->name('tambahKeKeranjang');
+Route::delete('/hapus-dari-keranjang/{id_batu}', [TransaksiController::class, 'remove'])->name('hapusDariKeranjang');
 //route verifikasi
 Route::get('/email/verify/need-verification', [verificationController::class, 'notice'])->middleware('auth')->name('verification.notice');
 Route::get('/email/verify/{id}/{hash}', [verificationController::class, 'verify'])->middleware('auth','signed')->name('verification.verify');
+
+//deflo
+
+Route::get('deflo',[DefloController::class,'index'])->name('deflo.utama');
+Route::get('deflo/showcase',[DefloController::class,'showcase'])->name('deflo.showcase');
+Route::get('deflo/showcase/kategori',[DefloController::class,'showcase2'])->name('deflo.kategori');
+Route::get('deflo/show/{id_nurseri}',[DefloController::class,'show'])->name('deflo.detail');
+
+//Konkurito
+Route::get('konkurito/index',[KonkuritoController::class,'index'])->name('konkurito.utama');
+Route::get('konkurito/showcase',[KonkuritoController::class,'showcase'])->name('konkurito.showcase');
+Route::get('konkurito/show/{id_konkurito}',[KonkuritoController::class,'show'])->name('konkurito.detail');
+
+//Shineage
+Route::get('shineage/index',[ShineageController::class,'indexBrand'])->name('shineage.utama');
+Route::get('shineage/showcase',[ShineageController::class,'showcase'])->name('shineage.showcase');
+Route::get('shineage/show/{id_shineage}',[ShineageController::class,'show'])->name('shineage.detail');
+

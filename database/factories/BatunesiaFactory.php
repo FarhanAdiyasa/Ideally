@@ -2,8 +2,9 @@
 
 namespace Database\Factories;
 
-use App\Models\Batunesia;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Faker\Factory as Faker;
 
 class BatunesiaFactory extends Factory
 {
@@ -11,7 +12,9 @@ class BatunesiaFactory extends Factory
 
     public function definition()
     {
+        $faker = Faker::create();
         return [
+
             'nama_produk' => $this->faker->words,
             'slug' => [$this->faker->slug],
             'kategori' => [$this->faker->word],
@@ -43,5 +46,6 @@ class BatunesiaFactory extends Factory
             'tanggal_publikasi' => [$this->faker->optional()->dateTimeThisYear],
             'created_by' => [$this->faker->numberBetween(1, 5)]
         ];
+        
     }
 }
