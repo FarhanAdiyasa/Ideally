@@ -3,8 +3,9 @@
 namespace Database\Factories;
 
 use App\Models\User;
-use Illuminate\Database\Eloquent\Factories\Factory;
+use App\Models\Batunesia;
 use Faker\Factory as Faker;
+use Illuminate\Database\Eloquent\Factories\Factory;
 
 class BatunesiaFactory extends Factory
 {
@@ -32,6 +33,7 @@ class BatunesiaFactory extends Factory
             'armada_minimum' => [$this->faker->word],
             'stok' => [$this->faker->randomNumber(2)],
             'item_terjual' => [$this->faker->randomNumber(2)],
+            'berat' => $this->faker->numberBetween(0, 100),
             'penempatan' => $this->faker->word,
             'deskripsi_singkat' => [$this->faker->paragraph],
             'harga_b2I_31_unit' => [$this->faker->randomFloat(2, 10, 1000)],

@@ -31,7 +31,7 @@ class ShineageRequest extends FormRequest
             'video' => 'nullable|url',
             'deskripsi_singkat' => 'required|string',
             'stok' => 'required|integer',
-            'item_terjual' => 'nullable|integer',
+            'berat' => 'required|integer',
             'armada_minimum' => 'required|string',
             'harga_jual_projek_ideally' => 'required|numeric',
             'harga_b2I_11_unit' => 'required|numeric',

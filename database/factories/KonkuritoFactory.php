@@ -39,6 +39,7 @@ class KonkuritoFactory extends Factory
             'armada_minimum' => $this->faker->word,
             'stok' => $this->faker->numberBetween(0, 100),
             'item_terjual' => $this->faker->numberBetween(0, 100),
+'berat' => $this->faker->numberBetween(0, 100),
             'deskripsi_singkat' => $this->faker->text,
             'harga_jual_projek_ideally' =>$this->faker->randomFloat(2, 10, 100),
             'harga_b2I_11_unit' => $this->faker->randomFloat(2, 10, 100),
