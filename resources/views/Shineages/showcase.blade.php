@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css">
 
     <!-- Custom CSS -->
+    <link rel="stylesheet" href="{{asset('/css/navbar-style.css')}}">
     <link rel="stylesheet" href="{{ asset ('shineage/assets/css/showcase/style.css') }}">
 
     <!-- Bootstrap JS -->
@@ -22,8 +23,12 @@
 </head>
 
 <body>
+    <!-- Navbar Utama -->
+    @include('partials.navbar')
+    <!-- End Navbar Utama -->
+
     <!-- Logo -->
-    <section id="logo">
+    <section id="logo" class="mt-5">
         <div class="container">
             <div class="logo-container bg-yellow">
                 <div class="row g-0">

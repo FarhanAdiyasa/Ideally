@@ -101,6 +101,7 @@
     {{-- Navbar Section --}}
     @include('partials.navbar')
     {{-- End of Navbar Section --}}
+    
     <!-- Hero & Navigation Bar -->
     <header id="hero-navbar">
         <div class="black-opacity position-absolute"></div>
