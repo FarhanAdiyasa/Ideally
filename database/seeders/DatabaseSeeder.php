@@ -59,9 +59,9 @@ class DatabaseSeeder extends Seeder
         Artikel::factory(100)->create();
         Artikel_Kategori::factory(200)->create();
 
-        Komentar::factory(30)->create();
-        Sumber_Artikel::factory(40)->create();
-        Rating_Artikel::factory(140)->create();
+        // Komentar::factory(30)->create();
+        // Sumber_Artikel::factory(40)->create();
+        // Rating_Artikel::factory(140)->create();
 
         Agrigard::factory(40)->create();
         Konkurito::factory(40)->create();

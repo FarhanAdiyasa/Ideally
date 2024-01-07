@@ -14,6 +14,7 @@ use App\Http\Controllers\AgrigardController;
 
 use App\Http\Controllers\ShineageController;
 use App\Http\Controllers\BatunesiaController;
+use App\Http\Controllers\KeranjangController;
 use App\Http\Controllers\KonkuritoController;
 use App\Http\Controllers\TransaksiController;
 use App\Http\Controllers\AdminArtikelController;
@@ -207,10 +208,14 @@ Route::post('reset-password', [AuthController::class, "resetPasswordPost"])->nam
 
 //everlasthing
 Route::get('/everlasthings/brand', [everlastThingController::class, 'index'])->name('everlasthings.brand');
-Route::get('/everlasthings/detailProduct', [everlastThingController::class, 'detailProduct'])->name('everlasthings.detailProduct');
+Route::get('/everlasthings/detailProduct/{id_everlas_things}', [everlastThingController::class, 'detailProduct'])->name('everlasthings.detailProduct');
 Route::get('/everlasthings/showcase', [everlastThingController::class, 'showcase'])->name('everlasthings.showcase');
+Route::get('/tambahEverlasthingsKeKeranjang/{id_everlas_things}/{quantity}', [everlastThingController::class, 'tambahKeKeranjang'])->name('tambahEverlasthingsKeKeranjang');
+Route::delete('removeEverlasthings', [everlastThingController::class, 'removeEverlasthings'])->name('removeEverlasthings');
+Route::patch('updateEverlasthings', [everlastThingController::class, 'updateEverlasthings'])->name('updateEverlasthings');
+Route::delete('removeAllEverlasthings', [everlastThingController::class, 'removeAllEverlasthings'])->name('removeAllEverlasthings');
 
-
+    
 //batunesia
 Route::get('/batunesia/index', [BatunesiaController::class, 'index'])->name('batunesia.index');
 Route::get('/batunesia/index/showByWhite', [BatunesiaController::class, 'filterByWhite'])->name('batunesia.filterByWhite');
@@ -224,17 +229,16 @@ Route::get('/batunesia/index/showByBatuTempel', [BatunesiaController::class, 'fi
 Route::get('/batunesia/index/showByBatuHias', [BatunesiaController::class, 'filterByBatuHias'])->name('batunesia.filterByBatuHias');
 Route::get('/batunesia/index/showByOrnamenBatu', [BatunesiaController::class, 'filterByOrnamenBatu'])->name('batunesia.filterByOrnamenBatu');
 Route::get('/batunesia/index/showByPotBatu', [BatunesiaController::class, 'filterByPotBatu'])->name('batunesia.filterByPotBatu');
+Route::get('/tambahKeKeranjang/{id_batu}/{quantity}', [BatunesiaController::class, 'tambahKeKeranjang'])->name('tambahKeKeranjang');
+Route::delete('removeBatunesia', [BatunesiaController::class, 'removeBatunesia'])->name('removeBatunesia');
+Route::patch('updateBatunesia', [BatunesiaController::class, 'updateBatunesia'])->name('updateBatunesia');
+Route::delete('removeAllBatunesia', [BatunesiaController::class, 'removeAllBatunesia'])->name('removeAllBatunesia');
 
-//transaksi
-Route::get('/keranjang', [TransaksiController::class, 'index'])->name('transaksi.index');
-Route::get('/tambahKeKeranjang/{id_batu}', [TransaksiController::class, 'tambahKeKeranjang'])->name('tambahKeKeranjang');
-Route::delete('/hapus-dari-keranjang/{id_batu}', [TransaksiController::class, 'remove'])->name('hapusDariKeranjang');
 //route verifikasi
 Route::get('/email/verify/need-verification', [verificationController::class, 'notice'])->middleware('auth')->name('verification.notice');
 Route::get('/email/verify/{id}/{hash}', [verificationController::class, 'verify'])->middleware('auth','signed')->name('verification.verify');
 
 //deflo
-
 Route::get('deflo',[DefloController::class,'index'])->name('deflo.utama');
 Route::get('deflo/showcase',[DefloController::class,'showcase'])->name('deflo.showcase');
 Route::get('deflo/showcase/kategori',[DefloController::class,'showcase2'])->name('deflo.kategori');
@@ -249,4 +253,15 @@ Route::get('konkurito/show/{id_konkurito}',[KonkuritoController::class,'show'])-
 Route::get('shineage/index',[ShineageController::class,'indexBrand'])->name('shineage.utama');
 Route::get('shineage/showcase',[ShineageController::class,'showcase'])->name('shineage.showcase');
 Route::get('shineage/show/{id_shineage}',[ShineageController::class,'show'])->name('shineage.detail');
+Route::get('/tambahShineageKeKeranjang/{id_shineage}/{quantity}', [ShineageController::class, 'tambahKeKeranjang'])->name('tambahShineageKeKeranjang');
+Route::delete('removeShineage', [ShineageController::class, 'removeShineage'])->name('removeShineage');
+Route::patch('updateShineage', [ShineageController::class, 'updateShineage'])->name('updateShineage');
+Route::delete('removeAllShineage', [ShineageController::class, 'removeAllShineage'])->name('removeAllShineage');
 
+Route::get('/brand', [BrandController::class, 'index'])->name('Brand-Batunesia');
+Route::get('/detail', [DetailController::class, 'index'])->name('Detail-Batunesia');
+Route::get('/detail-batunesia/{id_batu}', [DetailController::class, 'showDetail'])->name('Detail-Batunesia');
+
+
+//Keranjang
+Route::get('/keranjang', [KeranjangController::class, 'index'])->name('transaksi.index');
