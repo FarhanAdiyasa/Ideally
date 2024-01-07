@@ -2,9 +2,11 @@
 
 namespace Database\Factories;
 
+use App\Models\User;
 use App\Models\Batunesia;
+use Faker\Generator as Faker;
+
 use Illuminate\Database\Eloquent\Factories\Factory;
-use Faker\Factory as Faker;
 
 class BatunesiaFactory extends Factory
 {
@@ -12,6 +14,7 @@ class BatunesiaFactory extends Factory
 
     public function definition()
     {
+
         $faker = Faker::create();
         return [
             'nama_produk' => $faker->words(3, true), // Menggunakan words() untuk mendapatkan kalimat

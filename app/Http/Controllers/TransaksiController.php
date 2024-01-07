@@ -17,25 +17,6 @@ class TransaksiController extends Controller
     {
         return view('transaksi.keranjang');
     }
-
-    public function tambahKeKeranjang($id_batu)
-    {
-        $product = Batunesia::findOrFail($id_batu);
-        $cart = session()->get('cart_batunesia', []);
-        if (isset($cart[$id_batu])) {
-            $cart[$id_batu]['quantity']++;
-        } else {
-            $cart[$id_batu] = [
-                'produk' => $product,
-                'quantity' => 1
-            ];
-        }
-        session()->put('cart_batunesia', $cart);
-
-        $krj_deflo = Session::get('cart_deflo', []);
-        $krj_batunesia = Session::get('cart_batunesia', []);
-        return view('transaksi.keranjang', compact('krj_deflo', 'krj_batunesia'));
-    }
     
     public function add_cart_deflo($id, $qty) {
         $product = Dedikasi_Flora::findOrFail($id);
@@ -66,6 +47,7 @@ class TransaksiController extends Controller
         session()->put('cart_agrigard', $cart);
         return view('transaksi.keranjang');
     }
+
 
     public function calculateOngkir(Request $request)
     {
