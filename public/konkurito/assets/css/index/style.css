@@ -217,6 +217,7 @@ body {
     padding-top: 1rem;
     text-transform: uppercase;
     font-weight: 700;
+    text-align: center;
 }
 
 .card-profile {
