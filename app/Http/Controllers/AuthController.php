@@ -27,37 +27,54 @@ class AuthController extends Controller
         return Socialite::driver('google')->redirect();
     }
 
+    public function callback()
+    {
+        // Mendapatkan data pengguna dari Google setelah otorisasi berhasil
+        $googleUser = Socialite::driver('google')->user();
 
-    function callback() {
-        $user = Socialite::driver('google')->user();
-        dd($user);
-        $id = $user->user_id;
-        $email = $user->email;
-        $name = $user->name;
-    
-        $cek = User::where('email', $email)->count();
-    
-        if ($cek > 0) {
-            $user = User::updateOrCreate(
-                ['email' => $email],
-                [
-                    'name' => $name,
-                    'google_id' => $id
-                ]
-            );
-            Auth::login($user);
-            return redirect()->to('/batunesia/index');
+        // Memeriksa apakah email pengguna sudah ada dalam tabel 'users'
+        $user = User::where('email', $googleUser->getEmail())->first();
+
+        // Jika email sudah ada dalam tabel 'users', login pengguna
+        if ($user) {
+            Auth::login($user); // Melakukan login pengguna
+            return redirect()->route('deflo.utama'); // Mengarahkan ke halaman yang sesuai setelah login
         } else {
-            return redirect()->to('/auth/register')->with('email', $email);
+            // Jika email belum ada dalam tabel 'users', Anda dapat menambahkan logika lainnya di sini,
+            // misalnya, menampilkan pesan bahwa pengguna belum terdaftar atau membuat akun baru
+            // atau bisa juga otomatis membuat akun baru menggunakan informasi dari Google
+            return redirect()->route('login')->with('error', 'Email belum terdaftar.');
         }
     }
+
+    // function callback() {
+    //     $user = Socialite::driver('google')->user();
+    //     dd($user);
+    //     $id = $user->user_id;
+    //     $email = $user->email;
+    //     $name = $user->name;
+    
+    //     $cek = User::where('email', $email)->count();
+    
+    //     if ($cek > 0) {
+    //         $user = User::updateOrCreate(
+    //             ['email' => $email],
+    //             [
+    //                 'name' => $name,
+    //                 'google_id' => $id
+    //             ]
+    //         );
+    //         Auth::login($user);
+    //         return redirect()->to('/batunesia/index');
+    //     } else {
+    //         return redirect()->to('/auth/register')->with('email', $email);
+    //     }
+    // }
 
     function dashboard() {
         
         return view('sesi/edit');
     }
-    
-    
 
     function logout() {
         Auth::logout();
