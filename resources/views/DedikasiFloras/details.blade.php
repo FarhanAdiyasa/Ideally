@@ -302,7 +302,7 @@
                                             <p>Rp</p>
                                         </th>
                                         <th style="text-align: right;">
-                                            <p>{{ $defloDetail->harga_b2C_1 }}</p>
+                                            <p>{{ $defloDetail->harga_b2C_1_unit }}</p>
                                         </th>
                                     </tr>
                                     <tr>
@@ -310,7 +310,7 @@
                                             <p>Rp</p>
                                         </th>
                                         <th style="text-align: right;">
-                                            <p>{{ $defloDetail->harga_b2C_11 }}</p>
+                                            <p>{{ $defloDetail->harga_b2C_11_unit }}</p>
                                         </th>
                                     </tr>
                                     <tr>
@@ -318,7 +318,7 @@
                                             <p>Rp</p>
                                         </th>
                                         <th style="text-align: right;">
-                                            <p>{{ $defloDetail->harga_b2C_31 }}</p>
+                                            <p>{{ $defloDetail->harga_b2C_31_unit }}</p>
                                         </th>
                                     </tr>
                                 </table>
@@ -424,7 +424,7 @@
                         <div class="mt-5 pt-5">
                             <p class="fw-bold m-0 mb-1 text-abu">Total Harga</p>
                             <input type="text" class="form-control form-control-lg fw-bold text-abu text-end"
-                                id="summaryPrice" value="{{ $defloDetail->harga_b2C_1 }}" readonly>
+                                id="summaryPrice" value="{{ $defloDetail->harga_b2C_1_unit }}" readonly>
                             <div class="z-1 position-relative" style="margin-top: -12%;">
                                 <h5 class="fw-bold m-0 ms-2 text-abu">Rp</h5>
                             </div>

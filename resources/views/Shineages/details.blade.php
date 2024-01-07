@@ -307,7 +307,7 @@
                                         </a>
                                 </div>
                                 @endforeach
-                                <div class="bg-red mt-3 p-2" style="min-height: 15%;">
+                                <div class="bg-red mt-3 p-2" style="min-height: 10%;">
                                     <div class="text-white">
                                         <div class="ps-3 mb-1">
                                             <div class="border-start border-4 border-light" style="height: 50px;"></div>
@@ -350,7 +350,7 @@
                                         </a>
                                 </div>
                                 @endforeach
-                                <div class="bg-tosca mt-3 p-2" style="height: 10%;">
+                                <div class="bg-tosca mt-3 p-2" style="height: 5.4%;">
                                     <a href="" class="btn btn-showcase mt-1">Lihat Produk Lainnya</a>
                                 </div>
                             </section>
@@ -385,7 +385,7 @@
                                         </a>
                                 </div>
                                 @endforeach
-                                <div class="bg-yellow mt-3 p-2" style="height: 15%;">
+                                <div class="bg-yellow mt-3 p-2" style="height: 12.5%;">
                                     <div class="text-white">
                                         <div class="ps-3 mb-1">
                                             <div class="border-start border-4 border-light" style="height: 80px;"></div>

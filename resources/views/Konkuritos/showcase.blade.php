@@ -42,14 +42,14 @@
                                     <img src="{{ asset ('konkurito/assets/img/LOGO.png') }}" alt="">
                                 </div>
                                 <div class="deskripsi">
-                                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing.</p>
+                                    <p>Solusi Beton Berkualitas untuk Konstruksi Andalan Anda.</p>
                                 </div>
                             </div>
                         </div>
                         <div class="col-6 bg-yellow">
                             <div class="description-box">
                                 <div class="title">
-                                    <p>Title</p>
+                                    <p>Kategori</p>
                                     <hr class="title-line">
                                 </div>
                                 <div class="kategori">
@@ -99,8 +99,7 @@
                     @endphp
 
                     @foreach($konkuritoshowcase as $index => $konkurito)
-                    @if($index < $halfItems) 
-                    <div class="card-product">
+                    @if($index < $halfItems) <div class="card-product">
                         <a href="{{ route('konkurito.detail', ['id_konkurito' => $konkurito->id_konkurito]) }}"
                             class="card-product-link">
                             <div class="row g-0">
@@ -119,16 +118,16 @@
                                                 $konkurito->dimensi }}</p>
                                         </div>
                                         <div class="harga">
-                                            <p>Rp {{ number_format($konkurito->harga_b2C_1, 0, ',', '.') }}</p>
+                                            <p>Rp {{ number_format($konkurito->harga_b2C_1_unit, 0, ',', '.') }}</p>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </a>
-                    </div>
-                    @endif
-                    @endforeach
                 </div>
+                @endif
+                @endforeach
+            </div>
 
             <div class="col-sm-6">
                 @foreach($konkuritoshowcase as $index => $konkurito)
@@ -152,7 +151,7 @@
                                             }}</p>
                                     </div>
                                     <div class="harga">
-                                        <p>Rp {{ number_format($konkurito->harga_b2C_1, 0, ',', '.') }}</p>
+                                        <p>Rp {{ number_format($konkurito->harga_b2C_1_unit, 0, ',', '.') }}</p>
                                     </div>
                                 </div>
                             </div>
@@ -162,9 +161,9 @@
                 @endif
                 @endforeach
             </div>
-            </div>
-        </section>
-        <!-- End Showcase -->
+    </div>
+    </section>
+    <!-- End Showcase -->
 
     <section id="penawaran">
         <div class="row">
@@ -272,22 +271,22 @@
         <div class="row">
             <div class="col-sm-6 bg-primary">
                 <div class="row">
-                    <div class="col-6 bg-blue d-flex flex-column justify-content-center align-items-center">
-                        <div class="bg-light rounded-circle" style="width: 50px; height: 50px;"></div>
-                        <div class="title text-white">
-                            <h6>Lorem ipsum</h6>
-                        </div>
-                    </div>
                     <div class="col-6 bg-light">
                         <div class="description-box">
                             <div class="title">
-                                <p>Title</p>
+                                <p>MENJAWAB KEBUTUHAN ANDA</p>
                                 <hr class="title-line">
                             </div>
                             <div class="deskripsi">
-                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Non
-                                    voluptate corporis placeat explicabo debitis ex.</p>
+                                <p>Kami hadir menemani Anda menghadapi proyek besar. Konsultasi tentang produk beton
+                                    dengan Konkurito.</p>
                             </div>
+                        </div>
+                    </div>
+                    <div class="col-6 bg-blue d-flex flex-column justify-content-center align-items-center">
+                        <div class="bg-light rounded-circle" style="width: 50px; height: 50px;"></div>
+                        <div class="title text-white">
+                            <a href="https://wa.link/lccn22">Layanan Konsultasi</a>
                         </div>
                     </div>
                 </div>

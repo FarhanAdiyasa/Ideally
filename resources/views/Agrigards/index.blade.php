@@ -41,8 +41,7 @@
                                 style="width: 100%; margin-top: 25px;">
                         </div>
                         <div class="deskripsi">
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde sed fugiat nulla earum
-                                asperiores! Quos voluptatum corporis eaque!</p>
+                            <p>Agrigard, mitra pertanian ideal Anda! Siap menjadi rekan konsultasi pertanian Anda! Temukan wadah tanam, alat kerja, media tanam, dan benih terbaik hanya di Agrigard.</p>
                         </div>
                         <div class="d-flex search">
                             <input type="text" name="" id="search" class="form-control search-input top-start"
@@ -506,16 +505,16 @@
                     <div class="col-sm-7 branding">
                         <div class="text-white">
                             <div class="title">
-                                <p>Jelajahi koleksi produk kami! Temukan solusi dari permasalahan kebun Anda di
-                                    Agrigard!</p>
+                                <p>Jelajahi koleksi produk kami!
+                                     Temukan solusi dari permasalahan
+                                     kebun Anda di Agrigard!</p>
                             </div>
                             <div class="deskripsi">
-                                <p>Telusuri keajaiban dan kualitas produk di Agrigard. Setiap produk mencerminkan solusi
-                                    dan fungsi luar biasa. Temukan lebih banyak di koleksi kami sekarang!</p>
+                                <p>Telusuri keajaiban dan kualitas produk di Agrigard. Setiap produk mencerminkan solusi dan fungsi luar biasa. Temukan lebih banyak di koleksi kami sekarang!</p>
                             </div>
                         </div>
                         <div class="action">
-                            <a href="{{ route('agrigard.showcase') }}" class="btn top-end">Konsultasi Sekarang</a>
+                            <a href="{{ route('agrigard.showcase') }}" class="btn top-end">Lihat Produk Lainnya</a>
                         </div>
                     </div>
                 </div>

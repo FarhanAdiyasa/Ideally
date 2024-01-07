@@ -141,15 +141,11 @@
                                 <table class="table table-borderless table-harga mt-4">
                                     <tr>
                                         <th>1-10 satuan</th>
-                                        <th class="bold">{{ $konkuritoDetail->harga_b2C_1 }}</th>
+                                        <th class="bold">{{ $konkuritoDetail->harga_b2C_1_unit }}</th>
                                     </tr>
                                     <tr>
                                         <th>11-30 satuan</th>
-                                        <th class="bold">{{ $konkuritoDetail->harga_b2C_11 }}</th>
-                                    </tr>
-                                    <tr>
-                                        <th>31+ satuan</th>
-                                        <th class="bold">{{ $konkuritoDetail->harga_b2C_31 }}</th>
+                                        <th class="bold">{{ $konkuritoDetail->harga_b2C_11_unit }}</th>
                                     </tr>
                                 </table>
                             </div>
@@ -185,7 +181,7 @@
                             </div>
                             <div class="total-harga">
                                 <input type="text" class="form-control fw-bold text-center text-white bg-dark"
-                                    id="summaryPrice" value="{{ $konkuritoDetail->harga_b2C_1 }}" readonly>
+                                    id="summaryPrice" value="{{ $konkuritoDetail->harga_b2C_1_unit }}" readonly>
                             </div>
                         </div>
                     </div>
@@ -244,7 +240,7 @@
                                                     <p>{{ substr($terkait->deskripsi_singkat, 0, 20) }}</p>
                                                 </div>
                                                 <div class="harga">
-                                                    <p>Rp {{ number_format($terkait->harga_b2C_1, 0, ',', '.') }}</p>
+                                                    <p>Rp {{ number_format($terkait->harga_b2C_1_unit, 0, ',', '.') }}</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -1463,12 +1459,10 @@
             let price = 0;
 
             if (quantity >= 1 && quantity <= 10) {
-                price = {{ $konkuritoDetail->harga_b2C_1 }};
+                price = {{ $konkuritoDetail->harga_b2C_1_unit }};
             } else if (quantity >= 11 && quantity <= 30) {
-                price = {{ $konkuritoDetail->harga_b2C_11 }};
-            } else if (quantity > 30) {
-                price = {{ $konkuritoDetail->harga_b2C_31 }};
-            }
+                price = {{ $konkuritoDetail->harga_b2C_11_unit }};
+            } 
 
             const totalPrice = price * quantity;
             summaryPriceInput.value = numeral(totalPrice).format('0,0');;
