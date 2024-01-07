@@ -63,9 +63,32 @@
         </div>
     </section>
 
+    @php
+    $berat_deflo = 0;
+    $berat_agrigard = 0;
+    $armada = [];
+    @endphp
+
     <section id="content">
         <div class="container mt-4">
             <div class="row g-4">
+                @if(empty(session('cart_deflo')) && empty(session('cart_agrigard')) &&
+                empty(session('cart_batunesia')))
+                <div class="col-sm-12">
+                    <div class="bg-light rounded-4 p-4" style="box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.25);">
+                        <div class="text-center p-3">
+                            <h3 class="text-danger">Oops!</h3>
+                            <h1 class="text-secondary opacity-50" style="font-size: 50px;"><i
+                                    class="bi bi-cart-x-fill"></i></h1>
+                            <p>Cart is empty</p>
+                            <div class="mt-3">
+                                <a href="javascript:history.go(-1)" class="btn btn-bayar bg-tosca rounded-5">Lihat
+                                    Produk</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                @else
                 <div class="col-sm-9">
                     <div class="bg-light rounded-4 p-4" style="box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.25);">
                         <table class="table table-borderless table-cart">
@@ -81,10 +104,6 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @php
-                                    $berat_deflo = 0;
-                                    $berat_agrigard = 0;
-                                @endphp
                                 @if ( session()->has('cart_batunesia') )
                                 <tr class="border-brand">
                                     <th colspan="5" style="text-align: center;">Batunesia</th>
@@ -118,8 +137,10 @@
                                         <span class="p-1"><i class="fa-solid fa-circle-chevron-up"></i></span>
                                     </td>
                                     <td class="unit">{{ $item['produk']->satuan }}</td>
-                                    <td class="harga">{{ $item['produk']->harga_b2C_1_unit }}</td>
-                                    <td class="total">{{ $item['quantity'] * $item['produk']->harga_b2C_1_unit }}</td>
+                                    <td class="harga">
+                                        {{ number_format((int)$item['produk']->harga_b2C_1_unit, 0, ',', '.') }}</td>
+                                    <td class="total">{{ $item['quantity'] * $item['produk']->harga_b2C_1_unit }}
+                                    </td>
                                     <td class="d-flex align-items-center justify-content-center">
                                         {{-- <form action="{{ route('hapusDariKeranjang', ['id_batu' => $key]) }}"
                                         method="POST">
@@ -170,8 +191,10 @@
                                         <span class="p-1"><i class="fa-solid fa-circle-chevron-up"></i></span>
                                     </td>
                                     <td class="unit">{{ $item['produk']->satuan }}</td>
-                                    <td class="harga">{{ $item['produk']->harga_b2C_1_unit }}</td>
-                                    <td class="total">{{ $item['quantity'] * $item['produk']->harga_b2C_1_unit }}</td>
+                                    <td class="harga">
+                                        {{ number_format((int)$item['produk']->harga_b2C_1_unit, 0, ',', '.') }}</td>
+                                    <td class="total">{{ $item['quantity'] * $item['produk']->harga_b2C_1_unit }}
+                                    </td>
                                     <td class="d-flex align-items-center justify-content-center">
                                         {{-- <form action="{{ route('hapusDariKeranjang', ['id_batu' => $key]) }}"
                                         method="POST">
@@ -187,7 +210,8 @@
                                     </td>
                                 </tr>
                                 @php
-                                    $berat_deflo += $item['produk']->berat_gram * $item['quantity'];
+                                $berat_deflo += $item['produk']->berat_gram * $item['quantity'];
+                                $armada[] = $item['produk']->armada_minimum;
                                 @endphp
                                 @endforeach
                                 @endif
@@ -225,8 +249,10 @@
                                         <span class="p-1"><i class="fa-solid fa-circle-chevron-up"></i></span>
                                     </td>
                                     <td class="unit">{{ $item['produk']->satuan }}</td>
-                                    <td class="harga">{{ $item['produk']->harga_b2C_1_unit }}</td>
-                                    <td class="total">{{ $item['quantity'] * $item['produk']->harga_b2C_1_unit }}</td>
+                                    <td class="harga">
+                                        {{ number_format((int)$item['produk']->harga_b2C_1_unit, 0, ',', '.') }}</td>
+                                    <td class="total">{{ $item['quantity'] * $item['produk']->harga_b2C_1_unit }}
+                                    </td>
                                     <td class="d-flex align-items-center justify-content-center">
                                         {{-- <form action="{{ route('hapusDariKeranjang', ['id_batu' => $key]) }}"
                                         method="POST">
@@ -242,12 +268,17 @@
                                     </td>
                                 </tr>
                                 @php
-                                    $berat_agrigard += $item['produk']->berat_gram * $item['quantity'];
+                                $berat_agrigard += $item['produk']->berat_gram * $item['quantity'];
+                                $armada[] = $item['produk']->armada_minimum;
                                 @endphp
                                 @endforeach
                                 @endif
                             </tbody>
                         </table>
+                        <div class="text-center mt-2">
+                            <a href="javascript:history.go(-1)" class="btn btn-bayar bg-tosca rounded-5">Lihat Produk
+                                Lainnya</a>
+                        </div>
                     </div>
                 </div>
                 <div class="col-sm-3">
@@ -263,10 +294,40 @@
                                     <td id="total-produk">Total Produk (<span></span>)</td>
                                     <td id="total-harga"></td>
                                 </tr>
+                                @if (isset($ongkir))
+                                @foreach ($ongkir[0]['costs'] as $costs)
+                                @if ($costs['service'] == 'REG' )
+                                <tr>
+                                    <td>Biaya Kirim (JNE REG)</td>
+                                    <td class="text-end" id="ongkir">
+                                        {{ number_format($costs['cost'][0]['value'], 0, '.', '.') }}
+                                    </td>
+                                </tr>
+                                @endif
+                                @endforeach
+                                @endif
+                            </tbody>
+                        </table>
+                        <table class="table table-borderless table-bayar">
+                            <thead>
+                                <tr>
+                                    <th colspan="2"></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Total</td>
+                                    <td class="text-end" id="total"></td>
+                                </tr>
                             </tbody>
                         </table>
                         <div id="responseContainer"></div>
                         <div class="d-flex flex-column align-items-center">
+                            @if (isset($ongkir))
+                            <div class="mt-3">
+                                <a href="" class="btn btn-bayar bg-tosca rounded-5">Lanjut ke Pembayaran</a>
+                            </div>
+                            @else
                             <div class="mt-3">
                                 <form action="{{ route('calculate.ongkir') }}" method="post">
                                     @csrf
@@ -276,38 +337,56 @@
                                     <input type="hidden" value="{{ $berat_agrigard+$berat_deflo }}" name="weight"
                                         id="weight" class="form-control">
                                     <input type="hidden" value="jne" name="courier" id="courier" class="form-control">
-                                    <input type="submit" value="Cek Ongkir" name="btnCek"
+                                    <input type="submit" value="Cek Ongkir" name="btnCek" id="btnCek"
                                         class="btn btn-bayar bg-tosca rounded-5">
                                 </form>
                             </div>
-                            <div id="result" class="mt-3">
-                                @if (isset($ongkir))
-                                @foreach ($ongkir[0]['costs'] as $costs)
-                                @if ($costs['service'] == 'REG' )
-                                <label for="name">JNE {{ $costs['cost'][0]['value'] }}</label>
-                                @endif
-                                @endforeach
-                                @endif
-                            </div>
+                            @endif
                             <div class="mt-4">
                                 <p class="text-center m-0" style="font-size: 10px;">Dukungan Pembayaran</p>
                                 <img src="{{ asset('img/keranjang/image 41.png') }}" alt="" class="d-block w-100">
                             </div>
-                            <div class="mt-5">
-                                <p class="text-center border-bottom border-3"
-                                    style="font-size: 11px; font-weight: 700;">Keuntungan Untuk Anda</p>
-                            </div>
                         </div>
-
                     </div>
                 </div>
+                @endif
             </div>
         </div>
     </section>
 
+    <!-- <div class="mt-4">
+        <div class="bg-primary">
+            <img src="{{ asset('img/keranjang/image 25.png') }}" alt="" class="d-block w-100 dark-overlay">
+        </div>
+    </div> -->
+
     <script src="{{ asset('https://code.jquery.com/jquery-3.6.0.min.js') }}"></script>
     <script>
     $(document).ready(function() {
+        function hitungTotal() {
+            var totalHarga = parseInt($('#total-harga').text().replace(/\D/g, '')); // Ambil nilai total harga
+            var ongkirElement = $('#ongkir');
+
+            if (ongkirElement.length > 0) {
+                var ongkir = parseInt(ongkirElement.text().replace(/\D/g, '')); // Ambil nilai ongkir
+                var total = totalHarga + ongkir; // Jumlahkan total harga dengan ongkir
+                $('#total').text(total.toLocaleString('id-ID')); // Tampilkan hasil penjumlahan di 'total'
+            } else {
+                $('#total').text(totalHarga.toLocaleString('id-ID')); // Tampilkan total harga saja
+            }
+        }
+
+
+        // Panggil fungsi hitungTotal() saat halaman dimuat atau saat ada perubahan pada nilai total harga atau ongkir
+        $(window).on('load', function() {
+            hitungTotal();
+        });
+
+        // Fungsi untuk menjalankan hitungTotal() ketika nilai total harga atau ongkir berubah
+        $('#total-harga, #ongkir').on('DOMSubtreeModified', function() {
+            hitungTotal();
+        });
+
         // Mengatur nomor urut untuk setiap merek produk
         $('.table-cart tbody').each(function() {
             let count = 1;
@@ -346,45 +425,41 @@
         // Fungsi untuk menghitung ulang total saat nilai diubah
         function recalculateTotal() {
             $('.table tbody tr').each(function() {
-                var jumlah = parseInt($(this).find('.quantity')
-                    .val()); // Mengambil nilai dari input dengan kelas 'quantity'
-                var harga = parseInt($(this).find('.harga').text().replace(',', ''));
+                var jumlah = parseInt($(this).find('.quantity').val());
+                var harga = parseFloat($(this).find('.harga').text().replace(/\./g, '').replace(',',
+                    '.'));
 
                 var total = jumlah * harga;
-                $(this).find('.total').text(total.toLocaleString(
-                    'id-ID')); // Menampilkan total dengan pemisah ribuan
+                $(this).find('.total').text(total.toLocaleString('id-ID'));
             });
 
             $('.total-brand').each(function() {
                 var totalHargaMerek = 0;
-                var $currentBrand = $(this).closest('tr'); // Ambil baris merek saat ini
-                var $brandRows = $currentBrand.nextUntil(
-                    'tr:has(th)'); // Ambil semua baris produk dalam merek
+                var $currentBrand = $(this).closest('tr');
+                var $brandRows = $currentBrand.nextUntil('tr:has(th)');
 
                 $brandRows.each(function() {
-                    var jumlah = parseInt($(this).find('.quantity')
-                        .val()); // Mengambil nilai dari input dengan kelas 'quantity'
-                    var harga = parseInt($(this).find('.harga').text().replace(',', ''));
+                    var jumlah = parseInt($(this).find('.quantity').val());
+                    var harga = parseFloat($(this).find('.harga').text().replace(/\./g, '')
+                        .replace(',', '.'));
 
                     var total = jumlah * harga;
-                    totalHargaMerek += total; // Jumlahkan total harga produk dalam satu merek
+                    totalHargaMerek += total;
                 });
 
-                $(this).text(totalHargaMerek.toLocaleString(
-                    'id-ID')); // Tampilkan total harga merek dengan pemisah ribuan
+                $(this).text(totalHargaMerek.toLocaleString('id-ID'));
             });
 
             var totalProduk = $('.table tbody tr.baris-produk').length;
-            $('#total-produk span').text(totalProduk); // Memperbarui jumlah total produk
+            $('#total-produk span').text(totalProduk);
 
-            // Menghitung total harga dari semua merek
             var totalHarga = 0;
             $('.harga').each(function() {
                 var jumlah = parseInt($(this).closest('tr').find('.quantity').val());
-                var harga = parseInt($(this).text().replace(',', ''));
+                var harga = parseFloat($(this).text().replace(/\./g, '').replace(',', '.'));
 
                 var subtotal = jumlah * harga;
-                totalHarga += subtotal; // Menambahkan subtotal ke total harga
+                totalHarga += subtotal;
             });
 
             $('#total-harga').text(totalHarga.toLocaleString('id-ID'));

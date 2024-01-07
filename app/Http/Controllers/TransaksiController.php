@@ -15,10 +15,7 @@ class TransaksiController extends Controller
 
     public function index()
     {
-        $krj_agrigard = Session::get('cart_agrigard', []);
-        $krj_deflo = Session::get('cart_deflo', []);
-        $krj_batunesia = Session::get('cart_batunesia', []);
-        return view('transaksi.keranjang', compact('krj_deflo', 'krj_batunesia', 'krj_agrigard'));
+        return view('transaksi.keranjang');
     }
 
     public function tambahKeKeranjang($id_batu)
