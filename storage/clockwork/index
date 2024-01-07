@@ -988,3 +988,4 @@
 1703214187-4654-2128673200,1703214187.3585,GET,/everlasthings/assets/css/index/styleshowcase.css,,404,177.60586738586,request
 1703214187-6434-1558690508,1703214187.547,GET,/everlasthings/assets/js/bootstrap.min.js,,404,164.04914855957,request
 1703214187-8233-1870402647,1703214187.723,GET,/everlasthings/img/dropdownlist-img_default.png,,404,167.70505905151,request
+1703241428-2122-117981189,1703241427.8241,GET,/brand,"App\Http\Controllers\BrandController@index",200,716.34197235107,request
