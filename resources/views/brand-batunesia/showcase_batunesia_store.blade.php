@@ -130,7 +130,7 @@
     </style>
 </head>
 <body>
-{{-- Navbar Section --}}
+    {{-- Navbar Section --}}
     @include('partials.navbar')
     {{-- End of Navbar Section --}}
     

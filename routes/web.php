@@ -49,7 +49,7 @@ Route::post('/portal-edukasi/komentar/{slug}', [ArtikelController::class, 'komen
 // Route::get('/brand', [BrandController::class, 'index'])->name('Brand-Batunesia');
 // //eror
 // Route::get('/detail', [DetailController::class, 'index'])->name('Detail-Batunesia');
-// Route::get('/detail-batunesia/{id_batu}', [DetailController::class, 'showDetail'])->name('Detail-Batunesia');
+Route::get('/detail-batunesia/{id_batu}', [DetailController::class, 'showDetail'])->name('Detail-Batunesia');
 
 Auth::routes();
 Route::get('/home/show/{kategori}', [ArtikelController::class, 'show'])->name('home.show');
@@ -190,7 +190,7 @@ Route::get('/everlasthings/detailProduct', [everlastThingController::class, 'det
 
 //authentikasi login & regis
 Route::get('/auth/redirect',[AuthController::class, "redirect"])->middleware('guest');
-Route::get('/auth',[AuthController::class, "index"])->name('login')->middleware('guest');
+Route::get('/auth/login',[AuthController::class, "index"])->name('login')->middleware('guest');
 Route::get('/auth/callback',[AuthController::class, "callback"])->middleware('guest');
 Route::get('/auth/logout',[AuthController::class,"logout"]);
 Route::get('/auth/register', [AuthController::class, 'register'])->name('auth.register');
@@ -250,3 +250,11 @@ Route::get('shineage/index',[ShineageController::class,'indexBrand'])->name('shi
 Route::get('shineage/showcase',[ShineageController::class,'showcase'])->name('shineage.showcase');
 Route::get('shineage/show/{id_shineage}',[ShineageController::class,'show'])->name('shineage.detail');
 
+// ongkir
+Route::post('/calculateOngkir', [TransaksiController::class, 'calculateOngkir'])->name('calculate.ongkir');
+
+//keranjang deflo
+Route::get('/add-cart-deflo/{id}/{qty}', [TransaksiController::class, 'add_cart_deflo'])->name('addcart.deflo');
+
+//keranjang agrigard
+Route::get('/add-cart-agrigard/{id}/{qty}', [TransaksiController::class, 'add_cart_agrigard'])->name('addcart.agrigard');
