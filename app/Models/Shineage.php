@@ -4,13 +4,15 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Shineage extends Model
 {
     use HasFactory;
+    use SoftDeletes;
 
     protected $guarded = ['id_shineage'];
-
+    protected $primaryKey = 'id_shineage'; 
     protected $with = ['createdBy', 'updatedBy', 'deletedBy'];
 
     public function createdBy()
@@ -27,10 +29,13 @@ class Shineage extends Model
     {
         return $this->belongsTo(User::class, 'deleted_by', 'user_id');
     }
+    public function promos()
+    {
+        return $this->belongsToMany(Promo::class, 'shineages_promos', 'id_shineage', 'id_promo');
+    }
 
 
-
-    /*protected $fillable = [
+    protected $fillable = [
         'id_shineage',
         'seri',
         'nama_produk',
@@ -52,16 +57,16 @@ class Shineage extends Model
         'stok',
         'item_terjual',
         'hpp',
-        'harga_b2I_11+_unit',
-        'harga_b2I_1+_unit',
-        'harga_b2B_11+_unit',
-        'harga_b2B_1+_unit',
-        'harga_b2C_11+_unit',
-        'harga_b2C_1+_unit',
+        'harga_b2I_11_unit',
+        'harga_b2I_1_unit',
+        'harga_b2B_11_unit',
+        'harga_b2B_1_unit',
+        'harga_b2C_11_unit',
+        'harga_b2C_1_unit',
         'tanggal_publikasi',
         'created_at',
         'updated_at',
         'deleted_at',
-    ];*/
+    ];
 
 }

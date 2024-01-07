@@ -1,0 +1,215 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;700;900&display=swap');
+
+
+body {
+    background-image: url(../../img/LATAR2.png);
+    background-size: 100% auto;
+    background-repeat: no-repeat;
+    font-family: 'Noto Sans', sans-serif;
+}
+
+.container {
+    padding: 0 10em;
+    padding-top: 8.56em;
+}
+
+.bg-yellow {background-color: #FFC700;}
+
+.bg-blue {background-color: #2196D9;}
+
+.bg-grey {background-color: #EFEFEF;}
+
+#hero-search .row .col-sm-6, 
+#hero-search .row .col-6,
+#penawaran .col-sm-6,
+#penawaran .col-6  {
+    height: 210px;
+    /* padding: 0; */
+}
+
+#penawaran .col-sm-6 {
+    /* padding: 0;  */
+}
+
+.align-corner .img-logo img {
+    width: 55%;
+}
+
+.align-corner .deskripsi p {
+    font-size: 11px;
+    text-align: right;
+    padding-left: 50%;
+    padding-right: 10px;
+    margin: 0;
+}
+    
+.align-corner {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 100%;
+    padding: 1.5rem 0.2rem;
+}
+
+#hero-search .description-box {
+    min-height: 100%;
+    padding-top: 1.5rem;
+    padding-left: 1rem;
+}
+
+#hero-search .title p {
+    font-size: 12px;
+    text-transform: uppercase;
+    font-weight: 900;
+    margin: 0;
+}
+
+.kategori a {
+    text-decoration: none;
+}
+
+.kategori a:hover {
+    text-decoration: underline black;
+}
+
+.kategori p {
+    font-size: 11px;
+    color: #000000;
+    margin: 0;
+}
+
+.title-line {
+    border: 1.5px solid #180b01; /* Gunakan warna hitam */
+    margin: 5px 0;
+    margin-right: 70px;
+    margin-bottom: 1rem;
+    opacity: 1; /* Pastikan opasitas penuh */
+}
+
+.col-sm-6.search {
+    padding: 0;
+}
+
+.img-search img {
+    width: 149%;
+}
+
+.search input {
+    width: 300px;
+    border-radius: 0;
+    position: relative;
+    z-index: 999;
+    top: -60%;
+    left: 20%;
+}
+
+/* Showcase */
+#showcase {
+    padding-top: 5rem;
+}
+
+#showcase .col-sm-6 {
+    padding: 0;
+}
+
+.img-container {
+    height: 100px;
+    overflow: hidden;
+}
+
+.img-container img {
+  width: 100%;
+  object-fit: cover; /* Memastikan gambar tidak terstretch */
+  object-position: center; /* Menentukan posisi fokus gambar (di tengah) */
+}
+
+.card-product {
+    margin-bottom: 1rem;
+}
+
+.card-product a {
+    text-decoration: none;
+    color: #000000;
+}
+
+.card-body {
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+}
+
+.card-body p {
+    font-size: 13px;
+}
+
+.card-body .title p {
+    text-transform: uppercase;
+    font-weight: 900;
+    margin-bottom: 0;
+}
+  
+.card-body .harga p {
+    text-transform: uppercase;
+    font-weight: 900;
+    display: flex;
+}
+
+/* Penawaran */
+#penawaran {
+    padding-top: 5rem;
+}
+
+#penawaran .bg-img {
+    position: relative;
+    left: -56%;
+}
+
+#penawaran .description-box {
+    height: 200px;
+    padding: 1.5rem 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-content: space-between;
+}
+
+#penawaran .title p {
+    font-size: 14px;
+    text-transform: uppercase;
+    font-weight: 900;
+    margin: 0;
+}
+
+#penawaran .deskripsi p {
+    font-size: 12px;
+    text-align: justify;
+    margin: 0;
+}
+
+#penawaran .title-line {
+    border: 2px solid #180b01; /* Gunakan warna hitam */
+    margin: 5px 0;
+    margin-right: 70px;
+    opacity: 1; /* Pastikan opasitas penuh */
+}
+
+
+.carousel-control-next {
+    right: 155%;
+    top: 30%;
+    height: fit-content;
+}
+
+.carousel-control-prev {
+    left: -70%;
+    top: 60%;
+    height: fit-content;
+}
+
+.title a {
+    margin: 0;
+    padding-top: 1rem;
+    text-transform: uppercase;
+    font-weight: 700;
+    color: #EFEFEF;
+    text-decoration: none;
+}

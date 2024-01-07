@@ -19,12 +19,51 @@
         <script src="../js/bootstrap.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
         <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
     <title>Ideally | preview product everlasThing</title>
+    <style>
+        /* Style untuk div dengan class .info-container */
+.info-container {
+    width: 300px;
+    height: 59px;
+    left: 145px;
+    top: 56px;
+    position: absolute;
+}
+
+/* Style untuk div dengan class .title */
+.title {
+    width: 171px;
+    height: 21px;
+    left: 0px;
+    top: 0px;
+    position: absolute;
+    color: #382C20;
+    font-size: 18px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+    word-wrap: break-word;
+}
+
+/* Style untuk div dengan class .subtitle */
+.subtitle {
+    width: 300px;
+    left: 0px;
+    top: 21px;
+    position: absolute;
+    color: #382C20;
+    font-size: 25px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    text-transform: uppercase;
+    word-wrap: break-word;
+}
+
+    </style>
     
 </head>
 <body>
 
-    
     <div style="width: 1920px; height: 100px; left: 0px; top: 0px; position: absolute">
         <div style="width: 100%; height: 100%; top: 0px; position: absolute;">
             <img src="{{ asset('img/everlas_things/header-bg.png') }}" alt="">
@@ -42,19 +81,73 @@
         </div>
         <div style="width: 500px; height: 721px; left: 1090px; top: 79px; position: absolute">
             <div style="width: 500px; height: 700px; left: 0px; top: 21px; position: absolute; background: #F3F3F3"></div>
-            <div style="width: 300px; left: 145px; top: 346px; position: absolute; text-align: justify; color: #382C20; font-size: 14px; font-family: Poppins; font-weight: 400; word-wrap: break-word">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec non ornare velit. Vivamus aliquet non purus sagittis tempus. Nulla aliquam placerat turpis vel interdum.</div>
             <div style="width: 500px; height: 0px; left: 500px; top: 152px; position: absolute; transform: rotate(180deg); transform-origin: 0 0; border: 5px #F2F2F2 solid"></div>
             <div style="width: 500px; height: 0px; left: 500px; top: 324px; position: absolute; transform: rotate(180deg); transform-origin: 0 0; border: 5px #F2F2F2 solid"></div>
-            <div style="width: 300px; height: 59px; left: 145px; top: 56px; position: absolute">
-                <div style="width: 171px; height: 21px; left: 0px; top: 0px; position: absolute; color: #382C20; font-size: 18px; font-family: Poppins; font-weight: 400; word-wrap: break-word">Konstru</div>
-                <div style="width: 300px; left: 0px; top: 21px; position: absolute; color: #382C20; font-size: 25px; font-family: Poppins; font-weight: 700; text-transform: uppercase; word-wrap: break-word">TEFRO - BANGKU TIPE H</div>
-                <div style="width: 100px; height: 20px; left: 200px; top: 1px; position: absolute">
+            <div class="info-container">
+                <div class="title">
+                    @if(isset($everlast))
+                        {{ $everlast->seri }}
+                    @else
+                        Product details not found.
+                    @endif</div>
+                <div class="subtitle">
+                    @if(isset($everlast))
+                        {{ $everlast->nama_produk }}
+                    @else
+                        Product details not found.
+                    @endif</div>
+                <div style="width: 254px; position: absolute; top: 100px;">
+                    <table style="width: 100%; color: #382C20; font-size: 14px; font-family: Poppins; font-weight: 400;">
+                        <tr>
+                            <td style="width: 114px; text-align: left;">Jenis</td>
+                            <td style="font-weight: 700;">
+                                @if(isset($everlast))
+                                    {{ $everlast->jenis_1 }}
+                                @else
+                                    Product details not found.
+                                @endif</td>
+                        </tr>
+                        <tr>
+                            <td style="width: 114px; text-align: left;">Warna</td>
+                            <td style="font-weight: 700;">
+                                @if(isset($everlast))
+                                    {{ $everlast->warna }}
+                                @else
+                                    Product details not found.
+                                @endif</td>
+                        </tr>
+                        <tr>
+                            <td style="width: 114px; text-align: left;">Garansi</td>
+                            <td style="font-weight: 700;">6 Bulan</td>
+                        </tr>
+                        <tr>
+                            <td style="width: 114px; text-align: left;">Dimensi (cm)</td>
+                            <td style="font-weight: 700;">@if(isset($everlast))
+                                {{ $everlast->dimensi }}
+                            @else
+                                Product details not found.
+                            @endif</td>
+                        </tr>
+                        <tr>
+                            <td style="width: 114px; text-align: left;">Finishing</td>
+                            <td style="font-weight: 700;">@if(isset($everlast))
+                                {{ $everlast->material_pendukung }}
+                            @else
+                                Product details not found.
+                            @endif</td>
+                        </tr>
+                    </table>
                 </div>
-            </div>
-            <div style="width: 254px; height: 147px; left: 145px; top: 177px; position: absolute">
-                <div style="width: 114px; left: 0px; top: 0px; position: absolute; color: #382C20; font-size: 14px; font-family: Poppins; font-weight: 400; word-wrap: break-word">Jenis<br/>Warna<br/>Garansi<br/>Dimensi (cm)<br/>Finishing<br/>Material Lain</div>
-                <div style="width: 140px; left: 114px; top: 0px; position: absolute; color: #382C20; font-size: 14px; font-family: Poppins; font-weight: 700; word-wrap: break-word">Bangku<br/>Hitam<br/>6 Bulan<br/>50 x 50 x 150 cm<br/>Coating Glossy Kayu Akasia; Philips LED</div>
-            </div>
+                <div style="width: 300px; top: 300px; position: absolute; text-align: justify; color: #382C20; font-size: 14px; font-family: Poppins; font-weight: 400; word-wrap: break-word">
+                    @if(isset($everlast))
+                                    {{ $everlast->deskripsi_singkat }}
+                                @else
+                                    Product details not found.
+                                @endif
+                </div>
+            </div>                  
+
+            <br>
             <div style="width: 300px; height: 88px; left: 145px; top: 485px; position: absolute">
                 <div style="width: 50px; height: 30px; left: 250px; top: 22px; position: absolute">
                     <div style="width: 50px; height: 30px; left: 0px; top: 0px; position: absolute; background: #DFDFDF"></div>
@@ -97,9 +190,13 @@
                     <div style="left: 18px; top: 9px; position: absolute; text-align: center; color: #727272; font-size: 20px; font-family: Poppins; font-weight: 700; word-wrap: break-word">10</div>
                 </div>
                 <div style="width: 48.50px; height: 48.66px; left: 251px; top: 21px; position: absolute">
-                    <div style="width: 48.50px; height: 48.66px; left: 0px; top: 0px; position: absolute; background: #382C20"></div>
-                    <div style="width: 16px; height: 16px; left: 16px; top: 16px; position: absolute; background: white; border-radius: 9999px"></div>
+                    <a href="{{ route('tambahEverlasthingsKeKeranjang', ['id_everlas_things' => $everlast->id_everlas_things, 'quantity' => 1]) }}" style="display: block; width: 100%; height: 100%;">
+                        <div style="width: 48.50px; height: 48.66px; background: #382C20; position: relative;">
+                            <div style="width: 16px; height: 16px; left: 16px; top: 16px; position: absolute; background: white; border-radius: 9999px;"></div>
+                        </div>
+                    </a>
                 </div>
+                      
                 <div style="width: 49px; height: 24.50px; left: 172px; top: 70px; position: absolute; transform: rotate(-90deg); transform-origin: 0 0">
                     <div style="width: 49px; height: 24.50px; left: 0px; top: 0px; position: absolute; transform: rotate(-90deg); transform-origin: 0 0; background: #382C20"></div>
                     <div style="width: 12.25px; height: 0px; left: 18.37px; top: -24.50px; position: absolute; transform: rotate(-180deg); transform-origin: 0 0; border: 1px white solid"></div>
@@ -210,6 +307,8 @@
             </div>
         </div>
     </div>
+
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/js/bootstrap.bundle.min.js"></script>
+
 </body>
 </html>

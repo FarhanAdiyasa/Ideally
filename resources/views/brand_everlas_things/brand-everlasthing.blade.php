@@ -27,28 +27,11 @@
             overflow: hidden;
         }
 
-        #produk-terbaru {
-            width: 500px; 
-            height: 250px;
-            position: relative;
-            overflow: hidden;
-        }
-
         .slider-container {
             width: 480px;
             height: 400px;
             position: relative;
         }
-        
-        #kebutuhan-custom {
-        position: relative;
-        z-index: 2; /* Nilai z-index yang lebih tinggi */
-        background: #ffffff;
-        width: 525px;
-        height: auto; /* Gunakan "auto" agar tinggi dapat menyesuaikan dengan konten di dalamnya */
-        top: 240px; /* Atur top sesuai kebutuhan, misalnya 50px */
-        padding-bottom: 50px;
-    }
 
         .slider {
             width: 100%;
@@ -76,188 +59,40 @@
             word-wrap: break-word;
         }
 
-        #next,
-#prev {
-    width: 40px;
-    height: 40px;
-    background: #382C20;
-    position: absolute;
-    cursor: pointer;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-#prev {
-    top: -23px;
-    left: 422px;
-    border-right: 2px solid #fff; /* Garis vertikal */
-}
-
-#next {
-    top: -23px;
-    left: 462px;
-    right: 0;
-}
-
-#next img,
-#prev img {
-    width: 20px;
-    height: 20px;
-    position: absolute;
-    top: 10px;
-    left: 10px;
-}
-
-#nextProd,
-#prevProd {
-    width: 40px;
-    height: 40px;
-    background: #382C20;
-    position: absolute;
-    cursor: pointer;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    top: -2px;
-    z-index: 1;
-}
-
-#prevProd {
-    left: 418px;
-    border-right: 2px solid #fff; /* Garis vertikal */
-}
-
-#nextProd {
-    right: -19px;
-}
-
-#nextProd img,
-#prevProd img {
-    width: 20px;
-    height: 20px;
-    position: absolute;
-    top: 10px;
-    left: 10px;
-}
-
-        /* Style untuk tombol */
-    .custom-button {
-        width: 189px;
-        height: 44px;
-        left: 174px;
-        top: 156px;
-        position: absolute;
-        overflow: hidden;
-        cursor: pointer; /* Tambahkan cursor: pointer */
-        pointer-events: auto; /* Pastikan pointer-events diaktifkan */
-    }
-
-    .button-background {
-        width: 189px;
-        height: 44px;
-        left: 0px;
-        top: 0px;
-        position: absolute;
-        background: #FF6412;
-        transition: transform 0.3s ease-out; /* Animasi transform saat hover */
-    }
-
-    .button-text {
-        left: 23px;
-        top: 12px;  
-        position: absolute;
-        text-align: justify;
-        color: white;
-        font-size: 14px;
-        font-family: Poppins;
-        font-weight: 400;
-        word-wrap: break-word;
-        transition: transform 0.3s ease-out; /* Animasi transform saat hover */
-    }
-
-    /* Animasi saat hover */
-    .custom-button:hover .button-background {
-        width: 204px; /* Lebar tambahan saat hover (189px + 15px) */
-    }   
-
-    .custom-button:hover .button-text {
-        transform: scale(1.2); /* Zoom out saat hover */
-    }
-
-    #penutup {
-            position: relative;
-            width: 100%;
-            height: 734px;
-            overflow: hidden;
-        }
-
-        #backgroundImage {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
+        #prev {
+            width: 40px;
+            height: 40px;
+            background: #382C20;
             position: absolute;
-        }
-
-        #overlay {
-            width: 100%;
-            height: 100%;
-            position: absolute;
-            background: rgba(0, 0, 0, 0.50);
-        }
-
-        #textContainer {
-            width: 557px;
-            height: 133px;
-            position: absolute;
-            top: 260px;
-            left: 400px;
-            text-align: justify;
-            color: white;
-            font-size: 20px;
-            font-family: Poppins;
-            font-weight: 400;
-            word-wrap: break-word;
-        }
-
-        #ctaButton {
-            width: 358px;
-            height: 90px;
-            position: absolute;
-            top: 400px;
-            left: 400px;
-            overflow: hidden;
+            top: -23px;
+            left: 410px;
             cursor: pointer;
+            border-right: 2px solid #fff; /* Garis vertikal */
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
 
-        #buttonBackground {
-            width: 100%;
-            height: 100%;
+        #next {
+            width: 40px;
+            height: 40px;
+            background: #382C20;
             position: absolute;
-            background: #FF6412;
-            transition: background 0.3s ease;
+            left: 50px;
+            top: 5px;
+            right: 0;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
 
-        #buttonText {
-            width: 100%;
+        #prev img, #next img {
+            width: 20px;
+            height: 20px;
             position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            text-align: center;
-            color: white;
-            font-size: 35px;
-            font-family: Rubik;
-            font-weight: 400;
-            word-wrap: break-word;
-            transition: transform 0.3s ease;
-        }
-
-        #ctaButton:hover #buttonBackground {
-            background: #FF4500; /* Ganti warna hover sesuai keinginan */
-        }
-
-        #ctaButton:hover #buttonText {
-            transition: transform 0.3s ease;
+            top: 10px;
+            left: 10px;
         }
     </style>
 </head>
@@ -266,6 +101,7 @@
     {{-- Navbar Section --}}
     @include('partials.navbar')
     {{-- End of Navbar Section --}}
+    
     <!-- Hero & Navigation Bar -->
     <header id="hero-navbar">
         <div class="black-opacity position-absolute"></div>
@@ -816,6 +652,7 @@
                             showSlide();
                         }
 
+
                         function prevSlide() {
                             const slides = document.querySelectorAll('.slide');
                             currentSlide = (currentSlide - 1 + slides.length) % slides.length;
@@ -823,18 +660,46 @@
                         }
                     </script>
 
-                        <section id="produk-terbaru">
-                            
-                        <div class="slider-container">
-                                <div class="slider">
-                                    <div class="slide"><img src="../img/LOGO MojaPisun.png" alt="Image 1"></div>
-                                    <div class="slide"><img src="../img/LOGO MojaPisun.png" alt="Image 2"></div>
-                                    <div class="slide"><img src="../img/LOGO MojaPisun.png" alt="Image 3"></div>
-                                    <div class="slide"><img src="../img/LOGO MojaPisun.png" alt="Image 4"></div>
-                                    <div class="slide"><img src="../img/LOGO MojaPisun.png" alt="Image 5"></div>
-                                </div>
-                                <div id="prevProd" onclick="prevSlideProd()"><img src="../img/Vector 6.png"></div>
-                                <div id="nextProd" onclick="nextSlideProd()"><img src="../img/Vector 7.png"></div>
+                    <section id="produk-terbaru">
+                        <div style="width: 636px; height: 1098px; left: -65px; position: relative">
+                            <div style="width: 501px; height: 125px; left: 69px; top: 53px; position: absolute">
+                              <div style="width: 125px; height: 125px; left: 0px; top: 0px; position: absolute; background: #BDAB93"></div>
+                              <div style="width: 171px; height: 21px; left: 156px; top: 13px; position: absolute; color: #382C20; font-size: 14px; font-family: Poppins; font-weight: 400; word-wrap: break-word">Industrial Style</div>
+                              <div style="width: 171px; height: 21px; left: 156px; top: 83px; position: absolute; color: #7C7C7C; font-size: 14px; font-family: Poppins; font-weight: 400; word-wrap: break-word">Rilis 30 September 2023</div>
+                              <div style="width: 345px; height: 57px; left: 156px; top: 34px; position: absolute; color: #5E6462; font-size: 16px; font-family: Poppins; font-weight: 700; text-transform: capitalize; word-wrap: break-word">FOREVENGE - Bangku Kotak Single Seat Outdoor</div>
+                            </div>
+                            <div style="width: 501px; height: 125px; left: 69px; top: 200px; position: absolute">
+                              <div style="width: 125px; height: 125px; left: 0px; top: 0px; position: absolute; background: #BDAB93"></div>
+                              <div style="width: 171px; height: 21px; left: 156px; top: 13px; position: absolute; color: #382C20; font-size: 14px; font-family: Poppins; font-weight: 400; word-wrap: break-word">Industrial Style</div>
+                              <div style="width: 171px; height: 21px; left: 156px; top: 83px; position: absolute; color: #7C7C7C; font-size: 14px; font-family: Poppins; font-weight: 400; word-wrap: break-word">Rilis 30 September 2023</div>
+                              <div style="width: 345px; height: 57px; left: 156px; top: 34px; position: absolute; color: #5E6462; font-size: 16px; font-family: Poppins; font-weight: 700; text-transform: capitalize; word-wrap: break-word">FOREVENGE - Bangku Kotak Single Seat Outdoor</div>
+                            </div>
+                            <div style="width: 501px; height: 125px; left: 69px; top: 347px; position: absolute">
+                              <div style="width: 125px; height: 125px; left: 0px; top: 0px; position: absolute; background: #BDAB93"></div>
+                              <div style="width: 171px; height: 21px; left: 156px; top: 13px; position: absolute; color: #382C20; font-size: 14px; font-family: Poppins; font-weight: 400; word-wrap: break-word">Industrial Style</div>
+                              <div style="width: 171px; height: 21px; left: 156px; top: 83px; position: absolute; color: #7C7C7C; font-size: 14px; font-family: Poppins; font-weight: 400; word-wrap: break-word">Rilis 30 September 2023</div>
+                              <div style="width: 345px; height: 57px; left: 156px; top: 34px; position: absolute; color: #5E6462; font-size: 16px; font-family: Poppins; font-weight: 700; text-transform: capitalize; word-wrap: break-word">FOREVENGE - Bangku Kotak Single Seat Outdoor</div>
+                            </div>
+                            <div style="width: 501px; height: 125px; left: 69px; top: 494px; position: absolute">
+                              <div style="width: 125px; height: 125px; left: 0px; top: 0px; position: absolute; background: #BDAB93"></div>
+                              <div style="width: 171px; height: 21px; left: 156px; top: 13px; position: absolute; color: #382C20; font-size: 14px; font-family: Poppins; font-weight: 400; word-wrap: break-word">Industrial Style</div>
+                              <div style="width: 171px; height: 21px; left: 156px; top: 83px; position: absolute; color: #7C7C7C; font-size: 14px; font-family: Poppins; font-weight: 400; word-wrap: break-word">Rilis 30 September 2023</div>
+                              <div style="width: 345px; height: 57px; left: 156px; top: 34px; position: absolute; color: #5E6462; font-size: 16px; font-family: Poppins; font-weight: 700; text-transform: capitalize; word-wrap: break-word">FOREVENGE - Bangku Kotak Single Seat Outdoor</div>
+                            </div>
+                            <div style="width: 501px; height: 125px; left: 69px; top: 641px; position: absolute">
+                              <div style="width: 125px; height: 125px; left: 0px; top: 0px; position: absolute; background: #BDAB93"></div>
+                              <div style="width: 171px; height: 21px; left: 156px; top: 13px; position: absolute; color: #382C20; font-size: 14px; font-family: Poppins; font-weight: 400; word-wrap: break-word">Industrial Style</div>
+                              <div style="width: 171px; height: 21px; left: 156px; top: 83px; position: absolute; color: #7C7C7C; font-size: 14px; font-family: Poppins; font-weight: 400; word-wrap: break-word">Rilis 30 September 2023</div>
+                              <div style="width: 345px; height: 57px; left: 156px; top: 34px; position: absolute; color: #5E6462; font-size: 16px; font-family: Poppins; font-weight: 700; text-transform: capitalize; word-wrap: break-word">FOREVENGE - Bangku Kotak Single Seat Outdoor</div>
+                            </div>
+                            <div style="left: 69px; top: 0px; position: absolute; color: #804F27; font-size: 25px; font-family: Rubik; font-weight: 400; word-wrap: break-word">PRODUK TERBARU</div>
+                            <div style="width: 470px; height: 250px; left: 69px; top: 798px; position: absolute; background: #BDAB93"></div>
+                            <div style="width: 80px; height: 40px; left: 459px; top: 778px; position: absolute">
+                              <div style="width: 80px; height: 40px; left: 0px; top: 0px; position: absolute; background: #382C20"></div>
+                              <div style="width: 20px; height: 0px; left: 40px; top: 30px; position: absolute; transform: rotate(-90deg); transform-origin: 0 0; border: 1px white solid"></div>
+                              <div style="width: 13.55px; height: 13.55px; left: 15px; top: 20px; position: absolute; transform: rotate(-45deg); transform-origin: 0 0; background: white"></div>
+                              <div style="width: 13.55px; height: 13.55px; left: 65px; top: 19.58px; position: absolute; transform: rotate(135deg); transform-origin: 0 0; background: white"></div>
+
                             </div>
                         </section>
 
@@ -902,7 +767,7 @@
 
     </div>
     <section id="penutup">
-        <img id="backgroundImage" src="../img/LATAR-01.png" alt="Background Image">
+        <img id="backgroundImage" src="..\img\everlas_things\index-header-bg.jpg" alt="Background Image">
         <div id="overlay"></div>
         
         <div id="textContainer">

@@ -13,7 +13,6 @@ class DetailController extends Controller
     public function index()
     {
         $batunesias = Batunesia::paginate(4);
-
         return view ('Detail-Batunesia',['batunesias' => $batunesias]);
     }
 
@@ -21,7 +20,7 @@ class DetailController extends Controller
     {
         $batunesias1 = Batunesia::inRandomOrder()->paginate(4);
         $batunesias2 = Batunesia::inRandomOrder()->paginate(4);
-        $batunesias3 = Batunesia::inRandomOrder()->paginate(4);
+        $batunesias3 = Batunesia::inRandomOrder()->paginate(4); 
         $selectedProduct = Batunesia::findOrFail($id_batu);
     
         return view('Detail-Batunesia', compact('selectedProduct', 'id_batu', 'batunesias1', 'batunesias2', 'batunesias3'));

@@ -1,0 +1,135 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Quicksand:wght@400;700&display=swap');
+
+body {
+    background-image: url(../../img/LOGIN_LATAR.png);
+    background-size: 105% auto;
+    background-repeat: no-repeat;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.container {
+    padding: 0 13rem;
+}
+
+.bg-tosca {
+    background-color: #06C195;
+}
+
+.bg-grey {
+    background-color: #727272;
+}
+
+/* Title Tosca */
+#title .bg-tosca {
+    width: fit-content;
+    padding: 5px 6rem;
+}
+
+#title h1 {
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 700;
+}
+
+.overlay-title {
+    z-index: 999;
+    position: relative;
+    margin-bottom: -35px;
+}
+
+/* Illustration */
+.card-img-overlay .hashtag,
+.card-img-overlay .card-text {
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 700;
+}
+
+.card-img-overlay .hashtag {
+    font-size: 120px;
+    opacity: 0.5;
+    margin-top: -10px;
+    margin-left: 5px;
+}
+
+.card-img-overlay .card-text {
+    font-size: 36px;
+    line-height: 36px;
+    margin-top: -120px;
+    margin-left: 45px;
+}
+
+.rounded-circle {
+    width: 25px;
+    height: 25px;
+}
+
+.form-control {
+    font-size: 11px;
+    padding: 0 12px;
+    height: 25px;
+    border-radius: 15px;
+    border: none;
+    box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.25) inset;
+}
+
+.forgot-link {
+    margin-top: 5px;
+    font-size: 10px;
+    text-decoration: none;
+    color: #727272;
+}
+
+.forgot-link:hover {
+    text-decoration: underline;
+}
+
+.btn {
+    background-color: #06C195;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 4px 12px;
+    transition: 0.3s ease;
+}
+
+.btn-dua {
+    font-size: 11px;
+    font-weight: 700;
+    padding: 4px 12px;
+    transition: 0.3s ease;
+    background-color: #FFF;
+    border-color: #727272;
+}
+
+.btn-dua:hover {
+    background-color: #727272;
+}
+
+.btn:hover {
+    background-color: #07a17d;
+}
+
+.form-check-input[type=checkbox] {
+    border-radius: 0.5em;
+}
+
+.form-check-input {
+    width: 0.8em;
+    height: 0.8em;
+    background-color: #06C195;
+}
+
+.form-check-input:checked {
+    background-color: #07a17d;
+    border-color: #07a17d;
+}
+
+.form-check-label {
+    font-size: 10px;
+    margin-left: -8px;
+    margin-top: 2px;
+}
+
+.label_login {
+    font-size: 11px;
+    margin: 0;
+    color: #727272;
+}

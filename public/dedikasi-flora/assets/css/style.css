@@ -1,0 +1,349 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+a {
+    text-decoration: none;
+}
+
+body {
+    /* background-image: url(../img/bg-hero.png);
+    background-size: 100% auto;
+    background-repeat: no-repeat; */
+    font-family: 'Montserrat', sans-serif;
+}
+
+.container {
+    padding: 0 10em;
+}
+
+#hero-navbar .content {
+    margin-top: -16%;
+}
+
+#hero-navbar .content p,
+.cta-content p {
+    margin: 0;
+    font-size: 13px;
+    margin-top: 24px;
+}
+
+#hero-navbar .navbar {
+    margin-top: 24px;
+}
+
+#hero-navbar .margin-start {
+    margin-left: 10px!important;
+}
+
+#hero-navbar .navbar-nav .nav-item {
+    padding: 0 1.5em;
+}
+
+#hero-navbar .navbar-nav .nav-item .nav-link {
+    color: white;
+    font-weight: 700;
+    font-size: 16px;
+    /* Mengatur warna teks menjadi putih */
+}
+
+#hero-navbar .navbar-nav .nav-item .nav-link.active,
+#hero-navbar .navbar-nav .nav-item .nav-link:hover {
+    color: #FEDE87;
+    /* Mengatur warna merah untuk tautan aktif dan saat dihover */
+}
+
+#hero-navbar .dropdown-toggle::after {
+    display: none;
+}
+
+#hero-navbar .custom-dropdown .dropdown-menu {
+    border-radius: 0;
+    border: none;
+    padding: 0.5em 0.5em 1em 0.5em;
+    box-shadow: 5px 5px 15px 3px rgba(0, 0, 0, 0.25);
+}
+
+#hero-navbar .custom-dropdown .dropdown-menu .dropdown-item {
+    font-size: 13px;
+}
+
+#hero-navbar .custom-dropdown .dropdown-menu a:hover {
+    color: #FE7338;
+    font-weight: 700;
+}
+
+#hero-navbar .custom-dropdown hr {
+    margin: 0 0.6em;
+    border: none;
+    border-top: 3px solid rgb(168, 168, 168);
+}
+
+/* Keunggulan */
+.card-keunggulan {
+    box-shadow: 0px 0px 3px 1px rgba(171, 171, 171, 0.34);
+    padding: 12px;
+}
+
+.card-keunggulan {
+    display: flex;
+    flex-direction: column;
+    height: 100%; /* Menetapkan tinggi 100% untuk konten agar kolom memiliki tinggi yang sama */
+}
+
+.card-keunggulan .row {
+    height: 100%; /* Menetapkan tinggi 100% untuk baris */
+}
+
+.card-keunggulan .row .col-sm-2 {
+    display: flex;
+    align-items: center; /* Mengatur konten ke tengah secara vertikal */
+    justify-content: center; /* Mengatur konten ke tengah secara horizontal */
+}
+
+.card-keunggulan .row .col-sm-10 {
+    display: flex;
+    align-items: center; /* Mengatur konten ke tengah secara vertikal */
+}
+
+.card-keunggulan .card-body {
+    padding: 0 0 0 1rem;
+}
+
+.card-keunggulan .card-text {
+    font-size: 12px;
+    text-align: justify;
+    line-height: 12px;
+    letter-spacing: 0.5px;
+}
+
+/* Penawaran */
+#penawaran .row [class^="col-sm-3"]:first-child {
+    margin-bottom: 4%;
+    /* Atur margin-bottom untuk semua kolom kecuali yang terakhir dalam baris */
+}
+
+#penawaran .col-sm-3 {
+    padding: 0 6px;
+}
+
+#penawaran .img-penawaran {
+    width: 23%; height: 105%; margin-right: 1em;
+}
+
+.card {
+    background: #FFF;
+    box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.25);
+}
+
+.card-body {
+    padding: 5px 0.5em;
+}
+
+.card-product .card-text {
+    font-size: 10px;
+    font-weight: 500;
+    margin: 0;
+}
+
+.card-product .text-harga {
+    padding: 0 0.5em;
+    margin: 0;
+    display: inline-block;
+    background-color: #bdbdbd;
+}
+
+.card-product .text-harga,
+.card-product .card-atribute,
+.card-artikel .card-atribute {
+    font-size: 8px;
+    font-weight: 700;
+}
+
+.card-product .text-harga-reveal {
+    font-size: 10px;
+    font-weight: 700;
+    margin: 5px 0;
+}
+
+.card-product hr,
+.card-artikel hr {
+    margin: 0;
+    padding: 0;
+    border: none;
+    /* Menghapus border default */
+    border-top: 3px solid rgb(199, 199, 199);
+    /* Mengatur ketebalan dan warna garis */
+    width: 100%;
+}
+
+.card-atribute .rating,
+.card-atribute .seen {
+    padding: 0 0.5em;
+    margin: 0.5em 0.5em 0 0;
+    display: inline-block;
+}
+
+.card-atribute .rating {
+    background-color: #FFAC4C;
+}
+
+.card-atribute .seen {
+    background-color: #829B4A;
+}
+
+/* Rekomendasi Carousel Card */
+.cards-wrapper {
+    padding: 0.2em;
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    background-color: #829B4A;
+    border-radius: 10%;
+}
+
+.carousel-control-prev {
+    left: -7.2%;
+    /* Sesuaikan jarak ke kiri */
+}
+
+.carousel-control-next {
+    right: -7.2%;
+    /* Sesuaikan jarak ke kanan */
+}
+
+/* Edukasi tanaman */
+.card-artikel p {
+    font-size: 10px;
+    font-weight: 700;
+    margin-bottom: 0.5em;
+}
+
+.card-artikel p small {
+    font-size: 8px;
+    font-weight: 500;
+    margin: 0;
+}
+
+/* Call To Action */
+#cta a {
+    color: #FEDE87;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 30px;
+    font-weight: 700;
+    text-decoration: none;
+    transition: 0.3s ease;
+    margin-top: 24px;
+}
+
+#cta a:hover {
+    color: #ffffff;
+}
+
+.cta-content {
+    width: 100%;
+    position: absolute;
+    z-index: 999;
+    margin-top: 7%;
+}
+
+/* All Carousel */
+.carousel-fade .carousel-indicators button {
+    width: 15px;
+    height: 15px;
+    border-radius: 0;
+    background-color: #949494;
+    margin: -5px 0;
+}
+
+.carousel-fade .carousel-indicators button.active {
+    background-color: #FFAC4C;
+}
+
+.carousel-fade .carousel-indicators {
+    display: flex;
+    flex-direction: column; 
+    align-items: flex-start;
+    margin-bottom: 17%;
+    margin-left: 5%;
+}
+
+@media (max-width: 425px) {
+    .container {
+        margin-top: 0;
+        padding: 0 2em;
+    }
+
+    #hero-navbar .content {
+        margin-top: -20%;
+    }
+
+    #hero-navbar .content p,
+    .cta-content p {
+        margin: 0;
+        font-size: 6px;
+        margin-top: 8px;
+    }
+
+    #hero-navbar .navbar {
+        margin: 0;
+    }
+
+    #hero-navbar .navbar-toggler {
+        font-size: 4px;
+        padding: 2px 4px;
+        background-color: #FFF;
+        border: none;
+    }
+
+    #hero-navbar .navbar-collapse {
+        margin-top: 5%;
+        background-color: #829B4A;
+        padding: 10px 3px;
+    }
+
+    #hero-navbar .margin-start {
+        margin-left: 0!important;
+    }
+
+    .custom-dropdown .dropdown-menu {
+        padding: 0.5em;
+    }
+
+    /* Keunggulan */
+    #keunggulan .col-sm-4 {
+        margin-bottom: 12px;
+    }
+
+    .card-keunggulan .card-text {
+        font-size: 10px;
+    }
+    
+    #penawaran .img-penawaran {
+        width: 100%;
+        margin: 0;
+    }
+
+    #penawaran .content {
+        display: flex;
+        flex-direction: column;
+        flex-flow: column-reverse;
+    }
+
+    #penawaran .product {
+        padding: 10px 6px;
+    }
+
+    #penawaran .row .col-6,
+    .row .col-sm-6 {
+        margin-bottom: 4%;
+    }
+
+    #cta a {
+        font-size: 12px;
+        margin-top: 4px;
+    }
+
+    .cta-content {
+        margin-top: 5%;
+    }
+}

@@ -11,12 +11,13 @@ use Laravel\Sanctum\HasApiTokens;
 class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
+    protected $table = 'users';
+    protected $primaryKey = 'user_id'; 
+    
+    protected $fillable = [
+        'user_id','email','password', 'google_id','firstname','lastname','address','telephone_number','birthdate','gender', 'profesi','provinsi','kabupaten','kelurahan','kecamatan'
+    ];
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array<int, string>
-     */
     protected $guarded = [
         'user_id',
     ];
@@ -27,7 +28,6 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $hidden = [
-        'password',
         'remember_token',
     ];
 
@@ -45,7 +45,10 @@ class User extends Authenticatable
     {
         return $this->hasOne(Komentar::class);
     }
-
+    public function ratingArtikel()
+    {
+        return $this->hasMany(Rating_Artikel::class, 'user_id');
+    }
     public function artikel()
     {
         return $this->hasOne(Artikel::class);

@@ -86,21 +86,20 @@
             box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Optional: Add a shadow */
             overflow: hidden; /* Prevent image overflow */
             position: relative; /* Set position */
-           
 }
 
 .product-card .product-details {
-            padding: 20px;
-            box-sizing: border-box;
+      padding: 20px;
+      box-sizing: border-box;
         }
 
 
 .product-image img {
-    width: 239.99px;
-    height: 200px;
+    width: 100%;
+    height: 60%;
     position: absolute;
     top: -1.52px;
-    left: -3.99px;
+    left: -3.90px;
 }
 
 .rating {
@@ -142,8 +141,8 @@
     font-size: 14px;
     font-family: Poppins;
     font-weight: 400;
-    word-wrap: break-word;
-}
+    overflow: hidden;
+  }
 
 .product-category {
     position: absolute;
@@ -156,7 +155,7 @@
     word-wrap: break-word;
 }
 
-.hidden-price {
+.price {
     width: 138px;
     height: 16px;
     position: absolute;
@@ -348,7 +347,7 @@
   <div class="Penempatan" style="left: 30px; top: 30px; position: absolute; color: white; font-size: 18px; font-family: Poppins; font-weight: 700; word-wrap: break-word">Penempatan</div>
   <div  style="width: 177px; left: 30px; top: 77px; position: absolute; color: white; font-size: 14px; font-family: Poppins; font-weight: 400; word-wrap: break-word">
        @if(isset($selectedProduct))
-                {{ $selectedProduct->satuan }}
+                {{ $selectedProduct->penempatan }}
             @else
                 Product details not found.
             @endif
@@ -395,13 +394,17 @@
             @endif<br/>
 
             @if(isset($selectedProduct))
-                {{ $selectedProduct->warna }}
+                {{ $selectedProduct->warna_1 }} dan {{ $selectedProduct->warna_2 }}
             @else
                 Product details not found.
             @endif<br/>    
 
             @if(isset($selectedProduct))
-                {{ $selectedProduct->hpp }}
+                Panjang: {{ $selectedProduct->panjang }}
+                Lebar: {{ $selectedProduct->lebar }}
+                Tinggi: {{ $selectedProduct->tinggi }}
+                Diameter: {{ $selectedProduct->diameter }}
+
             @else
                 Product details not found.
             @endif
@@ -417,7 +420,8 @@
   
   <div class="TambahKeKeranjang" style="left: 37px; top: 30px; position: absolute; color: white; font-size: 30px; font-family: Poppins; font-weight: 700; word-wrap: break-word">Tambah<br/>Ke Keranjang</div>
   <div class="Group481" style="width: 323.88px; height: 77.27px; left: 406px; top: 30px; position: absolute">
-  
+    <div class="VolumePembelian" style="left: 0px; top: 0px; position: absolute; color: white; font-size: 14px; font-family: Poppins; font-weight: 400; word-wrap: break-word">Volume Pembelian</div>
+
     <div class="Button" onclick="updateQuantity('-')" style="width: 56.27px; height: 56.27px; left: 0px; top: 21px; position: absolute; cursor: pointer;">
       <div class="Rectangle80" style="width: 56.27px; height: 56.27px; left: 0px; top: 0px; position: absolute; background: white"></div>
       <div style="left: 20.61px; top: 8px; position: absolute; text-align: center; color: #F35453; font-size: 25px; font-family: Poppins; font-weight: 700; word-wrap: break-word">-</div>
@@ -428,17 +432,20 @@
         <div id="quantity" style="left: 48px; top: 8px; position: absolute; text-align: center; color: white; font-size: 25px; font-family: Poppins; font-weight: 700; word-wrap: break-word">1</div>
     </div>
 
-      <div class="Button" onclick="updateQuantity('+')" style="width: 56.27px; height: 56.27px; left: 197px; top: 21px; position: absolute; cursor: pointer;">
+    <div class="Button" onclick="updateQuantity('+')" style="width: 56.27px; height: 56.27px; left: 197px; top: 21px; position: absolute; cursor: pointer;">
       <div class="Rectangle80" style="width: 56.27px; height: 56.27px; left: 0px; top: 0px; position: absolute; background: white"></div>
       <div style="left: 20px; top: 8px; position: absolute; text-align: center; color: #F35453; font-size: 25px; font-family: Poppins; font-weight: 700; word-wrap: break-word">+</div>
     </div>
 
-    <div class="Button" style="width: 56.27px; height: 56.27px; left: 267.61px; top: 21px; position: absolute">
-      <div class="Rectangle80" style="width: 56.27px; height: 56.27px; left: 0px; top: 0px; position: absolute; background: white"></div>
-      <img class="CSec02Iconshop23" style="width: 30px; height: 30px; left: 13.39px; top: 13px; position: absolute" src="../img/cart.png" />
+    <div class="Button" id="myButton" style="width: 56.27px; height: 56.27px; left: 270px; top: 21px; position: absolute; cursor: pointer;">
+      <a id="myLink" href="{{ route('tambahKeKeranjang', ['id_batu' => $selectedProduct->id_batu, 'quantity' => '1']) }}">
+          <div class="Rectangle80" style="width: 56.27px; height: 56.27px; left: 0px; top: 0px; position: absolute; background: white"></div>
+          <div style="left: 10px; top: 8px; position: absolute; text-align: center; color: #F35453; font-size: 25px; font-family: Poppins; font-weight: 700; word-wrap: break-word">
+              <img src="/img/batunesia/keranjang.png" alt="...">
+          </div>
+      </a>
     </div>
-
-    <div class="VolumePembelian" style="left: 0px; top: 0px; position: absolute; color: white; font-size: 14px; font-family: Poppins; font-weight: 400; word-wrap: break-word">Volume Pembelian</div>
+  </div>
   </div>
 
   <div class="Button" style="width: 324px; height: 77px; left: 406px; top: 144px; position: absolute">
@@ -454,6 +461,7 @@
 var productPrice = <?= $selectedProduct->{'harga_b2I_31+_unit'} ?? 0; ?>; // Replace this with your actual logic to fetch product price
 
 // JavaScript function to update quantity
+// Fungsi untuk mengupdate quantity
 function updateQuantity(operation) {
   var quantityElement = document.getElementById('quantity');
   var currentQuantity = parseInt(quantityElement.innerText);
@@ -465,7 +473,18 @@ function updateQuantity(operation) {
   }
 
   updateTotalPrice();
+  // Perbarui URL pada link dengan ID 'myLink' dengan nilai quantity yang telah diubah
+  var idBatu = "{{ $selectedProduct->id_batu }}";
+  var quantityValue = quantityElement.innerText;
+
+  var link = "{{ route('tambahKeKeranjang', ['id_batu' => ':id_batu', 'quantity' => ':quantity']) }}"
+    .replace(':id_batu', idBatu)
+    .replace(':quantity', quantityValue);
+
+  document.getElementById('myLink').href = link;
+  
 }
+
 
 // JavaScript function to update total price
 function updateTotalPrice() {
@@ -479,11 +498,6 @@ function updateTotalPrice() {
   totalPriceElement.innerText = 'Rp ' + totalPrice.toLocaleString(); // Format the price as needed
 }
 
-// Function to simulate adding to cart (replace this with actual cart logic)
-function addToCart() {
-  updateTotalPrice(); // Make sure the total price is up-to-date before adding to the cart
-  // Add to cart logic here
-}
 
 </script>
 
@@ -500,7 +514,7 @@ function addToCart() {
 </div>
 
 <!--product card terkait-->
-<div style="width: 1004px; height: 1910px; left: 600px; top: 1438px; position: absolute">
+<div style="width: 1004px; height: 1910px; left: 535px; top: 1438px; position: absolute">
   <!--card-product-->
   <div style="width: 100%; box-sizing: border-box; display: flex; flex-wrap: wrap; gap: 26.5px;">
       @forelse ($batunesias1 as $batunesia)
@@ -515,8 +529,12 @@ function addToCart() {
                   <div class="rating-number">0.0</div>
               </div>
               <div class="product-title">{{ $batunesia->nama_produk }}</div>
-              <div class="product-category">{{ $batunesia->nama_produk }}</div>
-              <div class="hidden-price">{{ $batunesia->{'harga_b2I_31+_unit'} }}</div>
+              <div class="product-category">{{ $batunesia->kategori }}</div>
+              @if(auth()->check())
+                                <div class="price">{{ $batunesia->{'harga_b2I_31_unit'} }}</div>
+                            @else
+                                <div class="price" style="font-size: 12px">Harga tersembunyi</div>
+                            @endif
           </div>
       </a>
       @empty
@@ -527,7 +545,7 @@ function addToCart() {
 </div>
 
 <!--product card lainnya-->
-<div style="width: 1004px; height: 1910px; left: 600px; top: 1723px; position: absolute">
+<div style="width: 1004px; height: 1910px; left: 535px; top: 1723px; position: absolute">
   <!--card-product-->
   <div style="width: 100%; box-sizing: border-box; display: flex; flex-wrap: wrap; gap: 26.5px;">
       @forelse ($batunesias2 as $batunesia)
@@ -542,8 +560,12 @@ function addToCart() {
                   <div class="rating-number">0.0</div>
               </div>
               <div class="product-title">{{ $batunesia->nama_produk }}</div>
-              <div class="product-category">{{ $batunesia->nama_produk }}</div>
-              <div class="hidden-price">{{ $batunesia->{'harga_b2I_31+_unit'} }}</div>
+              <div class="product-category">{{ $batunesia->kategori }}</div>
+              @if(auth()->check())
+                                <div class="price">{{ $batunesia->{'harga_b2I_31_unit'} }}</div>
+                            @else
+                                <div class="price" style="font-size: 12px">Harga tersembunyi</div>
+                            @endif
           </div>
       </a>
       @empty
@@ -554,7 +576,7 @@ function addToCart() {
 </div>
 
 <!--product card rekomendasi-->
-<div style="width: 1004px; height: 1910px; left: 600px; top: 2007px; position: absolute">
+<div style="width: 1004px; height: 1910px; left: 535px; top: 2007px; position: absolute">
   <!--card-product-->
   <div style="width: 100%; box-sizing: border-box; display: flex; flex-wrap: wrap; gap: 26.5px;">
       @forelse ($batunesias3 as $batunesia)
@@ -569,8 +591,12 @@ function addToCart() {
                   <div class="rating-number">0.0</div>
               </div>
               <div class="product-title">{{ $batunesia->nama_produk }}</div>
-              <div class="product-category">{{ $batunesia->nama_produk }}</div>
-              <div class="hidden-price">{{ $batunesia->{'harga_b2I_31+_unit'} }}</div>
+              <div class="product-category">{{ $batunesia->kategori }}</div>
+              @if(auth()->check())
+                                <div class="price">{{ $batunesia->{'harga_b2I_31_unit'} }}</div>
+                            @else
+                                <div class="price" style="font-size: 12px">Harga tersembunyi</div>
+                            @endif
           </div>
       </a>
       @empty

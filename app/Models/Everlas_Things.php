@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Everlas_Things extends Model
 {
     use HasFactory;
-    protected $table = 'everlas_things';    
+protected $table = 'everlas_things';
     protected $guarded = ['id_everlas_things'];
     protected $primaryKey = 'id_everlas_things'; 
     protected $with = ['createdBy', 'updatedBy', 'deletedBy'];
@@ -26,5 +26,9 @@ class Everlas_Things extends Model
     public function deletedBy()
     {
         return $this->belongsTo(User::class, 'deleted_by', 'user_id');
+    }
+    public function promos()
+    {
+        return $this->belongsToMany(Promo::class, 'everlas_things_promos', 'id_everlas_things', 'id_promo');
     }
 }

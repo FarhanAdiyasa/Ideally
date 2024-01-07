@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::table('komentars', function (Blueprint $table) {
             $table->foreignId('id_artikel');
-            $table->foreign('id_artikel')->references('id_artikel')->on('artikels');
+            $table->foreign('id_artikel')->references('id_artikel')->on('artikels')->delete('cascade');;
         });
     }
 

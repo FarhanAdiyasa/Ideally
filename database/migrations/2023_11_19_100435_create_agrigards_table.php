@@ -16,30 +16,33 @@ return new class extends Migration
             $table->string('kategori');
             $table->string('nama_produk');
             $table->string('slug');
+            $table->string('spesifikasi');
             $table->string('satuan');
-            $table->string('gambar')->nullable();
+            $table->string('gambar_1');
+            $table->string('gambar_2')->nullable();
+            $table->string('gambar_3')->nullable();
             $table->string('video')->nullable();
-            $table->text('deskripsi_singkat'); // Menggunakan tipe data 'text' untuk deskripsi yang panjang
-            $table->integer('stok')->default(0); // Menggunakan tipe data 'integer' untuk stok
+            $table->text('deskripsi_singkat'); 
+            $table->integer('stok')->default(0); 
             $table->integer('item_terjual')->default(0);
-            $table->decimal('hpp', 10, 2); // Menggunakan tipe data 'decimal' untuk harga pokok produksi dengan 2 digit desimal
-            $table->decimal('harga_b2I_31+_unit', 10, 2);
-            $table->decimal('harga_b2I_11+_unit', 10, 2);
-            $table->decimal('harga_b2I_1+_unit', 10, 2);
-            $table->decimal('harga_b2B_31+_unit', 10, 2);
-            $table->decimal('harga_b2B_11+_unit', 10, 2);
-            $table->decimal('harga_b2B_1+_unit', 10, 2);
-            $table->decimal('harga_b2C_31+_unit', 10, 2);
-            $table->decimal('harga_b2C_11+_unit', 10, 2);
-            $table->decimal('harga_b2C_1+_unit', 10, 2);
+            $table->string('armada_minimum')->nullable();
+            $table->decimal('harga_jual_projek_ideally', 10, 2);
+            $table->decimal('harga_b2I_31_unit', 10, 2);
+            $table->decimal('harga_b2I_11_unit', 10, 2);
+            $table->decimal('harga_b2I_1_unit', 10, 2);
+            $table->decimal('harga_b2B_31_unit', 10, 2);
+            $table->decimal('harga_b2B_11_unit', 10, 2);
+            $table->decimal('harga_b2B_1_unit', 10, 2);
+            $table->decimal('harga_b2C_31_unit', 10, 2);
+            $table->decimal('harga_b2C_11_unit', 10, 2);
+            $table->decimal('harga_b2C_1_unit', 10, 2);
             $table->timestamp('tanggal_publikasi')->nullable();  
-            $table->timestamp('created_at')->useCurrent(); // Menggunakan 'useCurrent' untuk mengisi otomatis tanggal pembuatan
-            $table->timestamp('updated_at')->useCurrent(); // Menggunakan 'useCurrent' untuk mengisi otomatis tanggal pembaruan
-            $table->timestamp('softDelete')->nullable();// Menggunakan 'nullable' untuk mengizinkan kolom 'deleted_date' bernilai null
+            $table->timestamps();
+            $table->softDeletes();
 
             $table->foreignId('created_by');
-            $table->foreignId('updated_by');
-            $table->foreignId('deleted_by');
+            $table->foreignId('updated_by')->nullable();
+            $table->foreignId('deleted_by')->nullable();
     
             $table->foreign('created_by')->references('user_id')->on('users');
             $table->foreign('updated_by')->references('user_id')->on('users');
