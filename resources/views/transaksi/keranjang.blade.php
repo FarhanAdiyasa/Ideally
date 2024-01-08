@@ -282,7 +282,7 @@
 
                                 @if (session()->has('cart_everlas'))
                                 <tr class="border-brand">
-                                    <th colspan="5" style="text-align: center;">Batunesia</th>
+                                    <th colspan="5" style="text-align: center;">Everlas Thing</th>
                                     <th class="total-brand">Total</th>
                                     <td class="d-flex align-items-center justify-content-center">
                                         <a href="{{ asset('') }}"><img
