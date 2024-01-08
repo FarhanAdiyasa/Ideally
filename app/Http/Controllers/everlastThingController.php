@@ -82,7 +82,7 @@ class everlastThingController extends Controller
     {
         $product = Everlas_Things::findOrFail($id_everlas_things);
     
-        $cart = session()->get('everlasthings', []);
+        $cart = session()->get('cart_everlas', []);
     
         if(isset($cart[$id_everlas_things])) {
             $currentQuantity = $cart[$id_everlas_things]['quantity'];
@@ -93,9 +93,7 @@ class everlastThingController extends Controller
                 "quantity" => (int)$quantity
             ];
         }
-
-        session()->put('everlasthings', $cart);
-        $keranjang = Session::get('everlasthings', []);
+        session()->put('cart_everlas', $cart);
         return redirect()->route('transaksi.index');        
     }
 
@@ -103,11 +101,11 @@ class everlastThingController extends Controller
     public function updateEverlasthings(Request $request)
     {
     if ($request->id_everlas_things && $request->quantity) {
-        $cart = session()->get('everlasthings');
+        $cart = session()->get('cart_everlas');
 
         if (isset($cart[$request->id_everlas_things])) { // Perbaikan penamaan variabel
             $cart[$request->id_everlas_things]["quantity"] = $request->quantity;
-            session()->put('everlasthings', $cart);
+            session()->put('cart_everlas', $cart);
             session()->flash('success', 'Cart successfully updated!');
             }
         }
@@ -116,10 +114,10 @@ class everlastThingController extends Controller
     public function removeEverlasthings(Request $request)
     {
         if($request->id) {
-            $cart = session()->get('everlasthings');
+            $cart = session()->get('cart_everlas');
             if(isset($cart[$request->id])) {
                 unset($cart[$request->id]);
-                session()->put('everlasthings', $cart);
+                session()->put('cart_everlas', $cart);
             }
             session()->flash('success', 'Product successfully removed!');
         }
@@ -127,7 +125,7 @@ class everlastThingController extends Controller
 
     public function removeAllEverlasthings()
     {
-        session()->forget('everlasthings');
+        session()->forget('cart_everlas');
         session()->flash('success', 'Semua produk everlasthings berhasil dihapus dari keranjang!');
         return response()->json(['success' => true], 200); // Memberikan respon ke AJAX
     }

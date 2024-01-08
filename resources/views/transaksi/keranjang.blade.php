@@ -26,7 +26,7 @@
 
     <!-- JQuery -->
     <script src="{{ asset('https://code.jquery.com/jquery-3.6.0.min.js') }}"></script>
-    
+
 </head>
 
 <body>
@@ -67,6 +67,8 @@
     @php
     $berat_deflo = 0;
     $berat_agrigard = 0;
+    $brat_batunesia = 0;
+    $berat_everlas = 0;
     $armada = [];
     @endphp
 
@@ -74,7 +76,7 @@
         <div class="container mt-4">
             <div class="row g-4">
                 @if(empty(session('cart_deflo')) && empty(session('cart_agrigard')) &&
-                empty(session('cart_batunesia')))
+                empty(session('cart_batunesia')) && empty(session('cart_everlas')) )
                 <div class="col-sm-12">
                     <div class="bg-light rounded-4 p-4" style="box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.25);">
                         <div class="text-center p-3">
@@ -105,17 +107,18 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @if(session('batunesia'))
-                                    @foreach(session('batunesia') as $id => $item)
+                                @if ( session()->has('cart_batunesia') )
                                 <tr class="border-brand">
                                     <th colspan="5" style="text-align: center;">Batunesia</th>
                                     <th class="total-brand">Total</th>
                                     <td class="d-flex align-items-center justify-content-center">
                                         <a href="#" class="removeAllBatunesia">
-                                            <img src="{{ asset('img/keranjang/Delete Icon.png') }}" alt="" class="d-block w-50">
+                                            <img src="{{ asset('img/keranjang/Delete Icon.png') }}" alt=""
+                                                class="d-block w-50">
                                         </a>
-                                    </td>                                    
+                                    </td>
                                 </tr>
+                                @foreach ( session('cart_batunesia', []) as $item )
                                 <tr data-id="{{ $item['produk']->id_batu }}">
                                 <tr class="border-bottom baris-produk">
                                     <td class="d-flex align-items-center" style="height: 52px;"></td>
@@ -127,16 +130,15 @@
                                                         alt="{{ $item['produk']->nama_produk }}">
                                                 </div>
                                             </div>
-                                            <div class="col-9 d-flex align-items-center">{{ $item['produk']->nama_produk
-                                                        }}</div>
+                                            <div class="col-9 d-flex align-items-center">
+                                                {{ $item['produk']->nama_produk }}</div>
                                         </div>
                                     </td>
                                     <td class="jumlah">
                                         <!-- Tambahkan tombol untuk mengatur jumlah produk -->
                                         <span class="p-1"><i class="fa-solid fa-circle-chevron-down"></i></span>
-
-                                        <input class="form-control quantity" min="1" type="text" value="{{ $item['quantity'] }}" readonly>
-
+                                        <input class="form-control quantity" type="text" value="{{ $item['quantity'] }}"
+                                            readonly>
                                         <span class="p-1"><i class="fa-solid fa-circle-chevron-up"></i></span>
                                     </td>
                                     <td class="unit">{{ $item['produk']->satuan }}</td>
@@ -145,35 +147,70 @@
                                     <td class="total">{{ $item['quantity'] * $item['produk']->harga_b2C_1_unit }}
                                     </td>
                                     <td class="d-flex align-items-center justify-content-center">
-
                                         <a href="#" class="hapus_batunesia" data-id="{{ $item['produk']->id_batu }}">
-                                            <img src="{{ asset('img/keranjang/Delete Icon.png') }}" alt="" class="d-block w-50">
+                                            <img src="{{ asset('img/keranjang/Delete Icon.png') }}" alt=""
+                                                class="d-block w-50">
                                         </a>
-                                    </td>                                                                                                                                                                           
+                                    </td>
                                 </tr>
-                                    @endforeach
+                                @php
+                                $berat_batunesia += $item['produk']->berat_gram * $item['quantity'];
+                                $armada[] = $item['produk']->armada_minimum;
+                                @endphp
+                                @endforeach
                                 @endif
 
-                            <!--everlasthings-->
-                            @if(session('everlasthings'))
-                                @foreach(session('everlasthings') as $id => $item2)
+                                @if ( session()->has('cart_everlas') )
                                 <tr class="border-brand">
-                                    <th colspan="5" style="text-align: center;">Everlasthings</th>
+                                    <th colspan="5" style="text-align: center;">Everlas Thing</th>
                                     <th class="total-brand">Total</th>
                                     <td class="d-flex align-items-center justify-content-center">
                                         <a href="#" class="removeAllEverlasthings">
-                                            <img src="{{ asset('img/keranjang/Delete Icon.png') }}" alt="" class="d-block w-50">
+                                            <img src="{{ asset('img/keranjang/Delete Icon.png') }}" alt=""
+                                                class="d-block w-50">
                                         </a>
-                                    </td>                                    
-                                </tr>
-                                <tr data-id="{{ $id }}">
-                                <tr class="border-bottom baris-produk">
-                                    <td class="d-flex align-items-center" style="height: 52px;">{{ $loop->index + 1 }}</td>
-
-                                        
-
                                     </td>
                                 </tr>
+                                @foreach ( session('cart_everlas', []) as $item )
+                                <tr data-id="{{ $id }}">
+                                <tr class="border-bottom baris-produk">
+                                    <td class="d-flex align-items-center" style="height: 52px;"></td>
+                                    <td class="detail">
+                                        <div class="row g-1">
+                                            <div class="col-3">
+                                                <div class="img-container">
+                                                    <img src="{{ $item['produk']->gambar_1 }}"
+                                                        alt="{{ $item['produk']->nama_produk }}">
+                                                </div>
+                                            </div>
+                                            <div class="col-9 d-flex align-items-center">
+                                                {{ $item['produk']->nama_produk }}</div>
+                                        </div>
+                                    </td>
+                                    <td class="jumlah">
+                                        <!-- Tambahkan tombol untuk mengatur jumlah produk -->
+                                        <span class="p-1"><i class="fa-solid fa-circle-chevron-down"></i></span>
+                                        <input class="form-control quantity" type="text" value="{{ $item['quantity'] }}"
+                                            readonly>
+                                        <span class="p-1"><i class="fa-solid fa-circle-chevron-up"></i></span>
+                                    </td>
+                                    <td class="unit">{{ $item['produk']->satuan }}</td>
+                                    <td class="harga">
+                                        {{ number_format((int)$item['produk']->harga_b2C_1_unit, 0, ',', '.') }}</td>
+                                    <td class="total">{{ $item['quantity'] * $item['produk']->harga_b2C_1_unit }}
+                                    </td>
+                                    <td class="d-flex align-items-center justify-content-center">
+                                        <a href="#" class="hapus_everlasthings"
+                                            data-id="{{ $item['produk']->id_everlas_things }}">
+                                            <img src="{{ asset('img/keranjang/Delete Icon.png') }}" alt=""
+                                                class="d-block w-50">
+                                        </a>
+                                    </td>
+                                </tr>
+                                @php
+                                $berat_everlas += $item['produk']->berat_gram * $item['quantity'];
+                                $armada[] = $item['produk']->armada_minimum;
+                                @endphp
                                 @endforeach
                                 @endif
 
@@ -215,7 +252,16 @@
                                     <td class="total">{{ $item['quantity'] * $item['produk']->harga_b2C_1_unit }}
                                     </td>
                                     <td class="d-flex align-items-center justify-content-center">
-                                        
+                                        {{-- <form action="{{ route('hapusDariKeranjang', ['id_batu' => $key]) }}"
+                                        method="POST">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit"
+                                            style="border: none; background: none; padding: 0; margin: 0; outline: none;">
+                                            <img src="{{ asset('img/keranjang/Delete Icon.png') }}" alt="Hapus Produk"
+                                                class="d-block w-50" style="border: none;">
+                                        </button>
+                                        </form> --}}
 
                                     </td>
                                 </tr>
@@ -239,36 +285,21 @@
                                 @foreach (session('cart_agrigard', []) as $item)
                                 <tr class="border-bottom baris-produk">
                                     <td class="d-flex align-items-center" style="height: 52px;"></td>
-
                                     <td class="detail">
                                         <div class="row g-1">
                                             <div class="col-3">
                                                 <div class="img-container">
-
-                                                    <img src="{{ $item2['produk']->gambar_1 }}" alt="{{ $item2['produk']->nama_produk }}">
+                                                    <img src="{{ $item['produk']->gambar_1 }}"
+                                                        alt="{{ $item['produk']->nama_produk }}">
                                                 </div>
                                             </div>
-                                            <div class="col-9 d-flex align-items-center">{{ $item2['produk']->nama_produk }}</div>
-
+                                            <div class="col-9 d-flex align-items-center">{{ $item['produk']->nama_produk
+                                                        }}</div>
                                         </div>
                                     </td>
                                     <td class="jumlah">
                                         <!-- Tambahkan tombol untuk mengatur jumlah produk -->
                                         <span class="p-1"><i class="fa-solid fa-circle-chevron-down"></i></span>
-
-                                        <input class="form-control quantity" min="1" type="text" value="{{ $item2['quantity'] }}" readonly>
-                                        <span class="p-1"><i class="fa-solid fa-circle-chevron-up"></i></span>
-                                    </td>
-                                    <td class="unit">{{ $item2['produk']->satuan }}</td>
-                                    <td class="harga">{{ $item2['produk']->harga_b2C_1_unit }}</td>
-                                    <td class="total">{{ $item2['quantity'] * $item2['produk']->harga_b2C_1_unit }}</td>
-                                    <td class="d-flex align-items-center justify-content-center">
-                                        <a href="#" class="hapus_everlasthings" data-id="{{ $item2['produk']->id_everlas_things }}">
-                                            <img src="{{ asset('img/keranjang/Delete Icon.png') }}" alt="" class="d-block w-50">
-                                        </a>
-                                    </td>                                                                                                                                                                           
-                                </tr>
-
                                         <input class="form-control quantity" type="text" value="{{ $item['quantity'] }}"
                                             readonly>
                                         <span class="p-1"><i class="fa-solid fa-circle-chevron-up"></i></span>
@@ -279,7 +310,16 @@
                                     <td class="total">{{ $item['quantity'] * $item['produk']->harga_b2C_1_unit }}
                                     </td>
                                     <td class="d-flex align-items-center justify-content-center">
-                                        
+                                        {{-- <form action="{{ route('hapusDariKeranjang', ['id_batu' => $key]) }}"
+                                        method="POST">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit"
+                                            style="border: none; background: none; padding: 0; margin: 0; outline: none;">
+                                            <img src="{{ asset('img/keranjang/Delete Icon.png') }}" alt="Hapus Produk"
+                                                class="d-block w-50" style="border: none;">
+                                        </button>
+                                        </form> --}}
 
                                     </td>
                                 </tr>
@@ -287,7 +327,6 @@
                                 $berat_agrigard += $item['produk']->berat_gram * $item['quantity'];
                                 $armada[] = $item['produk']->armada_minimum;
                                 @endphp
-
                                 @endforeach
                                 @endif
                             </tbody>
@@ -300,31 +339,6 @@
                 </div>
                 <div class="col-sm-3">
                     <div class="bg-light rounded-4 p-2 py-4" style="box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.25);">
-                        <table class="table table-borderless table-bayar">
-                            <thead>
-                                <tr>
-                                    <th colspan="2">Ringkasan Pembayaran</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td id="total-produk">Total Produk (<span></span>)</td>
-                                    <td id="total-harga"></td>
-                                </tr>
-                                @if (isset($ongkir))
-                                @foreach ($ongkir[0]['costs'] as $costs)
-                                @if ($costs['service'] == 'REG' )
-                                <tr>
-                                    <td>Biaya Kirim (JNE REG)</td>
-                                    <td class="text-end" id="ongkir">
-                                        {{ number_format($costs['cost'][0]['value'], 0, '.', '.') }}
-                                    </td>
-                                </tr>
-                                @endif
-                                @endforeach
-                                @endif
-                            </tbody>
-                        </table>
                         <table class="table table-borderless table-bayar">
                             <thead>
                                 <tr>
@@ -379,8 +393,9 @@
 
     <script src="{{ asset('https://code.jquery.com/jquery-3.6.0.min.js') }}"></script>
     <script>
-
     $(document).ready(function() {
+        $('#total-harga').text(totalHarga.toLocaleString('id-ID'));
+
         function hitungTotal() {
             var totalHarga = parseInt($('#total-harga').text().replace(/\D/g, '')); // Ambil nilai total harga
             var ongkirElement = $('#ongkir');
@@ -423,7 +438,6 @@
 
         recalculateTotal();
 
-        // Fungsi untuk menambahkan jumlah
         $('.fa-circle-chevron-up').on('click', function() {
             var inputQuantity = $(this).closest('.jumlah').find('.quantity');
             var currentValue = parseInt(inputQuantity.val());
@@ -431,7 +445,6 @@
             recalculateTotal();
         });
 
-        // Fungsi untuk mengurangi jumlah
         $('.fa-circle-chevron-down').on('click', function() {
             var inputQuantity = $(this).closest('.jumlah').find('.quantity');
             var currentValue = parseInt(inputQuantity.val());
@@ -476,161 +489,149 @@
             $('.harga').each(function() {
                 var jumlah = parseInt($(this).closest('tr').find('.quantity').val());
                 var harga = parseFloat($(this).text().replace(/\./g, '').replace(',', '.'));
-
-
                 $('#total-harga').text(totalHarga.toLocaleString('id-ID'));
-            }
+            });
+        }
 
-            // Fungsi untuk mengupdate kuantitas menggunakan AJAX
-            function updateQuantity(inputQuantity) {
-                var batunesia = inputQuantity.closest('tr').find('.hapus_batunesia').attr("data-id");
-                var everlasthings = inputQuantity.closest('tr').find('.hapus_everlasthings').attr("data-id");
-                var quantity = inputQuantity.val();
-                console.log(batunesia);
+        function updateQuantity(inputQuantity) {
+            var batunesia = inputQuantity.closest('tr').find('.hapus_batunesia').attr("data-id");
+            var everlasthings = inputQuantity.closest('tr').find('.hapus_everlasthings').attr(
+                "data-id");
+            var quantity = inputQuantity.val();
+            console.log(batunesia);
 
+            $.ajax({
+                url: '{{ route('updateBatunesia') }}',
+                method: "patch",
+                data: {
+                    _token: '{{ csrf_token() }}',
+                    quantity: quantity,
+                    id_batu: batunesia
+
+                },
+                success: function(response) {
+                    console.log("Sukses update Batunesia:", response);
+                    $.ajax({
+                        url: '{{ route('updateEverlasthings') }}',
+                        method: "patch",
+                        data: {
+                            _token: '{{ csrf_token() }}',
+                            quantity: quantity,
+                            id_everlas_things: everlasthings
+                        },
+                        success: function(response) {
+                            console.log("Sukses update Everlasthings:",
+                                response);
+                            window.location.reload();
+                        },
+                        error: function(xhr, status, error) {
+                            console.log(error);
+                            alert("Gagal memperbarui jumlah produk.");
+                        }
+                    });
+                },
+                error: function(xhr, status, error) {
+                    console.log(error);
+                    alert("Gagal memperbarui jumlah produk.");
+                }
+            });
+        }
+
+        $(".hapus_batunesia").click(function(e) {
+            e.preventDefault();
+
+            var ele = $(this);
+            var dataId = ele.data("id"); // Mengambil data-id dari tombol
+            console.log("Nilai data-id:", dataId);
+
+            if (confirm("Yakin ingin menghapus produk Batunesia?")) {
                 $.ajax({
-                    url: '{{ route('updateBatunesia') }}',
-                    method: "patch",
+                    url: '/removeBatunesia', // Sesuaikan dengan route yang benar
+                    method: "DELETE",
                     data: {
                         _token: '{{ csrf_token() }}',
-                        quantity: quantity,
-                        id_batu: batunesia
-                        
+                        id: dataId // Mengirim ID yang akan dihapus
                     },
-                    success: function (response) {
-                        console.log("Sukses update Batunesia:", response);
-                        $.ajax({
-                            url: '{{ route('updateEverlasthings') }}',
-                            method: "patch",
-                            data: {
-                                _token: '{{ csrf_token() }}',
-                                quantity: quantity,
-                                id_everlas_things: everlasthings
-                            },
-                            success: function (response) {
-                                console.log("Sukses update Everlasthings:", response);
-                                window.location.reload();
-                            },
-                            error: function (xhr, status, error) {
-                                console.log(error);
-                                alert("Gagal memperbarui jumlah produk.");
-                            }
-                        });
+                    success: function(response) {
+                        window.location.reload();
                     },
-                    error: function (xhr, status, error) {
-                        console.log(error);
-                        alert("Gagal memperbarui jumlah produk.");
+                    error: function(xhr, status, error) {
+                        console.error(error);
+                        alert("Gagal menghapus produk Batunesia.");
                     }
                 });
             }
-
-
-
-            $(".hapus_batunesia").click(function (e) {
-                e.preventDefault();
-                
-                var ele = $(this);
-                var dataId = ele.data("id"); // Mengambil data-id dari tombol
-                console.log("Nilai data-id:", dataId);
-                
-                if (confirm("Yakin ingin menghapus produk Batunesia?")) {
-                    $.ajax({
-                        url: '/removeBatunesia', // Sesuaikan dengan route yang benar
-                        method: "DELETE",
-                        data: {
-                            _token: '{{ csrf_token() }}', 
-                            id: dataId // Mengirim ID yang akan dihapus
-                        },
-                        success: function (response) {
-                            window.location.reload();
-                        },
-                        error: function (xhr, status, error) {
-                            console.error(error);
-                            alert("Gagal menghapus produk Batunesia.");
-                        }
-                    });
-                }
-            });
-
-
-
-            $(".removeAllBatunesia").click(function (e) {
-                e.preventDefault();
-
-                if (confirm("Yakin ingin menghapus semua produk Batunesia?")) {
-                    $.ajax({
-                        url: '/removeAllBatunesia?', // Menambahkan cache buster
-                        type: "DELETE",
-                        data: {
-                            _token: '{{ csrf_token() }}',
-                        },
-                        success: function (response) {
-                            window.location.reload();
-                        },
-                        error: function (xhr, status, error) {
-                            console.log(error);
-                            alert("Gagal menghapus Seluruh Batunesia.");
-                        }
-                    });
-                }
-            });
-
-
-
-            $(".hapus_everlasthings").click(function (e) {
-                e.preventDefault();
-                
-                var ele = $(this);
-                var dataId = ele.data("id"); // Mengambil data-id dari tombol
-                console.log("Nilai data-id:", dataId);
-                
-                if (confirm("Yakin ingin menghapus produk Everlasthings?")) {
-                    $.ajax({
-                        url: '/removeEverlasthings', // Sesuaikan dengan route yang benar
-                        method: "DELETE",
-                        data: {
-                            _token: '{{ csrf_token() }}', 
-                            id: dataId // Mengirim ID yang akan dihapus
-                        },
-                        success: function (response) {
-                            window.location.reload();
-                        },
-                        error: function (xhr, status, error) {
-                            console.error(error);
-                            alert("Gagal menghapus produk Everlasthings.");
-                        }
-                    });
-                }
-            });
-
-            $(".removeAllEverlasthings").click(function (e) {
-                e.preventDefault();
-
-                if (confirm("Yakin ingin menghapus semua produk everlasthings?")) {
-                    $.ajax({
-                        url: '/removeAllEverlasthings?', // Menambahkan cache buster
-                        type: "DELETE",
-                        data: {
-                            _token: '{{ csrf_token() }}',
-                        },
-                        success: function (response) {
-                            window.location.reload();
-                        },
-                        error: function (xhr, status, error) {
-                            console.log(error);
-                            alert("Gagal menghapus Seluruh Batunesia.");
-                        }
-                    });
-                }
-            });
         });
 
+        $(".removeAllBatunesia").click(function(e) {
+            e.preventDefault();
 
-            $('#total-harga').text(totalHarga.toLocaleString('id-ID'));
-        }
+            if (confirm("Yakin ingin menghapus semua produk Batunesia?")) {
+                $.ajax({
+                    url: '/removeAllBatunesia?', // Menambahkan cache buster
+                    type: "DELETE",
+                    data: {
+                        _token: '{{ csrf_token() }}',
+                    },
+                    success: function(response) {
+                        window.location.reload();
+                    },
+                    error: function(xhr, status, error) {
+                        console.log(error);
+                        alert("Gagal menghapus Seluruh Batunesia.");
+                    }
+                });
+            }
+        });
+
+        $(".hapus_everlasthings").click(function(e) {
+            e.preventDefault();
+
+            var ele = $(this);
+            var dataId = ele.data("id"); // Mengambil data-id dari tombol
+            console.log("Nilai data-id:", dataId);
+
+            if (confirm("Yakin ingin menghapus produk Everlasthings?")) {
+                $.ajax({
+                    url: '/removeEverlasthings', // Sesuaikan dengan route yang benar
+                    method: "DELETE",
+                    data: {
+                        _token: '{{ csrf_token() }}',
+                        id: dataId // Mengirim ID yang akan dihapus
+                    },
+                    success: function(response) {
+                        window.location.reload();
+                    },
+                    error: function(xhr, status, error) {
+                        console.error(error);
+                        alert("Gagal menghapus produk Everlasthings.");
+                    }
+                });
+            }
+        });
+
+        $(".removeAllEverlasthings").click(function(e) {
+            e.preventDefault();
+
+            if (confirm("Yakin ingin menghapus semua produk everlasthings?")) {
+                $.ajax({
+                    url: '/removeAllEverlasthings?', // Menambahkan cache buster
+                    type: "DELETE",
+                    data: {
+                        _token: '{{ csrf_token() }}',
+                    },
+                    success: function(response) {
+                        window.location.reload();
+                    },
+                    error: function(xhr, status, error) {
+                        console.log(error);
+                        alert("Gagal menghapus Seluruh Batunesia.");
+                    }
+                });
+            }
+        });
     });
     </script>
 </body>
 
 </html>
-

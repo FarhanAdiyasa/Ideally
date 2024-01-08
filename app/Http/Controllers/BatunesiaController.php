@@ -107,33 +107,31 @@ $batunesias = Batunesia::where('warna_1', 'cream')->paginate(28);
     }
 
     public function tambahKeKeranjang($id_batu, $quantity)
-{
-    $product = Batunesia::findOrFail($id_batu);
- 
-    $cart = session()->get('batunesia', []);
- 
-    if(isset($cart[$id_batu])) {
-        $currentQuantity = $cart[$id_batu]['quantity'];
-        $cart[$id_batu]['quantity'] = $currentQuantity + (int)$quantity; // Menambahkan nilai $quantity ke jumlah yang sudah ada
-    } else {
-        $cart[$id_batu] = [
-            "produk" => $product,
-            "quantity" => (int)$quantity
-        ];
+    {
+        $product = Batunesia::findOrFail($id_batu);
+    
+        $cart = session()->get('cart_batunesia', []);
+    
+        if(isset($cart[$id_batu])) {
+            $currentQuantity = $cart[$id_batu]['quantity'];
+            $cart[$id_batu]['quantity'] = $currentQuantity + (int)$quantity; // Menambahkan nilai $quantity ke jumlah yang sudah ada
+        } else {
+            $cart[$id_batu] = [
+                "produk" => $product,
+                "quantity" => (int)$quantity
+            ];
+        }
+        session()->put('batunesia', $cart);
+        return redirect()->route('transaksi.index');        
     }
-
-    session()->put('batunesia', $cart);
-    $keranjang = Session::get('batunesia', []);
-    return redirect()->route('transaksi.index');        
-}
 
 
     public function updateBatunesia(Request $request)
     {
         if($request->id_batu && $request->quantity){
-            $cart = session()->get('batunesia');
+            $cart = session()->get('cart_batunesia');
             $cart[$request->id_batu]["quantity"] = $request->quantity;
-            session()->put('batunesia', $cart);
+            session()->put('cart_batunesia', $cart);
             session()->flash('success', 'Cart successfully updated!');
         }
     }
@@ -141,10 +139,10 @@ $batunesias = Batunesia::where('warna_1', 'cream')->paginate(28);
     public function removeBatunesia(Request $request)
     {
         if($request->id) {
-            $cart = session()->get('batunesia');
+            $cart = session()->get('cart_batunesia');
             if(isset($cart[$request->id])) {
                 unset($cart[$request->id]);
-                session()->put('batunesia', $cart);
+                session()->put('cart_batunesia', $cart);
             }
             session()->flash('success', 'Product successfully removed!');
         }
@@ -152,7 +150,7 @@ $batunesias = Batunesia::where('warna_1', 'cream')->paginate(28);
 
     public function removeAllBatunesia()
     {
-        session()->forget('batunesia');
+        session()->forget('cart_batunesia');
         session()->flash('success', 'Semua produk Batunesia berhasil dihapus dari keranjang!');
         return response()->json(['success' => true], 200); // Memberikan respon ke AJAX
     }

@@ -50,7 +50,7 @@ Route::post('/portal-edukasi/komentar/{slug}', [ArtikelController::class, 'komen
 // Route::get('/brand', [BrandController::class, 'index'])->name('Brand-Batunesia');
 // //eror
 // Route::get('/detail', [DetailController::class, 'index'])->name('Detail-Batunesia');
-Route::get('/detail-batunesia/{id_batu}', [DetailController::class, 'showDetail'])->name('Detail-Batunesia');
+// Route::get('/detail-batunesia/{id_batu}', [DetailController::class, 'showDetail'])->name('Detail-Batunesia');
 
 Auth::routes();
 Route::get('/home/show/{kategori}', [ArtikelController::class, 'show'])->name('home.show');
@@ -265,7 +265,7 @@ Route::get('/detail-batunesia/{id_batu}', [DetailController::class, 'showDetail'
 
 
 //Keranjang
-Route::get('/keranjang', [KeranjangController::class, 'index'])->name('transaksi.index');
+Route::get('/keranjang', [TransaksiController::class, 'index'])->name('transaksi.index');
 
 // ongkir
 Route::post('/calculateOngkir', [TransaksiController::class, 'calculateOngkir'])->name('calculate.ongkir');
