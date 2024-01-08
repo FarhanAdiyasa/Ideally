@@ -24,7 +24,7 @@ class DatabaseSeeder extends Seeder
 {
     public function run(): void
     {
-        // User::factory(10)->create();
+        User::factory(10)->create();
         
         // Kategori_Artikel::create([
         //     'nama_katkegori_artikel' => 'Desain-Taman',
@@ -63,7 +63,7 @@ class DatabaseSeeder extends Seeder
         // Sumber_Artikel::factory(40)->create();
         // Rating_Artikel::factory(140)->create();
 
-        // Agrigard::factory(40)->create();
+        Agrigard::factory(40)->create();
         Konkurito::factory(40)->create();
         Dedikasi_Flora::factory(40)->create();
         Shineage::factory(40)->create();

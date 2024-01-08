@@ -190,7 +190,7 @@ Route::get('/everlasthings/detailProduct', [everlastThingController::class, 'det
 
 //authentikasi login & regis
 Route::get('/auth/redirect',[AuthController::class, "redirect"])->middleware('guest');
-Route::get('/auth',[AuthController::class, "index"])->name('login')->middleware('guest');
+Route::get('/auth/login',[AuthController::class, "index"])->name('login')->middleware('guest');
 Route::get('/auth/callback',[AuthController::class, "callback"])->middleware('guest');
 Route::get('/auth/logout',[AuthController::class,"logout"]);
 Route::get('/auth/register', [AuthController::class, 'register'])->name('auth.register');

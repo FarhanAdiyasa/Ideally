@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css">
 
     <!-- Custom CSS -->
+    <link rel="stylesheet" href="{{ asset('/css/navbar-style.css') }}">
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('dedikasi-flora/assets/css/details/style.css') }}">
 
@@ -23,9 +24,13 @@
 </head>
 
 <body>
+    <!-- Navbar Utama -->
+    @include('partials.navbar')
+    <!-- End Navbar Utama -->
+    
     <!-- Hero & Navigation Bar -->
     <header id="hero-navbar">
-        <div class="hero-img d-flex justify-content-center">
+        <div class="hero-img d-flex justify-content-center mt-5">
             <img src="{{ asset('dedikasi-flora/assets/img/showcase/06B-SEC01-LATAR.jpg') }}" alt="">
         </div>
         <div class="content z-1 position-absolute" style="width: 100%;">
