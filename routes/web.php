@@ -275,4 +275,3 @@ Route::get('/add-cart-deflo/{id}/{qty}', [TransaksiController::class, 'add_cart_
 
 //keranjang agrigard
 Route::get('/add-cart-agrigard/{id}/{qty}', [TransaksiController::class, 'add_cart_agrigard'])->name('addcart.agrigard');
-\
