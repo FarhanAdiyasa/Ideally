@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -41,10 +42,31 @@
             </div>
             @endif
             @if (Session::has('error'))
-            <div class="alert alert-danger">
-                {{ Session::get('error') }}
+            <div class="modal show" tabindex="-1" style="display: block;">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content rounded-5">
+                        <div class="modal-header" style="border-bottom: none; justify-content: center;">
+                            <h5 class="modal-title px-3 py-1 rounded-5" style="color: #06C195; font-weight: 700; border: 2px solid #06C195">Oops! Terjadi Kesalahan..</h5>
+                        </div>
+                        <div class="modal-body text-center">
+                            <p class="fw-bold mb-1">{{ Session::get('error') }}</p>
+                            <p class="mb-1">Yuk bergabung menjadi bagian <span style="color: #06C195; font-weight: 700;">Ideally Indonesia!</span></p>
+                        </div>
+                        <div class="modal-footer" style="border-top: none;">
+                            <a href="" class="btn rounded-5 text-white me-3">Daftar Sekarang</a>
+                            <button type="button" class="btn-dua rounded-5" data-bs-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
             </div>
+
+            <script>
+            $(document).ready(function() {
+                $('.modal').modal('show');
+            });
+            </script>
             @endif
+
             <div class="bg-light rounded-4" style="padding: 2.5rem; padding-top: 4.5rem;">
                 <div class="row g-4">
                     <div class="col-sm-6" style="height: cover;">

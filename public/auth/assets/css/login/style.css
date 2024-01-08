@@ -90,6 +90,19 @@ body {
     transition: 0.3s ease;
 }
 
+.btn-dua {
+    font-size: 11px;
+    font-weight: 700;
+    padding: 4px 12px;
+    transition: 0.3s ease;
+    background-color: #FFF;
+    border-color: #727272;
+}
+
+.btn-dua:hover {
+    background-color: #727272;
+}
+
 .btn:hover {
     background-color: #07a17d;
 }
