@@ -121,7 +121,7 @@ $batunesias = Batunesia::where('warna_1', 'cream')->paginate(28);
                 "quantity" => (int)$quantity
             ];
         }
-        session()->put('batunesia', $cart);
+        session()->put('cart_batunesia', $cart);
         return redirect()->route('transaksi.index');        
     }
 

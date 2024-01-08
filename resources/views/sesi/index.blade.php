@@ -53,7 +53,7 @@
                             <p class="mb-1">Yuk bergabung menjadi bagian <span style="color: #06C195; font-weight: 700;">Ideally Indonesia!</span></p>
                         </div>
                         <div class="modal-footer" style="border-top: none;">
-                            <a href="" class="btn rounded-5 text-white me-3">Daftar Sekarang</a>
+                            <a href="{{ route('auth.register') }}" class="btn rounded-5 text-white me-3">Daftar Sekarang</a>
                             <button type="button" class="btn-dua rounded-5" data-bs-dismiss="modal">Close</button>
                         </div>
                     </div>
@@ -102,7 +102,7 @@
                                     <div>
                                         <input class="form-control mt-2" type="text" placeholder="E-mail"
                                             aria-label="input email" name="email">
-                                        <input class="form-control mt-2" type="text" placeholder="Kata Sandi"
+                                        <input class="form-control mt-2" type="password" placeholder="Kata Sandi"
                                             aria-label="input password" name="password">
                                         <div class="forgot d-flex justify-content-center">
                                             <a href="{{ route('forget.password') }}" class="forgot-link">Lupa Kata

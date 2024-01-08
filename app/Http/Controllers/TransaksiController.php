@@ -51,6 +51,15 @@ class TransaksiController extends Controller
 
     public function calculateOngkir(Request $request)
     {
+        // $response = Http::withHeaders([
+        //     'key' => 'c6f5a244812b5c983cbd2810dcfbe62b'
+        // ])->get('https://api.rajaongkir.com/starter/province');
+        // dd($response->json());
+        
+        // $response2 = Http::withHeaders([
+        //     'key' => 'c6f5a244812b5c983cbd2810dcfbe62b'
+        // ])->get('https://api.rajaongkir.com/starter/city');
+
         $responseCost = Http::withHeaders([
             'key' => 'c6f5a244812b5c983cbd2810dcfbe62b'
         ])->post('https://api.rajaongkir.com/starter/cost', [
@@ -60,6 +69,7 @@ class TransaksiController extends Controller
             'courier' => $request->courier,
         ]);
 
+        
         $ongkir = $responseCost->json()['rajaongkir']['results'];
         return view('transaksi.keranjang', compact('ongkir'));
     }

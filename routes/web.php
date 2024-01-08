@@ -52,7 +52,7 @@ Route::post('/portal-edukasi/komentar/{slug}', [ArtikelController::class, 'komen
 // Route::get('/detail', [DetailController::class, 'index'])->name('Detail-Batunesia');
 // Route::get('/detail-batunesia/{id_batu}', [DetailController::class, 'showDetail'])->name('Detail-Batunesia');
 
-Auth::routes();
+// Auth::routes();
 Route::get('/home/show/{kategori}', [ArtikelController::class, 'show'])->name('home.show');
 Route::get('/portal-edukasi/komentar/{kategori}', [ArtikelController::class, 'sKomentar'])->name('komentar.show');
 
@@ -193,7 +193,7 @@ Route::get('/everlasthings/detailProduct', [everlastThingController::class, 'det
 Route::get('/auth/redirect',[AuthController::class, "redirect"])->middleware('guest');
 Route::get('/auth/login',[AuthController::class, "index"])->name('login')->middleware('guest');
 Route::get('/auth/callback',[AuthController::class, "callback"])->middleware('guest');
-Route::get('/auth/logout',[AuthController::class,"logout"]);
+Route::get('/auth/logout',[AuthController::class,"logout"])->name('logout');
 Route::get('/auth/register', [AuthController::class, 'register'])->name('auth.register');
 Route::post('/auth/create',[AuthController::class,"create"]);
 Route::post('/auth/login',[AuthController::class,"login"]);

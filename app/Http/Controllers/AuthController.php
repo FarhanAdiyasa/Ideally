@@ -37,7 +37,9 @@ class AuthController extends Controller
 
         // Jika email sudah ada dalam tabel 'users', login pengguna
         if ($user) {
-            Auth::login($user); // Melakukan login pengguna
+            Auth::login($user);
+            $user = Auth::user();
+            session(['user_info' => $user]); // Melakukan login pengguna
             return redirect()->route('deflo.utama'); // Mengarahkan ke halaman yang sesuai setelah login
         } else {
             // Jika email belum ada dalam tabel 'users', Anda dapat menambahkan logika lainnya di sini,
@@ -72,13 +74,13 @@ class AuthController extends Controller
     // }
 
     function dashboard() {
-        
-        return view('sesi/edit');
+        return redirect()->route('deflo.utama');
     }
 
     function logout() {
+        Session::flush();
         Auth::logout();
-        return redirect()->to('auth');
+        return redirect()->to('auth/login');
     }
 
     function register(Request $request) {
@@ -122,11 +124,13 @@ class AuthController extends Controller
     
         if (Auth::attempt($infologin)) {
             // Autentikasi berhasil
-            return view('sesi.dashboard')->with('success', 'Berhasil Login');
+            $user = Auth::user();
+            session(['user_info' => $user]);
+            return redirect()->route('deflo.utama');
             // Redirect ke halaman 'dashboard' dengan pesan keberhasilan
         } else {
             // Autentikasi gagal
-            return redirect('auth')->withErrors('Username atau Password salah!');
+            return redirect('auth/login')->with('error', 'Email atau Password salah!');
             // Redirect kembali ke halaman 'auth' dengan pesan kesalahan
         }
     
@@ -169,52 +173,52 @@ class AuthController extends Controller
 
     // Fungsi untuk mereset password
     public function resetPasswordPost(Request $request)
-{
-    try {
-        $validatedData = $request->validate([
-            "token" => "required",
-            "password" => "required|string|min:6|confirmed",
-        ], [
-            'token.required' => 'Token is required.',
-            'password.required' => 'Password is required.',
-            'password.string' => 'Password must be a string.',
-            'password.min' => 'Password must be at least 6 characters.',
-            'password.confirmed' => 'Password confirmation does not match.',
-        ]);
-
-        $token = $validatedData['token'];
-
-        $updatePassword = DB::table('password_resets')
-            ->where('token', $token)
-            ->first();
-
-        if (!$updatePassword) {
-            return redirect()->route("reset.password")->with("error", "Invalid token or expired link.");
-        }
-
-        $user = User::where('email', $updatePassword->email)->first();
-
-        if (!$user) {
-            return redirect()->route("reset.password")->with("error", "User not found.");
-        }
-
-        $user->password = Hash::make($validatedData['password']);
-        $user->save();
-
-        DB::table('password_resets')
-            ->where('email', $user->email)
-            ->delete();
-
-            return redirect()->route("login")->with("success", "Password reset successful, please log in.");
-        } catch (ValidationException $e) {
-            return redirect()->route("reset.password", ['token' => $request->token])
-                ->with("error", $e->getMessage())
-                ->withInput();
-        } catch (\Exception $e) {
-            return redirect()->route("reset.password", ['token' => $request->token])
-                ->with("error", $e->getMessage());
-        }
-}
+    {
+        try {
+            $validatedData = $request->validate([
+                "token" => "required",
+                "password" => "required|string|min:6|confirmed",
+            ], [
+                'token.required' => 'Token is required.',
+                'password.required' => 'Password is required.',
+                'password.string' => 'Password must be a string.',
+                'password.min' => 'Password must be at least 6 characters.',
+                'password.confirmed' => 'Password confirmation does not match.',
+            ]);
+        
+            $token = $validatedData['token'];
+        
+            $updatePassword = DB::table('password_resets')
+                ->where('token', $token)
+                ->first();
+        
+            if (!$updatePassword) {
+                return redirect()->route("reset.password")->with("error", "Invalid token or expired link.");
+            }
+        
+            $user = User::where('email', $updatePassword->email)->first();
+        
+            if (!$user) {
+                return redirect()->route("reset.password")->with("error", "User not found.");
+            }
+        
+            $user->password = Hash::make($validatedData['password']);
+            $user->save();
+        
+            DB::table('password_resets')
+                ->where('email', $user->email)
+                ->delete();
+        
+                return redirect()->route("login")->with("success", "Password reset successful, please log in.");
+            } catch (ValidationException $e) {
+                return redirect()->route("reset.password", ['token' => $request->token])
+                    ->with("error", $e->getMessage())
+                    ->withInput();
+            } catch (\Exception $e) {
+                return redirect()->route("reset.password", ['token' => $request->token])
+                    ->with("error", $e->getMessage());
+            }
+    }
 
 
 }

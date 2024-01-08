@@ -87,31 +87,31 @@
                                 <li>
                                     <hr class="dropdown-divider">
                                 </li>
-                                <li><a href="#" class="dropdown-item"
+                                <li><a href="{{ route('deflo.utama') }}" class="dropdown-item"
                                         data-img="{{asset('/img/dropdownlist-img_tanaman.png')}}">Produk Tanaman</a>
                                 </li>
                                 <li>
                                     <hr class="dropdown-divider">
                                 </li>
-                                <li><a href="#" class="dropdown-item"
+                                <li><a href="{{ route('everlasthings.showcase') }}" class="dropdown-item"
                                         data-img="{{asset('/img/dropdownlist-img_everlasthings.png')}}">Produk Besi dan
                                         Las</a></li>
                                 <li>
                                     <hr class=" dropdown-divider">
                                 </li>
-                                <li><a href="#" class="dropdown-item"
+                                <li><a href="{{ route('batunesia.index') }}" class="dropdown-item"
                                         data-img="{{asset('/img/dropdownlist-img_batu.png')}}">Produk Batu</a>
                                 </li>
                                 <li>
                                     <hr class="dropdown-divider">
                                 </li>
-                                <li><a href="#" class="dropdown-item"
+                                <li><a href="{{ route('shineage.utama') }}" class="dropdown-item"
                                         data-img="{{asset('/img/dropdownlist-img_default.png')}}">Produk Beton</a>
                                 </li>
                                 <li>
                                     <hr class="dropdown-divider">
                                 </li>
-                                <li><a href="#" class="dropdown-item"
+                                <li><a href="{{ route('agrigard.utama') }}" class="dropdown-item"
                                         data-img="{{asset('/img/dropdownlist-img_agrigard.png')}}">Produk Bahan
                                         Pertanian</a></li>
                                 <li>
@@ -128,11 +128,19 @@
                     <a class="nav-link" aria-current="page" href="#">Tentang Kami</a>
                 </li>
             </ul>
+            @if (session()->has('user_info'))
             <div class="col-lg-3 text-end">
-                <a href="#" class="link-body-emphasis px-3">Daftar Akun</a>
-                <span class="vertical-divider"></span>
-                <a href="#" class="link-body-emphasis px-3">Masuk</a>
+                <a href="{{ route('transaksi.index') }}" class="text-darkb"><i class="bi bi-cart-fill"></i></a>
+                <a href="#" class="link-body-emphasis px-3">{{ session('user_info')->firstname }}</a>
+                <a href="{{ route('logout') }}" class="px-3 btn btn-danger text-white" style="font-size: 10px">Logout</a>
             </div>
+            @else
+            <div class="col-lg-3 text-end">
+                <a href="{{ route('auth.register') }}" class="link-body-emphasis px-3">Daftar Akun</a>
+                <span class="vertical-divider"></span>
+                <a href="{{ route('login') }}" class="link-body-emphasis px-3">Masuk</a>
+            </div>
+            @endif
         </div>
     </div>
 </nav>
