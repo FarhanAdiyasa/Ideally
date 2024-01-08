@@ -56,8 +56,6 @@ class AuthController extends Controller
         
         return view('sesi/edit');
     }
-    
-    
 
     function logout() {
         Auth::logout();
