@@ -13,6 +13,6 @@ class BatunesiaSeeder extends Seeder
      */
     public function run(): void
     {
-        Batunesia::factory(100)->count(100)->create();
+        Batunesia::factory(100)->create();
     }
 }

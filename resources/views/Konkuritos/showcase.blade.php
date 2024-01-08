@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css">
 
     <!-- Custom CSS -->
+    <link rel="stylesheet" href="{{asset('/css/navbar-style.css')}}">
     <link rel="stylesheet" href="{{ asset ('konkurito/assets/css/showcase/style.css') }}">
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/css/bootstrap.min.css" rel="stylesheet">
 
@@ -25,6 +26,10 @@
 </head>
 
 <body>
+    <!-- Navbar Utama -->
+    @include('partials.navbar')
+    <!-- End Navbar Utama -->
+
     <div class="container">
         <!-- Hero & Search Bar -->
         <section id="hero-search">
