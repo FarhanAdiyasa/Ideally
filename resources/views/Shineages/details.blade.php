@@ -313,7 +313,7 @@
                                             <div class="border-start border-4 border-light" style="height: 50px;"></div>
                                         </div>
                                     </div>
-                                    <a href="" class="btn btn-showcase mt-1">Lihat Produk Lainnya</a>
+                                    <a href="{{ route('shineage.showcase') }}" class="btn btn-showcase mt-1">Lihat Produk Lainnya</a>
                                 </div>
                             </section>
                             <!-- End Red Section -->
@@ -326,7 +326,7 @@
                                         <p class="fw-bold mb-2" style="font-size: 13px;">Produk-produk Populer</p>
                                     </div>
                                     <div class="ps-2">
-                                        <div class="border-start border-light border-4" style="height: 85px;"></div>
+                                        <div class="border-start border-light border-4" style="height: 81px;"></div>
                                     </div>
                                 </div>
                                 @foreach($shineageterkait->slice($itemsPerSection, $itemsPerSection) as $hijau)
@@ -351,7 +351,7 @@
                                 </div>
                                 @endforeach
                                 <div class="bg-tosca mt-3 p-2" style="height: 5.4%;">
-                                    <a href="" class="btn btn-showcase mt-1">Lihat Produk Lainnya</a>
+                                    <a href="{{ route('shineage.showcase') }}" class="btn btn-showcase mt-1">Lihat Produk Lainnya</a>
                                 </div>
                             </section>
                             <!-- End Tosca Section -->
@@ -385,12 +385,12 @@
                                         </a>
                                 </div>
                                 @endforeach
-                                <div class="bg-yellow mt-3 p-2" style="height: 12.5%;">
+                                <div class="bg-yellow mt-3 p-2" style="height: 13.7%;">
                                     <div class="text-white">
                                         <div class="ps-3 mb-1">
-                                            <div class="border-start border-4 border-light" style="height: 80px;"></div>
+                                            <div class="border-start border-4 border-light" style="height: 78px;"></div>
                                         </div>
-                                        <a href="" class="btn btn-showcase mt-1">Lihat Produk Lainnya</a>
+                                        <a href="{{ route('shineage.showcase') }}" class="btn btn-showcase mt-1">Lihat Produk Lainnya</a>
                                     </div>
                                 </div>
                             </section>

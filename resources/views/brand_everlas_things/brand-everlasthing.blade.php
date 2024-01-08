@@ -767,7 +767,7 @@
 
     </div>
     <section id="penutup">
-        <img id="backgroundImage" src="..\img\everlas_things\index-header-bg.jpg" alt="Background Image">
+        <img id="backgroundImage" src="../img/LATAR-01.png" alt="Background Image">
         <div id="overlay"></div>
         
         <div id="textContainer">
