@@ -244,10 +244,10 @@
               <label>Penyiraman</label>
               <div class="select2-purple">
                 <select class="form-control select2" style="width: 100%;" name="penyiraman">
-                  <option value="Basah" @selected(old('penyiraman') == 'Basah')>🌊 Basah</option>
-                  <option value="Intensif" @selected(old('penyiraman') == 'Intensif')>💦 Intensif</option>
-                  <option value="Semi Intensif" @selected(old('penyiraman') == 'Semi Intensif')>💧 Semi Intensif</option>
-                  <option value="Ekstensif" @selected(old('penyiraman') == 'Ekstensif')>🌫 Ekstensif</option>
+                  <option value="Basah" @selected(old('penyiraman'|| $dedikasiFlora->penyiraman) == 'Basah')>🌊 Basah</option>
+                  <option value="Intensif" @selected(old('penyiraman'|| $dedikasiFlora->penyiraman) == 'Intensif')>💦 Intensif</option>
+                  <option value="Semi Intensif" @selected(old('penyiraman'|| $dedikasiFlora->penyiraman) == 'Semi Intensif')>💧 Semi Intensif</option>
+                  <option value="Ekstensif" @selected(old('penyiraman'|| $dedikasiFlora->penyiraman) == 'Ekstensif')>🌫 Ekstensif</option>
                 </select>                           
                   @error('penyiraman')
                 <small class="text-danger">{{ $message }}</small>
@@ -262,10 +262,9 @@
               <label>Penyinaran</label>
               <div class="select2-purple">
                 <select class="form-control select2" style="width: 100%;" name="penyinaran">
-                  <option value="Extra Intensif" @selected(old('penyinaran') == 'Extra Intensif')>🍖 Extra Intensif</option>
-                  <option value="Intensif" @selected(old('penyinaran') == 'Intensif')>🥩 Intensif</option>
-                  <option value="Semi Intensif" @selected(old('penyinaran') == 'Semi Intensif')>🍗 Semi Intensif</option>
-                  <option value="Ekstensif" @selected(old('penyinaran') == 'Ekstensif')>🦴 Ekstensif</option>
+                  <option value="Penuh" @selected(old('penyinaran'|| $dedikasiFlora->penyinaran) == 'Penuh')>☀️ Penuh</option>
+                  <option value="Toleran Naungan" @selected(old('penyinaran'|| $dedikasiFlora->penyinaran) == 'Toleran Naungan')>⛅️ Toleran Naungan</option>
+                  <option value="Naungan" @selected(old('penyinaran'|| $dedikasiFlora->penyinaran) == 'Naungan')>☁️ Naungan</option>
                 </select>                           
                   @error('penyinaran')
                 <small class="text-danger">{{ $message }}</small>
