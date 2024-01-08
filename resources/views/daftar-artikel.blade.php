@@ -11,6 +11,9 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro%3A400%2C700"/>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Quicksand%3A700"/>
   @vite(['resources/sass/app.scss', 'resources/js/app.js']);
+
+  <!-- Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
   
   <link rel="stylesheet" href="/css/daftar-artikel-style.css"/>
   <link rel="stylesheet" href="/css/style.css"/>

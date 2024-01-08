@@ -16,6 +16,10 @@
   <link rel="stylesheet" href="{{asset('/css/header-artikel-style.css')}}">
   <link rel="stylesheet" href="{{asset('/css/footer-artikel-style.css')}}">
 
+
+  <!-- Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
   <!-- Font -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -25,6 +29,7 @@
     rel="stylesheet">
 
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  
 </head>
 
 <body>
@@ -40,9 +45,8 @@
   <div class="main-content-container">
 
     <!-- Category Bar -->
-    <p class="mt-4" style="color: black; font-size: 20px; font-weight: 700;">Lorem ipsum dolor sit amet</p>
-    <p style="color: #727272">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet,
-      consectetur adipiscing elit.</p>
+    <p class="mt-4" style="color: black; font-size: 20px; font-weight: 700;">Kategori Artikel</p>
+    <p style="color: #727272">Pengetahuan lanskap terbaik: pilih dari kategori artikel Ideally untuk transformasi luar ruangan yang mengagumkan.</p>
 
     <div class="d-flex">
       <button type="button" class="btn rounded-pill mx-1 category-portaledukasi-btn" onclick="show('Desain-Taman')">Desain</button>
@@ -62,18 +66,19 @@
     <!-- New Article -->
     <div class="artikel-baru">
       <p style="color: black; font-size: 20px; font-weight: 700;">Artikel Terbaru</p>
-      <p style="color: #727272; margin-bottom: -15px;">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+      <p style="color: #727272; margin-bottom: -15px;">Pengaplikasian prinsip arsitektur lanskap dalam pembangunan ruang terbuka.</p>
       <div id="carousel-artikel-baru" class="carousel slide" data-ride="carousel">
         <div class="carousel-inner">
             @foreach ($articles_terbaru->chunk(4) as $key => $chunk)
               <div class="carousel-item{{ $key === 0 ? ' active' : '' }}">
                   <div class="cards-wrapper">
                       @foreach ($chunk as $article)
-                          <div class="card border-0" style="width: 18rem;">
+                          <div class="card border-0" style="width: 18rem;" >
                             <div class="gambar-card-artikel-baru">
-                              <img src="{{asset('storage/' .$article->gambar_artikel)}}"
+                              <!-- <img src="{{asset('storage/' .$article->gambar_artikel)}}" -->
+                              <img src="https://via.placeholder.com/362x185"
                                 class="card-img-top rounded-5 gambar-only-card-artikel-baru" alt="..."
-                                style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover;">
+                                style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; ">
                             </div>
                             <div class="card-body">
                               <a href="/portal-edukasi/baca/{{$article->slug}}" class="hpLink"><h5 class="card-title" style="font-weight: 700;">{{$article->judul_artikel}}
@@ -81,7 +86,7 @@
                               <p class="card-text" style="font-size: small; color: #999999;">{{ $article->createdBy->firstname }} {{ $article->createdBy->lastname }}</p>
             
                               <div class="d-flex">
-                                <div class="additional-text-container rounded-pill d-inline-block">
+                                <div class="additional-text-container rounded-pill d-inline-block" >
                                   <div class="keterangan-additional-text-container">
                                     <img class="info-card-category-icon" src="{{asset('icons/rate-category.svg')}}" alt="Rate Icon"
                                       style="width: 12px; height: 12px;">
@@ -127,25 +132,39 @@
               <div class="carousel-item{{ $key === 0 ? ' active' : '' }}">
                   <div class="cards-wrapper">
                       @foreach ($chunk as $komentar)
-                      <div class="card border-0" style="width: 25rem; margin-right: 5px;">
+                      <div class="card card-komentar-pilihan border-0" style="width: 25rem; margin-right: 5px;" >
                         <div class="card-body">
                           <h6 style="color: black; font-size: 90px; font-family: Montserrat; font-weight: 700;">“</h6>
                           <span style="font-size: 14px; margin-bottom: 10px;">{{$komentar->isi_komentar}}</span>
         
                           <div style="padding-bottom: 50px;"></div>
-                          <div class="rounded-pill d-inline-block" style="color: white; background-color: black;">
+                          <div id="popover-{{$komentar->id_komentar}}"data-popover-id="{{$komentar->id_komentar}}" class="rounded-pill d-inline-block" style="color: white; background-color: black;" data-popover-content-komentar-pilihan="1">
                             <div class="keterangan-additional-text-container">
                               <img class="info-card-category-icon" src="{{asset('icons/comment-category.svg')}}" alt="Rate Icon"
                                 style="width: 12px; height: 12px;"> <span class="info-card-category"
                                 style="font-size: 12px; font-weight: 700; padding-left: 5px; padding-right: 5px;">{{ $komentar->createdBy->firstname }} {{ $komentar->createdBy->lastname }}</span>
                             </div>
                           </div>
-        
+                          <div id="popover-{{$komentar->id_komentar}}-content" hidden data-name="popover-content-komentar-pilihan" data-popover-id="{{$komentar->id_komentar}}">
+                            <img src="https://via.placeholder.com/362x185" class="card-img-top" alt="...">
+                              <div class="card-body">
+                                <div class="d-flex">
+                                  <div class="rounded-circle bg-secondary mr-3" style="width: 75px; height: 75px;"></div>
+                                  <div>
+                                      <h5 class="card-title nama-penulis">{{ $komentar->createdBy->firstname }} {{ $komentar->createdBy->lastname }}</h5>
+                                      <p class="card-text">Drafter Lanskap</p>
+                                  </div>
+                                </div>
+                                <p class="card-text">Laki-laki; asal Kota Jakarta Barat, DKI Jakarta; bergabung sejak 04 Juni 2023;
+                                    sebanyak 120 artikel telah ditulis.</p>
+                              </div>
+                          </div>
                           <!-- Separator -->
                           <hr style="border-top: 3px solid grey; ">
                           <a href="/portal-edukasi/baca/{{$article->slug}}" class="hpLink"><span style="font-size: 14px; font-weight: 700; color: #06C195;">{{$komentar->artikel->judul_artikel}}</span></a>
                         </div>
                       </div>
+                      
                       @endforeach
                   </div>
               </div>
@@ -175,7 +194,8 @@
                   @foreach ($chunk as $article)
                       <div class="card border-0" style="width: 18rem;">
                         <div class="gambar-card-artikel-baru">
-                          <img src="{{asset('storage/' .$article->gambar_artikel)}}"
+                          <!-- <img src="{{asset('storage/' .$article->gambar_artikel)}}" -->
+                          <img src="https://via.placeholder.com/362x185"
                             class="card-img-top rounded-5 gambar-only-card-artikel-baru" alt="..."
                             style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover;">
                         </div>
@@ -470,6 +490,36 @@
     </script>
 
     
+    <script>
+        $(document).ready(function() {
+              $('.card-komentar-pilihan').each(function() {
+                var $this = $(this);
+                var popoverContent = $this.find('[data-name="popover-content-komentar-pilihan"]').html();
+                
+                var options = {
+                    trigger: 'manual',
+                    html: true,
+                    content: popoverContent
+                };
+
+                $this.popover(options)
+                    .on("mouseenter", function () {
+                        var _this = this;
+                        $this.popover("show");
+                        $(".popover").on("mouseleave", function () {
+                            $(_this).popover('hide');
+                        });
+                    }).on("mouseleave", function () {
+                        var _this = this;
+                        setTimeout(function () {
+                            if (!$(".popover:hover").length) {
+                                $(_this).popover("hide");
+                            }
+                        }, 300);
+                    });
+            });
+        });
+    </script>
   <!-- Footer -->
     @include('partials.artikel-footer')
 </body>
