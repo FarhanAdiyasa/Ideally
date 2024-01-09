@@ -26,6 +26,8 @@ use App\Http\Controllers\AdminBatunesiaController;
 use App\Http\Controllers\AdminKonkuritoController;
 use App\Http\Controllers\AdminEverlasThingController;
 use App\Http\Controllers\AdminDedikasiFloraController;
+use App\Http\Controllers\AdminUserController;
+use App\Http\Controllers\DashboardController;
 
 /*
 |--------------------------------------------------------------------------
@@ -39,7 +41,7 @@ use App\Http\Controllers\AdminDedikasiFloraController;
 */
 
 
-Route::get('/',[ArtikelController::class, 'index']);
+Route::get('/',[DashboardController::class, 'index']);
 
 Route::get('/portal-edukasi/{kategori}', [ArtikelController::class, 'byKategori'])->name('landing-artikel.kategori');
 Route::get('/portal-edukasi', [ArtikelController::class, 'index'])->name('landing-artikel');
@@ -161,6 +163,11 @@ Route::post('/post-promo', [PromoController::class, 'post'])->name('daftar-promo
 Route::get('/delete-promo/{id}', [PromoController::class, 'delete'])->name('daftar-promo.delete');
 Route::delete('/destroy-promo/{id}', [PromoController::class, 'destroy'])->name('daftar-promo.destroy');
 
+//USERADMIN
+Route::get('/daftar-user', [AdminUserController::class, 'index'])->name('daftar-user');
+Route::get('/promote-user/{id}', [AdminUserController::class, 'promote'])->name('daftar-user.promote');
+Route::put('/update-user/{id}', [AdminUserController::class, 'update'])->name('daftar-user.update');
+
 //Artikel
 Route::get('/daftar-artikel', [AdminArtikelController::class, 'index'])->name('artikels');
 Route::get('/tambah-artikel', [AdminArtikelController::class, 'create'])->name('artikels.create');
@@ -172,6 +179,8 @@ Route::put('/edit-artikel/{id}', [AdminArtikelController::class, 'update'])->nam
 Route::get('/delete-artikel/{id}', [AdminArtikelController::class, 'delete'])->name('artikels.delete');
 Route::delete('/destroy-artikel/{id}', [AdminArtikelController::class, 'destroy'])->name('artikels.destroy');
 Route::post('/post-artikel', [AdminArtikelController::class, 'post'])->name('artikels.post');
+Route::get('/cek-komentar/{id}', [AdminArtikelController::class, 'komentar'])->name('daftar.komentar');
+Route::post('/hide-komentar', [AdminArtikelController::class, 'hideKomentar'])->name('komentars.hide');
 
 //batunesia
 Route::get('/batunesia/index', [BatunesiaController::class, 'index'])->name('batunesia.index');

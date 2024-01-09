@@ -10,8 +10,11 @@ class Komentar extends Model
     use HasFactory;
 
     protected $guarded = ['id_komentar'];
-
+    protected $primaryKey = 'id_komentar'; 
     protected $with = ['createdBy', 'updatedBy', 'deletedBy', 'artikel'];
+    protected $table = 'komentars';
+   
+
 
     public function createdBy()
     {

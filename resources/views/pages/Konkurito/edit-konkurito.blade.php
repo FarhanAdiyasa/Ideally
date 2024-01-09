@@ -254,6 +254,16 @@
             </div>
             <!-- /.form-group -->
           </div>
+          <div class="col-12 col-sm-6">
+            <div class="form-group">
+              <label>Berat (gr)</label>
+                <input type="number" class="form-control" placeholder="Placeholder text" name="berat" value="{{old('berat', $konkurito->berat)}}">
+                   @error('berat')
+                <small class="text-danger">{{ $message }}</small>
+                @enderror
+            </div>
+            <!-- /.form-group -->
+          </div>
           <!-- /.col -->
         </div>
         <!-- /.row -->
