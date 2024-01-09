@@ -115,12 +115,19 @@ body {
     border-right: 3px solid #ffffff;
 }
 
+#kategori .wrapper a {
+    text-decoration: none;
+    color: #ffffff;
+    font-size: 13px;
+    font-weight: 700;
+}
+
 #kategori .wrapper:last-child {
     border-right: none; /* Menghapus border right pada kolom terakhir */
 }
 
 #kategori .text-white p {
-    font-size: 13px;
+    font-size: 13px;    
     font-weight: 700;
     padding: 4px 0;
     margin-bottom: 0;

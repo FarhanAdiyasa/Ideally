@@ -191,28 +191,18 @@
         </div>
         <div class="col-12 col-sm-6">
           <div class="form-group">
-            <label>Dimensi</label>
-            <input type="text" class="form-control" placeholder="Placeholder text" name="dimensi" id="dimensi" value="{{old('dimensi', $everlasThing->dimensi)}}">
-            @error('dimensi')
-            <small class="text-danger">{{ $message }}</small>
-            @enderror
-        </div>
+            <label>Material Pendukung</label>
+              <input type="text" class="form-control" placeholder="Placeholder text" name="material_pendukung" value="{{old('material_pendukung', $everlasThing->material_pendukung)}}">
+                 @error('material_pendukung')
+              <small class="text-danger">{{ $message }}</small>
+              @enderror
+          </div>
+          <!-- /.form-group -->
         </div>
           <!-- /.col -->
         </div>
         <!-- /.row -->
         <div class="row">
-          <div class="col-12 col-sm-6">
-            <div class="form-group">
-              <label>Material Pendukung</label>
-                <input type="text" class="form-control" placeholder="Placeholder text" name="material_pendukung" value="{{old('material_pendukung', $everlasThing->material_pendukung)}}">
-                   @error('material_pendukung')
-                <small class="text-danger">{{ $message }}</small>
-                @enderror
-            </div>
-            <!-- /.form-group -->
-          </div>
-          <!-- /.col -->
           <div class="col-12 col-sm-6">
             <div class="form-group">
               <label>Finishing</label>
@@ -223,8 +213,84 @@
             </div>
             <!-- /.form-group -->
           </div>
+          <div class="col-12 col-sm-6">
+            <div class="form-group">
+              <label>Berat (gr)</label>
+                <input type="number" class="form-control" placeholder="Placeholder text" name="berat" value="{{old('berat', $everlasThing->berat)}}">
+                   @error('berat')
+                <small class="text-danger">{{ $message }}</small>
+                @enderror
+            </div>
+            <!-- /.form-group -->
+          </div>
           <!-- /.col -->
         </div>
+      </div>
+      <!-- /.card-body -->
+    </div>
+    
+    <div class="card card-default">
+      <div class="card-header">
+        <h3 class="card-title">Spesifikasi Produk</h3>
+  
+        <div class="card-tools">
+          <button type="button" class="btn btn-tool" data-card-widget="collapse">
+            <i class="fas fa-minus"></i>
+          </button>
+        
+        </div>
+      </div>
+      <!-- /.card-header -->
+      <div class="card-body">
+        <div class="row">
+          <div class="col-12 col-sm-6">
+            <div class="form-group">
+              <label>Panjang Produk (cm)</label>
+                <input type="number" class="form-control" placeholder="Masukkan Panjang Dalam Bentuk Angka" name="panjang" value="{{old('panjang', $everlasThing->panjang)}}">
+                   @error('panjang')
+                <small class="text-danger">{{ $message }}</small>
+                @enderror
+            </div>
+            <!-- /.form-group -->
+          </div>
+          <!-- /.col -->
+          <div class="col-12 col-sm-6">
+            <div class="form-group">
+              <label>Lebar Produk (cm)</label>
+                <input type="number" class="form-control" placeholder="Masukkan Lebar Dalam Bentuk Angka" name="lebar" value="{{old('lebar', $everlasThing->lebar)}}">
+                   @error('lebar')
+                <small class="text-danger">{{ $message }}</small>
+                @enderror
+            </div>
+            <!-- /.form-group -->
+          </div>
+          <!-- /.col -->
+        </div>
+        <div class="row">
+          <div class="col-12 col-sm-6">
+            <div class="form-group">
+              <label>Diameter Produk (cm)</label>
+                <input type="number" class="form-control" placeholder="Masukkan Diameter Dalam Bentuk Angka" name="diameter" value="{{old('diameter', $everlasThing->diameter)}}">
+                   @error('diameter')
+                <small class="text-danger">{{ $message }}</small>
+                @enderror
+            </div>
+            <!-- /.form-group -->
+          </div>
+          <!-- /.col -->
+          <div class="col-12 col-sm-6">
+            <div class="form-group">
+              <label>Tinggi Produk (cm)</label>
+                <input type="number" class="form-control" placeholder="Masukkan Tinggi Dalam Bentuk Angka" name="tinggi" value="{{old('tinggi', $everlasThing->tinggi)}}">
+                   @error('tinggi')
+                <small class="text-danger">{{ $message }}</small>
+                @enderror
+            </div>
+            <!-- /.form-group -->
+          </div>
+          <!-- /.col -->
+        </div>
+        
       </div>
       <!-- /.card-body -->
     </div>

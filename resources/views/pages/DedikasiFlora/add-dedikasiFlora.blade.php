@@ -260,10 +260,9 @@
             <label>Penyinaran</label>
             <div class="select2-purple">
               <select class="form-control select2" style="width: 100%;" name="penyinaran">
-                <option value="Extra Intensif" @selected(old('penyinaran') == 'Extra Intensif')>🍖 Extra Intensif</option>
-                <option value="Intensif" @selected(old('penyinaran') == 'Intensif')>🥩 Intensif</option>
-                <option value="Semi Intensif" @selected(old('penyinaran') == 'Semi Intensif')>🍗 Semi Intensif</option>
-                <option value="Ekstensif" @selected(old('penyinaran') == 'Ekstensif')>🦴 Ekstensif</option>
+                <option value="Penuh" @selected(old('penyinaran') == 'Penuh')>☀️ Penuh</option>
+                <option value="Toleran Naungan" @selected(old('penyinaran') == 'Toleran Naungan')>⛅️ Toleran Naungan</option>
+                <option value="Naungan" @selected(old('penyinaran') == 'Naungan')>☁️ Naungan</option>
               </select>                           
                 @error('penyinaran')
               <small class="text-danger">{{ $message }}</small>
@@ -280,14 +279,25 @@
             <label>Pemupukan</label>
             <div class="select2-purple">
               <select class="form-control select2" style="width: 100%;" name="pemupukan">
-                <option value="Penuh" @selected(old('pemupukan') == 'Penuh')>☀️ Penuh</option>
-                <option value="Toleran Naungan" @selected(old('pemupukan') == 'Toleran Naungan')>⛅️ Toleran Naungan</option>
-                <option value="Naungan" @selected(old('pemupukan') == 'Naungan')>☁️ Naungan</option>
+                <option value="Extra Intensif" @selected(old('pemupukan') == 'Extra Intensif')>🍖 Extra Intensif</option>
+                <option value="Intensif" @selected(old('pemupukan') == 'Intensif')>🥩 Intensif</option>
+                <option value="Semi Intensif" @selected(old('pemupukan') == 'Semi Intensif')>🍗 Semi Intensif</option>
+                <option value="Ekstensif" @selected(old('pemupukan') == 'Ekstensif')>🦴 Ekstensif</option>
               </select>
                 @error('pemupukan')
               <small class="text-danger">{{ $message }}</small>
               @enderror
             </div>
+          </div>
+          <!-- /.form-group -->
+        </div>
+        <div class="col-12 col-sm-6">
+          <div class="form-group">
+            <label>Berat (gr)</label>
+              <input type="number" class="form-control" placeholder="Placeholder text" name="berat" value="{{old('berat')}}">
+                 @error('berat')
+              <small class="text-danger">{{ $message }}</small>
+              @enderror
           </div>
           <!-- /.form-group -->
         </div>

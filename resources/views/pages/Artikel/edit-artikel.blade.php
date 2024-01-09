@@ -186,7 +186,7 @@
             <div class="col-md-12">
                 <div class="form-group">
                     <label for="">Description:</label>
-                    <textarea name="isi_artikel" id="isi_artikel" cols="30" rows="10">{{$artikel->isi_artikel}}</textarea>
+                    <textarea name="isi_artikel" id="isi_artikel" cols="30" rows="10">{!! $artikel->isi_artikel !!}</textarea>
                     @error('isi_artikel')
                     <small class="text-danger">{{ $message }}</small>
                     @enderror

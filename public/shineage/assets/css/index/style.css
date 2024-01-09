@@ -162,7 +162,7 @@ body {
 
 /* Keunggulan */
 .keunggulan .text-white p {
-    font-size: 10px;
+    font-size: 11px;
     text-align: justify;
     margin: 4px 0;
     font-weight: 700;
@@ -249,7 +249,7 @@ body {
 }
 
 #cta .col-sm-5 .title p {
-    font-size: 20px;
+    font-size: 30px;
     margin-bottom: 3rem;
 }
 
@@ -263,7 +263,7 @@ body {
 #cta .action-btn .btn {
     border-radius: 0;
     font-weight: 700;
-    font-size: 16px;
+    font-size: 18px;
     color: #FE560D;
     padding: 4px 1rem;
 }
