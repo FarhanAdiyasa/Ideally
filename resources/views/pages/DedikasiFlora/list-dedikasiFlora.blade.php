@@ -17,7 +17,7 @@
                     @endif
 
                     <p>
-                        <a href="{{ route('dedikasiFloras.tambah') }}" class="btn btn-primary">New Dedikasi Flora</a>
+                        <a href="{{ route('dedikasiFloras.tambah') }}" class="btn btn-primary">Tambah Dedikasi Flora</a>
                     </p>
                     <table id="products-table" class="table table-hover table-bordered text-center">
                         <thead>

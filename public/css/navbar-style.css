@@ -59,8 +59,17 @@
     vertical-align: middle;
 }
 
-#navbar-utama .custom-shape-1,
-#navbar-utama .custom-shape-3 {
+.dropdown:hover>.dropdown-menu {
+    display: block;
+}
+
+.dropdown>.dropdown-toggle:active {
+    /*Without this, clicking will make it sticky*/
+    pointer-events: none;
+}
+
+.custom-shape-1,
+.custom-shape-3 {
     width: 20px;
     height: 20px;
     background: white;
@@ -71,7 +80,7 @@
     bottom: 97%;
     transform: rotate(45deg);
     z-index: -1;
-    box-shadow: -1px -1px 5px 0px rgba(0, 0, 0, 0.1);
+    box-shadow: -3px -3px 5px 0px rgba(0, 0, 0, 0.09);
 }
 
 #navbar-utama .custom-shape-2 {
@@ -85,7 +94,7 @@
     bottom: 93%;
     transform: rotate(45deg);
     z-index: -1;
-    box-shadow: -1px -1px 5px 0px rgba(0, 0, 0, 0.1);
+    box-shadow: -3px -3px 5px 0px rgba(0, 0, 0, 0.09);
 }
 
 #navbar-utama .dropdown-divider {
