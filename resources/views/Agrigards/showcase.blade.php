@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css">
 
     <!-- Custom CSS -->
+    <link rel="stylesheet" href="{{asset('/css/navbar-style.css')}}">
     <link rel="stylesheet" href="{{ asset ('agrigard/assets/css/showcase/style.css') }}">
 
     <!-- Bootstrap JS -->
@@ -25,8 +26,12 @@
 </head>
 
 <body>
+    <!-- Navbar Utama -->
+    @include('partials.navbar')
+    <!-- End Navbar Utama -->
+
     <!-- Header & search -->
-    <section id="header">
+    <section id="header" class="mt-5">
         <div class="container">
             <div class="inner-container top-start bg-light">
                 <div class="row">
@@ -61,58 +66,52 @@
         <div class="container mt-4">
             <div class="inner-container top-end bg-orange">
                 <div class="row">
-                    <div class="col wrapper">
+                <div class="col wrapper">
                         <div class="bg-light rounded-circle" style="height: 25px; width: 25px;"></div>
                         <div class="text-white text-center m-0">
-                            <p>Pot Plastik</p>
+                            <a href="{{ route('agrigard.kategori', ['kategori' => 'Pot Plastik']) }}">Pot Plastik</a>
                         </div>
                     </div>
                     <div class="col wrapper">
                         <div class="bg-light rounded-circle" style="height: 25px; width: 25px;"></div>
                         <div class="text-white text-center m-0">
-                            <p>Pot Plastik</p>
+                        <a href="{{ route('agrigard.kategori', ['kategori' => 'Pot Terracota']) }}">Pot Terracota</a>
                         </div>
                     </div>
                     <div class="col wrapper">
                         <div class="bg-light rounded-circle" style="height: 25px; width: 25px;"></div>
                         <div class="text-white text-center m-0">
-                            <p>Pot Terracota</p>
+                        <a href="{{ route('agrigard.kategori', ['kategori' => 'Bibit Tanaman']) }}">Bibit Tanaman</a>
                         </div>
                     </div>
                     <div class="col wrapper">
                         <div class="bg-light rounded-circle" style="height: 25px; width: 25px;"></div>
                         <div class="text-white text-center m-0">
-                            <p>Bibit Tanaman</p>
+                        <a href="{{ route('agrigard.kategori', ['kategori' => 'Media Tanam']) }}">Media Tanam</a>
                         </div>
                     </div>
                     <div class="col wrapper">
                         <div class="bg-light rounded-circle" style="height: 25px; width: 25px;"></div>
                         <div class="text-white text-center m-0">
-                            <p>Media Tanam</p>
+                        <a href="{{ route('agrigard.kategori', ['kategori' => 'Wadah Tanam']) }}">Wadah Tanam</a>
                         </div>
                     </div>
                     <div class="col wrapper">
                         <div class="bg-light rounded-circle" style="height: 25px; width: 25px;"></div>
                         <div class="text-white text-center m-0">
-                            <p>Wadah Tanam</p>
+                        <a href="{{ route('agrigard.kategori', ['kategori' => 'Obat dan Nutrisi']) }}">Obat dan Nutrisi</a>
                         </div>
                     </div>
                     <div class="col wrapper">
                         <div class="bg-light rounded-circle" style="height: 25px; width: 25px;"></div>
                         <div class="text-white text-center m-0">
-                            <p>Obat dan Nutrisi</p>
+                        <a href="{{ route('agrigard.kategori', ['kategori' => 'Alat Kerja']) }}">Alat Kerja</a>
                         </div>
                     </div>
                     <div class="col wrapper">
                         <div class="bg-light rounded-circle" style="height: 25px; width: 25px;"></div>
                         <div class="text-white text-center m-0">
-                            <p>Alat Kerja</p>
-                        </div>
-                    </div>
-                    <div class="col wrapper">
-                        <div class="bg-light rounded-circle" style="height: 25px; width: 25px;"></div>
-                        <div class="text-white text-center m-0">
-                            <p>Lain - lain</p>
+                            <a href="{{ route('agrigard.kategori', ['kategori' => 'Lain - lain']) }}">Lain - lain</a>
                         </div>
                     </div>
                 </div>

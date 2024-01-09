@@ -37,7 +37,7 @@ body {
 
 .align-corner .deskripsi p {
     font-size: 11px;
-    text-align: justify;
+    text-align: right;
     padding-left: 50%;
     padding-right: 10px;
     margin: 0;
@@ -205,9 +205,11 @@ body {
     height: fit-content;
 }
 
-.title h6 {
+.title a {
     margin: 0;
     padding-top: 1rem;
     text-transform: uppercase;
     font-weight: 700;
+    color: #EFEFEF;
+    text-decoration: none;
 }
