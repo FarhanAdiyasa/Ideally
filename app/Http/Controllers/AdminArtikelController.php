@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\CreateArtikelRequest;
 use App\Http\Requests\UpdateArtikelRequest;
 use App\Models\Komentar;
+use App\Models\Sumber_Artikel;
 use PDO;
 
 class AdminArtikelController extends Controller
@@ -81,15 +82,16 @@ class AdminArtikelController extends Controller
                     $artikel->tanggal_publikasi = now();
                 }
                 if ($validatedData['author'] == "sendiri") {
-                    $artikel->penulis_artikel = "Saya";
-                    $artikel->profesi_penulis_artikel = "Saya";
-                    $artikel->deskripsi_singkat_penulis_artikel = "Saya";
+                    $artikel->penulis_artikel = auth()->user()->firstname.' '.auth()->user()->lastname;
+                    $artikel->profesi_penulis_artikel = auth()->user()->profesi;
+                    $artikel->deskripsi_singkat_penulis_artikel = auth()->user()->deskripsi_diri;
                 }
 
                 $artikel->slug =Str::slug($artikel->judul_artikel);
-                $artikel->created_by = 1;
+                $artikel->created_by = auth()->user()->user_id;
                 $artikel->save();
                 $artikel->kategori_artikel()->sync($request['kategori_artikel']);
+                $artikel->sumberArtikel()->sync($request['sumber']);
                 DB::commit();
     
         } catch (\Exception $e) {
@@ -97,7 +99,7 @@ class AdminArtikelController extends Controller
             DB::rollback();
            return redirect()->back()->with('error', 'Terjadi kesalahan. Silakan coba lagi nanti.');
         }
-        return redirect()->route('daftar-produk')->with('success', 'Data has been successfully stored.');
+        return redirect()->route('artikels')->with('success', 'Data has been successfully stored.');
     }
 
     /**
@@ -131,11 +133,8 @@ class AdminArtikelController extends Controller
     {
         $artikel = Artikel::findOrFail($id);
         $categories = Kategori_Artikel::all();
-        $author = "lain";
-        if($artikel->penulis_artikel == $artikel->createdBy->firstname){
-            $author = "sendiri";
-        }
-        return view('Pages/Artikel/edit-artikel', ['artikel'=>$artikel,"categories"=>$categories, "author"=>$author]);
+        $sumbers = Sumber_Artikel::where(["id_artikel"=>$artikel->id_artikel])->get();
+        return view('Pages/Artikel/edit-artikel', ['artikel'=>$artikel,"categories"=>$categories, "sumbers"=>$sumbers]);
     }
 
     /**
@@ -191,15 +190,17 @@ class AdminArtikelController extends Controller
                     $artikel->tanggal_publikasi = now();
                 }
                 if ($validatedData['author'] == "sendiri") {
-                    $artikel->penulis_artikel = "Saya";
-                    $artikel->profesi_penulis_artikel = "Saya";
-                    $artikel->deskripsi_singkat_penulis_artikel = "Saya";
+                    $artikel->penulis_artikel = auth()->user()->firstname.' '.auth()->user()->lastname;
+                    $artikel->profesi_penulis_artikel = auth()->user()->profesi;
+                    $artikel->deskripsi_singkat_penulis_artikel = auth()->user()->deskripsi_diri;
                 }
 
+
                 $artikel->slug =Str::slug($artikel->judul_artikel);
-                $artikel->created_by = 1;
+                $artikel->created_by = auth()->user()->user_id;;
                 $artikel->save();
                 $artikel->kategori_artikel()->sync($request['kategori_artikel']);
+                $artikel->sumberArtikel()->sync($request['sumber']);
                 DB::commit();
 
         } catch (\Exception $e) {
@@ -207,7 +208,7 @@ class AdminArtikelController extends Controller
             DB::rollback();
            return redirect()->back()->with('error', 'Terjadi kesalahan. Silakan coba lagi nanti.');
         }
-        return redirect()->route('daftar-produk')->with('success', 'Data has been successfully stored.');
+        return redirect()->route('artikels')->with('success', 'Data has been successfully stored.');
     }
 
     public function delete($id)
@@ -234,6 +235,7 @@ class AdminArtikelController extends Controller
     {
         $artikel = Artikel::FirstWhere('slug',$slug);
         $active = $artikel->kategori_artikel[0]->nama_kategori_artikel;
+        $sumbers = Sumber_Artikel::where(["id_artikel"=>$artikel->id_artikel])->get();
         return view('Pages/Artikel/preview-artikel', [
             "active"=> $active,
             "artikel"=>$artikel,
@@ -242,6 +244,7 @@ class AdminArtikelController extends Controller
             "articles_terbaru" => Artikel::orderBy('tanggal_publikasi', 'desc')->limit(4)->get(),
             "articles_terpopuler" => Artikel::orderBy('pengunjung', 'desc')->limit(4)->get(),
             "articles_terkait" => Artikel::byKategori($active)->get(),
+            "sumbers"=>$sumbers,
         ]);
     }
     public function post(Request $request)

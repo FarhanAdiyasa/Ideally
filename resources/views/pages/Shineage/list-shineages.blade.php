@@ -5,7 +5,7 @@
         <div class="container">
             <div class="card mt-5">
                 <div class="card-header">
-                    <h3>List Products</h3>
+                    <h3>List Shineage</h3>
                 </div>
                 <div class="card-body">
                     @if (session('success'))

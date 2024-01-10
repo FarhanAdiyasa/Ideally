@@ -41,12 +41,12 @@ use App\Http\Controllers\DashboardController;
 */
 
 
-Route::get('/',[DashboardController::class, 'index']);
+
 
 Route::get('/portal-edukasi/{kategori}', [ArtikelController::class, 'byKategori'])->name('landing-artikel.kategori');
 Route::get('/portal-edukasi', [ArtikelController::class, 'index'])->name('landing-artikel');
 Route::get('/portal-edukasi/baca/{slug}', [ArtikelController::class, 'baca'])->name('baca-artikel');
-Route::post('/portal-edukasi/rating/{slug}', [ArtikelController::class, 'rating'])->name('rating-artikel');
+Route::post('/portal-edukasi/rating/{slug}', [ArtikelController::class, 'rating'])->name('rating-artikel')->middleware('auth');
 Route::post('/portal-edukasi/komentar/{slug}', [ArtikelController::class, 'komentar'])->name('komentar-artikel');
 
 // Route::get('/brand', [BrandController::class, 'index'])->name('Brand-Batunesia');
@@ -58,7 +58,8 @@ Route::post('/portal-edukasi/komentar/{slug}', [ArtikelController::class, 'komen
 Route::get('/home/show/{kategori}', [ArtikelController::class, 'show'])->name('home.show');
 Route::get('/portal-edukasi/komentar/{kategori}', [ArtikelController::class, 'sKomentar'])->name('komentar.show');
 
-
+Route::middleware(['auth', 'role:admin'])->group(function () {
+Route::get('/dashboard',[DashboardController::class, 'index'])->name('dashboard');;
 //Admin Agrigard
 Route::get('/daftar-produk', [AdminAgrigardController::class, 'index'])->name('daftar-produk');
 Route::get('/daftar-produk/{id}', [AdminAgrigardController::class, 'view'])->name('daftar-produk.view');
@@ -181,7 +182,7 @@ Route::delete('/destroy-artikel/{id}', [AdminArtikelController::class, 'destroy'
 Route::post('/post-artikel', [AdminArtikelController::class, 'post'])->name('artikels.post');
 Route::get('/cek-komentar/{id}', [AdminArtikelController::class, 'komentar'])->name('daftar.komentar');
 Route::post('/hide-komentar', [AdminArtikelController::class, 'hideKomentar'])->name('komentars.hide');
-
+});
 //batunesia
 Route::get('/batunesia/index', [BatunesiaController::class, 'index'])->name('batunesia.index');
 Route::get('/batunesia/index/showByWhite', [BatunesiaController::class, 'filterByWhite'])->name('batunesia.filterByWhite');
@@ -203,13 +204,11 @@ Route::get('/everlasthings/detailProduct', [everlastThingController::class, 'det
 Route::get('/auth/redirect',[AuthController::class, "redirect"])->middleware('guest');
 Route::get('/auth/login',[AuthController::class, "index"])->name('login')->middleware('guest');
 Route::get('/auth/callback',[AuthController::class, "callback"])->middleware('guest');
-Route::get('/auth/logout',[AuthController::class,"logout"])->name('logout');
+Route::get('/auth/logout',[AuthController::class,"logout"])->name('logout')->middleware('auth');;
 Route::get('/auth/register', [AuthController::class, 'register'])->name('auth.register');
 Route::post('/auth/create',[AuthController::class,"create"]);
 Route::post('/auth/login',[AuthController::class,"login"]);
 Route::get('/auth/dashboard/{id}', [AuthController::class, "dashboard"])->middleware('auth');
-Route::get('/auth/dashboard', [AuthController::class, "testing"]);
-Route::get('/auth/dashboard', [AuthController::class, "testing"])->name('dashboard');
 
 
 //route lupa password
