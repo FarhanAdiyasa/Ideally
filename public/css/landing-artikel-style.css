@@ -159,10 +159,18 @@ img {
     margin-right: 40px;
 }
 
+.wrapper-card-kategori {
+    width: 105%;
+}
+
 .info-card-category,
 .info-card-category-icon {
     margin-top: 2px;
     margin-bottom: 2px;
+}
+
+.article-card {
+    margin-right: 25px;
 }
 
 .keterangan-additional-text-container {
@@ -334,6 +342,7 @@ footer p {
     transition: font-weight 0.3s ease;
     /* Animasi perubahan font-weight */
 }
+
 .btn-overlay-header button {
     color: #555555;
     background-color: #fff;

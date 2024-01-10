@@ -40,9 +40,6 @@ use App\Http\Controllers\DashboardController;
 |
 */
 
-
-
-
 Route::get('/portal-edukasi/{kategori}', [ArtikelController::class, 'byKategori'])->name('landing-artikel.kategori');
 Route::get('/portal-edukasi', [ArtikelController::class, 'index'])->name('landing-artikel');
 Route::get('/portal-edukasi/baca/{slug}', [ArtikelController::class, 'baca'])->name('baca-artikel');
@@ -59,6 +56,7 @@ Route::get('/home/show/{kategori}', [ArtikelController::class, 'show'])->name('h
 Route::get('/portal-edukasi/komentar/{kategori}', [ArtikelController::class, 'sKomentar'])->name('komentar.show');
 
 Route::middleware(['auth', 'role:admin'])->group(function () {
+    Route::get('/', [ArtikelController::class, 'index'])->name('landing-artikel');
 Route::get('/dashboard',[DashboardController::class, 'index'])->name('dashboard');;
 //Admin Agrigard
 Route::get('/daftar-produk', [AdminAgrigardController::class, 'index'])->name('daftar-produk');

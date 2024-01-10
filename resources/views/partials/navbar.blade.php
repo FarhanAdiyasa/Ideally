@@ -29,31 +29,31 @@
 
                         <div class="custom-shape-1"></div>
                         <div class="dropdown-list">
-                            <li><a href="#" class="dropdown-item">Belajar Desain Taman</a></li>
+                            <li><a href="{{ route('landing-artikel.kategori', ['kategori' => 'Desain-Taman']) }}" class="dropdown-item">Belajar Desain Taman</a></li>
                             <li>
                                 <hr class="dropdown-divider">
                             </li>
-                            <li><a href="#" class="dropdown-item">Belajar Konstruksi Taman</a></li>
+                            <li><a href="{{ route('landing-artikel.kategori', ['kategori' => 'Konstruksi-Taman']) }}" class="dropdown-item">Belajar Konstruksi Taman</a></li>
                             <li>
                                 <hr class="dropdown-divider">
                             </li>
-                            <li><a href="#" class="dropdown-item">Belajar Pemeliharaan Taman</a></li>
+                            <li><a href="{{ route('landing-artikel.kategori', ['kategori' => 'Pemeliharan-Taman']) }}" class="dropdown-item">Belajar Pemeliharaan Taman</a></li>
                             <li>
                                 <hr class="dropdown-divider">
                             </li>
-                            <li><a href="#" class="dropdown-item">Belajar Tanaman</a></li>
+                            <li><a href="{{ route('landing-artikel.kategori', ['kategori' => 'Tanaman']) }}" class="dropdown-item">Belajar Tanaman</a></li>
                             <li>
                                 <hr class="dropdown-divider">
                             </li>
-                            <li><a href="#" class="dropdown-item">Belajar Material</a></li>
+                            <li><a href="{{ route('landing-artikel.kategori', ['kategori' =>'Material']) }}" class="dropdown-item">Belajar Material</a></li>
                             <li>
                                 <hr class="dropdown-divider">
                             </li>
-                            <li><a href="#" class="dropdown-item">Belajar Bahan Pelengkap</a></li>
+                            <li><a href="{{ route('landing-artikel.kategori', ['kategori' => 'Desain-Taman']) }}" class="dropdown-item">Belajar Bahan Pelengkap</a></li>
                             <li>
                                 <hr class="dropdown-divider">
                             </li>
-                            <li><a href="#" class="dropdown-item">Belajar Hal Lainnya</a></li>
+                            <li><a href="{{ route('landing-artikel.kategori', ['kategori' =>'Lainnya']) }}" class="dropdown-item">Belajar Hal Lainnya</a></li>
                         </div>
 
                     </ul>
@@ -132,11 +132,19 @@
                     <a class="nav-link" aria-current="page" href="#" style="font-family: Montserrat;">Tentang Kami</a>
                 </li>
             </ul>
-            <div class="col-lg-3 text-end">
-                <a href="#" class="link-body-emphasis px-3" style="font-family: Montserrat;">Daftar Akun</a>
-                <span class="vertical-divider"></span>
-                <a href="#" class="link-body-emphasis px-3" style="font-family: Montserrat;">Masuk</a>
-            </div>
+                @if (session()->has('user_info'))
+                <div class="col-lg-3 text-end">
+                    <a href="{{ route('transaksi.index') }}" class="text-darkb"><i class="bi bi-cart-fill"></i></a>
+                    <a href="#" class="link-body-emphasis px-3">{{ session('user_info')->firstname }}</a>
+                    <a href="{{ route('logout') }}" class="px-3 btn btn-danger text-white" style="font-size: 10px">Logout</a>
+                </div>
+                @else
+                <div class="col-lg-3 text-end">
+                    <a href="{{url('auth/register')}}" class="link-body-emphasis px-3" style="font-family: Montserrat;">Daftar Akun</a>
+                    <span class="vertical-divider"></span>
+                    <a href="{{url('auth/login')}}" class="link-body-emphasis px-3" style="font-family: Montserrat;">Masuk</a>
+                </div>
+                @endif
         </div>
     </div>
 </nav>
