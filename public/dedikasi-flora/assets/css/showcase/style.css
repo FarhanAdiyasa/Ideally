@@ -1,0 +1,281 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+a {
+    text-decoration: none;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+}
+
+.container {
+    padding: 0 8.7rem;
+}
+
+.hero-img img {
+    width: 70%;
+}
+
+#hero-navbar .content {
+    margin-top: -8%;
+}
+
+#hero-navbar .margin-start {
+    margin-left: 10px!important;
+}
+
+.navbar-nav .nav-item {
+    padding: 0 1.5em;
+}
+
+.navbar-nav .nav-item .nav-link {
+    color: white;
+    font-weight: 700;
+    font-size: 16px;
+    /* Mengatur warna teks menjadi putih */
+}
+
+.navbar-nav .nav-item .nav-link.active,
+.navbar-nav .nav-item .nav-link:hover {
+    color: #FEDE87;
+    /* Mengatur warna merah untuk tautan aktif dan saat dihover */
+}
+
+.dropdown-toggle::after {
+    display: none;
+}
+
+.custom-dropdown .dropdown-menu {
+    border-radius: 0;
+    border: none;
+    padding: 0.5em 0.5em 1em 0.5em;
+    box-shadow: 5px 5px 15px 3px rgba(0, 0, 0, 0.25);
+}
+
+.custom-dropdown .dropdown-menu .dropdown-item {
+    font-size: 13px;
+}
+
+.custom-dropdown .dropdown-menu a:hover {
+    color: #FE7338;
+    font-weight: 700;
+}
+
+.custom-dropdown hr {
+    margin: 0 0.6em;
+    border: none;
+    border-top: 3px solid rgb(168, 168, 168);
+}
+
+.table-borderless {
+    width: 100%;
+}
+
+.table-borderless a {
+    color: black;
+}
+
+.left-align {
+    text-align: left;
+}
+
+.right-align {
+    text-align: right;
+}
+
+.table-borderless th {
+    font-size: 11px;
+    font-weight: 500;
+    padding: 1px 1px 1px 0;
+}
+
+.table-borderless th span {
+    font-size: 10px;
+    font-weight: 700;
+    padding: 1px 10px;
+    color: #FFF;
+    background: #829B4A;
+}
+
+.col-sm-3 .p-3 {
+    box-shadow: 0px 0px 5px 0px rgba(81, 81, 81, 0.25);
+    margin-bottom: 1em;
+}
+
+/* Showcase */
+.card {
+    background: #FFF;
+    box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.25);
+    border-radius: 0;
+}
+
+.card-body {
+    padding: 0.5em;
+}
+
+.card-product .card-text {
+    font-size: 10px;
+    font-weight: 500;
+    margin: 0;
+}
+
+.card-product .card-img-top {
+    border-radius: 0;
+}
+
+.card-product .text-harga {
+    padding: 0 0.5em;
+    margin: 0;
+    display: inline-block;
+    background-color: #bdbdbd;
+}
+
+.card-product .text-harga,
+.card-product .card-atribute {
+    font-size: 9px;
+    font-weight: 700;
+}
+
+.card-product hr {
+    margin: 0.1em 0;
+    padding: 0;
+    border: none;
+    /* Menghapus border default */
+    border-top: 3px solid rgb(199, 199, 199);
+    /* Mengatur ketebalan dan warna garis */
+    width: 100%;
+}
+
+.card-atribute .rating,
+.card-atribute .seen {
+    padding: 0 0.5em;
+    margin: 0.5em 0.5em 0 0;
+    display: inline-block;
+}
+
+.card-atribute .rating {
+    background-color: #FFAC4C;
+}
+
+.card-atribute .seen {
+    background-color: #829B4A;
+}
+
+.form-select {
+    font-size: 12px;
+}
+
+.pagination {
+    margin-top: 1rem;
+}
+
+.pagination .page-link {
+    margin: 0.5rem; /* Atur jarak antar huruf */
+    border-radius: 0; /* Menghilangkan border radius */
+    padding: 0.3rem 0.7rem; /* Memberikan ruang di dalam kotak */
+    font-weight: 700;
+    color: #829B4A;
+    background-color: #ececec;
+}
+
+.pagination .page-link:hover {
+    background-color: #d6d6d6;
+}
+
+.pagination .page-item.active .page-link {
+    background-color: #829B4A; /* Warna latar belakang hijau */
+    color: #ffffff; /* Warna teks putih */
+    border: none;
+}
+
+.pagination .page-item .prev,
+.pagination .page-item .next {
+    background-color: #829B4A; /* Warna latar belakang hijau */
+    color: #ffffff; /* Warna teks putih */
+    border: none;
+}
+
+.row-utama .padding-end {
+    padding-right: 1rem!important;
+}
+
+@media (max-width: 425px) {
+    .container {
+        margin-top: 0;
+        padding: 0 2em;
+    }
+
+    .hero-img img {
+        width: 100%;
+    }
+
+    #hero-navbar .content {
+        margin-top: -11%;
+    }    
+
+    #hero-navbar .navbar {
+        margin: 0;
+    }
+
+    #hero-navbar .navbar-toggler {
+        font-size: 4px;
+        padding: 2px 4px;
+        background-color: #FFF;
+        border: none;
+    }
+
+    #hero-navbar .navbar-collapse {
+        margin-top: 5%;
+        background-color: #829B4A;
+        padding: 10px 3px;
+    }
+
+    #hero-navbar .margin-start {
+        margin-left: 0!important;
+    }
+
+    .custom-dropdown .dropdown-menu {
+        padding: 0.5em;
+    }
+
+    .row-utama {
+        display: flex;
+        flex-direction: column-reverse;
+    }
+
+    .row-utama .col-6 select {
+        margin-top: 10px;
+    }
+
+    /* Pagination */
+    
+    .pagination .page-link {
+        margin: 0.3rem; /* Atur jarak antar huruf */
+        padding: 0.1rem 0.3rem; /* Memberikan ruang di dalam kotak */
+        font-size: 10px;
+        font-weight: 700;
+        color: #829B4A;
+        background-color: #ececec;
+    }
+    
+    .pagination .page-link:hover {
+        background-color: #d6d6d6;
+    }
+    
+    .pagination .page-item.active .page-link {
+        background-color: #829B4A; /* Warna latar belakang hijau */
+        color: #ffffff; /* Warna teks putih */
+        border: none;
+    }
+    
+    .pagination .page-item .prev,
+    .pagination .page-item .next {
+        background-color: #829B4A; /* Warna latar belakang hijau */
+        color: #ffffff; /* Warna teks putih */
+        border: none;
+    }
+
+    .row-utama .padding-end {
+        padding-right: 0!important;
+    }
+}
