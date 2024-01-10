@@ -401,6 +401,7 @@ footer p {
 }
 
 @media (max-width: 768px) {
+
     /* Styles for mobile */
     body,
     img {

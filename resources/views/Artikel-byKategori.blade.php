@@ -50,17 +50,17 @@
           <div class="carousel-inner">
               @foreach ($data->chunk(4) as $key => $chunk)
             <div class="carousel-item{{ $key === 0 ? ' active' : '' }}">
-                <div class="cards-wrapper">
+                <div class="cards-wrapper wrapper-card-kategori">
                     @foreach ($chunk as $article)
-                      <div class="card border-0" data-popover-content-kategori="{{$article->slug}}"  style="width: 18rem;">
+                      <div class="card border-0 article-card" data-popover-content-kategori="{{$article->slug}}"  style="width: 18rem;">
                       <div class="gambar-card-artikel-baru">
                           <!-- <img src="{{asset('storage/' .$article->gambar_artikel)}}" -->
                           <img src="https://via.placeholder.com/362x185"
-                            class="card-img-top rounded-5 gambar-only-card-artikel-baru" alt="..."
-                            style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover;">
+                            class="card-img-top rounded-4 gambar-only-card-artikel-baru" alt="..."
+                            style="position: absolute; top: 0; left: 0; width: 225px; height: 120px; object-fit: cover;">
                         </div>
-                        <div class="card-body">
-                          <a href="/portal-edukasi/baca/{{$article->slug}}" class="hpLink"><h5 class="card-title" style="font-weight: 700;">{{$article->judul_artikel}}
+                        <div class="card-body" style="margin-top: -75px;">
+                          <a href="/portal-edukasi/baca/{{$article->slug}}" class="hpLink"><h5 class="card-title" style="font-weight: 700; font-size: 20px;">{{$article->judul_artikel}}
                           </h5></a>
                           <p class="card-text" style="font-size: small; color: #999999;">{{ $article->createdBy->firstname }} {{ $article->createdBy->lastname }}</p>
         
