@@ -32,6 +32,7 @@
   
 </head>
 
+
 <body>
     {{-- Navbar Section --}}
     @include('partials.navbar')

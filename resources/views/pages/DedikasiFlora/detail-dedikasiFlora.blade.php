@@ -1,5 +1,5 @@
 <div class="modal-header">
-    <h5 class="modal-title" id="exampleModalLabel">Detail Agrigard</h5>
+    <h5 class="modal-title" id="exampleModalLabel">Detail dedikasiFlora</h5>
     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
         <span aria-hidden="true">&times;</span>
     </button>
@@ -10,35 +10,30 @@
         <div class="container">
             <div class="row">
                 <div class="col-6">
-                <h3 class="d-inline-block d-sm-none">{{$agrigard->nama_produk}}</h3>
+                <h3 class="d-inline-block d-sm-none">{{$dedikasiFlora->nama_latin}}</h3>
                 <div class="col-12">
-                    <img src="{{ asset('storage/' . $agrigard->gambar_1) }}" class="product-image" alt="Product Image">
+                    <img src="{{ asset('storage/' . $dedikasiFlora->gambar_1) }}" class="product-image" alt="Product Image">
                 </div>
                 <div class="col-12 product-image-thumbs">
-                    @if($agrigard->gambar_1 )
+                    @if($dedikasiFlora->gambar_1 )
                         <div class="product-image-thumb active">
-                            <img src="{{ asset('storage/' . $agrigard->gambar_1) }}" alt="Product Image">
+                            <img src="{{ asset('storage/' . $dedikasiFlora->gambar_1) }}" alt="Product Image">
                         </div>
                     @endif
-                    @if($agrigard->gambar_2 )
+                    @if($dedikasiFlora->gambar_2 )
                         <div class="product-image-thumb active">
-                            <img src="{{ asset('storage/' . $agrigard->gambar_2) }}" alt="Product Image">
+                            <img src="{{ asset('storage/' . $dedikasiFlora->gambar_2) }}" alt="Product Image">
                         </div>
                     @endif
-                    @if($agrigard->gambar_3 )
+                    @if($dedikasiFlora->gambar_3 )
                         <div class="product-image-thumb active">
-                            <img src="{{ asset('storage/' . $agrigard->gambar_3) }}" alt="Product Image">
-                        </div>
-                    @endif
-                    @if($agrigard->gambar_4 )
-                        <div class="product-image-thumb active">
-                            <img src="{{ asset('storage/' . $agrigard->gambar_4) }}" alt="Product Image">
+                            <img src="{{ asset('storage/' . $dedikasiFlora->gambar_3) }}" alt="Product Image">
                         </div>
                     @endif
                 </div>
                 </div>
                 <div class="col-6">
-                <h3 class="my-3">{{$agrigard->nama_produk}}</h3>
+                <h3 class="my-3">{{$dedikasiFlora->nama_latin}}</h3>
                 <p>Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua butcher retro keffiyeh dreamcatcher synth. Cosby sweater eu banh mi, qui irure terr.</p>
         
                 <hr>

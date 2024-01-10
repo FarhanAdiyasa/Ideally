@@ -149,7 +149,7 @@ class AdminDedikasiFloraController extends Controller
             $dedikasiFlora->warna_daun =$request['warna_daun_1'] ."-". $request['warna_daun_2'];
 
             $dedikasiFlora->slug =Str::slug($dedikasiFlora->nama_latin);
-            $dedikasiFlora->created_by = 1;
+            $dedikasiFlora->created_by = auth()->user()->user_id;;
             $dedikasiFlora->save();
             DB::commit();
         } else {

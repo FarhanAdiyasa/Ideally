@@ -139,7 +139,7 @@ class AdminEverlasThingController extends Controller
             $everlasThing->harga_b2C_11_unit = $harga_b2C_11_unit;
 
             $everlasThing->slug =Str::slug($everlasThing->nama_produk);
-            $everlasThing->created_by = 1;
+            $everlasThing->created_by = auth()->user()->user_id;;
             $everlasThing->save();
             DB::commit();
         } else {

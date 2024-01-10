@@ -5,7 +5,7 @@
         <div class="container" style="padding-top: 25px;">
             <div class="card">
                 <div class="card-header">
-                    <h3>List Products</h3>
+                    <h3>List Agrigard</h3>
                 </div>
                 <div class="card-body">
                     @if (session('success'))
@@ -17,7 +17,7 @@
                     @endif
 
                     <p>
-                        <a href="{{ route('daftar-produk.tambah') }}" class="btn btn-primary">New Product</a>
+                        <a href="{{ route('daftar-produk.tambah') }}" class="btn btn-primary">New Agrigard</a>
                     </p>
                     <table id="products-table" class="table table-hover table-bordered text-center">
                         <thead>
