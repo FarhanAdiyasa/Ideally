@@ -145,7 +145,7 @@ class AdminBatunesiaController extends Controller
             $batunesia->harga_b2C_31_unit = $harga_b2C_31_unit;
 
             $batunesia->slug =Str::slug($batunesia->nama_produk);
-            $batunesia->created_by = 1;
+            $batunesia->created_by = auth()->user()->user_id;;
             $batunesia->save();
             DB::commit();
         } else {

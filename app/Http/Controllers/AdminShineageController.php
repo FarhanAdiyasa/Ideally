@@ -142,7 +142,7 @@ class AdminShineageController extends Controller
             $shineage->harga_b2C_11_unit = $harga_b2C_11_unit;
 
             $shineage->slug =Str::slug($shineage->nama_produk);
-            $shineage->created_by = 1;
+            $shineage->created_by = auth()->user()->user_id;;
             $shineage->save();
             DB::commit();
         } else {

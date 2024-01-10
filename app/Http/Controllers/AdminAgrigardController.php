@@ -144,7 +144,7 @@ class AdminAgrigardController extends Controller
             $agrigard->harga_b2C_31_unit = $harga_b2C_31_unit;
 
             $agrigard->slug =Str::slug($agrigard->nama_produk);
-            $agrigard->created_by = 1;
+            $agrigard->created_by = auth()->user()->user_id;
             $agrigard->save();
             DB::commit();
         } else {

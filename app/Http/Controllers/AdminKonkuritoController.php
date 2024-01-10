@@ -141,7 +141,7 @@ class AdminKonkuritoController extends Controller
             $konkurito->harga_b2C_11_unit = $harga_b2C_11_unit;
 
             $konkurito->slug =Str::slug($konkurito->nama_produk);
-            $konkurito->created_by = 1;
+            $konkurito->created_by = auth()->user()->user_id;;
             $konkurito->save();
             DB::commit();
         } else {

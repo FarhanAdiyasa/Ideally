@@ -127,7 +127,7 @@
 <script src="https://cdn.datatables.net/1.11.5/js/dataTables.bootstrap5.min.js"></script>
 <script>
     function show(id) {
-        $.get("{{ url('/dedikasiFloras/') }}/" + id, {}, function (data, status) {
+        $.get("{{ url('/daftar-dedikasiFlora/') }}/" + id, {}, function (data, status) {
             $("#modal-content").html(data);
         })
         .fail(function (xhr, textStatus, errorThrown) {
