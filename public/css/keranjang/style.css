@@ -87,8 +87,8 @@ body {
 }
 
 .table-cart .border-brand {
-    border-top: 2px solid #727272;
-    border-bottom: 2px solid #727272;
+    border-top: 2px solid #c5c5c5;
+    border-bottom: 2px solid #c5c5c5;
 }
 
 .table-cart thead th {
@@ -145,13 +145,13 @@ body {
     padding: 0;
     text-align: center;
     font-size: 13px;
-    border-bottom: 2px solid #727272;
+    border-bottom: 2px solid #c5c5c5;
     padding-bottom: 1rem;
 }
 
 .table-bayar tbody td {
-    padding-left: 0;
-    padding-right: 0;
+    padding: 0;
+    padding-top: 10px;
 }
 
 .table-bayar #total-harga {

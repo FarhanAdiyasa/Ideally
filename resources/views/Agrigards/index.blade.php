@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css">
 
     <!-- Custom CSS -->
+    <link rel="stylesheet" href="{{asset('/css/navbar-style.css')}}">
     <link rel="stylesheet" href="{{ asset ('agrigard/assets/css/index/style.css') }}">
 
     <!-- Bootstrap JS -->
@@ -25,8 +26,12 @@
 </head>
 
 <body>
+    <!-- Navbar Utama -->
+    @include('partials.navbar')
+    <!-- End Navbar Utama -->
+
     <!-- Header & search -->
-    <section id="header">
+    <section id="header" class="mt-5">
         <div class="container">
             <div class="inner-container top-start bg-light">
                 <div class="row">
@@ -36,8 +41,7 @@
                                 style="width: 100%; margin-top: 25px;">
                         </div>
                         <div class="deskripsi">
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde sed fugiat nulla earum
-                                asperiores! Quos voluptatum corporis eaque!</p>
+                            <p>Agrigard, mitra pertanian ideal Anda! Siap menjadi rekan konsultasi pertanian Anda! Temukan wadah tanam, alat kerja, media tanam, dan benih terbaik hanya di Agrigard.</p>
                         </div>
                         <div class="d-flex search">
                             <input type="text" name="" id="search" class="form-control search-input top-start"
@@ -64,55 +68,49 @@
                     <div class="col wrapper">
                         <div class="bg-light rounded-circle" style="height: 25px; width: 25px;"></div>
                         <div class="text-white text-center m-0">
-                            <p>Pot Plastik</p>
+                            <a href="{{ route('agrigard.kategori', ['kategori' => 'Pot Plastik']) }}">Pot Plastik</a>
                         </div>
                     </div>
                     <div class="col wrapper">
                         <div class="bg-light rounded-circle" style="height: 25px; width: 25px;"></div>
                         <div class="text-white text-center m-0">
-                            <p>Pot Plastik</p>
+                        <a href="{{ route('agrigard.kategori', ['kategori' => 'Pot Terracota']) }}">Pot Terracota</a>
                         </div>
                     </div>
                     <div class="col wrapper">
                         <div class="bg-light rounded-circle" style="height: 25px; width: 25px;"></div>
                         <div class="text-white text-center m-0">
-                            <p>Pot Terracota</p>
+                        <a href="{{ route('agrigard.kategori', ['kategori' => 'Bibit Tanaman']) }}">Bibit Tanaman</a>
                         </div>
                     </div>
                     <div class="col wrapper">
                         <div class="bg-light rounded-circle" style="height: 25px; width: 25px;"></div>
                         <div class="text-white text-center m-0">
-                            <p>Bibit Tanaman</p>
+                        <a href="{{ route('agrigard.kategori', ['kategori' => 'Media Tanam']) }}">Media Tanam</a>
                         </div>
                     </div>
                     <div class="col wrapper">
                         <div class="bg-light rounded-circle" style="height: 25px; width: 25px;"></div>
                         <div class="text-white text-center m-0">
-                            <p>Media Tanam</p>
+                        <a href="{{ route('agrigard.kategori', ['kategori' => 'Wadah Tanam']) }}">Wadah Tanam</a>
                         </div>
                     </div>
                     <div class="col wrapper">
                         <div class="bg-light rounded-circle" style="height: 25px; width: 25px;"></div>
                         <div class="text-white text-center m-0">
-                            <p>Wadah Tanam</p>
+                        <a href="{{ route('agrigard.kategori', ['kategori' => 'Obat dan Nutrisi']) }}">Obat dan Nutrisi</a>
                         </div>
                     </div>
                     <div class="col wrapper">
                         <div class="bg-light rounded-circle" style="height: 25px; width: 25px;"></div>
                         <div class="text-white text-center m-0">
-                            <p>Obat dan Nutrisi</p>
+                        <a href="{{ route('agrigard.kategori', ['kategori' => 'Alat Kerja']) }}">Alat Kerja</a>
                         </div>
                     </div>
                     <div class="col wrapper">
                         <div class="bg-light rounded-circle" style="height: 25px; width: 25px;"></div>
                         <div class="text-white text-center m-0">
-                            <p>Alat Kerja</p>
-                        </div>
-                    </div>
-                    <div class="col wrapper">
-                        <div class="bg-light rounded-circle" style="height: 25px; width: 25px;"></div>
-                        <div class="text-white text-center m-0">
-                            <p>Lain - lain</p>
+                            <a href="{{ route('agrigard.kategori', ['kategori' => 'Lain - lain']) }}">Lain - lain</a>
                         </div>
                     </div>
                 </div>
@@ -501,16 +499,16 @@
                     <div class="col-sm-7 branding">
                         <div class="text-white">
                             <div class="title">
-                                <p>Jelajahi koleksi produk kami! Temukan solusi dari permasalahan kebun Anda di
-                                    Agrigard!</p>
+                                <p>Jelajahi koleksi produk kami!
+                                     Temukan solusi dari permasalahan
+                                     kebun Anda di Agrigard!</p>
                             </div>
                             <div class="deskripsi">
-                                <p>Telusuri keajaiban dan kualitas produk di Agrigard. Setiap produk mencerminkan solusi
-                                    dan fungsi luar biasa. Temukan lebih banyak di koleksi kami sekarang!</p>
+                                <p>Telusuri keajaiban dan kualitas produk di Agrigard. Setiap produk mencerminkan solusi dan fungsi luar biasa. Temukan lebih banyak di koleksi kami sekarang!</p>
                             </div>
                         </div>
                         <div class="action">
-                            <a href="{{ route('agrigard.showcase') }}" class="btn top-end">Konsultasi Sekarang</a>
+                            <a href="{{ route('agrigard.showcase') }}" class="btn top-end">Lihat Produk Lainnya</a>
                         </div>
                     </div>
                 </div>

@@ -27,41 +27,60 @@ class AuthController extends Controller
         return Socialite::driver('google')->redirect();
     }
 
+    public function callback()
+    {
+        // Mendapatkan data pengguna dari Google setelah otorisasi berhasil
+        $googleUser = Socialite::driver('google')->user();
 
-    function callback() {
-        $user = Socialite::driver('google')->user();
-        dd($user);
-        $id = $user->user_id;
-        $email = $user->email;
-        $name = $user->name;
-    
-        $cek = User::where('email', $email)->count();
-    
-        if ($cek > 0) {
-            $user = User::updateOrCreate(
-                ['email' => $email],
-                [
-                    'name' => $name,
-                    'google_id' => $id
-                ]
-            );
+        // Memeriksa apakah email pengguna sudah ada dalam tabel 'users'
+        $user = User::where('email', $googleUser->getEmail())->first();
+
+        // Jika email sudah ada dalam tabel 'users', login pengguna
+        if ($user) {
             Auth::login($user);
-            return redirect()->to('/batunesia/index');
+            $user = Auth::user();
+            session(['user_info' => $user]); // Melakukan login pengguna
+            return redirect()->route('deflo.utama'); // Mengarahkan ke halaman yang sesuai setelah login
         } else {
-            return redirect()->to('/auth/register')->with('email', $email);
+            // Jika email belum ada dalam tabel 'users', Anda dapat menambahkan logika lainnya di sini,
+            // misalnya, menampilkan pesan bahwa pengguna belum terdaftar atau membuat akun baru
+            // atau bisa juga otomatis membuat akun baru menggunakan informasi dari Google
+            return redirect()->route('login')->with('error', 'Email belum terdaftar.');
         }
     }
 
+    // function callback() {
+    //     $user = Socialite::driver('google')->user();
+    //     dd($user);
+    //     $id = $user->user_id;
+    //     $email = $user->email;
+    //     $name = $user->name;
+    
+    //     $cek = User::where('email', $email)->count();
+    
+    //     if ($cek > 0) {
+    //         $user = User::updateOrCreate(
+    //             ['email' => $email],
+    //             [
+    //                 'name' => $name,
+    //                 'google_id' => $id
+    //             ]
+    //         );
+    //         Auth::login($user);
+    //         return redirect()->to('/batunesia/index');
+    //     } else {
+    //         return redirect()->to('/auth/register')->with('email', $email);
+    //     }
+    // }
+
     function dashboard() {
-        
-        return view('sesi/edit');
+        return redirect()->route('deflo.utama');
     }
-    
-    
 
     function logout() {
+        Session::flush();
         Auth::logout();
-        return redirect()->to('auth');
+        return redirect()->to('auth/login');
     }
 
     function register(Request $request) {
@@ -105,11 +124,13 @@ class AuthController extends Controller
     
         if (Auth::attempt($infologin)) {
             // Autentikasi berhasil
-            return view('sesi.dashboard')->with('success', 'Berhasil Login');
+            $user = Auth::user();
+            session(['user_info' => $user]);
+            return redirect()->route('deflo.utama');
             // Redirect ke halaman 'dashboard' dengan pesan keberhasilan
         } else {
             // Autentikasi gagal
-            return redirect('auth')->withErrors('Username atau Password salah!');
+            return redirect('auth/login')->with('error', 'Email atau Password salah!');
             // Redirect kembali ke halaman 'auth' dengan pesan kesalahan
         }
     
@@ -156,52 +177,52 @@ class AuthController extends Controller
 
     // Fungsi untuk mereset password
     public function resetPasswordPost(Request $request)
-{
-    try {
-        $validatedData = $request->validate([
-            "token" => "required",
-            "password" => "required|string|min:6|confirmed",
-        ], [
-            'token.required' => 'Token is required.',
-            'password.required' => 'Password is required.',
-            'password.string' => 'Password must be a string.',
-            'password.min' => 'Password must be at least 6 characters.',
-            'password.confirmed' => 'Password confirmation does not match.',
-        ]);
-
-        $token = $validatedData['token'];
-
-        $updatePassword = DB::table('password_resets')
-            ->where('token', $token)
-            ->first();
-
-        if (!$updatePassword) {
-            return redirect()->route("reset.password")->with("error", "Invalid token or expired link.");
-        }
-
-        $user = User::where('email', $updatePassword->email)->first();
-
-        if (!$user) {
-            return redirect()->route("reset.password")->with("error", "User not found.");
-        }
-
-        $user->password = Hash::make($validatedData['password']);
-        $user->save();
-
-        DB::table('password_resets')
-            ->where('email', $user->email)
-            ->delete();
-
-            return redirect()->route("login")->with("success", "Password reset successful, please log in.");
-        } catch (ValidationException $e) {
-            return redirect()->route("reset.password", ['token' => $request->token])
-                ->with("error", $e->getMessage())
-                ->withInput();
-        } catch (\Exception $e) {
-            return redirect()->route("reset.password", ['token' => $request->token])
-                ->with("error", $e->getMessage());
-        }
-}
+    {
+        try {
+            $validatedData = $request->validate([
+                "token" => "required",
+                "password" => "required|string|min:6|confirmed",
+            ], [
+                'token.required' => 'Token is required.',
+                'password.required' => 'Password is required.',
+                'password.string' => 'Password must be a string.',
+                'password.min' => 'Password must be at least 6 characters.',
+                'password.confirmed' => 'Password confirmation does not match.',
+            ]);
+        
+            $token = $validatedData['token'];
+        
+            $updatePassword = DB::table('password_resets')
+                ->where('token', $token)
+                ->first();
+        
+            if (!$updatePassword) {
+                return redirect()->route("reset.password")->with("error", "Invalid token or expired link.");
+            }
+        
+            $user = User::where('email', $updatePassword->email)->first();
+        
+            if (!$user) {
+                return redirect()->route("reset.password")->with("error", "User not found.");
+            }
+        
+            $user->password = Hash::make($validatedData['password']);
+            $user->save();
+        
+            DB::table('password_resets')
+                ->where('email', $user->email)
+                ->delete();
+        
+                return redirect()->route("login")->with("success", "Password reset successful, please log in.");
+            } catch (ValidationException $e) {
+                return redirect()->route("reset.password", ['token' => $request->token])
+                    ->with("error", $e->getMessage())
+                    ->withInput();
+            } catch (\Exception $e) {
+                return redirect()->route("reset.password", ['token' => $request->token])
+                    ->with("error", $e->getMessage());
+            }
+    }
 
 
 }

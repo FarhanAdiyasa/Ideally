@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\CreateArtikelRequest;
 use App\Http\Requests\UpdateArtikelRequest;
+use App\Models\Komentar;
 use PDO;
 
 class AdminArtikelController extends Controller
@@ -102,14 +103,30 @@ class AdminArtikelController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function komentar($id)
     {
-        //
-    }
+        $artikel = Artikel::findOrFail($id);
+        $komentars = Komentar::where('id_artikel', $id)->get();
+        return view('Pages/Artikel/komentar-artikel', ['artikel' => $artikel, 'komentars' => $komentars]);
+    }    
 
-    /**
-     * Show the form for editing the specified resource.
-     */
+    public function hideKomentar(Request $request)
+    {
+         $id = $request->input('id_komentar');
+        try {
+            DB::beginTransaction();
+            $komentar = Komentar::findOrFail($id);
+            $komentar->status_tampil = $request->input('status') == "true" ? 1 : 0;
+            $komentar->save();
+            DB::commit();
+        } catch (\Exception $e) {
+            dd($e->getMessage());
+            DB::rollback();
+            return redirect()->back()->with('error', 'Terjadi kesalahan. Silakan coba lagi nanti.');
+        }
+        return redirect()->route('artikels')->with('success', 'Data status has been successfully changed .');
+        // return redirect()->route('daftar.komentar',['id' => $komentar->id_artikel])->with('success', 'Data status has been successfully changed .');
+    }    
     public function edit($id)
     {
         $artikel = Artikel::findOrFail($id);

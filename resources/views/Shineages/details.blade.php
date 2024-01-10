@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css">
 
     <!-- Custom CSS -->
+    <link rel="stylesheet" href="{{asset('/css/navbar-style.css')}}">
     <link rel="stylesheet" href="{{ asset ('shineage/assets/css/details/style.css') }}">
 
     <!-- Bootstrap JS -->
@@ -22,8 +23,12 @@
 </head>
 
 <body>
+    <!-- Navbar Utama -->
+    @include('partials.navbar')
+    <!-- End Navbar Utama -->
+
     <!-- Logo -->
-    <section id="logo">
+    <section id="logo" class="mt-5">
         <div class="container">
             <div class="logo-container bg-yellow">
                 <div class="row g-0">
@@ -302,13 +307,13 @@
                                         </a>
                                 </div>
                                 @endforeach
-                                <div class="bg-red mt-3 p-2" style="min-height: 15%;">
+                                <div class="bg-red mt-3 p-2" style="min-height: 10%;">
                                     <div class="text-white">
                                         <div class="ps-3 mb-1">
                                             <div class="border-start border-4 border-light" style="height: 50px;"></div>
                                         </div>
                                     </div>
-                                    <a href="" class="btn btn-showcase mt-1">Lihat Produk Lainnya</a>
+                                    <a href="{{ route('shineage.showcase') }}" class="btn btn-showcase mt-1">Lihat Produk Lainnya</a>
                                 </div>
                             </section>
                             <!-- End Red Section -->
@@ -321,7 +326,7 @@
                                         <p class="fw-bold mb-2" style="font-size: 13px;">Produk-produk Populer</p>
                                     </div>
                                     <div class="ps-2">
-                                        <div class="border-start border-light border-4" style="height: 85px;"></div>
+                                        <div class="border-start border-light border-4" style="height: 81px;"></div>
                                     </div>
                                 </div>
                                 @foreach($shineageterkait->slice($itemsPerSection, $itemsPerSection) as $hijau)
@@ -345,8 +350,8 @@
                                         </a>
                                 </div>
                                 @endforeach
-                                <div class="bg-tosca mt-3 p-2" style="height: 10%;">
-                                    <a href="" class="btn btn-showcase mt-1">Lihat Produk Lainnya</a>
+                                <div class="bg-tosca mt-3 p-2" style="height: 5.4%;">
+                                    <a href="{{ route('shineage.showcase') }}" class="btn btn-showcase mt-1">Lihat Produk Lainnya</a>
                                 </div>
                             </section>
                             <!-- End Tosca Section -->
@@ -380,12 +385,12 @@
                                         </a>
                                 </div>
                                 @endforeach
-                                <div class="bg-yellow mt-3 p-2" style="height: 15%;">
+                                <div class="bg-yellow mt-3 p-2" style="height: 13.7%;">
                                     <div class="text-white">
                                         <div class="ps-3 mb-1">
-                                            <div class="border-start border-4 border-light" style="height: 80px;"></div>
+                                            <div class="border-start border-4 border-light" style="height: 78px;"></div>
                                         </div>
-                                        <a href="" class="btn btn-showcase mt-1">Lihat Produk Lainnya</a>
+                                        <a href="{{ route('shineage.showcase') }}" class="btn btn-showcase mt-1">Lihat Produk Lainnya</a>
                                     </div>
                                 </div>
                             </section>
