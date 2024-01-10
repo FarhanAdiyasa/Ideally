@@ -73,7 +73,15 @@
                         <div class="keterangan-additional-text-container">
                             <img class="info-card-category-icon-title2" src="{{asset('icons/rate-category.svg')}}" alt="Rate Icon"
                                 style="width: 12px; height: 12px;">
-                            <span class="info-card-category-title2" style="font-size: 14px; font-weight: 700;"> {{$artikel->penulis_artikel}}</span>
+                            <?php
+                            $penulis_artikel = $artikel->penulis_artikel; 
+
+                            if (strlen($penulis_artikel) > 20) { 
+                                $penulis_artikel = substr($penulis_artikel, 0, 20) . '...'; 
+                            }
+                            ?>
+                            <span class="info-card-category-title2" style="font-size: 14px; font-weight: 700;"> {{$penulis_artikel}}</span>
+
                         </div>
                     </div>
                     <div class="additional-text-container rounded-pill d-inline-block"
