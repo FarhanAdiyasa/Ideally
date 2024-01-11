@@ -15,7 +15,7 @@
     <link href="{{asset('/css/footer-artikel-style.css')}}" rel="stylesheet">
     
     <!-- Include jQuery from a CDN (Content Delivery Network) -->
-    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 
     <!-- Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
@@ -56,7 +56,7 @@
                     </div> --}}
                     @foreach ($artikel->kategori_artikel as $kategori)
                     <div class="additional-text-container rounded-pill d-inline-block"
-                    style="background-color: #727272; color: white;">
+                    style="background-color: #727272; color: white; white-space: nowrap;">
                     <div class="keterangan-additional-text-container ">
                         <img class="info-card-category-icon" src="{{asset('icons/comment-category.svg')}}" alt="Rate Icon"
                             style="width: 10px; height: 10px;">
@@ -118,11 +118,8 @@
                     <hr class="hr-body-article">
 
                     <div class="isi-article">
-                        {!!$artikel->isi_artikel!!}
-                    </div>
-                    <div class="v-yt container mb-4" >
-                        <!-- Use the full YouTube video URL or the embed URL -->
-                        <iframe src="https://youtu.be/a3ICNMQW7Ok?si=7R8onn6JMD8CUo3f" height="300" width="470"></iframe>
+                        {!! htmlspecialchars_decode($artikel->isi_artikel) !!}
+
                     </div>
                 </div>
                 <!-- End of Body Article -->
@@ -131,7 +128,7 @@
                 <div class="source">
                     <h5 style="font-weight: 700; color: #06C195;">Source</h5>
                     <ol style="font-style: italic; font-size: 14px;">
-                        @foreach($artikel->sumberArtikel as $sumberArtikel)
+                        @foreach($sumbers as $sumberArtikel)
                         <li>{{ $sumberArtikel->sumber_artikel}} </li>
                         @endforeach
                     </ol>
@@ -151,7 +148,7 @@
                                 </div>
                             </div>
 
-                            <div class="col-4">
+                            <div class="col-3">
                                 <h3 class="mb-0">{{$artikel->penulis_artikel}}</h3>
                                 <p class="text-muted">{{$artikel->profesi_penulis_artikel}}</p>
                             </div>
@@ -173,26 +170,25 @@
                     <form id="ratingForm" action="{{ route('rating-artikel', ['slug' => $artikel->slug]) }}" method="post">
                         @csrf
                         <div class="rating">
-                            <input type="radio" name="rating" value="5" id="5" @if ($rating && $rating->rating_artikel == 5) checked @endif>
+                            <input type="radio" name="rating" value="5" id="5" @if ($rating && $rating->rating_artikel == 5) checked @endif @if (!auth()->check()) disabled @endif>
                             <label for="5" onclick="submitForm(5,'{{$artikel->slug}}')">☆</label>
                             
-                            <input type="radio" name="rating" value="4" id="4"  @if ($rating && $rating->rating_artikel == 4) checked @endif>
+                            <input type="radio" name="rating" value="4" id="4"  @if ($rating && $rating->rating_artikel == 4) checked @endif @if (!auth()->check()) disabled @endif>
                             <label for="4" onclick="submitForm(4,'{{$artikel->slug}}')">☆</label>
                             
-                            <input type="radio" name="rating" value="3" id="3"  @if ($rating && $rating->rating_artikel == 3) checked @endif>
+                            <input type="radio" name="rating" value="3" id="3"  @if ($rating && $rating->rating_artikel == 3) checked @endif @if (!auth()->check()) disabled @endif>
                             <label for="3" onclick="submitForm(3,'{{$artikel->slug}}')">☆</label>
                             
-                            <input type="radio" name="rating" value="2" id="2"  @if ($rating && $rating->rating_artikel == 2) checked @endif>
+                            <input type="radio" name="rating" value="2" id="2"  @if ($rating && $rating->rating_artikel == 2) checked @endif @if (!auth()->check()) disabled @endif>
                             <label for="2" onclick="submitForm(2,'{{$artikel->slug}}')">☆</label>
                             
-                            <input type="radio" name="rating" value="1" id="1"  @if ($rating && $rating->rating_artikel == 1) checked @endif>
+                            <input type="radio" name="rating" value="1" id="1"  @if ($rating && $rating->rating_artikel == 1) checked @endif @if (!auth()->check()) disabled @endif>
                             <label for="1" onclick="submitForm(1,'{{$artikel->slug}}')">☆</label>
-                            
                         </div>
+                        
                     </form>
                 </div>
-                <div class="success" id="suksesRate" style="visibility: hidden"><small>
-                    Terimakasih !</small></div>
+                <div class="success" id="suksesRate" style="visibility: hidden"></div>
                 <hr class="hr-custom">
                 <!-- End of Rating -->
 
@@ -220,7 +216,7 @@
                                         <div class="card-body">
                                             <a href="/portal-edukasi/baca/{{$article->slug}}" class="hpLink"><h5 class="card-title" style="font-weight: 700;">{{$article->judul_artikel}}</a>
                                             </h5>
-                                            <p class="card-text">{{$article->createdBy->firstname}} {{$article->createdBy->lastname}}</p>
+                                            <p class="card-text">{{$article->penulis_artikel}}</p>
                                             @php
                                             $averageRating = $article->ratingArtikel->avg('rating_artikel');
                                             $averageRating = number_format($averageRating, 1) 
@@ -287,7 +283,7 @@
                                 </div>
                             </div>
 
-                            <div class="col-4">
+                            <div class="col-3">
                                 <h3 class="mb-0">Ahsan Wildan</h3>
                                 <p class="text-muted">Pengawas Pemeliharaan Lanskap</p>
                             </div>
@@ -334,8 +330,8 @@
                             </div>
 
                             <div class="col-5 nama-akun-komentar">
-                                <h3 class="mb-0">Azis Machpudin</h3>
-                                <p class="text-muted">CPO Ideally Indonesia</p>
+                                <h3 class="mb-0">{{auth()->user()->firstname}} {{auth()->user()->lastname}}</h3>
+                                <p class="text-muted">{{auth()->user()->profesi}}</p>
                             </div>
                             <div class="mb-4"></div>
 
@@ -465,9 +461,20 @@
     <script src="{{asset('/js/navbar.js')}}"></script>
     <script src="{{asset('/js/baca-artikel.js')}}"></script>
     <script>
+        $(document).ready(function() {
+            // Change font color of <a> tags to green within the .isi-article
+            $('.isi-article a').css('color', '#06c195').css('text-decoration', 'none');
+        });
+    </script>
+    <script>
 
         function submitForm(rating, slug) {
-
+            var isAuthenticated = @json(auth()->check());
+            if (!isAuthenticated) {
+                // Pengguna tidak terautentikasi, arahkan ke halaman login
+                window.location.href = '{{ url('auth/login') }}';
+                return;
+            }
         var hiddenInput = document.createElement("input");
         hiddenInput.setAttribute("type", "hidden");
         hiddenInput.setAttribute("name", "rating");
@@ -509,6 +516,12 @@
 
 
     function submitKomentar(slug) {
+        var isAuthenticated = @json(auth()->check());
+            if (!isAuthenticated) {
+                // Pengguna tidak terautentikasi, arahkan ke halaman login
+                window.location.href = '{{ url('auth/login') }}';
+                return;
+            }
     var komentar = $('#textarea-komentar').val();
     $.ajax({
         type: "POST",

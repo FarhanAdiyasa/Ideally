@@ -1,50 +1,170 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Ideally | Dashboard</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-</head>
-<body>
+ @extends('layouts/admin')
+    @section('content')
+        <div id="app">
+            <div class="main-wrapper">
+                <div class="container">
+                        <div class="container-fluid" style="padding-top:20px">
+                          <div class="row">
+                            <div class="col-lg-4 col-6">
+                              <!-- small box -->
+                              <div class="small-box bg-info">
+                                <div class="inner">
+                                  <h3>150</h3>
 
-<header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-3 mb-2 mb-md-0">
-        <a href="/auth/logout" class="d-inline-flex link-body-emphasis text-decoration-none">LOGOUT</a>
+                                  <p>New Orders</p>
+                                </div>
+                                <div class="icon">
+                                  <i class="ion ion-bag"></i>
+                                </div>
+                                <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                              </div>
+                            </div>
+                            <!-- ./col -->
+                            <div class="col-lg-4 col-6">
+                              <!-- small box -->
+                              <div class="small-box bg-success">
+                                <div class="inner">
+                                  <h3>53<sup style="font-size: 20px">%</sup></h3>
+
+                                  <p>Bounce Rate</p>
+                                </div>
+                                <div class="icon">
+                                  <i class="ion ion-stats-bars"></i>
+                                </div>
+                                <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                              </div>
+                            </div>
+                            <!-- ./col -->
+                            <div class="col-lg-4 col-6">
+                              <!-- small box -->
+                              <div class="small-box bg-warning">
+                                <div class="inner">
+                                  <h3>44</h3>
+
+                                  <p>User Registrations</p>
+                                </div>
+                                <div class="icon">
+                                  <i class="ion ion-person-add"></i>
+                                </div>
+                                <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                              </div>
+                            </div>
+                            <!-- ./col -->
+                          </div>
+                          <div class="row">
+                            <!-- Left col -->
+                            <section class="col-lg-7 connectedSortable">
+                              <!-- Custom tabs (Charts with tabs)-->
+                              <div class="card">
+                                <div class="card-header">
+                                  <h3 class="card-title">
+                                    <i class="fas fa-chart-pie mr-1"></i>
+                                    Sales
+                                  </h3>
+                                  <div class="card-tools">
+                                    <ul class="nav nav-pills ml-auto">
+                                      <li class="nav-item">
+                                        <a class="nav-link active" href="#revenue-chart" data-toggle="tab">Area</a>
+                                      </li>
+                                      <li class="nav-item">
+                                        <a class="nav-link" href="#sales-chart" data-toggle="tab">Donut</a>
+                                      </li>
+                                    </ul>
+                                  </div>
+                                </div><!-- /.card-header -->
+                                <div class="card-body">
+                                  <div class="tab-content p-0">
+                                    <!-- Morris chart - Sales -->
+                                    <div class="chart tab-pane active" id="revenue-chart" style="position: relative; height: 300px;">
+                                      <canvas id="revenue-chart-canvas" height="300" style="height: 300px;"></canvas>
+                                    </div>
+                                    <div class="chart tab-pane" id="sales-chart" style="position: relative; height: 300px;">
+                                      <canvas id="sales-chart-canvas" height="300" style="height: 300px;"></canvas>
+                                    </div>
+                                  </div>
+                                </div><!-- /.card-body -->
+                              </div>
+                              <!-- /.card -->
+                            </section>
+                            <!-- /.Left col -->
+                            <!-- right col (We are only adding the ID to make the widgets sortable)-->
+                            <section class="col-lg-5 connectedSortable">
+
+                              <!-- Map card -->
+                              <div class="card bg-gradient-primary">
+                                <div class="card-header border-0">
+                                  <h3 class="card-title">
+                                    <i class="fas fa-map-marker-alt mr-1"></i>
+                                    Visitors
+                                  </h3>
+                                  <!-- card tools -->
+                                  <div class="card-tools">
+                                    <button type="button" class="btn btn-primary btn-sm daterange" title="Date range">
+                                      <i class="far fa-calendar-alt"></i>
+                                    </button>
+                                    <button type="button" class="btn btn-primary btn-sm" data-card-widget="collapse" title="Collapse">
+                                      <i class="fas fa-minus"></i>
+                                    </button>
+                                  </div>
+                                  <!-- /.card-tools -->
+                                </div>
+                                <div class="card-body">
+                                  <div id="world-map" style="height: 250px; width: 100%;"></div>
+                                </div>
+                                <!-- /.card-body-->
+                                <div class="card-footer bg-transparent">
+                                  <div class="row">
+                                    <div class="col-4 text-center">
+                                      <div id="sparkline-1"></div>
+                                      <div class="text-white">Visitors</div>
+                                    </div>
+                                    <!-- ./col -->
+                                    <div class="col-4 text-center">
+                                      <div id="sparkline-2"></div>
+                                      <div class="text-white">Online</div>
+                                    </div>
+                                    <!-- ./col -->
+                                    <div class="col-4 text-center">
+                                      <div id="sparkline-3"></div>
+                                      <div class="text-white">Sales</div>
+                                    </div>
+                                    <!-- ./col -->
+                                  </div>
+                                  <!-- /.row -->
+                                </div>
+                              </div>
+                              <!-- /.card -->
+                              <!-- /.card -->
+                            </section>
+                            <!-- right col -->
+                          </div>
+                        </div><!-- /.container-fluid -->
+                  </div>
+            </div>
+        </div>
+
+        
+
+<!-- Logout Warning Modal -->
+<div class="modal modal-danger fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="Logout" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content" id="logout-modal">
+      <div class="modal-header">
+        <h5 class="modal-title">Konfirmasi Logout</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>Apakah kamu yakin ingin keluar?</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
+        <button type="button" class="btn btn-danger">Logout</button>
       </div>
     </div>
   </div>
-</header>
-
-<div class="container mt-5">
-  @if(session('success'))
-    <div class="alert alert-success">
-      {{ session('success') }}
-    </div>
-  @endif
-
-  @if ($errors->any())
-    <div class="alert alert-danger">
-      <ul>
-        @foreach ($errors->all() as $error)
-          <li>{{ $error }}</li>
-        @endforeach
-      </ul>
-    </div>
-  @endif
 </div>
-@if(Auth::check())
-    <h1>Nama: {{ Auth::user()->name }}</h1>
-    <h2>Email: {{ Auth::user()->email }}</h2>
-    <!-- Tampilkan informasi nama dan email dari user yang login -->
-@else
-    <p>User tidak ditemukan.</p>
-@endif
-
-
-
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
-</body>
-</html>
+<!-- End of Logout Warning Modal -->
+    @endsection
+@section('scripts_all')

@@ -14,9 +14,9 @@ class User extends Authenticatable
     protected $table = 'users';
     protected $primaryKey = 'user_id'; 
     
-    protected $fillable = [
-        'user_id','email','password', 'google_id','firstname','lastname','address','telephone_number','birthdate','gender', 'profesi','provinsi','kabupaten','kelurahan','kecamatan'
-    ];
+    // protected $fillable = [
+    //     'user_id','email','password', 'google_id','firstname','lastname','address','telephone_number','birthdate','gender', 'profesi','provinsi','kabupaten','kelurahan','kecamatan'
+    // ];
 
     protected $guarded = [
         'user_id',
@@ -103,5 +103,8 @@ class User extends Authenticatable
     {
         return $this->hasOne(Agrigard::class);
     }
-
+    public function scopeCountCreated($query, $startDate, $endDate)
+    {
+        return $query->whereBetween('created_at', [$startDate, $endDate])->count();
+    }
 }
