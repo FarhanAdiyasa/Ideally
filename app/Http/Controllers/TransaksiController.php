@@ -52,71 +52,57 @@ class TransaksiController extends Controller
 
     private function getUserDstID() {
         if (Auth::check()) {
-            $user = Auth::user(); // Ganti dengan id kabupaten dari tabel Anda
+            $user = Auth::user(); 
             $id = $user->kabupaten;
+    
             $filejson = substr($id, 0, 2);
             $url = "https://ibnux.github.io/data-indonesia/kabupaten/{$filejson}.json";
-            $nama = '';
-            $type = '';
-
+    
             $response = Http::get($url);
-
+    
             if ($response->ok()) {
-                $data = $response->json();
-
-                foreach($data as $obj) {
-                    if ($obj['id'] == $id){
-                        $nama = Str::lower($obj['nama']);
-                    }
-                }
-
-                Str::contains(Str::lower($nama), 'kab') ? $type = 'Kabupaten' : $type = 'Kota';
-                $nama = substr($nama, 5);
-                // dd($nama, $type);
-                
-                $response = Http::withHeaders([
+                $data = collect($response->json());
+                $nama = $data->firstWhere('id', $id)['nama'] ?? '';
+    
+                $type = Str::contains(Str::lower($nama), 'kab') ? 'Kabupaten' : 'Kota';
+                $nama = substr(Str::lower($nama), 5);
+    
+                $rajaongkirResponse = Http::withHeaders([
                     'key' => 'c6f5a244812b5c983cbd2810dcfbe62b'
                 ])->get('https://api.rajaongkir.com/starter/city');
-                $rajaongkir = $response->json()['rajaongkir']['results'];
-
-                foreach($rajaongkir as $obj) {
-                    $city_name = Str::lower($obj['city_name']);
-                    if ($obj['type'] == $type && Str::contains($city_name, $nama)) {
-                        return $obj['city_id'];
-                    }
+    
+                if ($rajaongkirResponse->ok()) {
+                    $rajaongkir = collect($rajaongkirResponse->json()['rajaongkir']['results']);
+                
+                    return $rajaongkir->first(function ($obj) use ($nama, $type) {
+                        return $obj['type'] == $type && Str::contains(Str::lower($obj['city_name']), $nama);
+                    })['city_id'] ?? null;
                 }
             }
-                
-            return null;
-            
         }
+        return null;
     }
+    
 
     public function calculateOngkir(Request $request)
     {
-        // $response = Http::withHeaders([
-        //     'key' => 'c6f5a244812b5c983cbd2810dcfbe62b'
-        // ])->get('https://api.rajaongkir.com/starter/province');
-        // dd($response->json());
-        
-        // $response2 = Http::withHeaders([
-        //     'key' => 'c6f5a244812b5c983cbd2810dcfbe62b'
-        // ])->get('https://api.rajaongkir.com/starter/city');
-        // dd($response2->json());
-
         $dstUser = $this->getUserDstID();
 
-        $responseCost = Http::withHeaders([
-            'key' => 'c6f5a244812b5c983cbd2810dcfbe62b'
-        ])->post('https://api.rajaongkir.com/starter/cost', [
-            'origin' => $request->origin,
-            'destination' => $dstUser,
-            'weight' => $request->weight,
-            'courier' => $request->courier,
-        ]);
-
+        if ($dstUser !== null) {
+            $responseCost = Http::withHeaders([
+                'key' => 'c6f5a244812b5c983cbd2810dcfbe62b'
+            ])->post('https://api.rajaongkir.com/starter/cost', [
+                'origin' => $request->origin,
+                'destination' => $dstUser,
+                'weight' => $request->weight,
+                'courier' => $request->courier,
+            ]);
+    
+            
+            $ongkir = $responseCost->json()['rajaongkir']['results'];
+            return view('transaksi.keranjang', compact('ongkir'));
+        }
         
-        $ongkir = $responseCost->json()['rajaongkir']['results'];
-        return view('transaksi.keranjang', compact('ongkir'));
+        return view('transaksi.keranjang')->with('error', 'complete profile');
     }
 }
