@@ -153,17 +153,7 @@
                                     <td class="total">{{ $item['quantity'] * $item['produk']->harga_b2C_1_unit }}
                                     </td>
                                     <td class="d-flex align-items-center justify-content-center">
-                                        {{-- <form action="{{ route('hapusDariKeranjang', ['id_batu' => $key]) }}"
-                                        method="POST">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button type="submit"
-                                            style="border: none; background: none; padding: 0; margin: 0; outline: none;">
-                                            <img src="{{ asset('img/keranjang/Delete Icon.png') }}" alt="Hapus Produk"
-                                                class="d-block w-50" style="border: none;">
-                                        </button>
-                                        </form> --}}
-
+                                        
                                     </td>
                                 </tr>
                                 @php
@@ -211,16 +201,6 @@
                                     <td class="total">{{ $item['quantity'] * $item['produk']->harga_b2C_1_unit }}
                                     </td>
                                     <td class="d-flex align-items-center justify-content-center">
-                                        {{-- <form action="{{ route('hapusDariKeranjang', ['id_batu' => $key]) }}"
-                                        method="POST">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button type="submit"
-                                            style="border: none; background: none; padding: 0; margin: 0; outline: none;">
-                                            <img src="{{ asset('img/keranjang/Delete Icon.png') }}" alt="Hapus Produk"
-                                                class="d-block w-50" style="border: none;">
-                                        </button>
-                                        </form> --}}
 
                                     </td>
                                 </tr>
@@ -269,16 +249,6 @@
                                     <td class="total">{{ $item['quantity'] * $item['produk']->harga_b2C_1_unit }}
                                     </td>
                                     <td class="d-flex align-items-center justify-content-center">
-                                        {{-- <form action="{{ route('hapusDariKeranjang', ['id_batu' => $key]) }}"
-                                        method="POST">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button type="submit"
-                                            style="border: none; background: none; padding: 0; margin: 0; outline: none;">
-                                            <img src="{{ asset('img/keranjang/Delete Icon.png') }}" alt="Hapus Produk"
-                                                class="d-block w-50" style="border: none;">
-                                        </button>
-                                        </form> --}}
 
                                     </td>
                                 </tr>
@@ -327,16 +297,6 @@
                                     <td class="total">{{ $item['quantity'] * $item['produk']->harga_b2C_1_unit }}
                                     </td>
                                     <td class="d-flex align-items-center justify-content-center">
-                                        {{-- <form action="{{ route('hapusDariKeranjang', ['id_batu' => $key]) }}"
-                                        method="POST">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button type="submit"
-                                            style="border: none; background: none; padding: 0; margin: 0; outline: none;">
-                                            <img src="{{ asset('img/keranjang/Delete Icon.png') }}" alt="Hapus Produk"
-                                                class="d-block w-50" style="border: none;">
-                                        </button>
-                                        </form> --}}
 
                                     </td>
                                 </tr>
@@ -398,7 +358,7 @@
                         <div class="d-flex flex-column align-items-center">
                             @if (isset($ongkir))
                             <div class="mt-3">
-                                <a href="" class="btn btn-bayar bg-tosca rounded-5">Lanjut ke Pembayaran</a>
+                                <a href="{{ route('index.pembayaran') }}" class="btn btn-bayar bg-tosca rounded-5">Lanjut ke Pembayaran</a>
                             </div>
                             @else
                             <div class="mt-3">
