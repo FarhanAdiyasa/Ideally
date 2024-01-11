@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Spatie\Analytics\Period;
 use Illuminate\Support\Carbon;
+use Spatie\Analytics\Facades\Analytics;
 
 class DashboardController extends Controller
 {
@@ -16,6 +18,10 @@ class DashboardController extends Controller
         $startDate = Carbon::now()->startOfMonth();
         $endDate = Carbon::now()->endOfMonth();
         $userCreated = User::CountCreated($startDate, $endDate);
+
+        
+        $analyticsData = Analytics::fetchVisitorsAndPageViews(Period::days(7));
+        // dd($analyticsData);
         return view('Pages/Dashboard/index',  ["userCreated"=>$userCreated]);
     }
 

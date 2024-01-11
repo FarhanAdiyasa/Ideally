@@ -37,7 +37,7 @@
                                     </td>
                                     <td>
                                         <div class="row">
-                                                <div>
+                                                <div class="text-left">
                                                      {{ $artikel->judul_artikel }}
                                                 </div>
                                         </div>
