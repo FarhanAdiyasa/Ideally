@@ -212,7 +212,7 @@
                                         </div>
                                         <div class="card-body">
                                            </h5>
-                                            <p class="card-text">{{$article->createdBy->firstname}} {{$article->createdBy->lastname}}</p>
+                                            <p class="card-text">{{$article->penulis_artikel}}</p>
                                             @php
                                             $averageRating = $article->ratingArtikel->avg('rating_artikel');
                                             $averageRating = number_format($averageRating, 1) 

@@ -439,7 +439,7 @@
       <div class="row">
         <div class="col-md-3">
           <div class="form-group">
-            <p>1+ Units</p>
+            <p>1+ Units <span class="wajib">Wajib</span></p>
           </div>
           <!-- /.form-group -->
         </div>
@@ -463,7 +463,7 @@
       <div class="row">
         <div class="col-md-3">
           <div class="form-group">
-            <p>11+ Units</p>
+            <p>11+ Units <span class="wajib">Wajib</span></p>
            
           </div>
           <!-- /.form-group -->
@@ -489,7 +489,7 @@
       <div class="row">
         <div class="col-md-3">
           <div class="form-group">
-            <p>1+ Units</p>
+            <p>1+ Units <span class="wajib">Wajib</span></p>
            
           </div>
           <!-- /.form-group -->
@@ -512,7 +512,7 @@
       <div class="row">
         <div class="col-md-3">
           <div class="form-group">
-            <p>11+ Units</p>
+            <p>11+ Units <span class="wajib">Wajib</span></p>
            
           </div>
           <!-- /.form-group -->
@@ -538,7 +538,7 @@
       <div class="row">
         <div class="col-md-3">
           <div class="form-group">
-            <p>1+ Units:</p>
+            <p>1+ Units <span class="wajib">Wajib</span></p>
            
           </div>
           <!-- /.form-group -->
@@ -561,7 +561,7 @@
       <div class="row">
         <div class="col-md-3">
           <div class="form-group">
-            <p>11+ Units:</p>
+            <p>11+ Units <span class="wajib">Wajib</span></p>
            
           </div>
           <!-- /.form-group -->

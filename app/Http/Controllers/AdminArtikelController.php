@@ -189,6 +189,9 @@ class AdminArtikelController extends Controller
                 if($request->tanggal_publikasi == "true"){
                     $artikel->tanggal_publikasi = now();
                 }
+                else{
+                    $artikel->tanggal_publikasi = null;
+                }
                 if ($validatedData['author'] == "sendiri") {
                     $artikel->penulis_artikel = auth()->user()->firstname.' '.auth()->user()->lastname;
                     $artikel->profesi_penulis_artikel = auth()->user()->profesi;

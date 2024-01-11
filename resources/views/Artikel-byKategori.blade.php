@@ -62,7 +62,7 @@
                         <div class="card-body" style="margin-top: -75px;">
                           <a href="/portal-edukasi/baca/{{$article->slug}}" class="hpLink"><h5 class="card-title" style="font-weight: 700; font-size: 20px;">{{$article->judul_artikel}}
                           </h5></a>
-                          <p class="card-text" style="font-size: small; color: #999999;">{{ $article->createdBy->firstname }} {{ $article->createdBy->lastname }}</p>
+                          <p class="card-text" style="font-size: small; color: #999999;">{{$article->penulis_artikel}}</p>
         
                           <div class="d-flex">
                             <div class="additional-text-container rounded-pill d-inline-block">

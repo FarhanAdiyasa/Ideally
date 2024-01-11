@@ -22,16 +22,20 @@
                     <table id="promos-table" class="table table-hover table-bordered text-center">
                         <thead>
                             <tr>
+                                 <th>No</th>
                                 <th>Info Promo</th>
                                 <th>Harga</th>
                                 <th>Stok</th>
                                 <th>Status</th>
-                                <th>Actions</th>
+                                <th>Aksi</th>
                             </tr>
                         </thead>
                         <tbody>
                             @forelse ($promos as $promo)
                                 <tr>
+                                    <td>
+                                        {{ $loop->iteration }}
+                                    </td>
                                     <td>
                                         <div class=""> {{$promo->nama_promo}}</div>
                                     </td>

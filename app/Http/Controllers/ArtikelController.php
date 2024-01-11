@@ -48,7 +48,7 @@ class ArtikelController extends Controller
 
         return view('daftar-artikel', [
             "articles" => Artikel::byKategori($kategori)->filter(request(['sort', 'search']))->paginate(18),
-            "jumlah" => Artikel::count(),
+            "jumlah" => Artikel::byKategori($kategori)->count(),
             "active" => $kategori,
             "sort" => $sort,
             "articles_acak" => Artikel::inRandomOrder()->limit(4)->get(),

@@ -84,12 +84,12 @@
           <!-- /.col -->
           <div class="col-md-9">
             <div class="form-group">
-                <input id="default" type="text" class="form-control" placeholder="Placeholder text" name="nama_lokal" id="nama_lokal" value="{{old('nama_lokal', $dedikasiFlora->nama_lokal)}}">
+                <input id="default2" type="text" class="form-control" placeholder="Placeholder text" name="nama_lokal" id="nama_lokal" value="{{old('nama_lokal', $dedikasiFlora->nama_lokal)}}">
                 @error('nama_lokal')
                 <small class="text-danger">{{ $message }}</small>
                 @enderror
                 <div class="float-right d-none d-sm-block">
-                  <span id="characterCount">0</span>/70
+                  <span id="characterCount2">0</span>/70
               </div>
             </div>
             <!-- /.form-group -->
@@ -478,7 +478,7 @@
       <div class="row">
         <div class="col-md-3">
           <div class="form-group">
-            <p>1+ Units</p>
+            <p>1+ Units <span class="wajib">Wajib</span></p>
           </div>
           <!-- /.form-group -->
         </div>
@@ -502,7 +502,7 @@
       <div class="row">
         <div class="col-md-3">
           <div class="form-group">
-            <p>11+ Units</p>
+            <p>11+ Units <span class="wajib">Wajib</span></p>
            
           </div>
           <!-- /.form-group -->
@@ -525,7 +525,7 @@
       <div class="row">
         <div class="col-md-3">
           <div class="form-group">
-            <p>31+ Units</p>
+            <p>31+ Units <span class="wajib">Wajib</span></p>
            
           </div>
           <!-- /.form-group -->
@@ -551,7 +551,7 @@
       <div class="row">
         <div class="col-md-3">
           <div class="form-group">
-            <p>1+ Units</p>
+            <p>1+ Units <span class="wajib">Wajib</span></p>
            
           </div>
           <!-- /.form-group -->
@@ -574,7 +574,7 @@
       <div class="row">
         <div class="col-md-3">
           <div class="form-group">
-            <p>11+ Units</p>
+            <p>11+ Units <span class="wajib">Wajib</span></p>
            
           </div>
           <!-- /.form-group -->
@@ -597,7 +597,7 @@
       <div class="row">
         <div class="col-md-3">
           <div class="form-group">
-            <p>31+ Units</p>
+            <p>31+ Units <span class="wajib">Wajib</span></p>
            
           </div>
           <!-- /.form-group -->
@@ -623,7 +623,7 @@
       <div class="row">
         <div class="col-md-3">
           <div class="form-group">
-            <p>1+ Units:</p>
+            <p>1+ Units <span class="wajib">Wajib</span></p>
            
           </div>
           <!-- /.form-group -->
@@ -646,7 +646,7 @@
       <div class="row">
         <div class="col-md-3">
           <div class="form-group">
-            <p>11+ Units:</p>
+            <p>11+ Units <span class="wajib">Wajib</span></p>
            
           </div>
           <!-- /.form-group -->
@@ -669,7 +669,7 @@
       <div class="row">
         <div class="col-md-3">
           <div class="form-group">
-            <p>31+ Units:</p>
+            <p>31+ Units <span class="wajib">Wajib</span></p>
            
           </div>
           <!-- /.form-group -->

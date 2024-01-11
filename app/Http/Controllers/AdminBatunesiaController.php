@@ -33,7 +33,7 @@ class AdminBatunesiaController extends Controller
             $max = null;
     
             // Iterate over harga columns and compute overall range
-            for ($i = 1; $i <= 3; $i++) {  // Assuming 3 levels: b2I, b2B, b2C
+            for ($i = 1; $i <= 31; $i+=10) {  // Assuming 3 levels: b2I, b2B, b2C
                 $columnName = $columnPrefix . 'b2I_' . $i . '_unit';
                 $harga = $batunesia->{$columnName};  // Get the harga value for the current column
     
@@ -46,12 +46,42 @@ class AdminBatunesiaController extends Controller
                         $max = $harga;
                     }
                 }
+               
             }
+            for ($i = 1; $i <= 31; $i+=10) {  // Assuming 3 levels: b2I, b2B, b2C
+                $columnName = $columnPrefix . 'b2C_' . $i . '_unit';
+                $harga = $batunesia->{$columnName};  // Get the harga value for the current column
     
-            // Add the computed range to the batunesia object
-            $hargaRanges[] = $min !== null && $max !== null ? $min . ' - ' . $max : 'No data';
+                if ($harga !== null) {
+                    if ($min === null || $harga < $min) {
+                        $min = $harga;
+                    }
     
-            // Add the computed ranges to the batunesia object
+                    if ($max === null || $harga > $max) {
+                        $max = $harga;
+                    }
+                }
+               
+            }
+            for ($i = 1; $i <= 31; $i+=10) {  // Assuming 3 levels: b2I, b2B, b2C
+                $columnName = $columnPrefix . 'b2B_' . $i . '_unit';
+                $harga = $batunesia->{$columnName};  // Get the harga value for the current column
+    
+                if ($harga !== null) {
+                    if ($min === null || $harga < $min) {
+                        $min = $harga;
+                    }
+    
+                    if ($max === null || $harga > $max) {
+                        $max = $harga;
+                    }
+                }
+            }
+            
+          $hargaRanges[] = $min !== null && $max !== null
+    ? 'Rp. ' . number_format($min, 0, ',', '.') . ' - Rp. ' . number_format($max, 0, ',', '.')
+    : 'No data';
+
             $batunesia->harga_ranges = $hargaRanges;
         }
     
@@ -224,6 +254,9 @@ class AdminBatunesiaController extends Controller
                 $batunesia->gambar_3 = $photoPaths[2] ?? null;
                 if($request->tanggal_publikasi == "true"){
                     $batunesia->tanggal_publikasi = now();
+                }
+                else{
+                    $batunesia->tanggal_publikasi = null;
                 }
                 $harga_jual_projek_ideally = str_replace(['.', ''], '', $request['harga_jual_projek_ideally']);
                 $batunesia->harga_jual_projek_ideally = $harga_jual_projek_ideally;

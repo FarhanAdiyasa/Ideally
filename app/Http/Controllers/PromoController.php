@@ -155,15 +155,47 @@ class PromoController extends Controller
         }
         foreach ($products as $product) {
             $hargaRanges = [];
-
+    
+            // Assuming harga columns have a common prefix
             $columnPrefix = 'harga_';
     
             $min = null;
             $max = null;
-
-            for ($i = 1; $i <= 3; $i++) {  
+    
+            // Iterate over harga columns and compute overall range
+            for ($i = 1; $i <= 31; $i+=10) {  // Assuming 3 levels: b2I, b2B, b2C
                 $columnName = $columnPrefix . 'b2I_' . $i . '_unit';
-                $harga = $product->{$columnName};
+                $harga = $product->{$columnName};  // Get the harga value for the current column
+    
+                if ($harga !== null) {
+                    if ($min === null || $harga < $min) {
+                        $min = $harga;
+                    }
+    
+                    if ($max === null || $harga > $max) {
+                        $max = $harga;
+                    }
+                }
+               
+            }
+            for ($i = 1; $i <= 31; $i+=10) {  // Assuming 3 levels: b2I, b2B, b2C
+                $columnName = $columnPrefix . 'b2C_' . $i . '_unit';
+                $harga = $product->{$columnName};  // Get the harga value for the current column
+    
+                if ($harga !== null) {
+                    if ($min === null || $harga < $min) {
+                        $min = $harga;
+                    }
+    
+                    if ($max === null || $harga > $max) {
+                        $max = $harga;
+                    }
+                }
+               
+            }
+            for ($i = 1; $i <= 31; $i+=10) {  // Assuming 3 levels: b2I, b2B, b2C
+                $columnName = $columnPrefix . 'b2B_' . $i . '_unit';
+                $harga = $product->{$columnName};  // Get the harga value for the current column
     
                 if ($harga !== null) {
                     if ($min === null || $harga < $min) {
@@ -175,9 +207,11 @@ class PromoController extends Controller
                     }
                 }
             }
-    
-            $hargaRanges[] = $min !== null && $max !== null ? $min . ' - ' . $max : 'No data';
-    
+            
+          $hargaRanges[] = $min !== null && $max !== null
+    ? 'Rp. ' . number_format($min, 0, ',', '.') . ' - Rp. ' . number_format($max, 0, ',', '.')
+    : 'No data';
+
             $product->harga_ranges = $hargaRanges;
         }
         
@@ -201,15 +235,47 @@ class PromoController extends Controller
         }
         foreach ($products as $product) {
             $hargaRanges = [];
-
+    
+            // Assuming harga columns have a common prefix
             $columnPrefix = 'harga_';
     
             $min = null;
             $max = null;
-
-            for ($i = 1; $i <= 3; $i++) {  
+    
+            // Iterate over harga columns and compute overall range
+            for ($i = 1; $i <= 31; $i+=10) {  // Assuming 3 levels: b2I, b2B, b2C
                 $columnName = $columnPrefix . 'b2I_' . $i . '_unit';
-                $harga = $product->{$columnName};
+                $harga = $product->{$columnName};  // Get the harga value for the current column
+    
+                if ($harga !== null) {
+                    if ($min === null || $harga < $min) {
+                        $min = $harga;
+                    }
+    
+                    if ($max === null || $harga > $max) {
+                        $max = $harga;
+                    }
+                }
+               
+            }
+            for ($i = 1; $i <= 31; $i+=10) {  // Assuming 3 levels: b2I, b2B, b2C
+                $columnName = $columnPrefix . 'b2C_' . $i . '_unit';
+                $harga = $product->{$columnName};  // Get the harga value for the current column
+    
+                if ($harga !== null) {
+                    if ($min === null || $harga < $min) {
+                        $min = $harga;
+                    }
+    
+                    if ($max === null || $harga > $max) {
+                        $max = $harga;
+                    }
+                }
+               
+            }
+            for ($i = 1; $i <= 31; $i+=10) {  // Assuming 3 levels: b2I, b2B, b2C
+                $columnName = $columnPrefix . 'b2B_' . $i . '_unit';
+                $harga = $product->{$columnName};  // Get the harga value for the current column
     
                 if ($harga !== null) {
                     if ($min === null || $harga < $min) {
@@ -221,9 +287,11 @@ class PromoController extends Controller
                     }
                 }
             }
-    
-            $hargaRanges[] = $min !== null && $max !== null ? $min . ' - ' . $max : 'No data';
-    
+            
+          $hargaRanges[] = $min !== null && $max !== null
+    ? 'Rp. ' . number_format($min, 0, ',', '.') . ' - Rp. ' . number_format($max, 0, ',', '.')
+    : 'No data';
+
             $product->harga_ranges = $hargaRanges;
         }
         $idsProdu = DB::table('view_product_promo')
@@ -273,6 +341,8 @@ class PromoController extends Controller
 
                 if($request->tanggal_publikasi == "true"){
                     $promo->tanggal_publikasi = now();
+                }else{
+                    $promo->tanggal_publikasi = null;
                 }
                 $promo->created_by = auth()->user()->user_id;;
                 

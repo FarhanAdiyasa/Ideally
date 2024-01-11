@@ -55,8 +55,7 @@
       <div class="row">
         <div class="col-md-3">
           <div class="form-group">
-            <label>Judul Artikel</label>
-            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sed, odit ab eum enim illo minima deleniti quae ducimus repudiandae sit!</p>
+            <label>Judul Artikel <span class="wajib">Wajib</span></label>
           </div>
           <!-- /.form-group -->
         </div>
@@ -78,14 +77,14 @@
       <div class="row">
         <div class="col-md-3">
           <div class="form-group">
-            <label>Gambar Artikel</label>
-            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sed, odit ab eum enim illo minima deleniti quae ducimus repudiandae sit!</p>
+            <label>Gambar Artikel <span class="wajib">Wajib</span></label>
+            <p>Hanya file dengan format JPEG, PNG, dan JPG yang diterima. Ukuran maksimum file adalah 2 MB. Input gambar akan dihapus jika ada input yang tidak valid dalam formulir ini.</p>
           </div>
           <!-- /.form-group -->
         </div>
         <!-- /.col -->
         <div class="col-md-9">
-              <label class="col-sm-3 col-form-label">Profile Pic</label>
+          <label class="col-sm-9 col-form-label">Klik / Letakkan Gambar Ke : </label>
               <div class="col-sm-9">
                 <input type="file" class="form-control" name="gambar_artikel" @error('gambar_artikel') is-invalid @enderror id="selectimage">
               </div>
@@ -104,7 +103,7 @@
         <div class="col-12 col-sm-6">
           <div class="form-group">
             <label>Keterangan Gambar</label>
-              <input type="text" class="form-control" placeholder="Placeholder text" name="keterangan_gambar_artikel" value="{{old('keterangan_gambar_artikel', $artikel->keterangan_gambar_artikel)}}">
+              <input type="text" class="form-control" placeholder="Masukkan keterangan gambar" name="keterangan_gambar_artikel" value="{{old('keterangan_gambar_artikel', $artikel->keterangan_gambar_artikel)}}">
                  @error('keterangan_gambar_artikel')
               <small class="text-danger">{{ $message }}</small>
               @enderror
@@ -114,9 +113,9 @@
         <!-- /.col -->
         <div class="col-12 col-sm-6">
           <div class="form-group">
-            <label>Keywords Artikel</label>
+            <label>Kata Kunci Artikel <span class="ket-field">Digunakan untuk pencarian artikel</span></label>
             <div class="select2-purple">
-                <input type="text" class="form-control" placeholder="Placeholder text" name="keywords" value="{{old('keywords', $artikel->keywords)}}">
+                <input type="text" class="form-control"  placeholder="Masukkan kata kunci. Contoh: taman, pupuk, teknologi." name="keywords" value="{{old('keywords', $artikel->keywords)}}">
                    @error('keywords')
               <small class="text-danger">{{ $message }}</small>
               @enderror
@@ -130,7 +129,6 @@
         <div class="col-md-3">
           <div class="form-group">
             <label>Kategori Artikel</label>
-            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sed, odit ab eum enim illo minima deleniti quae ducimus repudiandae sit!</p>
           </div>
           <!-- /.form-group -->
         </div>
@@ -173,13 +171,20 @@
     <div class="card-body">
         <div class="row">
             <div class="col-md-12">
-                <div class="form-group">
-                    <label>Deskripsi Artikel</label>
-                      <input type="text" class="form-control" placeholder="Placeholder text" name="deskripsi_artikel" value="{{old('deskripsi_artikel', $artikel->deskripsi_artikel)}}">
-                         @error('deskripsi_artikel')
-                      <small class="text-danger">{{ $message }}</small>
-                      @enderror
+              <div class="row">
+                <div class="col-4">
+                  <div class="form-group">
+                    <label>Deskripsi Artikel <span class="wajib">Wajib</span></label>
+                    <p>Pastikan diisi dengan beberapa <strong>paragraf dari artikel</strong> atau <strong>cuplikan informasi penting</strong> yang dapat menarik perhatian pembaca. Informasi ini akan ditampilkan saat pelanggan melihat pratinjau artikel.</p>
                   </div>
+                </div>
+                <div class="col-7">
+                  <textarea class="form-control" id="" rows="5" placeholder="Isi Deskripsi Artikel Disini" name="deskripsi_artikel">{{old('deskripsi_artikel', $artikel->deskripsi_artikel)}}</textarea>
+                  @error('deskripsi_artikel')
+                  <small class="text-danger">{{ $message }}</small>
+                  @enderror
+                </div>
+              </div>
             </div>
           </div>
           <div class="row">
@@ -283,12 +288,13 @@
     <div class="card-body">
       <div class="row">
         <div class="col-lg-12">
+          <p>Isi dengan sumber artikel. Gunakkan (+) untuk menambahkan field, dan (-) untuk mengurangi.</p>
           @foreach ($sumbers as $sumber)
             <div id="inputFormRow">
               <div class="input-group mb-3">
                   <input type="text" name="sumber[]" class="form-control m-input" placeholder="Enter sourcec" autocomplete="off" value="{{$sumber->sumber_artikel}}">
                   <div class="input-group-append">
-                      <button id="removeRow" type="button" class="btn btn-danger">Remove</button>
+                      <button id="removeRow" type="button" class="btn btn-danger">-</button>
                   </div>
               </div>
           </div>
@@ -296,7 +302,7 @@
             @endforeach
          
             <div id="newRow"></div>
-            <button id="addRow" type="button" class="btn btn-info">Add Row</button>
+            <button id="addRow" type="button" class="btn btn-info">+</button>
         </div>
     </div>
     </div>
@@ -394,9 +400,9 @@
       var html = '';
       html += '<div id="inputFormRow">';
       html += '<div class="input-group mb-3">';
-      html += '<input type="text" name="sumber[]" class="form-control m-input" placeholder="Enter source" autocomplete="off">';
+      html += '<input type="text" name="sumber[]" class="form-control m-input" placeholder="Masukkan sumber artikel" autocomplete="off">';
       html += '<div class="input-group-append">';
-      html += '<button id="removeRow" type="button" class="btn btn-danger">Remove</button>';
+      html += '<button id="removeRow" type="button" class="btn btn-danger">-</button>';
       html += '</div>';
       html += '</div>';
 

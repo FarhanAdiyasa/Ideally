@@ -123,7 +123,7 @@
                                 <div class="desc-item">
                                   <div class="ellipse">
                                   </div>
-                                  {{$article->createdBy->firstname}} {{$article->createdBy->lastname}}
+                                  {{$article->penulis_artikel}}
                                 </div>
                                 <div class="desc-item">
                                   <div class="ellipse">

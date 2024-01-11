@@ -22,16 +22,20 @@
                     <table id="products-table" class="table table-hover table-bordered text-center">
                         <thead>
                             <tr>
+                                 <th>No</th>
                                 <th>Info Agrigard</th>
                                 <th>Harga</th>
                                 <th>Stok</th>
                                 <th>Status</th>
-                                <th>Actions</th>
+                                <th>Aksi</th>
                             </tr>
                         </thead>
                         <tbody>
                             @forelse ($agrigards as $agrigard)
                                 <tr>
+                                    <td>
+                                        {{ $loop->iteration }}
+                                    </td>
                                     <td>
                                         <div class="row">
                                             <div class="col-4"><img src="{{  asset('storage/' . $agrigard->gambar_1)}}" width="56" height="56" alt="Product Image"></div>
@@ -47,7 +51,7 @@
                                     </td>
                                     <td>
                                         @foreach ($agrigard->harga_ranges as $hargaRange)
-                                            <div>{{ $hargaRange }}</div>
+                                             <div>{{ $hargaRange }}</div>
                                         @endforeach
                                     </td>
                                     <td>

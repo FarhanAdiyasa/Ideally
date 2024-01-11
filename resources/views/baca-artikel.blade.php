@@ -216,7 +216,7 @@
                                         <div class="card-body">
                                             <a href="/portal-edukasi/baca/{{$article->slug}}" class="hpLink"><h5 class="card-title" style="font-weight: 700;">{{$article->judul_artikel}}</a>
                                             </h5>
-                                            <p class="card-text">{{$article->createdBy->firstname}} {{$article->createdBy->lastname}}</p>
+                                            <p class="card-text">{{$article->penulis_artikel}}</p>
                                             @php
                                             $averageRating = $article->ratingArtikel->avg('rating_artikel');
                                             $averageRating = number_format($averageRating, 1) 
@@ -330,8 +330,8 @@
                             </div>
 
                             <div class="col-5 nama-akun-komentar">
-                                <h3 class="mb-0">Azis Machpudin</h3>
-                                <p class="text-muted">CPO Ideally Indonesia</p>
+                                <h3 class="mb-0">{{auth()->user()->firstname}} {{auth()->user()->lastname}}</h3>
+                                <p class="text-muted">{{auth()->user()->profesi}}</p>
                             </div>
                             <div class="mb-4"></div>
 
