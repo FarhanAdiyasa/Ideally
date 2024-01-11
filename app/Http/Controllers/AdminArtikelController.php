@@ -99,7 +99,7 @@ class AdminArtikelController extends Controller
             DB::rollback();
            return redirect()->back()->with('error', 'Terjadi kesalahan. Silakan coba lagi nanti.');
         }
-        return redirect()->route('artikels')->with('success', 'Data has been successfully stored.');
+        return redirect()->route('artikels')->with('success', 'Data berhasil disimpan!');
     }
 
     /**
@@ -126,8 +126,8 @@ class AdminArtikelController extends Controller
             DB::rollback();
             return redirect()->back()->with('error', 'Terjadi kesalahan. Silakan coba lagi nanti.');
         }
-        return redirect()->route('artikels')->with('success', 'Data status has been successfully changed .');
-        // return redirect()->route('daftar.komentar',['id' => $komentar->id_artikel])->with('success', 'Data status has been successfully changed .');
+        return redirect()->route('artikels')->with('success', 'Status data berhasil diubah!');
+        // return redirect()->route('daftar.komentar',['id' => $komentar->id_artikel])->with('success', 'Status data berhasil diubah!');
     }    
     public function edit($id)
     {
@@ -208,7 +208,7 @@ class AdminArtikelController extends Controller
             DB::rollback();
            return redirect()->back()->with('error', 'Terjadi kesalahan. Silakan coba lagi nanti.');
         }
-        return redirect()->route('artikels')->with('success', 'Data has been successfully stored.');
+        return redirect()->route('artikels')->with('success', 'Data berhasil disimpan!');
     }
 
     public function delete($id)
@@ -229,7 +229,7 @@ class AdminArtikelController extends Controller
             return redirect()->back()->with('error', 'Terjadi kesalahan. Silakan coba lagi nanti.');
         }
 
-        return redirect()->route('artikels')->with('success', 'Data has been successfully deleted.');
+        return redirect()->route('artikels')->with('success', 'Data berhasil dihapus!');
     }
     public function preview($slug)
     {
@@ -261,6 +261,6 @@ class AdminArtikelController extends Controller
             DB::rollback();
             return redirect()->back()->with('error', 'Terjadi kesalahan. Silakan coba lagi nanti.');
         }
-        return redirect()->route('artikels')->with('success', 'Data status has been successfully changed .');
+        return redirect()->route('artikels')->with('success', 'Status data berhasil diubah!');
     }
 }

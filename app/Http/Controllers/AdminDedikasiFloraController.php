@@ -161,7 +161,7 @@ class AdminDedikasiFloraController extends Controller
         DB::rollback();
        return redirect()->back()->with('error', 'Terjadi kesalahan. Silakan coba lagi nanti.');
     }
-    return redirect()->route('dedikasiFloras')->with('success', 'Data has been successfully stored.');
+    return redirect()->route('dedikasiFloras')->with('success', 'Data berhasil disimpan!');
     }
     
 
@@ -277,7 +277,7 @@ class AdminDedikasiFloraController extends Controller
             DB::rollback();
            return redirect()->back()->with('error', 'Terjadi kesalahan. Silakan coba lagi nanti.');
         }
-        return redirect()->route('dedikasiFloras')->with('success', 'Data has been successfully stored.');
+        return redirect()->route('dedikasiFloras')->with('success', 'Data berhasil disimpan!');
     }
 
     public function delete($id)
@@ -319,7 +319,7 @@ class AdminDedikasiFloraController extends Controller
             return redirect()->back()->with('error', 'Terjadi kesalahan. Silakan coba lagi nanti.');
         }
 
-        return redirect()->route('dedikasiFloras')->with('success', 'Data has been successfully deleted.');
+        return redirect()->route('dedikasiFloras')->with('success', 'Data berhasil dihapus!');
     }
 
     public function post(Request $request)
@@ -335,7 +335,7 @@ class AdminDedikasiFloraController extends Controller
             DB::rollback();
             return redirect()->back()->with('error', 'Terjadi kesalahan. Silakan coba lagi nanti.');
         }
-        return redirect()->route('dedikasiFloras')->with('success', 'Data status has been successfully changed .');
+        return redirect()->route('dedikasiFloras')->with('success', 'Status data berhasil diubah!');
     }
     
 }

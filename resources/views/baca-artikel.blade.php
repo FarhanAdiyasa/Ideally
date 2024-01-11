@@ -338,7 +338,7 @@
                             </div>
 
                             <div class="col-5 nama-akun-komentar">
-                                <h3 class="mb-0">Azis Machpudin</h3>
+                                <h3 class="mb-0">{{ session('user_info')->firstname }}</h3>
                                 <p class="text-muted">CPO Ideally Indonesia</p>
                             </div>
                             <div class="mb-4"></div>

@@ -154,7 +154,7 @@ class AdminKonkuritoController extends Controller
         DB::rollback();
        return redirect()->back()->with('error', 'Terjadi kesalahan. Silakan coba lagi nanti.');
     }
-    return redirect()->route('konkuritos')->with('success', 'Data has been successfully stored.');
+    return redirect()->route('konkuritos')->with('success', 'Data berhasil disimpan!');
     }
     
 
@@ -261,7 +261,7 @@ class AdminKonkuritoController extends Controller
             DB::rollback();
            return redirect()->back()->with('error', 'Terjadi kesalahan. Silakan coba lagi nanti.');
         }
-        return redirect()->route('konkuritos')->with('success', 'Data has been successfully stored.');
+        return redirect()->route('konkuritos')->with('success', 'Data berhasil disimpan!');
     }
 
     public function delete($id)
@@ -303,7 +303,7 @@ class AdminKonkuritoController extends Controller
             return redirect()->back()->with('error', 'Terjadi kesalahan. Silakan coba lagi nanti.');
         }
 
-        return redirect()->route('konkuritos')->with('success', 'Data has been successfully deleted.');
+        return redirect()->route('konkuritos')->with('success', 'Data berhasil dihapus!');
     }
 
     public function post(Request $request)
@@ -319,7 +319,7 @@ class AdminKonkuritoController extends Controller
             DB::rollback();
             return redirect()->back()->with('error', 'Terjadi kesalahan. Silakan coba lagi nanti.');
         }
-        return redirect()->route('konkuritos')->with('success', 'Data status has been successfully changed .');
+        return redirect()->route('konkuritos')->with('success', 'Status data berhasil diubah!');
     }
     
 }

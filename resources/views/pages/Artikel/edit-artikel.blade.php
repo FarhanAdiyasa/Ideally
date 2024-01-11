@@ -24,12 +24,12 @@
       <div class="col-sm-6">
         <h1>Edit Artikel</h1>
       </div>
-      <div class="col-sm-6">
+      <!-- <div class="col-sm-6">
         <ol class="breadcrumb float-sm-right">
           <li class="breadcrumb-item"><a href="#">Home</a></li>
           <li class="breadcrumb-item active">Advanced Form</li>
         </ol>
-      </div>
+      </div> -->
     </div>
   </div><!-- /.container-fluid -->
 </section>
@@ -85,7 +85,7 @@
         </div>
         <!-- /.col -->
         <div class="col-md-9">
-              <label class="col-sm-3 col-form-label">Profile Pic</label>
+              <label class="col-sm-3 col-form-label">Gambar Profil</label>
               <div class="col-sm-9">
                 <input type="file" class="form-control" name="gambar_artikel" @error('gambar_artikel') is-invalid @enderror id="selectimage">
               </div>
@@ -185,7 +185,7 @@
           <div class="row">
             <div class="col-md-12">
                 <div class="form-group">
-                    <label for="">Description:</label>
+                    <label for="">Isi Artikel:</label>
                     <textarea name="isi_artikel" id="isi_artikel" cols="30" rows="10">{!! $artikel->isi_artikel !!}</textarea>
                     @error('isi_artikel')
                     <small class="text-danger">{{ $message }}</small>
@@ -288,7 +288,7 @@
               <div class="input-group mb-3">
                   <input type="text" name="sumber[]" class="form-control m-input" placeholder="Enter sourcec" autocomplete="off" value="{{$sumber->sumber_artikel}}">
                   <div class="input-group-append">
-                      <button id="removeRow" type="button" class="btn btn-danger">Remove</button>
+                      <button id="removeRow" type="button" class="btn btn-danger">Hapus</button>
                   </div>
               </div>
           </div>
@@ -296,7 +296,7 @@
             @endforeach
          
             <div id="newRow"></div>
-            <button id="addRow" type="button" class="btn btn-info">Add Row</button>
+            <button id="addRow" type="button" class="btn btn-info">Tambah Baris</button>
         </div>
     </div>
     </div>

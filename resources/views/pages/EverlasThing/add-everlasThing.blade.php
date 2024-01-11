@@ -21,12 +21,12 @@
       <div class="col-sm-6">
         <h1>Tambah Produk Everlas Things</h1>
       </div>
-      <div class="col-sm-6">
+      <!-- <div class="col-sm-6">
         <ol class="breadcrumb float-sm-right">
           <li class="breadcrumb-item"><a href="#">Home</a></li>
           <li class="breadcrumb-item active">Advanced Form</li>
         </ol>
-      </div>
+      </div> -->
     </div>
   </div><!-- /.container-fluid -->
 </section>
@@ -59,7 +59,7 @@
           <!-- /.col -->
           <div class="col-md-9">
             <div class="form-group">
-                <input id="default" type="text" class="form-control" placeholder="Placeholder text" name="nama_produk" id="nama_produk" value="{{old('nama_produk')}}">
+                <input id="default" type="text" class="form-control" placeholder="Masukkan disini" name="nama_produk" id="nama_produk" value="{{old('nama_produk')}}">
                 @error('nama_produk')
                 <small class="text-danger">{{ $message }}</small>
                 @enderror
@@ -82,7 +82,7 @@
           <!-- /.col -->
           <div class="col-md-9">
             <div class="form-group">
-                <input type="text" class="form-control" placeholder="Placeholder text" name="seri" id="seri" value="{{old('seri')}}">
+                <input type="text" class="form-control" placeholder="Masukkan disini" name="seri" id="seri" value="{{old('seri')}}">
                 @error('seri')
                 <small class="text-danger">{{ $message }}</small>
                 @enderror
@@ -190,7 +190,7 @@
         <div class="col-12 col-sm-6">
           <div class="form-group">
             <label>Material Pendukung</label>
-              <input type="text" class="form-control" placeholder="Placeholder text" name="material_pendukung" value="{{old('material_pendukung')}}">
+              <input type="text" class="form-control" placeholder="Masukkan disini" name="material_pendukung" value="{{old('material_pendukung')}}">
                  @error('material_pendukung')
               <small class="text-danger">{{ $message }}</small>
               @enderror
@@ -204,7 +204,7 @@
           <div class="col-12 col-sm-6">
             <div class="form-group">
               <label>Finishing</label>
-                <input type="text" class="form-control" placeholder="Placeholder text" name="finishing" value="{{old('finishing')}}">
+                <input type="text" class="form-control" placeholder="Masukkan disini" name="finishing" value="{{old('finishing')}}">
                    @error('finishing')
                 <small class="text-danger">{{ $message }}</small>
                 @enderror
@@ -214,7 +214,7 @@
           <div class="col-12 col-sm-6">
             <div class="form-group">
               <label>Berat (gr)</label>
-                <input type="number" class="form-control" placeholder="Placeholder text" name="berat" value="{{old('berat')}}">
+                <input type="number" class="form-control" placeholder="Masukkan disini" name="berat" value="{{old('berat')}}">
                    @error('berat')
                 <small class="text-danger">{{ $message }}</small>
                 @enderror

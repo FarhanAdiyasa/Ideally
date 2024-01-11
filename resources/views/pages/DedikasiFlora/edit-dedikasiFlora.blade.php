@@ -22,12 +22,12 @@
       <div class="col-sm-6">
         <h1>Edit Produk dedikasiFlora</h1>
       </div>
-      <div class="col-sm-6">
+      <!-- <div class="col-sm-6">
         <ol class="breadcrumb float-sm-right">
           <li class="breadcrumb-item"><a href="#">Home</a></li>
           <li class="breadcrumb-item active">Advanced Form</li>
         </ol>
-      </div>
+      </div> -->
     </div>
   </div><!-- /.container-fluid -->
 </section>
@@ -61,7 +61,7 @@
           <!-- /.col -->
           <div class="col-md-9">
             <div class="form-group">
-                <input id="default" type="text" class="form-control" placeholder="Placeholder text" name="nama_latin" id="nama_latin" value="{{old('nama_latin', $dedikasiFlora->nama_latin)}}">
+                <input id="default" type="text" class="form-control" placeholder="Masukkan disini" name="nama_latin" id="nama_latin" value="{{old('nama_latin', $dedikasiFlora->nama_latin)}}">
                 @error('nama_latin')
                 <small class="text-danger">{{ $message }}</small>
                 @enderror
@@ -84,7 +84,7 @@
           <!-- /.col -->
           <div class="col-md-9">
             <div class="form-group">
-                <input id="default" type="text" class="form-control" placeholder="Placeholder text" name="nama_lokal" id="nama_lokal" value="{{old('nama_lokal', $dedikasiFlora->nama_lokal)}}">
+                <input id="default" type="text" class="form-control" placeholder="Masukkan disini" name="nama_lokal" id="nama_lokal" value="{{old('nama_lokal', $dedikasiFlora->nama_lokal)}}">
                 @error('nama_lokal')
                 <small class="text-danger">{{ $message }}</small>
                 @enderror
@@ -101,7 +101,7 @@
           <div class="col-12 col-sm-6">
             <div class="form-group">
               <label>Spesifikasi Produk</label>
-                <input type="text" class="form-control" placeholder="Placeholder text" name="spesifikasi" value="{{old('spesifikasi', $dedikasiFlora->spesifikasi)}}">
+                <input type="text" class="form-control" placeholder="Masukkan disini" name="spesifikasi" value="{{old('spesifikasi', $dedikasiFlora->spesifikasi)}}">
                    @error('spesifikasi')
                 <small class="text-danger">{{ $message }}</small>
                 @enderror
@@ -155,7 +155,7 @@
           <div class="col-12 col-sm-6">
             <div class="form-group">
               <label>Diameter Tajuk</label>
-                <input type="text" class="form-control" placeholder="Placeholder text" name="diameter_tajuk" value="{{old('diameter_tajuk', $dedikasiFlora->diameter_tajuk)}}">
+                <input type="text" class="form-control" placeholder="Masukkan disini" name="diameter_tajuk" value="{{old('diameter_tajuk', $dedikasiFlora->diameter_tajuk)}}">
                    @error('diameter_tajuk')
                 <small class="text-danger">{{ $message }}</small>
                 @enderror
@@ -295,7 +295,7 @@
           <div class="col-12 col-sm-6">
             <div class="form-group">
               <label>Berat (gr)</label>
-                <input type="number" class="form-control" placeholder="Placeholder text" name="berat" value="{{old('berat', $dedikasiFlora->berat)}}">
+                <input type="number" class="form-control" placeholder="Masukkan disini" name="berat" value="{{old('berat', $dedikasiFlora->berat)}}">
                    @error('berat')
                 <small class="text-danger">{{ $message }}</small>
                 @enderror
