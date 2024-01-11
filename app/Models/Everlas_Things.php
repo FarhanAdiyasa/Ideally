@@ -31,4 +31,8 @@ protected $table = 'everlas_things';
     {
         return $this->belongsToMany(Promo::class, 'everlas_things_promos', 'id_everlas_things', 'id_promo');
     }
+
+    public function orders() {
+        return $this->belongsToMany(Order::class, 'order_everlas_things');
+    }
 }

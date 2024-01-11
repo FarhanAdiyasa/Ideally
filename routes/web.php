@@ -1,6 +1,7 @@
 <?php
 
 
+use App\Http\Controllers\PembayaranController;
 use App\Models\Artikel;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -285,3 +286,7 @@ Route::get('/add-cart-deflo/{id}/{qty}', [TransaksiController::class, 'add_cart_
 
 //keranjang agrigard
 Route::get('/add-cart-agrigard/{id}/{qty}', [TransaksiController::class, 'add_cart_agrigard'])->name('addcart.agrigard');
+
+// pembayaran
+Route::get('/pembayaran', [PembayaranController::class, 'index'])->name('index.pembayaran');
+Route::post('/bayar', [PembayaranController::class, 'bayar'])->name('store.bayar');
