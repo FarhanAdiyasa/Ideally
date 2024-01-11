@@ -9,10 +9,24 @@ class Order extends Model
 {
     use HasFactory;
 
+    protected $fillable = ['user_id', 'nomor_order', 'status', '_token'];
 
-    public function deflos() {
-        return $this->belongsToMany(Dedikasi_Flora::class, 'order_deflos');
+    protected static function booted()
+    {
+        static::creating(function ($order) {
+            $year = date('y');
+            $month = date('m');
+            $randomId = str_pad(mt_rand(1, 9999), 4, '0', STR_PAD_LEFT);
+            $order->nomor_order = $year . $month . $randomId;
+        });
     }
+
+
+    public function nurseris()
+    {
+        return $this->belongsToMany(Dedikasi_Flora::class, 'dedikasi_floras_order', 'id_order', 'id_nurseri');
+    }
+
 
     public function agrigards() {
         return $this->belongsToMany(Agrigard::class, 'order_agrigards');

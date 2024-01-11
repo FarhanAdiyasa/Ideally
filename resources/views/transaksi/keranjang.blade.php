@@ -349,7 +349,7 @@
                         <div class="d-flex flex-column align-items-center">
                             @if (isset($ongkir))
                             <div class="mt-3">
-                                <a href="" class="btn btn-bayar bg-tosca rounded-5">Lanjut ke Pembayaran</a>
+                                <a href="{{ route('index.pembayaran') }}" class="btn btn-bayar bg-tosca rounded-5">Lanjut ke Pembayaran</a>
                             </div>
                             @else
                             <div class="mt-3">
