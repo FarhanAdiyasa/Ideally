@@ -37,17 +37,12 @@
             <div class="col-sm-6">
                 <h5>Detail Produk</h5>
 
-                <form action="{{ route('store.order') }}" method="post">
-                @csrf
-                @if (session()->has('cart_deflo'))
-                @foreach (session('cart_deflo') as $item)
-                <div class="mt-3">
-                    <label for="id" class="form-control">Produk ID</label>
-                    <input type="text" class="form-control" id="id" name="deflo_ids[]" value="{{ $item['produk']->id_nurseri }}" readonly>
-                </div>
-                @endforeach
-                @endif
-                <input type="submit" value="Create Order" class="btn btn-primary">
+                <form action="{{ route('store.bayar') }}" method="post">
+                    @csrf
+                    <input type="hidden" name="order" value="24018981">
+                    <input type="hidden" name="grossAmount" value="300000">
+                    <input type="hidden" name="bank" value="bri">
+                    <input type="submit" value="Create Order" class="btn btn-primary">
                 </form>
                 
             </div>

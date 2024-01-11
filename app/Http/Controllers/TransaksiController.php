@@ -68,7 +68,7 @@ class TransaksiController extends Controller
                 $nama = substr(Str::lower($nama), 5);
     
                 $rajaongkirResponse = Http::withHeaders([
-                    'key' => 'c6f5a244812b5c983cbd2810dcfbe62b'
+                    'key' => config('ongkir.rajaongkir')
                 ])->get('https://api.rajaongkir.com/starter/city');
     
                 if ($rajaongkirResponse->ok()) {
@@ -90,15 +90,16 @@ class TransaksiController extends Controller
 
         if ($dstUser !== null) {
             $responseCost = Http::withHeaders([
-                'key' => 'c6f5a244812b5c983cbd2810dcfbe62b'
+                'key' => config('ongkir.rajaongkir')
             ])->post('https://api.rajaongkir.com/starter/cost', [
                 'origin' => $request->origin,
                 'destination' => $dstUser,
                 'weight' => $request->weight,
                 'courier' => $request->courier,
             ]);
+
+            // dd($responseCost->json());
     
-            
             $ongkir = $responseCost->json()['rajaongkir']['results'];
             return view('transaksi.keranjang', compact('ongkir'));
         }

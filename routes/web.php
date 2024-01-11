@@ -280,4 +280,4 @@ Route::get('/add-cart-agrigard/{id}/{qty}', [TransaksiController::class, 'add_ca
 
 // pembayaran
 Route::get('/pembayaran', [PembayaranController::class, 'index'])->name('index.pembayaran');
-Route::post('/pembayaran', [PembayaranController::class, 'order'])->name('store.order');
+Route::post('/bayar', [PembayaranController::class, 'bayar'])->name('store.bayar');

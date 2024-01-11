@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Order;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Http;
 
 class PembayaranController extends Controller
 {
@@ -32,5 +33,23 @@ class PembayaranController extends Controller
         }
         
         return ('gagal');
+    }
+
+    public function bayar(Request $request) {
+        // dd($request->bank);
+        $key = config('midtrans.serverKey');
+
+        $response = Http::withBasicAuth($key, '')->post('https://api.sandbox.midtrans.com/v2/charge', [
+            "payment_type"          => "bank_transfer",
+            "transaction_details"   => [
+                "order_id"      => $request->order,
+                "gross_amount"  => $request->grossAmount
+            ],
+            "bank_transfer"         => [
+                "bank"          => $request->bank
+            ]
+        ]);
+
+        dd($response->json());
     }
 }
