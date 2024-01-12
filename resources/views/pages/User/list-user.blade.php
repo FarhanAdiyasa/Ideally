@@ -19,6 +19,7 @@
                     <table id="products-table" class="table table-hover table-bordered text-center">
                         <thead>
                             <tr>
+                                <th>No</th>
                                 <th>Nama user</th>
                                 <th>Email</th>
                                 <th>No. Telepon</th>

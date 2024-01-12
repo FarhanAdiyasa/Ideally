@@ -32,7 +32,7 @@ return new class extends Migration
             $table->string('video')->nullable();
             $table->integer('stok')->default(0); // Menggunakan tipe data 'integer' untuk stok
             $table->integer('item_terjual')->default(0);
- $table->integer('berat');
+  
             $table->string('armada_minimum');
             $table->decimal('harga_jual_projek_ideally', 10, 2);
             $table->decimal('harga_b2I_31_unit', 10, 2);

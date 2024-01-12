@@ -32,7 +32,7 @@ class BatunesiaFactory extends Factory
             'armada_minimum' => [$this->faker->word],
             'stok' => [$this->faker->randomNumber(2)],
             'item_terjual' => [$this->faker->randomNumber(2)],
-            'berat' => $this->faker->numberBetween(0, 100),
+            'berat_gram' => $this->faker->numberBetween(0, 100),
             'penempatan' => $this->faker->word,
             'deskripsi_singkat' => $this->faker->paragraph,
             'harga_jual_projek_ideally' => $this->faker->randomFloat(2, 10, 300) * 1000,

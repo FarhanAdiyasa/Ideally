@@ -198,7 +198,7 @@
             </li>
             <li class="nav-header">Edukasi</li>
             <li class="nav-item">
-              <a href="{{ route('artikels') }}"" class="nav-link">
+              <a href="{{ route('artikels') }}" class="nav-link">
                 <i class="nav-icon fa fa-solid fa-newspaper"></i>
                 <p>
                   Artikel
@@ -211,6 +211,15 @@
                 <i class="nav-icon fa fa-solid fa-percent"></i>
                 <p>
                   Promo
+                </p>
+              </a>
+            </li>
+            <li class="nav-header">User</li>
+            <li class="nav-item">
+              <a href="{{ route('daftar-user') }}" class="nav-link">
+                <i class="nav-icon fa fa-solid fa-users"></i>
+                <p>
+                  User
                 </p>
               </a>
             </li>
@@ -365,14 +374,17 @@
 </script>
 <script src="{{ asset('js/admin_side.js')}}"></script>
 <script>
+ 
   document.addEventListener('DOMContentLoaded', function() {
     var logoutButton = document.getElementById('logoutButton');
-
-    logoutButton.addEventListener('click', function(event) {
+    if(logoutButton){
+      logoutButton.addEventListener('click', function(event) {
       event.preventDefault();
 
       $('#logoutModal').modal('show');
     });
+    }
+   
   });
 </script>
 

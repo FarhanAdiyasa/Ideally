@@ -9,14 +9,14 @@
                           <!-- small box -->
                           <div class="small-box bg-info">
                             <div class="inner">
-                              <h3>150</h3>
+                              <h3>{{$orderHari}}</h3>
 
-                              <p>New Orders</p>
+                              <p>Pesanan Hari Ini</p>
                             </div>
                             <div class="icon">
                               <i class="ion ion-bag"></i>
                             </div>
-                            <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                            
                           </div>
                         </div>
                         <!-- ./col -->
@@ -24,14 +24,14 @@
                           <!-- small box -->
                           <div class="small-box bg-success">
                             <div class="inner">
-                              <h3>53<sup style="font-size: 20px">%</sup></h3>
+                              <h3>{{$jmlArt}}</h3>
 
-                              <p>Bounce Rate</p>
+                              <p>Jumlah Artikel</p>
                             </div>
                             <div class="icon">
                               <i class="ion ion-stats-bars"></i>
                             </div>
-                            <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                            
                           </div>
                         </div>
                         <!-- ./col -->
@@ -39,35 +39,38 @@
                           <!-- small box -->
                           <div class="small-box bg-warning">
                             <div class="inner">
-                              <h3>44</h3>
+                              <h3>{{$userCreated}}</h3>
 
-                              <p>User Registrations</p>
+                              <p>Pengguna Baru Bulan Ini</p>
                             </div>
                             <div class="icon">
                               <i class="ion ion-person-add"></i>
                             </div>
-                            <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                            
                           </div>
                         </div>
                         <!-- ./col -->
                       </div>
                       <div class="row">
                         <!-- Left col -->
-                        <section class="col-lg-7 connectedSortable">
+                        <section class="col-lg-12 connectedSortable">
                           <!-- Custom tabs (Charts with tabs)-->
                           <div class="card">
                             <div class="card-header">
                               <h3 class="card-title">
                                 <i class="fas fa-chart-pie mr-1"></i>
-                                Sales
+                                Penjualan
                               </h3>
                               <div class="card-tools">
                                 <ul class="nav nav-pills ml-auto">
                                   <li class="nav-item">
-                                    <a class="nav-link active" href="#revenue-chart" data-toggle="tab">Line</a>
+                                    <a class="nav-link active" href="#revenue-chart" data-toggle="tab">Bulan Ini</a>
                                   </li>
                                   <li class="nav-item">
-                                    <a class="nav-link" href="#sales-chart" data-toggle="tab">Donut</a>
+                                    <a class="nav-link" href="#sales-chart" data-toggle="tab">Tahun Ini</a>
+                                  </li>
+                                  <li class="nav-item">
+                                    <a class="nav-link" href="#rowes-chart" data-toggle="tab">5 Tahun Terakhir</a>
                                   </li>
                                 </ul>
                               </div>
@@ -75,52 +78,42 @@
                             <div class="card-body">
                               <div class="tab-content p-0">
                                 <!-- Morris chart - Sales -->
-                                <div class="chart tab-pane active" id="revenue-chart" style="position: relative; height: 300px;">
-                                  <canvas id="revenue-chart-canvas" height="300" style="height: 300px;"></canvas>
+                                <div class="chart tab-pane active" id="revenue-chart" style="position: relative;">
+                                  {!! $chart->container() !!}
                                 </div>
-                                <div class="chart tab-pane" id="sales-chart" style="position: relative; height: 300px;">
-                                  <canvas id="sales-chart-canvas" height="300" style="height: 300px;"></canvas>
+                                <div class="chart tab-pane" id="sales-chart" style="position: relative; ">
+                                  {!! $chart2->container() !!}
+                                </div>
+                                <div class="chart tab-pane" id="rowes-chart" style="position: relative; ">
+                                  {!! $chart3->container() !!}
                                 </div>
                               </div>
                             </div><!-- /.card-body -->
                           </div>
-                          <!-- /.card -->
-                        </section>
-                        <!-- /.Left col -->
-                        <!-- right col (We are only adding the ID to make the widgets sortable)-->
-                        <section class="col-lg-5 connectedSortable">
-
-                          <!-- Map card -->
-                          <div class="card bg-gradient-primary">
-                            <div class="card-header border-0">
-                              <h3 class="card-title">
-                                <i class="fas fa-map-marker-alt mr-1"></i>
-                                Visitors
-                              </h3>
-                              <!-- card tools -->
-                              <div class="card-tools">
-                                <button type="button" class="btn btn-primary btn-sm" data-card-widget="collapse" title="Collapse">
-                                  <i class="fas fa-minus"></i>
-                                </button>
+                          
+                            <div class="modal" id="harianModal" tabindex="-1" role="dialog">
+                              <div class="modal-dialog" role="document">
+                                  <div class="modal-content">
+                                      <div class="modal-header">
+                                          <h5 class="modal-title">Pilih Bulan</h5>
+                                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                              <span aria-hidden="true">&times;</span>
+                                          </button>
+                                      </div>
+                                      <div class="modal-body">
+                                        <div class="form-group">
+                                          <input type="datepicker" class="form-control" name="datepicker" id="datepicker" />
+                                      </div>
+                                      </div>
+                                      <div class="modal-footer">
+                                          <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
+                                          <button type="button" class="btn btn-primary">Simpan</button>
+                                      </div>
+                                  </div>
                               </div>
-                              <!-- /.card-tools -->
                             </div>
-                            <div class="card-body">
-                              
-                            </div>
-                            <!-- /.card-body-->
-                            <div class="card-footer bg-transparent">
-                              <div class="row">
-                                <div class="col-4 text-center">
-                              
-                              </div>
-                              <!-- /.row -->
-                            </div>
-                          </div>
-                          <!-- /.card -->
-                          <!-- /.card -->
                         </section>
-                        <!-- right col -->
+  
                       </div>
                     </div><!-- /.container-fluid -->
               </div>
@@ -150,55 +143,23 @@
 </div>
 </div>
 <!-- End of Logout Warning Modal -->
+
+
 @endsection
 @section('scripts_all')
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
+<script src="{{ $chart->cdn() }}"></script>
+
+{{ $chart->script() }}
+<script src="{{ $chart2->cdn() }}"></script>
+
+{{ $chart2->script() }}
+<script src="{{ $chart3->cdn() }}"></script>
+
+{{ $chart3->script() }}
 <script>
-  // Ambil referensi ke elemen canvas
-  var ctx = document.getElementById('revenue-chart-canvas').getContext('2d');
   
-  // Data untuk line chart
-  var data = {
-      labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May'], // Label sumbu x
-      datasets: [{
-          label: 'Monthly Revenue',
-          borderColor: 'rgb(75, 192, 192)',
-          data: [1000, 1200, 800, 1500, 2000], // Data sumbu y
-          fill: false
-      }]
-  };
-  
-  // Konfigurasi line chart
-  var options = {
-      responsive: true,
-      maintainAspectRatio: false,
-      scales: {
-          x: {
-              type: 'category', // Jenis sumbu x
-              position: 'bottom',
-              grid: {
-                  display: false
-              }
-          },
-          y: {
-              position: 'left',
-              grid: {
-                  display: true
-              }
-          }
-      }
-  };
-  
-  // Inisialisasi line chart
-  var revenueChart = new Chart(ctx, {
-      type: 'line',
-      data: data,
-      options: options
-  });
-  </script>
-  
-<script>
   // Ambil referensi ke elemen canvas
   var ctx = document.getElementById('sales-chart-canvas').getContext('2d');
   

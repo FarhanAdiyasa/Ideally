@@ -6,8 +6,8 @@
                 <label for="all">All</label>
                 <input type="checkbox" name="" value="" id="all" class="check-all">
             </th> 
-             <th>No</th>
-                                <th>Info {{$brand}}</th>
+             
+            <th>Info {{$brand}}</th>
             <th>Harga</th>
             <th>Stok</th>
         </tr>
@@ -24,6 +24,9 @@
                     <div class="row">
                         <div class="col-4"><img src=" {{asset('storage/' .$product->gambar_1)}}" width="56" height="56" alt="Product Image"></div>
                         <div class="col-8">
+                            {{-- @if ($brand == "shineage")
+                                
+                            @endif --}}
                             <div>
                                  {{ $product->nama_produk }}
                             </div>

@@ -124,7 +124,7 @@
           <div class="col-12 col-sm-6">
             <div class="form-group">
               <label>Berat (gr)</label>
-                <input type="number" class="form-control" placeholder="Placeholder text" name="berat" value="{{old('berat', $batunesia->berat)}}">
+                <input type="number" class="form-control" placeholder="Placeholder text" name="berat_gram" value="{{old('berat_gram', $batunesia->berat_gram)}}">
                    @error('berat')
                 <small class="text-danger">{{ $message }}</small>
                 @enderror
@@ -422,7 +422,7 @@
         <!-- /.col -->
       </div>
       <div class="row">
-        <label>Harga Business To Individu :</label>
+        <label>Harga Business To Ideally :</label>
       </div>
       <div class="row">
         <div class="col-md-3">

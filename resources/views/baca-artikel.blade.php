@@ -340,8 +340,11 @@
                             </div>
 
                             <div class="col-5 nama-akun-komentar">
-                                <h3 class="mb-0">{{auth()->user()->firstname}} {{auth()->user()->lastname}}</h3>
-                                <p class="text-muted">{{auth()->user()->profesi}}</p>
+                                @if(auth()->check())
+                                <h3 class="mb-0">{{ auth()->user()->firstname }} {{ auth()->user()->lastname }}</h3>
+                                <p class="text-muted">{{ auth()->user()->profesi }}</p>
+                            @endif
+                            
                             </div>
                             <div class="mb-4"></div>
 
