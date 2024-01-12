@@ -22,16 +22,20 @@
                     <table id="products-table" class="table table-hover table-bordered text-center">
                         <thead>
                             <tr>
-                                <th>Info dedikasiFlora</th>
+                                 <th>No</th>
+                                <th>Info Dedikasi Flora</th>
                                 <th>Harga</th>
                                 <th>Stok</th>
                                 <th>Status</th>
-                                <th>Actions</th>
+                                <th>Aksi</th>
                             </tr>
                         </thead>
                         <tbody>
                             @forelse ($dedikasiFloras as $dedikasiFlora)
                                 <tr>
+                                    <td>
+                                        {{ $loop->iteration }}
+                                    </td>
                                     <td>
                                         <div class="row">
                                             <div class="col-4"><img src="{{  asset('storage/' . $dedikasiFlora->gambar_1)}}" width="56" height="56" alt="Product Image"></div>
@@ -47,7 +51,7 @@
                                     </td>
                                     <td>
                                         @foreach ($dedikasiFlora->harga_ranges as $hargaRange)
-                                            <div>{{ $hargaRange }}</div>
+                                             <div>{{ $hargaRange }}</div>
                                         @endforeach
                                     </td>
                                     <td>
@@ -127,7 +131,7 @@
 <script src="https://cdn.datatables.net/1.11.5/js/dataTables.bootstrap5.min.js"></script>
 <script>
     function show(id) {
-        $.get("{{ url('/dedikasiFloras/') }}/" + id, {}, function (data, status) {
+        $.get("{{ url('/daftar-dedikasiFlora/') }}/" + id, {}, function (data, status) {
             $("#modal-content").html(data);
         })
         .fail(function (xhr, textStatus, errorThrown) {

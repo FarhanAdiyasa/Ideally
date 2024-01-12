@@ -1,7 +1,7 @@
 @extends('layouts/admin')
 @section('content')
 <section class="content-header">
-  @if ($errors->any())
+  {{-- @if ($errors->any())
     <div class="alert alert-danger">
         <ul>
             @foreach ($errors->all() as $error)
@@ -9,7 +9,7 @@
             @endforeach
         </ul>
     </div>
-@endif
+@endif --}}
 
 @if(session('success'))
     <div class="alert alert-success">
@@ -95,7 +95,15 @@
         </div>
         <!-- /.row -->
         <div class="row">
-          <div class="col-12 col-sm-6">
+          <div class="col-md-3">
+            <div class="form-group">
+              <label>Jenis Shineage</label>
+              <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sed, odit ab eum enim illo minima deleniti quae ducimus repudiandae sit!</p>
+            </div>
+            <!-- /.form-group -->
+          </div>
+          <!-- /.col -->
+          <div class="col-md-9">
             <div class="form-group">
               <label>Jenis</label>
               <select class="form-control select2" style="width: 100%;" name="jenis">
@@ -110,42 +118,11 @@
                 <small class="text-danger">{{ $message }}</small>
                 @enderror
             </div>
-            <!-- /.form-group -->
-          </div>
-          <!-- /.col -->
-          <div class="col-12 col-sm-6">
-            <div class="form-group">
-              <label>Garansi Produk</label>
-              <div class="select2-purple">
-                <select class="form-control select2" style="width: 100%;" name="garansi">
-                  <option value="30 hari" @selected(old('garansi') == '30 hari' || $shineage->garansi == '30 hari')>30 hari</option>
-                  <option value="60 hari" @selected(old('garansi') == '60 hari' || $shineage->garansi == '60 hari')>60 hari</option>
-                  <option value="90 hari" @selected(old('garansi') == '90 hari' || $shineage->garansi == '90 hari')>90 hari</option>
-                  <option value="180 hari" @selected(old('garansi') == '180 hari' || $shineage->garansi == '180 hari')>180 hari</option>
-                  <option value="360 hari" @selected(old('garansi') == '360 hari' || $shineage->garansi == '360 hari')>360 hari</option>
-              </select>              
-                     @error('garansi')
-                <small class="text-danger">{{ $message }}</small>
-                @enderror
-              </div>
-            </div>
-            <!-- /.form-group -->
           </div>
           <!-- /.col -->
         </div>
         <!-- /.row -->
         <div class="row">
-          <div class="col-12 col-sm-6">
-            <div class="form-group">
-              <label>Dimensi Produk</label>
-                <input type="text" class="form-control" placeholder="Placeholder text" name="dimensi" value="{{old('dimensi', $shineage->dimensi)}}">
-                   @error('dimensi')
-                <small class="text-danger">{{ $message }}</small>
-                @enderror
-            </div>
-            <!-- /.form-group -->
-          </div>
-          <!-- /.col -->
           <div class="col-12 col-sm-6">
             <div class="form-group">
               <label>Warna Produk</label>
@@ -184,6 +161,25 @@
                 @error('warna')
                 <small class="text-danger">{{ $message }}</small>
                 @enderror
+            </div>
+            <!-- /.form-group -->
+          </div>
+          <!-- /.col -->
+          <div class="col-12 col-sm-6">
+            <div class="form-group">
+              <label>Garansi Produk</label>
+              <div class="select2-purple">
+                <select class="form-control select2" style="width: 100%;" name="garansi">
+                  <option value="30 hari" @selected(old('garansi') == '30 hari' || $shineage->garansi == '30 hari')>30 hari</option>
+                  <option value="60 hari" @selected(old('garansi') == '60 hari' || $shineage->garansi == '60 hari')>60 hari</option>
+                  <option value="90 hari" @selected(old('garansi') == '90 hari' || $shineage->garansi == '90 hari')>90 hari</option>
+                  <option value="180 hari" @selected(old('garansi') == '180 hari' || $shineage->garansi == '180 hari')>180 hari</option>
+                  <option value="360 hari" @selected(old('garansi') == '360 hari' || $shineage->garansi == '360 hari')>360 hari</option>
+              </select>              
+                     @error('garansi')
+                <small class="text-danger">{{ $message }}</small>
+                @enderror
+              </div>
             </div>
             <!-- /.form-group -->
           </div>
@@ -278,6 +274,18 @@
             <!-- /.form-group -->
           </div>
           <!-- /.col -->
+        </div>
+        <div class="row">
+          <div class="col-12 col-sm-6">
+            <div class="form-group">
+              <label>Berat (gr)</label>
+                <input type="number" class="form-control" placeholder="Placeholder text" name="berat" value="{{old('berat', $shineage->berat)}}">
+                   @error('berat')
+                <small class="text-danger">{{ $message }}</small>
+                @enderror
+            </div>
+            <!-- /.form-group -->
+          </div>
         </div>
         
       </div>
@@ -455,7 +463,7 @@
       <div class="row">
         <div class="col-md-3">
           <div class="form-group">
-            <p>1+ Units</p>
+            <p>1+ Units <span class="wajib">Wajib</span></p>
           </div>
           <!-- /.form-group -->
         </div>
@@ -479,7 +487,7 @@
       <div class="row">
         <div class="col-md-3">
           <div class="form-group">
-            <p>11+ Units</p>
+            <p>11+ Units <span class="wajib">Wajib</span></p>
            
           </div>
           <!-- /.form-group -->
@@ -505,7 +513,7 @@
       <div class="row">
         <div class="col-md-3">
           <div class="form-group">
-            <p>1+ Units</p>
+            <p>1+ Units <span class="wajib">Wajib</span></p>
            
           </div>
           <!-- /.form-group -->
@@ -528,7 +536,7 @@
       <div class="row">
         <div class="col-md-3">
           <div class="form-group">
-            <p>11+ Units</p>
+            <p>11+ Units <span class="wajib">Wajib</span></p>
            
           </div>
           <!-- /.form-group -->
@@ -554,7 +562,7 @@
       <div class="row">
         <div class="col-md-3">
           <div class="form-group">
-            <p>1+ Units:</p>
+            <p>1+ Units <span class="wajib">Wajib</span></p>
            
           </div>
           <!-- /.form-group -->
@@ -577,7 +585,7 @@
       <div class="row">
         <div class="col-md-3">
           <div class="form-group">
-            <p>11+ Units:</p>
+            <p>11+ Units <span class="wajib">Wajib</span></p>
            
           </div>
           <!-- /.form-group -->
@@ -604,8 +612,8 @@
 <input type="text" name="tanggal_publikasi" id="tanggal_publikasi" class="form-control" style="display:none;">
 <div class="m-3 d-flex justify-content-end">
   <button class="btn btn-dark mx-5" type="reset" >Cancel</button>
-  <button class="btn btn-dark mx-3" type="button" onclick="submitForm('1')">Submit And Post</button>
-  <button class="btn btn-success mx-3" type="button" onclick="submitForm('0')">Submit</button>
+  <button class="btn btn-dark mx-3" type="button" onclick="submitForm('1')">Simpan Dan Terbitkan</button>
+  <button class="btn btn-success mx-3" type="button" onclick="submitForm('0')">Simpan</button>
 </div>
 
 </form>

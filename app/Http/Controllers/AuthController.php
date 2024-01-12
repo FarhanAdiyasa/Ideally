@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Redirect;
 use Laravel\Socialite\Facades\Socialite;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\ValidationException;
@@ -78,9 +79,15 @@ class AuthController extends Controller
     }
 
     function logout() {
-        Session::flush();
-        Auth::logout();
-        return redirect()->to('auth/login');
+        if (auth()->user()->role == "admin") {
+            Session::flush();
+            Auth::logout();
+            return redirect()->to('auth/login');
+        } else {
+            Session::flush();
+            Auth::logout();
+            return redirect()->back();
+        }
     }
 
     function register(Request $request) {
@@ -126,8 +133,11 @@ class AuthController extends Controller
             // Autentikasi berhasil
             $user = Auth::user();
             session(['user_info' => $user]);
-            return redirect()->route('deflo.utama');
-            // Redirect ke halaman 'dashboard' dengan pesan keberhasilan
+            if ($user->role == "admin") {
+                return Redirect::intended('/dashboard');
+            } else {
+                return Redirect::intended('/portal-edukasi');
+            }
         } else {
             // Autentikasi gagal
             return redirect('auth/login')->with('error', 'Email atau Password salah!');
@@ -169,6 +179,10 @@ class AuthController extends Controller
 
     public function resetPassword($token){
         return view('sesi/new-password', compact('token'));
+    }
+
+    public function testing(){
+         return view('sesi.dashboard');
     }
 
     // Fungsi untuk mereset password

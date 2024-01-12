@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="csrf-token" content="{{ csrf_token() }}">
-  <title>AdminLTE 3 | Advanced form elements</title>
+  <title>Ideally</title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -36,9 +36,14 @@
 
   <!-- Additional Style -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
 
-<!-- DataTables CSS -->
-<link href="https://cdn.datatables.net/1.11.5/css/dataTables.bootstrap5.min.css" rel="stylesheet">
+  <!-- DataTables CSS -->
+  <link href="https://cdn.datatables.net/1.11.5/css/dataTables.bootstrap5.min.css" rel="stylesheet">
+
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+
 
 @yield('head-src')
 
@@ -51,8 +56,9 @@
   <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.2/dist/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.9.0/dropzone.js"></script>
   
+  
 </head>
-<body class="hold-transition sidebar-mini" id="body">
+<body class="hold-transition sidebar-mini layout-navbar-fixed layout-fixed sidebar-open" id="body">
 <div class="wrapper">
   <!-- Preloader -->
     <div class="preloader flex-column justify-content-center align-items-center">
@@ -62,7 +68,7 @@
   <!-- Navbar -->
     <nav class="main-header navbar navbar-expand navbar-white navbar-light">
       <!-- Left navbar links -->
-      <ul class="navbar-nav">
+      <ul class="navbar-nav" style="padding-left: 20px;">
         <li class="nav-item">
           <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
         </li>
@@ -70,131 +76,23 @@
       </ul>
 
       <!-- Right navbar links -->
-      <ul class="navbar-nav ml-auto">
-        <!-- Navbar Search -->
-        <li class="nav-item">
-          <a class="nav-link" data-widget="navbar-search" href="#" role="button">
-            <i class="fas fa-search"></i>
-          </a>
-          <div class="navbar-search-block">
-            <form class="form-inline">
-              <div class="input-group input-group-sm">
-                <input class="form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search">
-                <div class="input-group-append">
-                  <button class="btn btn-navbar" type="submit">
-                    <i class="fas fa-search"></i>
-                  </button>
-                  <button class="btn btn-navbar" type="button" data-widget="navbar-search">
-                    <i class="fas fa-times"></i>
-                  </button>
-                </div>
-              </div>
-            </form>
-          </div>
-        </li>
-
-        <!-- Messages Dropdown Menu -->
-        <li class="nav-item dropdown">
-          <a class="nav-link" data-toggle="dropdown" href="#">
-            <i class="far fa-comments"></i>
-            <span class="badge badge-danger navbar-badge">3</span>
-          </a>
-          <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-            <a href="#" class="dropdown-item">
-              <!-- Message Start -->
-              <div class="media">
-                <img src="/lte/dist/img/user1-128x128.jpg" alt="User Avatar" class="img-size-50 mr-3 img-circle">
-                <div class="media-body">
-                  <h3 class="dropdown-item-title">
-                    Brad Diesel
-                    <span class="float-right text-sm text-danger"><i class="fas fa-star"></i></span>
-                  </h3>
-                  <p class="text-sm">Call me whenever you can...</p>
-                  <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
-                </div>
-              </div>
-              <!-- Message End -->
-            </a>
-            <div class="dropdown-divider"></div>
-            <a href="#" class="dropdown-item">
-              <!-- Message Start -->
-              <div class="media">
-                <img src="/lte/dist/img/user8-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
-                <div class="media-body">
-                  <h3 class="dropdown-item-title">
-                    John Pierce
-                    <span class="float-right text-sm text-muted"><i class="fas fa-star"></i></span>
-                  </h3>
-                  <p class="text-sm">I got your message bro</p>
-                  <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
-                </div>
-              </div>
-              <!-- Message End -->
-            </a>
-            <div class="dropdown-divider"></div>
-            <a href="#" class="dropdown-item">
-              <!-- Message Start -->
-              <div class="media">
-                <img src="/lte/dist/img/user3-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
-                <div class="media-body">
-                  <h3 class="dropdown-item-title">
-                    Nora Silvester
-                    <span class="float-right text-sm text-warning"><i class="fas fa-star"></i></span>
-                  </h3>
-                  <p class="text-sm">The subject goes here</p>
-                  <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
-                </div>
-              </div>
-              <!-- Message End -->
-            </a>
-            <div class="dropdown-divider"></div>
-            <a href="#" class="dropdown-item dropdown-footer">See All Messages</a>
-          </div>
-        </li>
-        <!-- Notifications Dropdown Menu -->
-        <li class="nav-item dropdown">
-          <a class="nav-link" data-toggle="dropdown" href="#">
-            <i class="far fa-bell"></i>
-            <span class="badge badge-warning navbar-badge">15</span>
-          </a>
-          <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-            <span class="dropdown-item dropdown-header">15 Notifications</span>
-            <div class="dropdown-divider"></div>
-            <a href="#" class="dropdown-item">
-              <i class="fas fa-envelope mr-2"></i> 4 new messages
-              <span class="float-right text-muted text-sm">3 mins</span>
-            </a>
-            <div class="dropdown-divider"></div>
-            <a href="#" class="dropdown-item">
-              <i class="fas fa-users mr-2"></i> 8 friend requests
-              <span class="float-right text-muted text-sm">12 hours</span>
-            </a>
-            <div class="dropdown-divider"></div>
-            <a href="#" class="dropdown-item">
-              <i class="fas fa-file mr-2"></i> 3 new reports
-              <span class="float-right text-muted text-sm">2 days</span>
-            </a>
-            <div class="dropdown-divider"></div>
-            <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
-          </div>
-        </li>
+      <ul class="navbar-nav ml-auto" style="padding-right: 20px;">
         <li class="nav-item">
           <a class="nav-link" data-widget="fullscreen" href="#" role="button">
             <i class="fas fa-expand-arrows-alt"></i>
           </a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" data-widget="control-sidebar" data-controlsidebar-slide="true" href="#" role="button">
-            <i class="fas fa-th-large"></i>
+        <li class="nav-item logout">
+          <a href="{{ route('logout') }}" class="nav-link">
+            <i class="fas fa-solid fa-right-from-bracket"></i>
           </a>
         </li>
       </ul>
     </nav>
   <!-- /.navbar -->
-
   
     <!-- Main Sidebar Container -->
-  <aside class="main-sidebar sidebar-light-primary elevation-4">
+  <aside class="main-sidebar sidebar-light-primary elevation-4 sidebar-fixed">
       <!-- Brand Logo -->
       <a href="index3.html" class="brand-link">
         <img src="{{asset('/lte/dist/img/logo-ideally.png')}}" alt="Logo Ideally" style="opacity: .8" width="50%">
@@ -206,10 +104,10 @@
         <!-- Sidebar user panel (optional) -->
         <div class="user-panel mt-3 pb-3 mb-3 d-flex">
           <div class="image">
-            <img src="{{asset('/lte/dist/img/user.jpg')}}" class="img-circle elevation-2" alt="User Image">
+            <img src="{{asset(auth()->user()->profile_picture)}}" class="img-circle elevation-2" alt="User Image">
           </div>
           <div class="info">
-            <a href="#" class="d-block">Fahriel Dwifaldi</a>
+            <p class="d-block">{{ auth()->user()->firstname }} {{ auth()->user()->lastname }}</p>
           </div>
         </div>
 
@@ -230,8 +128,8 @@
           <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
             <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
-            <li class="nav-item ">
-              <a href="#" class="nav-link">
+            <li class="nav-item">
+              <a href="{{ route('dashboard') }}" class="nav-link">
                 <i class="nav-icon fas fa-home"></i>
                 <p>
                   Dashboard
@@ -239,192 +137,73 @@
                 </p>
               </a>
             </li>
+
             <li class="nav-header">Produk</li>
             <li class="nav-item">
-              <a href="#" class="nav-link">
-                <i class="nav-icon fa fa-pagelines"></i>
+              <a href="{{ route('dedikasiFloras') }}" class="nav-link">
+                <i class="nav-icon fa fa-solid fa-leaf"></i>
                 <p>
                   Dedikasi Flora
-                  <i class="fas fa-angle-left right"></i>
                 </p>
               </a>
-              <ul class="nav nav-treeview">
-                <li class="nav-item">
-                  <a href="{{ route('dedikasiFloras.tambah') }}" class="nav-link">
-                    <i class="far nav-icon"></i>
-                    <p>Tambah Produk</p>
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a href="{{ route('dedikasiFloras') }}" class="nav-link">
-                    <i class="far nav-icon"></i>
-                    <p>Daftar Produk</p>
-                  </a>
-                </li>
-              </ul>
             </li>
             <li class="nav-item">
-              <a href="#" class="nav-link">
-                <i class="nav-icon far"></i>
+              <a href="{{ route('batunesias') }}" class="nav-link">
+                <i class="nav-icon fa fa-solid fa-box-open"></i>
                 <p>
                   Batunesia
-                  <i class="fas fa-angle-left right"></i>
                 </p>
               </a>
-              <ul class="nav nav-treeview">
-                <li class="nav-item">
-                  <a href="{{ route('batunesias.tambah') }}" class="nav-link">
-                    <i class="far nav-icon"></i>
-                    <p>Tambah Produk</p>
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a href="{{ route('batunesias') }}" class="nav-link">
-                    <i class="far   nav-icon"></i>
-                    <p>Daftar Produk</p>
-                  </a>
-                </li>
-              </ul>
             </li>
             <li class="nav-item">
-              <a href="#" class="nav-link">
-                <i class="nav-icon far "></i>
+              <a href="{{ route('konkuritos') }}" class="nav-link">
+                <i class="nav-icon fa fa-solid fa-box-open "></i>
                 <p>
                   Konkurito
-                  <i class="fas fa-angle-left right"></i>
                 </p>
               </a>
-              <ul class="nav nav-treeview">
-                <li class="nav-item">
-                  <a href="{{ route('konkuritos.tambah') }}" class="nav-link">
-                    <i class="far nav-icon"></i>
-                    <p>Tambah Produk</p>
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a href="{{ route('konkuritos') }}" class="nav-link">
-                    <i class="far   nav-icon"></i>
-                    <p>Daftar Produk</p>
-                  </a>
-                </li>
-              </ul>
             </li>
             <li class="nav-item">
-              <a href="#" class="nav-link">
-                <i class="nav-icon far "></i>
+              <a href="{{ route('everlasThings') }}" class="nav-link">
+                <i class="nav-icon fa fa-solid fa-chair "></i>
                 <p>
                   Everlas Thing
-                  <i class="fas fa-angle-left right"></i>
                 </p>
               </a>
-              <ul class="nav nav-treeview">
-                <li class="nav-item">
-                  <a href="{{ route('everlasThings.tambah') }}" class="nav-link">
-                    <i class="far nav-icon"></i>
-                    <p>Tambah Produk</p>
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a href="{{ route('everlasThings') }}" class="nav-link">
-                    <i class="far   nav-icon"></i>
-                    <p>Daftar Produk</p>
-                  </a>
-                </li>
-              </ul>
             </li>
             <li class="nav-item">
-              <a href="#" class="nav-link">
-                <i class="nav-icon far"></i>
+              <a href="{{ route('daftar-produk') }}" class="nav-link">
+                <i class="nav-icon fa fa-solid fa-box-open"></i>
                 <p>
                   Agrigard
-                  <i class="fas fa-angle-left right"></i>
                 </p>
               </a>
-              <ul class="nav nav-treeview">
-                <li class="nav-item">
-                  <a href="{{ route('daftar-produk.tambah') }}" class="nav-link">
-                    <i class="far nav-icon"></i>
-                    <p>Tambah Produk</p>
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a href="{{ route('daftar-produk') }}" class="nav-link">
-                    <i class="far   nav-icon"></i>
-                    <p>Daftar Produk</p>
-                  </a>
-                </li>
-              </ul>
             </li>
             <li class="nav-item">
-              <a href="#" class="nav-link">
-                <i class="nav-icon far"></i>
+              <a href="{{ route('shineages') }}" class="nav-link">
+                <i class="nav-icon fa fa-solid fa-box-open"></i>
                 <p>
                   Signage
-                  <i class="fas fa-angle-left right"></i>
                 </p>
               </a>
-              <ul class="nav nav-treeview">
-                <li class="nav-item">
-                  <a href="{{ route('shineages.tambah') }}" class="nav-link">
-                    <i class="far nav-icon"></i>
-                    <p>Tambah Produk</p>
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a href="{{ route('shineages') }}" class="nav-link">
-                    <i class="far   nav-icon"></i>
-                    <p>Daftar Produk</p>
-                  </a>
-                </li>
-              </ul>
             </li>
             <li class="nav-header">Edukasi</li>
             <li class="nav-item">
-              <a href="#" class="nav-link">
-                <i class="nav-icon fa fa-file-text-o"></i>
+              <a href="{{ route('artikels') }}"" class="nav-link">
+                <i class="nav-icon fa fa-solid fa-newspaper"></i>
                 <p>
                   Artikel
-                  <i class="fas fa-angle-left right"></i>
                 </p>
               </a>
-              <ul class="nav nav-treeview">
-                <li class="nav-item">
-                  <a href="{{ route('artikels.create') }}" class="nav-link">
-                    <i class="far nav-icon"></i>
-                    <p>Tambah Artikel</p>
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a href="{{ route('artikels') }}" class="nav-link">
-                    <i class="far nav-icon"></i>
-                    <p>Daftar Artikel</p>
-                  </a>
-                </li>
-              </ul>
             </li>
             <li class="nav-header">Promo</li>
             <li class="nav-item">
-              <a href="#" class="nav-link">
-                <i class="nav-icon fa fa-file-text-o"></i>
+              <a href="{{ route('daftar-promo') }}" class="nav-link">
+                <i class="nav-icon fa fa-solid fa-percent"></i>
                 <p>
                   Promo
-                  <i class="fas fa-angle-left right"></i>
                 </p>
               </a>
-              <ul class="nav nav-treeview">
-                <li class="nav-item">
-                  <a href="{{ route('daftar-promo.tambah') }}" class="nav-link">
-                    <i class="far nav-icon"></i>
-                    <p>Tambah Promo</p>
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a href="{{ route('daftar-promo') }}" class="nav-link">
-                    <i class="far nav-icon"></i>
-                    <p>Daftar Promo</p>
-                  </a>
-                </li>
-              </ul>
             </li>
           </ul>
         </nav>
@@ -439,12 +218,12 @@
     @yield('content')
   </div>
   <!-- /.content-wrapper -->
-  <footer class="main-footer">
+  <!-- <footer class="main-footer">
     <div class="float-right d-none d-sm-block">
       <b>Version</b> 3.2.0
     </div>
     <strong>Copyright &copy; 2014-2021 <a href="https://adminlte.io">AdminLTE.io</a>.</strong> All rights reserved.
-  </footer>
+  </footer> -->
 
   <!-- Control Sidebar -->
   <aside class="control-sidebar control-sidebar-dark">
@@ -456,7 +235,7 @@
 
 <!-- jQuery -->
 <script src="{{ asset('lte/plugins/jquery/jquery.min.js')}}"></script>
-{{-- <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script> --}}
+{{-- <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script> --}}
 <script src="{{ asset('js/jquery.mask.min.js')}}"></script>
 <!-- Bootstrap 4 -->
 <script src="{{ asset('lte/plugins/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
@@ -467,6 +246,8 @@
 <!-- InputMask -->
 <script src="{{ asset('lte/plugins/moment/moment.min.js')}}"></script>
 <script src="{{ asset('lte/plugins/inputmask/jquery.inputmask.min.js')}}"></script>
+<!-- ChartJS -->
+  <script src="{{ asset('lte/plugins/chart.js/Chart.min.js')}}"></script>
 <!-- date-range-picker -->
 <script src="{{ asset('lte/plugins/daterangepicker/daterangepicker.js')}}"></script>
 <!-- bootstrap color picker -->
@@ -574,6 +355,18 @@
  
 </script>
 <script src="{{ asset('js/admin_side.js')}}"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    var logoutButton = document.getElementById('logoutButton');
+
+    logoutButton.addEventListener('click', function(event) {
+      event.preventDefault();
+
+      $('#logoutModal').modal('show');
+    });
+  });
+</script>
+
 @yield('scripts_all')
 
 </body>
