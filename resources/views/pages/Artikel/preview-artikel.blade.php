@@ -118,8 +118,10 @@
                     <hr class="hr-body-article">
 
                     <div class="isi-article">
-                        {!!$artikel->isi_artikel!!}
-                    </div>
+                        {!! $artikel->isi_artikel ?? '' !!}
+                     </div>
+                     
+                     
                     <div class="v-yt container mb-4" >
                         <!-- Use the full YouTube video URL or the embed URL -->
                         <iframe src="https://youtu.be/a3ICNMQW7Ok?si=7R8onn6JMD8CUo3f" height="300" width="470"></iframe>
@@ -464,7 +466,6 @@
         
         // Call the 'show' function with the initial slug
         show(initialSlug);
-        console.log(initialSlug);
     });
     function show(slug) {
         $.get("{{ url('/portal-edukasi/komentar/') }}/" + slug, {}, function(data, status) {

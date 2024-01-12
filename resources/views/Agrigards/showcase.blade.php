@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css">
 
     <!-- Custom CSS -->
+    <link rel="stylesheet" href="{{asset('/css/navbar-style.css')}}">
     <link rel="stylesheet" href="{{ asset ('agrigard/assets/css/showcase/style.css') }}">
 
     <!-- Bootstrap JS -->
@@ -25,8 +26,12 @@
 </head>
 
 <body>
+    <!-- Navbar Utama -->
+    @include('partials.navbar')
+    <!-- End Navbar Utama -->
+
     <!-- Header & search -->
-    <section id="header">
+    <section id="header" class="mt-5">
         <div class="container">
             <div class="inner-container top-start bg-light">
                 <div class="row">

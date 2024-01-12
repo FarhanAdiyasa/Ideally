@@ -31,6 +31,8 @@ class AgrigardFactory extends Factory
             'deskripsi_singkat' =>$this->faker->text,
             'stok' =>$this->faker->numberBetween(0, 100),
             'item_terjual' =>$this->faker->numberBetween(0, 100),
+
+            'berat' => $this->faker->numberBetween(0, 100),
             'armada_minimum' =>$this->faker->word,
             'harga_jual_projek_ideally' =>$this->faker->randomFloat(2, 10, 100),
             'harga_b2I_31_unit' =>$this->faker->randomFloat(2, 10, 100),
@@ -42,6 +44,7 @@ class AgrigardFactory extends Factory
             'harga_b2C_31_unit' =>$this->faker->randomFloat(2, 10, 100),
             'harga_b2C_11_unit' =>$this->faker->randomFloat(2, 10, 100),
             'harga_b2C_1_unit' =>$this->faker->randomFloat(2, 10, 100),
+
             'tanggal_publikasi' =>$this->faker->dateTimeThisMonth,
             'created_at' => now(),
             'created_by' => $this->faker->numberBetween(1, 5)

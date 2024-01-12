@@ -56,7 +56,7 @@
                     </div> --}}
                     @foreach ($artikel->kategori_artikel as $kategori)
                     <div class="additional-text-container rounded-pill d-inline-block"
-                    style="background-color: #727272; color: white;">
+                    style="background-color: #727272; color: white; white-space: nowrap;">
                     <div class="keterangan-additional-text-container ">
                         <img class="info-card-category-icon" src="{{asset('icons/comment-category.svg')}}" alt="Rate Icon"
                             style="width: 10px; height: 10px;">
@@ -81,7 +81,7 @@
                         <div class="keterangan-additional-text-container">
                             <img class="info-card-category-icon-title2" src="{{asset('icons/rate-category.svg')}}" alt="Rate Icon"
                                 style="width: 12px; height: 12px;">
-                            <span class="info-card-category-title2" style="font-size: 14px; font-weight: 700;"> {{ date('d M Y', strtotime($artikel->tanggal_publikasi));}}</span>
+                            <span class="info-card-category-title2" style="font-size: 14px; font-weight: 700;"> {{ date('d M Y', strtotime($artikel->tanggal_publikasi))}}</span>
                         </div>
                     </div>
                     <div class="additional-text-container rounded-pill d-inline-block">
@@ -151,7 +151,7 @@
                                 </div>
                             </div>
 
-                            <div class="col-4">
+                            <div class="col-3">
                                 <h3 class="mb-0">{{$artikel->penulis_artikel}}</h3>
                                 <p class="text-muted">{{$artikel->profesi_penulis_artikel}}</p>
                             </div>
@@ -287,7 +287,7 @@
                                 </div>
                             </div>
 
-                            <div class="col-4">
+                            <div class="col-3">
                                 <h3 class="mb-0">Ahsan Wildan</h3>
                                 <p class="text-muted">Pengawas Pemeliharaan Lanskap</p>
                             </div>
@@ -390,7 +390,7 @@
                                             <img class="info-card-category-icon-widget" src="{{asset('icons/rate-category.svg')}}"
                                                 alt="Rate Icon" style="width: 16px; height: 16px;">
                                             <p class="info-card-category-widget tes"
-                                                style="font-size: 14px; font-weight: 700;">{{ date('d M Y', strtotime($article->tanggal_publikasi));}}</p>
+                                                style="font-size: 14px; font-weight: 700;">{{ date('d M Y', strtotime($article->tanggal_publikasi))}}</p>
                                         </div>
                                     </div>
                                 </div>
@@ -414,7 +414,7 @@
                                             <img class="info-card-category-icon-widget" src="{{asset('icons/rate-category.svg')}}"
                                                 alt="Rate Icon" style="width: 16px; height: 16px;">
                                             <p class="info-card-category-widget tes"
-                                                style="font-size: 14px; font-weight: 700;">{{ date('d M Y', strtotime($article->tanggal_publikasi));}}</p>
+                                                style="font-size: 14px; font-weight: 700;">{{ date('d M Y', strtotime($article->tanggal_publikasi))}}</p>
                                         </div>
                                     </div>
                                 </div>

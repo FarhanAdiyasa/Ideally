@@ -2,8 +2,8 @@
 @section('content')
 <div id="app">
     <div class="main-wrapper">
-        <div class="container">
-            <div class="card mt-5">
+        <div class="container" style="padding-top: 25px;">
+            <div class="card">
                 <div class="card-header">
                     <h3>List Products</h3>
                 </div>
