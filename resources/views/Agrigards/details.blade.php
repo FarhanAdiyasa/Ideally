@@ -23,7 +23,7 @@
 
     <!-- JQuery -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/numeral.js/2.0.6/numeral.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/numeral.js/2.0.6/numeral.min.js"></script>
 </head>
 
 <body>
@@ -284,7 +284,10 @@
         </div>
     </section>
     <!-- End Produk Terkait -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/numeral.js/2.0.6/numeral.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/js/bootstrap.bundle.min.js"></script>
 
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 
     <script>
     $(document).ready(function() {
@@ -300,75 +303,71 @@
                 imgContainer.addClass("card-img-top-start");
             }
         });
+
+        const summaryPriceInput = document.getElementById('summaryPrice');
+        let summaryPriceValue = summaryPriceInput.value;
+        summaryPriceInput.value = numeral(summaryPriceValue).format('0,0');
+
+        let count = parseInt(document.getElementById('quantity').value);
+        const decreaseBtn = document.getElementById('kurang');
+
+        function increase() {
+            count++;
+            document.getElementById('quantity').value = count;
+            calculateTotal();
+            checkCount();
+        }
+
+        function decrease() {
+            if (count > 1) {
+                count--;
+                document.getElementById('quantity').value = count;
+            }
+            calculateTotal();
+            checkCount();
+        }
+
+        function checkCount() {
+            if (count === 1) {
+                decreaseBtn.disabled = true;
+            } else {
+                decreaseBtn.disabled = false;
+            }
+        }
+
+        function calculateTotal() {
+            const quantityInput = document.getElementById('quantity');
+            const summaryPriceInput = document.getElementById('summaryPrice');
+            const quantity = parseInt(quantityInput.value);
+            let price = 0;
+
+            if (quantity >= 1 && quantity <= 10) {
+                price = {
+                    {
+                        $agrigards - > harga_b2C_1_unit
+                    }
+                };
+            } else if (quantity >= 11 && quantity <= 30) {
+                price = {
+                    {
+                        $agrigards - > harga_b2C_11_unit
+                    }
+                };
+            } else if (quantity > 30) {
+                price = {
+                    {
+                        $agrigards - > harga_b2C_31_unit
+                    }
+                };
+            }
+
+            const totalPrice = price * quantity;
+            summaryPriceInput.value = numeral(totalPrice).format('0,0');;
+        }
+
+        
     });
     </script>
-    <script>
-    const summaryPriceInput = document.getElementById('summaryPrice');
-    let summaryPriceValue = summaryPriceInput.value;
-    summaryPriceInput.value = numeral(summaryPriceValue).format('0,0');
-
-    let count = parseInt(document.getElementById('quantity').value);
-    const decreaseBtn = document.getElementById('kurang');
-
-    function increase() {
-        count++;
-        document.getElementById('quantity').value = count;
-        calculateTotal();
-        checkCount();
-    }
-
-    function decrease() {
-        if (count > 1) {
-            count--;
-            document.getElementById('quantity').value = count;
-        }
-        calculateTotal();
-        checkCount();
-    }
-
-    function checkCount() {
-        if (count === 1) {
-            decreaseBtn.disabled = true;
-        } else {
-            decreaseBtn.disabled = false;
-        }
-    }
-
-    function calculateTotal() {
-        const quantityInput = document.getElementById('quantity');
-        const summaryPriceInput = document.getElementById('summaryPrice');
-        const quantity = parseInt(quantityInput.value);
-        let price = 0;
-
-        if (quantity >= 1 && quantity <= 10) {
-            price = {
-                {
-                    $agrigards - > harga_b2C_1_unit
-                }
-            };
-        } else if (quantity >= 11 && quantity <= 30) {
-            price = {
-                {
-                    $agrigards - > harga_b2C_11_unit
-                }
-            };
-        } else if (quantity > 30) {
-            price = {
-                {
-                    $agrigards - > harga_b2C_31_unit
-                }
-            };
-        }
-
-        const totalPrice = price * quantity;
-        summaryPriceInput.value = numeral(totalPrice).format('0,0');;
-    }
-    </script>
-
-    <script src="//cdnjs.cloudflare.com/ajax/libs/numeral.js/2.0.6/numeral.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/js/bootstrap.bundle.min.js"></script>
-
-    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 </body>
 
 </html>

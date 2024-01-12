@@ -325,6 +325,10 @@
                                     <td>Biaya Kirim (JNE REG)</td>
                                     <td class="text-end" id="ongkir">
                                         {{ number_format($costs['cost'][0]['value'], 0, '.', '.') }}
+
+                                        @php
+                                            session(['total' => $costs['cost'][0]['value']]);
+                                        @endphp
                                     </td>
                                 </tr>
                                 @endif
@@ -348,6 +352,7 @@
                         <div id="responseContainer"></div>
                         <div class="d-flex flex-column align-items-center">
                             @if (isset($ongkir))
+
                             <div class="mt-3">
                                 <a href="{{ route('index.pembayaran') }}" class="btn btn-bayar bg-tosca rounded-5">Lanjut ke Pembayaran</a>
                             </div>

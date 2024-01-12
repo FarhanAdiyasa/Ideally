@@ -50,6 +50,10 @@ class PembayaranController extends Controller
             ]
         ]);
 
-        dd($response->json());
+        // dd($response->json());
+        $va = $response->json()['va_numbers'][0]['va_number'];
+        $bank = $response->json()['va_numbers'][0]['bank'];
+
+        return view('transaksi.pembayaran', compact('va', 'bank'));
     }
 }
