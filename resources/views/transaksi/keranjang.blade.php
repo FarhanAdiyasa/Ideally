@@ -69,6 +69,7 @@
     $berat_everlas = 0;
     $berat_batunesia = 0;
     $berat_shineage = 0;
+    $berat_konkurito = 0;
     $armada = [];
     @endphp
 
@@ -76,7 +77,7 @@
         <div class="container mt-4">
             <div class="row g-4">
                 @if(empty(session('cart_deflo')) && empty(session('cart_agrigard')) &&
-                empty(session('cart_batunesia')) && empty(session('cart_shineage')))
+                empty(session('cart_batunesia')) && empty(session('cart_shineage')) && empty(session('cart_konkurito')))
                 <div class="col-sm-12">
                     <div class="bg-light rounded-4 p-4" style="box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.25);">
                         <div class="text-center p-3">
@@ -394,6 +395,65 @@
                                 </tr>
                                 @php
                                 $berat_shineage += $item['produk']->berat_gram * $item['quantity'];
+                                $armada[] = $item['produk']->armada_minimum;
+                                @endphp
+                                @endforeach
+                                @endif
+
+
+                                @if (session()->has('cart_konkurito'))
+                                <tr class="border-brand">
+                                    <th colspan="5" style="text-align: center;">Konkurito</th>
+                                    <th class="total-brand">Total</th>
+                                    <td class="d-flex align-items-center justify-content-center">
+                                        <a href="{{ asset('') }}"><img
+                                                src="{{ asset('img/keranjang/Delete Icon.png') }}" alt=""
+                                                class="d-block w-50"></a>
+                                    </td>
+                                </tr>
+                                @foreach (session('cart_konkurito', []) as $item)
+                                <tr class="border-bottom baris-produk">
+                                    <td class="d-flex align-items-center" style="height: 52px;"></td>
+                                    <td class="detail">
+                                        <div class="row g-1">
+                                            <div class="col-3">
+                                                <div class="img-container">
+                                                    <img src="{{ $item['produk']->gambar_1 }}"
+                                                        alt="{{ $item['produk']->nama_produk }}">
+                                                </div>
+                                            </div>
+                                            <div class="col-9 d-flex align-items-center">{{ $item['produk']->nama_produk
+                                                        }}</div>
+                                        </div>
+                                    </td>
+                                    <td class="jumlah">
+                                        <!-- Tambahkan tombol untuk mengatur jumlah produk -->
+                                        <span class="p-1"><i class="fa-solid fa-circle-chevron-down"></i></span>
+                                        <input class="form-control quantity" type="text" value="{{ $item['quantity'] }}"
+                                            readonly>
+                                        <span class="p-1"><i class="fa-solid fa-circle-chevron-up"></i></span>
+                                    </td>
+                                    <td class="unit">{{ $item['produk']->satuan }}</td>
+                                    <td class="harga">
+                                        {{ number_format((int)$item['produk']->harga_b2C_1_unit, 0, ',', '.') }}</td>
+                                    <td class="total">{{ $item['quantity'] * $item['produk']->harga_b2C_1_unit }}
+                                    </td>
+                                    <td class="d-flex align-items-center justify-content-center">
+                                        {{-- <form action="{{ route('hapusDariKeranjang', ['id_batu' => $key]) }}"
+                                        method="POST">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit"
+                                            style="border: none; background: none; padding: 0; margin: 0; outline: none;">
+                                            <img src="{{ asset('img/keranjang/Delete Icon.png') }}" alt="Hapus Produk"
+                                                class="d-block w-50" style="border: none;">
+                                        </button>
+                                        </form> --}}
+
+                                    </td>
+                                </tr>
+                                @php
+                                $berat_konkurito += $item['produk']->berat_gram * $item['quantity'];
                                 $armada[] = $item['produk']->armada_minimum;
                                 @endphp
                                 @endforeach

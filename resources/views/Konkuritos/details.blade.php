@@ -183,6 +183,9 @@
                                 <input type="text" class="form-control fw-bold text-center text-white bg-dark"
                                     id="summaryPrice" value="{{ $konkuritoDetail->harga_b2C_1_unit }}" readonly>
                             </div>
+                            <div class="total-harga">
+                                <a href="{{ route('tambahKonkuritoKeKeranjang', ['id_konkurito' => $konkuritoDetail->id_konkurito, 'quantity' => '1']) }}"> Tambah Keranjang</a>
+                            </div>
                         </div>
                     </div>
                 </div>

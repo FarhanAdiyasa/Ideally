@@ -69,4 +69,29 @@ class KonkuritoController extends Controller
     {
         //
     }
+
+    public function tambahKeKeranjang($id_konkurito, $quantity)
+    {
+        // Pastikan $quantity tidak nol atau negatif
+        if ((int)$quantity <= 0) {
+            return redirect()->route('transaksi.index')->with('error', 'Jumlah tidak valid.');
+        }
+    
+        $product = Konkurito::findOrFail($id_konkurito);
+        
+        $cart = session()->get('cart_konkurito', []);
+    
+        if (isset($cart[$id_konkurito])) {
+            $currentQuantity = $cart[$id_konkurito]['quantity'];
+            $cart[$id_konkurito]['quantity'] = $currentQuantity + (int)$quantity;
+        } else {
+            $cart[$id_konkurito] = [
+                "produk" => $product,
+                "quantity" => (int)$quantity
+            ];
+        }
+    
+        session()->put('cart_konkurito', $cart);
+        return redirect()->route('transaksi.index');
+    }
 }
