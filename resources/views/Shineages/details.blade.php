@@ -136,17 +136,15 @@
                             </div>
                             <div class="total-item p-4">
                                 <div class="qty d-flex align-items-center bg-light mb-2">
-                                    <a href="" class="m-1 p-1 bg-tosca text-white"><span><i
-                                                class="bi bi-dash"></i></span></a>
-                                    <input class="form-control" type="text" placeholder="" aria-label="quantity"
-                                        readonly value="1">
-                                    <a href=""><span class="m-1 px-1 bg-tosca text-white"><i
-                                                class="bi bi-plus"></i></span></a>
+                                    <a href="#" class="m-1 p-1 bg-tosca text-white" onclick="decrementQuantity()"><span><i class="bi bi-dash"></i></span></a>
+                                    <input class="form-control" type="text" placeholder="" aria-label="quantity" readonly value="1" id="quantityInput">
+                                    <a href="#" onclick="incrementQuantity()"><span class="m-1 px-1 bg-tosca text-white"><i class="bi bi-plus"></i></span></a>
                                 </div>
-                                <input class="form-control mb-2 total-price" type="text" placeholder=""
-                                    aria-label="total price" readonly value="Rp {{ $shineages->harga_b2C_11_unit }}">
-                                <a href="" class="btn btn-light">Tambah Ke Keranjang</a>
+                                <input class="form-control mb-2 total-price" type="text" placeholder="" aria-label="total price" readonly value="Rp {{ $shineages->harga_b2C_11_unit }}">
+                                <a class="btn btn-light" href="{{ route('tambahShineageKeKeranjang', ['id_shineage' => $shineages->id_shineage, 'quantity' => '1']) }}">Tambah Ke Keranjang</a>
                             </div>
+                            
+                                                       
                         </div>
                     </div>
                 </div>
@@ -403,6 +401,28 @@
         </div>
     </div>
     <!-- End Additional Content -->
+    <script>
+        // Fungsi untuk mengurangi nilai quantity
+function decrementQuantity() {
+    var quantityInput = document.getElementById('quantityInput');
+    var currentValue = parseInt(quantityInput.value);
+
+    // Pastikan nilai quantity tidak kurang dari 1
+    if (currentValue > 1) {
+        quantityInput.value = currentValue - 1;
+    }
+}
+
+// Fungsi untuk menambah nilai quantity
+function incrementQuantity() {
+    var quantityInput = document.getElementById('quantityInput');
+    var currentValue = parseInt(quantityInput.value);
+
+    // Tambahkan 1 ke nilai quantity
+    quantityInput.value = currentValue + 1;
+}
+
+    </script>
 </body>
 
 </html>

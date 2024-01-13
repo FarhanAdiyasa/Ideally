@@ -71,4 +71,61 @@ class ShineageController extends Controller
     {
         //
     }
+
+    public function tambahKeKeranjang($id_shineage, $quantity)
+{
+    // Pastikan $quantity tidak nol atau negatif
+    if ((int)$quantity <= 0) {
+        return redirect()->route('transaksi.index')->with('error', 'Jumlah tidak valid.');
+    }
+
+    $product = Shineage::findOrFail($id_shineage);
+    
+    $cart = session()->get('cart_shineage', []);
+
+    if (isset($cart[$id_shineage])) {
+        $currentQuantity = $cart[$id_shineage]['quantity'];
+        $cart[$id_shineage]['quantity'] = $currentQuantity + (int)$quantity;
+    } else {
+        $cart[$id_shineage] = [
+            "produk" => $product,
+            "quantity" => (int)$quantity
+        ];
+    }
+
+    session()->put('cart_shineage', $cart);
+    return redirect()->route('transaksi.index');
+}
+
+    
+
+
+    public function updateShineage(Request $request)
+    {
+        if($request->id_shineage && $request->quantity){
+            $cart = session()->get('cart_shineage');
+            $cart[$request->id_shineage]["quantity"] = $request->quantity;
+            session()->put('cart_shineage', $cart);
+            session()->flash('success', 'Cart successfully updated!');
+        }
+    }
+
+    public function removeShineage(Request $request)
+    {
+        if($request->id) {
+            $cart = session()->get('cart_shineage');
+            if(isset($cart[$request->id])) {
+                unset($cart[$request->id]);
+                session()->put('cart_shineage', $cart);
+            }
+            session()->flash('success', 'Product successfully removed!');
+        }
+    }
+
+    public function removeAllShineage()
+    {
+        session()->forget('cart_shineage');
+        session()->flash('success', 'Semua produk Shineage berhasil dihapus dari keranjang!');
+        return response()->json(['success' => true], 200); // Memberikan respon ke AJAX
+    }
 }

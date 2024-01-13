@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Agrigard;
 use App\Models\Batunesia;
 use App\Models\Dedikasi_Flora;
+use App\Models\Konkurito;
+use App\Models\Shineage;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Http;
@@ -48,6 +50,23 @@ class TransaksiController extends Controller
         return view('transaksi.keranjang');
     }
 
+
+    public function add_cart_konkurito($id, $qty) {
+        $product = Konkurito::findOrFail($id);
+        $cart = session()->get('cart_konkurito', []);
+        if (isset($cart[$id])) {
+            $cart[$id]['quantity'] = $qty;
+        } else {
+            $cart[$id] = [
+                'produk' => $product,
+                'quantity' => $qty,
+            ];
+        }
+        session()->put('cart_konkurito', $cart);
+        return view('transaksi.keranjang');
+    }
+
+    
 
     public function calculateOngkir(Request $request)
     {
