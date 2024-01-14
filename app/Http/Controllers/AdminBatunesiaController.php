@@ -85,13 +85,13 @@ class AdminBatunesiaController extends Controller
             $batunesia->harga_ranges = $hargaRanges;
         }
     
-        return view('Pages/Batunesia/list-batunesia', ['batunesias' => $batunesias]);
+        return view('Pages/Batunesia/list-batunesia', ['batunesias' => $batunesias, "active"=>"batunesia"]);
     }
     
     public function view($id)
     {
         $batunesia = batunesia::findOrFail($id);
-        return view('Pages/Batunesia/detail-batunesia', ['batunesia'=>$batunesia]);
+        return view('Pages/Batunesia/detail-batunesia', ['batunesia'=>$batunesia, "active"=>"batunesia"]);
     }
 
     /**
@@ -99,7 +99,7 @@ class AdminBatunesiaController extends Controller
      */
     public function create()
     {
-        return view('Pages/Batunesia/add-batunesia');
+        return view('Pages/Batunesia/add-batunesia',["active"=>"batunesia"]);
     }
 
     /**
@@ -201,7 +201,7 @@ class AdminBatunesiaController extends Controller
     public function edit($id)
     {
         $batunesia = batunesia::findOrFail($id);
-        return view('Pages/Batunesia/edit-batunesia', ['batunesia'=>$batunesia]);
+        return view('Pages/Batunesia/edit-batunesia', ['batunesia'=>$batunesia, "active"=>"batunesia"]);
     }
 
     /**
@@ -309,7 +309,7 @@ class AdminBatunesiaController extends Controller
     public function delete($id)
     {
         $batunesia = batunesia::findOrFail($id);
-        return view('Pages/Batunesia/delete-batunesia', ['batunesia'=>$batunesia]);
+        return view('Pages/Batunesia/delete-batunesia', ['batunesia'=>$batunesia, "active"=>"batunesia"]);
     }
 
     public function destroy($id)

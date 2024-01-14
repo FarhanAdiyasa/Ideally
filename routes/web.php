@@ -169,7 +169,7 @@ Route::post('/post-artikel', [AdminArtikelController::class, 'post'])->name('art
 Route::get('/cek-komentar/{id}', [AdminArtikelController::class, 'komentar'])->name('daftar.komentar');
 Route::post('/hide-komentar', [AdminArtikelController::class, 'hideKomentar'])->name('komentars.hide');
 });
-Route::middleware(['role:b2i', 'role:b2b', 'role:b2c'])->group(function () {
+// Route::middleware(['role:b2i', 'role:b2b', 'role:b2c'])->group(function () {
 Route::get('/portal-edukasi/{kategori}', [ArtikelController::class, 'byKategori'])->name('landing-artikel.kategori');
 Route::get('/portal-edukasi', [ArtikelController::class, 'index'])->name('landing-artikel');
 Route::get('/portal-edukasi/baca/{slug}', [ArtikelController::class, 'baca'])->name('baca-artikel');
@@ -292,4 +292,4 @@ Route::get('/add-cart-agrigard/{id}/{qty}', [TransaksiController::class, 'add_ca
 // pembayaran
 Route::get('/pembayaran', [PembayaranController::class, 'index'])->name('index.pembayaran');
 Route::post('/bayar', [PembayaranController::class, 'bayar'])->name('store.bayar');
-});
+// });

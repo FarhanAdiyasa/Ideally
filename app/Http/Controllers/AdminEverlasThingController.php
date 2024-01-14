@@ -86,13 +86,13 @@ class AdminEverlasThingController extends Controller
             $everlasThing->harga_ranges = $hargaRanges;
         }
     
-        return view('Pages/EverlasThing/list-everlasThing', ['everlasThings' => $everlasThings]);
+        return view('Pages/EverlasThing/list-everlasThing', ['everlasThings' => $everlasThings, "active"=>"everlas"]);
     }
     
     public function view($id)
     {
         $everlasThing = Everlas_Things::findOrFail($id);
-        return view('Pages/EverlasThing/detail-everlasThing', ['everlasThing'=>$everlasThing]);
+        return view('Pages/EverlasThing/detail-everlasThing', ['everlasThing'=>$everlasThing, "active"=>"everlas"]);
     }
 
     /**
@@ -100,7 +100,7 @@ class AdminEverlasThingController extends Controller
      */
     public function create()
     {
-        return view('Pages/EverlasThing/add-everlasThing');
+        return view('Pages/EverlasThing/add-everlasThing',["active"=>"everlas"]);
     }
 
     /**
@@ -196,7 +196,7 @@ class AdminEverlasThingController extends Controller
     public function edit($id)
     {
         $everlasThing = Everlas_Things::findOrFail($id);
-        return view('Pages/EverlasThing/edit-everlasThing', ['everlasThing'=>$everlasThing]);
+        return view('Pages/EverlasThing/edit-everlasThing', ['everlasThing'=>$everlasThing, "active"=>"everlas"]);
     }
 
     /**
@@ -299,7 +299,7 @@ class AdminEverlasThingController extends Controller
     public function delete($id)
     {
         $everlasThing = Everlas_Things::findOrFail($id);
-        return view('Pages/EverlasThing/delete-everlasThing', ['everlasThing'=>$everlasThing]);
+        return view('Pages/EverlasThing/delete-everlasThing', ['everlasThing'=>$everlasThing, "active"=>"everlas"]);
     }
 
     public function destroy($id)

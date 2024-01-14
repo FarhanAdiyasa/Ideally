@@ -263,7 +263,7 @@
           <div class="form-group">
             <div class="harga-input">
               <div class="rp">Rp</div>
-              <input data-unify="TextField" placeholder="Masukkan Harga" type="number"  class="css-3017qm rupiah" name="nominal_promo" value="{{old('nominal_promo')}}">
+              <input data-unify="TextField" placeholder="Masukkan Harga" type="text" oninput="validateInput(this)" class="css-3017qm rupiah" name="nominal_promo" value="{{old('nominal_promo')}}">
             </div>
                @error('nominal_promo')
               <small class="text-danger">{{ $message }}</small>
@@ -286,7 +286,7 @@
           <div class="form-group">
             <div class="harga-input">
               <div class="rp">Rp</div>
-              <input data-unify="TextField" placeholder="Masukkan Harga" type="number"  class="css-3017qm rupiah" name="minimum_pembelian" value="{{old('minimum_pembelian')}}">
+              <input data-unify="TextField" placeholder="Masukkan Harga" type="text" oninput="validateInput(this)"  class="css-3017qm rupiah" name="minimum_pembelian" value="{{old('minimum_pembelian')}}">
             </div>
             
                @error('minimum_pembelian')
@@ -309,7 +309,7 @@
         <!-- /.col -->
         <div class="col-md-9">
           <div class="form-group">
-              <input class="form-control"  id=""  type="number" placeholder="Masukkan Kuota Dalam Bentuk Angka" name="kuota" value="{{old('kuota')}}"/>
+              <input class="form-control"  id=""  type="text" oninput="validateInput(this)" placeholder="Masukkan Kuota Dalam Bentuk Angka" name="kuota" value="{{old('kuota')}}"/>
                  @error('kuota')
               <small class="text-danger">{{ $message }}</small>
               @enderror
@@ -412,7 +412,7 @@
               '<div class="col-md-3">' +
               '<div class="form-group">' +
               '<div class="harga-input">' +
-              '<input data-unify="TextField" placeholder="Masukkan Persentase" type="number"  class="css-3017qm px-2" name="persentase_promo" value="{{old("persentase_promo")}}">' +
+              '<input data-unify="TextField" placeholder="Masukkan Persentase" type="text" oninput="validateInput(this)"  class="css-3017qm px-2" name="persentase_promo" value="{{old("persentase_promo")}}">' +
               '<div class="rp">%</div>' +
               '</div>' +
               '@error("persentase_promo")' +

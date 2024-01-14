@@ -264,7 +264,7 @@
           <div class="form-group">
             <div class="harga-input">
               <div class="rp">Rp</div>
-              <input data-unify="TextField" placeholder="Masukkan Harga" type="number"  class="css-3017qm rupiah" name="nominal_promo" value="{{old('nominal_promo', number_format($promo->nominal_promo, 0, ',', '.'))}}">
+              <input data-unify="TextField" placeholder="Masukkan Harga" type="text" oninput="validateInput(this)"  class="css-3017qm rupiah" name="nominal_promo" value="{{old('nominal_promo', number_format($promo->nominal_promo, 0, ',', '.'))}}">
             </div>
                @error('nominal_promo')
               <small class="text-danger">{{ $message }}</small>
@@ -287,7 +287,7 @@
           <div class="form-group">
             <div class="harga-input">
               <div class="rp">Rp</div>
-              <input data-unify="TextField" placeholder="Masukkan Harga" type="number"  class="css-3017qm rupiah" name="minimum_pembelian" value="{{old('minimum_pembelian', number_format($promo->minimum_pembelian, 0, ',', '.'))}}">
+              <input data-unify="TextField" placeholder="Masukkan Harga" type="text" oninput="validateInput(this)"  class="css-3017qm rupiah" name="minimum_pembelian" value="{{old('minimum_pembelian', number_format($promo->minimum_pembelian, 0, ',', '.'))}}">
             </div>
                @error('minimum_pembelian')
               <small class="text-danger">{{ $message }}</small>
@@ -309,7 +309,7 @@
         <!-- /.col -->
         <div class="col-md-4">
           <div class="form-group">
-              <input class="form-control"  id=""  type="number" placeholder="Masukkan Kuota Dalam Bentuk Angka" name="kuota" value="{{old('kuota', $promo->kuota)}}"/>
+              <input class="form-control"  id=""  type="text" oninput="validateInput(this)" placeholder="Masukkan Kuota Dalam Bentuk Angka" name="kuota" value="{{old('kuota', $promo->kuota)}}"/>
                  @error('kuota')
               <small class="text-danger">{{ $message }}</small>
               @enderror
@@ -413,7 +413,7 @@
               '<div class="col-md-3">' +
               '<div class="form-group">' +
               '<div class="harga-input">' +
-              '<input placeholder="Masukkan Persentase" type="number" class="css-3017qm px-2" name="persentase_promo" value="{{ old("persentase_promo", $promo->persentase_promo) }}">' +
+              '<input placeholder="Masukkan Persentase" type="text" oninput="validateInput(this)" class="css-3017qm px-2" name="persentase_promo" value="{{ old("persentase_promo", $promo->persentase_promo) }}">' +
               '<div class="rp">%</div>' +
               '</div>' +
               '@error("persentase_promo")' +

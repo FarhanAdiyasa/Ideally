@@ -86,13 +86,13 @@ class AdminDedikasiFloraController extends Controller
             $agrigard->harga_ranges = $hargaRanges;
         }
     
-        return view('Pages/DedikasiFlora/list-dedikasiFlora', ['dedikasiFloras' => $dedikasiFloras]);
+        return view('Pages/DedikasiFlora/list-dedikasiFlora', ['dedikasiFloras' => $dedikasiFloras, 'active'=>'DedikasiFlora']);
     }
     
     public function view($id)
     {
         $dedikasiFlora = Dedikasi_Flora::findOrFail($id);
-        return view('Pages/DedikasiFlora/detail-dedikasiFlora', ['dedikasiFlora'=>$dedikasiFlora]);
+        return view('Pages/DedikasiFlora/detail-dedikasiFlora', ['dedikasiFlora'=>$dedikasiFlora, 'active'=>'DedikasiFlora']);
     }
 
     /**
@@ -100,7 +100,7 @@ class AdminDedikasiFloraController extends Controller
      */
     public function create()
     {
-        return view('Pages/DedikasiFlora/add-dedikasiFlora');
+        return view('Pages/DedikasiFlora/add-dedikasiFlora', ['active'=>'DedikasiFlora']);
     }
 
     /**
@@ -208,7 +208,8 @@ class AdminDedikasiFloraController extends Controller
         $dedikasiFlora = Dedikasi_Flora::findOrFail($id);
         list($warna_bunga_1, $warna_bunga_2) = explode('-', $dedikasiFlora->warna_bunga);
         list($warna_daun_1, $warna_daun_2) = explode('-', $dedikasiFlora->warna_daun);
-        return view('Pages/DedikasiFlora/edit-dedikasiFlora', compact('dedikasiFlora', 'warna_bunga_1', 'warna_bunga_2','warna_daun_1', 'warna_daun_2'));
+        $active = 'DedikasiFlora';
+        return view('Pages/DedikasiFlora/edit-dedikasiFlora',compact('dedikasiFlora', 'warna_bunga_1', 'warna_bunga_2','warna_daun_1', 'warna_daun_2', 'active'));
     }
 
     /**
@@ -315,7 +316,7 @@ class AdminDedikasiFloraController extends Controller
     public function delete($id)
     {
         $dedikasiFlora = Dedikasi_Flora::findOrFail($id);
-        return view('Pages/DedikasiFlora/delete-dedikasiFlora', ['dedikasiFlora'=>$dedikasiFlora]);
+        return view('Pages/DedikasiFlora/delete-dedikasiFlora', ['dedikasiFlora'=>$dedikasiFlora, 'active'=>'DedikasiFlora']);
     }
 
     public function destroy($id)

@@ -23,7 +23,7 @@
                         <thead>
                             <tr>
                                  <th>No</th>
-                                <th>Info konkurito</th>
+                                <th>Info Konkurito</th>
                                 <th>Harga</th>
                                 <th>Stok</th>
                                 <th>Status</th>

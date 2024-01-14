@@ -19,12 +19,10 @@ class DashboardController extends Controller
      */
     public function index(OrderBulananChart $chart)
     {
-        $startDate = Carbon::now()->startOfMonth();
-        $endDate = Carbon::now()->endOfMonth();
-        $userCreated = User::CountCreated($startDate, $endDate);
+        $userCreated = User::CountCreated();
         $orderHari = Order::whereDate('created_at', now())->get();
         $jmlArt = Artikel::all()->count();
-        return view('Pages/Dashboard/index',  ["userCreated"=>$userCreated, 'chart' => $chart->build("harian"), "orderHari"=>$orderHari->count(), 'chart2' => $chart->build("bulanan"), 'chart3' => $chart->build("tahunan"), 'jmlArt'=>$jmlArt]);
+        return view('Pages/Dashboard/index',  ["userCreated"=>$userCreated, 'chart' => $chart->build("harian"), "orderHari"=>$orderHari->count(), 'chart2' => $chart->build("bulanan"), 'chart3' => $chart->build("tahunan"), 'jmlArt'=>$jmlArt, 'active'=>'Dashboard']);
     }
 
     /**

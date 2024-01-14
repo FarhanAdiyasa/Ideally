@@ -16,7 +16,6 @@ class OrderBulananChart
     } 
     public function build($filter = null, $filter2 = null)
     {
-        $filter2 = 2023;
         $query ="";
         $axis = "";
         if ($filter == 'harian') {
@@ -70,25 +69,14 @@ class OrderBulananChart
         } 
 
         $results = DB::select($query);
+        $formattedPendapatan = array_map(function ($item) {
+            return  number_format($item->pendapatan, 0, ',', '.');
+        }, $results);
         $chart = $this->chart->lineChart()
             ->setTitle('Laporan Penjualan')
-            ->addData('Pendapatan',  array_column($results, 'pendapatan'))
+            ->addData('Pendapatan', $formattedPendapatan)
             ->setXAxis(array_column($results, $axis)); 
 
         return $chart;
     }
-
-private function getDateRange($startDate, $endDate)
-{
-    $dateRange = [];
-    $currentDate = $startDate;
-
-    while ($currentDate->lte($endDate)) {
-        $dateRange[] = $currentDate->format('Y-m-d');
-        $currentDate->addDay(); // Increment by one day
-    }
-
-    return $dateRange;
-}
-
 }

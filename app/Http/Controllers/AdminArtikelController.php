@@ -26,7 +26,7 @@ class AdminArtikelController extends Controller
     public function index()
     {
         $artikels = Artikel::all();
-        return view('Pages/Artikel/list-artikel', ["artikels"=>$artikels]);
+        return view('Pages/Artikel/list-artikel', ["artikels"=>$artikels,  "active"=>"artikel"]);
     }
 
     /**
@@ -35,7 +35,7 @@ class AdminArtikelController extends Controller
     public function create()
     {
         $categories = Kategori_Artikel::all();
-        return view('Pages/Artikel/add-artikel', ["categories"=>$categories]);
+        return view('Pages/Artikel/add-artikel', ["categories"=>$categories,  "active"=>"artikel"]);
     }
 
     /**
@@ -109,7 +109,7 @@ class AdminArtikelController extends Controller
     {
         $artikel = Artikel::findOrFail($id);
         $komentars = Komentar::where('id_artikel', $id)->get();
-        return view('Pages/Artikel/komentar-artikel', ['artikel' => $artikel, 'komentars' => $komentars]);
+        return view('Pages/Artikel/komentar-artikel', ['artikel' => $artikel, 'komentars' => $komentars,  "active"=>"artikel"]);
     }    
 
     public function hideKomentar(Request $request)
@@ -134,7 +134,7 @@ class AdminArtikelController extends Controller
         $artikel = Artikel::findOrFail($id);
         $categories = Kategori_Artikel::all();
         $sumbers = Sumber_Artikel::where(["id_artikel"=>$artikel->id_artikel])->get();
-        return view('Pages/Artikel/edit-artikel', ['artikel'=>$artikel,"categories"=>$categories, "sumbers"=>$sumbers]);
+        return view('Pages/Artikel/edit-artikel', ['artikel'=>$artikel,"categories"=>$categories, "sumbers"=>$sumbers,  "active"=>"artikel"]);
     }
 
     /**
@@ -217,7 +217,7 @@ class AdminArtikelController extends Controller
     public function delete($id)
     {
         $artikel = Artikel::findOrFail($id);
-        return view('Pages/Artikel/delete-artikel', ['artikel'=>$artikel]);
+        return view('Pages/Artikel/delete-artikel', ['artikel'=>$artikel,  "active"=>"artikel"]);
     }
     public function destroy(string $id)
     {

@@ -41,7 +41,7 @@
                             <div class="inner">
                               <h3>{{$userCreated}}</h3>
 
-                              <p>Pengguna Baru Bulan Ini</p>
+                              <p>Total Pengguna</p>
                             </div>
                             <div class="icon">
                               <i class="ion ion-person-add"></i>

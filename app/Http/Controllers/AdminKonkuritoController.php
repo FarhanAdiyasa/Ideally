@@ -85,14 +85,14 @@ class AdminKonkuritoController extends Controller
             $konkurito->harga_ranges = $hargaRanges;
         }
 
-        return view('Pages/konkurito/list-konkuritos', ['konkuritos' => $konkuritos]);
+        return view('Pages/konkurito/list-konkuritos', ['konkuritos' => $konkuritos, "active"=>"konkurito"]);
     }
 
     
     public function view($id)
     {
         $konkurito = konkurito::findOrFail($id);
-        return view('Pages/konkurito/detail-konkurito', ['konkurito'=>$konkurito]);
+        return view('Pages/konkurito/detail-konkurito', ['konkurito'=>$konkurito, "active"=>"konkurito"]);
     }
 
     /**
@@ -100,7 +100,7 @@ class AdminKonkuritoController extends Controller
      */
     public function create()
     {
-        return view('Pages/konkurito/add-konkurito');
+        return view('Pages/konkurito/add-konkurito',["active"=>"konkurito"]);
     }
 
     /**
@@ -195,7 +195,7 @@ class AdminKonkuritoController extends Controller
     public function edit($id)
     {
         $konkurito = konkurito::findOrFail($id);
-        return view('Pages/konkurito/edit-konkurito', ['konkurito'=>$konkurito]);
+        return view('Pages/konkurito/edit-konkurito', ['konkurito'=>$konkurito, "active"=>"konkurito"]);
     }
 
     /**
@@ -295,7 +295,7 @@ class AdminKonkuritoController extends Controller
     public function delete($id)
     {
         $konkurito = konkurito::findOrFail($id);
-        return view('Pages/konkurito/delete-konkurito', ['konkurito'=>$konkurito]);
+        return view('Pages/konkurito/delete-konkurito', ['konkurito'=>$konkurito, "active"=>"konkurito"]);
     }
 
     public function destroy($id)

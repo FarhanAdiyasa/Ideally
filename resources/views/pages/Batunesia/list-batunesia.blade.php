@@ -23,7 +23,7 @@
                         <thead>
                             <tr>
                                  <th>No</th>
-                                <th>Info batunesia</th>
+                                <th>Info Batunesia</th>
                                 <th>Harga</th>
                                 <th>Stok</th>
                                 <th>Status</th>
@@ -44,7 +44,7 @@
                                                      {{ $batunesia->nama_produk }}
                                                 </div>
                                                 <div>
-                                                    Jenis : {{ $batunesia->jenis }}
+                                                    Kategori : {{ $batunesia->kategori }}
                                                 </div>
                                             </div>
                                         </div>

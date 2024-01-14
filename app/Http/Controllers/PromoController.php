@@ -29,13 +29,13 @@ class PromoController extends Controller
     {
         $promos = Promo::all();
     
-        return view('Pages/Promo/list-promo', ['promos' => $promos]);
+        return view('Pages/Promo/list-promo', ['promos' => $promos, "active"=>"promo"]);
     }
     
     public function view($id)
     {
         $agrigard = Agrigard::findOrFail($id);
-        return view('Pages/Product/detail-product', ['agrigard'=>$agrigard]);
+        return view('Pages/Product/detail-product', ['agrigard'=>$agrigard, "active"=>"promo"]);
     }
 
     /**
@@ -43,7 +43,7 @@ class PromoController extends Controller
      */
     public function create()
     {
-        return view('Pages/Promo/add-promo');
+        return view('Pages/Promo/add-promo', ["active"=>"promo"]);
     }
 
     /**
@@ -108,10 +108,10 @@ class PromoController extends Controller
                             $nurseriIds = Dedikasi_Flora::pluck('id_nurseri')->toArray();
                             $promo->nurseris()->sync($nurseriIds);
                         }
-                        // else if ($jenis_brand == "batunesia") {
-                        //     $batunesiaIds = Batunesia::pluck('id_batu')->toArray();
-                        //     $promo->batunesias()->sync($batunesiaIds);
-                        // }
+                        else if ($jenis_brand == "batunesia") {
+                            $batunesiaIds = Batunesia::pluck('id_batu')->toArray();
+                            $promo->batunesias()->sync($batunesiaIds);
+                        }
                         else if ($jenis_brand == "everlas_thing") {
                             $everlassIds = Everlas_Things::pluck('id_everlas_things')->toArray();
                             $promo->everlass()->sync($everlassIds);
@@ -141,17 +141,17 @@ class PromoController extends Controller
     {
         $products = "";
         if($brand == "agrigard"){
-            $products = Agrigard::whereNotNull('tanggal_publikasi')->get();
+            $products = Agrigard::all();
         }else if($brand == "batunesia"){
-            $products = Batunesia::whereNotNull('tanggal_publikasi')->get();
+            $products = Batunesia::all();
         }else if($brand == "nurseri"){
-            $products = Dedikasi_Flora::whereNotNull('tanggal_publikasi')->get();
+            $products = Dedikasi_Flora::all();
         }else if($brand == "konkurito"){
-            $products = Konkurito::whereNotNull('tanggal_publikasi')->get();
-        }else if($brand == "everlas_thing"){
-            $products = Everlas_Things::whereNotNull('tanggal_publikasi')->get();
+            $products = Konkurito::all();
+        }else if($brand == "everlasthing"){
+            $products = Everlas_Things::all();
         }else if($brand == "shineage"){
-            $products = Shineage::whereNotNull('tanggal_publikasi')->get();
+            $products = Shineage::all();
         }
         foreach ($products as $product) {
             $hargaRanges = [];
@@ -416,7 +416,7 @@ class PromoController extends Controller
     public function delete($id)
     {
         $promo = Promo::findOrFail($id);
-        return view('Pages/Promo/delete-promo', ['promo'=>$promo]);
+        return view('Pages/Promo/delete-promo', ['promo'=>$promo, "active"=>"promo"]);
     }
 
     public function destroy($id)
@@ -437,7 +437,7 @@ class PromoController extends Controller
 
     public function post(Request $request)
     {
-        $id = $request->input('id_promo');
+        $id = $request->input('promo_id');
         try {
             DB::beginTransaction();
             $promo = Promo::findOrFail($id);
