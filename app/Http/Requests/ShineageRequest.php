@@ -19,7 +19,7 @@ class ShineageRequest extends FormRequest
             'jenis' => 'required|string|max:255',
             'garansi' => 'required|string|max:255',
             'warna' => 'required|string|max:255',
-            'dimensi' => 'required|string|max:255',
+            //'dimensi' => 'required|string|max:255',
             'panjang' => 'required|numeric',
             'lebar' => 'required|numeric',
             'tinggi' => 'required|numeric',

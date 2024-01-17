@@ -36,6 +36,10 @@ class Agrigard extends Model
         return $this->belongsToMany(Promo::class, 'agrigards_promos', 'id_agrigard', 'id_promo');
     }
 
+    public function orders() {
+        return $this->belongsToMany(Order::class, 'agrigards_order', 'id_agrigard', 'id_order');
+    }
+
     // protected $fillable = [
     //     'kategori',
     //     'nama_produk',

@@ -13,6 +13,8 @@ return new class extends Migration
     {
         Schema::create('testimoni_agrigards', function (Blueprint $table) {
             $table->id('id_testimoni_agrigard');
+            $table->foreignId('id_users')->references('user_id')->on('users');
+            $table->foreignId('id_orders')->references('id_order')->on('orders');
             $table->foreignId('id_agri_gard')->references('id_agrigard')->on('agrigards');
             $table->string('Deskripsi');
             $table->integer('status')->default(1);

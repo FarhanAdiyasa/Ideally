@@ -33,6 +33,10 @@ class Konkurito extends Model
         return $this->belongsToMany(Promo::class, 'konkuritos_promos', 'id_konkurito', 'id_promo');
     }
 
+    public function orders() {
+        return $this->belongsToMany(Order::class, 'konkuritos_order', 'id_konkurito', 'id_order');
+    }
+
     // protected $fillable = [
     //     'id_konkurito',
     //     'nama_produk',

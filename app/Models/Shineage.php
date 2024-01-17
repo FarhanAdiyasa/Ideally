@@ -34,6 +34,10 @@ class Shineage extends Model
         return $this->belongsToMany(Promo::class, 'shineages_promos', 'id_shineage', 'id_promo');
     }
 
+    public function orders() {
+        return $this->belongsToMany(Order::class, 'shineages_order', 'id_shineage', 'id_order');
+    }
+
 
     // protected $fillable = [
     //     'id_shineage',
