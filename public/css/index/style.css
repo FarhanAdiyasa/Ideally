@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&family=Rubik:wght@900&display=swap');
 
 body {
-    background-image: url(../../img/LATAR-01.png);
+    background-image: url(../../img/everlas_things/header-bg.jpg);
     background-size: 100% auto;
     background-repeat: no-repeat;
     font-family: 'Poppins', sans-serif;
@@ -24,7 +24,7 @@ body {
 
 .black-opacity {
     background: rgba(0, 0, 0, 0.50);
-    height: 745px; 
+    height: 600px; 
     width: 100%; 
     z-index: -1;
 }
@@ -152,6 +152,10 @@ body {
     margin: 0;
 }
 
+.card-product-besar img {
+    width: 200px;
+}
+
 .card-product-besar .seri {
     font-size: 10px;
     margin-bottom: 4px;
@@ -257,3 +261,50 @@ body {
 }
 
 
+/* Call To Action */
+#cta a {
+    position: absolute;
+    background-color: #FF6412;
+    color: white;
+    padding: 15px 20px;
+    text-decoration: none;
+    font-size: large;
+    left: 280px;
+}
+
+#cta p {
+    position: absolute;
+}
+
+.cta-content {
+    width: 100%;
+    position: absolute;
+    z-index: 999;
+    margin-top: 7%;
+}
+
+.cta-content p {
+    font-size: 20px;
+    text-align: justify;
+    line-height: 1.5;
+    top: 200px;
+    left: 280px;
+    right: 800px;
+    color: #F2F2F2;
+}
+
+.cta-content .btn {
+    color: #180b01;
+    font-size: 13px;
+    text-transform: uppercase;
+    font-weight: 900;
+    padding: 0.5rem 2rem;
+    border-radius: 0;
+    background-color: #FFC700;
+    margin-top: 4em;
+    transition: 0.3s ease;
+}
+
+.cta-content .btn:hover {
+    background-color: rgb(188, 150, 14);
+}
