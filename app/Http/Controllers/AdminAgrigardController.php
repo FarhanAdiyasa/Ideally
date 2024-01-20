@@ -32,7 +32,7 @@ class AdminAgrigardController extends Controller
             $max = null;
     
             // Iterate over harga columns and compute overall range
-            for ($i = 1; $i <= 3; $i++) {  // Assuming 3 levels: b2I, b2B, b2C
+            for ($i = 1; $i <= 31; $i+=10) {  // Assuming 3 levels: b2I, b2B, b2C
                 $columnName = $columnPrefix . 'b2I_' . $i . '_unit';
                 $harga = $agrigard->{$columnName};  // Get the harga value for the current column
     
@@ -45,12 +45,44 @@ class AdminAgrigardController extends Controller
                         $max = $harga;
                     }
                 }
+               
             }
+            for ($i = 1; $i <= 31; $i+=10) {  // Assuming 3 levels: b2I, b2B, b2C
+                $columnName = $columnPrefix . 'b2C_' . $i . '_unit';
+                $harga = $agrigard->{$columnName};  // Get the harga value for the current column
     
-            // Add the computed range to the agrigard object
-            $hargaRanges[] = $min !== null && $max !== null ? $min . ' - ' . $max : 'No data';
+                if ($harga !== null) {
+                    if ($min === null || $harga < $min) {
+                        $min = $harga;
+                    }
     
-            // Add the computed ranges to the agrigard object
+                    if ($max === null || $harga > $max) {
+                        $max = $harga;
+                    }
+                }
+               
+            }
+            for ($i = 1; $i <= 31; $i+=10) {  // Assuming 3 levels: b2I, b2B, b2C
+                $columnName = $columnPrefix . 'b2B_' . $i . '_unit';
+                $harga = $agrigard->{$columnName};  // Get the harga value for the current column
+    
+                if ($harga !== null) {
+                    if ($min === null || $harga < $min) {
+                        $min = $harga;
+                    }
+    
+                    if ($max === null || $harga > $max) {
+                        $max = $harga;
+                    }
+                }
+            }
+            
+           // Assuming $min and $max are numeric values representing amounts in Rupiah.
+
+$hargaRanges[] = $min !== null && $max !== null
+? 'Rp. ' . number_format($min, 0, ',', '.') . ' - Rp. ' . number_format($max, 0, ',', '.')
+: 'No data';
+
             $agrigard->harga_ranges = $hargaRanges;
         }
     
@@ -144,7 +176,7 @@ class AdminAgrigardController extends Controller
             $agrigard->harga_b2C_31_unit = $harga_b2C_31_unit;
 
             $agrigard->slug =Str::slug($agrigard->nama_produk);
-            $agrigard->created_by = 1;
+            $agrigard->created_by = auth()->user()->user_id;
             $agrigard->save();
             DB::commit();
         } else {
@@ -223,6 +255,8 @@ class AdminAgrigardController extends Controller
                 $agrigard->gambar_3 = $photoPaths[2] ?? null;
                 if($request->tanggal_publikasi == "true"){
                     $agrigard->tanggal_publikasi = now();
+                }else{
+                    $agrigard->tanggal_publikasi = null;
                 }
                 $harga_jual_projek_ideally = str_replace(['.', ''], '', $request['harga_jual_projek_ideally']);
                 $agrigard->harga_jual_projek_ideally = $harga_jual_projek_ideally;

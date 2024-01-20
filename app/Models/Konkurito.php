@@ -34,7 +34,7 @@ class Konkurito extends Model
     }
 
     public function orders() {
-        return $this->belongsToMany(Order::class, 'konkuritos_order', 'id_konkurito', 'id_order');
+        return $this->belongsToMany(Order::class, 'konkuritos_orders', 'id_konkurito', 'id_order');
     }
 
     // protected $fillable = [

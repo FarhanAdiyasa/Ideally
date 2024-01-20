@@ -34,7 +34,7 @@ class AdminEverlasThingController extends Controller
             $max = null;
     
             // Iterate over harga columns and compute overall range
-            for ($i = 1; $i <= 3; $i++) {  // Assuming 3 levels: b2I, b2B, b2C
+            for ($i = 1; $i <= 31; $i+=10) {  // Assuming 3 levels: b2I, b2B, b2C
                 $columnName = $columnPrefix . 'b2I_' . $i . '_unit';
                 $harga = $everlasThing->{$columnName};  // Get the harga value for the current column
     
@@ -47,12 +47,42 @@ class AdminEverlasThingController extends Controller
                         $max = $harga;
                     }
                 }
+               
             }
+            for ($i = 1; $i <= 31; $i+=10) {  // Assuming 3 levels: b2I, b2B, b2C
+                $columnName = $columnPrefix . 'b2C_' . $i . '_unit';
+                $harga = $everlasThing->{$columnName};  // Get the harga value for the current column
     
-            // Add the computed range to the everlasThing object
-            $hargaRanges[] = $min !== null && $max !== null ? $min . ' - ' . $max : 'No data';
+                if ($harga !== null) {
+                    if ($min === null || $harga < $min) {
+                        $min = $harga;
+                    }
     
-            // Add the computed ranges to the everlasThing object
+                    if ($max === null || $harga > $max) {
+                        $max = $harga;
+                    }
+                }
+               
+            }
+            for ($i = 1; $i <= 31; $i+=10) {  // Assuming 3 levels: b2I, b2B, b2C
+                $columnName = $columnPrefix . 'b2B_' . $i . '_unit';
+                $harga = $everlasThing->{$columnName};  // Get the harga value for the current column
+    
+                if ($harga !== null) {
+                    if ($min === null || $harga < $min) {
+                        $min = $harga;
+                    }
+    
+                    if ($max === null || $harga > $max) {
+                        $max = $harga;
+                    }
+                }
+            }
+            
+          $hargaRanges[] = $min !== null && $max !== null
+    ? 'Rp. ' . number_format($min, 0, ',', '.') . ' - Rp. ' . number_format($max, 0, ',', '.')
+    : 'No data';
+
             $everlasThing->harga_ranges = $hargaRanges;
         }
     
@@ -139,7 +169,7 @@ class AdminEverlasThingController extends Controller
             $everlasThing->harga_b2C_11_unit = $harga_b2C_11_unit;
 
             $everlasThing->slug =Str::slug($everlasThing->nama_produk);
-            $everlasThing->created_by = 1;
+            $everlasThing->created_by = auth()->user()->user_id;;
             $everlasThing->save();
             DB::commit();
         } else {
@@ -225,6 +255,8 @@ class AdminEverlasThingController extends Controller
                 $everlasThing->gambar_6 = $photoPaths[5] ?? null;
                 if($request->tanggal_publikasi == "true"){
                     $everlasThing->tanggal_publikasi = now();
+                }else{
+                    $everlasThing->tanggal_publikasi = null;
                 }
                 $harga_jual_projek_ideally = str_replace(['.', ''], '', $request['harga_jual_projek_ideally']);
                 $everlasThing->harga_jual_projek_ideally = $harga_jual_projek_ideally;

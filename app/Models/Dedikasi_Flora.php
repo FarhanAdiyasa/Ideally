@@ -35,9 +35,8 @@ class Dedikasi_Flora extends Model
     }
 
     public function orders() {
-        return $this->belongsToMany(Order::class, 'dedikasi_floras_order', 'id_nurseri', 'id_order');
+        return $this->belongsToMany(Order::class, 'dedikasi_floras_orders', 'id_nurseri', 'id_order');
     }
-
 
     // protected $fillable = [
     //     'id_nurseri',

@@ -35,7 +35,7 @@ class Shineage extends Model
     }
 
     public function orders() {
-        return $this->belongsToMany(Order::class, 'shineages_order', 'id_shineage', 'id_order');
+        return $this->belongsToMany(Order::class, 'shineages_orders', 'id_shineage', 'id_order');
     }
 
 

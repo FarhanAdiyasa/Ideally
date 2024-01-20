@@ -37,7 +37,7 @@ class Agrigard extends Model
     }
 
     public function orders() {
-        return $this->belongsToMany(Order::class, 'agrigards_order', 'id_agrigard', 'id_order');
+        return $this->belongsToMany(Order::class, 'agrigards_orders', 'id_agrigard', 'id_order');
     }
 
     // protected $fillable = [
