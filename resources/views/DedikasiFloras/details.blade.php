@@ -701,15 +701,9 @@
         </div>
     </section>
     <!-- End Rekomendasi Produk -->
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/numeral.js/2.0.6/numeral.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/js/bootstrap.bundle.min.js"></script>
     <script>
-    const summaryPriceInput = document.getElementById('summaryPrice');
-    let summaryPriceValue = summaryPriceInput.value;
-    summaryPriceInput.value = numeral(summaryPriceValue).format('0,0');
-
-    let count = parseInt(document.getElementById('quantity').value);
-    const decreaseBtn = document.getElementById('kurang');
-
     function increase() {
         count++;
         document.getElementById('quantity').value = count;
@@ -763,9 +757,15 @@
         const totalPrice = price * quantity;
         summaryPriceInput.value = numeral(totalPrice).format('0,0');;
     }
+
+    const summaryPriceInput = document.getElementById('summaryPrice');
+    let summaryPriceValue = summaryPriceInput.value;
+    summaryPriceInput.value = numeral(summaryPriceValue).format('0,0');
+
+    let count = parseInt(document.getElementById('quantity').value);
+    const decreaseBtn = document.getElementById('kurang');
     </script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/numeral.js/2.0.6/numeral.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/js/bootstrap.bundle.min.js"></script>
+    
 </body>
 
 </html>

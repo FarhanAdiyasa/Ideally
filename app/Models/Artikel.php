@@ -39,8 +39,9 @@ class Artikel extends Model
     }
     public function sumberArtikel()
     {
-        return $this->hasMany(Sumber_Artikel::class, 'id_artikel');
+        return $this->belongsToMany(Sumber_Artikel::class, 'sumber_artikels', 'id_artikel', 'sumber_artikel');
     }
+    
     public function ratingArtikel()
     {
         return $this->hasMany(Rating_Artikel::class, 'id_artikel');
@@ -58,7 +59,7 @@ class Artikel extends Model
         });
         $query->when($filter['search'] ??  false, function ($query, $search) {
             return $query->where('judul_artikel', 'like', '%' . $search . '%')
-            ->orWhere('isi_artikel', 'like', '%' . $search . '%');
+            ->orWhere('isi_artikel', 'like', '%' . $search . '%')->orWhere('keywords', 'like', '%' . $search . '%');
         });
     }
 }

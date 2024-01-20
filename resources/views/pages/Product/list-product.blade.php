@@ -5,7 +5,7 @@
         <div class="container" style="padding-top: 25px;">
             <div class="card">
                 <div class="card-header">
-                    <h3>List Products</h3>
+                    <h3>List Agrigard</h3>
                 </div>
                 <div class="card-body">
                     @if (session('success'))
@@ -17,21 +17,25 @@
                     @endif
 
                     <p>
-                        <a href="{{ route('daftar-produk.tambah') }}" class="btn btn-primary">New Product</a>
+                        <a href="{{ route('daftar-produk.tambah') }}" class="btn btn-primary">New Agrigard</a>
                     </p>
                     <table id="products-table" class="table table-hover table-bordered text-center">
                         <thead>
                             <tr>
+                                 <th>No</th>
                                 <th>Info Agrigard</th>
                                 <th>Harga</th>
                                 <th>Stok</th>
                                 <th>Status</th>
-                                <th>Actions</th>
+                                <th>Aksi</th>
                             </tr>
                         </thead>
                         <tbody>
                             @forelse ($agrigards as $agrigard)
                                 <tr>
+                                    <td>
+                                        {{ $loop->iteration }}
+                                    </td>
                                     <td>
                                         <div class="row">
                                             <div class="col-4"><img src="{{  asset('storage/' . $agrigard->gambar_1)}}" width="56" height="56" alt="Product Image"></div>
@@ -47,7 +51,7 @@
                                     </td>
                                     <td>
                                         @foreach ($agrigard->harga_ranges as $hargaRange)
-                                            <div>{{ $hargaRange }}</div>
+                                             <div>{{ $hargaRange }}</div>
                                         @endforeach
                                     </td>
                                     <td>

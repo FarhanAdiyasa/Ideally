@@ -32,6 +32,7 @@
   
 </head>
 
+
 <body>
     {{-- Navbar Section --}}
     @include('partials.navbar')
@@ -48,7 +49,7 @@
     <p class="mt-4" style="color: black; font-size: 20px; font-weight: 700;">Kategori Artikel</p>
     <p style="color: #727272">Pengetahuan lanskap terbaik: pilih dari kategori artikel Ideally untuk transformasi luar ruangan yang mengagumkan.</p>
 
-    <div class="d-flex">
+    <div class="d-flex" style="white-space: nowrap;">
       <button type="button" class="btn rounded-pill mx-1 category-portaledukasi-btn" onclick="show('Desain-Taman')">Desain</button>
       <button type="button" class="btn rounded-pill mx-1 category-portaledukasi-btn" onclick="show('Konstruksi-Taman')">Konstruksi</button>
       <button type="button" class="btn rounded-pill mx-1 category-portaledukasi-btn" onclick="show('Pemeliharaan-Taman')">Pemeliharaan</button>
@@ -73,7 +74,7 @@
               <div class="carousel-item{{ $key === 0 ? ' active' : '' }}">
                   <div class="cards-wrapper">
                       @foreach ($chunk as $article)
-                          <div class="card border-0" style="width: 18rem;" >
+                          <div class="card border-0 article-card" style="width: 18rem;" >
                             <div class="gambar-card-artikel-baru">
                               <!-- <img src="{{asset('storage/' .$article->gambar_artikel)}}" -->
                               <img src="https://via.placeholder.com/362x185"
@@ -83,7 +84,7 @@
                             <div class="card-body">
                               <a href="/portal-edukasi/baca/{{$article->slug}}" class="hpLink"><h5 class="card-title" style="font-weight: 700;">{{$article->judul_artikel}}
                               </h5></a>
-                              <p class="card-text" style="font-size: small; color: #999999;">{{ $article->createdBy->firstname }} {{ $article->createdBy->lastname }}</p>
+                              <p class="card-text" style="font-size: small; color: #999999;">{{$article->penulis_artikel}}</p>
             
                               <div class="d-flex">
                                 <div class="additional-text-container rounded-pill d-inline-block" >
@@ -192,7 +193,7 @@
           <div class="carousel-item{{ $key === 0 ? ' active' : '' }}">
               <div class="cards-wrapper">
                   @foreach ($chunk as $article)
-                      <div class="card border-0" style="width: 18rem;">
+                      <div class="card border-0 article-card" style="width: 18rem;">
                         <div class="gambar-card-artikel-baru">
                           <!-- <img src="{{asset('storage/' .$article->gambar_artikel)}}" -->
                           <img src="https://via.placeholder.com/362x185"
@@ -202,7 +203,7 @@
                         <div class="card-body">
                           <a href="/portal-edukasi/baca/{{$article->slug}}" class="hpLink"><h5 class="card-title" style="font-weight: 700;">{{$article->judul_artikel}}
                           </h5></a>
-                          <p class="card-text" style="font-size: small; color: #999999;">{{ $article->createdBy->firstname }} {{ $article->createdBy->lastname }}</p>
+                          <p class="card-text" style="font-size: small; color: #999999;">{{$article->penulis_artikel}}</p>
         
                           <div class="d-flex">
                             <div class="additional-text-container rounded-pill d-inline-block">

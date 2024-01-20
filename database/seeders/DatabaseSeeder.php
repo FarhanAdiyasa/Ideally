@@ -64,9 +64,9 @@ class DatabaseSeeder extends Seeder
         // Rating_Artikel::factory(140)->create();
 
         // Agrigard::factory(40)->create();
-        Konkurito::factory(40)->create();
+        // Konkurito::factory(40)->create();
         // Dedikasi_Flora::factory(40)->create();
-        Shineage::factory(40)->create();
+        // Shineage::factory(40)->create();
         // Everlas_Things::factory(40)->create();
         // Batunesia::factory(40)->create();
         // Promo::factory(10)->create()->each(function ($promo) {
@@ -77,5 +77,44 @@ class DatabaseSeeder extends Seeder
         //     $promo->shineages()->attach(Shineage::pluck('id_shineage')->toArray());
         //     $promo->agrigards()->attach(Agrigard::pluck('id_agrigard')->toArray());
         // });
+        // $userData = [
+        //     'email' => 'ideally@gmail.com',
+        //     'password' => bcrypt('12345'),
+        //     'google_id' => 'google123',
+        //     'firstname' => 'John',
+        //     'lastname' => 'Doe',
+        //     'address' => '123 Main St',
+        //     'telephone_number' => '123456789',
+        //     'birthdate' => '1990-01-01',
+        //     'gender' => 'male',
+        //     'profesi' => 'Developer',
+        //     'profile_picture' => 'path/to/picture.jpg',
+        //     'provinsi' => 'Example Province',
+        //     'kabupaten' => 'Example Regency',
+        //     'kecamatan' => 'Example District',
+        //     'kelurahan' => 'Example Village',
+        //     'role' => 'admin',
+        //     'email_verified_at' => now(), // Assuming email is verified at the time of creation
+        // ];
+        $userData = [
+            'email' => 'user@gmail.com',
+            'password' => bcrypt('12345'),
+            'google_id' => 'google123',
+            'firstname' => 'Farhan',
+            'lastname' => 'Adiyasa',
+            'address' => '123 Main St',
+            'telephone_number' => '123456789',
+            'birthdate' => '1990-01-01',
+            'gender' => 'male',
+            'profesi' => 'Developer',
+            'profile_picture' => 'Storage/Photos/Foto.jpg',
+            'provinsi' => 'Example Province',
+            'kabupaten' => 'Example Regency',
+            'kecamatan' => 'Example District',
+            'kelurahan' => 'Example Village',
+            'role' => 'admin',
+            'email_verified_at' => now(), // Assuming email is verified at the time of creation
+        ];
+        User::create($userData);        
     }
 }

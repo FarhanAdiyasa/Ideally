@@ -5,7 +5,7 @@
         <div class="container">
             <div class="card mt-5">
                 <div class="card-header">
-                    <h3>List Products</h3>
+                    <h3>List Shineage</h3>
                 </div>
                 <div class="card-body">
                     @if (session('success'))
@@ -22,16 +22,20 @@
                     <table id="products-table" class="table table-hover table-bordered text-center">
                         <thead>
                             <tr>
+                                 <th>No</th>
                                 <th>Info Shineage</th>
                                 <th>Harga</th>
                                 <th>Stok</th>
                                 <th>Status</th>
-                                <th>Actions</th>
+                                <th>Aksi</th>
                             </tr>
                         </thead>
                         <tbody>
                             @forelse ($shineages as $shineage)
                                 <tr>
+                                    <td>
+                                        {{ $loop->iteration }}
+                                    </td>
                                     <td>
                                         <div class="row">
                                             <div class="col-4"><img src="{{  asset('storage/' . $shineage->gambar_1)}}" width="56" height="56" alt="Product Image"></div>
@@ -47,7 +51,7 @@
                                     </td>
                                     <td>
                                         @foreach ($shineage->harga_ranges as $hargaRange)
-                                            <div>{{ $hargaRange }}</div>
+                                             <div>{{ $hargaRange }}</div>
                                         @endforeach
                                     </td>
                                     <td>

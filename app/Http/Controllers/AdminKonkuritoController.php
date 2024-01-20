@@ -25,37 +25,63 @@ class AdminKonkuritoController extends Controller
         
         foreach ($konkuritos as $konkurito) {
             $hargaRanges = [];
-
+    
             // Assuming harga columns have a common prefix
             $columnPrefix = 'harga_';
-
+    
             $min = null;
             $max = null;
-
+    
             // Iterate over harga columns and compute overall range
-            for ($i = 1; $i <= 3; $i++) {  // Assuming 3 levels: b2I, b2B, b2C
+            for ($i = 1; $i <= 31; $i+=10) {  // Assuming 3 levels: b2I, b2B, b2C
                 $columnName = $columnPrefix . 'b2I_' . $i . '_unit';
                 $harga = $konkurito->{$columnName};  // Get the harga value for the current column
-
+    
                 if ($harga !== null) {
                     if ($min === null || $harga < $min) {
                         $min = $harga;
                     }
-
+    
+                    if ($max === null || $harga > $max) {
+                        $max = $harga;
+                    }
+                }
+               
+            }
+            for ($i = 1; $i <= 31; $i+=10) {  // Assuming 3 levels: b2I, b2B, b2C
+                $columnName = $columnPrefix . 'b2C_' . $i . '_unit';
+                $harga = $konkurito->{$columnName};  // Get the harga value for the current column
+    
+                if ($harga !== null) {
+                    if ($min === null || $harga < $min) {
+                        $min = $harga;
+                    }
+    
+                    if ($max === null || $harga > $max) {
+                        $max = $harga;
+                    }
+                }
+               
+            }
+            for ($i = 1; $i <= 31; $i+=10) {  // Assuming 3 levels: b2I, b2B, b2C
+                $columnName = $columnPrefix . 'b2B_' . $i . '_unit';
+                $harga = $konkurito->{$columnName};  // Get the harga value for the current column
+    
+                if ($harga !== null) {
+                    if ($min === null || $harga < $min) {
+                        $min = $harga;
+                    }
+    
                     if ($max === null || $harga > $max) {
                         $max = $harga;
                     }
                 }
             }
+            
+          $hargaRanges[] = $min !== null && $max !== null
+    ? 'Rp. ' . number_format($min, 0, ',', '.') . ' - Rp. ' . number_format($max, 0, ',', '.')
+    : 'No data';
 
-            // Format the min and max prices in IDR
-            $formattedMin = $min !== null ? 'Rp. ' . number_format($min, 0, ',', '.') : 'No data';
-            $formattedMax = $max !== null ? 'Rp. ' . number_format($max, 0, ',', '.') : 'No data';
-
-            // Add the computed range to the konkurito object
-            $hargaRanges[] = $formattedMin . ' - ' . $formattedMax;
-
-            // Add the computed ranges to the konkurito object
             $konkurito->harga_ranges = $hargaRanges;
         }
 
@@ -141,7 +167,7 @@ class AdminKonkuritoController extends Controller
             $konkurito->harga_b2C_11_unit = $harga_b2C_11_unit;
 
             $konkurito->slug =Str::slug($konkurito->nama_produk);
-            $konkurito->created_by = 1;
+            $konkurito->created_by = auth()->user()->user_id;;
             $konkurito->save();
             DB::commit();
         } else {
@@ -226,6 +252,8 @@ class AdminKonkuritoController extends Controller
                 $konkurito->gambar_5 = $photoPaths[4] ?? null;
                 if($request->tanggal_publikasi == "true"){
                     $konkurito->tanggal_publikasi = now();
+                }else{
+                    $konkurito->tanggal_publikasi = null;
                 }
                 $harga_jual_projek_ideally = str_replace(['.', ''], '', $request['harga_jual_projek_ideally']);
                 $konkurito->harga_jual_projek_ideally = $harga_jual_projek_ideally;
