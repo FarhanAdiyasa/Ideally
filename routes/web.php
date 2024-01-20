@@ -143,11 +143,6 @@ Route::post('/post-everlasThing', [AdminEverlasThingController::class, 'post'])-
 Route::get('/delete-everlasThing/{id}', [AdminEverlasThingController::class, 'delete'])->name('everlasThings.delete');
 Route::delete('/destroy-everlasThing/{id}', [AdminEverlasThingController::class, 'destroy'])->name('everlasThings.destroy');
 
-Route::get('agrigard/index',[AgrigardController::class,'indexBrand'])->name('agrigard.utama');
-Route::get('agrigard/showcase',[AgrigardController::class,'showcase'])->name('agrigard.showcase');
-Route::get('agrigard/show/{id_agrigard}',[AgrigardController::class,'details'])->name('agrigard.detail');
-Route::get('agrigard/showcase/kategori',[AgrigardController::class,'showcase2'])->name('agrigard.kategori');
-
 //Promo
 Route::get('/daftar-promo', [PromoController::class, 'index'])->name('daftar-promo');
 
@@ -182,6 +177,14 @@ Route::post('/post-artikel', [AdminArtikelController::class, 'post'])->name('art
 Route::get('/cek-komentar/{id}', [AdminArtikelController::class, 'komentar'])->name('daftar.komentar');
 Route::post('/hide-komentar', [AdminArtikelController::class, 'hideKomentar'])->name('komentars.hide');
 });
+
+
+Route::get('agrigard/index',[AgrigardController::class,'indexBrand'])->name('agrigard.utama');
+Route::get('agrigard/showcase',[AgrigardController::class,'showcase'])->name('agrigard.showcase');
+Route::get('agrigard/show/{id_agrigard}',[AgrigardController::class,'details'])->name('agrigard.detail');
+Route::get('agrigard/showcase/kategori',[AgrigardController::class,'showcase2'])->name('agrigard.kategori');
+
+
 //batunesia
 Route::get('/batunesia/index', [BatunesiaController::class, 'index'])->name('batunesia.index');
 Route::get('/batunesia/index/showByWhite', [BatunesiaController::class, 'filterByWhite'])->name('batunesia.filterByWhite');
