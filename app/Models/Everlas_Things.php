@@ -27,6 +27,7 @@ protected $table = 'everlas_things';
     {
         return $this->belongsTo(User::class, 'deleted_by', 'user_id');
     }
+
     public function promos()
     {
         return $this->belongsToMany(Promo::class, 'everlas_things_promos', 'id_everlas_things', 'id_promo');

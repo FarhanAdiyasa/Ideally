@@ -13,6 +13,8 @@ return new class extends Migration
     {
         Schema::create('testimoni_everlastings', function (Blueprint $table) {
             $table->id('id_testimoni_everlasting');
+            $table->foreignId('id_users')->references('user_id')->on('users');
+            $table->foreignId('id_orders')->references('id_order')->on('orders');
             $table->foreignId('id_everlasting')->references('id_everlas_things')->on('everlas_things');
             $table->string('Deskripsi');
             $table->integer('status')->default(1);

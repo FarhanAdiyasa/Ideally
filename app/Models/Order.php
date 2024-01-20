@@ -9,6 +9,7 @@ class Order extends Model
 {
     use HasFactory;
 
+
     protected $fillable = ['user_id', 'total_harga', 'biaya_ongkir', 'grand_total', 'bank', 'status_pembayaran', 'status_pesanan'];
 
     protected static function booted()
@@ -21,6 +22,10 @@ class Order extends Model
         });
     }
 
+    public function users()
+    {
+        return $this->belongsTo(User::class, 'user_id');
+    }
 
     public function nurseris()
     {
@@ -47,5 +52,10 @@ class Order extends Model
     public function shineages() {
         return $this->belongsToMany(Shineage::class, 'shineages_orders', 'id_order', 'id_shineage');
     }
-
+  
+    // Define a relationship with the Testimonial model
+    public function testimonies()
+    {
+        return $this->hasMany(Testimonial::class, 'order_id');
+    }
 }

@@ -36,4 +36,5 @@ class Batunesia extends Model
     public function orders() {
         return $this->belongsToMany(Order::class, 'batunesias_orders', 'id_batu', 'id_order');
     }
+
 }
