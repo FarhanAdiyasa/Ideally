@@ -29,6 +29,7 @@ use App\Http\Controllers\AdminEverlasThingController;
 use App\Http\Controllers\AdminDedikasiFloraController;
 use App\Http\Controllers\AdminUserController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\TestimoniController;
 
 /*
 |--------------------------------------------------------------------------
@@ -290,8 +291,13 @@ Route::get('/add-cart-deflo/{id}/{qty}', [TransaksiController::class, 'add_cart_
 //keranjang agrigard
 Route::get('/add-cart-agrigard/{id}/{qty}', [TransaksiController::class, 'add_cart_agrigard'])->name('addcart.agrigard');
 
+//route testimoni
+Route::get('/order', [TestimoniController::class, 'index'])->name('testimoni.testimoniindex');
+Route::post('/testimoni/store', [TestimoniController::class, 'store'])->name('testimoni.store');
+
 // pembayaran
 Route::get('/pembayaran', [PembayaranController::class, 'index'])->name('index.pembayaran');
 Route::get('/cek-status/{order_id}', [PembayaranController::class, 'cekStatus'])->name('konfirmasi.status');
 Route::post('/pembayaran', [PembayaranController::class, 'bayar'])->name('store.bayar');
 // Route::post('/konfirmasi', [PembayaranController::class, 'handle_after']);
+
