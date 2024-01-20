@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Str;
+use Illuminate\Support\Arr;
 
 
 class TransaksiController extends Controller
@@ -50,10 +51,39 @@ class TransaksiController extends Controller
         return view('transaksi.keranjang');
     }
 
+    public function update($cartName, $id, $qty) {
+        $cart = session()->get($cartName);
+        $cart[$id]['quantity'] = $qty;
+        session()->put($cartName, $cart);
+
+        return redirect()->route('transaksi.index');
+    }
+
+    public function remove($cartName, $id){
+        $cart = session()->get($cartName);
+
+        if(isset($cart[$id])) {
+            unset($cart[$id]);
+            session()->put($cartName, $cart);
+        }
+
+        return redirect()->route('transaksi.index');
+    }
+
+    public function remove_all($cartName){
+        session()->forget($cartName);
+
+        return redirect()->route('transaksi.index');
+    }
+
     private function getUserDstID() {
         if (Auth::check()) {
             $user = Auth::user(); 
             $id = $user->kabupaten;
+
+            if ($id == null) {
+                return null;
+            }
     
             $filejson = substr($id, 0, 2);
             $url = "https://ibnux.github.io/data-indonesia/kabupaten/{$filejson}.json";
@@ -98,12 +128,24 @@ class TransaksiController extends Controller
                 'courier' => $request->courier,
             ]);
 
-            // dd($responseCost->json());
-    
-            $ongkir = $responseCost->json()['rajaongkir']['results'];
+            // eror request
+            $status = $responseCost->json()['rajaongkir']['status'];
+            if ($status['code'] != 200) {
+                return view('transaksi.keranjang')->withErrors(['error' => $status['description']]);
+            }
+
+            $result = $responseCost->json()['rajaongkir']['results'][0]['costs'];
+
+            $ongkirData = Arr::first($result, function ($cost) {
+                return $cost['service'] == 'REG';
+            });
+
+            $ongkir = $ongkirData['cost'][0]['value'];
+            session()->put('ongkir', $ongkir);
+            
             return view('transaksi.keranjang', compact('ongkir'));
         }
         
-        return view('transaksi.keranjang')->with('error', 'complete profile');
+        return view('transaksi.keranjang')->withErrors(['error' => 'Please complete your profile or Log In.']);
     }
 }

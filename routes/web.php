@@ -277,6 +277,9 @@ Route::get('/detail-batunesia/{id_batu}', [DetailController::class, 'showDetail'
 
 //Keranjang
 Route::get('/keranjang', [TransaksiController::class, 'index'])->name('transaksi.index');
+Route::get('/remove/{cartName}', [TransaksiController::class, 'remove_all'])->name('transaksi.removecart');
+Route::get('/remove/{cartName}/{id}', [TransaksiController::class, 'remove'])->name('transaksi.remove');
+Route::get('/update/{cartName}/{id}/{qty}', [TransaksiController::class, 'update'])->name('transaksi.update');
 
 // ongkir
 Route::post('/calculateOngkir', [TransaksiController::class, 'calculateOngkir'])->name('calculate.ongkir');
@@ -289,4 +292,6 @@ Route::get('/add-cart-agrigard/{id}/{qty}', [TransaksiController::class, 'add_ca
 
 // pembayaran
 Route::get('/pembayaran', [PembayaranController::class, 'index'])->name('index.pembayaran');
-Route::post('/bayar', [PembayaranController::class, 'bayar'])->name('store.bayar');
+Route::get('/cek-status/{order_id}', [PembayaranController::class, 'cekStatus'])->name('konfirmasi.status');
+Route::post('/pembayaran', [PembayaranController::class, 'bayar'])->name('store.bayar');
+// Route::post('/konfirmasi', [PembayaranController::class, 'handle_after']);

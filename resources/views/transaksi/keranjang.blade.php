@@ -3,20 +3,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Keranjang</title>
 
+    @vite(['resources/sass/app.scss', 'resources/js/app.js']);
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/css/bootstrap.min.css"
-        rel="stylesheet">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Bootstrap Icons -->
-    <link rel="stylesheet"
-        href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css">
 
     <!-- Font Awesomes Icons -->
-    <link rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
     <!-- Custom CSS -->
+    <!-- <link rel="stylesheet" href="{{ asset('css/navbar-style.css') }}"> -->
     <link rel="stylesheet" href="{{ asset('css/keranjang/style.css') }}" rel="stylesheet">
 
 
@@ -29,6 +28,10 @@
 </head>
 
 <body>
+    <!-- Navbar Utama -->
+    <!-- @include('partials.navbar') -->
+    <!-- End Navbar Utama -->
+
     <!-- Header -->
     <div class="over-light">
         <div class="bg-light rounded-5" style="width: 100%; height: 100%;"></div>
@@ -73,6 +76,16 @@
 
     <section id="content">
         <div class="container mt-4">
+            @if($errors->any())
+            <div class="alert alert-danger alert-dismissible fade show mb-3" role="alert">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+            @endif
             <div class="row g-4">
                 @if(empty(session('cart_deflo')) && empty(session('cart_agrigard')) &&
                 empty(session('cart_batunesia')))
@@ -111,7 +124,7 @@
                                     <th colspan="5" style="text-align: center;">Dedikasi Flora</th>
                                     <th class="total-brand">Total</th>
                                     <td class="d-flex align-items-center justify-content-center">
-                                        <a href="{{ asset('') }}"><img
+                                        <a href="{{ route('transaksi.removecart', $cartName = 'cart_deflo') }}"><img
                                                 src="{{ asset('img/keranjang/Delete Icon.png') }}" alt=""
                                                 class="d-block w-50"></a>
                                     </td>
@@ -144,7 +157,11 @@
                                     <td class="total">{{ $item['quantity'] * $item['produk']->harga_b2C_1_unit }}
                                     </td>
                                     <td class="d-flex align-items-center justify-content-center">
-                                        
+                                        <a href="{{ route('transaksi.remove', ['cartName' => 'cart_deflo', 'id' => $item['produk']->id_nurseri ]) }}"
+                                            onclick="return confirm('Apakah Anda yakin ingin menghapus item ini?')">
+                                            <img src="{{ asset('img/keranjang/Delete Icon.png') }}" alt=""
+                                                class="d-block w-50">
+                                        </a>
                                     </td>
                                 </tr>
                                 @php
@@ -192,7 +209,9 @@
                                     <td class="total">{{ $item['quantity'] * $item['produk']->harga_b2C_1_unit }}
                                     </td>
                                     <td class="d-flex align-items-center justify-content-center">
-
+                                        <a href="{{ asset('') }}"><img
+                                                src="{{ asset('img/keranjang/Delete Icon.png') }}" alt=""
+                                                class="d-block w-50"></a>
                                     </td>
                                 </tr>
                                 @php
@@ -207,7 +226,7 @@
                                     <th colspan="5" style="text-align: center;">Batunesia</th>
                                     <th class="total-brand">Total</th>
                                     <td class="d-flex align-items-center justify-content-center">
-                                        <a href="{{ asset('') }}"><img
+                                        <a href="{{ route('transaksi.removecart', $cartName = 'cart_batunesia') }}"><img
                                                 src="{{ asset('img/keranjang/Delete Icon.png') }}" alt=""
                                                 class="d-block w-50"></a>
                                     </td>
@@ -240,7 +259,9 @@
                                     <td class="total">{{ $item['quantity'] * $item['produk']->harga_b2C_1_unit }}
                                     </td>
                                     <td class="d-flex align-items-center justify-content-center">
-
+                                        <a href="{{ asset('') }}"><img
+                                                src="{{ asset('img/keranjang/Delete Icon.png') }}" alt=""
+                                                class="d-block w-50"></a>
                                     </td>
                                 </tr>
                                 @php
@@ -288,7 +309,9 @@
                                     <td class="total">{{ $item['quantity'] * $item['produk']->harga_b2C_1_unit }}
                                     </td>
                                     <td class="d-flex align-items-center justify-content-center">
-
+                                        <a href="{{ asset('') }}"><img
+                                                src="{{ asset('img/keranjang/Delete Icon.png') }}" alt=""
+                                                class="d-block w-50"></a>
                                     </td>
                                 </tr>
                                 @php
@@ -319,20 +342,12 @@
                                     <td id="total-harga"></td>
                                 </tr>
                                 @if (isset($ongkir))
-                                @foreach ($ongkir[0]['costs'] as $costs)
-                                @if ($costs['service'] == 'REG' )
                                 <tr>
                                     <td>Biaya Kirim (JNE REG)</td>
                                     <td class="text-end" id="ongkir">
-                                        {{ number_format($costs['cost'][0]['value'], 0, '.', '.') }}
-
-                                        @php
-                                            session(['total' => $costs['cost'][0]['value']]);
-                                        @endphp
+                                        {{ number_format($ongkir, 0, '.', '.') }}
                                     </td>
                                 </tr>
-                                @endif
-                                @endforeach
                                 @endif
                             </tbody>
                         </table>
@@ -352,9 +367,9 @@
                         <div id="responseContainer"></div>
                         <div class="d-flex flex-column align-items-center">
                             @if (isset($ongkir))
-
                             <div class="mt-3">
-                                <a href="{{ route('index.pembayaran') }}" class="btn btn-bayar bg-tosca rounded-5">Lanjut ke Pembayaran</a>
+                                <a href="{{ route('index.pembayaran') }}"
+                                    class="btn btn-bayar bg-tosca rounded-5">Lanjut ke Pembayaran</a>
                             </div>
                             @else
                             <div class="mt-3">
@@ -363,8 +378,9 @@
                                     <input type="hidden" value="79" name="origin" id="origin" class="form-control">
                                     <input type="hidden" value="153" name="destination" id="destination"
                                         class="form-control">
-                                    <input type="hidden" value="{{ $berat_agrigard+$berat_deflo+$berat_batunesia+$berat_everlas }}" name="weight"
-                                        id="weight" class="form-control">
+                                    <input type="hidden"
+                                        value="{{ $berat_agrigard+$berat_deflo+$berat_batunesia+$berat_everlas }}"
+                                        name="weight" id="weight" class="form-control">
                                     <input type="hidden" value="jne" name="courier" id="courier" class="form-control">
                                     <input type="submit" value="Cek Ongkir" name="btnCek" id="btnCek"
                                         class="btn btn-bayar bg-tosca rounded-5">

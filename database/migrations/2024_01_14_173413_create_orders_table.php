@@ -15,7 +15,15 @@ return new class extends Migration
             $table->id('id_order');
             $table->string('nomor_order', 8)->unique();
             $table->foreignId('user_id');
-            $table->string('status');
+            $table->decimal('total_harga', 10, 2);
+            $table->decimal('biaya_ongkir', 10, 2)->default(0);
+            $table->decimal('biaya_lainnya', 10, 2)->default(0);
+            $table->decimal('grand_total', 10, 2);
+            $table->string('bank');
+            $table->string('status_pembayaran');
+            $table->timestamp('tanggal_pembayaran')->nullable();
+            $table->string('status_pesanan');
+            $table->string('resi_pengiriman')->nullable();
             $table->timestamps();
 
             $table->foreign('user_id')->references('user_id')->on('users');
@@ -25,6 +33,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('id_order');
             $table->foreignId('id_nurseri');
+            $table->integer('quantity')->default(1); 
             
             $table->foreign('id_order')->references('id_order')->on('orders')->delete('cascade');
             $table->foreign('id_nurseri')->references('id_nurseri')->on('dedikasi_floras')->delete('cascade');
@@ -34,6 +43,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('id_order');
             $table->foreignId('id_agrigard');
+            $table->integer('quantity')->default(1); 
             
             $table->foreign('id_order')->references('id_order')->on('orders')->delete('cascade');
             $table->foreign('id_agrigard')->references('id_agrigard')->on('agrigards')->delete('cascade');
@@ -43,6 +53,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('id_order');
             $table->foreignId('id_batu');
+            $table->integer('quantity')->default(1); 
             
             $table->foreign('id_order')->references('id_order')->on('orders')->delete('cascade');
             $table->foreign('id_batu')->references('id_batu')->on('batunesias')->delete('cascade');
@@ -52,6 +63,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('id_order');
             $table->foreignId('id_everlas_things');
+            $table->integer('quantity')->default(1); 
             
             $table->foreign('id_order')->references('id_order')->on('orders')->delete('cascade');
             $table->foreign('id_everlas_things')->references('id_everlas_things')->on('everlas_things')->delete('cascade');
@@ -61,6 +73,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('id_order');
             $table->foreignId('id_konkurito');
+            $table->integer('quantity')->default(1); 
             
             $table->foreign('id_order')->references('id_order')->on('orders')->delete('cascade');
             $table->foreign('id_konkurito')->references('id_konkurito')->on('konkuritos')->delete('cascade');
@@ -70,6 +83,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('id_order');
             $table->foreignId('id_shineage');
+            $table->integer('quantity')->default(1); 
             
             $table->foreign('id_order')->references('id_order')->on('orders')->delete('cascade');
             $table->foreign('id_shineage')->references('id_shineage')->on('shineages')->delete('cascade');
