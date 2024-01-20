@@ -114,3 +114,30 @@ body {
 .hpLink:hover p {
     color: var(--hijau-idl);
 }
+.wajib {
+    padding: 2px 4px;
+    position: static;
+    width: 40px;
+    height: 20px;
+    left: 44px;
+    top: 0px;
+    background: var(--N50, #f3f4f5);
+    border-radius: 3px;
+    font-size: 12px;
+    line-height: 16px;
+    color: var(--hijau-idl);
+    margin-left: 8px;
+}
+.ket-field {
+    padding: 2px 4px;
+    position: static;
+    width: 40px;
+    height: 20px;
+    left: 44px;
+    top: 0px;
+    border-radius: 3px;
+    font-size: 12px;
+    line-height: 16px;
+    color: var(--hijau-idl);
+    margin-left: 8px;
+}

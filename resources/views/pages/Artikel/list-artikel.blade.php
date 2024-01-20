@@ -21,16 +21,20 @@
                     <table id="articles-table" class="table table-bordered text-center">
                         <thead>
                             <tr>
+                                <th>No</th>
                                 <th>Judul Artikel</th>
                                 <th>Pengunjung</th>
                                 <th>Penulis</th>
                                 <th>Status</th>
-                                <th>Actions</th>
+                                <th>Aksi</th>
                             </tr>
                         </thead>
                         <tbody>
                             @forelse ($artikels as $artikel)
                                 <tr>
+                                    <td>
+                                        {{ $loop->iteration }}
+                                    </td>
                                     <td>
                                         <div class="row">
                                                 <div>

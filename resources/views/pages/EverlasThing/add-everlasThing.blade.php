@@ -1,7 +1,7 @@
 @extends('layouts/admin')
 @section('content')
 <section class="content-header">
-  @if ($errors->any())
+  {{-- @if ($errors->any())
     <div class="alert alert-danger">
         <ul>
             @foreach ($errors->all() as $error)
@@ -9,7 +9,7 @@
             @endforeach
         </ul>
     </div>
-@endif
+@endif --}}
 @if(session('success'))
     <div class="alert alert-success">
         {{ session('success') }}
@@ -463,7 +463,7 @@
       <div class="row">
         <div class="col-md-3">
           <div class="form-group">
-            <p>1+ Units</p>
+            <p>1+ Units <span class="wajib">Wajib</span></p>
           </div>
           <!-- /.form-group -->
         </div>
@@ -487,7 +487,7 @@
       <div class="row">
         <div class="col-md-3">
           <div class="form-group">
-            <p>11+ Units</p>
+            <p>11+ Units <span class="wajib">Wajib</span></p>
            
           </div>
           <!-- /.form-group -->
@@ -513,7 +513,7 @@
       <div class="row">
         <div class="col-md-3">
           <div class="form-group">
-            <p>1+ Units</p>
+            <p>1+ Units <span class="wajib">Wajib</span></p>
            
           </div>
           <!-- /.form-group -->
@@ -536,7 +536,7 @@
       <div class="row">
         <div class="col-md-3">
           <div class="form-group">
-            <p>11+ Units</p>
+            <p>11+ Units <span class="wajib">Wajib</span></p>
            
           </div>
           <!-- /.form-group -->
@@ -562,7 +562,7 @@
       <div class="row">
         <div class="col-md-3">
           <div class="form-group">
-            <p>1+ Units:</p>
+            <p>1+ Units <span class="wajib">Wajib</span></p>
            
           </div>
           <!-- /.form-group -->
@@ -585,7 +585,7 @@
       <div class="row">
         <div class="col-md-3">
           <div class="form-group">
-            <p>11+ Units:</p>
+            <p>11+ Units <span class="wajib">Wajib</span></p>
            
           </div>
           <!-- /.form-group -->
@@ -611,9 +611,9 @@
 </div>  
 <input type="text" name="tanggal_publikasi" id="tanggal_publikasi" class="form-control" style="display:none;">
 <div class="m-3 d-flex justify-content-end">
-  <button class="btn btn-dark mx-5" type="reset">Cancel</button>
-  <button class="btn btn-dark mx-3" type="button" onclick="submitForm('1')">Save And Post</button>
-  <button class="btn btn-success mx-3" type="button" onclick="submitForm('0')">Save</button>
+  <button class="btn btn-dark mx-5" type="reset">Batal</button>
+  <button class="btn btn-dark mx-3" type="button" onclick="submitForm('1')">Simpan Dan Terbitkan</button>
+  <button class="btn btn-success mx-3" type="button" onclick="submitForm('0')">Simpan</button>
 </div>
     
 </form>

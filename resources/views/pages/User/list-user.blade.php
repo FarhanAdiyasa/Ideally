@@ -23,12 +23,15 @@
                                 <th>Email</th>
                                 <th>No. Telepon</th>
                                 <th>Role</th>
-                                <th>Actions</th>
+                                <th>Aksi</th>
                             </tr>
                         </thead>
                         <tbody>
                             @forelse ($users as $user)
                                 <tr>
+                                    <td>
+                                        {{ $loop->iteration }}
+                                    </td>
                                     <td>
                                         <div class="row">
                                                 <div>

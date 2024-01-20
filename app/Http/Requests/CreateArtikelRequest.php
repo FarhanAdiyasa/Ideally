@@ -24,7 +24,7 @@ class CreateArtikelRequest extends FormRequest
     public function rules()
     {
         return [
-            'judul_artikel' => 'required|string|max:255',
+            'judul_artikel' => 'required|string|max:70',
             'deskripsi_artikel' => 'required|string',
             'isi_artikel' => 'required|string',
             'gambar_artikel' => 'required|image|mimes:jpeg,png,jpg|max:2048',
