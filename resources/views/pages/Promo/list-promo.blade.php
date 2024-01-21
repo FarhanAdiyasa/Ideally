@@ -120,14 +120,14 @@
 <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/1.11.5/js/dataTables.bootstrap5.min.js"></script>
 <script>
-    // function show(id) {
-    //     $.get("{{ url('/daftar-produk/') }}/" + id, {}, function (data, status) {
-    //         $("#modal-content").html(data);
-    //     })
-    //     .fail(function (xhr, textStatus, errorThrown) {
-    //         console.error("Error: " + errorThrown);
-    //     });
-    // }
+    function show(id) {
+            $.get("{{ url('/daftar-promo/') }}/" + id, {}, function (data, status) {
+            $("#modal-content").html(data);
+        })
+            .fail(function (xhr, textStatus, errorThrown) {
+            console.error("Error: " + errorThrown);
+        });
+    }
     function deletes(id) {
         console.log(id);
         $.get("{{ url('/delete-promo/') }}/" + id, {}, function (data, status) {

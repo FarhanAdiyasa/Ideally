@@ -35,10 +35,10 @@
                                 $no = 1 
                             @endphp
                             @forelse ($shineages as $shineage)
+                                <tr>
                                     <td style="vertical-align: middle;">
                                         {{ $no++ }}
                                     </td>
-                                <tr>
                                     <td style="vertical-align: middle;">
                                         <div class="row">
                                             <div class="col-4"><img src="{{  asset('storage/' . $shineage->gambar_1)}}" width="56" height="56" alt="Product Image"></div>

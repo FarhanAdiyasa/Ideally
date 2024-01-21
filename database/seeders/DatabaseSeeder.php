@@ -27,7 +27,7 @@ class DatabaseSeeder extends Seeder
         // User::factory(10)->create();
         
         // Kategori_Artikel::create([
-        //     'nama_katkegori_artikel' => 'Desain-Taman',
+        //     'nama_kategori_artikel' => 'Desain-Taman',
         //     'judul_kategori_artikel' => 'Lorem Desain-Taman ipsum dolor sit, amet consectetur adipisicing elit.',
         //     'deskripsi_kategori_artikel' =>'Lorem Desain-Taman ipsum dolor sit, amet consectetur adipisicing elit. Debitis aperiam eum unde id. Dolorum, alias nam debitis architecto cupiditate rem quos maiores repellat dicta fuga laudantium facilis nostrum corrupti placeat!'
         // ]);

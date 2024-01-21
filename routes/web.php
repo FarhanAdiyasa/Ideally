@@ -148,7 +148,7 @@ Route::get('agrigard/show/{id_agrigard}',[AgrigardController::class,'details'])-
 Route::get('agrigard/showcase/kategori',[AgrigardController::class,'showcase2'])->name('agrigard.kategori');
 
 //Promo
-Route::get('/daftar-promo', [PromoController::class, 'index'])->name('daftar-promo');
+Route::get('/daftar-promo/{id}', [PromoController::class, 'view'])->name('daftar-promo');
 
 Route::get('/tambah-promo', [PromoController::class, 'create'])->name('daftar-promo.tambah');
 Route::post('/tambah-promo', [PromoController::class, 'store'])->name('daftar-promo.save');
@@ -161,6 +161,8 @@ Route::post('/post-promo', [PromoController::class, 'post'])->name('daftar-promo
 
 Route::get('/delete-promo/{id}', [PromoController::class, 'delete'])->name('daftar-promo.delete');
 Route::delete('/destroy-promo/{id}', [PromoController::class, 'destroy'])->name('daftar-promo.destroy');
+
+Route::get('/daftar-promo', [PromoController::class, 'index'])->name('daftar-promo');
 
 //USERADMIN
 Route::get('/daftar-user', [AdminUserController::class, 'index'])->name('daftar-user');
