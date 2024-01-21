@@ -18,7 +18,7 @@ class ShineageController extends Controller
 
     public function showcase()
     {
-        $shineages = Shineage::where('stok', '>', 0)->get();
+        $shineages = Shineage::where('stok', '>', 0)->paginate(21);
         return view('shineages.showcase', compact('shineages'));
     }
 

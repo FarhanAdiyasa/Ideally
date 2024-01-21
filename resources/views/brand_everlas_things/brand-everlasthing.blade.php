@@ -27,7 +27,10 @@
             width: 450px;
             height: 350px;
             overflow: hidden;
+            padding: 2rem 0 3rem 3rem;
+            border-left: 4px solid #DFDFDF;
         }
+
         .slider-container {
             width: 100%;
             height: 100%;
@@ -657,9 +660,11 @@
                             <div id="next" onclick="nextSlide()"><img src="../img/Vector 7.png"></div>
                         </div>
                     </section>
-                    <div style="width: 499px; left: 8px; top: 483px; color: black; font-size: 14px; 
+                    <div style="width: 505px; left: 8px; top: 488px; color: black; font-size: 14px; 
                     font-family: Poppins; font-weight: 400; text-transform:
-                    capitalize; word-wrap: break-word">Furniture elegan dari besi dan logam. Desain abadi,
+                    capitalize; word-wrap: break-word; padding:1rem 3rem 2rem 3rem; 
+                    border-bottom: 4px solid #DFDFDF; 
+                    border-left: 4px solid #DFDFDF;">Furniture elegan dari besi dan logam. Desain abadi,
                         keindahan yang tahan lama untuk ruang taman Anda.</div>
 
                     <script>
@@ -686,98 +691,101 @@
                     </script>
 
                     <section id="produk-terbaru">
-                        <div style="width: 636px; height: 1098px; left: -65px; position: relative">
-                            <div style="width: 501px; height: 125px; left: 69px; top: 53px; position: absolute">
-                                <div
-                                    style="width: 125px; height: 125px; left: 0px; top: 0px; position: absolute; background: #BDAB93">
-                                </div>
-                                <div
-                                    style="width: 171px; height: 21px; left: 156px; top: 13px; position: absolute; color: #382C20; font-size: 14px; font-family: Poppins; font-weight: 400; word-wrap: break-word">
-                                    Industrial Style</div>
-                                <div
-                                    style="width: 171px; height: 21px; left: 156px; top: 83px; position: absolute; color: #7C7C7C; font-size: 14px; font-family: Poppins; font-weight: 400; word-wrap: break-word">
-                                    Rilis 30 September 2023</div>
-                                <div
-                                    style="width: 345px; height: 57px; left: 156px; top: 34px; position: absolute; color: #5E6462; font-size: 16px; font-family: Poppins; font-weight: 700; text-transform: capitalize; word-wrap: break-word">
-                                    FOREVENGE - Bangku Kotak Single Seat Outdoor</div>
-                            </div>
-                            <div style="width: 501px; height: 125px; left: 69px; top: 200px; position: absolute">
-                                <div
-                                    style="width: 125px; height: 125px; left: 0px; top: 0px; position: absolute; background: #BDAB93">
-                                </div>
-                                <div
-                                    style="width: 171px; height: 21px; left: 156px; top: 13px; position: absolute; color: #382C20; font-size: 14px; font-family: Poppins; font-weight: 400; word-wrap: break-word">
-                                    Industrial Style</div>
-                                <div
-                                    style="width: 171px; height: 21px; left: 156px; top: 83px; position: absolute; color: #7C7C7C; font-size: 14px; font-family: Poppins; font-weight: 400; word-wrap: break-word">
-                                    Rilis 30 September 2023</div>
-                                <div
-                                    style="width: 345px; height: 57px; left: 156px; top: 34px; position: absolute; color: #5E6462; font-size: 16px; font-family: Poppins; font-weight: 700; text-transform: capitalize; word-wrap: break-word">
-                                    FOREVENGE - Bangku Kotak Single Seat Outdoor</div>
-                            </div>
-                            <div style="width: 501px; height: 125px; left: 69px; top: 347px; position: absolute">
-                                <div
-                                    style="width: 125px; height: 125px; left: 0px; top: 0px; position: absolute; background: #BDAB93">
-                                </div>
-                                <div
-                                    style="width: 171px; height: 21px; left: 156px; top: 13px; position: absolute; color: #382C20; font-size: 14px; font-family: Poppins; font-weight: 400; word-wrap: break-word">
-                                    Industrial Style</div>
-                                <div
-                                    style="width: 171px; height: 21px; left: 156px; top: 83px; position: absolute; color: #7C7C7C; font-size: 14px; font-family: Poppins; font-weight: 400; word-wrap: break-word">
-                                    Rilis 30 September 2023</div>
-                                <div
-                                    style="width: 345px; height: 57px; left: 156px; top: 34px; position: absolute; color: #5E6462; font-size: 16px; font-family: Poppins; font-weight: 700; text-transform: capitalize; word-wrap: break-word">
-                                    FOREVENGE - Bangku Kotak Single Seat Outdoor</div>
-                            </div>
-                            <div style="width: 501px; height: 125px; left: 69px; top: 494px; position: absolute">
-                                <div
-                                    style="width: 125px; height: 125px; left: 0px; top: 0px; position: absolute; background: #BDAB93">
-                                </div>
-                                <div
-                                    style="width: 171px; height: 21px; left: 156px; top: 13px; position: absolute; color: #382C20; font-size: 14px; font-family: Poppins; font-weight: 400; word-wrap: break-word">
-                                    Industrial Style</div>
-                                <div
-                                    style="width: 171px; height: 21px; left: 156px; top: 83px; position: absolute; color: #7C7C7C; font-size: 14px; font-family: Poppins; font-weight: 400; word-wrap: break-word">
-                                    Rilis 30 September 2023</div>
-                                <div
-                                    style="width: 345px; height: 57px; left: 156px; top: 34px; position: absolute; color: #5E6462; font-size: 16px; font-family: Poppins; font-weight: 700; text-transform: capitalize; word-wrap: break-word">
-                                    FOREVENGE - Bangku Kotak Single Seat Outdoor</div>
-                            </div>
-                            <div style="width: 501px; height: 125px; left: 69px; top: 641px; position: absolute">
-                                <div
-                                    style="width: 125px; height: 125px; left: 0px; top: 0px; position: absolute; background: #BDAB93">
-                                </div>
-                                <div
-                                    style="width: 171px; height: 21px; left: 156px; top: 13px; position: absolute; color: #382C20; font-size: 14px; font-family: Poppins; font-weight: 400; word-wrap: break-word">
-                                    Industrial Style</div>
-                                <div
-                                    style="width: 171px; height: 21px; left: 156px; top: 83px; position: absolute; color: #7C7C7C; font-size: 14px; font-family: Poppins; font-weight: 400; word-wrap: break-word">
-                                    Rilis 30 September 2023</div>
-                                <div
-                                    style="width: 345px; height: 57px; left: 156px; top: 34px; position: absolute; color: #5E6462; font-size: 16px; font-family: Poppins; font-weight: 700; text-transform: capitalize; word-wrap: break-word">
-                                    FOREVENGE - Bangku Kotak Single Seat Outdoor</div>
-                            </div>
-                            <div
-                                style="left: 69px; top: 0px; position: absolute; color: #804F27; font-size: 25px; font-family: Rubik; font-weight: 400; word-wrap: break-word">
-                                PRODUK TERBARU</div>
-                            <div
-                                style="width: 470px; height: 250px; left: 69px; top: 798px; position: absolute; background: #BDAB93">
-                            </div>
-                            <div style="width: 80px; height: 40px; left: 459px; top: 778px; position: absolute">
-                                <div
-                                    style="width: 80px; height: 40px; left: 0px; top: 0px; position: absolute; background: #382C20">
-                                </div>
-                                <div
-                                    style="width: 20px; height: 0px; left: 40px; top: 30px; position: absolute; transform: rotate(-90deg); transform-origin: 0 0; border: 1px white solid">
-                                </div>
-                                <div
-                                    style="width: 13.55px; height: 13.55px; left: 15px; top: 20px; position: absolute; transform: rotate(-45deg); transform-origin: 0 0; background: white">
-                                </div>
-                                <div
-                                    style="width: 13.55px; height: 13.55px; left: 65px; top: 19.58px; position: absolute; transform: rotate(135deg); transform-origin: 0 0; background: white">
-                                </div>
+                        <div
+                            style="padding: 2rem 0 0 4.3rem; top:0;position: absolute; color: #804F27; font-size: 25px; font-family: Rubik; font-weight: 400; word-wrap: break-word">
+                            PRODUK TERBARU</div>
 
+                        <div class="col-sm-3 col-6 p-2">
+                            <div class="card-product">
+                            <img src="{{ $everlas_thing->gambar_1 }}" class="card-img-top" alt="...">
+                                <div
+                                    style="width: 100px; height: 100px; left: 49px; top: 30px; position: absolute; background: #BDAB93; padding: 2rem 0 0 2rem">
+                                </div>
+                                <div
+                                    style="width: 171px; height: 21px; left: 156px; top: 13px; position: absolute; color: #382C20; font-size: 14px; font-family: Poppins; font-weight: 400; word-wrap: break-word">
+                                    Industrial Style</div>
+                                <div
+                                    style="width: 171px; height: 21px; left: 156px; top: 83px; position: absolute; color: #7C7C7C; font-size: 14px; font-family: Poppins; font-weight: 400; word-wrap: break-word">
+                                    Rilis 30 September 2023</div>
+                                <div
+                                    style="width: 345px; height: 57px; left: 156px; top: 34px; position: absolute; color: #5E6462; font-size: 16px; font-family: Poppins; font-weight: 700; text-transform: capitalize; word-wrap: break-word">
+                                    FOREVENGE - Bangku Kotak Single Seat Outdoor</div>
                             </div>
+                        </div>
+
+                        <div style="width: 501px; height: 125px; left: 69px; top: 200px; position: absolute">
+                            <div
+                                style="width: 100px; height: 100px; left: 0px; top: 0px; position: absolute; background: #BDAB93">
+                            </div>
+                            <div
+                                style="width: 171px; height: 21px; left: 156px; top: 13px; position: absolute; color: #382C20; font-size: 14px; font-family: Poppins; font-weight: 400; word-wrap: break-word">
+                                Industrial Style</div>
+                            <div
+                                style="width: 171px; height: 21px; left: 156px; top: 83px; position: absolute; color: #7C7C7C; font-size: 14px; font-family: Poppins; font-weight: 400; word-wrap: break-word">
+                                Rilis 30 September 2023</div>
+                            <div
+                                style="width: 345px; height: 57px; left: 156px; top: 34px; position: absolute; color: #5E6462; font-size: 16px; font-family: Poppins; font-weight: 700; text-transform: capitalize; word-wrap: break-word">
+                                FOREVENGE - Bangku Kotak Single Seat Outdoor</div>
+                        </div>
+                        <div style="width: 501px; height: 125px; left: 69px; top: 347px; position: absolute">
+                            <div
+                                style="width: 100px; height: 100px; left: 0px; top: 0px; position: absolute; background: #BDAB93">
+                            </div>
+                            <div
+                                style="width: 171px; height: 21px; left: 156px; top: 13px; position: absolute; color: #382C20; font-size: 14px; font-family: Poppins; font-weight: 400; word-wrap: break-word">
+                                Industrial Style</div>
+                            <div
+                                style="width: 171px; height: 21px; left: 156px; top: 83px; position: absolute; color: #7C7C7C; font-size: 14px; font-family: Poppins; font-weight: 400; word-wrap: break-word">
+                                Rilis 30 September 2023</div>
+                            <div
+                                style="width: 345px; height: 57px; left: 156px; top: 34px; position: absolute; color: #5E6462; font-size: 16px; font-family: Poppins; font-weight: 700; text-transform: capitalize; word-wrap: break-word">
+                                FOREVENGE - Bangku Kotak Single Seat Outdoor</div>
+                        </div>
+                        <div style="width: 501px; height: 125px; left: 69px; top: 494px; position: absolute">
+                            <div
+                                style="width: 100px; height: 100px; left: 0px; top: 0px; position: absolute; background: #BDAB93">
+                            </div>
+                            <div
+                                style="width: 171px; height: 21px; left: 156px; top: 13px; position: absolute; color: #382C20; font-size: 14px; font-family: Poppins; font-weight: 400; word-wrap: break-word">
+                                Industrial Style</div>
+                            <div
+                                style="width: 171px; height: 21px; left: 156px; top: 83px; position: absolute; color: #7C7C7C; font-size: 14px; font-family: Poppins; font-weight: 400; word-wrap: break-word">
+                                Rilis 30 September 2023</div>
+                            <div
+                                style="width: 345px; height: 57px; left: 156px; top: 34px; position: absolute; color: #5E6462; font-size: 16px; font-family: Poppins; font-weight: 700; text-transform: capitalize; word-wrap: break-word">
+                                FOREVENGE - Bangku Kotak Single Seat Outdoor</div>
+                        </div>
+                        <div style="width: 501px; height: 125px; left: 69px; top: 641px; position: absolute">
+                            <div
+                                style="width: 100px; height: 100px; left: 0px; top: 0px; position: absolute; background: #BDAB93">
+                            </div>
+                            <div
+                                style="width: 171px; height: 21px; left: 156px; top: 13px; position: absolute; color: #382C20; font-size: 14px; font-family: Poppins; font-weight: 400; word-wrap: break-word">
+                                Industrial Style</div>
+                            <div
+                                style="width: 171px; height: 21px; left: 156px; top: 83px; position: absolute; color: #7C7C7C; font-size: 14px; font-family: Poppins; font-weight: 400; word-wrap: break-word">
+                                Rilis 30 September 2023</div>
+                            <div
+                                style="width: 345px; height: 57px; left: 156px; top: 34px; position: absolute; color: #5E6462; font-size: 16px; font-family: Poppins; font-weight: 700; text-transform: capitalize; word-wrap: break-word">
+                                FOREVENGE - Bangku Kotak Single Seat Outdoor</div>
+                        </div>
+                        <div
+                            style="width: 470px; height: 250px; left: 69px; top: 798px; position: absolute; background: #BDAB93">
+                        </div>
+                        <div style="width: 80px; height: 40px; left: 459px; top: 778px; position: absolute">
+                            <div
+                                style="width: 80px; height: 40px; left: 0px; top: 0px; position: absolute; background: #382C20">
+                            </div>
+                            <div
+                                style="width: 20px; height: 0px; left: 40px; top: 30px; position: absolute; transform: rotate(-90deg); transform-origin: 0 0; border: 1px white solid">
+                            </div>
+                            <div
+                                style="width: 13.55px; height: 13.55px; left: 15px; top: 20px; position: absolute; transform: rotate(-45deg); transform-origin: 0 0; background: white">
+                            </div>
+                            <div
+                                style="width: 13.55px; height: 13.55px; left: 65px; top: 19.58px; position: absolute; transform: rotate(135deg); transform-origin: 0 0; background: white">
+                            </div>
+                        </div>
                     </section>
 
                     <script>

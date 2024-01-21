@@ -220,7 +220,7 @@ Route::post('reset-password', [AuthController::class, "resetPasswordPost"])->nam
 
 
 //everlasthing
-Route::get('/everlasthings/brand', [everlastThingController::class, 'index'])->name('everlasthings.brand');
+Route::get('/everlasthings/index', [everlastThingController::class, 'index'])->name('everlasthings.brand');
 Route::get('/everlasthings/detailProduct/{id_everlas_things}', [everlastThingController::class, 'detailProduct'])->name('everlasthings.detailProduct');
 Route::get('/everlasthings/showcase', [everlastThingController::class, 'showcase'])->name('everlasthings.showcase');
 Route::get('/tambahEverlasthingsKeKeranjang/{id_everlas_things}/{quantity}', [everlastThingController::class, 'tambahKeKeranjang'])->name('tambahEverlasthingsKeKeranjang');

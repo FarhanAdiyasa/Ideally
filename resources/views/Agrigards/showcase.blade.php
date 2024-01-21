@@ -67,49 +67,41 @@
             <div class="inner-container top-end bg-orange">
                 <div class="row">
                 <div class="col wrapper">
-                        <div class="bg-light rounded-circle" style="height: 25px; width: 25px;"></div>
                         <div class="text-white text-center m-0">
                             <a href="{{ route('agrigard.kategori', ['kategori' => 'Pot Plastik']) }}">Pot Plastik</a>
                         </div>
                     </div>
                     <div class="col wrapper">
-                        <div class="bg-light rounded-circle" style="height: 25px; width: 25px;"></div>
                         <div class="text-white text-center m-0">
                         <a href="{{ route('agrigard.kategori', ['kategori' => 'Pot Terracota']) }}">Pot Terracota</a>
                         </div>
                     </div>
                     <div class="col wrapper">
-                        <div class="bg-light rounded-circle" style="height: 25px; width: 25px;"></div>
                         <div class="text-white text-center m-0">
                         <a href="{{ route('agrigard.kategori', ['kategori' => 'Bibit Tanaman']) }}">Bibit Tanaman</a>
                         </div>
                     </div>
                     <div class="col wrapper">
-                        <div class="bg-light rounded-circle" style="height: 25px; width: 25px;"></div>
                         <div class="text-white text-center m-0">
                         <a href="{{ route('agrigard.kategori', ['kategori' => 'Media Tanam']) }}">Media Tanam</a>
                         </div>
                     </div>
                     <div class="col wrapper">
-                        <div class="bg-light rounded-circle" style="height: 25px; width: 25px;"></div>
                         <div class="text-white text-center m-0">
                         <a href="{{ route('agrigard.kategori', ['kategori' => 'Wadah Tanam']) }}">Wadah Tanam</a>
                         </div>
                     </div>
                     <div class="col wrapper">
-                        <div class="bg-light rounded-circle" style="height: 25px; width: 25px;"></div>
                         <div class="text-white text-center m-0">
                         <a href="{{ route('agrigard.kategori', ['kategori' => 'Obat dan Nutrisi']) }}">Obat dan Nutrisi</a>
                         </div>
                     </div>
                     <div class="col wrapper">
-                        <div class="bg-light rounded-circle" style="height: 25px; width: 25px;"></div>
                         <div class="text-white text-center m-0">
                         <a href="{{ route('agrigard.kategori', ['kategori' => 'Alat Kerja']) }}">Alat Kerja</a>
                         </div>
                     </div>
                     <div class="col wrapper">
-                        <div class="bg-light rounded-circle" style="height: 25px; width: 25px;"></div>
                         <div class="text-white text-center m-0">
                             <a href="{{ route('agrigard.kategori', ['kategori' => 'Lain - lain']) }}">Lain - lain</a>
                         </div>
@@ -160,17 +152,7 @@
                 </div>
                 <!-- Pagination -->
                 <div class="mt-5 d-flex justify-content-center">
-                    <nav aria-label="Page navigation example">
-                        <ul class="pagination">
-                            <li class="page-item page-item-prev"><a class="page-link" href="#"
-                                    aria-label="Previous">-</a></li>
-                            <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                            <li class="page-item"><a class="page-link" href="#">2</a></li>
-                            <li class="page-item"><a class="page-link" href="#">3</a></li>
-                            <li class="page-item page-item-next"><a class="page-link" href="#" aria-label="Next">+</a>
-                            </li>
-                        </ul>
-                    </nav>
+                {{ $agrigards->links('partials.agrigard-pagination') }}
                 </div>
                 <!-- End Pagination -->
             </div>
