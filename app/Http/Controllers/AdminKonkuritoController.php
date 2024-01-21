@@ -85,14 +85,14 @@ class AdminKonkuritoController extends Controller
             $konkurito->harga_ranges = $hargaRanges;
         }
 
-        return view('Pages/konkurito/list-konkuritos', ['konkuritos' => $konkuritos]);
+        return view('Pages/konkurito/list-konkuritos', ['konkuritos' => $konkuritos, "active"=>"konkurito"]);
     }
 
     
     public function view($id)
     {
         $konkurito = konkurito::findOrFail($id);
-        return view('Pages/konkurito/detail-konkurito', ['konkurito'=>$konkurito]);
+        return view('Pages/konkurito/detail-konkurito', ['konkurito'=>$konkurito, "active"=>"konkurito"]);
     }
 
     /**
@@ -100,7 +100,7 @@ class AdminKonkuritoController extends Controller
      */
     public function create()
     {
-        return view('Pages/konkurito/add-konkurito');
+        return view('Pages/konkurito/add-konkurito',["active"=>"konkurito"]);
     }
 
     /**
@@ -180,7 +180,11 @@ class AdminKonkuritoController extends Controller
         DB::rollback();
        return redirect()->back()->with('error', 'Terjadi kesalahan. Silakan coba lagi nanti.');
     }
-    return redirect()->route('konkuritos')->with('success', 'Data has been successfully stored.');
+    if($request->tanggal_publikasi == "true"){
+        return redirect()->route('konkuritos')->with('success', 'Produk berhasil disimpan dan diterbitkan.');
+   }else{
+        return redirect()->route('konkuritos')->with('success', 'Produk berhasil disimpan.');
+   }
     }
     
 
@@ -195,7 +199,7 @@ class AdminKonkuritoController extends Controller
     public function edit($id)
     {
         $konkurito = konkurito::findOrFail($id);
-        return view('Pages/konkurito/edit-konkurito', ['konkurito'=>$konkurito]);
+        return view('Pages/konkurito/edit-konkurito', ['konkurito'=>$konkurito, "active"=>"konkurito"]);
     }
 
     /**
@@ -289,13 +293,17 @@ class AdminKonkuritoController extends Controller
             DB::rollback();
            return redirect()->back()->with('error', 'Terjadi kesalahan. Silakan coba lagi nanti.');
         }
-        return redirect()->route('konkuritos')->with('success', 'Data has been successfully stored.');
+        if($request->tanggal_publikasi == "true"){
+            return redirect()->route('konkuritos')->with('success', 'Produk berhasil disimpan dan diterbitkan.');
+       }else{
+            return redirect()->route('konkuritos')->with('success', 'Data berhasil disimpan.');
+       }
     }
 
     public function delete($id)
     {
         $konkurito = konkurito::findOrFail($id);
-        return view('Pages/konkurito/delete-konkurito', ['konkurito'=>$konkurito]);
+        return view('Pages/konkurito/delete-konkurito', ['konkurito'=>$konkurito, "active"=>"konkurito"]);
     }
 
     public function destroy($id)
@@ -331,7 +339,7 @@ class AdminKonkuritoController extends Controller
             return redirect()->back()->with('error', 'Terjadi kesalahan. Silakan coba lagi nanti.');
         }
 
-        return redirect()->route('konkuritos')->with('success', 'Data has been successfully deleted.');
+        return redirect()->route('konkuritos')->with('success', 'Data berhasil dihapus.');
     }
 
     public function post(Request $request)
@@ -347,7 +355,7 @@ class AdminKonkuritoController extends Controller
             DB::rollback();
             return redirect()->back()->with('error', 'Terjadi kesalahan. Silakan coba lagi nanti.');
         }
-        return redirect()->route('konkuritos')->with('success', 'Data status has been successfully changed .');
+        return redirect()->route('konkuritos')->with('success', 'Data berhasil diterbitkan.');
     }
     
 }

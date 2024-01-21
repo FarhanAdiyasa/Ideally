@@ -1,6 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-6990JVL0LN"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-6990JVL0LN');
+</script>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -129,7 +138,7 @@
             <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
             <li class="nav-item">
-              <a href="{{ route('dashboard') }}" class="nav-link">
+              <a href="{{ route('dashboard') }}" class="nav-link @if($active == 'Dashboard') active @else  @endif">
                 <i class="nav-icon fas fa-home"></i>
                 <p>
                   Dashboard
@@ -140,7 +149,7 @@
 
             <li class="nav-header">Produk</li>
             <li class="nav-item">
-              <a href="{{ route('dedikasiFloras') }}" class="nav-link">
+              <a href="{{ route('dedikasiFloras') }}" class="nav-link @if($active == 'DedikasiFlora') active @else  @endif">
                 <i class="nav-icon fa fa-solid fa-leaf"></i>
                 <p>
                   Dedikasi Flora
@@ -148,7 +157,7 @@
               </a>
             </li>
             <li class="nav-item">
-              <a href="{{ route('batunesias') }}" class="nav-link">
+              <a href="{{ route('batunesias') }}" class="nav-link @if($active == 'batunesia') active @else  @endif">
                 <i class="nav-icon fa fa-solid fa-box-open"></i>
                 <p>
                   Batunesia
@@ -156,7 +165,7 @@
               </a>
             </li>
             <li class="nav-item">
-              <a href="{{ route('konkuritos') }}" class="nav-link">
+              <a href="{{ route('konkuritos') }}" class="nav-link @if($active == 'konkurito') active @else  @endif">
                 <i class="nav-icon fa fa-solid fa-box-open "></i>
                 <p>
                   Konkurito
@@ -164,7 +173,7 @@
               </a>
             </li>
             <li class="nav-item">
-              <a href="{{ route('everlasThings') }}" class="nav-link">
+              <a href="{{ route('everlasThings') }}" class="nav-link @if($active == 'everlas') active @else  @endif">
                 <i class="nav-icon fa fa-solid fa-chair "></i>
                 <p>
                   Everlas Thing
@@ -172,7 +181,7 @@
               </a>
             </li>
             <li class="nav-item">
-              <a href="{{ route('daftar-produk') }}" class="nav-link">
+              <a href="{{ route('daftar-produk') }}" class="nav-link @if($active == 'agrigard') active @else  @endif">
                 <i class="nav-icon fa fa-solid fa-box-open"></i>
                 <p>
                   Agrigard
@@ -180,7 +189,7 @@
               </a>
             </li>
             <li class="nav-item">
-              <a href="{{ route('shineages') }}" class="nav-link">
+              <a href="{{ route('shineages') }}" class="nav-link @if($active == 'shineage') active @else  @endif">
                 <i class="nav-icon fa fa-solid fa-box-open"></i>
                 <p>
                   Signage
@@ -189,7 +198,7 @@
             </li>
             <li class="nav-header">Edukasi</li>
             <li class="nav-item">
-              <a href="{{ route('artikels') }}"" class="nav-link">
+              <a href="{{ route('artikels') }}" class="nav-link @if($active == 'artikel') active @else  @endif">
                 <i class="nav-icon fa fa-solid fa-newspaper"></i>
                 <p>
                   Artikel
@@ -198,13 +207,22 @@
             </li>
             <li class="nav-header">Promo</li>
             <li class="nav-item">
-              <a href="{{ route('daftar-promo') }}" class="nav-link">
+              <a href="{{ route('daftar-promo') }}" class="nav-link @if($active == 'promo') active @else  @endif">
                 <i class="nav-icon fa fa-solid fa-percent"></i>
                 <p>
                   Promo
                 </p>
               </a>
             </li>
+            {{-- <li class="nav-header">User</li>
+            <li class="nav-item">
+              <a href="{{ route('daftar-user') }}" class="nav-link">
+                <i class="nav-icon fa fa-solid fa-users"></i>
+                <p>
+                  User
+                </p>
+              </a>
+            </li> --}}
           </ul>
         </nav>
         <!-- /.sidebar-menu -->
@@ -356,14 +374,17 @@
 </script>
 <script src="{{ asset('js/admin_side.js')}}"></script>
 <script>
+ 
   document.addEventListener('DOMContentLoaded', function() {
     var logoutButton = document.getElementById('logoutButton');
-
-    logoutButton.addEventListener('click', function(event) {
+    if(logoutButton){
+      logoutButton.addEventListener('click', function(event) {
       event.preventDefault();
 
       $('#logoutModal').modal('show');
     });
+    }
+   
   });
 </script>
 

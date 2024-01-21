@@ -2,6 +2,15 @@
 <html lang="en">
 
 <head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-6990JVL0LN"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-6990JVL0LN');
+</script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Ideally - Portal Edukasi</title>
@@ -162,7 +171,7 @@
                           </div>
                           <!-- Separator -->
                           <hr style="border-top: 3px solid grey; ">
-                          <a href="/portal-edukasi/baca/{{$article->slug}}" class="hpLink"><span style="font-size: 14px; font-weight: 700; color: #06C195;">{{$komentar->artikel->judul_artikel}}</span></a>
+                          <a href="/portal-edukasi/baca/{{$article->slug}}" class="hpLink"><span style="font-size: 14px; font-weight: 700; color: #06C195;">{{ optional($komentar->artikel)->id_artikel }}</span></a>
                         </div>
                       </div>
                       

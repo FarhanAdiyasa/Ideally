@@ -41,10 +41,10 @@
                                             <div class="col-4"><img src="{{  asset('storage/' . $dedikasiFlora->gambar_1)}}" width="56" height="56" alt="Product Image"></div>
                                             <div class="col-8">
                                                 <div>
-                                                     {{ $dedikasiFlora->nama_latin }}
+                                                    Nama Latin :   {{ $dedikasiFlora->nama_latin }}
                                                 </div>
                                                 <div>
-                                                    nama_lokal : {{ $dedikasiFlora->nama_lokal }}
+                                                    Nama Lokal : {{ $dedikasiFlora->nama_lokal }}
                                                 </div>
                                             </div>
                                         </div>
@@ -149,7 +149,10 @@
     }
 
     $(document).ready(function() {
-        $('#products-table').DataTable();
+        $('#products-table').DataTable({
+                "iDisplayLength": 10,
+        "bLengthChange": false
+        });
     });  
     function store(id) {
     $("#statForm" + id).submit();

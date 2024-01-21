@@ -1,13 +1,16 @@
 <table id="products-ss" class="table table-hover table-bordered text-center">
-    <h5>0 Produk Dipilih</h5>
+    <h5 id="jumlah_checked">0 Produk Dipilih</h5>
     <thead>
         <tr>
             <th data-orderable="false">
                 <label for="all">All</label>
                 <input type="checkbox" name="" value="" id="all" class="check-all">
             </th> 
-             <th>No</th>
-                                <th>Info {{$brand}}</th>
+             
+            <th>Info {{$brand}}</th>
+            @if ($brand == "shineage" || $brand == "everlasthing")
+            <th>Seri {{$brand}}</th>   
+            @endif 
             <th>Harga</th>
             <th>Stok</th>
         </tr>
@@ -24,12 +27,20 @@
                     <div class="row">
                         <div class="col-4"><img src=" {{asset('storage/' .$product->gambar_1)}}" width="56" height="56" alt="Product Image"></div>
                         <div class="col-8">
+                          @if ($brand == "shineage")
+                                
+                            @endif 
                             <div>
                                  {{ $product->nama_produk }}
                             </div>
                         </div>
                     </div>
                 </td>
+                 @if ($brand == "shineage" || $brand == "everlasthing")
+                    <td>
+                        {{ $product->seri }}
+                    </td>
+                @endif 
                 <td>
                     @foreach ($product->harga_ranges as $hargaRange)
                          <div>{{ $hargaRange }}</div>
@@ -56,7 +67,10 @@
 <script>
     $(document).ready(function() {
         // Inisialisasi DataTable
-        var table = $('#products-ss').DataTable();
+        var table = $('#products-ss').DataTable({
+            "iDisplayLength": 10,
+        "bLengthChange": false
+        });
     
         // Update jumlah_checked initially
         updateJumlahChecked();

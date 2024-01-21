@@ -86,13 +86,13 @@ $hargaRanges[] = $min !== null && $max !== null
             $agrigard->harga_ranges = $hargaRanges;
         }
     
-        return view('Pages/Product/list-product', ['agrigards' => $agrigards]);
+        return view('Pages/Product/list-product', ['agrigards' => $agrigards, "active"=>"agrigard"]);
     }
     
     public function view($id)
     {
         $agrigard = Agrigard::findOrFail($id);
-        return view('Pages/Product/detail-product', ['agrigard'=>$agrigard]);
+        return view('Pages/Product/detail-product', ['agrigard'=>$agrigard, "active"=>"agrigard"]);
     }
 
     /**
@@ -100,7 +100,7 @@ $hargaRanges[] = $min !== null && $max !== null
      */
     public function create()
     {
-        return view('Pages/Product/add-product');
+        return view('Pages/Product/add-product', ["active"=>"agrigard"]);
     }
 
     /**
@@ -187,7 +187,12 @@ $hargaRanges[] = $min !== null && $max !== null
         DB::rollback();
        return redirect()->back()->with('error', 'Terjadi kesalahan. Silakan coba lagi nanti.');
     }
-    return redirect()->route('daftar-produk')->with('success', 'Data has been successfully stored.');
+    if($request->tanggal_publikasi == "true"){
+        return redirect()->route('daftar-produk')->with('success', 'Produk berhasil disimpan dan diterbitkan.');
+    }else{
+          return redirect()->route('daftar-produk')->with('success', 'Produk berhasil disimpan.');
+    }
+  
     }
     
 
@@ -202,7 +207,7 @@ $hargaRanges[] = $min !== null && $max !== null
     public function edit($id)
     {
         $agrigard = Agrigard::findOrFail($id);
-        return view('Pages/Product/edit-product', ['agrigard'=>$agrigard]);
+        return view('Pages/Product/edit-product', ['agrigard'=>$agrigard, "active"=>"agrigard"]);
     }
 
     /**
@@ -303,13 +308,18 @@ $hargaRanges[] = $min !== null && $max !== null
             DB::rollback();
            return redirect()->back()->with('error', 'Terjadi kesalahan. Silakan coba lagi nanti.');
         }
-        return redirect()->route('daftar-produk')->with('success', 'Data has been successfully stored.');
+        if($request->tanggal_publikasi == "true"){
+            return redirect()->route('daftar-produk')->with('success', 'Produk berhasil disimpan dan diterbitkan.');
+        }else{
+              return redirect()->route('daftar-produk')->with('success', 'Data berhasil disimpan.');
+        }
+      
     }
 
     public function delete($id)
     {
         $agrigard = Agrigard::findOrFail($id);
-        return view('Pages/Product/delete-product', ['agrigard'=>$agrigard]);
+        return view('Pages/Product/delete-product', ['agrigard'=>$agrigard, "active"=>"agrigard"]);
     }
 
     public function destroy($id)
@@ -345,7 +355,7 @@ $hargaRanges[] = $min !== null && $max !== null
             return redirect()->back()->with('error', 'Terjadi kesalahan. Silakan coba lagi nanti.');
         }
 
-        return redirect()->route('daftar-produk')->with('success', 'Data has been successfully deleted.');
+        return redirect()->route('daftar-produk')->with('success', 'Data berhasil dihapus.');
     }
 
     public function post(Request $request)
@@ -361,7 +371,7 @@ $hargaRanges[] = $min !== null && $max !== null
             DB::rollback();
             return redirect()->back()->with('error', 'Terjadi kesalahan. Silakan coba lagi nanti.');
         }
-        return redirect()->route('daftar-produk')->with('success', 'Data status has been successfully changed .');
+        return redirect()->route('daftar-produk')->with('success', 'Data berhasil diterbitkan.');
     }
     
 }

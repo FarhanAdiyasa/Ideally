@@ -37,7 +37,7 @@
                                     </td>
                                     <td>
                                         <div class="row">
-                                                <div>
+                                                <div class="text-left">
                                                      {{ $artikel->judul_artikel }}
                                                 </div>
                                         </div>
@@ -137,7 +137,10 @@
     }
 
     $(document).ready(function() {
-        $('#articles-table').DataTable();
+        $('#articles-table').DataTable({
+                "iDisplayLength": 10,
+        "bLengthChange": false
+        });
     }); 
 
     function store(articleId) {

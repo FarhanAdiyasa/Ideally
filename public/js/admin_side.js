@@ -230,3 +230,12 @@ if (document.getElementById("default")) {
         }
     });
 }
+function validateInput(input) {
+    // Menghapus karakter selain angka
+    input.value = input.value.replace(/[^0-9]/g, "");
+
+    // Memastikan tidak ada angka negatif
+    if (input.value < 0) {
+        input.value = "";
+    }
+}

@@ -88,14 +88,14 @@ $hargaRanges[] = $min !== null && $max !== null
 
     }
 
-    return view('Pages/Shineage/list-shineages', ['shineages' => $shineages]);
+    return view('Pages/Shineage/list-shineages', ['shineages' => $shineages, "active"=>"shineage"]);
 }
 
     
     public function view($id)
     {
         $shineage = shineage::findOrFail($id);
-        return view('Pages/Shineage/detail-shineage', ['shineage'=>$shineage]);
+        return view('Pages/Shineage/detail-shineage', ['shineage'=>$shineage, "active"=>"shineage"]);
     }
 
     /**
@@ -103,7 +103,7 @@ $hargaRanges[] = $min !== null && $max !== null
      */
     public function create()
     {
-        return view('Pages/Shineage/add-shineage');
+        return view('Pages/Shineage/add-shineage', ["active"=>"shineage"]);
     }
 
     /**
@@ -184,7 +184,11 @@ $hargaRanges[] = $min !== null && $max !== null
         DB::rollback();
        return redirect()->back()->with('error', 'Terjadi kesalahan. Silakan coba lagi nanti.');
     }
-    return redirect()->route('shineages')->with('success', 'Data has been successfully stored.');
+    if($request->tanggal_publikasi == "true"){
+        return redirect()->route('shineages')->with('success', 'Produk berhasil disimpan dan diterbitkan.');
+   }else{
+        return redirect()->route('shineages')->with('success', 'Produk berhasil disimpan.');
+   }
     }
     
 
@@ -199,7 +203,7 @@ $hargaRanges[] = $min !== null && $max !== null
     public function edit($id)
     {
         $shineage = Shineage::findOrFail($id);
-        return view('Pages/Shineage/edit-shineage', ['shineage'=>$shineage]);
+        return view('Pages/Shineage/edit-shineage', ['shineage'=>$shineage, "active"=>"shineage"]);
     }
 
     /**
@@ -295,13 +299,17 @@ $hargaRanges[] = $min !== null && $max !== null
             DB::rollback();
            return redirect()->back()->with('error', 'Terjadi kesalahan. Silakan coba lagi nanti.');
         }
-        return redirect()->route('shineages')->with('success', 'Data has been successfully stored.');
+        if($request->tanggal_publikasi == "true"){
+            return redirect()->route('shineages')->with('success', 'Produk berhasil disimpan dan diterbitkan.');
+       }else{
+            return redirect()->route('shineages')->with('success', 'Data berhasil disimpan.');
+       }
     }
 
     public function delete($id)
     {
         $shineage = Shineage::findOrFail($id);
-        return view('Pages/Shineage/delete-shineage', ['shineage'=>$shineage]);
+        return view('Pages/Shineage/delete-shineage', ['shineage'=>$shineage, "active"=>"shineage"]);
     }
 
     public function destroy($id)
@@ -337,7 +345,7 @@ $hargaRanges[] = $min !== null && $max !== null
             return redirect()->back()->with('error', 'Terjadi kesalahan. Silakan coba lagi nanti.');
         }
 
-        return redirect()->route('shineages')->with('success', 'Data has been successfully deleted.');
+        return redirect()->route('shineages')->with('success', 'Data berhasil dihapus.');
     }
 
     public function post(Request $request)
@@ -353,7 +361,7 @@ $hargaRanges[] = $min !== null && $max !== null
             DB::rollback();
             return redirect()->back()->with('error', 'Terjadi kesalahan. Silakan coba lagi nanti.');
         }
-        return redirect()->route('shineages')->with('success', 'Data status has been successfully changed .');
+        return redirect()->route('shineages')->with('success', 'Data berhasil diterbitkan.');
     }
     
 }

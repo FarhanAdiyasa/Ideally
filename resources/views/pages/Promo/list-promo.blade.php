@@ -23,9 +23,9 @@
                         <thead>
                             <tr>
                                  <th>No</th>
+                                <th>Nama Promo</th>
                                 <th>Info Promo</th>
-                                <th>Harga</th>
-                                <th>Stok</th>
+                                <th>Tanggal Promo</th>
                                 <th>Status</th>
                                 <th>Aksi</th>
                             </tr>
@@ -40,11 +40,19 @@
                                         <div class=""> {{$promo->nama_promo}}</div>
                                     </td>
                                     <td>
-                                      @if ($promo->tipe_potongan == "nominal")
-                                      Rp. {{$promo->nominal_promo}} 
-                                      @else
-                                      {{$promo->persentase_promo}} %
-                                      @endif
+                                        <div class="col-12">
+                                            <div>
+                                                 {{ $promo->tipe_potongan }}
+                                            </div>
+                                            <div>
+                                                @if ($promo->tipe_potongan == "nominal")
+                                                Rp. {{ number_format($promo->nominal_promo, 0, ',', '.') }} 
+                                                @else
+                                                {{$promo->persentase_promo}} %
+                                                @endif
+                                            </div>
+                                        </div>
+                                    
                                     </td>
                                     <td>
                                         {{$promo->tanggal_mulai}} -  {{$promo->tanggal_selesai}}
@@ -136,7 +144,10 @@
     }
 
     $(document).ready(function() {
-        $('#promos-table').DataTable();
+        $('#promos-table').DataTable({
+                "iDisplayLength": 10,
+        "bLengthChange": false
+        });
     });  
         function store(id) {
      

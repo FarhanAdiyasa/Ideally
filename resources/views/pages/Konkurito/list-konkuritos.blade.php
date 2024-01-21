@@ -23,7 +23,7 @@
                         <thead>
                             <tr>
                                  <th>No</th>
-                                <th>Info konkurito</th>
+                                <th>Info Konkurito</th>
                                 <th>Harga</th>
                                 <th>Stok</th>
                                 <th>Status</th>
@@ -149,7 +149,10 @@
     }
 
     $(document).ready(function() {
-        $('#products-table').DataTable();
+        $('#products-table').DataTable({
+            "iDisplayLength": 10,
+        "bLengthChange": false
+        });
     });  
     function store(id) {
     $("#statForm" + id).submit();

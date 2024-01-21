@@ -85,13 +85,13 @@ class AdminBatunesiaController extends Controller
             $batunesia->harga_ranges = $hargaRanges;
         }
     
-        return view('Pages/Batunesia/list-batunesia', ['batunesias' => $batunesias]);
+        return view('Pages/Batunesia/list-batunesia', ['batunesias' => $batunesias, "active"=>"batunesia"]);
     }
     
     public function view($id)
     {
         $batunesia = batunesia::findOrFail($id);
-        return view('Pages/Batunesia/detail-batunesia', ['batunesia'=>$batunesia]);
+        return view('Pages/Batunesia/detail-batunesia', ['batunesia'=>$batunesia, "active"=>"batunesia"]);
     }
 
     /**
@@ -99,7 +99,7 @@ class AdminBatunesiaController extends Controller
      */
     public function create()
     {
-        return view('Pages/Batunesia/add-batunesia');
+        return view('Pages/Batunesia/add-batunesia',["active"=>"batunesia"]);
     }
 
     /**
@@ -186,7 +186,12 @@ class AdminBatunesiaController extends Controller
         DB::rollback();
        return redirect()->back()->with('error', 'Terjadi kesalahan. Silakan coba lagi nanti.');
     }
-    return redirect()->route('batunesias')->with('success', 'Data has been successfully stored.');
+    if($request->tanggal_publikasi == "true"){
+        return redirect()->route('batunesias')->with('success', 'Produk berhasil disimpan dan diterbitkan.');
+    }else{
+        return redirect()->route('batunesias')->with('success', 'Produk berhasil disimpan.');
+    }
+
     }
     
 
@@ -201,7 +206,7 @@ class AdminBatunesiaController extends Controller
     public function edit($id)
     {
         $batunesia = batunesia::findOrFail($id);
-        return view('Pages/Batunesia/edit-batunesia', ['batunesia'=>$batunesia]);
+        return view('Pages/Batunesia/edit-batunesia', ['batunesia'=>$batunesia, "active"=>"batunesia"]);
     }
 
     /**
@@ -303,13 +308,17 @@ class AdminBatunesiaController extends Controller
             DB::rollback();
            return redirect()->back()->with('error', 'Terjadi kesalahan. Silakan coba lagi nanti.');
         }
-        return redirect()->route('batunesias')->with('success', 'Data has been successfully stored.');
+        if($request->tanggal_publikasi == "true"){
+            return redirect()->route('batunesias')->with('success', 'Produk berhasil disimpan dan diterbitkan.');
+        }else{
+            return redirect()->route('batunesias')->with('success', 'Data berhasil disimpan.');
+        }
     }
 
     public function delete($id)
     {
         $batunesia = batunesia::findOrFail($id);
-        return view('Pages/Batunesia/delete-batunesia', ['batunesia'=>$batunesia]);
+        return view('Pages/Batunesia/delete-batunesia', ['batunesia'=>$batunesia, "active"=>"batunesia"]);
     }
 
     public function destroy($id)
@@ -345,7 +354,7 @@ class AdminBatunesiaController extends Controller
             return redirect()->back()->with('error', 'Terjadi kesalahan. Silakan coba lagi nanti.');
         }
 
-        return redirect()->route('batunesias')->with('success', 'Data has been successfully deleted.');
+        return redirect()->route('batunesias')->with('success', 'Data berhasil dihapus.');
     }
 
     public function post(Request $request)
@@ -361,7 +370,7 @@ class AdminBatunesiaController extends Controller
             DB::rollback();
             return redirect()->back()->with('error', 'Terjadi kesalahan. Silakan coba lagi nanti.');
         }
-        return redirect()->route('batunesias')->with('success', 'Data status has been successfully changed .');
+        return redirect()->route('batunesias')->with('success', 'Data berhasil diterbitkan.');
     }
     
 }
