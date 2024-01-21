@@ -136,15 +136,18 @@
                             </div>
                             <div class="total-item p-4">
                                 <div class="qty d-flex align-items-center bg-light mb-2">
-                                    <a href="" class="m-1 p-1 bg-tosca text-white"><span><i
-                                                class="bi bi-dash"></i></span></a>
+                                    <button class="btn m-1 p-1 px-1 bg-tosca text-white" onclick="decrease()">
+                                        <span><i class="bi bi-dash"></i></span>
+                                    </button>
                                     <input class="form-control" type="text" placeholder="" aria-label="quantity"
-                                        readonly value="1">
-                                    <a href=""><span class="m-1 px-1 bg-tosca text-white"><i
-                                                class="bi bi-plus"></i></span></a>
+                                        readonly value="1" id="quantityInput">
+                                    <button class="btn m-1 px-1 bg-tosca text-white" onclick="increase()">
+                                        <span><i class="bi bi-plus"></i></span>
+                                    </button>
                                 </div>
                                 <input class="form-control mb-2 total-price" type="text" placeholder=""
-                                    aria-label="total price" readonly value="Rp {{ $shineages->harga_b2C_11_unit }}">
+                                    aria-label="total price" readonly value="Rp {{ $shineages->harga_b2C_1_unit }}"
+                                    id="totalPriceInput">
                                 <a href="" class="btn btn-light">Tambah Ke Keranjang</a>
                             </div>
                         </div>
@@ -288,7 +291,7 @@
                                 </div>
                                 @foreach($shineageterkait->take($itemsPerSection) as $merah)
                                 <div class="card-product mt-3">
-                                <a href="{{ route('shineage.detail', ['id_shineage' => $merah->id_shineage]) }}"
+                                    <a href="{{ route('shineage.detail', ['id_shineage' => $merah->id_shineage]) }}"
                                         class="card-link">
                                         <div class="img-container">
                                             <img src="{{ $merah->gambar_1 }}" alt="{{ $merah->nama_produk }}">
@@ -304,7 +307,7 @@
                                                 <p>Rp {{ $merah->harga_b2C_1_unit }}</p>
                                             </div>
                                         </div>
-                                        </a>
+                                    </a>
                                 </div>
                                 @endforeach
                                 <div class="bg-red mt-3 p-2" style="min-height: 10%;">
@@ -313,7 +316,8 @@
                                             <div class="border-start border-4 border-light" style="height: 50px;"></div>
                                         </div>
                                     </div>
-                                    <a href="{{ route('shineage.showcase') }}" class="btn btn-showcase mt-1">Lihat Produk Lainnya</a>
+                                    <a href="{{ route('shineage.showcase') }}" class="btn btn-showcase mt-1">Lihat
+                                        Produk Lainnya</a>
                                 </div>
                             </section>
                             <!-- End Red Section -->
@@ -331,7 +335,7 @@
                                 </div>
                                 @foreach($shineageterkait->slice($itemsPerSection, $itemsPerSection) as $hijau)
                                 <div class="card-product mt-3">
-                                <a href="{{ route('shineage.detail', ['id_shineage' => $hijau->id_shineage]) }}"
+                                    <a href="{{ route('shineage.detail', ['id_shineage' => $hijau->id_shineage]) }}"
                                         class="card-link">
                                         <div class="img-container">
                                             <img src="{{ $hijau->gambar_1 }}" alt="{{ $hijau->nama_produk }}">
@@ -347,11 +351,12 @@
                                                 <p>Rp {{ $hijau->harga_b2C_1_unit }}</p>
                                             </div>
                                         </div>
-                                        </a>
+                                    </a>
                                 </div>
                                 @endforeach
                                 <div class="bg-tosca mt-3 p-2" style="height: 5.4%;">
-                                    <a href="{{ route('shineage.showcase') }}" class="btn btn-showcase mt-1">Lihat Produk Lainnya</a>
+                                    <a href="{{ route('shineage.showcase') }}" class="btn btn-showcase mt-1">Lihat
+                                        Produk Lainnya</a>
                                 </div>
                             </section>
                             <!-- End Tosca Section -->
@@ -366,7 +371,7 @@
                                 </div>
                                 @foreach($shineageterkait->slice($itemsPerSection * 2, $itemsPerSection) as $kuning)
                                 <div class="card-product mt-3">
-                                <a href="{{ route('shineage.detail', ['id_shineage' => $kuning->id_shineage]) }}"
+                                    <a href="{{ route('shineage.detail', ['id_shineage' => $kuning->id_shineage]) }}"
                                         class="card-link">
                                         <div class="img-container">
                                             <img src="{{ $kuning->gambar_1 }}" alt="{{ $kuning->nama_produk }}">
@@ -382,7 +387,7 @@
                                                 <p>Rp {{ $kuning->harga_b2C_1_unit }}</p>
                                             </div>
                                         </div>
-                                        </a>
+                                    </a>
                                 </div>
                                 @endforeach
                                 <div class="bg-yellow mt-3 p-2" style="height: 13.7%;">
@@ -390,7 +395,8 @@
                                         <div class="ps-3 mb-1">
                                             <div class="border-start border-4 border-light" style="height: 78px;"></div>
                                         </div>
-                                        <a href="{{ route('shineage.showcase') }}" class="btn btn-showcase mt-1">Lihat Produk Lainnya</a>
+                                        <a href="{{ route('shineage.showcase') }}" class="btn btn-showcase mt-1">Lihat
+                                            Produk Lainnya</a>
                                     </div>
                                 </div>
                             </section>
@@ -403,6 +409,45 @@
         </div>
     </div>
     <!-- End Additional Content -->
+
+    <script>
+    let quantity = 1;
+    const unitPrice1 = parseFloat("{{ $shineages->harga_b2C_1_unit }}".replace('Rp ', '').replace(',', ''));
+    const unitPrice11 = parseFloat("{{ $shineages->harga_b2C_11_unit }}".replace('Rp ', '').replace(',', ''));
+    const unitPrice31 = parseFloat("{{ $shineages->harga_b2C_31_unit }}".replace('Rp ', '').replace(',', ''));
+
+    function increase() {
+        quantity++;
+        document.getElementById('quantityInput').value = quantity;
+        calculateTotalPrice();
+    }
+
+    function decrease() {
+        if (quantity > 1) {
+            quantity--;
+            document.getElementById('quantityInput').value = quantity;
+            calculateTotalPrice();
+        }
+    }
+
+    function calculateTotalPrice() {
+        const quantityInput = document.getElementById('quantityInput');
+        const totalPriceInput = document.getElementById('totalPriceInput');
+        const quantity = parseInt(quantityInput.value);
+        let price = 0;
+
+        if (quantity >= 1 && quantity <= 10) {
+            price = unitPrice1;
+        } else if (quantity >= 11 && quantity <= 30) {
+            price = unitPrice11;
+        } else if (quantity > 30) {
+            price = unitPrice31;
+        }
+
+        const totalPrice = price * quantity;
+        totalPriceInput.value = 'Rp ' + numeral(totalPrice).format('0,0');
+    }
+</script>
 </body>
 
 </html>

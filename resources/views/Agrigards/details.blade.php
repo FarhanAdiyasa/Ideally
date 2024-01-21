@@ -95,29 +95,17 @@
                             <button class="item btn bg-grey" onclick="decrease()">
                                 <span>-</span>
                             </button>
-                            <input type="text" class="item form-control bg-grey" id="quantity" value="1">
+                            <input type="text" class="item form-control bg-grey" id="quantity" value="1"
+                                onchange="calculateTotal()">
                             <button class="item btn bg-grey" onclick="increase()">
                                 <span>+</span>
                             </button>
                             <a href="#" onclick="addToCart(event)" class="item btn bg-green text-white"
-                                id="addToCartLink"><i class="bi bi-cart-fill"></i></a>
-                            <script>
-                            function addToCart(event) {
-                                event.preventDefault(); // Mencegah perilaku default dari tag 'a' (pemindahan halaman)
-
-                                var quantity = document.getElementById('quantity').value;
-                                var agrigardId = "{{ $agrigards->id_agrigard }}";
-
-                                // Membuat URL dengan nilai qty dan id_agrigard
-                                var url = "{{ route('addcart.agrigard', ['id' => ':id', 'qty' => ':qty']) }}"
-                                    .replace(':id', agrigardId)
-                                    .replace(':qty', quantity);
-
-                                // Menangani aksi ketika tombol 'Add to Cart' diklik
-                                window.location.href = url;
-                            }
-                            </script>
+                                id="addToCartLink">
+                                <i class="bi bi-cart-fill"></i>
+                            </a>
                         </div>
+
                         <input type="text" class="total-harga form-control bg-grey" id="summaryPrice"
                             value="{{ $agrigards->harga_b2C_1_unit }}" readonly>
                     </div>
@@ -303,65 +291,82 @@
     });
     </script>
     <script>
-    const summaryPriceInput = document.getElementById('summaryPrice');
-    let summaryPriceValue = summaryPriceInput.value;
-    summaryPriceInput.value = numeral(summaryPriceValue).format('0,0');
+        $(document).ready(function () {
+            // Loop melalui setiap elemen dengan kelas "card-product"
+            $(".card-product").each(function (index) {
+                // Pilih elemen img-container di dalam card-product
+                var imgContainer = $(this).find(".img-container");
 
-    let count = parseInt(document.getElementById('quantity').value);
-    const decreaseBtn = document.getElementById('kurang');
+                // Tambahkan kelas "top-start" atau "top-end" berdasarkan indeks
+                if (index % 2 === 0) {
+                    imgContainer.addClass("card-img-top-end");
+                } else {
+                    imgContainer.addClass("card-img-top-start");
+                }
+            });
+        });
+    </script>
+    <script>
+        const summaryPriceInput = document.getElementById('summaryPrice');
+        let summaryPriceValue = numeral(summaryPriceInput.value).value();
+        summaryPriceInput.value = numeral(summaryPriceValue).format('0,0');
 
-    function increase() {
-        count++;
-        document.getElementById('quantity').value = count;
-        calculateTotal();
-        checkCount();
-    }
+        let count = parseInt(document.getElementById('quantity').value);
 
-    function decrease() {
-        if (count > 1) {
-            count--;
+        function increase() {
+            count++;
             document.getElementById('quantity').value = count;
+            calculateTotal();
+            checkCount();
         }
-        calculateTotal();
-        checkCount();
-    }
 
-    function checkCount() {
-        if (count === 1) {
-            decreaseBtn.disabled = true;
-        } else {
-            decreaseBtn.disabled = false;
+        function decrease() {
+            if (count > 1) {
+                count--;
+                document.getElementById('quantity').value = count;
+                calculateTotal();
+                checkCount();
+            }
         }
-    }
 
-    function calculateTotal() {
+        function checkCount() {
+            const decreaseBtn = document.querySelector('.total-item .item.btn.bg-grey:first-child');
+            if (count === 1) {
+                decreaseBtn.disabled = true;
+            } else {
+                decreaseBtn.disabled = false;
+            }
+        }
+
+        function calculateTotal() {
         const quantityInput = document.getElementById('quantity');
         const summaryPriceInput = document.getElementById('summaryPrice');
         const quantity = parseInt(quantityInput.value);
         let price = 0;
 
         if (quantity >= 1 && quantity <= 10) {
-            price = {
-                {
-                    $agrigards - > harga_b2C_1_unit
-                }
-            };
+            price = {{ $agrigards->harga_b2C_1_unit }};
         } else if (quantity >= 11 && quantity <= 30) {
-            price = {
-                {
-                    $agrigards - > harga_b2C_11_unit
-                }
-            };
+            price = {{ $agrigards->harga_b2C_11_unit }};
         } else if (quantity > 30) {
-            price = {
-                {
-                    $agrigards - > harga_b2C_31_unit
-                }
-            };
+            price = {{ $agrigards->harga_b2C_31_unit }};
         }
 
         const totalPrice = price * quantity;
-        summaryPriceInput.value = numeral(totalPrice).format('0,0');;
+        summaryPriceInput.value = numeral(totalPrice).format('0,0');
+    }
+
+    function addToCart(event) {
+        event.preventDefault();
+
+        var quantity = document.getElementById('quantity').value;
+        var agrigardId = "{{ $agrigards->id_agrigard }}";
+
+        var url = "{{ route('addcart.agrigard', ['id' => ':id', 'qty' => ':qty']) }}"
+            .replace(':id', agrigardId)
+            .replace(':qty', quantity);
+
+        window.location.href = url;
     }
     </script>
 

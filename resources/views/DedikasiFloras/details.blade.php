@@ -27,7 +27,7 @@
     <!-- Navbar Utama -->
     @include('partials.navbar')
     <!-- End Navbar Utama -->
-    
+
     <!-- Hero & Navigation Bar -->
     <header id="hero-navbar">
         <div class="hero-img d-flex justify-content-center mt-5">
@@ -375,21 +375,21 @@
                                         <span><i class="bi bi-chevron-down"></i></span>
                                     </button>
                                     <script>
-                                    function addToCart(event) {
-                                        event
-                                            .preventDefault(); // Prevent the default behavior of the 'a' tag (page redirection)
+                                        function addToCart(event) {
+                                            event
+                                                .preventDefault(); // Prevent the default behavior of the 'a' tag (page redirection)
 
-                                        var quantity = document.getElementById('quantity').value;
-                                        var defloId = "{{ $defloDetail->id_nurseri }}";
+                                            var quantity = document.getElementById('quantity').value;
+                                            var defloId = "{{ $defloDetail->id_nurseri }}";
 
-                                        // Creating the URL with the quantity and deflo id
-                                        var url = "{{ route('addcart.deflo', ['id' => ':id', 'qty' => ':qty']) }}"
-                                            .replace(':id', defloId)
-                                            .replace(':qty', quantity);
+                                            // Creating the URL with the quantity and deflo id
+                                            var url = "{{ route('addcart.deflo', ['id' => ':id', 'qty' => ':qty']) }}"
+                                                .replace(':id', defloId)
+                                                .replace(':qty', quantity);
 
-                                        // Handling action when the "Tambah Ke Keranjang" link is clicked
-                                        window.location.href = url;
-                                    }
+                                            // Handling action when the "Tambah Ke Keranjang" link is clicked
+                                            window.location.href = url;
+                                        }
                                     </script>
                                 </div>
                             </div>
@@ -703,14 +703,13 @@
     <!-- End Rekomendasi Produk -->
 
     <script>
-    const summaryPriceInput = document.getElementById('summaryPrice');
-    let summaryPriceValue = summaryPriceInput.value;
-    summaryPriceInput.value = numeral(summaryPriceValue).format('0,0');
+        const summaryPriceInput = document.getElementById('summaryPrice');
+        let summaryPriceValue = numeral(summaryPriceInput.value).value();
+        summaryPriceInput.value = numeral(summaryPriceValue).format('0,0');
 
-    let count = parseInt(document.getElementById('quantity').value);
-    const decreaseBtn = document.getElementById('kurang');
+        let count = parseInt(document.getElementById('quantity').value);
 
-    function increase() {
+        function increase() {
             count++;
             document.getElementById('quantity').value = count;
             calculateTotal();
@@ -727,6 +726,7 @@
         }
 
         function checkCount() {
+            const decreaseBtn = document.getElementById('decreaseBtn');
             if (count === 1) {
                 decreaseBtn.disabled = true;
             } else {
@@ -734,34 +734,25 @@
             }
         }
 
-    function calculateTotal() {
-        const quantityInput = document.getElementById('quantity');
-        const summaryPriceInput = document.getElementById('summaryPrice');
-        const quantity = parseInt(quantityInput.value);
-        let price = 0;
+        function calculateTotal() {
+            const quantityInput = document.getElementById('quantity');
+            const summaryPriceInput = document.getElementById('summaryPrice');
+            const quantity = parseInt(quantityInput.value);
+            let price = 0;
 
-        if (quantity >= 1 && quantity <= 10) {
-            price = {
-                {
-                    $defloDetail -> harga_b2C_1_unit
-                }
+            if (quantity >= 1 && quantity <= 10) {
+                price = {{ $defloDetail -> harga_b2C_1_unit }
             };
         } else if (quantity >= 11 && quantity <= 30) {
-            price = {
-                {
-                    $defloDetail -> harga_b2C_11_unit
-                }
-            };
+            price = {{ $defloDetail -> harga_b2C_11_unit }
+        };
         } else if (quantity > 30) {
-            price = {
-                {
-                    $defloDetail -> harga_b2C_31_unit
-                }
-            };
+            price = {{ $defloDetail -> harga_b2C_31_unit }
+        };
         }
 
         const totalPrice = price * quantity;
-        summaryPriceInput.value = numeral(totalPrice).format('0,0');;
+        summaryPriceInput.value = numeral(totalPrice).format('0,0');
     }
     </script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/numeral.js/2.0.6/numeral.min.js"></script>
