@@ -1,4 +1,5 @@
 @foreach ($artikel->komentar as $komentar)
+@if ($komentar->status_tampil == 0)
 <div class="container-lg-10">
     <div class="row align-items-center">
 
@@ -19,4 +20,6 @@
     </div>
 </div>
 <hr class="hr-custom-komentar">
+@endif
+
 @endforeach

@@ -87,8 +87,13 @@ body {
 }
 
 .table-cart .border-brand {
+<<<<<<< HEAD
     border-top: 2px solid #727272;
     border-bottom: 2px solid #727272;
+=======
+    border-top: 2px solid #c5c5c5;
+    border-bottom: 2px solid #c5c5c5;
+>>>>>>> d5557992f1c905b8f774d6907a37c029ef4d4590
 }
 
 .table-cart thead th {
@@ -145,13 +150,22 @@ body {
     padding: 0;
     text-align: center;
     font-size: 13px;
+<<<<<<< HEAD
     border-bottom: 2px solid #727272;
+=======
+    border-bottom: 2px solid #c5c5c5;
+>>>>>>> d5557992f1c905b8f774d6907a37c029ef4d4590
     padding-bottom: 1rem;
 }
 
 .table-bayar tbody td {
+<<<<<<< HEAD
     padding-left: 0;
     padding-right: 0;
+=======
+    padding: 0;
+    padding-top: 10px;
+>>>>>>> d5557992f1c905b8f774d6907a37c029ef4d4590
 }
 
 .table-bayar #total-harga {

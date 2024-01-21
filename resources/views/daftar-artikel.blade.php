@@ -11,6 +11,9 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro%3A400%2C700"/>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Quicksand%3A700"/>
   @vite(['resources/sass/app.scss', 'resources/js/app.js']);
+
+  <!-- Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
   
   <link rel="stylesheet" href="/css/daftar-artikel-style.css"/>
   <link rel="stylesheet" href="/css/style.css"/>
@@ -211,7 +214,7 @@
       </section>
       <!-- Footer -->
       @include('partials.artikel-footer')
-      <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+      <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
       <script src="../js/portal-edukasi.js"></script>
       <script src="/js/navbar.js"></script>
 </body>

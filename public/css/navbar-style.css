@@ -16,12 +16,12 @@
 }
 
 .navbar-nav .nav-link:hover {
-    color: #06C195 !important;
+    color: #06c195 !important;
 }
 
 .navbar-nav .nav-link.active {
     font-weight: 700;
-    color: #06C195 !important;
+    color: #06c195 !important;
 }
 
 .dropdown-item:focus,
@@ -86,7 +86,7 @@
 }
 
 .dropdown-divider {
-    border-top: 3px solid #F0F0F0;
+    border-top: 3px solid #f0f0f0;
 }
 
 .dropdown-menu {
@@ -122,4 +122,9 @@
     flex: 1;
     padding-right: 30px;
     padding-top: 2%;
+}
+
+.profil-dropdown {
+    margin-top: 10px;
+    margin-left: 15px;
 }

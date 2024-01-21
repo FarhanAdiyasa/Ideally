@@ -142,7 +142,7 @@ class AdminShineageController extends Controller
             $shineage->harga_b2C_11_unit = $harga_b2C_11_unit;
 
             $shineage->slug =Str::slug($shineage->nama_produk);
-            $shineage->created_by = 1;
+            $shineage->created_by = auth()->user()->user_id;;
             $shineage->save();
             DB::commit();
         } else {
@@ -155,7 +155,7 @@ class AdminShineageController extends Controller
         DB::rollback();
        return redirect()->back()->with('error', 'Terjadi kesalahan. Silakan coba lagi nanti.');
     }
-    return redirect()->route('shineages')->with('success', 'Data has been successfully stored.');
+    return redirect()->route('shineages')->with('success', 'Data berhasil disimpan!');
     }
     
 
@@ -264,7 +264,7 @@ class AdminShineageController extends Controller
             DB::rollback();
            return redirect()->back()->with('error', 'Terjadi kesalahan. Silakan coba lagi nanti.');
         }
-        return redirect()->route('shineages')->with('success', 'Data has been successfully stored.');
+        return redirect()->route('shineages')->with('success', 'Data berhasil disimpan!');
     }
 
     public function delete($id)
@@ -306,7 +306,7 @@ class AdminShineageController extends Controller
             return redirect()->back()->with('error', 'Terjadi kesalahan. Silakan coba lagi nanti.');
         }
 
-        return redirect()->route('shineages')->with('success', 'Data has been successfully deleted.');
+        return redirect()->route('shineages')->with('success', 'Data berhasil dihapus!');
     }
 
     public function post(Request $request)
@@ -322,7 +322,7 @@ class AdminShineageController extends Controller
             DB::rollback();
             return redirect()->back()->with('error', 'Terjadi kesalahan. Silakan coba lagi nanti.');
         }
-        return redirect()->route('shineages')->with('success', 'Data status has been successfully changed .');
+        return redirect()->route('shineages')->with('success', 'Status data berhasil diubah!');
     }
     
 }

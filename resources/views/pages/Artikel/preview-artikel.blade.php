@@ -15,7 +15,7 @@
     <link href="{{asset('/css/footer-artikel-style.css')}}" rel="stylesheet">
     
     <!-- Include jQuery from a CDN (Content Delivery Network) -->
-    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 
     <!-- Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
@@ -118,12 +118,9 @@
                     <hr class="hr-body-article">
 
                     <div class="isi-article">
-                        {!!$artikel->isi_artikel!!}
-                    </div>
-                    <div class="v-yt container mb-4" >
-                        <!-- Use the full YouTube video URL or the embed URL -->
-                        <iframe src="https://youtu.be/a3ICNMQW7Ok?si=7R8onn6JMD8CUo3f" height="300" width="470"></iframe>
-                    </div>
+                        {!! htmlspecialchars_decode($artikel->isi_artikel) !!}
+                     </div>
+                     
                 </div>
                 <!-- End of Body Article -->
 
@@ -131,8 +128,8 @@
                 <div class="source">
                     <h5 style="font-weight: 700; color: #06C195;">Source</h5>
                     <ol style="font-style: italic; font-size: 14px;">
-                        @foreach($artikel->sumberArtikel as $sumberArtikel)
-                        <li>{{ $sumberArtikel->sumber_artikel}} </li>
+                        @foreach ($sumbers as $sumber)
+                        <li>{{ $sumber->sumber_artikel}} </li>
                         @endforeach
                     </ol>
 
@@ -464,7 +461,6 @@
         
         // Call the 'show' function with the initial slug
         show(initialSlug);
-        console.log(initialSlug);
     });
     function show(slug) {
         $.get("{{ url('/portal-edukasi/komentar/') }}/" + slug, {}, function(data, status) {

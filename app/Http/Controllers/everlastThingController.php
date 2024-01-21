@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Everlas_Things;
 use Illuminate\Http\Request;
+use App\Models\Everlas_Things;
+use Illuminate\Support\Facades\Session;
 
 class everlastThingController extends Controller
 {
@@ -63,10 +64,70 @@ class everlastThingController extends Controller
         //
     }
 
-    public function detailProduct() {
+    public function detailProduct($id_everlas_things) {
+        // Mengambil data produk dengan id_batu yang diberikan
+        $everlas_thing = Everlas_Things::findOrFail($id_everlas_things);
+    
+        // Mengirim data produk ke tampilan
+        return view('brand_everlas_things.preview_product', ['everlast' => $everlas_thing]);
+    }
+    
+    public function showcase() {
 
-        $everlas_things = everlas_things::paginate(24); // Meminta paginasi langsung dari model
-        return view('brand_everlas_things.preview_product', ['everlast' => $everlas_things]);
+        $everlas_things = everlas_things::paginate(25); // Meminta paginasi langsung dari model
+        return view('brand_everlas_things.showcase', ['everlast' => $everlas_things]);
+    }
+
+    public function tambahKeKeranjang($id_everlas_things, $quantity)
+    {
+        $product = Everlas_Things::findOrFail($id_everlas_things);
+    
+        $cart = session()->get('cart_everlas', []);
+    
+        if(isset($cart[$id_everlas_things])) {
+            $currentQuantity = $cart[$id_everlas_things]['quantity'];
+            $cart[$id_everlas_things]['quantity'] = $currentQuantity + (int)$quantity;
+        } else {
+            $cart[$id_everlas_things] = [
+                "produk" => $product,
+                "quantity" => (int)$quantity
+            ];
+        }
+        session()->put('cart_everlas', $cart);
+        return redirect()->route('transaksi.index');        
+    }
+
+
+    public function updateEverlasthings(Request $request)
+    {
+    if ($request->id_everlas_things && $request->quantity) {
+        $cart = session()->get('cart_everlas');
+
+        if (isset($cart[$request->id_everlas_things])) { // Perbaikan penamaan variabel
+            $cart[$request->id_everlas_things]["quantity"] = $request->quantity;
+            session()->put('cart_everlas', $cart);
+            session()->flash('success', 'Cart successfully updated!');
+            }
+        }
+    }
+
+    public function removeEverlasthings(Request $request)
+    {
+        if($request->id) {
+            $cart = session()->get('cart_everlas');
+            if(isset($cart[$request->id])) {
+                unset($cart[$request->id]);
+                session()->put('cart_everlas', $cart);
+            }
+            session()->flash('success', 'Product successfully removed!');
+        }
+    }
+
+    public function removeAllEverlasthings()
+    {
+        session()->forget('cart_everlas');
+        session()->flash('success', 'Semua produk everlasthings berhasil dihapus dari keranjang!');
+        return response()->json(['success' => true], 200); // Memberikan respon ke AJAX
     }
     public function showcase() {
 

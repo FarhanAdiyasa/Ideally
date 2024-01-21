@@ -13,6 +13,10 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css">
 
     <!-- Custom CSS -->
+<<<<<<< HEAD
+=======
+    <link rel="stylesheet" href="{{asset('/css/navbar-style.css')}}">
+>>>>>>> d5557992f1c905b8f774d6907a37c029ef4d4590
     <link rel="stylesheet" href="{{ asset ('konkurito/assets/css/showcase/style.css') }}">
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/css/bootstrap.min.css" rel="stylesheet">
 
@@ -21,10 +25,21 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
     <!-- JQuery -->
+<<<<<<< HEAD
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 
 <body>
+=======
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+</head>
+
+<body>
+    <!-- Navbar Utama -->
+    @include('partials.navbar')
+    <!-- End Navbar Utama -->
+
+>>>>>>> d5557992f1c905b8f774d6907a37c029ef4d4590
     <div class="container">
         <!-- Hero & Search Bar -->
         <section id="hero-search">
@@ -37,14 +52,22 @@
                                     <img src="{{ asset ('konkurito/assets/img/LOGO.png') }}" alt="">
                                 </div>
                                 <div class="deskripsi">
+<<<<<<< HEAD
                                     <p>Lorem ipsum dolor sit, amet consectetur adipisicing.</p>
+=======
+                                    <p>Solusi Beton Berkualitas untuk Konstruksi Andalan Anda.</p>
+>>>>>>> d5557992f1c905b8f774d6907a37c029ef4d4590
                                 </div>
                             </div>
                         </div>
                         <div class="col-6 bg-yellow">
                             <div class="description-box">
                                 <div class="title">
+<<<<<<< HEAD
                                     <p>Title</p>
+=======
+                                    <p>Kategori</p>
+>>>>>>> d5557992f1c905b8f774d6907a37c029ef4d4590
                                     <hr class="title-line">
                                 </div>
                                 <div class="kategori">
@@ -94,8 +117,12 @@
                     @endphp
 
                     @foreach($konkuritoshowcase as $index => $konkurito)
+<<<<<<< HEAD
                     @if($index < $halfItems) 
                     <div class="card-product">
+=======
+                    @if($index < $halfItems) <div class="card-product">
+>>>>>>> d5557992f1c905b8f774d6907a37c029ef4d4590
                         <a href="{{ route('konkurito.detail', ['id_konkurito' => $konkurito->id_konkurito]) }}"
                             class="card-product-link">
                             <div class="row g-0">
@@ -114,16 +141,27 @@
                                                 $konkurito->dimensi }}</p>
                                         </div>
                                         <div class="harga">
+<<<<<<< HEAD
                                             <p>Rp {{ number_format($konkurito->harga_b2C_1, 0, ',', '.') }}</p>
+=======
+                                            <p>Rp {{ number_format($konkurito->harga_b2C_1_unit, 0, ',', '.') }}</p>
+>>>>>>> d5557992f1c905b8f774d6907a37c029ef4d4590
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </a>
+<<<<<<< HEAD
                     </div>
                     @endif
                     @endforeach
                 </div>
+=======
+                </div>
+                @endif
+                @endforeach
+            </div>
+>>>>>>> d5557992f1c905b8f774d6907a37c029ef4d4590
 
             <div class="col-sm-6">
                 @foreach($konkuritoshowcase as $index => $konkurito)
@@ -147,7 +185,11 @@
                                             }}</p>
                                     </div>
                                     <div class="harga">
+<<<<<<< HEAD
                                         <p>Rp {{ number_format($konkurito->harga_b2C_1, 0, ',', '.') }}</p>
+=======
+                                        <p>Rp {{ number_format($konkurito->harga_b2C_1_unit, 0, ',', '.') }}</p>
+>>>>>>> d5557992f1c905b8f774d6907a37c029ef4d4590
                                     </div>
                                 </div>
                             </div>
@@ -157,9 +199,15 @@
                 @endif
                 @endforeach
             </div>
+<<<<<<< HEAD
             </div>
         </section>
         <!-- End Showcase -->
+=======
+    </div>
+    </section>
+    <!-- End Showcase -->
+>>>>>>> d5557992f1c905b8f774d6907a37c029ef4d4590
 
     <section id="penawaran">
         <div class="row">
@@ -267,6 +315,7 @@
         <div class="row">
             <div class="col-sm-6 bg-primary">
                 <div class="row">
+<<<<<<< HEAD
                     <div class="col-6 bg-blue d-flex flex-column justify-content-center align-items-center">
                         <div class="bg-light rounded-circle" style="width: 50px; height: 50px;"></div>
                         <div class="title text-white">
@@ -285,6 +334,26 @@
                             </div>
                         </div>
                     </div>
+=======
+                    <div class="col-6 bg-light">
+                        <div class="description-box">
+                            <div class="title">
+                                <p>MENJAWAB KEBUTUHAN ANDA</p>
+                                <hr class="title-line">
+                            </div>
+                            <div class="deskripsi">
+                                <p>Kami hadir menemani Anda menghadapi proyek besar. Konsultasi tentang produk beton
+                                    dengan Konkurito.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-6 bg-blue d-flex flex-column justify-content-center align-items-center">
+                        <div class="bg-light rounded-circle" style="width: 50px; height: 50px;"></div>
+                        <div class="title text-white">
+                            <a href="https://wa.link/lccn22">Layanan Konsultasi</a>
+                        </div>
+                    </div>
+>>>>>>> d5557992f1c905b8f774d6907a37c029ef4d4590
                 </div>
             </div>
             <div class="col-sm-6 col-6 p-0">
@@ -296,7 +365,11 @@
     </div>
 
     <!-- Pastikan Anda telah memuat jQuery sebelum skrip ini -->
+<<<<<<< HEAD
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+=======
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+>>>>>>> d5557992f1c905b8f774d6907a37c029ef4d4590
 
     <script>
         $(document).ready(function () {
