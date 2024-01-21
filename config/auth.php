@@ -140,6 +140,10 @@ return [
             'model' => App\Models\User::class,
         ],
 
+        'verification' => [
+            'expire' => 60, // waktu dalam menit
+        ],        
+
         // 'users' => [
         //     'driver' => 'database',
         //     'table' => 'users',

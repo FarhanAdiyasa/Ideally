@@ -6,17 +6,24 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
+    /**
+     * Run the migrations.
+     */
     public function up(): void
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->id('id_order');
             $table->string('nomor_order', 8)->unique();
             $table->foreignId('user_id');
-            $table->string('status_pembayaran');
-            $table->string('status_pesanan');
             $table->decimal('total_harga', 10, 2);
             $table->decimal('biaya_ongkir', 10, 2)->default(0);
             $table->decimal('biaya_lainnya', 10, 2)->default(0);
+            $table->decimal('grand_total', 10, 2);
+            $table->string('bank');
+            $table->string('status_pembayaran');
+            $table->timestamp('tanggal_pembayaran')->nullable();
+            $table->string('status_pesanan');
+            $table->string('resi_pengiriman')->nullable();
             $table->timestamps();
 
             $table->foreign('user_id')->references('user_id')->on('users');
@@ -81,5 +88,13 @@ return new class extends Migration
             $table->foreign('id_order')->references('id_order')->on('orders')->delete('cascade');
             $table->foreign('id_shineage')->references('id_shineage')->on('shineages')->delete('cascade');
         });
+    }
+
+    /**
+     * Reverse the migrations.
+     */
+    public function down(): void
+    {
+        Schema::dropIfExists('orders');
     }
 };

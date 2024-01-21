@@ -6,6 +6,7 @@ use App\Models\User;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Http\Requests\userRequest;
+use App\Notifications\VerifyEmailNotification;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -61,7 +62,7 @@ class AuthController extends Controller
     
     //     if ($cek > 0) {
     //         $user = User::updateOrCreate(
-    //             ['email' => $email],
+    //             ['emailwha' => $email],
     //             [
     //                 'name' => $name,
     //                 'google_id' => $id
@@ -95,22 +96,21 @@ class AuthController extends Controller
         return view('sesi/register', ['email' => $email]);
     }
 
-    function create(userRequest $request) {
-
+    public function create(userRequest $request)
+    {
         $inputData = $request->validated();
         $user = User::create($request->all());
-    
+
         if ($user) {
             event(new Registered($user));
-    
-            // Kirim email verifikasi
-            $user->sendEmailVerificationNotification();
-    
+
+            // Kirim notifikasi verifikasi email kustom
+            $user->notify(new VerifyEmailNotification($user));
+
             auth()->login($user);
-            return redirect()->route('verification.notice')->with('success','Akun berhasil dibuat, silahkan verifikasi email Anda');
+            return redirect()->route('login')->with('success', 'Akun berhasil dibuat, silahkan verifikasi email Anda');
         }
-    
-        // Jika terjadi kesalahan dalam pembuatan user, mungkin Anda ingin menambahkan penanganan kesalahan khusus di sini
+
         return redirect()->back()->with('error', 'Gagal membuat pengguna, coba lagi nanti')->withInput($inputData);
     }
 

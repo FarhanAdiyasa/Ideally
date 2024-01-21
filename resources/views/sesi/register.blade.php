@@ -148,7 +148,7 @@
                                   <td></td>
                                   <td><input class="form-control" type="password" placeholder="Kata Sandi Ulang"
                                           aria-label="input password"></td>
-                              </tr>
+                            </tr>
                               <tr>
                                   <td class="label label-profile"><p>Foto Profil</p></td>
                                   <td class="d-flex">

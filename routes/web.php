@@ -205,7 +205,7 @@ Route::get('/everlasthings/detailProduct', [everlastThingController::class, 'det
 
 //authentikasi login & regis
 Route::get('/auth/redirect',[AuthController::class, "redirect"])->middleware('guest');
-Route::get('/auth/login',[AuthController::class, "index"])->name('login')->middleware('guest');
+Route::get('/auth/login',[AuthController::class, "index"])->name('login');
 Route::get('/auth/callback',[AuthController::class, "callback"])->middleware('guest');
 Route::get('/auth/logout',[AuthController::class,"logout"])->name('logout')->middleware('auth');;
 Route::get('/auth/register', [AuthController::class, 'register'])->name('auth.register');
@@ -251,8 +251,7 @@ Route::delete('removeAllBatunesia', [BatunesiaController::class, 'removeAllBatun
 
 //route verifikasi
 Route::get('/email/verify/need-verification', [verificationController::class, 'notice'])->middleware('auth')->name('verification.notice');
-Route::get('/email/verify/{id}/{hash}', [verificationController::class, 'verify'])->middleware('auth','signed')->name('verification.verify');
-
+Route::get('/email/verify/{id}/{hash}', [VerificationController::class, 'verify'])->middleware(['auth', 'signed'])->name('verification.verify');
 //deflo
 Route::get('deflo',[DefloController::class,'index'])->name('deflo.utama');
 Route::get('deflo/showcase',[DefloController::class,'showcase'])->name('deflo.showcase');

@@ -25,6 +25,11 @@
 </head>
 
 <body>
+    @if(session('success'))
+            <div class="alert alert-success">
+                {{ session('success') }}
+            </div>
+    @endif
     <!-- Title -->
     <section id="title" class="w-100 d-flex justify-content-center align-items-center pt-5 mt-5">
         <div class="bg-tosca text-white rounded-5 overlay-title">
@@ -36,11 +41,7 @@
     <!-- Content -->
     <section id="content">
         <div class="container">
-            @if(session('success'))
-            <div class="alert alert-success">
-                {{ session('success') }}
-            </div>
-            @endif
+            
             @if (Session::has('error'))
             <div class="modal show" tabindex="-1" style="display: block;">
                 <div class="modal-dialog modal-dialog-centered">
