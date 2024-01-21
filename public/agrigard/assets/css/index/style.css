@@ -115,6 +115,8 @@ body {
     border-right: 3px solid #ffffff;
 }
 
+<<<<<<< HEAD
+=======
 #kategori .wrapper a {
     text-decoration: none;
     color: #ffffff;
@@ -122,12 +124,17 @@ body {
     font-weight: 700;
 }
 
+>>>>>>> d5557992f1c905b8f774d6907a37c029ef4d4590
 #kategori .wrapper:last-child {
     border-right: none; /* Menghapus border right pada kolom terakhir */
 }
 
 #kategori .text-white p {
+<<<<<<< HEAD
+    font-size: 13px;
+=======
     font-size: 13px;    
+>>>>>>> d5557992f1c905b8f774d6907a37c029ef4d4590
     font-weight: 700;
     padding: 4px 0;
     margin-bottom: 0;

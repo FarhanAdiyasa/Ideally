@@ -75,8 +75,8 @@
 
     <!-- New Article -->
     <div class="artikel-baru">
-      <p style="color: black; font-size: 20px; font-weight: 700;">Artikel Terbaru</p>
-      <p style="color: #727272; margin-bottom: -15px;">Pengaplikasian prinsip arsitektur lanskap dalam pembangunan ruang terbuka.</p>
+      <p style="color: black; font-size: 20px; font-weight: 700;">Artikel Terkini: Menggali Informasi Terbaru</p>
+      <p style="color: #727272; margin-bottom: -20px; margin-top:-5px;">Pengaplikasian prinsip arsitektur lanskap dalam pembangunan ruang terbuka.</p>
       <div id="carousel-artikel-baru" class="carousel slide" data-ride="carousel">
         <div class="carousel-inner">
             @foreach ($articles_terbaru->chunk(4) as $key => $chunk)
@@ -134,7 +134,7 @@
     <!-- End of New Article -->
 
     <!-- Komentar -->
-    <p style="color: black; font-size: 20px; font-weight: 700; padding-top: 4%;">Komentar Pilihan</p>
+    <p style="color: black; font-size: 20px; font-weight: 700; padding-top: 4%; padding-bottom:1%">Suarakan Perspektif Anda: Komentar yang Terpilih</p>
     <div class="komentar">
       <div id="carousel-komentar" class="carousel slide" data-ride="carousel">
         <div class="carousel-inner">
@@ -142,39 +142,39 @@
               <div class="carousel-item{{ $key === 0 ? ' active' : '' }}">
                   <div class="cards-wrapper">
                       @foreach ($chunk as $komentar)
-                      <div class="card card-komentar-pilihan border-0" style="width: 25rem; margin-right: 5px;" >
-                        <div class="card-body">
+                      <div class="card card-komentar-pilihan border-0" style="width: 25rem; margin-right: 5px; " >
+                        <div class="card-body komentar-text-container" >
                           <h6 style="color: black; font-size: 90px; font-family: Montserrat; font-weight: 700;">“</h6>
-                          <span style="font-size: 14px; margin-bottom: 10px;">{{$komentar->isi_komentar}}</span>
-        
-                          <div style="padding-bottom: 50px;"></div>
-                          <div id="popover-{{$komentar->id_komentar}}"data-popover-id="{{$komentar->id_komentar}}" class="rounded-pill d-inline-block" style="color: white; background-color: black;" data-popover-content-komentar-pilihan="1">
-                            <div class="keterangan-additional-text-container">
-                              <img class="info-card-category-icon" src="{{asset('icons/comment-category.svg')}}" alt="Rate Icon"
-                                style="width: 12px; height: 12px;"> <span class="info-card-category"
-                                style="font-size: 12px; font-weight: 700; padding-left: 5px; padding-right: 5px;">{{ $komentar->createdBy->firstname }} {{ $komentar->createdBy->lastname }}</span>
-                            </div>
-                          </div>
-                          <div id="popover-{{$komentar->id_komentar}}-content" hidden data-name="popover-content-komentar-pilihan" data-popover-id="{{$komentar->id_komentar}}">
-                            <img src="https://via.placeholder.com/362x185" class="card-img-top" alt="...">
-                              <div class="card-body">
-                                <div class="d-flex">
-                                  <div class="rounded-circle bg-secondary mr-3" style="width: 75px; height: 75px;"></div>
-                                  <div>
-                                      <h5 class="card-title nama-penulis">{{ $komentar->createdBy->firstname }} {{ $komentar->createdBy->lastname }}</h5>
-                                      <p class="card-text">Drafter Lanskap</p>
-                                  </div>
-                                </div>
-                                <p class="card-text">Laki-laki; asal Kota Jakarta Barat, DKI Jakarta; bergabung sejak 04 Juni 2023;
-                                    sebanyak 120 artikel telah ditulis.</p>
+                          <span class="komentar-text" style="font-size: 14px; margin-bottom: 10px; height:33%;">{{$komentar->isi_komentar}}</span>
+                          <div style="padding-bottom: 40px;"></div>
+                          <div id="popover-{{$komentar->id_komentar}}" data-popover-id="{{$komentar->id_komentar}}" class="rounded-pill d-inline-block" style="color: white; background-color: black;" data-popover-content-komentar-pilihan="1">
+                              <div class="keterangan-additional-text-container">
+                                  <img class="info-card-category-icon" src="{{asset('icons/comment-category.svg')}}" alt="Rate Icon" style="width: 12px; height: 12px;">
+                                  <span class="info-card-category" style="font-size: 12px; font-weight: 700; padding-left: 5px; padding-right: 5px;">
+                                      {{ $komentar->createdBy->firstname }} {{ $komentar->createdBy->lastname }}
+                                  </span>
                               </div>
                           </div>
+                          <div id="popover-{{$komentar->id_komentar}}-content" hidden data-name="popover-content-komentar-pilihan" data-popover-id="{{$komentar->id_komentar}}">
+                              <div class="card-body popover-nama-komentar" style="">
+                                  <div class="d-flex align-items-center">
+                                      <div class="rounded-circle mr-3 gambar-popover" style="width: 75px; height: 75px; overflow: hidden; ">
+                                          <img src="https://via.placeholder.com/75" class="img-fluid rounded-circle" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;" alt="...">
+                                      </div>
+                                      <div>
+                                          <span class="card-title nama-penulis-custom">{{ $komentar->createdBy->firstname }} {{ $komentar->createdBy->lastname }}</span>
+                                          <p class="card-text nama-kerja-custom">Drafter Lanskap</p>
+                                      </div>
+                                  </div>
+                                  <p class="biografi-penulis-custom">Laki-laki; asal Kota Jakarta Barat, DKI Jakarta; bergabung sejak 04 Juni 2023; sebanyak 120 artikel telah ditulis.</p>
+                              </div>
+                          </div>
+
                           <!-- Separator -->
                           <hr style="border-top: 3px solid grey; ">
                           <a href="/portal-edukasi/baca/{{optional($komentar->artikel)->slug}}" class="hpLink"><span style="font-size: 14px; font-weight: 700; color: #06C195;">{{ optional($komentar->artikel)->judul_artikel }}</span></a>
                         </div>
                       </div>
-                      
                       @endforeach
                   </div>
               </div>
@@ -194,8 +194,8 @@
 
     <!-- Most Visited Article -->
     <div class="most-visited-artikel">
-      <p style="color: black; font-size: 20px; font-weight: 700;">Artikel Paling Banyak Dikunjungi</p>
-      <p style="color: #727272; margin-bottom: -15px;">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+      <p style="color: black; font-size: 20px; font-weight: 700;">Terfavorit dan Terbukti: Artikel Paling Banyak Diklik</p>
+      <p style="color: #727272; margin-bottom: -25px; margin-top:-10px;">Top Hits: maksimalkan wawasan dengan artikel paling banyak dikunjungi. </p>
       <div id="carousel-most-visited-artikel" class="carousel slide" data-ride="carousel">
         <div class="carousel-inner">
           @foreach ($articles_terpopuler->chunk(4) as $key => $chunk)
@@ -449,7 +449,7 @@
           </ul>
 
 
-          <a href="#" class="btn btn-lg rounded-pill"
+          <a href="https://api.whatsapp.com/send?phone=6282113704008" target="_blank" class="btn btn-lg rounded-pill"
             style="background-color: #06C195; color: white; font-size: 16px; font-weight: 700;  white-space:nowrap;">Informasi
             Lebih Lanjut</a>
 
@@ -498,8 +498,6 @@
         $(`.category-portaledukasi-btn:contains('${kategori}')`).addClass('clicked');
     }
     </script>
-
-    
     <script>
         $(document).ready(function() {
               $('.card-komentar-pilihan').each(function() {

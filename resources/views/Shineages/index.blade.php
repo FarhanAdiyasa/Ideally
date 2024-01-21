@@ -20,7 +20,10 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css">
 
     <!-- Custom CSS -->
+<<<<<<< HEAD
+=======
     <link rel="stylesheet" href="{{asset('/css/navbar-style.css')}}">
+>>>>>>> d5557992f1c905b8f774d6907a37c029ef4d4590
     <link rel="stylesheet" href="{{ asset ('shineage/assets/css/index/style.css') }}">
 
     <!-- Bootstrap JS -->
@@ -28,6 +31,14 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
     <!-- JQuery -->
+<<<<<<< HEAD
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+
+<body>
+    <!-- Logo -->
+    <section id="logo">
+=======
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 </head>
 
@@ -38,6 +49,7 @@
 
     <!-- Logo -->
     <section id="logo" class="mt-5">
+>>>>>>> d5557992f1c905b8f774d6907a37c029ef4d4590
         <div class="container">
             <div class="logo-container bg-yellow">
                 <div class="row g-0">
@@ -46,9 +58,14 @@
                             <img src="{{ asset ('shineage/assets/img/01-SEC01-LOGO 1.png') }}" alt="">
                         </div>
                         <div class="text-white mt-3">
+<<<<<<< HEAD
+                            <p class="noto-sans m-0">Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe
+                                inventore quia quidem repudiandae minus earum eaque quibusdam reprehenderit itaque odio.
+=======
                             <p class="noto-sans m-0">Produsen signage pilihan dengan desain kreatif dan kualitas unggul.
                                 Menawarkan solusi inovatif untuk meningkatkan visibilitas dan citra merek. Keunggulan
                                 dalam ketepatan waktu dan layanan pelanggan.
+>>>>>>> d5557992f1c905b8f774d6907a37c029ef4d4590
                             </p>
                         </div>
                     </div>
@@ -232,6 +249,24 @@
                                 </div>
                                 @foreach($shineages->take(5) as $merah)
                                 <div class="card-product mt-3">
+<<<<<<< HEAD
+                                <a href="{{ route('shineage.detail', ['id_shineage' => $merah->id_shineage]) }}"
+                                        class="card-link">
+                                    <div class="img-container">
+                                        <img src="{{ $merah->gambar_1 }}" alt="{{ $merah->nama_produk }}">
+                                    </div>
+                                    <div class="card-body bg-red text-white">
+                                        <div class="kategori">
+                                            <p>{{ $merah->nama_produk }}</p>
+                                        </div>
+                                        <div class="nama-produk">
+                                            <p>{{ substr($merah->deskripsi_singkat, 0, 10) }}</p>
+                                        </div>
+                                        <div class="harga">
+                                            <p>Rp {{ $merah->harga_b2C_1_unit }}</p>
+                                        </div>
+                                    </div>
+=======
                                     <a href="{{ route('shineage.detail', ['id_shineage' => $merah->id_shineage]) }}"
                                         class="card-link">
                                         <div class="img-container">
@@ -248,6 +283,7 @@
                                                 <p>Rp {{ $merah->harga_b2C_1_unit }}</p>
                                             </div>
                                         </div>
+>>>>>>> d5557992f1c905b8f774d6907a37c029ef4d4590
                                     </a>
                                 </div>
                                 @endforeach
@@ -270,6 +306,19 @@
                                     <div class="text-white">
                                         <h5 class="fw-bold">Keunggulan</h5>
                                         <div class="ps-3">
+<<<<<<< HEAD
+                                            <div class="border-start border-5 border-light" style="height: 30px;"></div>
+                                        </div>
+                                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum, ut!</p>
+                                        <div class="ps-3">
+                                            <div class="border-start border-5 border-light" style="height: 30px;"></div>
+                                        </div>
+                                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum, ut!</p>
+                                        <div class="ps-3">
+                                            <div class="border-start border-5 border-light" style="height: 30px;"></div>
+                                        </div>
+                                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum, ut!</p>
+=======
                                             <div class="border-start border-5 border-light" style="height: 35px;"></div>
                                         </div>
                                         <p>Pengerjaan cepat dan tepat waktu. Sesuai jadwal bisnis Anda.</p>
@@ -281,10 +330,29 @@
                                             <div class="border-start border-5 border-light" style="height: 35px;"></div>
                                         </div>
                                         <p>Konsultasi gratis dan tanya - jawab agar Anda memahami aset Anda.</p>
+>>>>>>> d5557992f1c905b8f774d6907a37c029ef4d4590
                                     </div>
                                 </div>
                                 @foreach($shineages->slice(5, 4) as $hijau)
                                 <div class="card-product mt-3">
+<<<<<<< HEAD
+                                <a href="{{ route('shineage.detail', ['id_shineage' => $hijau->id_shineage]) }}"
+                                        class="card-link">
+                                    <div class="img-container">
+                                        <img src="{{ $hijau->gambar_1 }}" alt="{{ $hijau->nama_produk }}">
+                                    </div>
+                                    <div class="card-body bg-tosca text-white">
+                                        <div class="kategori">
+                                            <p>{{ $hijau->nama_produk }}</p>
+                                        </div>
+                                        <div class="nama-produk">
+                                            <p>{{ substr($hijau->deskripsi_singkat, 0, 10) }}</p>
+                                        </div>
+                                        <div class="harga">
+                                            <p>Rp {{ $hijau->harga_b2C_1_unit }}</p>
+                                        </div>
+                                    </div>
+=======
                                     <a href="{{ route('shineage.detail', ['id_shineage' => $hijau->id_shineage]) }}"
                                         class="card-link">
                                         <div class="img-container">
@@ -301,13 +369,18 @@
                                                 <p>Rp {{ $hijau->harga_b2C_1_unit }}</p>
                                             </div>
                                         </div>
+>>>>>>> d5557992f1c905b8f774d6907a37c029ef4d4590
                                     </a>
                                 </div>
                                 @endforeach
                                 <div class="bg-tosca mt-3 p-2" style="height: 15%;">
                                     <div class="text-white">
                                         <div class="ps-3 mb-1">
+<<<<<<< HEAD
+                                            <div class="border-start border-4 border-light" style="height: 50%;"></div>
+=======
                                             <div class="border-start border-4 border-light" style="height: 40%;"></div>
+>>>>>>> d5557992f1c905b8f774d6907a37c029ef4d4590
                                         </div>
                                         <a href="{{ route('shineage.showcase') }}" class="btn btn-showcase mt-1">Lihat
                                             Produk Lainnya</a>
@@ -338,6 +411,22 @@
                                 <div class="card-product mt-3">
                                     <a href="{{ route('shineage.detail', ['id_shineage' => $kuning->id_shineage]) }}"
                                         class="card-link">
+<<<<<<< HEAD
+                                    <div class="img-container">
+                                        <img src="{{ $kuning->gambar_1 }}" alt="{{ $kuning->nama_produk }}">
+                                    </div>
+                                    <div class="card-body bg-yellow text-white">
+                                        <div class="kategori">
+                                            <p>{{ $kuning->nama_produk }}</p>
+                                        </div>
+                                        <div class="nama-produk">
+                                            <p>{{ substr($kuning->deskripsi_singkat, 0, 10) }}</p>
+                                        </div>
+                                        <div class="harga">
+                                            <p>Rp {{ $kuning->harga_b2C_1_unit }}</p>
+                                        </div>
+                                    </div>
+=======
                                         <div class="img-container">
                                             <img src="{{ $kuning->gambar_1 }}" alt="{{ $kuning->nama_produk }}">
                                         </div>
@@ -352,6 +441,7 @@
                                                 <p>Rp {{ $kuning->harga_b2C_1_unit }}</p>
                                             </div>
                                         </div>
+>>>>>>> d5557992f1c905b8f774d6907a37c029ef4d4590
                                     </a>
                                 </div>
                                 @endforeach
@@ -383,8 +473,13 @@
                         </div>
                         <div class="action">
                             <div class="deskripsi-cta text-white">
+<<<<<<< HEAD
+                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint impedit minus modi
+                                    dignissimos. Odio, dolor perspiciatis. Ea, reiciendis?</p>
+=======
                                 <p>Setiap mitra kami pasti memiliki kebutuhan yang berbeda. Begitu juga Anda. Konsultasi
                                     lebih lanjut untuk mendapatkan kebutuhan bisnis Anda.</p>
+>>>>>>> d5557992f1c905b8f774d6907a37c029ef4d4590
                             </div>
                             <div class="action-btn">
                                 <a href="https://wa.link/lccn22" class="btn btn-light">Konsultasi Sekarang</a>

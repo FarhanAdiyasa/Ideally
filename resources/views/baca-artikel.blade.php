@@ -81,23 +81,28 @@
                 <div class="d-flex" style="padding-top: 20px;">
                     <div class="additional-text-container rounded-pill d-inline-block">
                         <div class="keterangan-additional-text-container">
-                            <img class="info-card-category-icon-title2" src="{{asset('icons/rate-category.svg')}}" alt="Rate Icon"
-                                style="width: 12px; height: 12px;">
-                            <span class="info-card-category-title2" style="font-size: 14px; font-weight: 700;"> {{$artikel->penulis_artikel}}</span>
+                            <i class="fas fa-user" style="font-size: 12px;"></i>
+                            <?php
+                            $penulis_artikel = $artikel->penulis_artikel; 
+
+                            if (strlen($penulis_artikel) > 20) { 
+                                $penulis_artikel = substr($penulis_artikel, 0, 20) . '...'; 
+                            }
+                            ?>
+                            <span class="info-card-category-title2" style="font-size: 14px; font-weight: 700;"> {{$penulis_artikel}}</span>
+
                         </div>
                     </div>
                     <div class="additional-text-container rounded-pill d-inline-block"
                         style="background-color: #06C195; color: white;">
                         <div class="keterangan-additional-text-container">
-                            <img class="info-card-category-icon-title2" src="{{asset('icons/rate-category.svg')}}" alt="Rate Icon"
-                                style="width: 12px; height: 12px;">
+                            <i class="far fa-calendar" style="font-size: 12px;"></i>
                             <span class="info-card-category-title2" style="font-size: 14px; font-weight: 700;"> {{ date('d M Y', strtotime($artikel->tanggal_publikasi))}}</span>
                         </div>
                     </div>
                     <div class="additional-text-container rounded-pill d-inline-block">
                         <div class="keterangan-additional-text-container">
-                            <img class="info-card-category-icon-title2" src="{{asset('icons/comment-category.svg')}}"
-                                alt="Rate Icon" style="width: 12px; height: 12px;">
+                           <i class="far fa-eye" style="font-size: 12px;"></i>
                             <span class="info-card-category-title2"
                                 style="font-size: 14px; font-weight: 700;">{{ number_format($artikel->pengunjung ?? 0) }}</span>
                         </div>
@@ -396,8 +401,7 @@
                                     <div class="additional-text-container rounded-pill d-inline-block"
                                         style="background-color: #06C195; color: white;">
                                         <div class="keterangan-additional-text-container d-flex">
-                                            <img class="info-card-category-icon-widget" src="{{asset('icons/rate-category.svg')}}"
-                                                alt="Rate Icon" style="width: 16px; height: 16px;">
+                                            <i class="far fa-calendar" style="font-size: 16px; padding-top:5%;"></i>
                                             <p class="info-card-category-widget tes"
                                                 style="font-size: 14px; font-weight: 700;">{{ date('d M Y', strtotime($article->tanggal_publikasi))}}</p>
                                         </div>
@@ -420,8 +424,7 @@
                                     <div class="additional-text-container rounded-pill d-inline-block"
                                         style="background-color: #06C195; color: white;">
                                         <div class="keterangan-additional-text-container d-flex">
-                                            <img class="info-card-category-icon-widget" src="{{asset('icons/rate-category.svg')}}"
-                                                alt="Rate Icon" style="width: 16px; height: 16px;">
+                                            <i class="far fa-calendar" style="font-size: 16px; padding-top:5%;"></i>
                                             <p class="info-card-category-widget tes"
                                                 style="font-size: 14px; font-weight: 700;">{{ date('d M Y', strtotime($article->tanggal_publikasi))}}</p>
                                         </div>
@@ -445,8 +448,7 @@
                                     <div class="additional-text-container rounded-pill d-inline-block"
                                         style="background-color: #06C195; color: white;">
                                         <div class="keterangan-additional-text-container d-flex">
-                                            <img class="info-card-category-icon-widget" src="{{asset('icons/rate-category.svg')}}"
-                                                alt="Rate Icon" style="width: 16px; height: 16px;">
+                                            <i class="far fa-calendar" style="font-size: 16px; padding-top:5%;"></i>
                                             <p class="info-card-category-widget tes"
                                                 style="font-size: 14px; font-weight: 700;">{{ date('d M Y', strtotime($article->tanggal_publikasi));}}</p>
                                         </div>

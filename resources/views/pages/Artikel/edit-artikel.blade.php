@@ -24,12 +24,12 @@
       <div class="col-sm-6">
         <h1>Edit Artikel</h1>
       </div>
-      <div class="col-sm-6">
+      <!-- <div class="col-sm-6">
         <ol class="breadcrumb float-sm-right">
           <li class="breadcrumb-item"><a href="#">Home</a></li>
           <li class="breadcrumb-item active">Advanced Form</li>
         </ol>
-      </div>
+      </div> -->
     </div>
   </div><!-- /.container-fluid -->
 </section>
@@ -190,7 +190,7 @@
           <div class="row">
             <div class="col-md-12">
                 <div class="form-group">
-                    <label for="">Description:</label>
+                    <label for="">Isi Artikel:</label>
                     <textarea name="isi_artikel" id="isi_artikel" cols="30" rows="10">{!! $artikel->isi_artikel !!}</textarea>
                     @error('isi_artikel')
                     <small class="text-danger">{{ $message }}</small>

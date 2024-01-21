@@ -22,7 +22,10 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css">
 
     <!-- Custom CSS -->
+<<<<<<< HEAD
+=======
     <link rel="stylesheet" href="{{asset('/css/navbar-style.css')}}">
+>>>>>>> d5557992f1c905b8f774d6907a37c029ef4d4590
     <link rel="stylesheet" href="assets/css/index/style.css">
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/css/bootstrap.min.css" rel="stylesheet">
 
@@ -31,6 +34,12 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
     <!-- JQuery -->
+<<<<<<< HEAD
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+
+<body>
+=======
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 </head>
 
@@ -39,6 +48,7 @@
     @include('partials.navbar')
     <!-- End Navbar Utama -->
     
+>>>>>>> d5557992f1c905b8f774d6907a37c029ef4d4590
     <div class="container">
         <!-- Hero & Navigation Bar -->
         <section id="hero-navbar">
@@ -53,10 +63,18 @@
                         <div class="col-6 bg-yellow">
                             <div class="action">
                                 <div class="title">
+<<<<<<< HEAD
+                                    <p>Produk Beton Produk</p>
+                                </div>
+                                <div class="deskripsi">
+                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa illo assumenda hic.
+                                        Exercitationem, ut minus?</p>
+=======
                                     <p>Penyedia Produk Beton</p>
                                 </div>
                                 <div class="deskripsi">
                                     <p>Solusi beton untuk konstruksi, developer, dan konsumen, dengan produk berkualitas tinggi dan pelayanan terpercaya.</p>
+>>>>>>> d5557992f1c905b8f774d6907a37c029ef4d4590
                                 </div>
                                 <a href="{{ route('konkurito.showcase') }}" class="btn">Lihat Produk</a>
                             </div>
@@ -113,7 +131,11 @@
                                                 <a class="nav-link dropdown-toggle" href="#" role="button"
                                                     data-bs-toggle="dropdown" aria-expanded="false">
                                                     <div class="text-icon">
+<<<<<<< HEAD
+                                                        <span class="text">Paving</span><i
+=======
                                                         <span class="text">Kansteen</span><i
+>>>>>>> d5557992f1c905b8f774d6907a37c029ef4d4590
                                                             class="bi bi-caret-right-fill icon"></i>
                                                     </div>
                                                 </a>
@@ -144,7 +166,11 @@
                                                 <a class="nav-link dropdown-toggle" href="#" role="button"
                                                     data-bs-toggle="dropdown" aria-expanded="false">
                                                     <div class="text-icon">
+<<<<<<< HEAD
+                                                        <span class="text">Paving</span><i
+=======
                                                         <span class="text">Roster</span><i
+>>>>>>> d5557992f1c905b8f774d6907a37c029ef4d4590
                                                             class="bi bi-caret-right-fill icon"></i>
                                                     </div>
                                                 </a>
@@ -175,7 +201,11 @@
                                                 <a class="nav-link dropdown-toggle" href="#" role="button"
                                                     data-bs-toggle="dropdown" aria-expanded="false">
                                                     <div class="text-icon">
+<<<<<<< HEAD
+                                                        <span class="text">Paving</span><i
+=======
                                                         <span class="text">Lainnya</span><i
+>>>>>>> d5557992f1c905b8f774d6907a37c029ef4d4590
                                                             class="bi bi-caret-right-fill icon"></i>
                                                     </div>
                                                 </a>
@@ -225,11 +255,20 @@
                                     <div class="row">
                                         <div class="col-6 description-box">
                                             <div class="title">
+<<<<<<< HEAD
+                                                <p>Title</p>
+                                                <hr class="title-line">
+                                            </div>
+                                            <div class="deskripsi">
+                                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Non
+                                                    voluptate corporis placeat explicabo debitis ex.</p>
+=======
                                                 <p>Roster</p>
                                                 <hr class="title-line">
                                             </div>
                                             <div class="deskripsi">
                                                 <p>Melangkah nyaman, melintas aman, begitulah ketika Anda bergerak di atas paving block Konkurito.</p>
+>>>>>>> d5557992f1c905b8f774d6907a37c029ef4d4590
                                             </div>
                                         </div>
                                         <div class="col-6 p-0">
@@ -239,11 +278,20 @@
                                         <div class="col-6"></div>
                                         <div class="col-6 description-box geser-kiri">
                                             <div class="title">
+<<<<<<< HEAD
+                                                <p>Title</p>
+                                                <hr class="title-line">
+                                            </div>
+                                            <div class="deskripsi">
+                                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Non
+                                                    voluptate corporis placeat explicabo debitis ex.</p>
+=======
                                                 <p>Sumber Estetika</p>
                                                 <hr class="title-line">
                                             </div>
                                             <div class="deskripsi">
                                                 <p>Sebagian besar bangunan memanfaatkan dinding sebagai sumber estetika. Pemakaian roster adalah pilihan utama.</p>
+>>>>>>> d5557992f1c905b8f774d6907a37c029ef4d4590
                                             </div>
                                         </div>
                                     </div>
@@ -394,11 +442,20 @@
                     <div class="row">
                         <div class="col-6 description-box">
                             <div class="title">
+<<<<<<< HEAD
+                                <p>Title</p>
+                                <hr class="title-line">
+                            </div>
+                            <div class="deskripsi">
+                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Non
+                                    voluptate corporis placeat explicabo debitis ex.</p>
+=======
                                 <p>Roster</p>
                                 <hr class="title-line">
                             </div>
                             <div class="deskripsi">
                                 <p>Cocok digunakan untuk pagar rumah, dinding pembatas, sekat ruangan, dan lubang ventilasi. Desain estetik dan ciamik.</p>
+>>>>>>> d5557992f1c905b8f774d6907a37c029ef4d4590
                             </div>
                         </div>
                         <div class="col-6 p-0">
@@ -409,11 +466,20 @@
                         </div>
                         <div class="col-6 description-box">
                             <div class="title">
+<<<<<<< HEAD
+                                <p>Title</p>
+                                <hr class="title-line">
+                            </div>
+                            <div class="deskripsi">
+                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Non
+                                    voluptate corporis placeat explicabo debitis ex.</p>
+=======
                                 <p>Grass Block</p>
                                 <hr class="title-line">
                             </div>
                             <div class="deskripsi">
                                 <p>Perkerasan unik, desain yang memungkinkan media tanam dan rerumputan hadir. Perkerasan dan hijauan hadir bersama.</p>
+>>>>>>> d5557992f1c905b8f774d6907a37c029ef4d4590
                             </div>
                         </div>
                     </div>
@@ -431,13 +497,21 @@
                         <div class="col-6 bg-yellow d-flex flex-column justify-content-center align-items-center">
                             <div class="bg-dark rounded-circle" style="width: 50px; height: 50px;"></div>
                             <div class="title">
+<<<<<<< HEAD
+                                <h6>Lorem ipsum</h6>
+=======
                                 <h6>Produk Beragam</h6>
+>>>>>>> d5557992f1c905b8f774d6907a37c029ef4d4590
                             </div>
                         </div>
                         <div class="col-6 bg-blue d-flex flex-column justify-content-center align-items-center">
                             <div class="bg-light rounded-circle" style="width: 50px; height: 50px;"></div>
                             <div class="title text-white">
+<<<<<<< HEAD
+                                <h6>Lorem ipsum</h6>
+=======
                                 <h6>Kualitas Terjamin</h6>
+>>>>>>> d5557992f1c905b8f774d6907a37c029ef4d4590
                             </div>
                         </div>
                     </div>
@@ -526,11 +600,20 @@
                                     <div class="row">
                                         <div class="col-6 description-box geser-kanan">
                                             <div class="title">
+<<<<<<< HEAD
+                                                <p>Title</p>
+                                                <hr class="title-line">
+                                            </div>
+                                            <div class="deskripsi">
+                                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Non
+                                                    voluptate corporis placeat explicabo debitis ex.</p>
+=======
                                                 <p>Aneka Warna</p>
                                                 <hr class="title-line">
                                             </div>
                                             <div class="deskripsi">
                                                 <p>Tersedia aneka warna: natural, hijau, kuning, merah. Jelas untuk beraneka fungsi dan tujuan pemasangan.</p>
+>>>>>>> d5557992f1c905b8f774d6907a37c029ef4d4590
                                             </div>
                                         </div>
                                         <div class="col-6 p-0">
@@ -540,11 +623,20 @@
                                         <div class="col-6"></div>
                                         <div class="col-6 description-box">
                                             <div class="title">
+<<<<<<< HEAD
+                                                <p>Title</p>
+                                                <hr class="title-line">
+                                            </div>
+                                            <div class="deskripsi">
+                                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Non
+                                                    voluptate corporis placeat explicabo debitis ex.</p>
+=======
                                                 <p>Paduan Desain</p>
                                                 <hr class="title-line">
                                             </div>
                                             <div class="deskripsi">
                                                 <p>Sangat cocok untuk desain perkerasan yang mengedepankan warna elemen. Warna tidak akan meluntur.</p>
+>>>>>>> d5557992f1c905b8f774d6907a37c029ef4d4590
                                             </div>
                                         </div>
                                     </div>
@@ -554,7 +646,11 @@
                                     <div class="row">
                                         <div class="col-6 description-box geser-kanan">
                                             <div class="title">
+<<<<<<< HEAD
+                                                <p>Title</p>
+=======
                                                 <p>Tittle</p>
+>>>>>>> d5557992f1c905b8f774d6907a37c029ef4d4590
                                                 <hr class="title-line">
                                             </div>
                                             <div class="deskripsi">
@@ -702,6 +798,17 @@
                 <div class="col-sm-3 p-0">
                     <div class="long-description-box">
                         <div class="title">
+<<<<<<< HEAD
+                            <p>Title</p>
+                            <hr class="title-line">
+                        </div>
+                        <div class="deskripsi">
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis quibusdam veniam
+                                inventore. Sint, dignissimos porro ipsum officiis accusantium earum, ducimus deleniti ea
+                                illo magnam eaque omnis non minus dolorem odio illum. Dolore, nobis id ducimus, cumque
+                                magnam et voluptatum quis totam praesentium corporis voluptate facilis. Id atque culpa
+                                dignissimos corrupti!</p>
+=======
                             <p>Bagian Dari Proyek Anda</p>
                             <hr class="title-line">
                         </div>
@@ -710,6 +817,7 @@
                                     tetapi juga menjadi elemen kunci keberhasilan. Kami hadir untuk mewujudkan visi Anda, membangun proyek dengan kehandalan dan keindahan 
                                     yang tahan lama. Konkurito menawarkan solusi beton terbaik untuk menghadirkan kualitas dan daya tahan yang tak tertandingi.
                                     Percayakan impian Anda kepada kami, karena kami adalah kontributor penting dalam setiap rincian proyek Anda.</p>
+>>>>>>> d5557992f1c905b8f774d6907a37c029ef4d4590
                         </div>
                     </div>
                 </div>
@@ -751,7 +859,11 @@
                         style="height: 50%;">
                         <div class="bg-dark rounded-circle" style="width: 50px; height: 50px;"></div>
                         <div class="title">
+<<<<<<< HEAD
+                            <h6>Lorem ipsum</h6>
+=======
                             <h6>Siap Menjadi Mitra Jangka Panjang</h6>
+>>>>>>> d5557992f1c905b8f774d6907a37c029ef4d4590
                         </div>
                     </div>
                     <div class="img-container">
@@ -774,7 +886,12 @@
                             <p>Produk Beton</p>
                         </div>
                         <div class="deskripsi">
+<<<<<<< HEAD
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis, beatae quo
+                                similique sapiente error provident eius molestias soluta. Ipsum, earum?</p>
+=======
                             <p>Jelajahi lebih banyak tentang produk kami. Lihat seluruh kategori dan tentukan yang produk yang tepat untuk proyek Anda.</p>
+>>>>>>> d5557992f1c905b8f774d6907a37c029ef4d4590
                         </div>
                         <a href="{{ route('konkurito.showcase') }}" class="btn">Lihat Produk</a>
                     </div>

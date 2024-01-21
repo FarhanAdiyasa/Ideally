@@ -39,7 +39,7 @@ class AdminUserController extends Controller
             DB::rollback();
            return redirect()->back()->with('error', 'Terjadi kesalahan. Silakan coba lagi nanti.');
         }
-        return redirect()->route('daftar-user')->with('success', 'Data status has been successfully changed .');
+        return redirect()->route('daftar-user')->with('success', 'Status data berhasil diubah!');
     }
     /**
      * Store a newly created resource in storage.

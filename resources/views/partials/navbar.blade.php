@@ -140,17 +140,38 @@
                 <li class="nav-item">
                     <a class="nav-link" aria-current="page" href="#" style="font-family: Montserrat;">Tentang Kami</a>
                 </li>
+
+                
             </ul>
                 @if (session()->has('user_info'))
-                <div class="col-lg-3 text-end">
-                    <a href="{{ route('transaksi.index') }}" class="text-darkb"><i class="bi bi-cart-fill"></i></a>
-                    <a href="#" class="link-body-emphasis px-3">{{ session('user_info')->firstname }}</a>
-                    <a href="{{ route('logout') }}" class="px-3 btn btn-danger text-white" style="font-size: 10px">Logout</a>
+                <div class="d-flex justify-content-end align-items-center col-lg-3 text-end">
+                    <a href="{{ route('transaksi.index') }}" class="me-2">
+                        <img src="{{asset('icons/LOGO-CART 1.png')}}" alt="Keranjang" width="35" height="35">
+                    </a>
+                    <img src="{{asset('img/FOTO-PROFIL 1.png')}}" alt="User" width="35" height="35" 
+                    class="rounded-circle">
+                    <div class="nav-item dropdown">
+                        <div class="ms-2">
+                            <a class="nav-link dropdown-toggle fw-bold" href="#" data-bs-toggle="dropdown"
+                            aria-expanded="false" style="font-family: Montserrat;">{{ session('user_info')->firstname }}</a>
+                        </div>
+                        <ul class="dropdown-menu dropdown-menu-center profil-dropdown" >
+                            <div class="custom-shape-2"></div>
+                            <div class="dropdown-list">
+                                <li><a class="dropdown-item" href="#">Lihat Profil</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><a class="dropdown-item" href="#">Daftar Pesanan</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><a class="dropdown-item" href="{{ route('logout') }}">Keluar</a></li>
+                            </div>
+                        </ul>
+                    </div>
                 </div>
                 @else
                 <div class="col-lg-3 text-end">
                     <a href="{{url('auth/register')}}" class="link-body-emphasis px-3" style="font-family: Montserrat;">Daftar Akun</a>
                     <span class="vertical-divider"></span>
+
                     <a href="{{url('auth/login')}}" class="link-body-emphasis px-3" style="font-family: Montserrat;">Masuk</a>
                 </div>
                 @endif

@@ -39,6 +39,41 @@ class Shineage extends Model
     }
 
 
+<<<<<<< HEAD
+    protected $fillable = [
+        'id_shineage',
+        'seri',
+        'nama_produk',
+        'slug',
+        'jenis',
+        'garansi',
+        'warna',
+        'dimensi',
+        'material_pendukung',
+        'finishing',
+        'gambar_1',
+        'gambar_2',
+        'gambar_3',
+        'gambar_4',
+        'gambar_5',
+        'gambar_6',
+        'video',
+        'deskripsi_singkat',
+        'stok',
+        'item_terjual',
+        'hpp',
+        'harga_b2I_11_unit',
+        'harga_b2I_1_unit',
+        'harga_b2B_11_unit',
+        'harga_b2B_1_unit',
+        'harga_b2C_11_unit',
+        'harga_b2C_1_unit',
+        'tanggal_publikasi',
+        'created_at',
+        'updated_at',
+        'deleted_at',
+    ];
+=======
     // protected $fillable = [
     //     'id_shineage',
     //     'seri',
@@ -72,5 +107,6 @@ class Shineage extends Model
     //     'updated_at',
     //     'deleted_at',
     // ];
+>>>>>>> d5557992f1c905b8f774d6907a37c029ef4d4590
 
 }

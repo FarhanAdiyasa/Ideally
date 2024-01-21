@@ -15,6 +15,7 @@ use App\Http\Controllers\AgrigardController;
 
 use App\Http\Controllers\ShineageController;
 use App\Http\Controllers\BatunesiaController;
+
 use App\Http\Controllers\KeranjangController;
 use App\Http\Controllers\KonkuritoController;
 use App\Http\Controllers\TransaksiController;
@@ -137,7 +138,7 @@ Route::get('/delete-everlasThing/{id}', [AdminEverlasThingController::class, 'de
 Route::delete('/destroy-everlasThing/{id}', [AdminEverlasThingController::class, 'destroy'])->name('everlasThings.destroy');
 
 //Promo
-Route::get('/daftar-promo', [PromoController::class, 'index'])->name('daftar-promo');
+Route::get('/daftar-promo/{id}', [PromoController::class, 'view'])->name('daftar-promo');
 
 Route::get('/tambah-promo', [PromoController::class, 'create'])->name('daftar-promo.tambah');
 Route::post('/tambah-promo', [PromoController::class, 'store'])->name('daftar-promo.save');
@@ -151,6 +152,8 @@ Route::get('/check-promo-unique/{nama_promo}', [PromoController::class, 'checkPr
 
 Route::get('/delete-promo/{id}', [PromoController::class, 'delete'])->name('daftar-promo.delete');
 Route::delete('/destroy-promo/{id}', [PromoController::class, 'destroy'])->name('daftar-promo.destroy');
+
+Route::get('/daftar-promo', [PromoController::class, 'index'])->name('daftar-promo');
 
 //USERADMIN
 Route::get('/daftar-user', [AdminUserController::class, 'index'])->name('daftar-user');
@@ -234,8 +237,6 @@ Route::get('/tambahEverlasthingsKeKeranjang/{id_everlas_things}/{quantity}', [ev
 Route::delete('removeEverlasthings', [everlastThingController::class, 'removeEverlasthings'])->name('removeEverlasthings');
 Route::patch('updateEverlasthings', [everlastThingController::class, 'updateEverlasthings'])->name('updateEverlasthings');
 Route::delete('removeAllEverlasthings', [everlastThingController::class, 'removeAllEverlasthings'])->name('removeAllEverlasthings');
-
-    
 //batunesia
 Route::get('/batunesia/index', [BatunesiaController::class, 'index'])->name('batunesia.index');
 Route::get('/batunesia/index/showByWhite', [BatunesiaController::class, 'filterByWhite'])->name('batunesia.filterByWhite');
@@ -253,7 +254,6 @@ Route::get('/tambahKeKeranjang/{id_batu}/{quantity}', [BatunesiaController::clas
 Route::delete('removeBatunesia', [BatunesiaController::class, 'removeBatunesia'])->name('removeBatunesia');
 Route::patch('updateBatunesia', [BatunesiaController::class, 'updateBatunesia'])->name('updateBatunesia');
 Route::delete('removeAllBatunesia', [BatunesiaController::class, 'removeAllBatunesia'])->name('removeAllBatunesia');
-
 //route verifikasi
 Route::get('/email/verify/need-verification', [verificationController::class, 'notice'])->middleware('auth')->name('verification.notice');
 Route::get('/email/verify/{id}/{hash}', [verificationController::class, 'verify'])->middleware('auth','signed')->name('verification.verify');
@@ -273,6 +273,7 @@ Route::get('konkurito/show/{id_konkurito}',[KonkuritoController::class,'show'])-
 Route::get('shineage/index',[ShineageController::class,'indexBrand'])->name('shineage.utama');
 Route::get('shineage/showcase',[ShineageController::class,'showcase'])->name('shineage.showcase');
 Route::get('shineage/show/{id_shineage}',[ShineageController::class,'show'])->name('shineage.detail');
+
 Route::get('/tambahShineageKeKeranjang/{id_shineage}/{quantity}', [ShineageController::class, 'tambahKeKeranjang'])->name('tambahShineageKeKeranjang');
 Route::delete('removeShineage', [ShineageController::class, 'removeShineage'])->name('removeShineage');
 Route::patch('updateShineage', [ShineageController::class, 'updateShineage'])->name('updateShineage');

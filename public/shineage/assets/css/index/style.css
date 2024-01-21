@@ -162,7 +162,11 @@ body {
 
 /* Keunggulan */
 .keunggulan .text-white p {
+<<<<<<< HEAD
+    font-size: 10px;
+=======
     font-size: 11px;
+>>>>>>> d5557992f1c905b8f774d6907a37c029ef4d4590
     text-align: justify;
     margin: 4px 0;
     font-weight: 700;
@@ -249,7 +253,11 @@ body {
 }
 
 #cta .col-sm-5 .title p {
+<<<<<<< HEAD
+    font-size: 20px;
+=======
     font-size: 30px;
+>>>>>>> d5557992f1c905b8f774d6907a37c029ef4d4590
     margin-bottom: 3rem;
 }
 
@@ -263,7 +271,11 @@ body {
 #cta .action-btn .btn {
     border-radius: 0;
     font-weight: 700;
+<<<<<<< HEAD
+    font-size: 16px;
+=======
     font-size: 18px;
+>>>>>>> d5557992f1c905b8f774d6907a37c029ef4d4590
     color: #FE560D;
     padding: 4px 1rem;
 }
