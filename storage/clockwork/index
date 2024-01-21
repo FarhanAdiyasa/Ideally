@@ -2692,3 +2692,16 @@
 1704867276-4550-1843453455,1704867276.2683,GET,/daftar-produk,"App\Http\Controllers\AdminAgrigardController@index",200,423.51484298706,request
 1704867292-0866-1123943710,1704867291.9107,GET,/storage/photos/contoh.png,,404,284.80911254883,request
 >>>>>>> d5557992f1c905b8f774d6907a37c029ef4d4590
+1705843796-9137-666864131,1705843796.7233,GET,/,"App\Http\Controllers\ArtikelController@index",403,591.66693687439,request
+1705843801-4272-1010175694,1705843801.3314,GET,/dashboard,"App\Http\Controllers\DashboardController@index",403,190.31190872192,request
+1705843801-7491-1091397199,1705843801.672,GET,/dashboard,"App\Http\Controllers\DashboardController@index",403,163.06805610657,request
+1705843804-2525-1510134450,1705843804.1035,GET,/portal-edukasi,"App\Http\Controllers\ArtikelController@index",500,828.95302772522,request
+1705843805-1035-1084804881,1705843804.9453,GET,/portal-edukasi,"App\Http\Controllers\ArtikelController@index",500,770.04599571228,request
+1705843814-9256-557370985,1705843814.7906,GET,/auth/logout,"App\Http\Controllers\AuthController@logout",302,275.87413787842,request
+1705843815-1935-1615662028,1705843815.0739,GET,/,"App\Http\Controllers\ArtikelController@index",302,201.49898529053,request
+1705843815-4023-1686083179,1705843815.2811,GET,/auth/login,"App\Http\Controllers\AuthController@index",200,245.67294120789,request
+1705843820-4083-1053430983,1705843820.2449,POST,/auth/login,"App\Http\Controllers\AuthController@login",302,400.29191970825,request
+1705843820-7953-1401351868,1705843820.6521,GET,/,"App\Http\Controllers\ArtikelController@index",500,844.39706802368,request
+1705843829-0449-1601936118,1705843828.8958,GET,/dashboard,"App\Http\Controllers\DashboardController@index",200,260.92600822449,request
+1705843831-0154-260373418,1705843830.9087,GET,/daftar-batunesia,"App\Http\Controllers\AdminBatunesiaController@index",200,219.45810317993,request
+1705843833-7897-1592898039,1705843833.628,GET,/daftar-batunesia/3,"App\Http\Controllers\AdminBatunesiaController@view",200,318.43113899231,request

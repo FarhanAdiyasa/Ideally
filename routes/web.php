@@ -14,10 +14,8 @@ use App\Http\Controllers\AgrigardController;
 
 use App\Http\Controllers\ShineageController;
 use App\Http\Controllers\BatunesiaController;
-<<<<<<< HEAD
-=======
+
 use App\Http\Controllers\KeranjangController;
->>>>>>> d5557992f1c905b8f774d6907a37c029ef4d4590
 use App\Http\Controllers\KonkuritoController;
 use App\Http\Controllers\TransaksiController;
 use App\Http\Controllers\AdminArtikelController;
@@ -43,12 +41,7 @@ use App\Http\Controllers\DashboardController;
 |
 */
 
-<<<<<<< HEAD
 
-Route::get('/',[ArtikelController::class, 'index']);
-
-=======
->>>>>>> d5557992f1c905b8f774d6907a37c029ef4d4590
 Route::get('/portal-edukasi/{kategori}', [ArtikelController::class, 'byKategori'])->name('landing-artikel.kategori');
 Route::get('/portal-edukasi', [ArtikelController::class, 'index'])->name('landing-artikel');
 Route::get('/portal-edukasi/baca/{slug}', [ArtikelController::class, 'baca'])->name('baca-artikel');
@@ -60,11 +53,7 @@ Route::post('/portal-edukasi/komentar/{slug}', [ArtikelController::class, 'komen
 // Route::get('/detail', [DetailController::class, 'index'])->name('Detail-Batunesia');
 // Route::get('/detail-batunesia/{id_batu}', [DetailController::class, 'showDetail'])->name('Detail-Batunesia');
 
-<<<<<<< HEAD
 Auth::routes();
-=======
-// Auth::routes();
->>>>>>> d5557992f1c905b8f774d6907a37c029ef4d4590
 Route::get('/home/show/{kategori}', [ArtikelController::class, 'show'])->name('home.show');
 Route::get('/portal-edukasi/komentar/{kategori}', [ArtikelController::class, 'sKomentar'])->name('komentar.show');
 
@@ -158,11 +147,8 @@ Route::delete('/destroy-everlasThing/{id}', [AdminEverlasThingController::class,
 Route::get('agrigard/index',[AgrigardController::class,'indexBrand'])->name('agrigard.utama');
 Route::get('agrigard/showcase',[AgrigardController::class,'showcase'])->name('agrigard.showcase');
 Route::get('agrigard/show/{id_agrigard}',[AgrigardController::class,'details'])->name('agrigard.detail');
-<<<<<<< HEAD
-=======
-Route::get('agrigard/showcase/kategori',[AgrigardController::class,'showcase2'])->name('agrigard.kategori');
->>>>>>> d5557992f1c905b8f774d6907a37c029ef4d4590
 
+Route::get('agrigard/showcase/kategori',[AgrigardController::class,'showcase2'])->name('agrigard.kategori');
 //Promo
 Route::get('/daftar-promo/{id}', [PromoController::class, 'view'])->name('daftar-promo');
 
@@ -236,21 +222,12 @@ Route::post('reset-password', [AuthController::class, "resetPasswordPost"])->nam
 
 //everlasthing
 Route::get('/everlasthings/brand', [everlastThingController::class, 'index'])->name('everlasthings.brand');
-<<<<<<< HEAD
-Route::get('/everlasthings/detailProduct', [everlastThingController::class, 'detailProduct'])->name('everlasthings.detailProduct');
-Route::get('/everlasthings/showcase', [everlastThingController::class, 'showcase'])->name('everlasthings.showcase');
-
-
-=======
 Route::get('/everlasthings/detailProduct/{id_everlas_things}', [everlastThingController::class, 'detailProduct'])->name('everlasthings.detailProduct');
 Route::get('/everlasthings/showcase', [everlastThingController::class, 'showcase'])->name('everlasthings.showcase');
 Route::get('/tambahEverlasthingsKeKeranjang/{id_everlas_things}/{quantity}', [everlastThingController::class, 'tambahKeKeranjang'])->name('tambahEverlasthingsKeKeranjang');
 Route::delete('removeEverlasthings', [everlastThingController::class, 'removeEverlasthings'])->name('removeEverlasthings');
 Route::patch('updateEverlasthings', [everlastThingController::class, 'updateEverlasthings'])->name('updateEverlasthings');
 Route::delete('removeAllEverlasthings', [everlastThingController::class, 'removeAllEverlasthings'])->name('removeAllEverlasthings');
-
-    
->>>>>>> d5557992f1c905b8f774d6907a37c029ef4d4590
 //batunesia
 Route::get('/batunesia/index', [BatunesiaController::class, 'index'])->name('batunesia.index');
 Route::get('/batunesia/index/showByWhite', [BatunesiaController::class, 'filterByWhite'])->name('batunesia.filterByWhite');
@@ -264,28 +241,15 @@ Route::get('/batunesia/index/showByBatuTempel', [BatunesiaController::class, 'fi
 Route::get('/batunesia/index/showByBatuHias', [BatunesiaController::class, 'filterByBatuHias'])->name('batunesia.filterByBatuHias');
 Route::get('/batunesia/index/showByOrnamenBatu', [BatunesiaController::class, 'filterByOrnamenBatu'])->name('batunesia.filterByOrnamenBatu');
 Route::get('/batunesia/index/showByPotBatu', [BatunesiaController::class, 'filterByPotBatu'])->name('batunesia.filterByPotBatu');
-<<<<<<< HEAD
-
-//transaksi
-Route::get('/keranjang', [TransaksiController::class, 'index'])->name('transaksi.index');
-Route::get('/tambahKeKeranjang/{id_batu}', [TransaksiController::class, 'tambahKeKeranjang'])->name('tambahKeKeranjang');
-Route::delete('/hapus-dari-keranjang/{id_batu}', [TransaksiController::class, 'remove'])->name('hapusDariKeranjang');
-=======
 Route::get('/tambahKeKeranjang/{id_batu}/{quantity}', [BatunesiaController::class, 'tambahKeKeranjang'])->name('tambahKeKeranjang');
 Route::delete('removeBatunesia', [BatunesiaController::class, 'removeBatunesia'])->name('removeBatunesia');
 Route::patch('updateBatunesia', [BatunesiaController::class, 'updateBatunesia'])->name('updateBatunesia');
 Route::delete('removeAllBatunesia', [BatunesiaController::class, 'removeAllBatunesia'])->name('removeAllBatunesia');
-
->>>>>>> d5557992f1c905b8f774d6907a37c029ef4d4590
 //route verifikasi
 Route::get('/email/verify/need-verification', [verificationController::class, 'notice'])->middleware('auth')->name('verification.notice');
 Route::get('/email/verify/{id}/{hash}', [verificationController::class, 'verify'])->middleware('auth','signed')->name('verification.verify');
 
 //deflo
-<<<<<<< HEAD
-
-=======
->>>>>>> d5557992f1c905b8f774d6907a37c029ef4d4590
 Route::get('deflo',[DefloController::class,'index'])->name('deflo.utama');
 Route::get('deflo/showcase',[DefloController::class,'showcase'])->name('deflo.showcase');
 Route::get('deflo/showcase/kategori',[DefloController::class,'showcase2'])->name('deflo.kategori');
@@ -300,9 +264,7 @@ Route::get('konkurito/show/{id_konkurito}',[KonkuritoController::class,'show'])-
 Route::get('shineage/index',[ShineageController::class,'indexBrand'])->name('shineage.utama');
 Route::get('shineage/showcase',[ShineageController::class,'showcase'])->name('shineage.showcase');
 Route::get('shineage/show/{id_shineage}',[ShineageController::class,'show'])->name('shineage.detail');
-<<<<<<< HEAD
 
-=======
 Route::get('/tambahShineageKeKeranjang/{id_shineage}/{quantity}', [ShineageController::class, 'tambahKeKeranjang'])->name('tambahShineageKeKeranjang');
 Route::delete('removeShineage', [ShineageController::class, 'removeShineage'])->name('removeShineage');
 Route::patch('updateShineage', [ShineageController::class, 'updateShineage'])->name('updateShineage');
@@ -325,4 +287,3 @@ Route::get('/add-cart-deflo/{id}/{qty}', [TransaksiController::class, 'add_cart_
 
 //keranjang agrigard
 Route::get('/add-cart-agrigard/{id}/{qty}', [TransaksiController::class, 'add_cart_agrigard'])->name('addcart.agrigard');
->>>>>>> d5557992f1c905b8f774d6907a37c029ef4d4590
