@@ -171,7 +171,7 @@
                           </div>
                           <!-- Separator -->
                           <hr style="border-top: 3px solid grey; ">
-                          <a href="/portal-edukasi/baca/{{$article->slug}}" class="hpLink"><span style="font-size: 14px; font-weight: 700; color: #06C195;">{{ optional($komentar->artikel)->id_artikel }}</span></a>
+                          <a href="/portal-edukasi/baca/{{optional($komentar->artikel)->slug}}" class="hpLink"><span style="font-size: 14px; font-weight: 700; color: #06C195;">{{ optional($komentar->artikel)->judul_artikel }}</span></a>
                         </div>
                       </div>
                       

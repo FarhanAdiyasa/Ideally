@@ -41,11 +41,16 @@ use App\Http\Controllers\TestimoniController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+Route::get('/auth/redirect',[AuthController::class, "redirect"])->middleware('guest');
+Route::get('/auth/login',[AuthController::class, "index"])->name('login')->middleware('guest');
+Route::get('/auth/callback',[AuthController::class, "callback"])->middleware('guest');
+Route::get('/auth/logout',[AuthController::class,"logout"])->name('logout')->middleware('auth');;
+Route::post('/auth/login',[AuthController::class,"login"]);
 
 
 
 Route::middleware(['auth', 'role:admin'])->group(function () {
-// Route::get('/', [ArtikelController::class, 'index'])->name('landing-artikel');
+
 Route::get('/dashboard',[DashboardController::class, 'index'])->name('dashboard');;
 //Admin Agrigard
 Route::get('/daftar-produk', [AdminAgrigardController::class, 'index'])->name('daftar-produk');
@@ -167,7 +172,8 @@ Route::get('/cek-komentar/{id}', [AdminArtikelController::class, 'komentar'])->n
 Route::post('/hide-komentar', [AdminArtikelController::class, 'hideKomentar'])->name('komentars.hide');
 });
 
-// Route::middleware(['role:b2i', 'role:b2b', 'role:b2c'])->group(function () {
+
+Route::get('/', [ArtikelController::class, 'index']);
 Route::get('/portal-edukasi/{kategori}', [ArtikelController::class, 'byKategori'])->name('landing-artikel.kategori');
 Route::get('/portal-edukasi', [ArtikelController::class, 'index'])->name('landing-artikel');
 Route::get('/portal-edukasi/baca/{slug}', [ArtikelController::class, 'baca'])->name('baca-artikel')->middleware(\App\Http\Middleware\CountVisitors::class);
@@ -178,7 +184,9 @@ Route::post('/portal-edukasi/komentar/{slug}', [ArtikelController::class, 'komen
 // //eror
 // Route::get('/detail', [DetailController::class, 'index'])->name('Detail-Batunesia');
 // Route::get('/detail-batunesia/{id_batu}', [DetailController::class, 'showDetail'])->name('Detail-Batunesia');
-
+Route::get('/auth/register', [AuthController::class, 'register'])->name('auth.register');
+Route::post('/auth/create',[AuthController::class,"create"]);
+Route::get('/auth/dashboard/{id}', [AuthController::class, "dashboard"])->middleware('auth');
 // Auth::routes();
 Route::get('/home/show/{kategori}', [ArtikelController::class, 'show'])->name('home.show');
 Route::get('/portal-edukasi/komentar/{kategori}', [ArtikelController::class, 'sKomentar'])->name('komentar.show');
@@ -208,14 +216,7 @@ Route::get('/batunesia/index/showByPotBatu', [BatunesiaController::class, 'filte
 Route::get('/everlasthings/detailProduct', [everlastThingController::class, 'detailProduct'])->name('everlasthings.detailProduct');
 
 //authentikasi login & regis
-Route::get('/auth/redirect',[AuthController::class, "redirect"])->middleware('guest');
-Route::get('/auth/login',[AuthController::class, "index"])->name('login')->middleware('guest');
-Route::get('/auth/callback',[AuthController::class, "callback"])->middleware('guest');
-Route::get('/auth/logout',[AuthController::class,"logout"])->name('logout')->middleware('auth');;
-Route::get('/auth/register', [AuthController::class, 'register'])->name('auth.register');
-Route::post('/auth/create',[AuthController::class,"create"]);
-Route::post('/auth/login',[AuthController::class,"login"]);
-Route::get('/auth/dashboard/{id}', [AuthController::class, "dashboard"])->middleware('auth');
+
 
 
 //route lupa password
@@ -306,7 +307,7 @@ Route::post('/testimoni/store', [TestimoniController::class, 'store'])->name('te
 Route::get('/pembayaran', [PembayaranController::class, 'index'])->name('index.pembayaran');
 
 Route::post('/bayar', [PembayaranController::class, 'bayar'])->name('store.bayar');
-// });
+//
 
 Route::get('/cek-status/{order_id}', [PembayaranController::class, 'cekStatus'])->name('konfirmasi.status');
 Route::post('/pembayaran', [PembayaranController::class, 'bayar'])->name('store.bayar');
