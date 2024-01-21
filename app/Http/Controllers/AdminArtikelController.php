@@ -99,7 +99,12 @@ class AdminArtikelController extends Controller
             DB::rollback();
            return redirect()->back()->with('error', 'Terjadi kesalahan. Silakan coba lagi nanti.');
         }
-        return redirect()->route('artikels')->with('success', 'Data has been successfully stored.');
+        if($request->tanggal_publikasi == "true"){
+            return redirect()->route('artikels')->with('success', 'Artikel berhasil disimpan dan diterbitkan.');
+        }else{
+            return redirect()->route('artikels')->with('success', 'Artikel berhasil disimpan.');
+        }
+       
     }
 
     /**
@@ -211,7 +216,11 @@ class AdminArtikelController extends Controller
             DB::rollback();
            return redirect()->back()->with('error', 'Terjadi kesalahan. Silakan coba lagi nanti.');
         }
-        return redirect()->route('artikels')->with('success', 'Data has been successfully stored.');
+        if($request->tanggal_publikasi == "true"){
+            return redirect()->route('artikels')->with('success', 'Artikel berhasil disimpan dan diterbitkan.');
+        }else{
+            return redirect()->route('artikels')->with('success', 'Artikel berhasil disimpan.');
+        }
     }
 
     public function delete($id)
@@ -232,7 +241,7 @@ class AdminArtikelController extends Controller
             return redirect()->back()->with('error', 'Terjadi kesalahan. Silakan coba lagi nanti.');
         }
 
-        return redirect()->route('artikels')->with('success', 'Data has been successfully deleted.');
+        return redirect()->route('artikels')->with('success', 'Data berhasil dihapus.');
     }
     public function preview($slug)
     {
@@ -264,6 +273,6 @@ class AdminArtikelController extends Controller
             DB::rollback();
             return redirect()->back()->with('error', 'Terjadi kesalahan. Silakan coba lagi nanti.');
         }
-        return redirect()->route('artikels')->with('success', 'Data status has been successfully changed .');
+        return redirect()->route('artikels')->with('success', 'Data berhasil diterbitkan.');
     }
 }

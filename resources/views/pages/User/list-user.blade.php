@@ -95,7 +95,10 @@
     }
 
     $(document).ready(function() {
-        $('#products-table').DataTable();
+        $('#products-table').DataTable({
+            "iDisplayLength": 10,
+        "bLengthChange": false
+        });
     }); 
 
     function store(articleId) {

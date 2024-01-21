@@ -469,18 +469,43 @@
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 
     <script>
-    $(document).ready(function() // Simpan produk awal untuk digunakan kembali saat input dikosongkan
-        var initialProducts = $('.row.        en('.col - sm - 3 ').get()           $('
-            #example - search - in ,
-            function() var searchText = $(this).e().trim(var productsCon.p -
-                    1 '               var products = initialProducts.slice(); // Gunakan s            a               products.sort(fu                            var textA = $(a).find('
-                    .card - text ').text().toL                        var textB = $(b).find('.card -
-                    text ').text().toLowerC                    // Jika pencarian kosong, atur ulang urutan produk berdasarkan posisi asli                if (searchText === '
-                ')                       rn initialProducts.indexOf(a) - initialProducts.indexOf(b                                                    .localeCompare(textB                                             ducts            )               if (searchTe                         // Tampilkan                k jika input pencarian koso                   products.forEach                                      productsContaine                               }               } else                  duct            on (produ                      var cardText = $(product).find('
-                werCase(
-                    if (cardText.includes(searchText)) productsContainer.append(product
+        $(document).ready(function () {
+            // Simpan produk awal untuk digunakan kembali saat input dikosongkan
+            var initialProducts = $('.row.p-1').children('.col-sm-3').get();
+    
+            $('#example-search-input').on('input', function () {
+                var searchText = $(this).val().toLowerCase().trim();
+                var productsContainer = $('.row.p-1');
+                var products = initialProducts.slice(); // Gunakan salinan produk awal
+    
+                products.sort(function (a, b) {
+                    var textA = $(a).find('.card-text').text().toLowerCase();
+                    var textB = $(b).find('.card-text').text().toLowerCase();
+                    
+                    // Jika pencarian kosong, atur ulang urutan produk berdasarkan posisi aslinya
+                    if (searchText === '') {
+                        return initialProducts.indexOf(a) - initialProducts.indexOf(b);
+                    } else {
+                        return textA.localeCompare(textB);
                     }
                 });
+    
+                productsContainer.empty();
+    
+                if (searchText === '') {
+                    // Tampilkan kembali semua produk jika input pencarian kosong
+                    products.forEach(function (product) {
+                        productsContainer.append(product);
+                    });
+                } else {
+                    products.forEach(function (product) {
+                        var cardText = $(product).find('.card-text').text().toLowerCase();
+                        if (cardText.includes(searchText)) {
+                            productsContainer.append(product);
+                        }
+                    });
+                }
+            });
         });
     </script>
 

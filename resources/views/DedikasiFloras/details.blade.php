@@ -430,12 +430,12 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="mt-5 pt-5">
+                        <div class="mt-5 pt-4">
                             <p class="fw-bold m-0 mb-1 text-abu">Total Harga</p>
-                            <input type="text" class="form-control form-control-lg fw-bold text-abu text-end"
-                                id="summaryPrice" value="{{ $defloDetail->harga_b2C_1_unit }}" readonly>
+                            <input type="text" class="form-control fw-bold text-abu text-end" id="summaryPrice"
+                                value="{{ $defloDetail->harga_b2C_1_unit }}" readonly>
                             <div class="z-1 position-relative" style="margin-top: -12%;">
-                                <h5 class="fw-bold m-0 ms-2 text-abu">Rp</h5>
+                                <h6 class="fw-bold m-0 ms-2 text-abu">Rp</h6>
                             </div>
                         </div>
                     </div>
@@ -710,38 +710,32 @@
         </div>
     </section>
     <!-- End Rekomendasi Produk -->
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/numeral.js/2.0.6/numeral.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/js/bootstrap.bundle.min.js"></script>
     <script>
-    const summaryPriceInput = document.getElementById('summaryPrice');
-    let summaryPriceValue = summaryPriceInput.value;
-    summaryPriceInput.value = numeral(summaryPriceValue).format('0,0');
-
-    let count = parseInt(document.getElementById('quantity').value);
-    const decreaseBtn = document.getElementById('kurang');
-
     function increase() {
-        count++;
-        document.getElementById('quantity').value = count;
-        calculateTotal();
-        checkCount();
-    }
-
-    function decrease() {
-        if (count > 1) {
-            count--;
+            count++;
             document.getElementById('quantity').value = count;
+            calculateTotal();
+            checkCount();
         }
-        calculateTotal();
-        checkCount();
-    }
 
-    function checkCount() {
-        if (count === 1) {
-            decreaseBtn.disabled = true;
-        } else {
-            decreaseBtn.disabled = false;
+        function decrease() {
+            if (count > 1) {
+                count--;
+                document.getElementById('quantity').value = count;
+            }
+            calculateTotal();
+            checkCount();
         }
-    }
+
+        function checkCount() {
+            if (count === 1) {
+                decreaseBtn.disabled = true;
+            } else {
+                decreaseBtn.disabled = false;
+            }
+        }
 
     function calculateTotal() {
         const quantityInput = document.getElementById('quantity');
@@ -752,19 +746,19 @@
         if (quantity >= 1 && quantity <= 10) {
             price = {
                 {
-                    $defloDetail - > harga_b2C_1_unit
+                    $defloDetail -> harga_b2C_1_unit
                 }
             };
         } else if (quantity >= 11 && quantity <= 30) {
             price = {
                 {
-                    $defloDetail - > harga_b2C_11_unit
+                    $defloDetail -> harga_b2C_11_unit
                 }
             };
         } else if (quantity > 30) {
             price = {
                 {
-                    $defloDetail - > harga_b2C_31_unit
+                    $defloDetail -> harga_b2C_31_unit
                 }
             };
         }
@@ -772,9 +766,15 @@
         const totalPrice = price * quantity;
         summaryPriceInput.value = numeral(totalPrice).format('0,0');;
     }
+
+    const summaryPriceInput = document.getElementById('summaryPrice');
+    let summaryPriceValue = summaryPriceInput.value;
+    summaryPriceInput.value = numeral(summaryPriceValue).format('0,0');
+
+    let count = parseInt(document.getElementById('quantity').value);
+    const decreaseBtn = document.getElementById('kurang');
     </script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/numeral.js/2.0.6/numeral.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/js/bootstrap.bundle.min.js"></script>
+    
 </body>
 
 </html>

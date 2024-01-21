@@ -13,6 +13,8 @@ return new class extends Migration
     {
         Schema::create('testimoni_signages', function (Blueprint $table) {
             $table->id('id_testimoni_shineage');
+            $table->foreignId('id_users')->references('user_id')->on('users');
+            $table->foreignId('id_orders')->references('id_order')->on('orders');
             $table->foreignId('id_shine_ages')->references('id_shineage')->on('shineages');
             $table->string('Deskripsi');
             $table->integer('status')->default(1);

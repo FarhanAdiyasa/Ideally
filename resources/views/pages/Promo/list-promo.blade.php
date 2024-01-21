@@ -144,7 +144,10 @@
     }
 
     $(document).ready(function() {
-        $('#promos-table').DataTable();
+        $('#promos-table').DataTable({
+                "iDisplayLength": 10,
+        "bLengthChange": false
+        });
     });  
         function store(id) {
      

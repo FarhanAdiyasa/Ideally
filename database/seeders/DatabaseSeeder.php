@@ -46,6 +46,7 @@ class DatabaseSeeder extends Seeder
             'id_agrigard' => 1, // Agrigard ID as per your requirement
         ]);
 
+
         // Seed data for 'batunesias_orders' table
         DB::table('batunesias_orders')->insert([
             'id_order' => 1, // Corresponding order ID
@@ -69,6 +70,61 @@ class DatabaseSeeder extends Seeder
             'id_order' => 1, // Corresponding order ID
             'id_shineage' => 1, // Shineage ID as per your requirement
         ]);
+        // Agrigard::factory(100)->create();
+        // Konkurito::factory(100)->create();
+        // Dedikasi_Flora::factory(100)->create();
+        Shineage::factory(100)->create();
+        // Everlas_Things::factory(100)->create();
+        // Batunesia::factory(100)->create();
+
+        // Promo::factory(10)->create()->each(function ($promo) {
+        //     $promo->nurseris()->attach(Dedikasi_Flora::pluck('id_nurseri')->toArray());
+        //     $promo->batunesias()->attach(Batunesia::pluck('id_batu')->toArray());
+        //     $promo->konkuritos()->attach(Konkurito::pluck('id_konkurito')->toArray());
+        //     $promo->everlass()->attach(Everlas_Things::pluck('id_everlas_things')->toArray());
+        //     $promo->shineages()->attach(Shineage::pluck('id_shineage')->toArray());
+        //     $promo->agrigards()->attach(Agrigard::pluck('id_agrigard')->toArray());
+        // });
+        // $userData = [
+        //     'email' => 'ideally@gmail.com',
+        //     'password' => bcrypt('12345'),
+        //     'google_id' => 'google123',
+        //     'firstname' => 'John',
+        //     'lastname' => 'Doe',
+        //     'address' => '123 Main St',
+        //     'telephone_number' => '123456789',
+        //     'birthdate' => '1990-01-01',
+        //     'gender' => 'male',
+        //     'profesi' => 'Developer',
+        //     'profile_picture' => 'path/to/picture.jpg',
+        //     'provinsi' => 'Example Province',
+        //     'kabupaten' => 'Example Regency',
+        //     'kecamatan' => 'Example District',
+        //     'kelurahan' => 'Example Village',
+        //     'role' => 'admin',
+        //     'email_verified_at' => now(), // Assuming email is verified at the time of creation
+        // ];
+        $userData = [
+            'email' => 'user@gmail.com',
+            'password' => bcrypt('12345'),
+            'google_id' => 'google123',
+            'firstname' => 'Farhan',
+            'lastname' => 'Adiyasa',
+            'address' => '123 Main St',
+            'telephone_number' => '123456789',
+            'birthdate' => '1990-01-01',
+            'gender' => 'male',
+            'profesi' => 'Developer',
+            'profile_picture' => 'Storage/Photos/Foto.jpg',
+            'provinsi' => 'Example Province',
+            'kabupaten' => 'Example Regency',
+            'kecamatan' => 'Example District',
+            'kelurahan' => 'Example Village',
+            'role' => 'admin',
+            'email_verified_at' => now(), // Assuming email is verified at the time of creation
+        ];
+        User::create($userData);        
+
     }
     // public function run(): void
     // {
