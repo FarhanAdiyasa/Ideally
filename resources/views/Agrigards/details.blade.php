@@ -31,8 +31,13 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
     <!-- JQuery -->
+<<<<<<< HEAD
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/numeral.js/2.0.6/numeral.min.js"></script>
+=======
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/numeral.js/2.0.6/numeral.min.js"></script>
+>>>>>>> bb2ba97af27bea37022f6fdb57a723b9c9f2019b
 </head>
 
 <body>
@@ -293,24 +298,11 @@
         </div>
     </section>
     <!-- End Produk Terkait -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/numeral.js/2.0.6/numeral.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/js/bootstrap.bundle.min.js"></script>
 
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 
-    <script>
-    $(document).ready(function() {
-        // Loop melalui setiap elemen dengan kelas "card-product"
-        $(".card-product").each(function(index) {
-            // Pilih elemen img-container di dalam card-product
-            var imgContainer = $(this).find(".img-container");
-
-            // Tambahkan kelas "top-start" atau "top-end" berdasarkan indeks
-            if (index % 2 === 0) {
-                imgContainer.addClass("card-img-top-end");
-            } else {
-                imgContainer.addClass("card-img-top-start");
-            }
-        });
-    });
-    </script>
     <script>
     const summaryPriceInput = document.getElementById('summaryPrice');
     let summaryPriceValue = summaryPriceInput.value;

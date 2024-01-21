@@ -29,6 +29,7 @@ use App\Http\Controllers\AdminEverlasThingController;
 use App\Http\Controllers\AdminDedikasiFloraController;
 use App\Http\Controllers\AdminUserController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\TestimoniController;
 
 /*
 |--------------------------------------------------------------------------
@@ -130,11 +131,6 @@ Route::post('/post-everlasThing', [AdminEverlasThingController::class, 'post'])-
 Route::get('/delete-everlasThing/{id}', [AdminEverlasThingController::class, 'delete'])->name('everlasThings.delete');
 Route::delete('/destroy-everlasThing/{id}', [AdminEverlasThingController::class, 'destroy'])->name('everlasThings.destroy');
 
-Route::get('agrigard/index',[AgrigardController::class,'indexBrand'])->name('agrigard.utama');
-Route::get('agrigard/showcase',[AgrigardController::class,'showcase'])->name('agrigard.showcase');
-Route::get('agrigard/show/{id_agrigard}',[AgrigardController::class,'details'])->name('agrigard.detail');
-Route::get('agrigard/showcase/kategori',[AgrigardController::class,'showcase2'])->name('agrigard.kategori');
-
 //Promo
 Route::get('/daftar-promo', [PromoController::class, 'index'])->name('daftar-promo');
 
@@ -170,6 +166,7 @@ Route::post('/post-artikel', [AdminArtikelController::class, 'post'])->name('art
 Route::get('/cek-komentar/{id}', [AdminArtikelController::class, 'komentar'])->name('daftar.komentar');
 Route::post('/hide-komentar', [AdminArtikelController::class, 'hideKomentar'])->name('komentars.hide');
 });
+
 // Route::middleware(['role:b2i', 'role:b2b', 'role:b2c'])->group(function () {
 Route::get('/portal-edukasi/{kategori}', [ArtikelController::class, 'byKategori'])->name('landing-artikel.kategori');
 Route::get('/portal-edukasi', [ArtikelController::class, 'index'])->name('landing-artikel');
@@ -185,6 +182,14 @@ Route::post('/portal-edukasi/komentar/{slug}', [ArtikelController::class, 'komen
 // Auth::routes();
 Route::get('/home/show/{kategori}', [ArtikelController::class, 'show'])->name('home.show');
 Route::get('/portal-edukasi/komentar/{kategori}', [ArtikelController::class, 'sKomentar'])->name('komentar.show');
+
+
+Route::get('agrigard/index',[AgrigardController::class,'indexBrand'])->name('agrigard.utama');
+Route::get('agrigard/showcase',[AgrigardController::class,'showcase'])->name('agrigard.showcase');
+Route::get('agrigard/show/{id_agrigard}',[AgrigardController::class,'details'])->name('agrigard.detail');
+Route::get('agrigard/showcase/kategori',[AgrigardController::class,'showcase2'])->name('agrigard.kategori');
+
+
 //batunesia
 Route::get('/batunesia/index', [BatunesiaController::class, 'index'])->name('batunesia.index');
 Route::get('/batunesia/index/showByWhite', [BatunesiaController::class, 'filterByWhite'])->name('batunesia.filterByWhite');
@@ -280,6 +285,9 @@ Route::get('/detail-batunesia/{id_batu}', [DetailController::class, 'showDetail'
 
 //Keranjang
 Route::get('/keranjang', [TransaksiController::class, 'index'])->name('transaksi.index');
+Route::get('/remove/{cartName}', [TransaksiController::class, 'remove_all'])->name('transaksi.removecart');
+Route::get('/remove/{cartName}/{id}', [TransaksiController::class, 'remove'])->name('transaksi.remove');
+Route::get('/update/{cartName}/{id}/{qty}', [TransaksiController::class, 'update'])->name('transaksi.update');
 
 // ongkir
 Route::post('/calculateOngkir', [TransaksiController::class, 'calculateOngkir'])->name('calculate.ongkir');
@@ -290,7 +298,16 @@ Route::get('/add-cart-deflo/{id}/{qty}', [TransaksiController::class, 'add_cart_
 //keranjang agrigard
 Route::get('/add-cart-agrigard/{id}/{qty}', [TransaksiController::class, 'add_cart_agrigard'])->name('addcart.agrigard');
 
+//route testimoni
+Route::get('/order', [TestimoniController::class, 'index'])->name('testimoni.testimoniindex');
+Route::post('/testimoni/store', [TestimoniController::class, 'store'])->name('testimoni.store');
+
 // pembayaran
 Route::get('/pembayaran', [PembayaranController::class, 'index'])->name('index.pembayaran');
+
 Route::post('/bayar', [PembayaranController::class, 'bayar'])->name('store.bayar');
 // });
+
+Route::get('/cek-status/{order_id}', [PembayaranController::class, 'cekStatus'])->name('konfirmasi.status');
+Route::post('/pembayaran', [PembayaranController::class, 'bayar'])->name('store.bayar');
+// Route::post('/konfirmasi', [PembayaranController::class, 'handle_after']);
