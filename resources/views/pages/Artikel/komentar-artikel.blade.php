@@ -56,4 +56,10 @@
     // Submit the form
     $("#komenForm" + articleId).submit();
 }
+$(document).ready(function() {
+        $('#products-table').DataTable({
+            "iDisplayLength": 10,
+        "bLengthChange": false
+        });
+    });  
 </script>

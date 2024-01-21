@@ -35,7 +35,7 @@ class Artikel extends Model
     }    
     public function komentar()
     {
-        return $this->hasMany(Komentar::class, 'id_artikel');
+        return $this->hasMany(Komentar::class, 'id_artikel', 'id_artikel');
     }
     public function sumberArtikel()
     {

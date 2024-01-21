@@ -133,7 +133,11 @@ class PromoController extends Controller
         DB::rollback();
        return redirect()->back()->with('error', 'Terjadi kesalahan. Silakan coba lagi nanti.');
     }
-    return redirect()->route('daftar-promo')->with('success', 'Data has been successfully stored.');
+    if($request->tanggal_publikasi == "true"){
+        return redirect()->route('daftar-promo')->with('success', 'Promo berhasil disimpan dan diterbitkan.');
+   }else{
+        return redirect()->route('daftar-promo')->with('success', 'Promo berhasil disimpan.');
+   }
     }
     
 
@@ -312,7 +316,7 @@ class PromoController extends Controller
         $promo = Promo::findOrFail($id);
         $results = DB::select('SELECT DISTINCT id_promo, brand_produk FROM view_product_promo WHERE id_promo = :id_promo', ['id_promo' => $promo->id_promo]);
         $brands = array_column($results, 'brand_produk');
-        return view('Pages/Promo/edit-promo', ['promo'=>$promo, "brands"=>$brands]);
+        return view('Pages/Promo/edit-promo', ['promo'=>$promo, "brands"=>$brands, "active"=>'promo']);
     }
 
     /**
@@ -410,7 +414,11 @@ class PromoController extends Controller
             DB::rollback();
         return redirect()->back()->with('error', 'Terjadi kesalahan. Silakan coba lagi nanti.');
         }
-        return redirect()->route('daftar-promo')->with('success', 'Data has been successfully stored.');
+        if($request->tanggal_publikasi == "true"){
+            return redirect()->route('daftar-promo')->with('success', 'Promo berhasil disimpan dan diterbitkan.');
+       }else{
+            return redirect()->route('daftar-promo')->with('success', 'Promo berhasil disimpan.');
+       }
     }
 
     public function delete($id)
@@ -418,7 +426,12 @@ class PromoController extends Controller
         $promo = Promo::findOrFail($id);
         return view('Pages/Promo/delete-promo', ['promo'=>$promo, "active"=>"promo"]);
     }
-
+    public function checkPromoUnique($nama_promo)
+    {
+        $isUnique = !Promo::where('nama_promo', $nama_promo)->exists();
+    
+        return response()->json(['unique' => $isUnique]);
+    }
     public function destroy($id)
     {
         try {
@@ -432,7 +445,7 @@ class PromoController extends Controller
             return redirect()->back()->with('error', 'Terjadi kesalahan. Silakan coba lagi nanti.');
         }
 
-        return redirect()->route('daftar-promo')->with('success', 'Data has been successfully deleted.');
+        return redirect()->route('daftar-promo')->with('success', 'Data berhasil dihapus.');
     }
 
     public function post(Request $request)
@@ -449,7 +462,7 @@ class PromoController extends Controller
             DB::rollback();
             return redirect()->back()->with('error', 'Terjadi kesalahan. Silakan coba lagi nanti.');
         }
-        return redirect()->route('daftar-promo')->with('success', 'Data status has been successfully changed .');
+        return redirect()->route('daftar-promo')->with('success', 'Data berhasil diterbitkan.');
     }
     
 }

@@ -137,7 +137,10 @@
     }
 
     $(document).ready(function() {
-        $('#articles-table').DataTable();
+        $('#articles-table').DataTable({
+                "iDisplayLength": 10,
+        "bLengthChange": false
+        });
     }); 
 
     function store(articleId) {

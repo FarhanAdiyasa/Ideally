@@ -186,7 +186,12 @@ class AdminBatunesiaController extends Controller
         DB::rollback();
        return redirect()->back()->with('error', 'Terjadi kesalahan. Silakan coba lagi nanti.');
     }
-    return redirect()->route('batunesias')->with('success', 'Data has been successfully stored.');
+    if($request->tanggal_publikasi == "true"){
+        return redirect()->route('batunesias')->with('success', 'Produk berhasil disimpan dan diterbitkan.');
+    }else{
+        return redirect()->route('batunesias')->with('success', 'Produk berhasil disimpan.');
+    }
+
     }
     
 
@@ -303,7 +308,11 @@ class AdminBatunesiaController extends Controller
             DB::rollback();
            return redirect()->back()->with('error', 'Terjadi kesalahan. Silakan coba lagi nanti.');
         }
-        return redirect()->route('batunesias')->with('success', 'Data has been successfully stored.');
+        if($request->tanggal_publikasi == "true"){
+            return redirect()->route('batunesias')->with('success', 'Produk berhasil disimpan dan diterbitkan.');
+        }else{
+            return redirect()->route('batunesias')->with('success', 'Data berhasil disimpan.');
+        }
     }
 
     public function delete($id)
@@ -345,7 +354,7 @@ class AdminBatunesiaController extends Controller
             return redirect()->back()->with('error', 'Terjadi kesalahan. Silakan coba lagi nanti.');
         }
 
-        return redirect()->route('batunesias')->with('success', 'Data has been successfully deleted.');
+        return redirect()->route('batunesias')->with('success', 'Data berhasil dihapus.');
     }
 
     public function post(Request $request)
@@ -361,7 +370,7 @@ class AdminBatunesiaController extends Controller
             DB::rollback();
             return redirect()->back()->with('error', 'Terjadi kesalahan. Silakan coba lagi nanti.');
         }
-        return redirect()->route('batunesias')->with('success', 'Data status has been successfully changed .');
+        return redirect()->route('batunesias')->with('success', 'Data berhasil diterbitkan.');
     }
     
 }

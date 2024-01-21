@@ -184,7 +184,11 @@ $hargaRanges[] = $min !== null && $max !== null
         DB::rollback();
        return redirect()->back()->with('error', 'Terjadi kesalahan. Silakan coba lagi nanti.');
     }
-    return redirect()->route('shineages')->with('success', 'Data has been successfully stored.');
+    if($request->tanggal_publikasi == "true"){
+        return redirect()->route('shineages')->with('success', 'Produk berhasil disimpan dan diterbitkan.');
+   }else{
+        return redirect()->route('shineages')->with('success', 'Produk berhasil disimpan.');
+   }
     }
     
 
@@ -295,7 +299,11 @@ $hargaRanges[] = $min !== null && $max !== null
             DB::rollback();
            return redirect()->back()->with('error', 'Terjadi kesalahan. Silakan coba lagi nanti.');
         }
-        return redirect()->route('shineages')->with('success', 'Data has been successfully stored.');
+        if($request->tanggal_publikasi == "true"){
+            return redirect()->route('shineages')->with('success', 'Produk berhasil disimpan dan diterbitkan.');
+       }else{
+            return redirect()->route('shineages')->with('success', 'Data berhasil disimpan.');
+       }
     }
 
     public function delete($id)
@@ -337,7 +345,7 @@ $hargaRanges[] = $min !== null && $max !== null
             return redirect()->back()->with('error', 'Terjadi kesalahan. Silakan coba lagi nanti.');
         }
 
-        return redirect()->route('shineages')->with('success', 'Data has been successfully deleted.');
+        return redirect()->route('shineages')->with('success', 'Data berhasil dihapus.');
     }
 
     public function post(Request $request)
@@ -353,7 +361,7 @@ $hargaRanges[] = $min !== null && $max !== null
             DB::rollback();
             return redirect()->back()->with('error', 'Terjadi kesalahan. Silakan coba lagi nanti.');
         }
-        return redirect()->route('shineages')->with('success', 'Data status has been successfully changed .');
+        return redirect()->route('shineages')->with('success', 'Data berhasil diterbitkan.');
     }
     
 }

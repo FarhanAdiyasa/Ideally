@@ -59,7 +59,10 @@
 <script>
     $(document).ready(function() {
         // Inisialisasi DataTable
-        var table = $('#products-ss').DataTable();
+        var table = $('#products-ss').DataTable({
+            "iDisplayLength": 10,
+        "bLengthChange": false
+        });
     
         // Update jumlah_checked initially
         updateJumlahChecked();

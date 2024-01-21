@@ -51,8 +51,8 @@
       <div class="row">
         <div class="col-md-3">
           <div class="form-group">
-            <label>Jenis Promo</label>
-            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sed, odit ab eum enim illo minima deleniti quae ducimus repudiandae sit!</p>
+            <label>Jenis Promo <span class="wajib">Wajib</span></label>
+            <p>Pilih brand untuk menyeleksi semua brand, pilih produk untuk menyeleksi beberapa produk dari brand yang anda pilih</p>
           </div>
           <!-- /.form-group -->
         </div>
@@ -84,8 +84,8 @@
       <div class="row">
         <div class="col-md-3">
           <div class="form-group">
-            <label>Kategori Produk</label>
-            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sed, odit ab eum enim illo minima deleniti quae ducimus repudiandae sit!</p>
+            <label>Kategori Produk <span class="wajib">Wajib</span></label>
+            <p>Pilih pengguna yang ingin anda beri promo</p>
           </div>
           <!-- /.form-group -->
         </div>
@@ -116,14 +116,14 @@
         <div class="col-md-3">
           <div class="form-group">
             <label>Nama Promo</label>
-            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sed, odit ab eum enim illo minima deleniti quae ducimus repudiandae sit!</p>
+            <p id="promo-validation-message"></p>
           </div>
           <!-- /.form-group -->
         </div>
         <!-- /.col -->
         <div class="col-md-9">
           <div class="form-group">
-            <input class="form-control" type="text" placeholder="Contoh: Diskon 17 Agustus" name="nama_promo" value="{{old('nama_promo')}}"/>
+            <input class="form-control" type="text" id="nama_promo" placeholder="Masukkan Nama Promo" name="nama_promo" value="{{old('nama_promo')}}"/>
                @error('nama_promo')
             <small class="text-danger">{{ $message }}</small>
             @enderror
@@ -222,9 +222,8 @@
       <div class="row">
         <div class="col-md-3">
           <div class="form-group">
-            <label>Tipe Potongan</label>
-            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sed, odit ab eum enim illo minima deleniti quae ducimus repudiandae sit!</p>
-          </div>
+            <label>Tipe Potongan <span class="wajib">Wajib</span></label>
+           </div>
           <!-- /.form-group -->
         </div>
         <!-- /.col -->
@@ -254,7 +253,7 @@
       <div class="row">
         <div class="col-md-3">
           <div class="form-group">
-            <label id="desk-promo">Nominal Promo</label>
+            <label id="desk-promo">Nominal Promo <span class="wajib">Wajib</span></label>
           </div>
           <!-- /.form-group -->
         </div>
@@ -277,7 +276,7 @@
       <div class="row">
         <div class="col-md-3">
           <div class="form-group">
-            <label>Minimum Pembelian</label>
+            <label>Minimum Pembelian <span class="wajib">Wajib</span></label>
           </div>
           <!-- /.form-group -->
         </div>
@@ -301,15 +300,15 @@
       <div class="row">
         <div class="col-md-3">
           <div class="form-group">
-            <label>Kuota Promo</label>
-            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sed, odit ab eum enim illo minima deleniti quae ducimus repudiandae sit!</p>
+            <label>Kuota Promo <span class="wajib">Wajib</span></label>
+            <p>Jumlah promo yang disediakan</p>
           </div>
           <!-- /.form-group -->
         </div>
         <!-- /.col -->
         <div class="col-md-9">
           <div class="form-group">
-              <input class="form-control"  id=""  type="text" oninput="validateInput(this)" placeholder="Masukkan Kuota Dalam Bentuk Angka" name="kuota" value="{{old('kuota')}}"/>
+              <input class="form-control"  id=""  type="text" oninput="validateInput(this)" placeholder="Masukkan Kuota" name="kuota" value="{{old('kuota')}}"/>
                  @error('kuota')
               <small class="text-danger">{{ $message }}</small>
               @enderror
@@ -324,7 +323,7 @@
   </div>
   <div class="card card-default">
     <div class="card-header">
-      <h3 class="card-title" id="brandOrproductT">Pilih Brand</h3>
+      <h3 class="card-title" id="brandOrproductT">Pilih Brand </h3>
 
       <div class="card-tools">
         <button type="button" class="btn btn-tool" data-card-widget="collapse">
@@ -374,8 +373,8 @@
 <input type="text" name="tanggal_publikasi" id="tanggal_publikasi" class="form-control" style="display:none;">
 <div class="m-3 d-flex justify-content-end">
   <button class="btn btn-dark mx-5" type="reset">Batal</button>
-  <button class="btn btn-dark mx-3" type="button" onclick="submitPromo('1')">Simpan Dan Terbitkan</button>
-  <button class="btn btn-success mx-3" type="button" onclick="submitPromo('0')">Simpan</button>
+  <button class="btn btn-dark mx-3 submit-button" type="button" onclick="submitPromo('1')">Simpan Dan Terbitkan</button>
+  <button class="btn btn-success mx-3 submit-button" type="button" onclick="submitPromo('0')">Simpan</button>
 </div>
     
 </form>
@@ -406,7 +405,7 @@
             if(value == "persentase"){
                   container.innerHTML = '<div class="col-md-3">' +
               '<div class="form-group">' +
-              '<label id="desk-promo">Persentase Promo</label>' +
+              '<label id="desk-promo">Persentase Promo <span class="wajib">Wajib</span></label>' +
               '</div>' +
               '</div>' +
               '<div class="col-md-3">' +
@@ -432,7 +431,25 @@
         $(".rupiah").mask("000.000.000", {
             reverse: true,
         });
+        $('#nama_promo').on('input', function () {
+            var namaPromo = $(this).val();
+            $.ajax({
+                type: 'GET',
+                url: '/check-promo-unique/' + encodeURIComponent(namaPromo),
+                success: function (response) {
+                    if (response.unique) {
+                        $('#promo-validation-message').text('Nama promo tersedia.').removeClass('text-danger').addClass('text-success');
+                        $('.submit-button').prop('disabled', false);
+                    } else {
+                        $('#promo-validation-message').text('Nama promo sudah digunakan.').removeClass('text-success').addClass('text-danger');
+                        $('.submit-button').prop('disabled', true);
+                    }
+                }
+            });
+        });
+
     });
+    
 
       // Tanggal mulai hari ini
     document.addEventListener('DOMContentLoaded', function () {
@@ -490,13 +507,13 @@ document.addEventListener('DOMContentLoaded', function () {
                       '<div class="text-danger">{{ $message }}</div>' +
                       '@enderror' +
                       '</div>';
-                      title.innerHTML = "Pilih Brand";
+                      title.innerHTML = "Pilih Brand <span class='wajib'>Wajib</span>";
                       containerP.innerHTML ="";
               }else if (value == "Produk"){
                 containerP.innerHTML = `<div class="row">
                       <div class="col-md-4">
                           <div class="form-group">
-                              <label>Pilih Brand!</label>
+                              <label>Pilih Brand <span class="wajib">Wajib</span></label>
                           </div>
                       </div>
                       <div class="col-md-8">
@@ -539,7 +556,7 @@ document.addEventListener('DOMContentLoaded', function () {
                   </div>`;
                   loadProduk();
                   container.innerHTML = "";
-                  title.innerHTML = "Pilih Product";
+                  title.innerHTML = "Pilih Produk <span class='wajib'>Wajib</span>";
               }
     }
 
@@ -569,7 +586,10 @@ function showBrand(brand) {
 }
 function submitPromo(action) {
     var selectedIds = [];
-    var table = $('#products-ss').DataTable();
+    var table = $('#products-ss').DataTable({
+            "iDisplayLength": 10,
+        "bLengthChange": false
+        });
     table.$('input[type="checkbox"]:checked').each(function() {
         var productId = $(this).val();
         selectedIds.push(productId);

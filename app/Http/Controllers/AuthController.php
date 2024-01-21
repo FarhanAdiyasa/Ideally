@@ -134,7 +134,7 @@ class AuthController extends Controller
             $user = Auth::user();
             session(['user_info' => $user]);
             if ($user->role == "admin") {
-                return Redirect::intended('/dashboard');
+                return redirect('/dashboard');
             } else {
                 return Redirect::intended('/portal-edukasi');
             }

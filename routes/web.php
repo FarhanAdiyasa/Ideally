@@ -44,7 +44,7 @@ use App\Http\Controllers\DashboardController;
 
 
 Route::middleware(['auth', 'role:admin'])->group(function () {
-Route::get('/', [ArtikelController::class, 'index'])->name('landing-artikel');
+// Route::get('/', [ArtikelController::class, 'index'])->name('landing-artikel');
 Route::get('/dashboard',[DashboardController::class, 'index'])->name('dashboard');;
 //Admin Agrigard
 Route::get('/daftar-produk', [AdminAgrigardController::class, 'index'])->name('daftar-produk');
@@ -146,6 +146,7 @@ Route::get('/edit-promo/{id}/{brand}', [PromoController::class, 'showEdit'])->na
 Route::get('/edit-promo/{id}', [PromoController::class, 'edit'])->name('daftar-promo.edit');
 Route::put('/edit-promo/{id}', [PromoController::class, 'update'])->name('daftar-promo.update');
 Route::post('/post-promo', [PromoController::class, 'post'])->name('daftar-promo.status');
+Route::get('/check-promo-unique/{nama_promo}', [PromoController::class, 'checkPromoUnique']);
 
 Route::get('/delete-promo/{id}', [PromoController::class, 'delete'])->name('daftar-promo.delete');
 Route::delete('/destroy-promo/{id}', [PromoController::class, 'destroy'])->name('daftar-promo.destroy');
@@ -172,7 +173,7 @@ Route::post('/hide-komentar', [AdminArtikelController::class, 'hideKomentar'])->
 // Route::middleware(['role:b2i', 'role:b2b', 'role:b2c'])->group(function () {
 Route::get('/portal-edukasi/{kategori}', [ArtikelController::class, 'byKategori'])->name('landing-artikel.kategori');
 Route::get('/portal-edukasi', [ArtikelController::class, 'index'])->name('landing-artikel');
-Route::get('/portal-edukasi/baca/{slug}', [ArtikelController::class, 'baca'])->name('baca-artikel');
+Route::get('/portal-edukasi/baca/{slug}', [ArtikelController::class, 'baca'])->name('baca-artikel')->middleware(\App\Http\Middleware\CountVisitors::class);
 Route::post('/portal-edukasi/rating/{slug}', [ArtikelController::class, 'rating'])->name('rating-artikel')->middleware('auth');
 Route::post('/portal-edukasi/komentar/{slug}', [ArtikelController::class, 'komentar'])->name('komentar-artikel');
 
