@@ -144,7 +144,7 @@ class AdminAgrigardController extends Controller
             $agrigard->harga_b2C_31_unit = $harga_b2C_31_unit;
 
             $agrigard->slug =Str::slug($agrigard->nama_produk);
-            $agrigard->created_by = 1;
+            $agrigard->created_by = auth()->user()->user_id;
             $agrigard->save();
             DB::commit();
         } else {
@@ -155,7 +155,7 @@ class AdminAgrigardController extends Controller
         DB::rollback();
        return redirect()->back()->with('error', 'Terjadi kesalahan. Silakan coba lagi nanti.');
     }
-    return redirect()->route('daftar-produk')->with('success', 'Data has been successfully stored.');
+    return redirect()->route('daftar-produk')->with('success', 'Data berhasil disimpan!.');
     }
     
 
@@ -269,7 +269,7 @@ class AdminAgrigardController extends Controller
             DB::rollback();
            return redirect()->back()->with('error', 'Terjadi kesalahan. Silakan coba lagi nanti.');
         }
-        return redirect()->route('daftar-produk')->with('success', 'Data has been successfully stored.');
+        return redirect()->route('daftar-produk')->with('success', 'Data berhasil disimpan!.');
     }
 
     public function delete($id)
@@ -311,7 +311,7 @@ class AdminAgrigardController extends Controller
             return redirect()->back()->with('error', 'Terjadi kesalahan. Silakan coba lagi nanti.');
         }
 
-        return redirect()->route('daftar-produk')->with('success', 'Data has been successfully deleted.');
+        return redirect()->route('daftar-produk')->with('success', 'Data berhasil dihapus!');
     }
 
     public function post(Request $request)

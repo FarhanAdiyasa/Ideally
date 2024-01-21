@@ -2,18 +2,18 @@ $(document).ready(function () {
     const floatingWidget = document.getElementById("floatingWidget");
 
     let floatingTrigger = false;
-    const stopFloatPos = 3880;
+    const stopFloatPos = 2800;
 
     window.addEventListener("scroll", function () {
         let scrollPos = window.pageYOffset;
 
-        if (scrollPos > 315 && !floatingTrigger) {
+        if (scrollPos > 355 && !floatingTrigger) {
             floatingTrigger = true;
             floatingWidget.classList.add("float");
-        } else if (scrollPos < 315) {
+        } else if (scrollPos < 355) {
             floatingTrigger = false;
             floatingWidget.classList.remove("float");
-        } else if (scrollPos > 3780 && floatingTrigger) {
+        } else if (scrollPos > 2750 && floatingTrigger) {
             floatingWidget.classList.remove("float");
             floatingWidget.classList.add("stop-float");
         }

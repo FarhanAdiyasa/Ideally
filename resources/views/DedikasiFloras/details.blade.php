@@ -13,6 +13,10 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css">
 
     <!-- Custom CSS -->
+<<<<<<< HEAD
+=======
+    <link rel="stylesheet" href="{{ asset('/css/navbar-style.css') }}">
+>>>>>>> d5557992f1c905b8f774d6907a37c029ef4d4590
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('dedikasi-flora/assets/css/details/style.css') }}">
 
@@ -23,9 +27,19 @@
 </head>
 
 <body>
+<<<<<<< HEAD
     <!-- Hero & Navigation Bar -->
     <header id="hero-navbar">
         <div class="hero-img d-flex justify-content-center">
+=======
+    <!-- Navbar Utama -->
+    @include('partials.navbar')
+    <!-- End Navbar Utama -->
+    
+    <!-- Hero & Navigation Bar -->
+    <header id="hero-navbar">
+        <div class="hero-img d-flex justify-content-center mt-5">
+>>>>>>> d5557992f1c905b8f774d6907a37c029ef4d4590
             <img src="{{ asset('dedikasi-flora/assets/img/showcase/06B-SEC01-LATAR.jpg') }}" alt="">
         </div>
         <div class="content z-1 position-absolute" style="width: 100%;">
@@ -261,7 +275,11 @@
                     <div id="harga-details" class="col-sm-4">
                         <div class="controls text-end mt-5">
                             @php
+<<<<<<< HEAD
                                 $prevProduct = \App\Models\Dedikasi_Flora::where('nama_latin', '<', $defloDetail->
+=======
+                            $prevProduct = \App\Models\Dedikasi_Flora::where('nama_latin', '<', $defloDetail->
+>>>>>>> d5557992f1c905b8f774d6907a37c029ef4d4590
                                 nama_latin)
                                 ->where('stok', '>', 0)
                                 ->orderBy('nama_latin', 'desc')
@@ -272,7 +290,11 @@
                                 ->where('stok', '>', 0)
                                 ->orderBy('nama_latin', 'asc')
                                 ->first();
+<<<<<<< HEAD
                             @endphp
+=======
+                                @endphp
+>>>>>>> d5557992f1c905b8f774d6907a37c029ef4d4590
 
                                 @if($prevProduct)
                                 <a href="{{ route('deflo.detail', ['id_nurseri' => $prevProduct->id_nurseri]) }}"
@@ -297,7 +319,11 @@
                                             <p>Rp</p>
                                         </th>
                                         <th style="text-align: right;">
+<<<<<<< HEAD
                                             <p>{{ $defloDetail->harga_b2C_1 }}</p>
+=======
+                                            <p>{{ $defloDetail->harga_b2C_1_unit }}</p>
+>>>>>>> d5557992f1c905b8f774d6907a37c029ef4d4590
                                         </th>
                                     </tr>
                                     <tr>
@@ -305,7 +331,11 @@
                                             <p>Rp</p>
                                         </th>
                                         <th style="text-align: right;">
+<<<<<<< HEAD
                                             <p>{{ $defloDetail->harga_b2C_11 }}</p>
+=======
+                                            <p>{{ $defloDetail->harga_b2C_11_unit }}</p>
+>>>>>>> d5557992f1c905b8f774d6907a37c029ef4d4590
                                         </th>
                                     </tr>
                                     <tr>
@@ -313,12 +343,20 @@
                                             <p>Rp</p>
                                         </th>
                                         <th style="text-align: right;">
+<<<<<<< HEAD
                                             <p>{{ $defloDetail->harga_b2C_31 }}</p>
+=======
+                                            <p>{{ $defloDetail->harga_b2C_31_unit }}</p>
+>>>>>>> d5557992f1c905b8f774d6907a37c029ef4d4590
                                         </th>
                                     </tr>
                                 </table>
                                 <div class="add-to-cart py-4" style="margin-top: 60px;">
+<<<<<<< HEAD
                                     <a href="" class="btn py-0">
+=======
+                                    <a href="#" onclick="addToCart(event)" class="btn py-0">
+>>>>>>> d5557992f1c905b8f774d6907a37c029ef4d4590
                                         <div class="d-flex align-items-center text-white">
                                             <p style="font-size: 30px; font-weight: 700; margin: 0;">+</p>
                                             <p style="font-size: 12px; font-weight: 700; margin: 0;">Tambah Ke Keranjang
@@ -369,6 +407,26 @@
                                     <button class="btn py-0 text-white px-3" onclick="decrease()">
                                         <span><i class="bi bi-chevron-down"></i></span>
                                     </button>
+<<<<<<< HEAD
+=======
+                                    <script>
+                                    function addToCart(event) {
+                                        event
+                                            .preventDefault(); // Prevent the default behavior of the 'a' tag (page redirection)
+
+                                        var quantity = document.getElementById('quantity').value;
+                                        var defloId = "{{ $defloDetail->id_nurseri }}";
+
+                                        // Creating the URL with the quantity and deflo id
+                                        var url = "{{ route('addcart.deflo', ['id' => ':id', 'qty' => ':qty']) }}"
+                                            .replace(':id', defloId)
+                                            .replace(':qty', quantity);
+
+                                        // Handling action when the "Tambah Ke Keranjang" link is clicked
+                                        window.location.href = url;
+                                    }
+                                    </script>
+>>>>>>> d5557992f1c905b8f774d6907a37c029ef4d4590
                                 </div>
                             </div>
                             <div class="col-sm-3 p-0">
@@ -402,7 +460,11 @@
                         <div class="mt-5 pt-5">
                             <p class="fw-bold m-0 mb-1 text-abu">Total Harga</p>
                             <input type="text" class="form-control form-control-lg fw-bold text-abu text-end"
+<<<<<<< HEAD
                                 id="summaryPrice" value="{{ $defloDetail->harga_b2C_1 }}" readonly>
+=======
+                                id="summaryPrice" value="{{ $defloDetail->harga_b2C_1_unit }}" readonly>
+>>>>>>> d5557992f1c905b8f774d6907a37c029ef4d4590
                             <div class="z-1 position-relative" style="margin-top: -12%;">
                                 <h5 class="fw-bold m-0 ms-2 text-abu">Rp</h5>
                             </div>
@@ -681,6 +743,7 @@
     <!-- End Rekomendasi Produk -->
 
     <script>
+<<<<<<< HEAD
         const summaryPriceInput = document.getElementById('summaryPrice');
         let summaryPriceValue = summaryPriceInput.value;
         summaryPriceInput.value = numeral(summaryPriceValue).format('0,0');
@@ -729,6 +792,68 @@
             const totalPrice = price * quantity;
             summaryPriceInput.value = numeral(totalPrice).format('0,0');;
         }
+=======
+    const summaryPriceInput = document.getElementById('summaryPrice');
+    let summaryPriceValue = summaryPriceInput.value;
+    summaryPriceInput.value = numeral(summaryPriceValue).format('0,0');
+
+    let count = parseInt(document.getElementById('quantity').value);
+    const decreaseBtn = document.getElementById('kurang');
+
+    function increase() {
+        count++;
+        document.getElementById('quantity').value = count;
+        calculateTotal();
+        checkCount();
+    }
+
+    function decrease() {
+        if (count > 1) {
+            count--;
+            document.getElementById('quantity').value = count;
+        }
+        calculateTotal();
+        checkCount();
+    }
+
+    function checkCount() {
+        if (count === 1) {
+            decreaseBtn.disabled = true;
+        } else {
+            decreaseBtn.disabled = false;
+        }
+    }
+
+    function calculateTotal() {
+        const quantityInput = document.getElementById('quantity');
+        const summaryPriceInput = document.getElementById('summaryPrice');
+        const quantity = parseInt(quantityInput.value);
+        let price = 0;
+
+        if (quantity >= 1 && quantity <= 10) {
+            price = {
+                {
+                    $defloDetail - > harga_b2C_1_unit
+                }
+            };
+        } else if (quantity >= 11 && quantity <= 30) {
+            price = {
+                {
+                    $defloDetail - > harga_b2C_11_unit
+                }
+            };
+        } else if (quantity > 30) {
+            price = {
+                {
+                    $defloDetail - > harga_b2C_31_unit
+                }
+            };
+        }
+
+        const totalPrice = price * quantity;
+        summaryPriceInput.value = numeral(totalPrice).format('0,0');;
+    }
+>>>>>>> d5557992f1c905b8f774d6907a37c029ef4d4590
     </script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/numeral.js/2.0.6/numeral.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/js/bootstrap.bundle.min.js"></script>

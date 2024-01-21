@@ -13,6 +13,10 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css">
 
     <!-- Custom CSS -->
+<<<<<<< HEAD
+=======
+    <link rel="stylesheet" href="{{asset('/css/navbar-style.css')}}">
+>>>>>>> d5557992f1c905b8f774d6907a37c029ef4d4590
     <link rel="stylesheet" href="{{ asset ('konkurito/assets/css/details/style.css') }}">
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/css/bootstrap.min.css" rel="stylesheet">
 
@@ -22,10 +26,21 @@
     <script src="//cdnjs.cloudflare.com/ajax/libs/numeral.js/2.0.6/numeral.min.js"></script>
 
     <!-- JQuery -->
+<<<<<<< HEAD
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 
 <body>
+=======
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+</head>
+
+<body>
+    <!-- Navbar Utama -->
+    @include('partials.navbar')
+    <!-- End Navbar Utama -->
+
+>>>>>>> d5557992f1c905b8f774d6907a37c029ef4d4590
     <div class="container">
         <!-- Logo -->
         <section id="logo">
@@ -136,6 +151,7 @@
                                 <table class="table table-borderless table-harga mt-4">
                                     <tr>
                                         <th>1-10 satuan</th>
+<<<<<<< HEAD
                                         <th class="bold">{{ $konkuritoDetail->harga_b2C_1 }}</th>
                                     </tr>
                                     <tr>
@@ -145,6 +161,13 @@
                                     <tr>
                                         <th>31+ satuan</th>
                                         <th class="bold">{{ $konkuritoDetail->harga_b2C_31 }}</th>
+=======
+                                        <th class="bold">{{ $konkuritoDetail->harga_b2C_1_unit }}</th>
+                                    </tr>
+                                    <tr>
+                                        <th>11-30 satuan</th>
+                                        <th class="bold">{{ $konkuritoDetail->harga_b2C_11_unit }}</th>
+>>>>>>> d5557992f1c905b8f774d6907a37c029ef4d4590
                                     </tr>
                                 </table>
                             </div>
@@ -180,7 +203,11 @@
                             </div>
                             <div class="total-harga">
                                 <input type="text" class="form-control fw-bold text-center text-white bg-dark"
+<<<<<<< HEAD
                                     id="summaryPrice" value="{{ $konkuritoDetail->harga_b2C_1 }}" readonly>
+=======
+                                    id="summaryPrice" value="{{ $konkuritoDetail->harga_b2C_1_unit }}" readonly>
+>>>>>>> d5557992f1c905b8f774d6907a37c029ef4d4590
                             </div>
                         </div>
                     </div>
@@ -239,7 +266,11 @@
                                                     <p>{{ substr($terkait->deskripsi_singkat, 0, 20) }}</p>
                                                 </div>
                                                 <div class="harga">
+<<<<<<< HEAD
                                                     <p>Rp {{ number_format($terkait->harga_b2C_1, 0, ',', '.') }}</p>
+=======
+                                                    <p>Rp {{ number_format($terkait->harga_b2C_1_unit, 0, ',', '.') }}</p>
+>>>>>>> d5557992f1c905b8f774d6907a37c029ef4d4590
                                                 </div>
                                             </div>
                                         </div>
@@ -1458,12 +1489,19 @@
             let price = 0;
 
             if (quantity >= 1 && quantity <= 10) {
+<<<<<<< HEAD
                 price = {{ $konkuritoDetail->harga_b2C_1 }};
             } else if (quantity >= 11 && quantity <= 30) {
                 price = {{ $konkuritoDetail->harga_b2C_11 }};
             } else if (quantity > 30) {
                 price = {{ $konkuritoDetail->harga_b2C_31 }};
             }
+=======
+                price = {{ $konkuritoDetail->harga_b2C_1_unit }};
+            } else if (quantity >= 11 && quantity <= 30) {
+                price = {{ $konkuritoDetail->harga_b2C_11_unit }};
+            } 
+>>>>>>> d5557992f1c905b8f774d6907a37c029ef4d4590
 
             const totalPrice = price * quantity;
             summaryPriceInput.value = numeral(totalPrice).format('0,0');;

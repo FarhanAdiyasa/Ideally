@@ -145,7 +145,7 @@ class AdminBatunesiaController extends Controller
             $batunesia->harga_b2C_31_unit = $harga_b2C_31_unit;
 
             $batunesia->slug =Str::slug($batunesia->nama_produk);
-            $batunesia->created_by = 1;
+            $batunesia->created_by = auth()->user()->user_id;;
             $batunesia->save();
             DB::commit();
         } else {
@@ -156,7 +156,7 @@ class AdminBatunesiaController extends Controller
         DB::rollback();
        return redirect()->back()->with('error', 'Terjadi kesalahan. Silakan coba lagi nanti.');
     }
-    return redirect()->route('batunesias')->with('success', 'Data has been successfully stored.');
+    return redirect()->route('batunesias')->with('success', 'Data berhasil disimpan!');
     }
     
 
@@ -270,7 +270,7 @@ class AdminBatunesiaController extends Controller
             DB::rollback();
            return redirect()->back()->with('error', 'Terjadi kesalahan. Silakan coba lagi nanti.');
         }
-        return redirect()->route('batunesias')->with('success', 'Data has been successfully stored.');
+        return redirect()->route('batunesias')->with('success', 'Data berhasil disimpan!');
     }
 
     public function delete($id)
@@ -312,7 +312,7 @@ class AdminBatunesiaController extends Controller
             return redirect()->back()->with('error', 'Terjadi kesalahan. Silakan coba lagi nanti.');
         }
 
-        return redirect()->route('batunesias')->with('success', 'Data has been successfully deleted.');
+        return redirect()->route('batunesias')->with('success', 'Data berhasil dihapus!');
     }
 
     public function post(Request $request)
@@ -328,7 +328,7 @@ class AdminBatunesiaController extends Controller
             DB::rollback();
             return redirect()->back()->with('error', 'Terjadi kesalahan. Silakan coba lagi nanti.');
         }
-        return redirect()->route('batunesias')->with('success', 'Data status has been successfully changed .');
+        return redirect()->route('batunesias')->with('success', 'Status data berhasil diubah!');
     }
     
 }

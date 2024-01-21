@@ -14,6 +14,8 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\CreateArtikelRequest;
 use App\Http\Requests\UpdateArtikelRequest;
+use App\Models\Komentar;
+use App\Models\Sumber_Artikel;
 use PDO;
 
 class AdminArtikelController extends Controller
@@ -80,15 +82,16 @@ class AdminArtikelController extends Controller
                     $artikel->tanggal_publikasi = now();
                 }
                 if ($validatedData['author'] == "sendiri") {
-                    $artikel->penulis_artikel = "Saya";
-                    $artikel->profesi_penulis_artikel = "Saya";
-                    $artikel->deskripsi_singkat_penulis_artikel = "Saya";
+                    $artikel->penulis_artikel = auth()->user()->firstname.' '.auth()->user()->lastname;
+                    $artikel->profesi_penulis_artikel = auth()->user()->profesi;
+                    $artikel->deskripsi_singkat_penulis_artikel = auth()->user()->deskripsi_diri;
                 }
 
                 $artikel->slug =Str::slug($artikel->judul_artikel);
-                $artikel->created_by = 1;
+                $artikel->created_by = auth()->user()->user_id;
                 $artikel->save();
                 $artikel->kategori_artikel()->sync($request['kategori_artikel']);
+                $artikel->sumberArtikel()->sync($request['sumber']);
                 DB::commit();
     
         } catch (\Exception $e) {
@@ -96,29 +99,42 @@ class AdminArtikelController extends Controller
             DB::rollback();
            return redirect()->back()->with('error', 'Terjadi kesalahan. Silakan coba lagi nanti.');
         }
-        return redirect()->route('daftar-produk')->with('success', 'Data has been successfully stored.');
+        return redirect()->route('artikels')->with('success', 'Data berhasil disimpan!');
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function komentar($id)
     {
-        //
-    }
+        $artikel = Artikel::findOrFail($id);
+        $komentars = Komentar::where('id_artikel', $id)->get();
+        return view('Pages/Artikel/komentar-artikel', ['artikel' => $artikel, 'komentars' => $komentars]);
+    }    
 
-    /**
-     * Show the form for editing the specified resource.
-     */
+    public function hideKomentar(Request $request)
+    {
+         $id = $request->input('id_komentar');
+        try {
+            DB::beginTransaction();
+            $komentar = Komentar::findOrFail($id);
+            $komentar->status_tampil = $request->input('status') == "true" ? 1 : 0;
+            $komentar->save();
+            DB::commit();
+        } catch (\Exception $e) {
+            dd($e->getMessage());
+            DB::rollback();
+            return redirect()->back()->with('error', 'Terjadi kesalahan. Silakan coba lagi nanti.');
+        }
+        return redirect()->route('artikels')->with('success', 'Status data berhasil diubah!');
+        // return redirect()->route('daftar.komentar',['id' => $komentar->id_artikel])->with('success', 'Status data berhasil diubah!');
+    }    
     public function edit($id)
     {
         $artikel = Artikel::findOrFail($id);
         $categories = Kategori_Artikel::all();
-        $author = "lain";
-        if($artikel->penulis_artikel == $artikel->createdBy->firstname){
-            $author = "sendiri";
-        }
-        return view('Pages/Artikel/edit-artikel', ['artikel'=>$artikel,"categories"=>$categories, "author"=>$author]);
+        $sumbers = Sumber_Artikel::where(["id_artikel"=>$artikel->id_artikel])->get();
+        return view('Pages/Artikel/edit-artikel', ['artikel'=>$artikel,"categories"=>$categories, "sumbers"=>$sumbers]);
     }
 
     /**
@@ -174,15 +190,17 @@ class AdminArtikelController extends Controller
                     $artikel->tanggal_publikasi = now();
                 }
                 if ($validatedData['author'] == "sendiri") {
-                    $artikel->penulis_artikel = "Saya";
-                    $artikel->profesi_penulis_artikel = "Saya";
-                    $artikel->deskripsi_singkat_penulis_artikel = "Saya";
+                    $artikel->penulis_artikel = auth()->user()->firstname.' '.auth()->user()->lastname;
+                    $artikel->profesi_penulis_artikel = auth()->user()->profesi;
+                    $artikel->deskripsi_singkat_penulis_artikel = auth()->user()->deskripsi_diri;
                 }
 
+
                 $artikel->slug =Str::slug($artikel->judul_artikel);
-                $artikel->created_by = 1;
+                $artikel->created_by = auth()->user()->user_id;;
                 $artikel->save();
                 $artikel->kategori_artikel()->sync($request['kategori_artikel']);
+                $artikel->sumberArtikel()->sync($request['sumber']);
                 DB::commit();
 
         } catch (\Exception $e) {
@@ -190,7 +208,7 @@ class AdminArtikelController extends Controller
             DB::rollback();
            return redirect()->back()->with('error', 'Terjadi kesalahan. Silakan coba lagi nanti.');
         }
-        return redirect()->route('daftar-produk')->with('success', 'Data has been successfully stored.');
+        return redirect()->route('artikels')->with('success', 'Data berhasil disimpan!');
     }
 
     public function delete($id)
@@ -211,12 +229,13 @@ class AdminArtikelController extends Controller
             return redirect()->back()->with('error', 'Terjadi kesalahan. Silakan coba lagi nanti.');
         }
 
-        return redirect()->route('artikels')->with('success', 'Data has been successfully deleted.');
+        return redirect()->route('artikels')->with('success', 'Data berhasil dihapus!');
     }
     public function preview($slug)
     {
         $artikel = Artikel::FirstWhere('slug',$slug);
         $active = $artikel->kategori_artikel[0]->nama_kategori_artikel;
+        $sumbers = Sumber_Artikel::where(["id_artikel"=>$artikel->id_artikel])->get();
         return view('Pages/Artikel/preview-artikel', [
             "active"=> $active,
             "artikel"=>$artikel,
@@ -225,6 +244,7 @@ class AdminArtikelController extends Controller
             "articles_terbaru" => Artikel::orderBy('tanggal_publikasi', 'desc')->limit(4)->get(),
             "articles_terpopuler" => Artikel::orderBy('pengunjung', 'desc')->limit(4)->get(),
             "articles_terkait" => Artikel::byKategori($active)->get(),
+            "sumbers"=>$sumbers,
         ]);
     }
     public function post(Request $request)
@@ -241,6 +261,6 @@ class AdminArtikelController extends Controller
             DB::rollback();
             return redirect()->back()->with('error', 'Terjadi kesalahan. Silakan coba lagi nanti.');
         }
-        return redirect()->route('artikels')->with('success', 'Data status has been successfully changed .');
+        return redirect()->route('artikels')->with('success', 'Status data berhasil diubah!');
     }
 }

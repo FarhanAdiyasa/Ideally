@@ -37,7 +37,11 @@
 
 
 .product-card {
+<<<<<<< HEAD
     width: calc(25% - 20px);
+=======
+    width: 100%;
+>>>>>>> d5557992f1c905b8f774d6907a37c029ef4d4590
     height: 250px;
     background: #fff;         
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
@@ -53,8 +57,8 @@
 
 
 .product-image img {
-    width: 239.99px;
-    height: 200px;
+    width: 100%;
+    height:60%;
     position: absolute;
     top: -1.52px;
     left: -3.99px;
@@ -66,6 +70,10 @@
     position: absolute;
     top: 216px;
     left: 150px;
+}
+
+.rating .svg{
+    left: 50px;
 }
 
 .rating-border {
@@ -90,21 +98,21 @@
 }
 
 .product-title {
-    width: 161px;
+    width: 100%;
     height: 19px;
     position: absolute;
-    top: 158px;
+    top: 60%;
     left: 15px;
     color: #101624;
     font-size: 14px;
     font-family: Poppins;
     font-weight: 400;
-    word-wrap: break-word;
+    overflow: hidden;
 }
 
 .product-category {
     position: absolute;
-    top: 179px;
+    top: 70%;
     left: 15px;
     color: #101624;
     font-size: 12px;
@@ -113,7 +121,7 @@
     word-wrap: break-word;
 }
 
-.hidden-price {
+.price {
     width: 138px;
     height: 16px;
     position: absolute;
@@ -123,14 +131,18 @@
     font-size: 14px;
     font-family: Poppins;
     font-weight: 700;
-    word-wrap: break-word;
+
 }
 
 
     </style>
 </head>
 <body>
+<<<<<<< HEAD
 {{-- Navbar Section --}}
+=======
+    {{-- Navbar Section --}}
+>>>>>>> d5557992f1c905b8f774d6907a37c029ef4d4590
     @include('partials.navbar')
     {{-- End of Navbar Section --}}
     
@@ -238,11 +250,26 @@
                             </div>
                             <div class="rating">
                                 <div class="rating-border"></div>
+<<<<<<< HEAD
                                 <div class="rating-number">4.5</div>
                             </div>
                             <div class="product-title">{{ $batunesia->nama_produk }}</div>
                             <div class="product-category">{{ $batunesia->nama_produk }}</div>
                             <div class="hidden-price">{{ $batunesia->{'harga_b2I_31+_unit'} }}</div>
+=======
+                                <svg width="14" height="13" viewBox="0 0 14 13" fill="none" xmlns="http://www.w3.org/2000/svg" style="margin-left: 10px;">
+                                    <path id="Star 8" d="M6.77703 0L8.29856 4.68281H13.2224L9.23893 7.57695L10.7605 12.2598L6.77703 9.36562L2.79359 12.2598L4.31513 7.57695L0.331691 4.68281H5.25549L6.77703 0Z" fill="#101624"/>
+                                    </svg>                                    
+                                <div class="rating-number">4.5</div>
+                            </div>
+                            <div class="product-title">{{ $batunesia->nama_produk }}</div>
+                            <div class="product-category">{{ $batunesia->kategori }}</div>
+                            @if(auth()->check())
+                                <div class="price">{{ $batunesia->{'harga_b2I_31_unit'} }}</div>
+                            @else
+                                <div class="price" style="font-size: 12px">Harga tersembunyi</div>
+                            @endif
+>>>>>>> d5557992f1c905b8f774d6907a37c029ef4d4590
                         </div>
                     </a>
                 @empty

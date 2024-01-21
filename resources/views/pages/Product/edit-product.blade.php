@@ -1,7 +1,7 @@
 @extends('layouts/admin')
 @section('content')
 <section class="content-header">
-  @if ($errors->any())
+  {{-- @if ($errors->any())
     <div class="alert alert-danger">
         <ul>
             @foreach ($errors->all() as $error)
@@ -9,7 +9,7 @@
             @endforeach
         </ul>
     </div>
-@endif
+@endif --}}
 
 @if(session('success'))
     <div class="alert alert-success">
@@ -22,12 +22,12 @@
       <div class="col-sm-6">
         <h1>Edit Produk Agrigard</h1>
       </div>
-      <div class="col-sm-6">
+      <!-- <div class="col-sm-6">
         <ol class="breadcrumb float-sm-right">
           <li class="breadcrumb-item"><a href="#">Home</a></li>
           <li class="breadcrumb-item active">Advanced Form</li>
         </ol>
-      </div>
+      </div> -->
     </div>
   </div><!-- /.container-fluid -->
 </section>
@@ -136,6 +136,18 @@
           <!-- /.form-group -->
         </div>
         <!-- /.col -->
+      </div>
+      <div class="row"> 
+        <div class="col-12 col-sm-6">
+        <div class="form-group">
+          <label>Berat (gr)</label>
+            <input type="number" class="form-control" placeholder="Placeholder text" name="berat" value="{{old('berat', $agrigard->berat)}}">
+               @error('berat')
+            <small class="text-danger">{{ $message }}</small>
+            @enderror
+        </div>
+        <!-- /.form-group -->
+      </div>
       </div>
       <!-- /.row -->
     </div>
@@ -528,9 +540,9 @@
 </div>  
 <input type="text" name="tanggal_publikasi" id="tanggal_publikasi" class="form-control" style="display:none;">
 <div class="m-3 d-flex justify-content-end">
-  <button class="btn btn-dark mx-5" type="reset">Cancel</button>
-  <button class="btn btn-dark mx-3" type="button" onclick="submitForm('1')">Submit And Post</button>
-  <button class="btn btn-success mx-3" type="button" onclick="submitForm('0')">Submit</button>
+  <button class="btn btn-dark mx-5" type="reset">Batal</button>
+  <button class="btn btn-dark mx-3" type="button" onclick="submitForm('1')">Simpan Dan Terbitkan</button>
+  <button class="btn btn-success mx-3" type="button" onclick="submitForm('0')">Simpan</button>
 </div>
 
 </form>

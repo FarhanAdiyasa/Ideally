@@ -24,44 +24,77 @@ body {
     margin-left: 10px!important;
 }
 
+<<<<<<< HEAD
 .navbar-nav .nav-item {
     padding: 0 1.5em;
 }
 
 .navbar-nav .nav-item .nav-link {
+=======
+#hero-navbar .navbar-nav .nav-item {
+    padding: 0 1.5em;
+}
+
+#hero-navbar .navbar-nav .nav-item .nav-link {
+>>>>>>> d5557992f1c905b8f774d6907a37c029ef4d4590
     color: white;
     font-weight: 700;
     font-size: 16px;
     /* Mengatur warna teks menjadi putih */
 }
 
+<<<<<<< HEAD
 .navbar-nav .nav-item .nav-link.active,
 .navbar-nav .nav-item .nav-link:hover {
+=======
+#hero-navbar .navbar-nav .nav-item .nav-link.active,
+#hero-navbar .navbar-nav .nav-item .nav-link:hover {
+>>>>>>> d5557992f1c905b8f774d6907a37c029ef4d4590
     color: #FEDE87;
     /* Mengatur warna merah untuk tautan aktif dan saat dihover */
 }
 
+<<<<<<< HEAD
 .dropdown-toggle::after {
     display: none;
 }
 
 .custom-dropdown .dropdown-menu {
+=======
+#hero-navbar .dropdown-toggle::after {
+    display: none;
+}
+
+#hero-navbar .custom-dropdown .dropdown-menu {
+>>>>>>> d5557992f1c905b8f774d6907a37c029ef4d4590
     border-radius: 0;
     border: none;
     padding: 0.5em 0.5em 1em 0.5em;
     box-shadow: 5px 5px 15px 3px rgba(0, 0, 0, 0.25);
 }
 
+<<<<<<< HEAD
 .custom-dropdown .dropdown-menu .dropdown-item {
     font-size: 13px;
 }
 
 .custom-dropdown .dropdown-menu a:hover {
+=======
+#hero-navbar .custom-dropdown .dropdown-menu .dropdown-item {
+    font-size: 13px;
+}
+
+#hero-navbar .custom-dropdown .dropdown-menu a:hover {
+>>>>>>> d5557992f1c905b8f774d6907a37c029ef4d4590
     color: #FE7338;
     font-weight: 700;
 }
 
+<<<<<<< HEAD
 .custom-dropdown hr {
+=======
+#hero-navbar .custom-dropdown hr {
+>>>>>>> d5557992f1c905b8f774d6907a37c029ef4d4590
     margin: 0 0.6em;
     border: none;
     border-top: 3px solid rgb(168, 168, 168);

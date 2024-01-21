@@ -34,8 +34,8 @@ class PromoController extends Controller
     
     public function view($id)
     {
-        $agrigard = Agrigard::findOrFail($id);
-        return view('Pages/Product/detail-product', ['agrigard'=>$agrigard]);
+        $promo = Promo::findOrFail($id);
+        return view('Pages/Promo/detail-promo', ['promo'=>$promo]);
     }
 
     /**
@@ -72,7 +72,7 @@ class PromoController extends Controller
             if($request->tanggal_publikasi == "true"){
                 $promo->tanggal_publikasi = now();
             }
-            $promo->created_by = 1;
+            $promo->created_by = auth()->user()->user_id;;
             
             $promo->save();
 
@@ -274,7 +274,7 @@ class PromoController extends Controller
                 if($request->tanggal_publikasi == "true"){
                     $promo->tanggal_publikasi = now();
                 }
-                $promo->created_by = 1;
+                $promo->created_by = auth()->user()->user_id;;
                 
                 $promo->save();
                 $promo->agrigards()->detach();

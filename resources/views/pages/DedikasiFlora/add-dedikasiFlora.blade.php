@@ -1,7 +1,7 @@
 @extends('layouts/admin')
 @section('content')
 <section class="content-header">
-  @if ($errors->any())
+  {{-- @if ($errors->any())
     <div class="alert alert-danger">
         <ul>
             @foreach ($errors->all() as $error)
@@ -9,7 +9,7 @@
             @endforeach
         </ul>
     </div>
-@endif
+@endif --}}
 @if(session('success'))
     <div class="alert alert-success">
         {{ session('success') }}
@@ -21,12 +21,12 @@
       <div class="col-sm-6">
         <h1>Tambah Produk Dedikasi Flora</h1>
       </div>
-      <div class="col-sm-6">
+      <!-- <div class="col-sm-6">
         <ol class="breadcrumb float-sm-right">
           <li class="breadcrumb-item"><a href="#">Home</a></li>
           <li class="breadcrumb-item active">Advanced Form</li>
         </ol>
-      </div>
+      </div> -->
     </div>
   </div><!-- /.container-fluid -->
 </section>
@@ -59,7 +59,7 @@
         <!-- /.col -->
         <div class="col-md-9">
           <div class="form-group">
-              <input id="default" type="text" class="form-control" placeholder="Placeholder text" name="nama_latin" id="nama_latin" value="{{old('nama_latin')}}">
+              <input id="default" type="text" class="form-control" placeholder="Masukkan disini" name="nama_latin" id="nama_latin" value="{{old('nama_latin')}}">
               @error('nama_latin')
               <small class="text-danger">{{ $message }}</small>
               @enderror
@@ -82,7 +82,7 @@
         <!-- /.col -->
         <div class="col-md-9">
           <div class="form-group">
-              <input id="default" type="text" class="form-control" placeholder="Placeholder text" name="nama_lokal" id="nama_lokal" value="{{old('nama_lokal')}}">
+              <input id="default" type="text" class="form-control" placeholder="Masukkan disini" name="nama_lokal" id="nama_lokal" value="{{old('nama_lokal')}}">
               @error('nama_lokal')
               <small class="text-danger">{{ $message }}</small>
               @enderror
@@ -99,7 +99,7 @@
         <div class="col-12 col-sm-6">
           <div class="form-group">
             <label>Spesifikasi Produk</label>
-              <input type="text" class="form-control" placeholder="Placeholder text" name="spesifikasi" value="{{old('spesifikasi')}}">
+              <input type="text" class="form-control" placeholder="Masukkan disini" name="spesifikasi" value="{{old('spesifikasi')}}">
                  @error('spesifikasi')
               <small class="text-danger">{{ $message }}</small>
               @enderror
@@ -153,7 +153,7 @@
         <div class="col-12 col-sm-6">
           <div class="form-group">
             <label>Diameter Tajuk</label>
-              <input type="text" class="form-control" placeholder="Placeholder text" name="diameter_tajuk" value="{{old('diameter_tajuk')}}">
+              <input type="text" class="form-control" placeholder="Masukkan disini" name="diameter_tajuk" value="{{old('diameter_tajuk')}}">
                  @error('diameter_tajuk')
               <small class="text-danger">{{ $message }}</small>
               @enderror
@@ -260,10 +260,9 @@
             <label>Penyinaran</label>
             <div class="select2-purple">
               <select class="form-control select2" style="width: 100%;" name="penyinaran">
-                <option value="Extra Intensif" @selected(old('penyinaran') == 'Extra Intensif')>🍖 Extra Intensif</option>
-                <option value="Intensif" @selected(old('penyinaran') == 'Intensif')>🥩 Intensif</option>
-                <option value="Semi Intensif" @selected(old('penyinaran') == 'Semi Intensif')>🍗 Semi Intensif</option>
-                <option value="Ekstensif" @selected(old('penyinaran') == 'Ekstensif')>🦴 Ekstensif</option>
+                <option value="Penuh" @selected(old('penyinaran') == 'Penuh')>☀️ Penuh</option>
+                <option value="Toleran Naungan" @selected(old('penyinaran') == 'Toleran Naungan')>⛅️ Toleran Naungan</option>
+                <option value="Naungan" @selected(old('penyinaran') == 'Naungan')>☁️ Naungan</option>
               </select>                           
                 @error('penyinaran')
               <small class="text-danger">{{ $message }}</small>
@@ -280,14 +279,25 @@
             <label>Pemupukan</label>
             <div class="select2-purple">
               <select class="form-control select2" style="width: 100%;" name="pemupukan">
-                <option value="Penuh" @selected(old('pemupukan') == 'Penuh')>☀️ Penuh</option>
-                <option value="Toleran Naungan" @selected(old('pemupukan') == 'Toleran Naungan')>⛅️ Toleran Naungan</option>
-                <option value="Naungan" @selected(old('pemupukan') == 'Naungan')>☁️ Naungan</option>
+                <option value="Extra Intensif" @selected(old('pemupukan') == 'Extra Intensif')>🍖 Extra Intensif</option>
+                <option value="Intensif" @selected(old('pemupukan') == 'Intensif')>🥩 Intensif</option>
+                <option value="Semi Intensif" @selected(old('pemupukan') == 'Semi Intensif')>🍗 Semi Intensif</option>
+                <option value="Ekstensif" @selected(old('pemupukan') == 'Ekstensif')>🦴 Ekstensif</option>
               </select>
                 @error('pemupukan')
               <small class="text-danger">{{ $message }}</small>
               @enderror
             </div>
+          </div>
+          <!-- /.form-group -->
+        </div>
+        <div class="col-12 col-sm-6">
+          <div class="form-group">
+            <label>Berat (gr)</label>
+              <input type="number" class="form-control" placeholder="Masukkan disini" name="berat" value="{{old('berat')}}">
+                 @error('berat')
+              <small class="text-danger">{{ $message }}</small>
+              @enderror
           </div>
           <!-- /.form-group -->
         </div>
@@ -683,9 +693,9 @@
 </div>  
 <input type="text" name="tanggal_publikasi" id="tanggal_publikasi" class="form-control" style="display:none;">
 <div class="m-3 d-flex justify-content-end">
-  <button class="btn btn-dark mx-5" type="reset">Cancel</button>
-  <button class="btn btn-dark mx-3" type="button" onclick="submitForm('1')">Save And Post</button>
-  <button class="btn btn-success mx-3" type="button" onclick="submitForm('0')">Save</button>
+  <button class="btn btn-dark mx-5" type="reset">Batal</button>
+  <button class="btn btn-dark mx-3" type="button" onclick="submitForm('1')">Simpan Dan Terbitkan</button>
+  <button class="btn btn-success mx-3" type="button" onclick="submitForm('0')">Simpan</button>
 </div>
     
 </form>

@@ -1,7 +1,7 @@
 @extends('layouts/admin')
 @section('content')
 <section class="content-header">
-  @if ($errors->any())
+  {{-- @if ($errors->any())
     <div class="alert alert-danger">
         <ul>
             @foreach ($errors->all() as $error)
@@ -9,7 +9,7 @@
             @endforeach
         </ul>
     </div>
-@endif
+@endif --}}
 @if(session('success'))
     <div class="alert alert-success">
         {{ session('success') }}
@@ -21,12 +21,12 @@
       <div class="col-sm-6">
         <h1>Tambah Produk Konkurito</h1>
       </div>
-      <div class="col-sm-6">
+      <!-- <div class="col-sm-6">
         <ol class="breadcrumb float-sm-right">
           <li class="breadcrumb-item"><a href="#">Home</a></li>
           <li class="breadcrumb-item active">Advanced Form</li>
         </ol>
-      </div>
+      </div> -->
     </div>
   </div><!-- /.container-fluid -->
 </section>
@@ -59,7 +59,7 @@
         <!-- /.col -->
         <div class="col-md-9">
           <div class="form-group">
-              <input id="default" type="text" class="form-control" placeholder="Placeholder text" name="nama_produk" id="nama_produk" value="{{old('nama_produk')}}">
+              <input id="default" type="text" class="form-control" placeholder="Masukkan disini" name="nama_produk" id="nama_produk" value="{{old('nama_produk')}}">
               @error('nama_produk')
               <small class="text-danger">{{ $message }}</small>
               @enderror
@@ -248,6 +248,16 @@
             <label>Tebal Produk (cm)</label>
               <input type="number" class="form-control" placeholder="Masukkan Tebal Dalam Bentuk Angka" name="tebal" value="{{old('tebal')}}">
                  @error('tebal')
+              <small class="text-danger">{{ $message }}</small>
+              @enderror
+          </div>
+          <!-- /.form-group -->
+        </div>
+        <div class="col-12 col-sm-6">
+          <div class="form-group">
+            <label>Berat (gr)</label>
+              <input type="number" class="form-control" placeholder="Masukkan disini" name="berat" value="{{old('berat')}}">
+                 @error('berat')
               <small class="text-danger">{{ $message }}</small>
               @enderror
           </div>
@@ -577,9 +587,9 @@
 </div>  
 <input type="text" name="tanggal_publikasi" id="tanggal_publikasi" class="form-control" style="display:none;">
 <div class="m-3 d-flex justify-content-end">
-  <button class="btn btn-dark mx-5" type="reset">Cancel</button>
-  <button class="btn btn-dark mx-3" type="button" onclick="submitForm('1')">Save And Post</button>
-  <button class="btn btn-success mx-3" type="button" onclick="submitForm('0')">Save</button>
+  <button class="btn btn-dark mx-5" type="reset">Batal</button>
+  <button class="btn btn-dark mx-3" type="button" onclick="submitForm('1')">Simpan Dan Terbitkan</button>
+  <button class="btn btn-success mx-3" type="button" onclick="submitForm('0')">Simpan</button>
 </div>
     
 </form>

@@ -1,7 +1,7 @@
 @extends('layouts/admin')
 @section('content')
 <section class="content-header">
-  @if ($errors->any())
+  {{-- @if ($errors->any())
     <div class="alert alert-danger">
         <ul>
             @foreach ($errors->all() as $error)
@@ -9,7 +9,7 @@
             @endforeach
         </ul>
     </div>
-@endif
+@endif --}}
 @if(session('success'))
     <div class="alert alert-success">
         {{ session('success') }}
@@ -21,12 +21,12 @@
       <div class="col-sm-6">
         <h1>Tambah Produk Shineage</h1>
       </div>
-      <div class="col-sm-6">
+      <!-- <div class="col-sm-6">
         <ol class="breadcrumb float-sm-right">
           <li class="breadcrumb-item"><a href="#">Home</a></li>
           <li class="breadcrumb-item active">Advanced Form</li>
         </ol>
-      </div>
+      </div> -->
     </div>
   </div><!-- /.container-fluid -->
 </section>
@@ -59,7 +59,7 @@
         <!-- /.col -->
         <div class="col-md-9">
           <div class="form-group">
-              <input id="default" type="text" class="form-control" placeholder="Placeholder text" name="nama_produk" id="nama_produk" value="{{old('nama_produk')}}">
+              <input id="default" type="text" class="form-control" placeholder="Ketikkan disini" name="nama_produk" id="nama_produk" value="{{old('nama_produk')}}">
               @error('nama_produk')
               <small class="text-danger">{{ $message }}</small>
               @enderror
@@ -82,7 +82,7 @@
         <!-- /.col -->
         <div class="col-md-9">
           <div class="form-group">
-              <input id="default" type="text" class="form-control" placeholder="Placeholder text" name="seri" id="seri" value="{{old('seri')}}">
+              <input id="default" type="text" class="form-control" placeholder="Ketikkan disini" name="seri" id="seri" value="{{old('seri')}}">
               @error('seri')
               <small class="text-danger">{{ $message }}</small>
               @enderror
@@ -91,11 +91,18 @@
         </div>
         <!-- /.col -->
       </div>
-      <!-- /.row -->
       <div class="row">
-        <div class="col-12 col-sm-6">
+        <div class="col-md-3">
           <div class="form-group">
-            <label>Jenis</label>
+            <label>Jenis Shineage</label>
+            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sed, odit ab eum enim illo minima deleniti quae ducimus repudiandae sit!</p>
+          </div>
+          <!-- /.form-group -->
+        </div>
+        <!-- /.col -->
+        <div class="col-md-9">
+          <div class="form-group">
+            <label></label>
             <select class="form-control select2" style="width: 100%;" name="jenis">
               <option value="Neon Box" @selected(old('jenis') == 'Neon Box')>Neon Box</option>
               <option value="Letter Sign" @selected(old('jenis') == 'Letter Sign')>Letter Sign</option>
@@ -109,6 +116,51 @@
               @enderror
           </div>
           <!-- /.form-group -->
+        </div>
+        <!-- /.col -->
+      </div>
+      <!-- /.row -->
+      <div class="row">
+        <div class="col-12 col-sm-6">
+            <div class="form-group">
+               <label>Warna Produk</label>
+               <select class="form-control select2" style="width: 100%;" name="warna">
+                 <option value="Merah" {{ old('warna') == 'Merah' ? 'selected' : '' }}>
+                     🔴 Merah
+                 </option>
+                 <option value="Kuning" @selected(old('warna') == 'Kuning')>
+                     🟡 Kuning
+                 </option>
+                 <option value="Hijau" @selected(old('warna') == 'Hijau' )>
+                     🟢 Hijau
+                 </option>
+                 <option value="Jingga" @selected(old('warna') == 'Jingga')>
+                     🟠 Jingga
+                 </option>
+                 <option value="Biru" @selected(old('warna') == 'Biru')>
+                     🔵 Biru
+                 </option>
+                 <option value="Ungu" @selected(old('warna') == 'Ungu')>
+                     🟣 Ungu
+                 </option>
+                 <option value="Putih" @selected(old('warna') == 'Putih' )>
+                     ⚪ Putih
+                 </option>
+                 <option value="Hitam" @selected(old('warna') == 'Hitam' )>
+                     ⚫ Hitam
+                 </option>
+                 <option value="Cokelat" @selected(old('warna') == 'Cokelat')>
+                     🟤 Cokelat
+                 </option>
+                 <option value="Pink" @selected(old('warna') == 'Pink')>
+                     💖 Pink
+                 </option>
+               </select>      
+                 @error('warna')
+                 <small class="text-danger">{{ $message }}</small>
+                 @enderror
+             </div> 
+             <!-- /.form-group -->
         </div>
         <!-- /.col -->
         <div class="col-12 col-sm-6">
@@ -132,67 +184,13 @@
         <!-- /.col -->
       </div>
       <!-- /.row -->
-      <div class="row">
-        <div class="col-12 col-sm-6">
-          <div class="form-group">
-            <label>Dimensi Produk</label>
-              <input type="text" class="form-control" placeholder="Placeholder text" name="dimensi" value="{{old('dimensi')}}">
-                 @error('dimensi')
-              <small class="text-danger">{{ $message }}</small>
-              @enderror
-          </div>
-          <!-- /.form-group -->
-        </div>
-        <!-- /.col -->
-        <div class="col-12 col-sm-6">
-          <div class="form-group">
-            <label>Warna Produk</label>
-            <select class="form-control select2" style="width: 100%;" name="warna">
-              <option value="Merah" {{ old('warna') == 'Merah' ? 'selected' : '' }}>
-                  🔴 Merah
-              </option>
-              <option value="Kuning" @selected(old('warna') == 'Kuning')>
-                  🟡 Kuning
-              </option>
-              <option value="Hijau" @selected(old('warna') == 'Hijau' )>
-                  🟢 Hijau
-              </option>
-              <option value="Jingga" @selected(old('warna') == 'Jingga')>
-                  🟠 Jingga
-              </option>
-              <option value="Biru" @selected(old('warna') == 'Biru')>
-                  🔵 Biru
-              </option>
-              <option value="Ungu" @selected(old('warna') == 'Ungu')>
-                  🟣 Ungu
-              </option>
-              <option value="Putih" @selected(old('warna') == 'Putih' )>
-                  ⚪ Putih
-              </option>
-              <option value="Hitam" @selected(old('warna') == 'Hitam' )>
-                  ⚫ Hitam
-              </option>
-              <option value="Cokelat" @selected(old('warna') == 'Cokelat')>
-                  🟤 Cokelat
-              </option>
-              <option value="Pink" @selected(old('warna') == 'Pink')>
-                  💖 Pink
-              </option>
-            </select>      
-              @error('warna')
-              <small class="text-danger">{{ $message }}</small>
-              @enderror
-          </div>
-          <!-- /.form-group -->
-        </div>
-        <!-- /.col -->
-      </div>
+
       <!-- /.row -->
       <div class="row">
         <div class="col-12 col-sm-6">
           <div class="form-group">
             <label>Material Pendukung</label>
-              <input type="text" class="form-control" placeholder="Placeholder text" name="material_pendukung" value="{{old('material_pendukung')}}">
+              <input type="text" class="form-control" placeholder="Ketikkan disini" name="material_pendukung" value="{{old('material_pendukung')}}">
                  @error('material_pendukung')
               <small class="text-danger">{{ $message }}</small>
               @enderror
@@ -203,7 +201,7 @@
         <div class="col-12 col-sm-6">
           <div class="form-group">
             <label>Finishing</label>
-              <input type="text" class="form-control" placeholder="Placeholder text" name="finishing" value="{{old('finishing')}}">
+              <input type="text" class="form-control" placeholder="Ketikkan disini" name="finishing" value="{{old('finishing')}}">
                  @error('finishing')
               <small class="text-danger">{{ $message }}</small>
               @enderror
@@ -276,6 +274,18 @@
           <!-- /.form-group -->
         </div>
         <!-- /.col -->
+      </div>
+      <div class="row">
+        <div class="col-12 col-sm-6">
+          <div class="form-group">
+            <label>Berat (gr)</label>
+              <input type="number" class="form-control" placeholder="Ketikkan disini" name="berat" value="{{old('berat')}}">
+                 @error('berat')
+              <small class="text-danger">{{ $message }}</small>
+              @enderror
+          </div>
+          <!-- /.form-group -->
+        </div>
       </div>
       <!-- /.row -->
     </div>
@@ -600,9 +610,9 @@
 </div>  
 <input type="text" name="tanggal_publikasi" id="tanggal_publikasi" class="form-control" style="display:none;">
 <div class="m-3 d-flex justify-content-end">
-  <button class="btn btn-dark mx-5" type="reset">Cancel</button>
-  <button class="btn btn-dark mx-3" type="button" onclick="submitForm('1')">Save And Post</button>
-  <button class="btn btn-success mx-3" type="button" onclick="submitForm('0')">Save</button>
+  <button class="btn btn-dark mx-5" type="reset">Batal</button>
+  <button class="btn btn-dark mx-3" type="button" onclick="submitForm('1')">Simpan Dan Terbitkan</button>
+  <button class="btn btn-success mx-3" type="button" onclick="submitForm('0')">Simpan</button>
 </div>
     
 </form>

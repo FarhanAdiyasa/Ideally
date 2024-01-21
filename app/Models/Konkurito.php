@@ -33,6 +33,7 @@ class Konkurito extends Model
         return $this->belongsToMany(Promo::class, 'konkuritos_promos', 'id_konkurito', 'id_promo');
     }
 
+<<<<<<< HEAD
     protected $fillable = [
         'id_konkurito',
         'nama_produk',
@@ -62,4 +63,35 @@ class Konkurito extends Model
         'updated_at',
         'deleted_at',
     ];
+=======
+    // protected $fillable = [
+    //     'id_konkurito',
+    //     'nama_produk',
+    //     'slug',
+    //     'jenis',
+    //     'spesifikasi',
+    //     'satuan',
+    //     'garansi',
+    //     'warna_1',
+    //     'warna_2',
+    //     'dimensi',
+    //     'gambar',
+    //     'video',
+    //     'stok',
+    //     'item_terjual',
+    //     'deskripsi_singkat',
+    //     'hpp',
+    //     'harga_b2I_11',
+    //     'harga_b2I_1',
+    //     'harga_b2B_11',
+    //     'harga_b2B_1',
+    //     'harga_b2C_11',
+    //     'harga_b2C_1',
+    //     'harga_b2C_31',
+    //     'tanggal_publikasi',
+    //     'created_at',
+    //     'updated_at',
+    //     'deleted_at',
+    // ];
+>>>>>>> d5557992f1c905b8f774d6907a37c029ef4d4590
 }

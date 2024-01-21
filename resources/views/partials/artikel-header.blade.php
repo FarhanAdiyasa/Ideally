@@ -26,6 +26,9 @@
                     <a href="{{ route('landing-artikel.kategori', ['kategori' => 'Material']) }}">
                       <button type="button" class="btn rounded-pill m-2 {{ $active === "Material" ? 'btn-on' : '' }}" style="font-size: 14px;">Material</button>
                     </a>
+                    <a href="{{ route('landing-artikel.kategori', ['kategori' => 'Material']) }}">
+                      <button type="button" class="btn rounded-pill m-2 {{ $active === "Material" ? 'btn-on' : '' }}" style="font-size: 14px;">Bahan Pelengkap</button>
+                    </a>
                       <button type="button" class="btn rounded-pill m-2" style="font-size: 14px;">Lainnya</button>
                     </div>
                   </div>

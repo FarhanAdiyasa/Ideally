@@ -1,0 +1,159 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Quicksand:wght@400;700&display=swap');
+
+body {
+    background-image: url(../../img/REGISTER_LATAR.png);
+    background-size: 100% auto;
+    background-repeat: no-repeat;
+    font-family: 'Montserrat', sans-serif;
+    padding: 2rem 0;
+}
+
+.container {
+    padding: 0 13rem;
+}
+
+.bg-tosca {
+    background-color: #06C195;
+}
+
+.bg-grey {
+    background-color: #727272;
+}
+
+/* Title Tosca */
+#title .bg-tosca {
+    width: fit-content;
+    padding: 5px 6rem;
+}
+
+#title h1 {
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 700;
+}
+
+.overlay-title {
+    z-index: 999;
+    position: relative;
+    margin-bottom: -35px;
+}
+
+/* Illustration */
+.card-img-overlay .hashtag,
+.card-img-overlay .card-text {
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 700;
+}
+
+.card-img-overlay .hashtag {
+    font-size: 100px;
+    opacity: 0.5;
+    margin-top: -30px;
+    margin-left: 5px;
+}
+
+.card-img-overlay .hashtag.semua {
+    font-size: 130px;
+}
+
+.card-img-overlay .card-text {
+    font-size: 28px;
+    line-height: 28px;
+    margin-top: -100px;
+    margin-left: 35px;
+}
+
+.card-img-overlay .card-text.semua {
+    font-size: 38px;
+    line-height: 38px;
+    margin-top: -120px;
+    margin-left: 45px;
+}
+
+/* Form Field */
+#form-field .title {
+    font-weight: 700;
+    font-size: 22px;
+}
+
+.table td {
+    padding: 0;
+    padding-top: 6px;
+    font-size: 12px;
+}
+
+.table .form-control,
+.table .form-select {
+    font-size: 11px;
+    padding: 6px 12px;
+    border-radius: 15px;
+    border: none;
+    box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.25) inset;
+}
+
+.img-container {
+    box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.25);
+    height: 120px; 
+    width: 120px;
+    overflow: hidden;
+}
+
+.img-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+.controls .btn {
+    font-size: 11px;
+    font-weight: 700;
+    margin-bottom: 10px;
+    background-color: #727272;
+    transition: 0.3s ease;
+}
+
+.controls .btn:hover {
+    background-color: #06C195;
+}
+
+.btn-daftar {
+    background-color: #06C195;
+    font-size: 11px;
+    font-weight: 700;
+    transition: 0.3s ease;
+}
+
+.btn-daftar:hover {
+    background-color: #07a17d;
+}
+
+.table .label {
+    width: 40%;
+}
+
+.label p {
+    margin: 0;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.label.label-profile p {
+    display: flex;
+    align-items: start;
+}
+
+.move-link {
+    text-decoration: none;
+    color: #727272;
+    font-size: 13px;
+}
+
+.link {
+    color: #06C195;
+    font-weight: 700;
+}
+
+.link:hover {
+    text-decoration: underline;
+}

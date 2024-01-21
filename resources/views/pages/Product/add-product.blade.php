@@ -21,12 +21,12 @@
       <div class="col-sm-6">
         <h1>Tambah Produk Agrigard</h1>
       </div>
-      <div class="col-sm-6">
+      <!-- <div class="col-sm-6">
         <ol class="breadcrumb float-sm-right">
           <li class="breadcrumb-item"><a href="#">Home</a></li>
           <li class="breadcrumb-item active">Advanced Form</li>
         </ol>
-      </div>
+      </div> -->
     </div>
   </div><!-- /.container-fluid -->
 </section>
@@ -59,7 +59,7 @@
         <!-- /.col -->
         <div class="col-md-9">
           <div class="form-group">
-              <input id="default" type="text" class="form-control" placeholder="Placeholder text" name="nama_produk" id="nama_produk" value="{{old('nama_produk')}}">
+              <input id="default" type="text" class="form-control" placeholder="Masukkan disini" name="nama_produk" id="nama_produk" value="{{old('nama_produk')}}">
               @error('nama_produk')
               <small class="text-danger">{{ $message }}</small>
               @enderror
@@ -105,7 +105,7 @@
         <div class="col-12 col-sm-6">
           <div class="form-group">
             <label>Spesifikasi Produk</label>
-              <input type="text" class="form-control" placeholder="Placeholder text" name="spesifikasi" value="{{old('spesifikasi')}}">
+              <input type="text" class="form-control" placeholder="Masukkan disini" name="spesifikasi" value="{{old('spesifikasi')}}">
                  @error('spesifikasi')
               <small class="text-danger">{{ $message }}</small>
               @enderror
@@ -134,6 +134,18 @@
           <!-- /.form-group -->
         </div>
         <!-- /.col -->
+      </div>
+      <div class="row"> 
+        <div class="col-12 col-sm-6">
+        <div class="form-group">
+          <label>Berat (gr)</label>
+            <input type="number" class="form-control" placeholder="Masukkan disini" name="berat" value="{{old('berat')}}">
+               @error('berat')
+            <small class="text-danger">{{ $message }}</small>
+            @enderror
+        </div>
+        <!-- /.form-group -->
+      </div>
       </div>
       <!-- /.row -->
     </div>
@@ -526,9 +538,9 @@
 </div>  
 <input type="text" name="tanggal_publikasi" id="tanggal_publikasi" class="form-control" style="display:none;">
 <div class="m-3 d-flex justify-content-end">
-  <button class="btn btn-dark mx-5" type="reset">Cancel</button>
-  <button class="btn btn-dark mx-3" type="button" onclick="submitForm('1')">Save And Post</button>
-  <button class="btn btn-success mx-3" type="button" onclick="submitForm('0')">Save</button>
+  <button class="btn btn-dark mx-5" type="reset">Batal</button>
+  <button class="btn btn-dark mx-3" type="button" onclick="submitForm('1')">Simpan Dan Terbitkan</button>
+  <button class="btn btn-success mx-3" type="button" onclick="submitForm('0')">Simpan</button>
 </div>
     
 </form>

@@ -4,7 +4,7 @@
 @endsection
 @section('content')
 <section class="content-header">
-  @if ($errors->any())
+  {{-- @if ($errors->any())
     <div class="alert alert-danger">
         <ul>
             @foreach ($errors->all() as $error)
@@ -12,7 +12,7 @@
             @endforeach
         </ul>
     </div>
-@endif
+@endif --}}
 @if(session('success'))
     <div class="alert alert-success">
         {{ session('success') }}
@@ -24,12 +24,12 @@
       <div class="col-sm-6">
         <h1>Edit Artikel</h1>
       </div>
-      <div class="col-sm-6">
+      <!-- <div class="col-sm-6">
         <ol class="breadcrumb float-sm-right">
           <li class="breadcrumb-item"><a href="#">Home</a></li>
           <li class="breadcrumb-item active">Advanced Form</li>
         </ol>
-      </div>
+      </div> -->
     </div>
   </div><!-- /.container-fluid -->
 </section>
@@ -85,7 +85,7 @@
         </div>
         <!-- /.col -->
         <div class="col-md-9">
-              <label class="col-sm-3 col-form-label">Profile Pic</label>
+              <label class="col-sm-3 col-form-label">Gambar Profil</label>
               <div class="col-sm-9">
                 <input type="file" class="form-control" name="gambar_artikel" @error('gambar_artikel') is-invalid @enderror id="selectimage">
               </div>
@@ -185,8 +185,8 @@
           <div class="row">
             <div class="col-md-12">
                 <div class="form-group">
-                    <label for="">Description:</label>
-                    <textarea name="isi_artikel" id="isi_artikel" cols="30" rows="10">{{$artikel->isi_artikel}}</textarea>
+                    <label for="">Isi Artikel:</label>
+                    <textarea name="isi_artikel" id="isi_artikel" cols="30" rows="10">{!! $artikel->isi_artikel !!}</textarea>
                     @error('isi_artikel')
                     <small class="text-danger">{{ $message }}</small>
                     @enderror
@@ -215,12 +215,12 @@
               <div class="form-group">
                 <div class="form-check form-check-inline">
                     <input class="form-check-input" type="radio" id="author_sendiri" name="author" value="sendiri" 
-                          @if (old('author') == 'sendiri' || $author== 'sendiri') checked @endif>
+                          @if (old('author') == 'sendiri' || $artikel->penulis_artikel == auth()->user()->firstname.' '.auth()->user()->lastname) checked @endif>
                     <label class="form-check-label" for="author_sendiri">Artikel Saya</label>
                 </div>
                 <div class="form-check form-check-inline">
                     <input class="form-check-input" type="radio" id="author_lain" name="author" value="lain"
-                          @if (old('author') == 'lain' || $author== 'lain') checked @endif>
+                          @if (old('author') == 'lain' ||  $artikel->penulis_artikel != auth()->user()->firstname.' '.auth()->user()->lastname) checked @endif>
                     <label class="form-check-label" for="author_lain">Bukan Artikel Saya</label>
                 </div>
                 @error('author')
@@ -268,13 +268,47 @@
     </div>
     <!-- /.card-body -->
   </div>
+  <div class="card card-default">
+    <div class="card-header">
+      <h3 class="card-title">Penulis Artikel</h3>
+
+      <div class="card-tools">
+        <button type="button" class="btn btn-tool" data-card-widget="collapse">
+          <i class="fas fa-minus"></i>
+        </button>
+      
+      </div>
+    </div>
+    <!-- /.card-header -->
+    <div class="card-body">
+      <div class="row">
+        <div class="col-lg-12">
+          @foreach ($sumbers as $sumber)
+            <div id="inputFormRow">
+              <div class="input-group mb-3">
+                  <input type="text" name="sumber[]" class="form-control m-input" placeholder="Enter sourcec" autocomplete="off" value="{{$sumber->sumber_artikel}}">
+                  <div class="input-group-append">
+                      <button id="removeRow" type="button" class="btn btn-danger">Hapus</button>
+                  </div>
+              </div>
+          </div>
+
+            @endforeach
+         
+            <div id="newRow"></div>
+            <button id="addRow" type="button" class="btn btn-info">Tambah Baris</button>
+        </div>
+    </div>
+    </div>
+    <!-- /.card-body -->
+  </div>
   <!-- /.row -->
 </div>  
 <input type="text" name="tanggal_publikasi" id="tanggal_publikasi" class="form-control" style="display:none;">
 <div class="m-3 d-flex justify-content-end">
-  <button class="btn btn-dark mx-5" type="reset">Cancel</button>
-  <button class="btn btn-dark mx-3" type="button" onclick="submitForm('1')">Save And Post</button>
-  <button class="btn btn-success mx-3" type="button" onclick="submitForm('0')">Save</button>
+  <button class="btn btn-dark mx-5" type="reset">Batal</button>
+  <button class="btn btn-dark mx-3" type="button" onclick="submitForm('1')">Simpan Dan Terbitkan</button>
+  <button class="btn btn-success mx-3" type="button" onclick="submitForm('0')">Simpan</button>
 </div>
 </form>
 </section>
@@ -353,5 +387,25 @@
                 }
 
         }
+</script>
+<script type="text/javascript">
+  // add row
+  $("#addRow").click(function () {
+      var html = '';
+      html += '<div id="inputFormRow">';
+      html += '<div class="input-group mb-3">';
+      html += '<input type="text" name="sumber[]" class="form-control m-input" placeholder="Enter source" autocomplete="off">';
+      html += '<div class="input-group-append">';
+      html += '<button id="removeRow" type="button" class="btn btn-danger">Remove</button>';
+      html += '</div>';
+      html += '</div>';
+
+      $('#newRow').append(html);
+  });
+
+  // remove row
+  $(document).on('click', '#removeRow', function () {
+      $(this).closest('#inputFormRow').remove();
+  });
 </script>
 @endsection

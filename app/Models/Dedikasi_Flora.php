@@ -35,6 +35,7 @@ class Dedikasi_Flora extends Model
     }
 
 
+<<<<<<< HEAD
     protected $fillable = [
         'id_nurseri',
         'nama_latin',
@@ -71,5 +72,43 @@ class Dedikasi_Flora extends Model
         'updated_at',
         'deleted_at',
     ];
+=======
+    // protected $fillable = [
+    //     'id_nurseri',
+    //     'nama_latin',
+    //     'nama_lokal',
+    //     'deskripsi_singkat',
+    //     'slug',
+    //     'tinggi',
+    //     'satuan',
+    //     'diameter_tajuk',
+    //     'strata',
+    //     'warna_daun',
+    //     'warna_bunga',
+    //     'penyiraman',
+    //     'penyinaran',
+    //     'pemupukan',
+    //     'gambar_1',
+    //     'gambar_2',
+    //     'gambar_3',
+    //     'video',
+    //     'stok',
+    //     'item_terjual',
+    //     'hpp',
+    //     'harga_b2I_31',
+    //     'harga_b2I_11',
+    //     'harga_b2I_1',
+    //     'harga_b2B_31',
+    //     'harga_b2B_11',
+    //     'harga_b2B_1',
+    //     'harga_b2C_31',
+    //     'harga_b2C_11',
+    //     'harga_b2C_1',
+    //     'tanggal_publikasi',
+    //     'created_at',
+    //     'updated_at',
+    //     'deleted_at',
+    // ];
+>>>>>>> d5557992f1c905b8f774d6907a37c029ef4d4590
 
 }

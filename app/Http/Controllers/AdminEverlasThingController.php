@@ -139,7 +139,7 @@ class AdminEverlasThingController extends Controller
             $everlasThing->harga_b2C_11_unit = $harga_b2C_11_unit;
 
             $everlasThing->slug =Str::slug($everlasThing->nama_produk);
-            $everlasThing->created_by = 1;
+            $everlasThing->created_by = auth()->user()->user_id;;
             $everlasThing->save();
             DB::commit();
         } else {
@@ -151,7 +151,7 @@ class AdminEverlasThingController extends Controller
         DB::rollback();
        return redirect()->back()->with('error', 'Terjadi kesalahan. Silakan coba lagi nanti.');
     }
-    return redirect()->route('everlasThings')->with('success', 'Data has been successfully stored.');
+    return redirect()->route('everlasThings')->with('success', 'Data berhasil disimpan!');
     }
     
 
@@ -261,7 +261,7 @@ class AdminEverlasThingController extends Controller
             DB::rollback();
            return redirect()->back()->with('error', 'Terjadi kesalahan. Silakan coba lagi nanti.');
         }
-        return redirect()->route('everlasThings')->with('success', 'Data has been successfully stored.');
+        return redirect()->route('everlasThings')->with('success', 'Data berhasil disimpan!');
     }
 
     public function delete($id)
@@ -303,7 +303,7 @@ class AdminEverlasThingController extends Controller
             return redirect()->back()->with('error', 'Terjadi kesalahan. Silakan coba lagi nanti.');
         }
 
-        return redirect()->route('everlasThings')->with('success', 'Data has been successfully deleted.');
+        return redirect()->route('everlasThings')->with('success', 'Data berhasil dihapus!');
     }
 
     public function post(Request $request)
@@ -319,7 +319,7 @@ class AdminEverlasThingController extends Controller
             DB::rollback();
             return redirect()->back()->with('error', 'Terjadi kesalahan. Silakan coba lagi nanti.');
         }
-        return redirect()->route('everlasThings')->with('success', 'Data status has been successfully changed .');
+        return redirect()->route('everlasThings')->with('success', 'Status data berhasil diubah!');
     }
     
 }
