@@ -3192,3 +3192,23 @@
 1705843831-0154-260373418,1705843830.9087,GET,/daftar-batunesia,"App\Http\Controllers\AdminBatunesiaController@index",200,219.45810317993,request
 1705843833-7897-1592898039,1705843833.628,GET,/daftar-batunesia/3,"App\Http\Controllers\AdminBatunesiaController@view",200,318.43113899231,request
 >>>>>>> new-fahriel-branch
+1705845608-6681-790277084,1705845608.3101,GET,/,"App\Http\Controllers\ArtikelController@index",200,967.17596054077,request
+1705845611-6632-211741578,1705845611.3263,GET,/home/show/Desain-Taman,"App\Http\Controllers\ArtikelController@show",200,653.15008163452,request
+1705845616-2952-2091352451,1705845616.0232,GET,/daftar-produk,"App\Http\Controllers\AdminAgrigardController@index",200,581.71010017395,request
+1705845617-2134-199223675,1705845616.9057,GET,/storage/photos/contoh.png,,404,565.38796424866,request
+1705845620-7500-1185486027,1705845620.4256,GET,/daftar-produk/1,"App\Http\Controllers\AdminAgrigardController@view",200,609.33184623718,request
+1705845621-3101-1683386714,1705845621.0618,GET,/storage/photos/contoh.png,,404,477.81300544739,request
+1705845624-7284-161179265,1705845624.5013,GET,/daftar-batunesia,"App\Http\Controllers\AdminBatunesiaController@index",200,518.99194717407,request
+1705845626-5597-91795185,1705845626.316,GET,/daftar-dedikasiFlora,"App\Http\Controllers\AdminDedikasiFloraController@index",500,1480.7169437408,request
+1705845672-8514-301977536,1705845672.6691,GET,/daftar-dedikasiFlora,"App\Http\Controllers\AdminDedikasiFloraController@index",200,440.69600105286,request
+1705845673-8018-728535753,1705845673.5402,GET,/storage/photos/contoh.png,,404,524.59311485291,request
+1705845676-2665-1570132909,1705845676.1218,GET,/daftar-batunesia,"App\Http\Controllers\AdminBatunesiaController@index",200,313.67492675781,request
+1705845678-2306-1043739485,1705845677.9896,GET,/daftar-konkurito,"App\Http\Controllers\AdminKonkuritoController@index",200,549.39389228821,request
+1705845679-0726-907654086,1705845678.7884,GET,/storage/photos/contoh.png,,404,487.96200752258,request
+1705845680-5663-2050463171,1705845680.3307,GET,/daftar-everlasThing,"App\Http\Controllers\AdminEverlasThingController@index",200,526.43299102783,request
+1705845681-3892-1983642744,1705845681.135,GET,/storage/photos/contoh.png,,404,461.1279964447,request
+1705845682-8819-1730056698,1705845682.6438,GET,/daftar-shineage,"App\Http\Controllers\AdminShineageController@index",500,1435.7960224152,request
+1705845697-4323-2024319029,1705845697.1779,GET,/daftar-shineage,"App\Http\Controllers\AdminShineageController@index",200,566.23983383179,request
+1705845698-2902-97560224,1705845698.0733,GET,/storage/photos/contoh.png,,404,358.57605934143,request
+1705845700-1020-188245456,1705845699.905,GET,/daftar-artikel,"App\Http\Controllers\AdminArtikelController@index",200,429.66985702515,request
+1705845704-2558-66753092,1705845704.0192,GET,/daftar-promo,"App\Http\Controllers\PromoController@index",200,520.71189880371,request
