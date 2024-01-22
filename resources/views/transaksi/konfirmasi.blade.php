@@ -62,6 +62,16 @@
 
     <section id="content">
         <div class="container mt-4">
+            @if($errors->any())
+            <div class="alert alert-danger alert-dismissible fade show mb-3" role="alert">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+            @endif
             <div class="row g-4">
                 <div class="col-sm-8">
                     <div class="bg-light rounded-4 p-4 pt-5" style="box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.25);">
@@ -94,19 +104,23 @@
                                     </div>
                                     <div class="mb-2">
                                         @if ($data['bank'] == 'bni')
-                                        <img src="{{ asset('img/konfirmasi/2560px-BNI_logo.svg.png') }}" width="50" alt="">
+                                        <img src="{{ asset('img/konfirmasi/2560px-BNI_logo.svg.png') }}" width="50"
+                                            alt="">
                                         <span class="ps-1" style="font-size: 11px">Virtual Account BNI</span>
                                         @elseif ($data['bank'] == 'bri')
                                         <img src="{{ asset('img\konfirmasi\Logo-Bank-BRI.png') }}" width="50" alt="">
                                         <span class="ps-1" style="font-size: 11px">Virtual Account BRI</span>
                                         @elseif ($data['bank'] == 'bca')
-                                        <img src="{{ asset('img\konfirmasi\Bank_Central_Asia.svg.webp') }}" width="50" alt="">
+                                        <img src="{{ asset('img\konfirmasi\Bank_Central_Asia.svg.webp') }}" width="50"
+                                            alt="">
                                         <span class="ps-1" style="font-size: 11px">Virtual Account BCA</span>
                                         @elseif ($data['bank'] == 'mandiri')
-                                        <img src="{{ asset('img\konfirmasi\Bank_Mandiri_logo_2016.svg.png') }}" width="50" alt="">
+                                        <img src="{{ asset('img\konfirmasi\Bank_Mandiri_logo_2016.svg.png') }}"
+                                            width="50" alt="">
                                         <span class="ps-1" style="font-size: 11px">Virtual Account Mandiri Bill</span>
                                         @elseif ($data['bank'] == 'permata')
-                                        <img src="{{ asset('img\konfirmasi\Permata_Bank_Logo.png') }}" width="50" alt="">
+                                        <img src="{{ asset('img\konfirmasi\Permata_Bank_Logo.png') }}" width="50"
+                                            alt="">
                                         <span class="ps-1" style="font-size: 11px">Virtual Account Permata</span>
                                         @elseif ($data['bank'] == 'cimb')
                                         <img src="{{ asset('img\konfirmasi\CIMB-Logo.png') }}" width="50" alt="">
@@ -138,10 +152,12 @@
                                     <img src="{{ asset('img\konfirmasi\Logo-Bank-BRI.png') }}" width="100" alt="">
                                     <p class="mb-0" style="font-size: 11px">Virtual Account BRI</p>
                                     @elseif ($data['bank'] == 'bca')
-                                    <img src="{{ asset('img\konfirmasi\Bank_Central_Asia.svg.webp') }}" width="100" alt="">
+                                    <img src="{{ asset('img\konfirmasi\Bank_Central_Asia.svg.webp') }}" width="100"
+                                        alt="">
                                     <p class="mb-0" style="font-size: 11px">Virtual Account BCA</p>
                                     @elseif ($data['bank'] == 'mandiri')
-                                    <img src="{{ asset('img\konfirmasi\Bank_Mandiri_logo_2016.svg.png') }}" width="100" alt="">
+                                    <img src="{{ asset('img\konfirmasi\Bank_Mandiri_logo_2016.svg.png') }}" width="100"
+                                        alt="">
                                     <p class="mb-0" style="font-size: 11px">Virtual Account Mandiri Bill</p>
                                     @elseif ($data['bank'] == 'permata')
                                     <img src="{{ asset('img\konfirmasi\Permata_Bank_Logo.png') }}" width="100" alt="">
@@ -167,12 +183,14 @@
                                 Harap untuk segera membayar dan melakukan konfirmasi</p>
                         </div>
                         <div class="border-top border-4 text-center py-3">
-                            <a href="{{ route('konfirmasi.status', ['order_id' => $order->nomor_order]) }}" class="btn bg-tosca rounded-5 text-white" style="padding: 0; padding-left: 10rem; padding-right: 10rem;">Konfirmasi</a>
+                            <a href="{{ route('konfirmasi.status', ['nomor' => $order->nomor_order, 'data' => base64_encode(json_encode($data))]) }}"
+                                class="btn bg-tosca rounded-5 text-white"
+                                style="padding: 0; padding-left: 10rem; padding-right: 10rem;">Konfirmasi</a>
                         </div>
                     </div>
                 </div>
                 <div class="col-sm-4">
-                <div class="bg-light rounded-4 p-4" style="box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.25);">
+                    <div class="bg-light rounded-4 p-4" style="box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.25);">
                         <div class="border-bottom border-3 mb-2 text-center">
                             <p class="mb-2 fw-bold">Ringkasan Produk</p>
                         </div>
@@ -183,15 +201,17 @@
                                 <p class="mb-2" style="font-size: 12px;"></p>
                             </div>
                             @endforeach
-                            
+
                         </div>
                         <div class="d-flex justify-content-between mt-2">
                             <p class="mb-1 fw-bold" style="font-size: 12px;">Total Produk</p>
-                            <p class="mb-1 fw-bold" style="font-size: 12px;">{{ number_format($order->total_harga, 0, ',', '.') }}</p>
+                            <p class="mb-1 fw-bold" style="font-size: 12px;">
+                                {{ number_format($order->total_harga, 0, ',', '.') }}</p>
                         </div>
                         <div class="d-flex justify-content-between">
                             <p class="mb-1 fw-bold" style="font-size: 12px;">Biaya Pengiriman</p>
-                            <p class="mb-1 fw-bold" style="font-size: 12px;">{{ number_format($order->biaya_ongkir, 0, ',', '.') }}</p>
+                            <p class="mb-1 fw-bold" style="font-size: 12px;">
+                                {{ number_format($order->biaya_ongkir, 0, ',', '.') }}</p>
                         </div>
                         <div class="d-flex justify-content-between">
                             <p class="mb-1 fw-bold" style="font-size: 12px;">Biaya Penanganan</p>
@@ -203,7 +223,8 @@
                         </div>
                         <div class="border-top border-3 d-flex justify-content-between mt-3 pt-2">
                             <p class="mb-1 fw-bold" style="font-size: 12px;">Total Pembayaran</p>
-                            <p class="mb-1 fw-bold" style="font-size: 12px;">{{ number_format($order->grand_total, 0, ',', '.') }}</p>
+                            <p class="mb-1 fw-bold" style="font-size: 12px;">
+                                {{ number_format($order->grand_total, 0, ',', '.') }}</p>
                         </div>
                     </div>
                 </div>

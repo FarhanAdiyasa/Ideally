@@ -25,55 +25,60 @@ class DatabaseSeeder extends Seeder
 {
     public function run()
     {
+
+
+
         // Seed data for 'orders' table
-        DB::table('orders')->insert([
-            'nomor_order' => 'ABC12345',
-            'user_id' => 1, // User ID as per your requirement
-            'status' => 'pending',
-            'created_at' => now(),
-            'updated_at' => now(),
-        ]);
+        // DB::table('orders')->insert([
+        //     'nomor_order' => 'ABC12345',
+        //     'user_id' => 1, // User ID as per your requirement
+        //     'status' => 'pending',
+        //     'created_at' => now(),
+        //     'updated_at' => now(),
+        // ]);
 
-        // Seed data for 'dedikasi_floras_orders' table
-        DB::table('dedikasi_floras_orders')->insert([
-            'id_order' => 1, // Corresponding order ID
-            'id_nurseri' => 1, // Nurseri ID as per your requirement
-        ]);
+        // // Seed data for 'dedikasi_floras_orders' table
+        // DB::table('dedikasi_floras_orders')->insert([
+        //     'id_order' => 1, // Corresponding order ID
+        //     'id_nurseri' => 1, // Nurseri ID as per your requirement
+        // ]);
 
-        // Seed data for 'agrigards_orders' table
-        DB::table('agrigards_orders')->insert([
-            'id_order' => 1, // Corresponding order ID
-            'id_agrigard' => 1, // Agrigard ID as per your requirement
-        ]);
+        // // Seed data for 'agrigards_orders' table
+        // DB::table('agrigards_orders')->insert([
+        //     'id_order' => 1, // Corresponding order ID
+        //     'id_agrigard' => 1, // Agrigard ID as per your requirement
+        // ]);
 
 
-        // Seed data for 'batunesias_orders' table
-        DB::table('batunesias_orders')->insert([
-            'id_order' => 1, // Corresponding order ID
-            'id_batu' => 1, // Batu ID as per your requirement
-        ]);
+        // // Seed data for 'batunesias_orders' table
+        // DB::table('batunesias_orders')->insert([
+        //     'id_order' => 1, // Corresponding order ID
+        //     'id_batu' => 1, // Batu ID as per your requirement
+        // ]);
 
-        // Seed data for 'everlas_things_orders' table
-        DB::table('everlas_things_orders')->insert([
-            'id_order' => 1, // Corresponding order ID
-            'id_everlas_things' => 1, // Everlas Things ID as per your requirement
-        ]);
+        // // Seed data for 'everlas_things_orders' table
+        // DB::table('everlas_things_orders')->insert([
+        //     'id_order' => 1, // Corresponding order ID
+        //     'id_everlas_things' => 1, // Everlas Things ID as per your requirement
+        // ]);
 
-        // Seed data for 'konkuritos_orders' table
-        DB::table('konkuritos_orders')->insert([
-            'id_order' => 1, // Corresponding order ID
-            'id_konkurito' => 1, // Konkurito ID as per your requirement
-        ]);
+        // // Seed data for 'konkuritos_orders' table
+        // DB::table('konkuritos_orders')->insert([
+        //     'id_order' => 1, // Corresponding order ID
+        //     'id_konkurito' => 1, // Konkurito ID as per your requirement
+        // ]);
 
-        // Seed data for 'shineages_orders' table
-        DB::table('shineages_orders')->insert([
-            'id_order' => 1, // Corresponding order ID
-            'id_shineage' => 1, // Shineage ID as per your requirement
-        ]);
+        // // Seed data for 'shineages_orders' table
+        // DB::table('shineages_orders')->insert([
+        //     'id_order' => 1, // Corresponding order ID
+        //     'id_shineage' => 1, // Shineage ID as per your requirement
+        // ]);
+
+        // User::factory(10)->create();
         // Agrigard::factory(100)->create();
         // Konkurito::factory(100)->create();
         // Dedikasi_Flora::factory(100)->create();
-        Shineage::factory(100)->create();
+        // Shineage::factory(100)->create();
         // Everlas_Things::factory(100)->create();
         // Batunesia::factory(100)->create();
 
@@ -104,26 +109,26 @@ class DatabaseSeeder extends Seeder
         //     'role' => 'admin',
         //     'email_verified_at' => now(), // Assuming email is verified at the time of creation
         // ];
-        $userData = [
-            'email' => 'user@gmail.com',
-            'password' => bcrypt('12345'),
-            'google_id' => 'google123',
-            'firstname' => 'Farhan',
-            'lastname' => 'Adiyasa',
-            'address' => '123 Main St',
-            'telephone_number' => '123456789',
-            'birthdate' => '1990-01-01',
-            'gender' => 'male',
-            'profesi' => 'Developer',
-            'profile_picture' => 'Storage/Photos/Foto.jpg',
-            'provinsi' => 'Example Province',
-            'kabupaten' => 'Example Regency',
-            'kecamatan' => 'Example District',
-            'kelurahan' => 'Example Village',
-            'role' => 'admin',
-            'email_verified_at' => now(), // Assuming email is verified at the time of creation
-        ];
-        User::create($userData);        
+        // $userData = [
+        //     'email' => 'user@gmail.com',
+        //     'password' => bcrypt('12345'),
+        //     'google_id' => 'google123',
+        //     'firstname' => 'Farhan',
+        //     'lastname' => 'Adiyasa',
+        //     'address' => '123 Main St',
+        //     'telephone_number' => '123456789',
+        //     'birthdate' => '1990-01-01',
+        //     'gender' => 'male',
+        //     'profesi' => 'Developer',
+        //     'profile_picture' => 'Storage/Photos/Foto.jpg',
+        //     'provinsi' => 'Example Province',
+        //     'kabupaten' => 'Example Regency',
+        //     'kecamatan' => 'Example District',
+        //     'kelurahan' => 'Example Village',
+        //     'role' => 'admin',
+        //     'email_verified_at' => now(), // Assuming email is verified at the time of creation
+        // ];
+        // User::create($userData);        
 
     }
     // public function run(): void

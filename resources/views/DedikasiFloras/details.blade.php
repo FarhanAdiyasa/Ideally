@@ -261,13 +261,13 @@
                             </div>
                             <div class="carousel-inner">
                                 <div class="carousel-item active">
-                                    <img src="{{ $defloDetail->gambar_1 }}" class="d-block w-100" alt="...">
+                                    <img src="{{ asset($defloDetail->gambar_1) }}" class="d-block w-100" alt="...">
                                 </div>
                                 <div class="carousel-item">
-                                    <img src="{{ $defloDetail->gambar_2 }}" class="d-block w-100" alt="...">
+                                    <img src="{{ asset($defloDetail->gambar_2) }}" class="d-block w-100" alt="...">
                                 </div>
                                 <div class="carousel-item">
-                                    <img src="{{ $defloDetail->gambar_3 }}" class="d-block w-100" alt="...">
+                                    <img src="{{ asset($defloDetail->gambar_3) }}" class="d-block w-100" alt="...">
                                 </div>
                             </div>
                         </div>
@@ -464,7 +464,7 @@
                                         <a href="{{ route('deflo.detail', ['id_nurseri' => $defloterkait1->id_nurseri]) }}"
                                             class="card-link">
                                             <div class="card border-0">
-                                                <img src="{{ $defloterkait1->gambar_1 }}" class="card-img-top"
+                                                <img src="{{ asset($defloterkait1->gambar_1) }}" class="card-img-top"
                                                     alt="...">
                                                 <div class="card-body">
                                                     <p class="card-text">{{ $defloterkait1->nama_latin }} - Panjang {{
@@ -495,7 +495,7 @@
                                         <a href="{{ route('deflo.detail', ['id_nurseri' => $defloterkaits2->id_nurseri]) }}"
                                             class="card-link">
                                             <div class="card border-0">
-                                                <img src="{{ $defloterkaits2->gambar_1 }}" class="card-img-top"
+                                                <img src="{{ asset($defloterkaits2->gambar_1) }}" class="card-img-top"
                                                     alt="...">
                                                 <div class="card-body">
                                                     <p class="card-text">{{ $defloterkaits2->nama_latin }} - Panjang {{
@@ -553,7 +553,7 @@
                                         <a href="{{ route('deflo.detail', ['id_nurseri' => $deflorekomendasis->id_nurseri]) }}"
                                             class="card-link">
                                             <div class="card border-0">
-                                                <img src="{{ $deflorekomendasis->gambar_1 }}" class="card-img-top"
+                                                <img src="{{ asset($deflorekomendasis->gambar_1) }}" class="card-img-top"
                                                     alt="...">
                                                 <div class="card-body">
                                                     <p class="card-text">{{ $deflorekomendasis->nama_latin }} - Panjang
@@ -585,7 +585,7 @@
                                         <a href="{{ route('deflo.detail', ['id_nurseri' => $deflorekomendasis2->id_nurseri]) }}"
                                             class="card-link">
                                             <div class="card border-0">
-                                                <img src="{{ $deflorekomendasis2->gambar_1 }}" class="card-img-top"
+                                                <img src="{{ asset($deflorekomendasis2->gambar_1) }}" class="card-img-top"
                                                     alt="...">
                                                 <div class="card-body">
                                                     <p class="card-text">{{ $deflorekomendasis2->nama_latin }} - Panjang
@@ -643,7 +643,7 @@
                                         <a href="{{ route('deflo.detail', ['id_nurseri' => $deflodicaris->id_nurseri]) }}"
                                             class="card-link">
                                             <div class="card border-0">
-                                                <img src="{{ $deflodicaris->gambar_1 }}" class="card-img-top" alt="...">
+                                                <img src="{{ asset($deflodicaris->gambar_1) }}" class="card-img-top" alt="...">
                                                 <div class="card-body">
                                                     <p class="card-text">{{ $deflodicaris->nama_latin }} - Panjang
                                                         {{ $deflodicaris->tinggi }} cm</p>
@@ -673,7 +673,7 @@
                                         <a href="{{ route('deflo.detail', ['id_nurseri' => $deflo2->id_nurseri]) }}"
                                             class="card-link">
                                             <div class="card border-0">
-                                                <img src="{{ $deflo2->gambar_1 }}" class="card-img-top" alt="...">
+                                                <img src="{{ asset($deflo2->gambar_1) }}" class="card-img-top" alt="...">
                                                 <div class="card-body">
                                                     <p class="card-text">{{ $deflo2->nama_latin }} - Panjang {{
                                                         $deflo2->tinggi }} cm</p>

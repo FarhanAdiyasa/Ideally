@@ -5,8 +5,10 @@ namespace App\Http\Controllers;
 use App\Models\Order;
 use GuzzleHttp\Client;
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Session;
 
 class PembayaranController extends Controller
 {
@@ -15,13 +17,22 @@ class PembayaranController extends Controller
     }
 
 
-    public function cekStatus($order_id) {
-        // Gantilah dengan nilai sesuai dengan kebutuhan Anda
+    public function cekStatus($nomor, $data) {
+        $user = Auth::user();
+        $data = json_decode(base64_decode($data), true);
+        $order = Order::where('nomor_order', $nomor)->first();
+        // dd($order);
+        $nomor_order = $order->nomor_order;
+
+        if ($order === null) {
+            return view('transaksi.konfirmasi')->withErrors(['error' => 'Order ID not found!']);
+        }
+        
         $api_key = config('midtrans.serverKey');
 
         $client = new Client();
 
-        $response = $client->request('GET', "https://api.sandbox.midtrans.com/v2/{$order_id}/status", [
+        $response = $client->request('GET', "https://api.sandbox.midtrans.com/v2/{$nomor_order}/status", [
             'headers' => [
                 'Accept' => 'application/json',
                 'Content-Type' => 'application/json',
@@ -33,33 +44,28 @@ class PembayaranController extends Controller
         $body = $response->getBody()->getContents();
 
         // Ubah JSON menjadi array atau objek sesuai kebutuhan
-        $data = json_decode($body, true); // Jika ingin hasil berupa array
+        $dataresponse = json_decode($body, true); // Jika ingin hasil berupa array
 
-        // Lakukan apa yang perlu Anda lakukan dengan data respons
-        dd($data);
+        // Lakukan apa yang perlu Anda lakukan dengan dataresponse respons
+        // dd($dataresponse);
 
-    }
+        $status_code = $dataresponse['status_code'];
+        if ($status_code == "200") {
+            $status = $dataresponse['transaction_status'];
+            if ($status == 'settlement') {
+                $order->status_pembayaran = $status;
+                $order->tanggal_pembayaran = Carbon::parse($dataresponse['transaction_time']);
+                $order->status_pesanan = 'Sedang Dikemas';
 
-    public function order(Request $request){
-        $user = Auth::user();
+                $order->save();
 
-        $data = [
-            'deflo_ids' => $request->deflo_ids,
-            'user_id' => $user->user_id,
-            'status' => 'unpaid',
-        ];
-
-        // dd($data);
-
-        if ($order = Order::create($data)) {
-            // dd($order);
-            // $order->deflos()->sync($data['deflo_ids']);
-            $order->nurseris()->sync($data['deflo_ids']);
-
-            return ('success');
+                return redirect()->route('pesanan.dikemas');
+            }
+            
+            return view('transaksi.konfirmasi', compact('data', 'order', 'user'))->withErrors(['error' => $dataresponse['status_message']]);
         }
         
-        return ('gagal');
+        return view('transaksi.konfirmasi', compact('data', 'order', 'user'))->withErrors(['error' => $dataresponse['status_message']]);
     }
 
     public function bayar(Request $request) {
@@ -74,7 +80,7 @@ class PembayaranController extends Controller
             'biaya_ongkir'  => $biaya_pengiriman,
             'grand_total'   => $gross_amount,
             'bank'          => $request->bank,
-            'status_pembayaran' => 'Pending',
+            'status_pembayaran' => 'pending',
             'status_pesanan'    => 'Menunggu Pembayaran' ])) 
         {   
             foreach (session('cart_deflo', []) as $deflo_id => $deflo) {
@@ -88,6 +94,10 @@ class PembayaranController extends Controller
             foreach (session('cart_everlas', []) as $everlas_id => $everlas) {
                 $quantity = $everlas['quantity'];
                 $order->everlas_things()->attach($everlas_id, ['quantity' => $quantity]);
+            }
+            foreach (session('cart_agrigard', []) as $agrigard_id => $agrigard) {
+                $quantity = $agrigard['quantity'];
+                $order->agrigards()->attach($agrigard_id, ['quantity' => $quantity]);
             }
         }
 
@@ -187,9 +197,5 @@ class PembayaranController extends Controller
         }
 
         return view('transaksi.pembayaran')->withErrors(['error' => 'Please try again']);
-    }
-
-    public function handle_after(Request $request) {
-        dd($request->all());
     }
 }

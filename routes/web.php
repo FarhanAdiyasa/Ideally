@@ -2,6 +2,7 @@
 
 
 use App\Http\Controllers\PembayaranController;
+use App\Http\Controllers\PesananController;
 use App\Models\Artikel;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -305,9 +306,13 @@ Route::post('/testimoni/store', [TestimoniController::class, 'store'])->name('te
 // pembayaran
 Route::get('/pembayaran', [PembayaranController::class, 'index'])->name('index.pembayaran');
 
-Route::post('/bayar', [PembayaranController::class, 'bayar'])->name('store.bayar');
-// });
-
-Route::get('/cek-status/{order_id}', [PembayaranController::class, 'cekStatus'])->name('konfirmasi.status');
+Route::get('/cek-status/{nomor}/{data}', [PembayaranController::class, 'cekStatus'])->name('konfirmasi.status');
 Route::post('/pembayaran', [PembayaranController::class, 'bayar'])->name('store.bayar');
 // Route::post('/konfirmasi', [PembayaranController::class, 'handle_after']);
+
+// Pesanan
+Route::get('/pesanan/sedang-dikemas', [PesananController::class, 'sedangDikemas'])->name('pesanan.dikemas');
+Route::get('/pesanan/dikirim', [PesananController::class, 'dikirim'])->name('pesanan.dikirim');
+Route::get('/pesanan/selesai', [PesananController::class, 'selesai'])->name('pesanan.selesai');
+Route::get('/pesanan/konfirmasi/{id_order}', [PesananController::class, 'konfirmasiPesanan'])->name('pesanan.konfirmasi');
+Route::get('/pesanan/rinician-pesanan/{id_order}', [PesananController::class, 'rincianPesanan'])->name('pesanan.rincian');
