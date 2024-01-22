@@ -1,7 +1,7 @@
 @extends('layouts/admin')
 @section('content')
 <section class="content-header">
-  @if ($errors->any())
+  {{-- @if ($errors->any())
     <div class="alert alert-danger">
         <ul>
             @foreach ($errors->all() as $error)
@@ -9,7 +9,7 @@
             @endforeach
         </ul>
     </div>
-@endif
+@endif --}}
 @if(session('success'))
     <div class="alert alert-success">
         {{ session('success') }}
@@ -19,14 +19,14 @@
   <div class="container-fluid">
     <div class="row mb-2">
       <div class="col-sm-6">
-        <h1>Tambah Promo</h1>
+        <h1>Ubah Promo</h1>
       </div>
-      <div class="col-sm-6">
+      <!-- <div class="col-sm-6">
         <ol class="breadcrumb float-sm-right">
           <li class="breadcrumb-item"><a href="#">Home</a></li>
           <li class="breadcrumb-item active">Advanced Form</li>
         </ol>
-      </div>
+      </div> -->
     </div>
   </div><!-- /.container-fluid -->
 </section>
@@ -52,8 +52,8 @@
       <div class="row">
         <div class="col-md-3">
           <div class="form-group">
-            <label>Jenis Promo</label>
-            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sed, odit ab eum enim illo minima deleniti quae ducimus repudiandae sit!</p>
+            <label>Jenis Promo <span class="wajib">Wajib</span></label>
+            <p>Pilih brand untuk menyeleksi semua brand, pilih produk untuk menyeleksi beberapa produk dari brand yang anda pilih</p>
           </div>
           <!-- /.form-group -->
         </div>
@@ -85,8 +85,8 @@
       <div class="row">
         <div class="col-md-3">
           <div class="form-group">
-            <label>Kategori Produk</label>
-            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sed, odit ab eum enim illo minima deleniti quae ducimus repudiandae sit!</p>
+            <label>Kategori Produk <span class="wajib">Wajib</span></label>
+            <p>Pilih pengguna yang ingin anda beri promo</p>
           </div>
           <!-- /.form-group -->
         </div>
@@ -95,7 +95,7 @@
           <div class="form-group">
             <div class="form-check form-check-inline">
                 <input class="form-check-input" type="checkbox" id="b2i" name="target_promo[]" value="b2i" @if (is_array(old('target_promo')) && in_array('b21', old('target_promo')) || $promo->target_promo_b2i == true) checked @endif>
-                <label class="form-check-label" for="b2i">Business To Individu</label>
+                <label class="form-check-label" for="b2i">Business To Ideally</label>
             </div>
             <div class="form-check form-check-inline">
                 <input class="form-check-input" type="checkbox" id="b2c" name="target_promo[]" value="b2c" @if (is_array(old('target_promo')) && in_array('b2c', old('target_promo')) || $promo->target_promo_b2c == true) checked @endif>
@@ -117,14 +117,14 @@
         <div class="col-md-3">
           <div class="form-group">
             <label>Nama Promo</label>
-            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sed, odit ab eum enim illo minima deleniti quae ducimus repudiandae sit!</p>
+            <p>Nama promo tidak boleh sama dengan nama promo yang sudah ada!</p>
           </div>
           <!-- /.form-group -->
         </div>
         <!-- /.col -->
         <div class="col-md-9">
           <div class="form-group">
-            <input class="form-control" type="text" placeholder="Contoh: Diskon 17 Agustus" name="nama_promo" value="{{old('nama_promo', $promo->nama_promo) }}"/>
+            <input class="form-control" type="text" placeholder="Masukkan Nama Promo" name="nama_promo" value="{{old('nama_promo', $promo->nama_promo) }}"/>
                @error('nama_promo')
             <small class="text-danger">{{ $message }}</small>
             @enderror
@@ -223,8 +223,7 @@
       <div class="row">
         <div class="col-md-3">
           <div class="form-group">
-            <label>Tipe Potongan</label>
-            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sed, odit ab eum enim illo minima deleniti quae ducimus repudiandae sit!</p>
+            <label>Tipe Potongan <span class="wajib">Wajib</span></label>
           </div>
           <!-- /.form-group -->
         </div>
@@ -255,7 +254,7 @@
       <div class="row">
         <div class="col-md-3">
           <div class="form-group">
-            <label id="desk-promo">Nominal Promo</label>
+            <label id="desk-promo">Nominal Promo <span class="wajib">Wajib</span></label>
           </div>
           <!-- /.form-group -->
         </div>
@@ -264,7 +263,7 @@
           <div class="form-group">
             <div class="harga-input">
               <div class="rp">Rp</div>
-              <input data-unify="TextField" placeholder="Masukkan Harga" type="number"  class="css-3017qm rupiah" name="nominal_promo" value="{{old('nominal_promo', number_format($promo->nominal_promo, 0, ',', '.'))}}">
+              <input data-unify="TextField" placeholder="Masukkan Harga" type="text" oninput="validateInput(this)"  class="css-3017qm rupiah" name="nominal_promo" value="{{old('nominal_promo', number_format($promo->nominal_promo, 0, ',', '.'))}}">
             </div>
                @error('nominal_promo')
               <small class="text-danger">{{ $message }}</small>
@@ -278,7 +277,7 @@
       <div class="row">
         <div class="col-md-3">
           <div class="form-group">
-            <label>Minimum Pembelian</label>
+            <label>Minimum Pembelian <span class="wajib">Wajib</span></label>
           </div>
           <!-- /.form-group -->
         </div>
@@ -287,7 +286,7 @@
           <div class="form-group">
             <div class="harga-input">
               <div class="rp">Rp</div>
-              <input data-unify="TextField" placeholder="Masukkan Harga" type="number"  class="css-3017qm rupiah" name="minimum_pembelian" value="{{old('minimum_pembelian', number_format($promo->minimum_pembelian, 0, ',', '.'))}}">
+              <input data-unify="TextField" placeholder="Masukkan Harga" type="text" oninput="validateInput(this)"  class="css-3017qm rupiah" name="minimum_pembelian" value="{{old('minimum_pembelian', number_format($promo->minimum_pembelian, 0, ',', '.'))}}">
             </div>
                @error('minimum_pembelian')
               <small class="text-danger">{{ $message }}</small>
@@ -301,15 +300,15 @@
       <div class="row">
         <div class="col-md-3">
           <div class="form-group">
-            <label>Kuota Promo</label>
-            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sed, odit ab eum enim illo minima deleniti quae ducimus repudiandae sit!</p>
+            <label>Kuota Promo <span class="wajib">Wajib</span></label>
+            <p>Jumlah promo yang disediakan</p>
           </div>
           <!-- /.form-group -->
         </div>
         <!-- /.col -->
         <div class="col-md-4">
           <div class="form-group">
-              <input class="form-control"  id=""  type="number" placeholder="Masukkan Kuota Dalam Bentuk Angka" name="kuota" value="{{old('kuota', $promo->kuota)}}"/>
+              <input class="form-control"  id=""  type="text" oninput="validateInput(this)" placeholder="Masukkan Kuota" name="kuota" value="{{old('kuota', $promo->kuota)}}"/>
                  @error('kuota')
               <small class="text-danger">{{ $message }}</small>
               @enderror
@@ -324,7 +323,7 @@
   </div>
   <div class="card card-default">
     <div class="card-header">
-      <h3 class="card-title" id="brandOrproductT">Pilih Brand</h3>
+      <h3 class="card-title" id="brandOrproductT">Pilih Brand  <span class="wajib">Wajib</span></h3>
 
       <div class="card-tools">
         <button type="button" class="btn btn-tool" data-card-widget="collapse">
@@ -373,9 +372,9 @@
 </div>  
 <input type="text" name="tanggal_publikasi" id="tanggal_publikasi" class="form-control" style="display:none;">
 <div class="m-3 d-flex justify-content-end">
-  <button class="btn btn-dark mx-5" type="reset">Cancel</button>
-  <button class="btn btn-dark mx-3" type="button" onclick="submitPromo('1')">Save And Post</button>
-  <button class="btn btn-success mx-3" type="button" onclick="submitPromo('0')">Save</button>
+  <button class="btn btn-dark mx-5" type="reset">Batal</button>
+  <button class="btn btn-dark mx-3" type="button" onclick="submitPromo('1')">Simpan Dan Terbitkan</button>
+  <button class="btn btn-success mx-3" type="button" onclick="submitPromo('0')">Simpan</button>
 </div>
     
 </form>
@@ -406,14 +405,13 @@
             if(value == "persentase"){
                   container.innerHTML = '<div class="col-md-3">' +
               '<div class="form-group">' +
-              '<label id="desk-promo">Persentase Promo</label>' +
-              ' <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sed, odit ab eum enim illo minima deleniti quae ducimus repudiandae sit!</p>'+
+              '<label id="desk-promo">Persentase Promo <span class="wajib">Wajib</span></label>' +
               '</div>' +
               '</div>' +
               '<div class="col-md-3">' +
               '<div class="form-group">' +
               '<div class="harga-input">' +
-              '<input placeholder="Masukkan Persentase" type="number" class="css-3017qm px-2" name="persentase_promo" value="{{ old("persentase_promo", $promo->persentase_promo) }}">' +
+              '<input placeholder="Masukkan Persentase" type="text" oninput="validateInput(this)" class="css-3017qm px-2" name="persentase_promo" value="{{ old("persentase_promo", $promo->persentase_promo) }}">' +
               '<div class="rp">%</div>' +
               '</div>' +
               '@error("persentase_promo")' +
@@ -491,13 +489,13 @@ document.addEventListener('DOMContentLoaded', function () {
                       '<div class="text-danger">{{ $message }}</div>' +
                       '@enderror' +
                       '</div>';
-                      title.innerHTML = "Pilih Brand";
+                      title.innerHTML = "Pilih Brand <span class='wajib'>Wajib</span>";
                       containerP.innerHTML ="";
               }else if (value == "Produk"){
                 containerP.innerHTML = `<div class="row">
                       <div class="col-md-4">
                           <div class="form-group">
-                              <label>Pilih Brand!</label>
+                              <label>Pilih Brand <span class="wajib">Wajib</span></label>
                           </div>
                       </div>
                       <div class="col-md-8">
@@ -539,7 +537,7 @@ document.addEventListener('DOMContentLoaded', function () {
                   </div>`;
                   loadProduk();
                   container.innerHTML = "";
-                  title.innerHTML = "Pilih Product";
+                  title.innerHTML = "Pilih Produk <span class='wajib'>Wajib</span>";
               }
     }
 
@@ -573,7 +571,10 @@ function showBrandEdit(brand, id) {
 
 function submitPromo(action) {
     var selectedIds = [];
-    var table = $('#products-ss').DataTable();
+    var table = $('#products-ss').DataTable({
+            "iDisplayLength": 10,
+        "bLengthChange": false
+        });
     table.$('input[type="checkbox"]:checked').each(function() {
         var productId = $(this).val();
         selectedIds.push(productId);

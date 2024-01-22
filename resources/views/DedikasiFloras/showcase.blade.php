@@ -2,6 +2,15 @@
 <html lang="en">
 
 <head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-6990JVL0LN"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-6990JVL0LN');
+</script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dedikasi Flora</title>
@@ -13,7 +22,6 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css">
 
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="{{ asset('/css/navbar-style.css') }}">
     <link rel="stylesheet" href="{{ asset ('dedikasi-flora/assets/css/showcase/style.css') }}">
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/css/bootstrap.min.css" rel="stylesheet">
 
@@ -23,13 +31,9 @@
 </head>
 
 <body>
-    <!-- Navbar Utama -->
-    @include('partials.navbar')
-    <!-- End Navbar Utama -->
-
     <!-- Hero & Navigation Bar -->
     <header id="hero-navbar">
-        <div class="hero-img d-flex justify-content-center mt-5">
+        <div class="hero-img d-flex justify-content-center">
             <img src="{{ asset ('dedikasi-flora/assets/img/showcase/06B-SEC01-LATAR.jpg') }}" alt="">
         </div>
         <div class="content z-1 position-absolute" style="width: 100%;">
@@ -274,15 +278,13 @@
                                 <th class="left-align"><a
                                         href="{{ route('deflo.kategori', ['warna_daun' => 'Jingga']) }}">Jingga</a></th>
                                 <th class="right-align"><span>{{ $defloShowcase->filter(function ($item) {
-                                        return strcasecmp($item->warna_daun, 'Jingga') === 0; })->count() }}</span>
-                                </th>
+                                        return strcasecmp($item->warna_daun, 'Jingga') === 0; })->count() }}</span></th>
                             </tr>
                             <tr>
                                 <th class="left-align"><a
                                         href="{{ route('deflo.kategori', ['warna_daun' => 'Kuning']) }}">Kuning</a></th>
                                 <th class="right-align"><span>{{ $defloShowcase->filter(function ($item) {
-                                        return strcasecmp($item->warna_daun, 'Kuning') === 0; })->count() }}</span>
-                                </th>
+                                        return strcasecmp($item->warna_daun, 'Kuning') === 0; })->count() }}</span></th>
                             </tr>
                             <tr>
                                 <th class="left-align"><a
@@ -321,15 +323,13 @@
                                 <th class="left-align"><a
                                         href="{{ route('deflo.kategori', ['warna_bunga' => 'Merah']) }}">Merah</a></th>
                                 <th class="right-align"><span>{{ $defloShowcase->filter(function ($item) {
-                                        return strcasecmp($item->warna_bunga, 'Merah') === 0; })->count() }}</span>
-                                </th>
+                                        return strcasecmp($item->warna_bunga, 'Merah') === 0; })->count() }}</span></th>
                             </tr>
                             <tr>
                                 <th class="left-align"><a
                                         href="{{ route('deflo.kategori', ['warna_bunga' => 'Merah Muda']) }}">Merah
                                         Muda</a></th>
-                                <th class="right-align">
-                                    <span>{{ $defloShowcase->filter(function ($item) {
+                                <th class="right-align"><span>{{ $defloShowcase->filter(function ($item) {
                                         return strcasecmp($item->warna_bunga, 'Merah Muda') === 0; })->count() }}</span>
                                 </th>
                             </tr>
@@ -353,8 +353,7 @@
                                 <th class="left-align"><a
                                         href="{{ route('deflo.kategori', ['warna_bunga' => 'Hijau']) }}">Hijau</a></th>
                                 <th class="right-align"><span>{{ $defloShowcase->filter(function ($item) {
-                                        return strcasecmp($item->warna_bunga, 'Hijau') === 0; })->count() }}</span>
-                                </th>
+                                        return strcasecmp($item->warna_bunga, 'Hijau') === 0; })->count() }}</span></th>
                             </tr>
                             <tr>
                                 <th class="left-align"><a
@@ -372,15 +371,13 @@
                                 <th class="left-align"><a
                                         href="{{ route('deflo.kategori', ['warna_bunga' => 'Putih']) }}">Putih</a></th>
                                 <th class="right-align"><span>{{ $defloShowcase->filter(function ($item) {
-                                        return strcasecmp($item->warna_bunga, 'Putih') === 0; })->count() }}</span>
-                                </th>
+                                        return strcasecmp($item->warna_bunga, 'Putih') === 0; })->count() }}</span></th>
                             </tr>
                             <tr>
                                 <th class="left-align"><a
                                         href="{{ route('deflo.kategori', ['warna_bunga' => 'Hitam']) }}">Hitam</a></th>
                                 <th class="right-align"><span>{{ $defloShowcase->filter(function ($item) {
-                                        return strcasecmp($item->warna_bunga, 'Hitam') === 0; })->count() }}</span>
-                                </th>
+                                        return strcasecmp($item->warna_bunga, 'Hitam') === 0; })->count() }}</span></th>
                             </tr>
                         </table>
                     </div>
@@ -404,6 +401,7 @@
                         </div>
                         <!-- Sorting -->
                         <div class="col-sm-3 col-6">
+
                             @php
                             $hargaTinggi = \App\Models\Dedikasi_Flora::where('stok', '>', 0)
                             ->orderBy('harga_b2C_1_unit', 'asc')
@@ -413,6 +411,7 @@
                             ->orderBy('harga_b2C_1_unit', 'desc')
                             ->first();
                             @endphp
+
                             <select class="form-select" aria-label="Default select example">
                                 <option selected>Choose</option>
                                 <option value="1">Harga Terendah</option>
@@ -427,7 +426,7 @@
                                 <a href="{{ route('deflo.detail', ['id_nurseri' => $dedikasiFlora->id_nurseri]) }}"
                                     class="card-link">
                                     <div class="card border-0">
-                                        <img src="{{ $dedikasiFlora->gambar_1 }}" class="card-img-top" alt="...">
+                                        <img src="{{ asset($dedikasiFlora->gambar_1) }}" class="card-img-top" alt="...">
                                         <div class="card-body">
                                             <p class="card-text">{{ $dedikasiFlora->nama_lokal }} - Panjang {{
                                                 $dedikasiFlora->tinggi }} cm</p>
@@ -457,7 +456,7 @@
     <!-- End Showcase -->
 
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/js/bootstrap.bundle.min.js"></script>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 
     <script>
         $(document).ready(function () {
@@ -480,7 +479,6 @@
                         return textA.localeCompare(textB);
                     }
                 });
-    
                 productsContainer.empty();
     
                 if (searchText === '') {

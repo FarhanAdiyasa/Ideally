@@ -29,6 +29,8 @@ return new class extends Migration
             $table->string('kabupaten');
             $table->string('kecamatan');
             $table->string('kelurahan');
+            $table->string('role')->nullable();
+            $table->text('deskripsi_diri')->nullable();
             $table->string('email_verified_at');
             $table->rememberToken();
             $table->softDeletes();

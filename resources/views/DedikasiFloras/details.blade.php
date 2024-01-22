@@ -2,6 +2,15 @@
 <html lang="en">
 
 <head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-6990JVL0LN"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-6990JVL0LN');
+</script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dedikasi Flora</title>
@@ -24,13 +33,14 @@
 </head>
 
 <body>
+
     <!-- Navbar Utama -->
     @include('partials.navbar')
     <!-- End Navbar Utama -->
 
     <!-- Hero & Navigation Bar -->
     <header id="hero-navbar">
-        <div class="hero-img d-flex justify-content-center mt-5">
+        <div class="hero-img d-flex justify-content-center">
             <img src="{{ asset('dedikasi-flora/assets/img/showcase/06B-SEC01-LATAR.jpg') }}" alt="">
         </div>
         <div class="content z-1 position-absolute" style="width: 100%;">
@@ -252,13 +262,13 @@
                             </div>
                             <div class="carousel-inner">
                                 <div class="carousel-item active">
-                                    <img src="{{ $defloDetail->gambar_1 }}" class="d-block w-100" alt="...">
+                                    <img src="{{ asset($defloDetail->gambar_1) }}" class="d-block w-100" alt="...">
                                 </div>
                                 <div class="carousel-item">
-                                    <img src="{{ $defloDetail->gambar_2 }}" class="d-block w-100" alt="...">
+                                    <img src="{{ asset($defloDetail->gambar_2) }}" class="d-block w-100" alt="...">
                                 </div>
                                 <div class="carousel-item">
-                                    <img src="{{ $defloDetail->gambar_3 }}" class="d-block w-100" alt="...">
+                                    <img src="{{ asset($defloDetail->gambar_3) }}" class="d-block w-100" alt="...">
                                 </div>
                             </div>
                         </div>
@@ -266,7 +276,7 @@
                     <div id="harga-details" class="col-sm-4">
                         <div class="controls text-end mt-5">
                             @php
-                            $prevProduct = \App\Models\Dedikasi_Flora::where('nama_latin', '<', $defloDetail->
+                                $prevProduct = \App\Models\Dedikasi_Flora::where('nama_latin', '<', $defloDetail->
                                 nama_latin)
                                 ->where('stok', '>', 0)
                                 ->orderBy('nama_latin', 'desc')
@@ -277,7 +287,7 @@
                                 ->where('stok', '>', 0)
                                 ->orderBy('nama_latin', 'asc')
                                 ->first();
-                                @endphp
+                            @endphp
 
                                 @if($prevProduct)
                                 <a href="{{ route('deflo.detail', ['id_nurseri' => $prevProduct->id_nurseri]) }}"
@@ -302,7 +312,7 @@
                                             <p>Rp</p>
                                         </th>
                                         <th style="text-align: right;">
-                                            <p>{{ $defloDetail->harga_b2C_1_unit }}</p>
+                                            <p>{{ $defloDetail->harga_b2C_1 }}</p>
                                         </th>
                                     </tr>
                                     <tr>
@@ -310,7 +320,7 @@
                                             <p>Rp</p>
                                         </th>
                                         <th style="text-align: right;">
-                                            <p>{{ $defloDetail->harga_b2C_11_unit }}</p>
+                                            <p>{{ $defloDetail->harga_b2C_11 }}</p>
                                         </th>
                                     </tr>
                                     <tr>
@@ -318,12 +328,12 @@
                                             <p>Rp</p>
                                         </th>
                                         <th style="text-align: right;">
-                                            <p>{{ $defloDetail->harga_b2C_31_unit }}</p>
+                                            <p>{{ $defloDetail->harga_b2C_31 }}</p>
                                         </th>
                                     </tr>
                                 </table>
                                 <div class="add-to-cart py-4" style="margin-top: 60px;">
-                                    <a href="#" onclick="addToCart(event)" class="btn py-0">
+                                    <a href="" class="btn py-0">
                                         <div class="d-flex align-items-center text-white">
                                             <p style="font-size: 30px; font-weight: 700; margin: 0;">+</p>
                                             <p style="font-size: 12px; font-weight: 700; margin: 0;">Tambah Ke Keranjang
@@ -374,6 +384,7 @@
                                     <button class="btn py-0 text-white px-3" onclick="decrease()">
                                         <span><i class="bi bi-chevron-down"></i></span>
                                     </button>
+
                                     <script>
                                         function addToCart(event) {
                                             event
@@ -391,6 +402,7 @@
                                             window.location.href = url;
                                         }
                                     </script>
+
                                 </div>
                             </div>
                             <div class="col-sm-3 p-0">
@@ -455,7 +467,7 @@
                                         <a href="{{ route('deflo.detail', ['id_nurseri' => $defloterkait1->id_nurseri]) }}"
                                             class="card-link">
                                             <div class="card border-0">
-                                                <img src="{{ $defloterkait1->gambar_1 }}" class="card-img-top"
+                                                <img src="{{ asset($defloterkait1->gambar_1) }}" class="card-img-top"
                                                     alt="...">
                                                 <div class="card-body">
                                                     <p class="card-text">{{ $defloterkait1->nama_latin }} - Panjang {{
@@ -486,7 +498,7 @@
                                         <a href="{{ route('deflo.detail', ['id_nurseri' => $defloterkaits2->id_nurseri]) }}"
                                             class="card-link">
                                             <div class="card border-0">
-                                                <img src="{{ $defloterkaits2->gambar_1 }}" class="card-img-top"
+                                                <img src="{{ asset($defloterkaits2->gambar_1) }}" class="card-img-top"
                                                     alt="...">
                                                 <div class="card-body">
                                                     <p class="card-text">{{ $defloterkaits2->nama_latin }} - Panjang {{
@@ -544,7 +556,7 @@
                                         <a href="{{ route('deflo.detail', ['id_nurseri' => $deflorekomendasis->id_nurseri]) }}"
                                             class="card-link">
                                             <div class="card border-0">
-                                                <img src="{{ $deflorekomendasis->gambar_1 }}" class="card-img-top"
+                                                <img src="{{ asset($deflorekomendasis->gambar_1) }}" class="card-img-top"
                                                     alt="...">
                                                 <div class="card-body">
                                                     <p class="card-text">{{ $deflorekomendasis->nama_latin }} - Panjang
@@ -576,7 +588,7 @@
                                         <a href="{{ route('deflo.detail', ['id_nurseri' => $deflorekomendasis2->id_nurseri]) }}"
                                             class="card-link">
                                             <div class="card border-0">
-                                                <img src="{{ $deflorekomendasis2->gambar_1 }}" class="card-img-top"
+                                                <img src="{{ asset($deflorekomendasis2->gambar_1) }}" class="card-img-top"
                                                     alt="...">
                                                 <div class="card-body">
                                                     <p class="card-text">{{ $deflorekomendasis2->nama_latin }} - Panjang
@@ -634,7 +646,7 @@
                                         <a href="{{ route('deflo.detail', ['id_nurseri' => $deflodicaris->id_nurseri]) }}"
                                             class="card-link">
                                             <div class="card border-0">
-                                                <img src="{{ $deflodicaris->gambar_1 }}" class="card-img-top" alt="...">
+                                                <img src="{{ asset($deflodicaris->gambar_1) }}" class="card-img-top" alt="...">
                                                 <div class="card-body">
                                                     <p class="card-text">{{ $deflodicaris->nama_latin }} - Panjang
                                                         {{ $deflodicaris->tinggi }} cm</p>
@@ -664,7 +676,7 @@
                                         <a href="{{ route('deflo.detail', ['id_nurseri' => $deflo2->id_nurseri]) }}"
                                             class="card-link">
                                             <div class="card border-0">
-                                                <img src="{{ $deflo2->gambar_1 }}" class="card-img-top" alt="...">
+                                                <img src="{{ asset($deflo2->gambar_1) }}" class="card-img-top" alt="...">
                                                 <div class="card-body">
                                                     <p class="card-text">{{ $deflo2->nama_latin }} - Panjang {{
                                                         $deflo2->tinggi }} cm</p>
@@ -701,7 +713,8 @@
         </div>
     </section>
     <!-- End Rekomendasi Produk -->
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/numeral.js/2.0.6/numeral.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/js/bootstrap.bundle.min.js"></script>
     <script>
         const summaryPriceInput = document.getElementById('summaryPrice');
         let summaryPriceValue = numeral(summaryPriceInput.value).value();
@@ -755,8 +768,7 @@
         summaryPriceInput.value = numeral(totalPrice).format('0,0');
     }
     </script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/numeral.js/2.0.6/numeral.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/js/bootstrap.bundle.min.js"></script>
+    
 </body>
 
 </html>

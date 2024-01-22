@@ -1,7 +1,7 @@
 @extends('layouts/admin')
 @section('content')
 <section class="content-header">
-  @if ($errors->any())
+  {{-- @if ($errors->any())
     <div class="alert alert-danger">
         <ul>
             @foreach ($errors->all() as $error)
@@ -9,7 +9,7 @@
             @endforeach
         </ul>
     </div>
-@endif
+@endif --}}
 
 @if(session('success'))
     <div class="alert alert-success">
@@ -22,12 +22,12 @@
       <div class="col-sm-6">
         <h1>Edit Produk Agrigard</h1>
       </div>
-      <div class="col-sm-6">
+      <!-- <div class="col-sm-6">
         <ol class="breadcrumb float-sm-right">
           <li class="breadcrumb-item"><a href="#">Home</a></li>
           <li class="breadcrumb-item active">Advanced Form</li>
         </ol>
-      </div>
+      </div> -->
     </div>
   </div><!-- /.container-fluid -->
 </section>
@@ -141,8 +141,8 @@
         <div class="col-12 col-sm-6">
         <div class="form-group">
           <label>Berat (gr)</label>
-            <input type="number" class="form-control" placeholder="Placeholder text" name="berat" value="{{old('berat', $agrigard->berat)}}">
-               @error('berat')
+            <input type="text" oninput="validateInput(this)" class="form-control" placeholder="Placeholder text" name="berat_gram" value="{{old('berat_gram', $agrigard->berat_gram)}}">
+               @error('berat_gram')
             <small class="text-danger">{{ $message }}</small>
             @enderror
         </div>
@@ -249,7 +249,7 @@
         <div class="col-12 col-sm-6">
           <div class="form-group">
             <label>Stok Produk</label>
-              <input type="number" class="form-control" placeholder="Masukkan Stok Dalam Bentuk Angka" name="stok" value="{{old('stok', $agrigard->stok)}}">
+              <input type="text" oninput="validateInput(this)" class="form-control" placeholder="Masukkan Stok Dalam Bentuk Angka" name="stok" value="{{old('stok', $agrigard->stok)}}">
                  @error('stok')
               <small class="text-danger">{{ $message }}</small>
               @enderror
@@ -307,7 +307,7 @@
           <div class="form-group">
             <div class="harga-input">
               <div class="rp">Rp</div>
-              <input data-unify="TextField" placeholder="Masukkan Harga" type="number"  class="css-3017qm rupiah" name="harga_jual_projek_ideally" value="{{old('harga_jual_projek_ideally',  number_format($agrigard->harga_jual_projek_ideally, 0, ',', '.'))}}">
+              <input data-unify="TextField" placeholder="Masukkan Harga" type="text" oninput="validateInput(this)"  class="css-3017qm rupiah" name="harga_jual_projek_ideally" value="{{old('harga_jual_projek_ideally',  number_format($agrigard->harga_jual_projek_ideally, 0, ',', '.'))}}">
             </div>
                @error('harga_jual_projek_ideally')
               <small class="text-danger">{{ $message }}</small>
@@ -318,12 +318,12 @@
         <!-- /.col -->
       </div>
       <div class="row">
-        <label>Harga Business To Individu :</label>
+        <label>Harga Business To Ideally :</label>
       </div>
       <div class="row">
         <div class="col-md-3">
           <div class="form-group">
-            <p>1+ Units</p>
+            <p>1+ Units <span class="wajib">Wajib</span></p>
           </div>
           <!-- /.form-group -->
         </div>
@@ -347,7 +347,7 @@
       <div class="row">
         <div class="col-md-3">
           <div class="form-group">
-            <p>11+ Units</p>
+            <p>11+ Units <span class="wajib">Wajib</span></p>
            
           </div>
           <!-- /.form-group -->
@@ -370,7 +370,7 @@
       <div class="row">
         <div class="col-md-3">
           <div class="form-group">
-            <p>31+ Units</p>
+            <p>31+ Units <span class="wajib">Wajib</span></p>
            
           </div>
           <!-- /.form-group -->
@@ -396,7 +396,7 @@
       <div class="row">
         <div class="col-md-3">
           <div class="form-group">
-            <p>1+ Units</p>
+            <p>1+ Units <span class="wajib">Wajib</span></p>
            
           </div>
           <!-- /.form-group -->
@@ -419,7 +419,7 @@
       <div class="row">
         <div class="col-md-3">
           <div class="form-group">
-            <p>11+ Units</p>
+            <p>11+ Units <span class="wajib">Wajib</span></p>
            
           </div>
           <!-- /.form-group -->
@@ -442,7 +442,7 @@
       <div class="row">
         <div class="col-md-3">
           <div class="form-group">
-            <p>31+ Units</p>
+            <p>31+ Units <span class="wajib">Wajib</span></p>
            
           </div>
           <!-- /.form-group -->
@@ -468,7 +468,7 @@
       <div class="row">
         <div class="col-md-3">
           <div class="form-group">
-            <p>1+ Units:</p>
+            <p>1+ Units <span class="wajib">Wajib</span></p>
            
           </div>
           <!-- /.form-group -->
@@ -491,7 +491,7 @@
       <div class="row">
         <div class="col-md-3">
           <div class="form-group">
-            <p>11+ Units:</p>
+            <p>11+ Units <span class="wajib">Wajib</span></p>
            
           </div>
           <!-- /.form-group -->
@@ -514,7 +514,7 @@
       <div class="row">
         <div class="col-md-3">
           <div class="form-group">
-            <p>31+ Units:</p>
+            <p>31+ Units <span class="wajib">Wajib</span></p>
            
           </div>
           <!-- /.form-group -->
@@ -540,9 +540,9 @@
 </div>  
 <input type="text" name="tanggal_publikasi" id="tanggal_publikasi" class="form-control" style="display:none;">
 <div class="m-3 d-flex justify-content-end">
-  <button class="btn btn-dark mx-5" type="reset">Cancel</button>
-  <button class="btn btn-dark mx-3" type="button" onclick="submitForm('1')">Submit And Post</button>
-  <button class="btn btn-success mx-3" type="button" onclick="submitForm('0')">Submit</button>
+  <button class="btn btn-dark mx-5" type="reset">Batal</button>
+  <button class="btn btn-dark mx-3" type="button" onclick="submitForm('1')">Simpan Dan Terbitkan</button>
+  <button class="btn btn-success mx-3" type="button" onclick="submitForm('0')">Simpan</button>
 </div>
 
 </form>

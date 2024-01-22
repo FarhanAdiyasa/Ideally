@@ -34,7 +34,7 @@ class AdminEverlasThingController extends Controller
             $max = null;
     
             // Iterate over harga columns and compute overall range
-            for ($i = 1; $i <= 3; $i++) {  // Assuming 3 levels: b2I, b2B, b2C
+            for ($i = 1; $i <= 31; $i+=10) {  // Assuming 3 levels: b2I, b2B, b2C
                 $columnName = $columnPrefix . 'b2I_' . $i . '_unit';
                 $harga = $everlasThing->{$columnName};  // Get the harga value for the current column
     
@@ -47,22 +47,52 @@ class AdminEverlasThingController extends Controller
                         $max = $harga;
                     }
                 }
+               
             }
+            for ($i = 1; $i <= 31; $i+=10) {  // Assuming 3 levels: b2I, b2B, b2C
+                $columnName = $columnPrefix . 'b2C_' . $i . '_unit';
+                $harga = $everlasThing->{$columnName};  // Get the harga value for the current column
     
-            // Add the computed range to the everlasThing object
-            $hargaRanges[] = $min !== null && $max !== null ? $min . ' - ' . $max : 'No data';
+                if ($harga !== null) {
+                    if ($min === null || $harga < $min) {
+                        $min = $harga;
+                    }
     
-            // Add the computed ranges to the everlasThing object
+                    if ($max === null || $harga > $max) {
+                        $max = $harga;
+                    }
+                }
+               
+            }
+            for ($i = 1; $i <= 31; $i+=10) {  // Assuming 3 levels: b2I, b2B, b2C
+                $columnName = $columnPrefix . 'b2B_' . $i . '_unit';
+                $harga = $everlasThing->{$columnName};  // Get the harga value for the current column
+    
+                if ($harga !== null) {
+                    if ($min === null || $harga < $min) {
+                        $min = $harga;
+                    }
+    
+                    if ($max === null || $harga > $max) {
+                        $max = $harga;
+                    }
+                }
+            }
+            
+          $hargaRanges[] = $min !== null && $max !== null
+    ? 'Rp. ' . number_format($min, 0, ',', '.') . ' - Rp. ' . number_format($max, 0, ',', '.')
+    : 'No data';
+
             $everlasThing->harga_ranges = $hargaRanges;
         }
     
-        return view('Pages/EverlasThing/list-everlasThing', ['everlasThings' => $everlasThings]);
+        return view('Pages/EverlasThing/list-everlasThing', ['everlasThings' => $everlasThings, "active"=>"everlas"]);
     }
     
     public function view($id)
     {
         $everlasThing = Everlas_Things::findOrFail($id);
-        return view('Pages/EverlasThing/detail-everlasThing', ['everlasThing'=>$everlasThing]);
+        return view('Pages/EverlasThing/detail-everlasThing', ['everlasThing'=>$everlasThing, "active"=>"everlas"]);
     }
 
     /**
@@ -70,7 +100,7 @@ class AdminEverlasThingController extends Controller
      */
     public function create()
     {
-        return view('Pages/EverlasThing/add-everlasThing');
+        return view('Pages/EverlasThing/add-everlasThing',["active"=>"everlas"]);
     }
 
     /**
@@ -139,7 +169,7 @@ class AdminEverlasThingController extends Controller
             $everlasThing->harga_b2C_11_unit = $harga_b2C_11_unit;
 
             $everlasThing->slug =Str::slug($everlasThing->nama_produk);
-            $everlasThing->created_by = 1;
+            $everlasThing->created_by = auth()->user()->user_id;;
             $everlasThing->save();
             DB::commit();
         } else {
@@ -151,7 +181,12 @@ class AdminEverlasThingController extends Controller
         DB::rollback();
        return redirect()->back()->with('error', 'Terjadi kesalahan. Silakan coba lagi nanti.');
     }
-    return redirect()->route('everlasThings')->with('success', 'Data has been successfully stored.');
+    if($request->tanggal_publikasi == "true"){
+        return redirect()->route('everlasThings')->with('success', 'Produk berhasil disimpan dan diterbitkan.');
+   }else{
+        return redirect()->route('everlasThings')->with('success', 'Produk berhasil disimpan.');
+   }
+    
     }
     
 
@@ -166,7 +201,7 @@ class AdminEverlasThingController extends Controller
     public function edit($id)
     {
         $everlasThing = Everlas_Things::findOrFail($id);
-        return view('Pages/EverlasThing/edit-everlasThing', ['everlasThing'=>$everlasThing]);
+        return view('Pages/EverlasThing/edit-everlasThing', ['everlasThing'=>$everlasThing, "active"=>"everlas"]);
     }
 
     /**
@@ -225,6 +260,8 @@ class AdminEverlasThingController extends Controller
                 $everlasThing->gambar_6 = $photoPaths[5] ?? null;
                 if($request->tanggal_publikasi == "true"){
                     $everlasThing->tanggal_publikasi = now();
+                }else{
+                    $everlasThing->tanggal_publikasi = null;
                 }
                 $harga_jual_projek_ideally = str_replace(['.', ''], '', $request['harga_jual_projek_ideally']);
                 $everlasThing->harga_jual_projek_ideally = $harga_jual_projek_ideally;
@@ -261,13 +298,17 @@ class AdminEverlasThingController extends Controller
             DB::rollback();
            return redirect()->back()->with('error', 'Terjadi kesalahan. Silakan coba lagi nanti.');
         }
-        return redirect()->route('everlasThings')->with('success', 'Data has been successfully stored.');
+        if($request->tanggal_publikasi == "true"){
+            return redirect()->route('everlasThings')->with('success', 'Produk berhasil disimpan dan diterbitkan.');
+       }else{
+            return redirect()->route('everlasThings')->with('success', 'Data berhasil disimpan.');
+       }
     }
 
     public function delete($id)
     {
         $everlasThing = Everlas_Things::findOrFail($id);
-        return view('Pages/EverlasThing/delete-everlasThing', ['everlasThing'=>$everlasThing]);
+        return view('Pages/EverlasThing/delete-everlasThing', ['everlasThing'=>$everlasThing, "active"=>"everlas"]);
     }
 
     public function destroy($id)
@@ -303,7 +344,7 @@ class AdminEverlasThingController extends Controller
             return redirect()->back()->with('error', 'Terjadi kesalahan. Silakan coba lagi nanti.');
         }
 
-        return redirect()->route('everlasThings')->with('success', 'Data has been successfully deleted.');
+        return redirect()->route('everlasThings')->with('success', 'Data berhasil dihapus.');
     }
 
     public function post(Request $request)
@@ -319,7 +360,7 @@ class AdminEverlasThingController extends Controller
             DB::rollback();
             return redirect()->back()->with('error', 'Terjadi kesalahan. Silakan coba lagi nanti.');
         }
-        return redirect()->route('everlasThings')->with('success', 'Data status has been successfully changed .');
+        return redirect()->route('everlasThings')->with('success', 'Data berhasil diterbitkan.');
     }
     
 }

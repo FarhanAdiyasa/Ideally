@@ -2,6 +2,15 @@
 <html lang="en">
 
 <head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-6990JVL0LN"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-6990JVL0LN');
+</script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Konkurito</title>
@@ -23,8 +32,10 @@
     <script src="//cdnjs.cloudflare.com/ajax/libs/numeral.js/2.0.6/numeral.min.js"></script>
 
     <!-- JQuery -->
+
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
+
 
 <body>
     <!-- Navbar Utama -->
@@ -141,11 +152,13 @@
                                 <table class="table table-borderless table-harga mt-4">
                                     <tr>
                                         <th>1-10 satuan</th>
+
                                         <th class="bold">{{ $konkuritoDetail->harga_b2C_1_unit }}</th>
                                     </tr>
                                     <tr>
                                         <th>11-30 satuan</th>
                                         <th class="bold">{{ $konkuritoDetail->harga_b2C_11_unit }}</th>
+
                                     </tr>
                                 </table>
                             </div>
@@ -242,7 +255,8 @@
                                                     <p>{{ substr($terkait->deskripsi_singkat, 0, 40) }}..</p>
                                                 </div>
                                                 <div class="harga">
-                                                    <p>Rp {{ $terkait->harga_b2C_1_unit }}</p>
+
+                                                    <p>Rp {{ number_format($terkait->harga_b2C_1_unit, 0, ',', '.') }}</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -840,7 +854,7 @@
             let price = 0;
 
             if (quantity >= 1 && quantity <= 10) {
-                price = {{ $konkuritoDetail->harga_b2C_1_unit }};
+                price = {{ $konkuritoDetail->harga_b2C1_unit }};
             } else if (quantity >= 11 && quantity <= 30) {
                 price = {{ $konkuritoDetail->harga_b2C_11_unit }};
             } 

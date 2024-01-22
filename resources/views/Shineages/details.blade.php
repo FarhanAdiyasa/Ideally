@@ -1,4 +1,13 @@
 <head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-6990JVL0LN"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-6990JVL0LN');
+</script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Details - Shineage</title>
@@ -11,6 +20,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css">
 
     <!-- Custom CSS -->
+
     <link rel="stylesheet" href="{{asset('/css/navbar-style.css')}}">
     <link rel="stylesheet" href="{{ asset ('shineage/assets/css/details/style.css') }}">
 
@@ -29,6 +39,7 @@
 
     <!-- Logo -->
     <section id="logo" class="mt-5">
+
         <div class="container">
             <div class="logo-container bg-yellow">
                 <div class="row g-0">
@@ -310,6 +321,7 @@
                                     </a>
                                 </div>
                                 @endforeach
+
                                 <div class="bg-red mt-3 p-2" style="min-height: 10%;">
                                     <div class="text-white">
                                         <div class="ps-3 mb-1">
@@ -318,6 +330,7 @@
                                     </div>
                                     <a href="{{ route('shineage.showcase') }}" class="btn btn-showcase mt-1">Lihat
                                         Produk Lainnya</a>
+
                                 </div>
                             </section>
                             <!-- End Red Section -->
@@ -330,7 +343,9 @@
                                         <p class="fw-bold mb-2" style="font-size: 13px;">Produk-produk Populer</p>
                                     </div>
                                     <div class="ps-2">
+
                                         <div class="border-start border-light border-4" style="height: 81px;"></div>
+
                                     </div>
                                 </div>
                                 @foreach($shineageterkait->slice($itemsPerSection, $itemsPerSection) as $hijau)
@@ -354,6 +369,7 @@
                                     </a>
                                 </div>
                                 @endforeach
+
                                 <div class="bg-tosca mt-3 p-2" style="height: 5.4%;">
                                     <a href="{{ route('shineage.showcase') }}" class="btn btn-showcase mt-1">Lihat
                                         Produk Lainnya</a>
@@ -390,11 +406,13 @@
                                     </a>
                                 </div>
                                 @endforeach
+
                                 <div class="bg-yellow mt-3 p-2" style="height: 13.7%;">
                                     <div class="text-white">
                                         <div class="ps-3 mb-1">
                                             <div class="border-start border-4 border-light" style="height: 78px;"></div>
                                         </div>
+
                                         <a href="{{ route('shineage.showcase') }}" class="btn btn-showcase mt-1">Lihat
                                             Produk Lainnya</a>
                                     </div>

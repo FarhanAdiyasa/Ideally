@@ -24,12 +24,12 @@
       <div class="col-sm-6">
         <h1>Tambah Artikel</h1>
       </div>
-      <div class="col-sm-6">
+      <!-- <div class="col-sm-6">
         <ol class="breadcrumb float-sm-right">
           <li class="breadcrumb-item"><a href="#">Home</a></li>
           <li class="breadcrumb-item active">Advanced Form</li>
         </ol>
-      </div>
+      </div> -->
     </div>
   </div><!-- /.container-fluid -->
 </section>
@@ -54,15 +54,14 @@
       <div class="row">
         <div class="col-md-3">
           <div class="form-group">
-            <label>Judul Artikel</label>
-            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sed, odit ab eum enim illo minima deleniti quae ducimus repudiandae sit!</p>
+            <label>Judul Artikel <span class="wajib">Wajib</span></label>
           </div>
           <!-- /.form-group -->
         </div>
         <!-- /.col -->
         <div class="col-md-9">
           <div class="form-group">
-              <input id="default" type="text" class="form-control" placeholder="Placeholder text" name="judul_artikel" id="judul_artikel" value="{{old('judul_artikel')}}">
+              <input id="default" type="text" class="form-control" placeholder="Masukkan judul artikel" name="judul_artikel" id="judul_artikel" value="{{old('judul_artikel')}}">
               @error('judul_artikel')
               <small class="text-danger">{{ $message }}</small>
               @enderror
@@ -76,15 +75,15 @@
       </div>
       <div class="row">
         <div class="col-md-3">
-          <div class="form-group">
-            <label>Gambar Artikel</label>
-            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sed, odit ab eum enim illo minima deleniti quae ducimus repudiandae sit!</p>
-          </div>
-          <!-- /.form-group -->
+            <div class="form-group">
+              <label>Gambar Artikel <span class="wajib">Wajib</span></label>
+              <p>Hanya file dengan format JPEG, PNG, dan JPG yang diterima. Ukuran maksimum file adalah 2 MB. Input gambar akan dihapus jika ada input yang tidak valid dalam formulir ini.</p>
+            </div>
+            <!-- /.form-group -->
         </div>
         <!-- /.col -->
         <div class="col-md-9">
-              <label class="col-sm-3 col-form-label">Profile Pic</label>
+              <label class="col-sm-9 col-form-label">Klik / Letakkan Gambar Ke : </label>
               <div class="col-sm-9">
                 <input type="file" class="form-control" name="gambar_artikel" @error('gambar_artikel') is-invalid @enderror id="selectimage">
               </div>
@@ -102,8 +101,8 @@
       <div class="row">
         <div class="col-12 col-sm-6">
           <div class="form-group">
-            <label>Keterangan Gambar</label>
-              <input type="text" class="form-control" placeholder="Placeholder text" name="keterangan_gambar_artikel" value="{{old('keterangan_gambar_artikel')}}">
+            <label>Keterangan Gambar <span class="wajib">Wajib</span></label>
+              <input type="text" class="form-control" placeholder="Masukkan keterangan gambar" name="keterangan_gambar_artikel" value="{{old('keterangan_gambar_artikel')}}">
                  @error('keterangan_gambar_artikel')
               <small class="text-danger">{{ $message }}</small>
               @enderror
@@ -113,9 +112,9 @@
         <!-- /.col -->
         <div class="col-12 col-sm-6">
           <div class="form-group">
-            <label>Keywords Artikel</label>
+            <label>Kata Kunci Artikel <span class="ket-field">Digunakan untuk pencarian artikel</span></label>
             <div class="select2-purple">
-                <input type="text" class="form-control" placeholder="Placeholder text" name="keywords" value="{{old('keywords')}}">
+                <input type="text" class="form-control" placeholder="Masukkan kata kunci. Contoh: taman, pupuk, teknologi." name="keywords" value="{{old('keywords')}}">
                    @error('keywords')
               <small class="text-danger">{{ $message }}</small>
               @enderror
@@ -128,8 +127,7 @@
       <div class="row">
         <div class="col-md-3">
           <div class="form-group">
-            <label>Kategori Artikel</label>
-            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sed, odit ab eum enim illo minima deleniti quae ducimus repudiandae sit!</p>
+            <label>Kategori Artikel <span class="wajib">Wajib</span></label>
           </div>
           <!-- /.form-group -->
         </div>
@@ -168,19 +166,26 @@
     <div class="card-body">
         <div class="row">
             <div class="col-md-12">
-                <div class="form-group">
-                    <label>Deskripsi Artikel</label>
-                      <input type="text" class="form-control" placeholder="Placeholder text" name="deskripsi_artikel" value="{{old('deskripsi_artikel')}}">
-                         @error('deskripsi_artikel')
-                      <small class="text-danger">{{ $message }}</small>
-                      @enderror
+              <div class="row">
+                <div class="col-4">
+                  <div class="form-group">
+                    <label>Deskripsi Artikel <span class="wajib">Wajib</span></label>
+                    <p>Pastikan diisi dengan beberapa <strong>paragraf dari artikel</strong> atau <strong>cuplikan informasi penting</strong> yang dapat menarik perhatian pembaca. Informasi ini akan ditampilkan saat pelanggan melihat pratinjau artikel.</p>
                   </div>
+                </div>
+                <div class="col-7">
+                  <textarea class="form-control" id="" rows="5" placeholder="Masukkan Deskripsi Artikel" name="deskripsi_artikel">{{ old('deskripsi_artikel')}}</textarea>
+                  @error('deskripsi_artikel')
+                  <small class="text-danger">{{ $message }}</small>
+                  @enderror
+                </div>
+              </div>
             </div>
           </div>
           <div class="row">
             <div class="col-md-12">
                 <div class="form-group">
-                    <label for="">Description:</label>
+                    <label for="">Isi Artikel <span class="wajib">Wajib</span></label>
                     <textarea name="isi_artikel" id="isi_artikel" cols="30" rows="10"></textarea>
                     @error('isi_artikel')
                     <small class="text-danger">{{ $message }}</small>
@@ -194,7 +199,7 @@
   </div>
   <div class="card card-default">
     <div class="card-header">
-      <h3 class="card-title">Penulis Artikel</h3>
+      <h3 class="card-title">Penulis Artikel <span class="wajib">Wajib</span></h3>
 
       <div class="card-tools">
         <button type="button" class="btn btn-tool" data-card-widget="collapse">
@@ -228,7 +233,7 @@
             {{-- <div class="col-12 col-sm-6">
               <div class="form-group">
                 <label> Gambar</label>
-                  <textarea type="text" class="form-control" placeholder="Placeholder text" name="keterangan_gambar_artikel" rows="5" >{{old('keterangan_gambar_artikel')}}</textarea>
+                  <textarea type="text" class="form-control" placeholder="Ketikkan disini" name="keterangan_gambar_artikel" rows="5" >{{old('keterangan_gambar_artikel')}}</textarea>
                      @error('keterangan_gambar_artikel')
                   <small class="text-danger">{{ $message }}</small>
                   @enderror
@@ -240,7 +245,7 @@
               <div class="form-group">
                 <label>Keywords Artikel</label>
                 <div class="select2-purple">
-                    <input type="text" class="form-control" placeholder="Placeholder text" name="keywords" value="{{old('keywords')}}">
+                    <input type="text" class="form-control" placeholder="Ketikkan disini" name="keywords" value="{{old('keywords')}}">
                        @error('keywords')
                   <small class="text-danger">{{ $message }}</small>
                   @enderror
@@ -249,7 +254,7 @@
               <div class="form-group">
                 <label>Keywords Artikel</label>
                 <div class="select2-purple">
-                    <input type="text" class="form-control" placeholder="Placeholder text" name="keywords" value="{{old('keywords')}}">
+                    <input type="text" class="form-control" placeholder="Ketikkan disini" name="keywords" value="{{old('keywords')}}">
                        @error('keywords')
                   <small class="text-danger">{{ $message }}</small>
                   @enderror
@@ -263,13 +268,45 @@
     </div>
     <!-- /.card-body -->
   </div>
+  <div class="card card-default">
+    <div class="card-header">
+      <h3 class="card-title">Sumber Artikel</h3>
+
+      <div class="card-tools">
+        <button type="button" class="btn btn-tool" data-card-widget="collapse">
+          <i class="fas fa-minus"></i>
+        </button>
+      
+      </div>
+    </div>
+    <!-- /.card-header -->
+    <div class="card-body">
+      <div class="row">
+        <div class="col-lg-12">
+          <p>Isi dengan sumber artikel. Gunakkan (+) untuk menambahkan field, dan (-) untuk mengurangi.</p>
+            <div id="inputFormRow">
+                <div class="input-group mb-3">
+                    <input type="text" name="sumber[]" class="form-control m-input" placeholder="Masukkan sumber artikel" autocomplete="off">
+                    <div class="input-group-append">
+                        <button id="removeRow" type="button" class="btn btn-danger">-</button>
+                    </div>
+                </div>
+            </div>
+
+            <div id="newRow"></div>
+            <button id="addRow" type="button" class="btn btn-info">+</button>
+        </div>
+    </div>
+    </div>
+    <!-- /.card-body -->
+  </div>
   <!-- /.row -->
 </div>  
 <input type="text" name="tanggal_publikasi" id="tanggal_publikasi" class="form-control" style="display:none;">
-<div class="m-3 d-flex justify-content-end">
-  <button class="btn btn-dark mx-5" type="reset">Cancel</button>
-  <button class="btn btn-dark mx-3" type="button" onclick="submitForm('1')">Save And Post</button>
-  <button class="btn btn-success mx-3" type="button" onclick="submitForm('0')">Save</button>
+<div class="m-3 d-flex justify-content-end py-4">
+  <button class="btn btn-dark mx-5" type="reset">Batal</button>
+  <button class="btn btn-dark mx-3" type="button" onclick="submitForm('1')">Simpan Dan Terbitkan</button>
+  <button class="btn btn-success mx-3" type="button" onclick="submitForm('0')">Simpan</button>
 </div>
 </form>
 </section>
@@ -316,18 +353,18 @@
                     container.innerHTML = `
                     <div class="col-12 col-sm-6">
                         <div class="form-group">
-                          <label>Nama Penulis Artikel</label>
+                          <label>Nama Penulis Artikel <span class="wajib">Wajib</span></label>
                           <div class="select2-purple">
-                              <input type="text" class="form-control" placeholder="Placeholder text" name="penulis_artikel" value="{{ old('penulis_artikel') }}">
+                              <input type="text" class="form-control" placeholder="Ketikkan disini" name="penulis_artikel" value="{{ old('penulis_artikel') }}">
                               @error('penulis_artikel')
                                   <small class="text-danger">{{ $message }}</small>
                               @enderror
                           </div>
                       </div>
                       <div class="form-group">
-                          <label>Profesi Penulis Artikel</label>
+                          <label>Profesi Penulis Artikel <span class="wajib">Wajib</span></label>
                           <div class="select2-purple">
-                              <input type="text" class="form-control" placeholder="Placeholder text" name="profesi_penulis_artikel" value="{{ old('profesi_penulis_artikel') }}">
+                              <input type="text" class="form-control" placeholder="Ketikkan disini" name="profesi_penulis_artikel" value="{{ old('profesi_penulis_artikel') }}">
                               @error('profesi_penulis_artikel')
                                   <small class="text-danger">{{ $message }}</small>
                               @enderror
@@ -336,7 +373,7 @@
                       </div>
                       <div class="col-12 col-sm-6">
                         <div class="form-group">
-                          <label>Deskripsi Singkat Penulis Artikel</label>
+                          <label>Deskripsi Singkat Penulis Artikel <span class="wajib">Wajib</span></label>
                           <textarea type="text" class="form-control" placeholder="Placeholder text" name="deskripsi_singkat_penulis_artikel" rows="5">{{ old('deskripsi_singkat_penulis_artikel') }}</textarea>
                           @error('deskripsi_singkat_penulis_artikel')
                               <small class="text-danger">{{ $message }}</small>
@@ -348,5 +385,25 @@
                 }
 
         }
+</script>
+<script type="text/javascript">
+  // add row
+  $("#addRow").click(function () {
+      var html = '';
+      html += '<div id="inputFormRow">';
+      html += '<div class="input-group mb-3">';
+      html += '<input type="text" name="sumber[]" class="form-control m-input" placeholder="Masukkan sumber artikel" autocomplete="off">';
+      html += '<div class="input-group-append">';
+      html += '<button id="removeRow" type="button" class="btn btn-danger">-</button>';
+      html += '</div>';
+      html += '</div>';
+
+      $('#newRow').append(html);
+  });
+
+  // remove row
+  $(document).on('click', '#removeRow', function () {
+      $(this).closest('#inputFormRow').remove();
+  });
 </script>
 @endsection

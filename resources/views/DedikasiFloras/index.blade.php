@@ -2,6 +2,15 @@
 <html lang="en">
 
 <head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-6990JVL0LN"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-6990JVL0LN');
+</script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dedikasi Flora</title>
@@ -13,7 +22,10 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css">
 
     <!-- Custom CSS -->
+<<<<<<< HEAD
+=======
     <link rel="stylesheet" href="{{ asset('/css/navbar-style.css') }}">
+>>>>>>> d5557992f1c905b8f774d6907a37c029ef4d4590
     <link rel="stylesheet" href="dedikasi-flora/assets/css/style.css">
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/css/bootstrap.min.css" rel="stylesheet">
 
@@ -23,10 +35,13 @@
 </head>
 
 <body>
+<<<<<<< HEAD
+=======
     <!-- Navbar Utama -->
     @include('partials.navbar')
     <!-- End Navbar Utama -->
 
+>>>>>>> d5557992f1c905b8f774d6907a37c029ef4d4590
     <!-- Hero & Navigation Bar -->
     <header id="hero-navbar">
         <div class="hero-img">
@@ -208,7 +223,7 @@
                                 <a href="{{ route('deflo.detail', ['id_nurseri' => $dedikasiFlora->id_nurseri]) }}"
                                     class="card-link">
                                     <div class="card border-0">
-                                        <img src="{{ $dedikasiFlora->gambar_1 }}" class="card-img-top" alt="...">
+                                        <img src="{{ asset($dedikasiFlora->gambar_1) }}" class="card-img-top" alt="...">
                                         <div class="card-body">
                                             <p class="card-text">{{ $dedikasiFlora->nama_lokal }} - Panjang {{
                                                 $dedikasiFlora->tinggi }} cm</p>
@@ -245,6 +260,15 @@
                         </div>
                         <div class="carousel-inner">
                             <div class="carousel-item active">
+<<<<<<< HEAD
+                                <img src="dedikasi-flora/assets/img/06A-SEC03-SLIDER1A.jpg" class="d-block w-100" alt="...">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="dedikasi-flora/assets/img/06A-SEC03-SLIDER1B.jpg" class="d-block w-100" alt="...">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="dedikasi-flora/assets/img/06A-SEC03-SLIDER1C.jpg" class="d-block w-100" alt="...">
+=======
                                 <img src="dedikasi-flora/assets/img/06A-SEC03-SLIDER1A.jpg" class="d-block w-100"
                                     alt="...">
                             </div>
@@ -255,6 +279,7 @@
                             <div class="carousel-item">
                                 <img src="dedikasi-flora/assets/img/06A-SEC03-SLIDER1C.jpg" class="d-block w-100"
                                     alt="...">
+>>>>>>> d5557992f1c905b8f774d6907a37c029ef4d4590
                             </div>
                         </div>
                     </div>
@@ -272,6 +297,15 @@
                         </div>
                         <div class="carousel-inner">
                             <div class="carousel-item active">
+<<<<<<< HEAD
+                                <img src="dedikasi-flora/assets/img/06A-SEC03-SLIDER2A.jpg" class="d-block w-100" alt="...">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="dedikasi-flora/assets/img/06A-SEC03-SLIDER2B.jpg" class="d-block w-100" alt="...">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="dedikasi-flora/assets/img/06A-SEC03-SLIDER2C.jpg" class="d-block w-100" alt="...">
+=======
                                 <img src="dedikasi-flora/assets/img/06A-SEC03-SLIDER2A.jpg" class="d-block w-100"
                                     alt="...">
                             </div>
@@ -282,6 +316,7 @@
                             <div class="carousel-item">
                                 <img src="dedikasi-flora/assets/img/06A-SEC03-SLIDER2C.jpg" class="d-block w-100"
                                     alt="...">
+>>>>>>> d5557992f1c905b8f774d6907a37c029ef4d4590
                             </div>
                         </div>
                     </div>
@@ -389,6 +424,15 @@
                         </div>
                         <div class="carousel-inner">
                             <div class="carousel-item active">
+<<<<<<< HEAD
+                                <img src="dedikasi-flora/assets/img/06A-SEC03-SLIDER3A.jpg" class="d-block w-100" alt="...">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="dedikasi-flora/assets/img/06A-SEC03-SLIDER3B.jpg" class="d-block w-100" alt="...">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="dedikasi-flora/assets/img/06A-SEC03-SLIDER3C.jpg" class="d-block w-100" alt="...">
+=======
                                 <img src="dedikasi-flora/assets/img/06A-SEC03-SLIDER3A.jpg" class="d-block w-100"
                                     alt="...">
                             </div>
@@ -399,6 +443,7 @@
                             <div class="carousel-item">
                                 <img src="dedikasi-flora/assets/img/06A-SEC03-SLIDER3C.jpg" class="d-block w-100"
                                     alt="...">
+>>>>>>> d5557992f1c905b8f774d6907a37c029ef4d4590
                             </div>
                         </div>
                     </div>
@@ -416,6 +461,15 @@
                         </div>
                         <div class="carousel-inner">
                             <div class="carousel-item active">
+<<<<<<< HEAD
+                                <img src="dedikasi-flora/assets/img/06A-SEC03-SLIDER4A.jpg" class="d-block w-100" alt="...">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="dedikasi-flora/assets/img/06A-SEC03-SLIDER4B.jpg" class="d-block w-100" alt="...">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="dedikasi-flora/assets/img/06A-SEC03-SLIDER4C.jpg" class="d-block w-100" alt="...">
+=======
                                 <img src="dedikasi-flora/assets/img/06A-SEC03-SLIDER4A.jpg" class="d-block w-100"
                                     alt="...">
                             </div>
@@ -426,6 +480,7 @@
                             <div class="carousel-item">
                                 <img src="dedikasi-flora/assets/img/06A-SEC03-SLIDER4C.jpg" class="d-block w-100"
                                     alt="...">
+>>>>>>> d5557992f1c905b8f774d6907a37c029ef4d4590
                             </div>
                         </div>
                     </div>
@@ -450,8 +505,12 @@
                                 <div class="col">
                                     <div class="card-artikel">
                                         <div class="card border-0">
+<<<<<<< HEAD
+                                            <img src="dedikasi-flora/assets/img/contoh2.png" class="card-img-top" alt="...">
+=======
                                             <img src="dedikasi-flora/assets/img/contoh2.png" class="card-img-top"
                                                 alt="...">
+>>>>>>> d5557992f1c905b8f774d6907a37c029ef4d4590
                                             <div class="card-body">
                                                 <p class="card-text">Cantik Menjuntai, Inilah 5 Fakta Tentang Tanaman
                                                     Lee Kuan Yew!</p>
@@ -471,8 +530,12 @@
                                 <div class="col">
                                     <div class="card-artikel">
                                         <div class="card border-0">
+<<<<<<< HEAD
+                                            <img src="dedikasi-flora/assets/img/contoh2.png" class="card-img-top" alt="...">
+=======
                                             <img src="dedikasi-flora/assets/img/contoh2.png" class="card-img-top"
                                                 alt="...">
+>>>>>>> d5557992f1c905b8f774d6907a37c029ef4d4590
                                             <div class="card-body">
                                                 <p class="card-text">Cantik Menjuntai, Inilah 5 Fakta Tentang Tanaman
                                                     Lee Kuan Yew!</p>
@@ -491,8 +554,12 @@
                                 <div class="col">
                                     <div class="card-artikel">
                                         <div class="card border-0">
+<<<<<<< HEAD
+                                            <img src="dedikasi-flora/assets/img/contoh2.png" class="card-img-top" alt="...">
+=======
                                             <img src="dedikasi-flora/assets/img/contoh2.png" class="card-img-top"
                                                 alt="...">
+>>>>>>> d5557992f1c905b8f774d6907a37c029ef4d4590
                                             <div class="card-body">
                                                 <p class="card-text">Cantik Menjuntai, Inilah 5 Fakta Tentang Tanaman
                                                     Lee Kuan Yew!</p>
@@ -511,8 +578,12 @@
                                 <div class="col">
                                     <div class="card-artikel">
                                         <div class="card border-0">
+<<<<<<< HEAD
+                                            <img src="dedikasi-flora/assets/img/contoh2.png" class="card-img-top" alt="...">
+=======
                                             <img src="dedikasi-flora/assets/img/contoh2.png" class="card-img-top"
                                                 alt="...">
+>>>>>>> d5557992f1c905b8f774d6907a37c029ef4d4590
                                             <div class="card-body">
                                                 <p class="card-text">Cantik Menjuntai, Inilah 5 Fakta Tentang Tanaman
                                                     Lee Kuan Yew!</p>
@@ -531,8 +602,12 @@
                                 <div class="col">
                                     <div class="card-artikel">
                                         <div class="card border-0">
+<<<<<<< HEAD
+                                            <img src="dedikasi-flora/assets/img/contoh2.png" class="card-img-top" alt="...">
+=======
                                             <img src="dedikasi-flora/assets/img/contoh2.png" class="card-img-top"
                                                 alt="...">
+>>>>>>> d5557992f1c905b8f774d6907a37c029ef4d4590
                                             <div class="card-body">
                                                 <p class="card-text">Cantik Menjuntai, Inilah 5 Fakta Tentang Tanaman
                                                     Lee Kuan Yew!</p>
@@ -557,8 +632,12 @@
                                 <div class="col">
                                     <div class="card-artikel">
                                         <div class="card border-0">
+<<<<<<< HEAD
+                                            <img src="dedikasi-flora/assets/img/contoh2.png" class="card-img-top" alt="...">
+=======
                                             <img src="dedikasi-flora/assets/img/contoh2.png" class="card-img-top"
                                                 alt="...">
+>>>>>>> d5557992f1c905b8f774d6907a37c029ef4d4590
                                             <div class="card-body">
                                                 <p class="card-text">Cantik Menjuntai, Inilah 5 Fakta Tentang Tanaman
                                                     Lee Kuan Yew!</p>
@@ -577,8 +656,12 @@
                                 <div class="col">
                                     <div class="card-artikel">
                                         <div class="card border-0">
+<<<<<<< HEAD
+                                            <img src="dedikasi-flora/assets/img/contoh2.png" class="card-img-top" alt="...">
+=======
                                             <img src="dedikasi-flora/assets/img/contoh2.png" class="card-img-top"
                                                 alt="...">
+>>>>>>> d5557992f1c905b8f774d6907a37c029ef4d4590
                                             <div class="card-body">
                                                 <p class="card-text">Cantik Menjuntai, Inilah 5 Fakta Tentang Tanaman
                                                     Lee Kuan Yew!</p>
@@ -597,8 +680,12 @@
                                 <div class="col">
                                     <div class="card-artikel">
                                         <div class="card border-0">
+<<<<<<< HEAD
+                                            <img src="dedikasi-flora/assets/img/contoh2.png" class="card-img-top" alt="...">
+=======
                                             <img src="dedikasi-flora/assets/img/contoh2.png" class="card-img-top"
                                                 alt="...">
+>>>>>>> d5557992f1c905b8f774d6907a37c029ef4d4590
                                             <div class="card-body">
                                                 <p class="card-text">Cantik Menjuntai, Inilah 5 Fakta Tentang Tanaman
                                                     Lee Kuan Yew!</p>
@@ -617,8 +704,12 @@
                                 <div class="col">
                                     <div class="card-artikel">
                                         <div class="card border-0">
+<<<<<<< HEAD
+                                            <img src="dedikasi-flora/assets/img/contoh2.png" class="card-img-top" alt="...">
+=======
                                             <img src="dedikasi-flora/assets/img/contoh2.png" class="card-img-top"
                                                 alt="...">
+>>>>>>> d5557992f1c905b8f774d6907a37c029ef4d4590
                                             <div class="card-body">
                                                 <p class="card-text">Cantik Menjuntai, Inilah 5 Fakta Tentang Tanaman
                                                     Lee Kuan Yew!</p>
@@ -637,8 +728,12 @@
                                 <div class="col">
                                     <div class="card-artikel">
                                         <div class="card border-0">
+<<<<<<< HEAD
+                                            <img src="dedikasi-flora/assets/img/contoh2.png" class="card-img-top" alt="...">
+=======
                                             <img src="dedikasi-flora/assets/img/contoh2.png" class="card-img-top"
                                                 alt="...">
+>>>>>>> d5557992f1c905b8f774d6907a37c029ef4d4590
                                             <div class="card-body">
                                                 <p class="card-text">Cantik Menjuntai, Inilah 5 Fakta Tentang Tanaman
                                                     Lee Kuan Yew!</p>
@@ -685,6 +780,15 @@
                         </div>
                         <div class="carousel-inner">
                             <div class="carousel-item active">
+<<<<<<< HEAD
+                                <img src="dedikasi-flora/assets/img/06A-SEC03-SLIDER5A.jpg" class="d-block w-100" alt="...">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="dedikasi-flora/assets/img/06A-SEC03-SLIDER5B.jpg" class="d-block w-100" alt="...">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="dedikasi-flora/assets/img/06A-SEC03-SLIDER5C.jpg" class="d-block w-100" alt="...">
+=======
                                 <img src="dedikasi-flora/assets/img/06A-SEC03-SLIDER5A.jpg" class="d-block w-100"
                                     alt="...">
                             </div>
@@ -695,6 +799,7 @@
                             <div class="carousel-item">
                                 <img src="dedikasi-flora/assets/img/06A-SEC03-SLIDER5C.jpg" class="d-block w-100"
                                     alt="...">
+>>>>>>> d5557992f1c905b8f774d6907a37c029ef4d4590
                             </div>
                         </div>
                     </div>
@@ -712,6 +817,15 @@
                         </div>
                         <div class="carousel-inner">
                             <div class="carousel-item active">
+<<<<<<< HEAD
+                                <img src="dedikasi-flora/assets/img/06A-SEC03-SLIDER6A.jpg" class="d-block w-100" alt="...">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="dedikasi-flora/assets/img/06A-SEC03-SLIDER6B.jpg" class="d-block w-100" alt="...">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="dedikasi-flora/assets/img/06A-SEC03-SLIDER6C.jpg" class="d-block w-100" alt="...">
+=======
                                 <img src="dedikasi-flora/assets/img/06A-SEC03-SLIDER6A.jpg" class="d-block w-100"
                                     alt="...">
                             </div>
@@ -722,6 +836,7 @@
                             <div class="carousel-item">
                                 <img src="dedikasi-flora/assets/img/06A-SEC03-SLIDER6C.jpg" class="d-block w-100"
                                     alt="...">
+>>>>>>> d5557992f1c905b8f774d6907a37c029ef4d4590
                             </div>
                         </div>
                     </div>

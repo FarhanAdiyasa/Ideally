@@ -21,12 +21,12 @@
       <div class="col-sm-6">
         <h1>Tambah Produk Agrigard</h1>
       </div>
-      <div class="col-sm-6">
+      <!-- <div class="col-sm-6">
         <ol class="breadcrumb float-sm-right">
           <li class="breadcrumb-item"><a href="#">Home</a></li>
           <li class="breadcrumb-item active">Advanced Form</li>
         </ol>
-      </div>
+      </div> -->
     </div>
   </div><!-- /.container-fluid -->
 </section>
@@ -59,7 +59,7 @@
         <!-- /.col -->
         <div class="col-md-9">
           <div class="form-group">
-              <input id="default" type="text" class="form-control" placeholder="Placeholder text" name="nama_produk" id="nama_produk" value="{{old('nama_produk')}}">
+              <input id="default" type="text" class="form-control" placeholder="Masukkan disini" name="nama_produk" id="nama_produk" value="{{old('nama_produk')}}">
               @error('nama_produk')
               <small class="text-danger">{{ $message }}</small>
               @enderror
@@ -105,7 +105,7 @@
         <div class="col-12 col-sm-6">
           <div class="form-group">
             <label>Spesifikasi Produk</label>
-              <input type="text" class="form-control" placeholder="Placeholder text" name="spesifikasi" value="{{old('spesifikasi')}}">
+              <input type="text" class="form-control" placeholder="Masukkan disini" name="spesifikasi" value="{{old('spesifikasi')}}">
                  @error('spesifikasi')
               <small class="text-danger">{{ $message }}</small>
               @enderror
@@ -139,8 +139,8 @@
         <div class="col-12 col-sm-6">
         <div class="form-group">
           <label>Berat (gr)</label>
-            <input type="number" class="form-control" placeholder="Placeholder text" name="berat" value="{{old('berat')}}">
-               @error('berat')
+            <input type="text" oninput="validateInput(this)" class="form-control" placeholder="Placeholder text" name="berat_gram" value="{{old('berat_gram')}}">
+               @error('berat_gram')
             <small class="text-danger">{{ $message }}</small>
             @enderror
         </div>
@@ -246,7 +246,7 @@
         <div class="col-12 col-sm-6">
           <div class="form-group">
             <label>Stok Produk</label>
-              <input type="number" class="form-control" placeholder="Masukkan Stok Dalam Bentuk Angka" name="stok" value="{{old('stok')}}">
+              <input type="text" oninput="validateInput(this)" class="form-control" placeholder="Masukkan Stok Dalam Bentuk Angka" name="stok" value="{{old('stok')}}">
                  @error('stok')
               <small class="text-danger">{{ $message }}</small>
               @enderror
@@ -304,7 +304,7 @@
           <div class="form-group">
             <div class="harga-input">
               <div class="rp">Rp</div>
-              <input data-unify="TextField" placeholder="Masukkan Harga" type="number"  class="css-3017qm rupiah" name="harga_jual_projek_ideally" value="{{old('harga_jual_projek_ideally')}}">
+              <input data-unify="TextField" placeholder="Masukkan Harga" type="text" oninput="validateInput(this)"  class="css-3017qm rupiah" name="harga_jual_projek_ideally" value="{{old('harga_jual_projek_ideally')}}">
             </div>
             
                @error('harga_jual_projek_ideally')
@@ -316,12 +316,12 @@
         <!-- /.col -->
       </div>
       <div class="row">
-        <label>Harga Business To Individu :</label>
+        <label>Harga Business To Ideally :</label>
       </div>
       <div class="row">
         <div class="col-md-3">
           <div class="form-group">
-            <p>1+ Units</p>
+            <p>1+ Units <span class="wajib">Wajib</span></p>
           </div>
           <!-- /.form-group -->
         </div>
@@ -331,7 +331,7 @@
           <div class="form-group">
             <div class="harga-input">
               <div class="rp">Rp</div>
-              <input data-unify="TextField" placeholder="Masukkan Harga" type="number"  class="css-3017qm rupiah" name="harga_b2I_1_unit" value="{{old('harga_b2I_1_unit')}}">
+              <input data-unify="TextField" placeholder="Masukkan Harga" type="text" oninput="validateInput(this)"  class="css-3017qm rupiah" name="harga_b2I_1_unit" value="{{old('harga_b2I_1_unit')}}">
             </div>
             
                @error('harga_b2I_1_unit')
@@ -345,7 +345,7 @@
       <div class="row">
         <div class="col-md-3">
           <div class="form-group">
-            <p>11+ Units</p>
+            <p>11+ Units <span class="wajib">Wajib</span></p>
            
           </div>
           <!-- /.form-group -->
@@ -355,7 +355,7 @@
           <div class="form-group">
             <div class="harga-input">
               <div class="rp">Rp</div>
-              <input data-unify="TextField" placeholder="Masukkan Harga" type="number"  class="css-3017qm rupiah" name="harga_b2I_11_unit" value="{{old('harga_b2I_11_unit')}}">
+              <input data-unify="TextField" placeholder="Masukkan Harga" type="text" oninput="validateInput(this)"  class="css-3017qm rupiah" name="harga_b2I_11_unit" value="{{old('harga_b2I_11_unit')}}">
             </div>
                @error('harga_b2I_11_unit')
               <small class="text-danger">{{ $message }}</small>
@@ -368,7 +368,7 @@
       <div class="row">
         <div class="col-md-3">
           <div class="form-group">
-            <p>31+ Units</p>
+            <p>31+ Units <span class="wajib">Wajib</span></p>
            
           </div>
           <!-- /.form-group -->
@@ -378,7 +378,7 @@
           <div class="form-group">
             <div class="harga-input">
               <div class="rp">Rp</div>
-              <input data-unify="TextField" placeholder="Masukkan Harga" type="number"  class="css-3017qm rupiah" name="harga_b2I_31_unit" value="{{old('harga_b2I_31_unit')}}">
+              <input data-unify="TextField" placeholder="Masukkan Harga" type="text" oninput="validateInput(this)"  class="css-3017qm rupiah" name="harga_b2I_31_unit" value="{{old('harga_b2I_31_unit')}}">
             </div>
                @error('harga_b2I_31_unit')
               <small class="text-danger">{{ $message }}</small>
@@ -394,7 +394,7 @@
       <div class="row">
         <div class="col-md-3">
           <div class="form-group">
-            <p>1+ Units</p>
+            <p>1+ Units <span class="wajib">Wajib</span></p>
            
           </div>
           <!-- /.form-group -->
@@ -404,7 +404,7 @@
           <div class="form-group">
             <div class="harga-input">
               <div class="rp">Rp</div>
-              <input data-unify="TextField" placeholder="Masukkan Harga" type="number"  class="css-3017qm rupiah" name="harga_b2B_1_unit" value="{{old('harga_b2B_1_unit')}}">
+              <input data-unify="TextField" placeholder="Masukkan Harga" type="text" oninput="validateInput(this)"  class="css-3017qm rupiah" name="harga_b2B_1_unit" value="{{old('harga_b2B_1_unit')}}">
             </div>
                @error('harga_b2B_1_unit')
               <small class="text-danger">{{ $message }}</small>
@@ -417,7 +417,7 @@
       <div class="row">
         <div class="col-md-3">
           <div class="form-group">
-            <p>11+ Units</p>
+            <p>11+ Units <span class="wajib">Wajib</span></p>
            
           </div>
           <!-- /.form-group -->
@@ -427,7 +427,7 @@
           <div class="form-group">
             <div class="harga-input">
               <div class="rp">Rp</div>
-              <input data-unify="TextField" placeholder="Masukkan Harga" type="number"  class="css-3017qm rupiah" name="harga_b2B_11_unit" value="{{old('harga_b2B_11_unit')}}">
+              <input data-unify="TextField" placeholder="Masukkan Harga" type="text" oninput="validateInput(this)"  class="css-3017qm rupiah" name="harga_b2B_11_unit" value="{{old('harga_b2B_11_unit')}}">
             </div>
                @error('harga_b2B_11_unit')
               <small class="text-danger">{{ $message }}</small>
@@ -440,7 +440,7 @@
       <div class="row">
         <div class="col-md-3">
           <div class="form-group">
-            <p>31+ Units</p>
+            <p>31+ Units <span class="wajib">Wajib</span></p>
            
           </div>
           <!-- /.form-group -->
@@ -450,7 +450,7 @@
           <div class="form-group">
             <div class="harga-input">
               <div class="rp">Rp</div>
-              <input data-unify="TextField" placeholder="Masukkan Harga" type="number"  class="css-3017qm rupiah" name="harga_b2B_31_unit" value="{{old('harga_b2B_31_unit')}}">
+              <input data-unify="TextField" placeholder="Masukkan Harga" type="text" oninput="validateInput(this)"  class="css-3017qm rupiah" name="harga_b2B_31_unit" value="{{old('harga_b2B_31_unit')}}">
             </div>
                @error('harga_b2B_31_unit')
               <small class="text-danger">{{ $message }}</small>
@@ -466,7 +466,7 @@
       <div class="row">
         <div class="col-md-3">
           <div class="form-group">
-            <p>1+ Units:</p>
+            <p>1+ Units <span class="wajib">Wajib</span></p>
            
           </div>
           <!-- /.form-group -->
@@ -476,7 +476,7 @@
           <div class="form-group">
             <div class="harga-input">
               <div class="rp">Rp</div>
-              <input data-unify="TextField" placeholder="Masukkan Harga" type="number"  class="css-3017qm rupiah" name="harga_b2C_1_unit" value="{{old('harga_b2C_1_unit')}}">
+              <input data-unify="TextField" placeholder="Masukkan Harga" type="text" oninput="validateInput(this)"  class="css-3017qm rupiah" name="harga_b2C_1_unit" value="{{old('harga_b2C_1_unit')}}">
             </div>
                @error('harga_b2C_1_unit')
               <small class="text-danger">{{ $message }}</small>
@@ -489,7 +489,7 @@
       <div class="row">
         <div class="col-md-3">
           <div class="form-group">
-            <p>11+ Units:</p>
+            <p>11+ Units <span class="wajib">Wajib</span></p>
            
           </div>
           <!-- /.form-group -->
@@ -499,7 +499,7 @@
           <div class="form-group">
             <div class="harga-input">
               <div class="rp">Rp</div>
-              <input data-unify="TextField" placeholder="Masukkan Harga" type="number"  class="css-3017qm rupiah" name="harga_b2C_11_unit" value="{{old('harga_b2C_11_unit')}}">
+              <input data-unify="TextField" placeholder="Masukkan Harga" type="text" oninput="validateInput(this)"  class="css-3017qm rupiah" name="harga_b2C_11_unit" value="{{old('harga_b2C_11_unit')}}">
             </div>
                @error('harga_b2C_11_unit')
               <small class="text-danger">{{ $message }}</small>
@@ -512,7 +512,7 @@
       <div class="row">
         <div class="col-md-3">
           <div class="form-group">
-            <p>31+ Units:</p>
+            <p>31+ Units <span class="wajib">Wajib</span></p>
            
           </div>
           <!-- /.form-group -->
@@ -522,7 +522,7 @@
           <div class="form-group">
             <div class="harga-input">
               <div class="rp">Rp</div>
-              <input data-unify="TextField" placeholder="Masukkan Harga" type="number"  class="css-3017qm rupiah" name="harga_b2C_31_unit" value="{{old('harga_b2C_31_unit')}}">
+              <input data-unify="TextField" placeholder="Masukkan Harga" type="text" oninput="validateInput(this)"  class="css-3017qm rupiah" name="harga_b2C_31_unit" value="{{old('harga_b2C_31_unit')}}">
             </div>
                @error('harga_b2C_31_unit')
               <small class="text-danger">{{ $message }}</small>
@@ -538,9 +538,9 @@
 </div>  
 <input type="text" name="tanggal_publikasi" id="tanggal_publikasi" class="form-control" style="display:none;">
 <div class="m-3 d-flex justify-content-end">
-  <button class="btn btn-dark mx-5" type="reset">Cancel</button>
-  <button class="btn btn-dark mx-3" type="button" onclick="submitForm('1')">Save And Post</button>
-  <button class="btn btn-success mx-3" type="button" onclick="submitForm('0')">Save</button>
+  <button class="btn btn-dark mx-5" type="reset">Batal</button>
+  <button class="btn btn-dark mx-3" type="button" onclick="submitForm('1')">Simpan Dan Terbitkan</button>
+  <button class="btn btn-success mx-3" type="button" onclick="submitForm('0')">Simpan</button>
 </div>
     
 </form>

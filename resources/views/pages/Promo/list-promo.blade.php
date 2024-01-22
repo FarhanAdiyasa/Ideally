@@ -5,7 +5,7 @@
         <div class="container">
             <div class="card mt-5">
                 <div class="card-header">
-                    <h3>List Promos</h3>
+                    <h3>Daftar Promo</h3>
                 </div>
                 <div class="card-body">
                     @if (session('success'))
@@ -17,35 +17,50 @@
                     @endif
 
                     <p>
-                        <a href="{{ route('daftar-promo.tambah') }}" class="btn btn-primary">New Promo</a>
+                        <a href="{{ route('daftar-promo.tambah') }}" class="btn btn-primary">Tambah Promo</a>
                     </p>
                     <table id="promos-table" class="table table-hover table-bordered text-center">
                         <thead>
                             <tr>
+                                 <th>No</th>
+                                <th>Nama Promo</th>
                                 <th>Info Promo</th>
-                                <th>Harga</th>
-                                <th>Stok</th>
+                                <th>Tanggal Promo</th>
                                 <th>Status</th>
-                                <th>Actions</th>
+                                <th>Aksi</th>
                             </tr>
                         </thead>
                         <tbody>
+                            @php 
+                                $no = 1 
+                            @endphp
                             @forelse ($promos as $promo)
                                 <tr>
+                                    <td>
+                                        {{ $loop->iteration }}
+                                    </td>
                                     <td>
                                         <div class=""> {{$promo->nama_promo}}</div>
                                     </td>
                                     <td>
-                                      @if ($promo->tipe_potongan == "nominal")
-                                      Rp. {{$promo->nominal_promo}} 
-                                      @else
-                                      {{$promo->persentase_promo}} %
-                                      @endif
+                                        <div class="col-12">
+                                            <div>
+                                                 {{ $promo->tipe_potongan }}
+                                            </div>
+                                            <div>
+                                                @if ($promo->tipe_potongan == "nominal")
+                                                Rp. {{ number_format($promo->nominal_promo, 0, ',', '.') }} 
+                                                @else
+                                                {{$promo->persentase_promo}} %
+                                                @endif
+                                            </div>
+                                        </div>
+                                    
                                     </td>
-                                    <td>
+                                    <td style="vertical-align: middle;">
                                         {{$promo->tanggal_mulai}} -  {{$promo->tanggal_selesai}}
                                     </td>
-                                    <td>
+                                    <td style="vertical-align: middle;">
                                         {{ $promo->tanggal_publikasi == null ? 'Tidak Aktif' : 'Aktif' }} 
                                         <div class="form-check form-switch">
                                             <form method="post" id="statForm{{ $promo->id_promo }}" action="{{ route('daftar-promo.status')}}">
@@ -76,7 +91,7 @@
                             @empty
                                 <tr>
                                     <td colspan="6">
-                                        No record found!
+                                        Tidak ada data!
                                     </td>
                                 </tr>
                             @endforelse
@@ -113,14 +128,14 @@
 <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/1.11.5/js/dataTables.bootstrap5.min.js"></script>
 <script>
-    // function show(id) {
-    //     $.get("{{ url('/daftar-produk/') }}/" + id, {}, function (data, status) {
-    //         $("#modal-content").html(data);
-    //     })
-    //     .fail(function (xhr, textStatus, errorThrown) {
-    //         console.error("Error: " + errorThrown);
-    //     });
-    // }
+    function show(id) {
+            $.get("{{ url('/daftar-promo/') }}/" + id, {}, function (data, status) {
+            $("#modal-content").html(data);
+        })
+            .fail(function (xhr, textStatus, errorThrown) {
+            console.error("Error: " + errorThrown);
+        });
+    }
     function deletes(id) {
         console.log(id);
         $.get("{{ url('/delete-promo/') }}/" + id, {}, function (data, status) {
@@ -132,13 +147,16 @@
     }
 
     $(document).ready(function() {
-        $('#promos-table').DataTable();
+        $('#promos-table').DataTable({
+                "iDisplayLength": 10,
+        "bLengthChange": false
+        });
     });  
         function store(id) {
      
         $("#statForm" +id).submit();
 
-        }
+    }
     // $(document).ready(function() {
     //     $('.delete').click(function() {
     //         var id = $(this).data('id');

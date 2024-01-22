@@ -29,13 +29,13 @@ class PromoController extends Controller
     {
         $promos = Promo::all();
     
-        return view('Pages/Promo/list-promo', ['promos' => $promos]);
+        return view('Pages/Promo/list-promo', ['promos' => $promos, "active"=>"promo"]);
     }
     
     public function view($id)
     {
         $agrigard = Agrigard::findOrFail($id);
-        return view('Pages/Product/detail-product', ['agrigard'=>$agrigard]);
+        return view('Pages/Product/detail-product', ['agrigard'=>$agrigard, "active"=>"promo"]);
     }
 
     /**
@@ -43,7 +43,7 @@ class PromoController extends Controller
      */
     public function create()
     {
-        return view('Pages/Promo/add-promo');
+        return view('Pages/Promo/add-promo', ["active"=>"promo"]);
     }
 
     /**
@@ -72,7 +72,7 @@ class PromoController extends Controller
             if($request->tanggal_publikasi == "true"){
                 $promo->tanggal_publikasi = now();
             }
-            $promo->created_by = 1;
+            $promo->created_by = auth()->user()->user_id;;
             
             $promo->save();
 
@@ -108,10 +108,10 @@ class PromoController extends Controller
                             $nurseriIds = Dedikasi_Flora::pluck('id_nurseri')->toArray();
                             $promo->nurseris()->sync($nurseriIds);
                         }
-                        // else if ($jenis_brand == "batunesia") {
-                        //     $batunesiaIds = Batunesia::pluck('id_batu')->toArray();
-                        //     $promo->batunesias()->sync($batunesiaIds);
-                        // }
+                        else if ($jenis_brand == "batunesia") {
+                            $batunesiaIds = Batunesia::pluck('id_batu')->toArray();
+                            $promo->batunesias()->sync($batunesiaIds);
+                        }
                         else if ($jenis_brand == "everlas_thing") {
                             $everlassIds = Everlas_Things::pluck('id_everlas_things')->toArray();
                             $promo->everlass()->sync($everlassIds);
@@ -133,7 +133,11 @@ class PromoController extends Controller
         DB::rollback();
        return redirect()->back()->with('error', 'Terjadi kesalahan. Silakan coba lagi nanti.');
     }
-    return redirect()->route('daftar-promo')->with('success', 'Data has been successfully stored.');
+    if($request->tanggal_publikasi == "true"){
+        return redirect()->route('daftar-promo')->with('success', 'Promo berhasil disimpan dan diterbitkan.');
+   }else{
+        return redirect()->route('daftar-promo')->with('success', 'Promo berhasil disimpan.');
+   }
     }
     
 
@@ -141,29 +145,61 @@ class PromoController extends Controller
     {
         $products = "";
         if($brand == "agrigard"){
-            $products = Agrigard::whereNotNull('tanggal_publikasi')->get();
+            $products = Agrigard::all();
         }else if($brand == "batunesia"){
-            $products = Batunesia::whereNotNull('tanggal_publikasi')->get();
+            $products = Batunesia::all();
         }else if($brand == "nurseri"){
-            $products = Dedikasi_Flora::whereNotNull('tanggal_publikasi')->get();
+            $products = Dedikasi_Flora::all();
         }else if($brand == "konkurito"){
-            $products = Konkurito::whereNotNull('tanggal_publikasi')->get();
-        }else if($brand == "everlas_thing"){
-            $products = Everlas_Things::whereNotNull('tanggal_publikasi')->get();
+            $products = Konkurito::all();
+        }else if($brand == "everlasthing"){
+            $products = Everlas_Things::all();
         }else if($brand == "shineage"){
-            $products = Shineage::whereNotNull('tanggal_publikasi')->get();
+            $products = Shineage::all();
         }
         foreach ($products as $product) {
             $hargaRanges = [];
-
+    
+            // Assuming harga columns have a common prefix
             $columnPrefix = 'harga_';
     
             $min = null;
             $max = null;
-
-            for ($i = 1; $i <= 3; $i++) {  
+    
+            // Iterate over harga columns and compute overall range
+            for ($i = 1; $i <= 31; $i+=10) {  // Assuming 3 levels: b2I, b2B, b2C
                 $columnName = $columnPrefix . 'b2I_' . $i . '_unit';
-                $harga = $product->{$columnName};
+                $harga = $product->{$columnName};  // Get the harga value for the current column
+    
+                if ($harga !== null) {
+                    if ($min === null || $harga < $min) {
+                        $min = $harga;
+                    }
+    
+                    if ($max === null || $harga > $max) {
+                        $max = $harga;
+                    }
+                }
+               
+            }
+            for ($i = 1; $i <= 31; $i+=10) {  // Assuming 3 levels: b2I, b2B, b2C
+                $columnName = $columnPrefix . 'b2C_' . $i . '_unit';
+                $harga = $product->{$columnName};  // Get the harga value for the current column
+    
+                if ($harga !== null) {
+                    if ($min === null || $harga < $min) {
+                        $min = $harga;
+                    }
+    
+                    if ($max === null || $harga > $max) {
+                        $max = $harga;
+                    }
+                }
+               
+            }
+            for ($i = 1; $i <= 31; $i+=10) {  // Assuming 3 levels: b2I, b2B, b2C
+                $columnName = $columnPrefix . 'b2B_' . $i . '_unit';
+                $harga = $product->{$columnName};  // Get the harga value for the current column
     
                 if ($harga !== null) {
                     if ($min === null || $harga < $min) {
@@ -175,9 +211,11 @@ class PromoController extends Controller
                     }
                 }
             }
-    
-            $hargaRanges[] = $min !== null && $max !== null ? $min . ' - ' . $max : 'No data';
-    
+            
+          $hargaRanges[] = $min !== null && $max !== null
+    ? 'Rp. ' . number_format($min, 0, ',', '.') . ' - Rp. ' . number_format($max, 0, ',', '.')
+    : 'No data';
+
             $product->harga_ranges = $hargaRanges;
         }
         
@@ -201,15 +239,47 @@ class PromoController extends Controller
         }
         foreach ($products as $product) {
             $hargaRanges = [];
-
+    
+            // Assuming harga columns have a common prefix
             $columnPrefix = 'harga_';
     
             $min = null;
             $max = null;
-
-            for ($i = 1; $i <= 3; $i++) {  
+    
+            // Iterate over harga columns and compute overall range
+            for ($i = 1; $i <= 31; $i+=10) {  // Assuming 3 levels: b2I, b2B, b2C
                 $columnName = $columnPrefix . 'b2I_' . $i . '_unit';
-                $harga = $product->{$columnName};
+                $harga = $product->{$columnName};  // Get the harga value for the current column
+    
+                if ($harga !== null) {
+                    if ($min === null || $harga < $min) {
+                        $min = $harga;
+                    }
+    
+                    if ($max === null || $harga > $max) {
+                        $max = $harga;
+                    }
+                }
+               
+            }
+            for ($i = 1; $i <= 31; $i+=10) {  // Assuming 3 levels: b2I, b2B, b2C
+                $columnName = $columnPrefix . 'b2C_' . $i . '_unit';
+                $harga = $product->{$columnName};  // Get the harga value for the current column
+    
+                if ($harga !== null) {
+                    if ($min === null || $harga < $min) {
+                        $min = $harga;
+                    }
+    
+                    if ($max === null || $harga > $max) {
+                        $max = $harga;
+                    }
+                }
+               
+            }
+            for ($i = 1; $i <= 31; $i+=10) {  // Assuming 3 levels: b2I, b2B, b2C
+                $columnName = $columnPrefix . 'b2B_' . $i . '_unit';
+                $harga = $product->{$columnName};  // Get the harga value for the current column
     
                 if ($harga !== null) {
                     if ($min === null || $harga < $min) {
@@ -221,9 +291,11 @@ class PromoController extends Controller
                     }
                 }
             }
-    
-            $hargaRanges[] = $min !== null && $max !== null ? $min . ' - ' . $max : 'No data';
-    
+            
+          $hargaRanges[] = $min !== null && $max !== null
+    ? 'Rp. ' . number_format($min, 0, ',', '.') . ' - Rp. ' . number_format($max, 0, ',', '.')
+    : 'No data';
+
             $product->harga_ranges = $hargaRanges;
         }
         $idsProdu = DB::table('view_product_promo')
@@ -244,7 +316,7 @@ class PromoController extends Controller
         $promo = Promo::findOrFail($id);
         $results = DB::select('SELECT DISTINCT id_promo, brand_produk FROM view_product_promo WHERE id_promo = :id_promo', ['id_promo' => $promo->id_promo]);
         $brands = array_column($results, 'brand_produk');
-        return view('Pages/Promo/edit-promo', ['promo'=>$promo, "brands"=>$brands]);
+        return view('Pages/Promo/edit-promo', ['promo'=>$promo, "brands"=>$brands, "active"=>'promo']);
     }
 
     /**
@@ -273,8 +345,10 @@ class PromoController extends Controller
 
                 if($request->tanggal_publikasi == "true"){
                     $promo->tanggal_publikasi = now();
+                }else{
+                    $promo->tanggal_publikasi = null;
                 }
-                $promo->created_by = 1;
+                $promo->created_by = auth()->user()->user_id;;
                 
                 $promo->save();
                 $promo->agrigards()->detach();
@@ -340,15 +414,24 @@ class PromoController extends Controller
             DB::rollback();
         return redirect()->back()->with('error', 'Terjadi kesalahan. Silakan coba lagi nanti.');
         }
-        return redirect()->route('daftar-promo')->with('success', 'Data has been successfully stored.');
+        if($request->tanggal_publikasi == "true"){
+            return redirect()->route('daftar-promo')->with('success', 'Promo berhasil disimpan dan diterbitkan.');
+       }else{
+            return redirect()->route('daftar-promo')->with('success', 'Promo berhasil disimpan.');
+       }
     }
 
     public function delete($id)
     {
         $promo = Promo::findOrFail($id);
-        return view('Pages/Promo/delete-promo', ['promo'=>$promo]);
+        return view('Pages/Promo/delete-promo', ['promo'=>$promo, "active"=>"promo"]);
     }
-
+    public function checkPromoUnique($nama_promo)
+    {
+        $isUnique = !Promo::where('nama_promo', $nama_promo)->exists();
+    
+        return response()->json(['unique' => $isUnique]);
+    }
     public function destroy($id)
     {
         try {
@@ -362,12 +445,12 @@ class PromoController extends Controller
             return redirect()->back()->with('error', 'Terjadi kesalahan. Silakan coba lagi nanti.');
         }
 
-        return redirect()->route('daftar-promo')->with('success', 'Data has been successfully deleted.');
+        return redirect()->route('daftar-promo')->with('success', 'Data berhasil dihapus.');
     }
 
     public function post(Request $request)
     {
-        $id = $request->input('id_promo');
+        $id = $request->input('promo_id');
         try {
             DB::beginTransaction();
             $promo = Promo::findOrFail($id);
@@ -379,7 +462,7 @@ class PromoController extends Controller
             DB::rollback();
             return redirect()->back()->with('error', 'Terjadi kesalahan. Silakan coba lagi nanti.');
         }
-        return redirect()->route('daftar-promo')->with('success', 'Data status has been successfully changed .');
+        return redirect()->route('daftar-promo')->with('success', 'Data berhasil diterbitkan.');
     }
     
 }

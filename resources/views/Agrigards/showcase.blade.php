@@ -2,6 +2,15 @@
 <html lang="en">
 
 <head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-6990JVL0LN"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-6990JVL0LN');
+</script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Showcase - Agrigard</title>
@@ -14,7 +23,10 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css">
 
     <!-- Custom CSS -->
+<<<<<<< HEAD
+=======
     <link rel="stylesheet" href="{{asset('/css/navbar-style.css')}}">
+>>>>>>> d5557992f1c905b8f774d6907a37c029ef4d4590
     <link rel="stylesheet" href="{{ asset ('agrigard/assets/css/showcase/style.css') }}">
 
     <!-- Bootstrap JS -->
@@ -22,7 +34,15 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
     <!-- JQuery -->
+<<<<<<< HEAD
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+
+<body>
+    <!-- Header & search -->
+    <section id="header">
+=======
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 </head>
 
 <body>
@@ -32,6 +52,7 @@
 
     <!-- Header & search -->
     <section id="header" class="mt-5">
+>>>>>>> d5557992f1c905b8f774d6907a37c029ef4d4590
         <div class="container">
             <div class="inner-container top-start bg-light">
                 <div class="row">
@@ -66,44 +87,85 @@
         <div class="container mt-4">
             <div class="inner-container top-end bg-orange">
                 <div class="row">
+<<<<<<< HEAD
+                    <div class="col wrapper">
+                        <div class="bg-light rounded-circle" style="height: 25px; width: 25px;"></div>
+                        <div class="text-white text-center m-0">
+                            <p>Pot Plastik</p>
+=======
                 <div class="col wrapper">
                         <div class="text-white text-center m-0">
                             <a href="{{ route('agrigard.kategori', ['kategori' => 'Pot Plastik']) }}">Pot Plastik</a>
+>>>>>>> d5557992f1c905b8f774d6907a37c029ef4d4590
                         </div>
                     </div>
                     <div class="col wrapper">
                         <div class="text-white text-center m-0">
+<<<<<<< HEAD
+                            <p>Pot Plastik</p>
+=======
                         <a href="{{ route('agrigard.kategori', ['kategori' => 'Pot Terracota']) }}">Pot Terracota</a>
+>>>>>>> d5557992f1c905b8f774d6907a37c029ef4d4590
                         </div>
                     </div>
                     <div class="col wrapper">
                         <div class="text-white text-center m-0">
+<<<<<<< HEAD
+                            <p>Pot Terracota</p>
+=======
                         <a href="{{ route('agrigard.kategori', ['kategori' => 'Bibit Tanaman']) }}">Bibit Tanaman</a>
+>>>>>>> d5557992f1c905b8f774d6907a37c029ef4d4590
                         </div>
                     </div>
                     <div class="col wrapper">
                         <div class="text-white text-center m-0">
+<<<<<<< HEAD
+                            <p>Bibit Tanaman</p>
+=======
                         <a href="{{ route('agrigard.kategori', ['kategori' => 'Media Tanam']) }}">Media Tanam</a>
+>>>>>>> d5557992f1c905b8f774d6907a37c029ef4d4590
                         </div>
                     </div>
                     <div class="col wrapper">
                         <div class="text-white text-center m-0">
+<<<<<<< HEAD
+                            <p>Media Tanam</p>
+=======
                         <a href="{{ route('agrigard.kategori', ['kategori' => 'Wadah Tanam']) }}">Wadah Tanam</a>
+>>>>>>> d5557992f1c905b8f774d6907a37c029ef4d4590
                         </div>
                     </div>
                     <div class="col wrapper">
                         <div class="text-white text-center m-0">
+<<<<<<< HEAD
+                            <p>Wadah Tanam</p>
+=======
                         <a href="{{ route('agrigard.kategori', ['kategori' => 'Obat dan Nutrisi']) }}">Obat dan Nutrisi</a>
+>>>>>>> d5557992f1c905b8f774d6907a37c029ef4d4590
                         </div>
                     </div>
                     <div class="col wrapper">
                         <div class="text-white text-center m-0">
+<<<<<<< HEAD
+                            <p>Obat dan Nutrisi</p>
+=======
                         <a href="{{ route('agrigard.kategori', ['kategori' => 'Alat Kerja']) }}">Alat Kerja</a>
+>>>>>>> d5557992f1c905b8f774d6907a37c029ef4d4590
                         </div>
                     </div>
                     <div class="col wrapper">
                         <div class="text-white text-center m-0">
+<<<<<<< HEAD
+                            <p>Alat Kerja</p>
+                        </div>
+                    </div>
+                    <div class="col wrapper">
+                        <div class="bg-light rounded-circle" style="height: 25px; width: 25px;"></div>
+                        <div class="text-white text-center m-0">
+                            <p>Lain - lain</p>
+=======
                             <a href="{{ route('agrigard.kategori', ['kategori' => 'Lain - lain']) }}">Lain - lain</a>
+>>>>>>> d5557992f1c905b8f774d6907a37c029ef4d4590
                         </div>
                     </div>
                 </div>
@@ -222,7 +284,11 @@
         });
     </script>
 
+<<<<<<< HEAD
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+=======
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+>>>>>>> d5557992f1c905b8f774d6907a37c029ef4d4590
 </body>
 
 </html>

@@ -1,6 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-6990JVL0LN"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-6990JVL0LN');
+</script>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -77,120 +86,13 @@
 
       <!-- Right navbar links -->
       <ul class="navbar-nav ml-auto" style="padding-right: 20px;">
-        <!-- Navbar Search -->
-        <li class="nav-item">
-          <a class="nav-link" data-widget="navbar-search" href="#" role="button">
-            <i class="fas fa-search"></i>
-          </a>
-          <div class="navbar-search-block">
-            <form class="form-inline">
-              <div class="input-group input-group-sm">
-                <input class="form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search">
-                <div class="input-group-append">
-                  <button class="btn btn-navbar" type="submit">
-                    <i class="fas fa-search"></i>
-                  </button>
-                  <button class="btn btn-navbar" type="button" data-widget="navbar-search">
-                    <i class="fas fa-times"></i>
-                  </button>
-                </div>
-              </div>
-            </form>
-          </div>
-        </li>
-
-        <!-- Messages Dropdown Menu -->
-        <li class="nav-item dropdown">
-          <a class="nav-link" data-toggle="dropdown" href="#">
-            <i class="far fa-comments"></i>
-            <span class="badge badge-danger navbar-badge">3</span>
-          </a>
-          <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-            <a href="#" class="dropdown-item">
-              <!-- Message Start -->
-              <div class="media">
-                <img src="/lte/dist/img/user1-128x128.jpg" alt="User Avatar" class="img-size-50 mr-3 img-circle">
-                <div class="media-body">
-                  <h3 class="dropdown-item-title">
-                    Brad Diesel
-                    <span class="float-right text-sm text-danger"><i class="fas fa-star"></i></span>
-                  </h3>
-                  <p class="text-sm">Call me whenever you can...</p>
-                  <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
-                </div>
-              </div>
-              <!-- Message End -->
-            </a>
-            <div class="dropdown-divider"></div>
-            <a href="#" class="dropdown-item">
-              <!-- Message Start -->
-              <div class="media">
-                <img src="/lte/dist/img/user8-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
-                <div class="media-body">
-                  <h3 class="dropdown-item-title">
-                    John Pierce
-                    <span class="float-right text-sm text-muted"><i class="fas fa-star"></i></span>
-                  </h3>
-                  <p class="text-sm">I got your message bro</p>
-                  <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
-                </div>
-              </div>
-              <!-- Message End -->
-            </a>
-            <div class="dropdown-divider"></div>
-            <a href="#" class="dropdown-item">
-              <!-- Message Start -->
-              <div class="media">
-                <img src="/lte/dist/img/user3-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
-                <div class="media-body">
-                  <h3 class="dropdown-item-title">
-                    Nora Silvester
-                    <span class="float-right text-sm text-warning"><i class="fas fa-star"></i></span>
-                  </h3>
-                  <p class="text-sm">The subject goes here</p>
-                  <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
-                </div>
-              </div>
-              <!-- Message End -->
-            </a>
-            <div class="dropdown-divider"></div>
-            <a href="#" class="dropdown-item dropdown-footer">See All Messages</a>
-          </div>
-        </li>
-        <!-- Notifications Dropdown Menu -->
-        <li class="nav-item dropdown">
-          <a class="nav-link" data-toggle="dropdown" href="#">
-            <i class="far fa-bell"></i>
-            <span class="badge badge-warning navbar-badge">15</span>
-          </a>
-          <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-            <span class="dropdown-item dropdown-header">15 Notifications</span>
-            <div class="dropdown-divider"></div>
-            <a href="#" class="dropdown-item">
-              <i class="fas fa-envelope mr-2"></i> 4 new messages
-              <span class="float-right text-muted text-sm">3 mins</span>
-            </a>
-            <div class="dropdown-divider"></div>
-            <a href="#" class="dropdown-item">
-              <i class="fas fa-users mr-2"></i> 8 friend requests
-              <span class="float-right text-muted text-sm">12 hours</span>
-            </a>
-            <div class="dropdown-divider"></div>
-            <a href="#" class="dropdown-item">
-              <i class="fas fa-file mr-2"></i> 3 new reports
-              <span class="float-right text-muted text-sm">2 days</span>
-            </a>
-            <div class="dropdown-divider"></div>
-            <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
-          </div>
-        </li>
         <li class="nav-item">
           <a class="nav-link" data-widget="fullscreen" href="#" role="button">
             <i class="fas fa-expand-arrows-alt"></i>
           </a>
         </li>
         <li class="nav-item logout">
-          <a id="logoutButton" class="nav-link" data-toggle="modal" data-target="#logoutModal" href="#" role="button">
+          <a href="{{ route('logout') }}" class="nav-link">
             <i class="fas fa-solid fa-right-from-bracket"></i>
           </a>
         </li>
@@ -211,10 +113,10 @@
         <!-- Sidebar user panel (optional) -->
         <div class="user-panel mt-3 pb-3 mb-3 d-flex">
           <div class="image">
-            <img src="{{asset('/lte/dist/img/user.jpg')}}" class="img-circle elevation-2" alt="User Image">
+            <img src="{{asset(auth()->user()->profile_picture)}}" class="img-circle elevation-2" alt="User Image">
           </div>
           <div class="info">
-            <p class="d-block">Fahriel Dwifaldi</p>
+            <p class="d-block">{{ auth()->user()->firstname }} {{ auth()->user()->lastname }}</p>
           </div>
         </div>
 
@@ -236,7 +138,7 @@
             <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
             <li class="nav-item">
-              <a href="{{ route('dashboard') }}" class="nav-link">
+              <a href="{{ route('dashboard') }}" class="nav-link @if($active == 'Dashboard') active @else  @endif">
                 <i class="nav-icon fas fa-home"></i>
                 <p>
                   Dashboard
@@ -247,7 +149,7 @@
 
             <li class="nav-header">Produk</li>
             <li class="nav-item">
-              <a href="{{ route('dedikasiFloras') }}" class="nav-link">
+              <a href="{{ route('dedikasiFloras') }}" class="nav-link @if($active == 'DedikasiFlora') active @else  @endif">
                 <i class="nav-icon fa fa-solid fa-leaf"></i>
                 <p>
                   Dedikasi Flora
@@ -255,7 +157,7 @@
               </a>
             </li>
             <li class="nav-item">
-              <a href="{{ route('batunesias') }}" class="nav-link">
+              <a href="{{ route('batunesias') }}" class="nav-link @if($active == 'batunesia') active @else  @endif">
                 <i class="nav-icon fa fa-solid fa-box-open"></i>
                 <p>
                   Batunesia
@@ -263,7 +165,7 @@
               </a>
             </li>
             <li class="nav-item">
-              <a href="{{ route('konkuritos') }}" class="nav-link">
+              <a href="{{ route('konkuritos') }}" class="nav-link @if($active == 'konkurito') active @else  @endif">
                 <i class="nav-icon fa fa-solid fa-box-open "></i>
                 <p>
                   Konkurito
@@ -271,7 +173,7 @@
               </a>
             </li>
             <li class="nav-item">
-              <a href="{{ route('everlasThings') }}" class="nav-link">
+              <a href="{{ route('everlasThings') }}" class="nav-link @if($active == 'everlas') active @else  @endif">
                 <i class="nav-icon fa fa-solid fa-chair "></i>
                 <p>
                   Everlas Thing
@@ -279,7 +181,7 @@
               </a>
             </li>
             <li class="nav-item">
-              <a href="{{ route('daftar-produk') }}" class="nav-link">
+              <a href="{{ route('daftar-produk') }}" class="nav-link @if($active == 'agrigard') active @else  @endif">
                 <i class="nav-icon fa fa-solid fa-box-open"></i>
                 <p>
                   Agrigard
@@ -287,7 +189,7 @@
               </a>
             </li>
             <li class="nav-item">
-              <a href="{{ route('shineages') }}" class="nav-link">
+              <a href="{{ route('shineages') }}" class="nav-link @if($active == 'shineage') active @else  @endif">
                 <i class="nav-icon fa fa-solid fa-box-open"></i>
                 <p>
                   Signage
@@ -296,7 +198,7 @@
             </li>
             <li class="nav-header">Edukasi</li>
             <li class="nav-item">
-              <a href="{{ route('artikels') }}"" class="nav-link">
+              <a href="{{ route('artikels') }}" class="nav-link @if($active == 'artikel') active @else  @endif">
                 <i class="nav-icon fa fa-solid fa-newspaper"></i>
                 <p>
                   Artikel
@@ -305,13 +207,22 @@
             </li>
             <li class="nav-header">Promo</li>
             <li class="nav-item">
-              <a href="{{ route('daftar-promo') }}" class="nav-link">
+              <a href="{{ route('daftar-promo') }}" class="nav-link @if($active == 'promo') active @else  @endif">
                 <i class="nav-icon fa fa-solid fa-percent"></i>
                 <p>
                   Promo
                 </p>
               </a>
             </li>
+            {{-- <li class="nav-header">User</li>
+            <li class="nav-item">
+              <a href="{{ route('daftar-user') }}" class="nav-link">
+                <i class="nav-icon fa fa-solid fa-users"></i>
+                <p>
+                  User
+                </p>
+              </a>
+            </li> --}}
           </ul>
         </nav>
         <!-- /.sidebar-menu -->
@@ -342,7 +253,7 @@
 
 <!-- jQuery -->
 <script src="{{ asset('lte/plugins/jquery/jquery.min.js')}}"></script>
-{{-- <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script> --}}
+{{-- <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script> --}}
 <script src="{{ asset('js/jquery.mask.min.js')}}"></script>
 <!-- Bootstrap 4 -->
 <script src="{{ asset('lte/plugins/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
@@ -463,14 +374,17 @@
 </script>
 <script src="{{ asset('js/admin_side.js')}}"></script>
 <script>
+ 
   document.addEventListener('DOMContentLoaded', function() {
     var logoutButton = document.getElementById('logoutButton');
-
-    logoutButton.addEventListener('click', function(event) {
+    if(logoutButton){
+      logoutButton.addEventListener('click', function(event) {
       event.preventDefault();
 
       $('#logoutModal').modal('show');
     });
+    }
+   
   });
 </script>
 

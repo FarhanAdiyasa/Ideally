@@ -5,7 +5,7 @@
         <div class="container">
             <div class="card mt-5">
                 <div class="card-header">
-                    <h3>List Products</h3>
+                    <h3>Daftar Konkurito</h3>
                 </div>
                 <div class="card-body">
                     @if (session('success'))
@@ -17,21 +17,28 @@
                     @endif
 
                     <p>
-                        <a href="{{ route('konkuritos.tambah') }}" class="btn btn-primary">New konkurito</a>
+                        <a href="{{ route('konkuritos.tambah') }}" class="btn btn-primary">Tambah Konkurito</a>
                     </p>
                     <table id="products-table" class="table table-hover table-bordered text-center">
                         <thead>
                             <tr>
-                                <th>Info konkurito</th>
+                                 <th>No</th>
+                                <th>Info Konkurito</th>
                                 <th>Harga</th>
                                 <th>Stok</th>
                                 <th>Status</th>
-                                <th>Actions</th>
+                                <th>Aksi</th>
                             </tr>
                         </thead>
                         <tbody>
+                            @php 
+                                $no = 1 
+                            @endphp
                             @forelse ($konkuritos as $konkurito)
                                 <tr>
+                                    <td>
+                                        {{ $loop->iteration }}
+                                    </td>
                                     <td>
                                         <div class="row">
                                             <div class="col-4"><img src="{{  asset('storage/' . $konkurito->gambar_1)}}" width="56" height="56" alt="Product Image"></div>
@@ -45,12 +52,12 @@
                                             </div>
                                         </div>
                                     </td>
-                                    <td>
+                                    <td style="vertical-align: middle;">
                                         @foreach ($konkurito->harga_ranges as $hargaRange)
-                                            <div>{{ $hargaRange }}</div>
+                                             <div>{{ $hargaRange }}</div>
                                         @endforeach
                                     </td>
-                                    <td>
+                                    <td style="vertical-align: middle;">
                                         <div>
                                             Stok: {{ $konkurito->stok }}
                                        </div>
@@ -58,7 +65,7 @@
                                           Terjual : {{ $konkurito->item_terjual }}
                                        </div>
                                     </td>
-                                    <td>
+                                    <td style="vertical-align: middle;">
                                         {{ $konkurito->tanggal_publikasi == null ? 'Tidak Aktif' : 'Aktif' }} 
                                         <div class="form-check form-switch">
                                             <form method="post" id="statForm{{ $konkurito->id_konkurito }}" action="{{ route('konkuritos.status')}}">
@@ -68,8 +75,8 @@
                                                 <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked{{ $konkurito->id_konkurito }}" onchange="store({{ $konkurito->id_konkurito }})" @if ($konkurito->tanggal_publikasi !== null) checked @endif>
                                             </form>
                                         </div>
-                                    </td>                                      
-                                    <td>
+                                    </td>   
+                                    <td style="vertical-align: middle;">
                                         <button type="button" class="btn btn-primary" onclick="show({{$konkurito->id_konkurito}})" data-toggle="modal" data-target=".bd-example-modal-lg"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-info-circle" viewBox="0 0 16 16">
                                             <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"/>
                                             <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0"/>
@@ -89,7 +96,7 @@
                             @empty
                                 <tr>
                                     <td colspan="6">
-                                        No record found!
+                                        Tidak ada data!
                                     </td>
                                 </tr>
                             @endforelse
@@ -144,8 +151,12 @@
         });
     }
 
+    
     $(document).ready(function() {
-        $('#products-table').DataTable();
+        $('#products-table').DataTable({
+            "iDisplayLength": 10,
+        "bLengthChange": false
+        });
     });  
     function store(id) {
     $("#statForm" + id).submit();

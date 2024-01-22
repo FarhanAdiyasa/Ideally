@@ -33,7 +33,7 @@ class AdminBatunesiaController extends Controller
             $max = null;
     
             // Iterate over harga columns and compute overall range
-            for ($i = 1; $i <= 3; $i++) {  // Assuming 3 levels: b2I, b2B, b2C
+            for ($i = 1; $i <= 31; $i+=10) {  // Assuming 3 levels: b2I, b2B, b2C
                 $columnName = $columnPrefix . 'b2I_' . $i . '_unit';
                 $harga = $batunesia->{$columnName};  // Get the harga value for the current column
     
@@ -46,22 +46,52 @@ class AdminBatunesiaController extends Controller
                         $max = $harga;
                     }
                 }
+               
             }
+            for ($i = 1; $i <= 31; $i+=10) {  // Assuming 3 levels: b2I, b2B, b2C
+                $columnName = $columnPrefix . 'b2C_' . $i . '_unit';
+                $harga = $batunesia->{$columnName};  // Get the harga value for the current column
     
-            // Add the computed range to the batunesia object
-            $hargaRanges[] = $min !== null && $max !== null ? $min . ' - ' . $max : 'No data';
+                if ($harga !== null) {
+                    if ($min === null || $harga < $min) {
+                        $min = $harga;
+                    }
     
-            // Add the computed ranges to the batunesia object
+                    if ($max === null || $harga > $max) {
+                        $max = $harga;
+                    }
+                }
+               
+            }
+            for ($i = 1; $i <= 31; $i+=10) {  // Assuming 3 levels: b2I, b2B, b2C
+                $columnName = $columnPrefix . 'b2B_' . $i . '_unit';
+                $harga = $batunesia->{$columnName};  // Get the harga value for the current column
+    
+                if ($harga !== null) {
+                    if ($min === null || $harga < $min) {
+                        $min = $harga;
+                    }
+    
+                    if ($max === null || $harga > $max) {
+                        $max = $harga;
+                    }
+                }
+            }
+            
+          $hargaRanges[] = $min !== null && $max !== null
+    ? 'Rp. ' . number_format($min, 0, ',', '.') . ' - Rp. ' . number_format($max, 0, ',', '.')
+    : 'No data';
+
             $batunesia->harga_ranges = $hargaRanges;
         }
     
-        return view('Pages/Batunesia/list-batunesia', ['batunesias' => $batunesias]);
+        return view('Pages/Batunesia/list-batunesia', ['batunesias' => $batunesias, "active"=>"batunesia"]);
     }
     
     public function view($id)
     {
         $batunesia = batunesia::findOrFail($id);
-        return view('Pages/Batunesia/detail-batunesia', ['batunesia'=>$batunesia]);
+        return view('Pages/Batunesia/detail-batunesia', ['batunesia'=>$batunesia, "active"=>"batunesia"]);
     }
 
     /**
@@ -69,7 +99,7 @@ class AdminBatunesiaController extends Controller
      */
     public function create()
     {
-        return view('Pages/Batunesia/add-batunesia');
+        return view('Pages/Batunesia/add-batunesia',["active"=>"batunesia"]);
     }
 
     /**
@@ -145,7 +175,7 @@ class AdminBatunesiaController extends Controller
             $batunesia->harga_b2C_31_unit = $harga_b2C_31_unit;
 
             $batunesia->slug =Str::slug($batunesia->nama_produk);
-            $batunesia->created_by = 1;
+            $batunesia->created_by = auth()->user()->user_id;;
             $batunesia->save();
             DB::commit();
         } else {
@@ -156,7 +186,12 @@ class AdminBatunesiaController extends Controller
         DB::rollback();
        return redirect()->back()->with('error', 'Terjadi kesalahan. Silakan coba lagi nanti.');
     }
-    return redirect()->route('batunesias')->with('success', 'Data has been successfully stored.');
+    if($request->tanggal_publikasi == "true"){
+        return redirect()->route('batunesias')->with('success', 'Produk berhasil disimpan dan diterbitkan.');
+    }else{
+        return redirect()->route('batunesias')->with('success', 'Produk berhasil disimpan.');
+    }
+
     }
     
 
@@ -171,7 +206,7 @@ class AdminBatunesiaController extends Controller
     public function edit($id)
     {
         $batunesia = batunesia::findOrFail($id);
-        return view('Pages/Batunesia/edit-batunesia', ['batunesia'=>$batunesia]);
+        return view('Pages/Batunesia/edit-batunesia', ['batunesia'=>$batunesia, "active"=>"batunesia"]);
     }
 
     /**
@@ -225,6 +260,9 @@ class AdminBatunesiaController extends Controller
                 if($request->tanggal_publikasi == "true"){
                     $batunesia->tanggal_publikasi = now();
                 }
+                else{
+                    $batunesia->tanggal_publikasi = null;
+                }
                 $harga_jual_projek_ideally = str_replace(['.', ''], '', $request['harga_jual_projek_ideally']);
                 $batunesia->harga_jual_projek_ideally = $harga_jual_projek_ideally;
                 // Harga_b2I_1+_unit
@@ -270,13 +308,17 @@ class AdminBatunesiaController extends Controller
             DB::rollback();
            return redirect()->back()->with('error', 'Terjadi kesalahan. Silakan coba lagi nanti.');
         }
-        return redirect()->route('batunesias')->with('success', 'Data has been successfully stored.');
+        if($request->tanggal_publikasi == "true"){
+            return redirect()->route('batunesias')->with('success', 'Produk berhasil disimpan dan diterbitkan.');
+        }else{
+            return redirect()->route('batunesias')->with('success', 'Data berhasil disimpan.');
+        }
     }
 
     public function delete($id)
     {
         $batunesia = batunesia::findOrFail($id);
-        return view('Pages/Batunesia/delete-batunesia', ['batunesia'=>$batunesia]);
+        return view('Pages/Batunesia/delete-batunesia', ['batunesia'=>$batunesia, "active"=>"batunesia"]);
     }
 
     public function destroy($id)
@@ -312,7 +354,7 @@ class AdminBatunesiaController extends Controller
             return redirect()->back()->with('error', 'Terjadi kesalahan. Silakan coba lagi nanti.');
         }
 
-        return redirect()->route('batunesias')->with('success', 'Data has been successfully deleted.');
+        return redirect()->route('batunesias')->with('success', 'Data berhasil dihapus.');
     }
 
     public function post(Request $request)
@@ -328,7 +370,7 @@ class AdminBatunesiaController extends Controller
             DB::rollback();
             return redirect()->back()->with('error', 'Terjadi kesalahan. Silakan coba lagi nanti.');
         }
-        return redirect()->route('batunesias')->with('success', 'Data status has been successfully changed .');
+        return redirect()->route('batunesias')->with('success', 'Data berhasil diterbitkan.');
     }
     
 }

@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\Storage;
 
 class AgrigardController extends Controller
 {
+
     public function indexBrand()
     {
         $agrigards = Agrigard::where('stok', '>', 0)->inRandomOrder()->take(12)->get();
@@ -38,7 +39,6 @@ class AgrigardController extends Controller
         $agrigardpilihan = Agrigard::where('stok', '>', 0)->inRandomOrder()->take(8)->get();
         return view('agrigards.details', compact('agrigards', 'agrigardterkait', 'agrigardbaru', 'agrigardpilihan'));
     }
-
     public function showcase2(Request $request)
     {
         $agrigards = Agrigard::where('stok', '>', 0)->when($request->filled('kategori'), function ($query) use ($request) {

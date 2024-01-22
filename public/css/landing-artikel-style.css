@@ -159,10 +159,18 @@ img {
     margin-right: 40px;
 }
 
+.wrapper-card-kategori {
+    width: 105%;
+}
+
 .info-card-category,
 .info-card-category-icon {
     margin-top: 2px;
     margin-bottom: 2px;
+}
+
+.article-card {
+    margin-right: 25px;
 }
 
 .keterangan-additional-text-container {
@@ -334,6 +342,7 @@ footer p {
     transition: font-weight 0.3s ease;
     /* Animasi perubahan font-weight */
 }
+
 .btn-overlay-header button {
     color: #555555;
     background-color: #fff;
@@ -368,30 +377,8 @@ footer p {
     overflow: hidden;
 }
 
-.card::before {
-    content: "";
-    position: absolute;
-    top: -10px;
-    /* Sesuaikan posisi vertikal shape putih */
-    right: -10px;
-    /* Sesuaikan posisi horizontal shape putih */
-    width: 50px;
-    /* Sesuaikan lebar shape putih */
-    height: 50px;
-    /* Sesuaikan tinggi shape putih */
-    border-radius: 50%;
-    background-color: white;
-    opacity: 0;
-    transition: opacity 0.3s ease-in-out;
-    z-index: 1;
-    /* Pastikan lebih tinggi dari gambar card */
-}
-
-.card:hover::before {
-    opacity: 1;
-}
-
 @media (max-width: 768px) {
+
     /* Styles for mobile */
     body,
     img {
@@ -440,4 +427,41 @@ footer p {
         max-width: 100%;
         /* Hindari overflow horizontal */
     }
+}
+
+.nama-penulis-custom {
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.nama-kerja-custom {
+    color: #999999;
+    font-size: 12px;
+}
+
+.biografi-penulis-custom {
+    color: black;
+    font-size: 12px;
+    font-family: Montserrat;
+    font-weight: 400;
+    margin-top: 13px;
+    margin-bottom: -5px;
+}
+
+.popover-nama-komentar {
+    padding: 10px;
+}
+
+.gambar-popover {
+    margin-right: 15px;
+}
+
+.komentar-text {
+    display: -webkit-box;
+    -webkit-line-clamp: 5;
+}
+
+.komentar-text-container {
+    min-height: 10px;
+    overflow: hidden;
 }

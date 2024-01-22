@@ -1,6 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-6990JVL0LN"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-6990JVL0LN');
+</script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -18,7 +27,11 @@
         <!-- Bootstrap JS -->
         <script src="../js/bootstrap.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<<<<<<< HEAD
         <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+=======
+        <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+>>>>>>> d5557992f1c905b8f774d6907a37c029ef4d4590
 
     <title>Ideally | preview product everlasThing</title>
     <style>

@@ -33,7 +33,7 @@ class AdminShineageController extends Controller
         $max = null;
 
         // Iterate over harga columns and compute overall range
-        for ($i = 1; $i <= 3; $i++) {  // Assuming 3 levels: b2I, b2B, b2C
+        for ($i = 1; $i <= 31; $i+=10) {  // Assuming 3 levels: b2I, b2B, b2C
             $columnName = $columnPrefix . 'b2I_' . $i . '_unit';
             $harga = $shineage->{$columnName};  // Get the harga value for the current column
 
@@ -46,27 +46,56 @@ class AdminShineageController extends Controller
                     $max = $harga;
                 }
             }
+           
         }
+        for ($i = 1; $i <= 31; $i+=10) {  // Assuming 3 levels: b2I, b2B, b2C
+            $columnName = $columnPrefix . 'b2C_' . $i . '_unit';
+            $harga = $shineage->{$columnName};  // Get the harga value for the current column
 
-        // Format the min and max prices in IDR
-        $formattedMin = $min !== null ? 'Rp. ' . number_format($min, 0, ',', '.') : 'No data';
-        $formattedMax = $max !== null ? 'Rp. ' . number_format($max, 0, ',', '.') : 'No data';
+            if ($harga !== null) {
+                if ($min === null || $harga < $min) {
+                    $min = $harga;
+                }
 
-        // Add the computed range to the shineage object
-        $hargaRanges[] = $formattedMin . ' - ' . $formattedMax;
+                if ($max === null || $harga > $max) {
+                    $max = $harga;
+                }
+            }
+           
+        }
+        for ($i = 1; $i <= 31; $i+=10) {  // Assuming 3 levels: b2I, b2B, b2C
+            $columnName = $columnPrefix . 'b2B_' . $i . '_unit';
+            $harga = $shineage->{$columnName};  // Get the harga value for the current column
 
-        // Add the computed ranges to the shineage object
+            if ($harga !== null) {
+                if ($min === null || $harga < $min) {
+                    $min = $harga;
+                }
+
+                if ($max === null || $harga > $max) {
+                    $max = $harga;
+                }
+            }
+        }
+        
+      // Assuming $min and $max are numeric values representing amounts in Rupiah.
+
+$hargaRanges[] = $min !== null && $max !== null
+? 'Rp. ' . number_format($min, 0, ',', '.') . ' - Rp. ' . number_format($max, 0, ',', '.')
+: 'No data';
+
         $shineage->harga_ranges = $hargaRanges;
+
     }
 
-    return view('Pages/Shineage/list-shineages', ['shineages' => $shineages]);
+    return view('Pages/Shineage/list-shineages', ['shineages' => $shineages, "active"=>"shineage"]);
 }
 
     
     public function view($id)
     {
         $shineage = shineage::findOrFail($id);
-        return view('Pages/Shineage/detail-shineage', ['shineage'=>$shineage]);
+        return view('Pages/Shineage/detail-shineage', ['shineage'=>$shineage, "active"=>"shineage"]);
     }
 
     /**
@@ -74,7 +103,7 @@ class AdminShineageController extends Controller
      */
     public function create()
     {
-        return view('Pages/Shineage/add-shineage');
+        return view('Pages/Shineage/add-shineage', ["active"=>"shineage"]);
     }
 
     /**
@@ -142,7 +171,7 @@ class AdminShineageController extends Controller
             $shineage->harga_b2C_11_unit = $harga_b2C_11_unit;
 
             $shineage->slug =Str::slug($shineage->nama_produk);
-            $shineage->created_by = 1;
+            $shineage->created_by = auth()->user()->user_id;;
             $shineage->save();
             DB::commit();
         } else {
@@ -155,7 +184,11 @@ class AdminShineageController extends Controller
         DB::rollback();
        return redirect()->back()->with('error', 'Terjadi kesalahan. Silakan coba lagi nanti.');
     }
-    return redirect()->route('shineages')->with('success', 'Data has been successfully stored.');
+    if($request->tanggal_publikasi == "true"){
+        return redirect()->route('shineages')->with('success', 'Produk berhasil disimpan dan diterbitkan.');
+   }else{
+        return redirect()->route('shineages')->with('success', 'Produk berhasil disimpan.');
+   }
     }
     
 
@@ -170,7 +203,7 @@ class AdminShineageController extends Controller
     public function edit($id)
     {
         $shineage = Shineage::findOrFail($id);
-        return view('Pages/Shineage/edit-shineage', ['shineage'=>$shineage]);
+        return view('Pages/Shineage/edit-shineage', ['shineage'=>$shineage, "active"=>"shineage"]);
     }
 
     /**
@@ -229,6 +262,8 @@ class AdminShineageController extends Controller
                 $shineage->gambar_6 = $photoPaths[5] ?? null;
                 if($request->tanggal_publikasi == "true"){
                     $shineage->tanggal_publikasi = now();
+                }else{
+                    $shineage->tanggal_publikasi = null;
                 }
                 $harga_jual_projek_ideally = str_replace(['.', ''], '', $request['harga_jual_projek_ideally']);
                 $shineage->harga_jual_projek_ideally = $harga_jual_projek_ideally;
@@ -264,13 +299,17 @@ class AdminShineageController extends Controller
             DB::rollback();
            return redirect()->back()->with('error', 'Terjadi kesalahan. Silakan coba lagi nanti.');
         }
-        return redirect()->route('shineages')->with('success', 'Data has been successfully stored.');
+        if($request->tanggal_publikasi == "true"){
+            return redirect()->route('shineages')->with('success', 'Produk berhasil disimpan dan diterbitkan.');
+       }else{
+            return redirect()->route('shineages')->with('success', 'Data berhasil disimpan.');
+       }
     }
 
     public function delete($id)
     {
         $shineage = Shineage::findOrFail($id);
-        return view('Pages/Shineage/delete-shineage', ['shineage'=>$shineage]);
+        return view('Pages/Shineage/delete-shineage', ['shineage'=>$shineage, "active"=>"shineage"]);
     }
 
     public function destroy($id)
@@ -306,7 +345,7 @@ class AdminShineageController extends Controller
             return redirect()->back()->with('error', 'Terjadi kesalahan. Silakan coba lagi nanti.');
         }
 
-        return redirect()->route('shineages')->with('success', 'Data has been successfully deleted.');
+        return redirect()->route('shineages')->with('success', 'Data berhasil dihapus.');
     }
 
     public function post(Request $request)
@@ -322,7 +361,7 @@ class AdminShineageController extends Controller
             DB::rollback();
             return redirect()->back()->with('error', 'Terjadi kesalahan. Silakan coba lagi nanti.');
         }
-        return redirect()->route('shineages')->with('success', 'Data status has been successfully changed .');
+        return redirect()->route('shineages')->with('success', 'Data berhasil diterbitkan.');
     }
     
 }

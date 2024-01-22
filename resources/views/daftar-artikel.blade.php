@@ -1,6 +1,15 @@
 <!DOCTYPE html>
 <html>
 <head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-6990JVL0LN"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-6990JVL0LN');
+</script>
   
   <meta charset="utf-8" />
   <link rel="icon" href="/favicon.ico" />
@@ -123,7 +132,7 @@
                                 <div class="desc-item">
                                   <div class="ellipse">
                                   </div>
-                                  {{$article->createdBy->firstname}} {{$article->createdBy->lastname}}
+                                  {{$article->penulis_artikel}}
                                 </div>
                                 <div class="desc-item">
                                   <div class="ellipse">
@@ -214,7 +223,7 @@
       </section>
       <!-- Footer -->
       @include('partials.artikel-footer')
-      <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+      <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
       <script src="../js/portal-edukasi.js"></script>
       <script src="/js/navbar.js"></script>
 </body>

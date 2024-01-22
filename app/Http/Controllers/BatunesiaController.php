@@ -13,7 +13,7 @@ class BatunesiaController extends Controller
      */
     public function index()
     {
-        $batunesias = Batunesia::paginate(24); // Meminta paginasi langsung dari model
+        $batunesias = Batunesia::paginate(28); // Meminta paginasi langsung dari model
         return view('brand-batunesia.showcase_batunesia_store', ['batunesias' => $batunesias]);
     }
 

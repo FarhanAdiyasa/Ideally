@@ -103,8 +103,8 @@ class User extends Authenticatable
     {
         return $this->hasOne(Agrigard::class);
     }
-    public function scopeCountCreated($query, $startDate, $endDate)
+    public function scopeCountCreated($query)
     {
-        return $query->whereBetween('created_at', [$startDate, $endDate])->count();
+        return $query->whereNot('role', 'admin')->count();
     }
 }

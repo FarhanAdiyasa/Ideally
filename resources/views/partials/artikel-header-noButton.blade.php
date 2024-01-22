@@ -9,7 +9,6 @@
       <h3
         style="text-align: center; color: white; font-size: 65px; font-family: Quicksand; font-weight: 700; word-wrap: break-word; white-space: nowrap;">
         Arsitektur Lanskap</h3>
-      <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi non risus at nibh fringilla dapibus. Orci
-        varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus</span>
+      <span>Eksplorasi tanpa batas, Pelajari desain inovatif, konsep berkelanjutan, dan tren terbaru. Transformasikan pemikiran, wujudkan keindahan!</span>
     </div>
   </div>

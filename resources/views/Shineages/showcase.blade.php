@@ -1,4 +1,13 @@
 <head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-6990JVL0LN"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-6990JVL0LN');
+</script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Showcase - Shineage</title>
@@ -11,7 +20,10 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css">
 
     <!-- Custom CSS -->
+<<<<<<< HEAD
+=======
     <link rel="stylesheet" href="{{asset('/css/navbar-style.css')}}">
+>>>>>>> d5557992f1c905b8f774d6907a37c029ef4d4590
     <link rel="stylesheet" href="{{ asset ('shineage/assets/css/showcase/style.css') }}">
 
     <!-- Bootstrap JS -->
@@ -19,7 +31,15 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
     <!-- JQuery -->
+<<<<<<< HEAD
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+
+<body>
+    <!-- Logo -->
+    <section id="logo">
+=======
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 </head>
 
 <body>
@@ -29,6 +49,7 @@
 
     <!-- Logo -->
     <section id="logo" class="mt-5">
+>>>>>>> d5557992f1c905b8f774d6907a37c029ef4d4590
         <div class="container">
             <div class="logo-container bg-yellow">
                 <div class="row g-0">

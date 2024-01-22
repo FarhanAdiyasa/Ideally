@@ -34,39 +34,43 @@ class Shineage extends Model
         return $this->belongsToMany(Promo::class, 'shineages_promos', 'id_shineage', 'id_promo');
     }
 
+    public function orders() {
+        return $this->belongsToMany(Order::class, 'shineages_orders', 'id_shineage', 'id_order');
+    }
 
-    // protected $fillable = [
-    //     'id_shineage',
-    //     'seri',
-    //     'nama_produk',
-    //     'slug',
-    //     'jenis',
-    //     'garansi',
-    //     'warna',
-    //     'dimensi',
-    //     'material_pendukung',
-    //     'finishing',
-    //     'gambar_1',
-    //     'gambar_2',
-    //     'gambar_3',
-    //     'gambar_4',
-    //     'gambar_5',
-    //     'gambar_6',
-    //     'video',
-    //     'deskripsi_singkat',
-    //     'stok',
-    //     'item_terjual',
-    //     'hpp',
-    //     'harga_b2I_11_unit',
-    //     'harga_b2I_1_unit',
-    //     'harga_b2B_11_unit',
-    //     'harga_b2B_1_unit',
-    //     'harga_b2C_11_unit',
-    //     'harga_b2C_1_unit',
-    //     'tanggal_publikasi',
-    //     'created_at',
-    //     'updated_at',
-    //     'deleted_at',
-    // ];
+
+    protected $fillable = [
+        'id_shineage',
+        'seri',
+        'nama_produk',
+        'slug',
+        'jenis',
+        'garansi',
+        'warna',
+        'dimensi',
+        'material_pendukung',
+        'finishing',
+        'gambar_1',
+        'gambar_2',
+        'gambar_3',
+        'gambar_4',
+        'gambar_5',
+        'gambar_6',
+        'video',
+        'deskripsi_singkat',
+        'stok',
+        'item_terjual',
+        'hpp',
+        'harga_b2I_11_unit',
+        'harga_b2I_1_unit',
+        'harga_b2B_11_unit',
+        'harga_b2B_1_unit',
+        'harga_b2C_11_unit',
+        'harga_b2C_1_unit',
+        'tanggal_publikasi',
+        'created_at',
+        'updated_at',
+        'deleted_at',
+    ];
 
 }
