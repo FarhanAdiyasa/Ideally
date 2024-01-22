@@ -401,15 +401,17 @@
                         </div>
                         <!-- Sorting -->
                         <div class="col-sm-3 col-6">
-                        @php
-                        $hargaTinggi = \App\Models\Agrigard::where('stok', '>', 0)
-                        ->orderBy('harga_b2C_1_unit', 'asc')
-                        ->first();
 
-                        $hargaRendah = \App\Models\Agrigard::where('stok', '>', 0)
-                        ->orderBy('harga_b2C_1_unit', 'desc')
-                        ->first();
-                        @endphp
+                            @php
+                            $hargaTinggi = \App\Models\Dedikasi_Flora::where('stok', '>', 0)
+                            ->orderBy('harga_b2C_1_unit', 'asc')
+                            ->first();
+
+                            $hargaRendah = \App\Models\Dedikasi_Flora::where('stok', '>', 0)
+                            ->orderBy('harga_b2C_1_unit', 'desc')
+                            ->first();
+                            @endphp
+
                             <select class="form-select" aria-label="Default select example">
                                 <option selected>Choose</option>
                                 <option value="1">Harga Terendah</option>
@@ -426,7 +428,7 @@
                                     <div class="card border-0">
                                         <img src="{{ asset($dedikasiFlora->gambar_1) }}" class="card-img-top" alt="...">
                                         <div class="card-body">
-                                            <p class="card-text">{{ $dedikasiFlora->nama_latin }} - Panjang {{
+                                            <p class="card-text">{{ $dedikasiFlora->nama_lokal }} - Panjang {{
                                                 $dedikasiFlora->tinggi }} cm</p>
                                             <p class="text-harga text-white">Harga Tersembunyi</p>
                                             <hr>
@@ -495,9 +497,6 @@
             });
         });
     </script>
-
-
-
 </body>
 
 </html>
