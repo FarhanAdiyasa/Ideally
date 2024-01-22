@@ -4,7 +4,16 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
+<<<<<<< HEAD
     "content-hash": "b5a4f1675464db25c902aec0fb905d5e",
+=======
+<<<<<<< HEAD
+    "content-hash": "ffe17a4e02011ed30edfb326940570ab",
+
+=======
+    "content-hash": "c6268576fc49a3e2057ad79766096d64",
+>>>>>>> d5557992f1c905b8f774d6907a37c029ef4d4590
+>>>>>>> new-fahriel-branch
     "packages": [
         {
             "name": "arielmejiadev/larapex-charts",

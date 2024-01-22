@@ -16,6 +16,7 @@ use App\Http\Controllers\AgrigardController;
 
 use App\Http\Controllers\ShineageController;
 use App\Http\Controllers\BatunesiaController;
+
 use App\Http\Controllers\KeranjangController;
 use App\Http\Controllers\KonkuritoController;
 use App\Http\Controllers\TransaksiController;
@@ -42,11 +43,16 @@ use App\Http\Controllers\TestimoniController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+Route::get('/auth/redirect',[AuthController::class, "redirect"])->middleware('guest');
+Route::get('/auth/login',[AuthController::class, "index"])->name('login')->middleware('guest');
+Route::get('/auth/callback',[AuthController::class, "callback"])->middleware('guest');
+Route::get('/auth/logout',[AuthController::class,"logout"])->name('logout')->middleware('auth');;
+Route::post('/auth/login',[AuthController::class,"login"]);
 
 
 
 Route::middleware(['auth', 'role:admin'])->group(function () {
-// Route::get('/', [ArtikelController::class, 'index'])->name('landing-artikel');
+
 Route::get('/dashboard',[DashboardController::class, 'index'])->name('dashboard');;
 //Admin Agrigard
 Route::get('/daftar-produk', [AdminAgrigardController::class, 'index'])->name('daftar-produk');
@@ -133,7 +139,7 @@ Route::get('/delete-everlasThing/{id}', [AdminEverlasThingController::class, 'de
 Route::delete('/destroy-everlasThing/{id}', [AdminEverlasThingController::class, 'destroy'])->name('everlasThings.destroy');
 
 //Promo
-Route::get('/daftar-promo', [PromoController::class, 'index'])->name('daftar-promo');
+Route::get('/daftar-promo/{id}', [PromoController::class, 'view'])->name('daftar-promo');
 
 Route::get('/tambah-promo', [PromoController::class, 'create'])->name('daftar-promo.tambah');
 Route::post('/tambah-promo', [PromoController::class, 'store'])->name('daftar-promo.save');
@@ -147,6 +153,8 @@ Route::get('/check-promo-unique/{nama_promo}', [PromoController::class, 'checkPr
 
 Route::get('/delete-promo/{id}', [PromoController::class, 'delete'])->name('daftar-promo.delete');
 Route::delete('/destroy-promo/{id}', [PromoController::class, 'destroy'])->name('daftar-promo.destroy');
+
+Route::get('/daftar-promo', [PromoController::class, 'index'])->name('daftar-promo');
 
 //USERADMIN
 Route::get('/daftar-user', [AdminUserController::class, 'index'])->name('daftar-user');
@@ -168,7 +176,8 @@ Route::get('/cek-komentar/{id}', [AdminArtikelController::class, 'komentar'])->n
 Route::post('/hide-komentar', [AdminArtikelController::class, 'hideKomentar'])->name('komentars.hide');
 });
 
-// Route::middleware(['role:b2i', 'role:b2b', 'role:b2c'])->group(function () {
+
+Route::get('/', [ArtikelController::class, 'index']);
 Route::get('/portal-edukasi/{kategori}', [ArtikelController::class, 'byKategori'])->name('landing-artikel.kategori');
 Route::get('/portal-edukasi', [ArtikelController::class, 'index'])->name('landing-artikel');
 Route::get('/portal-edukasi/baca/{slug}', [ArtikelController::class, 'baca'])->name('baca-artikel')->middleware(\App\Http\Middleware\CountVisitors::class);
@@ -179,7 +188,9 @@ Route::post('/portal-edukasi/komentar/{slug}', [ArtikelController::class, 'komen
 // //eror
 // Route::get('/detail', [DetailController::class, 'index'])->name('Detail-Batunesia');
 // Route::get('/detail-batunesia/{id_batu}', [DetailController::class, 'showDetail'])->name('Detail-Batunesia');
-
+Route::get('/auth/register', [AuthController::class, 'register'])->name('auth.register');
+Route::post('/auth/create',[AuthController::class,"create"]);
+Route::get('/auth/dashboard/{id}', [AuthController::class, "dashboard"])->middleware('auth');
 // Auth::routes();
 Route::get('/home/show/{kategori}', [ArtikelController::class, 'show'])->name('home.show');
 Route::get('/portal-edukasi/komentar/{kategori}', [ArtikelController::class, 'sKomentar'])->name('komentar.show');
@@ -209,14 +220,7 @@ Route::get('/batunesia/index/showByPotBatu', [BatunesiaController::class, 'filte
 Route::get('/everlasthings/detailProduct', [everlastThingController::class, 'detailProduct'])->name('everlasthings.detailProduct');
 
 //authentikasi login & regis
-Route::get('/auth/redirect',[AuthController::class, "redirect"])->middleware('guest');
-Route::get('/auth/login',[AuthController::class, "index"])->name('login')->middleware('guest');
-Route::get('/auth/callback',[AuthController::class, "callback"])->middleware('guest');
-Route::get('/auth/logout',[AuthController::class,"logout"])->name('logout')->middleware('auth');;
-Route::get('/auth/register', [AuthController::class, 'register'])->name('auth.register');
-Route::post('/auth/create',[AuthController::class,"create"]);
-Route::post('/auth/login',[AuthController::class,"login"]);
-Route::get('/auth/dashboard/{id}', [AuthController::class, "dashboard"])->middleware('auth');
+
 
 
 //route lupa password
@@ -234,8 +238,6 @@ Route::get('/tambahEverlasthingsKeKeranjang/{id_everlas_things}/{quantity}', [ev
 Route::delete('removeEverlasthings', [everlastThingController::class, 'removeEverlasthings'])->name('removeEverlasthings');
 Route::patch('updateEverlasthings', [everlastThingController::class, 'updateEverlasthings'])->name('updateEverlasthings');
 Route::delete('removeAllEverlasthings', [everlastThingController::class, 'removeAllEverlasthings'])->name('removeAllEverlasthings');
-
-    
 //batunesia
 Route::get('/batunesia/index', [BatunesiaController::class, 'index'])->name('batunesia.index');
 Route::get('/batunesia/index/showByWhite', [BatunesiaController::class, 'filterByWhite'])->name('batunesia.filterByWhite');
@@ -253,7 +255,6 @@ Route::get('/tambahKeKeranjang/{id_batu}/{quantity}', [BatunesiaController::clas
 Route::delete('removeBatunesia', [BatunesiaController::class, 'removeBatunesia'])->name('removeBatunesia');
 Route::patch('updateBatunesia', [BatunesiaController::class, 'updateBatunesia'])->name('updateBatunesia');
 Route::delete('removeAllBatunesia', [BatunesiaController::class, 'removeAllBatunesia'])->name('removeAllBatunesia');
-
 //route verifikasi
 Route::get('/email/verify/need-verification', [verificationController::class, 'notice'])->middleware('auth')->name('verification.notice');
 Route::get('/email/verify/{id}/{hash}', [verificationController::class, 'verify'])->middleware('auth','signed')->name('verification.verify');
@@ -273,6 +274,7 @@ Route::get('konkurito/show/{id_konkurito}',[KonkuritoController::class,'show'])-
 Route::get('shineage/index',[ShineageController::class,'indexBrand'])->name('shineage.utama');
 Route::get('shineage/showcase',[ShineageController::class,'showcase'])->name('shineage.showcase');
 Route::get('shineage/show/{id_shineage}',[ShineageController::class,'show'])->name('shineage.detail');
+
 Route::get('/tambahShineageKeKeranjang/{id_shineage}/{quantity}', [ShineageController::class, 'tambahKeKeranjang'])->name('tambahShineageKeKeranjang');
 Route::delete('removeShineage', [ShineageController::class, 'removeShineage'])->name('removeShineage');
 Route::patch('updateShineage', [ShineageController::class, 'updateShineage'])->name('updateShineage');
@@ -306,6 +308,7 @@ Route::post('/testimoni/store', [TestimoniController::class, 'store'])->name('te
 // pembayaran
 Route::get('/pembayaran', [PembayaranController::class, 'index'])->name('index.pembayaran');
 
+
 Route::get('/cek-status/{nomor}/{data}', [PembayaranController::class, 'cekStatus'])->name('konfirmasi.status');
 Route::post('/pembayaran', [PembayaranController::class, 'bayar'])->name('store.bayar');
 // Route::post('/konfirmasi', [PembayaranController::class, 'handle_after']);
@@ -316,3 +319,4 @@ Route::get('/pesanan/dikirim', [PesananController::class, 'dikirim'])->name('pes
 Route::get('/pesanan/selesai', [PesananController::class, 'selesai'])->name('pesanan.selesai');
 Route::get('/pesanan/konfirmasi/{id_order}', [PesananController::class, 'konfirmasiPesanan'])->name('pesanan.konfirmasi');
 Route::get('/pesanan/rinician-pesanan/{id_order}', [PesananController::class, 'rincianPesanan'])->name('pesanan.rincian');
+

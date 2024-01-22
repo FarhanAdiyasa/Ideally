@@ -193,6 +193,7 @@ $hargaRanges[] = $min !== null && $max !== null
           return redirect()->route('daftar-produk')->with('success', 'Produk berhasil disimpan.');
     }
   
+    return redirect()->route('daftar-produk')->with('success', 'Data berhasil disimpan!.');
     }
     
 
@@ -355,7 +356,7 @@ $hargaRanges[] = $min !== null && $max !== null
             return redirect()->back()->with('error', 'Terjadi kesalahan. Silakan coba lagi nanti.');
         }
 
-        return redirect()->route('daftar-produk')->with('success', 'Data berhasil dihapus.');
+        return redirect()->route('daftar-produk')->with('success', 'Data has been successfully deleted.');
     }
 
     public function post(Request $request)

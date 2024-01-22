@@ -46,7 +46,11 @@
 
 
 .product-card {
+<<<<<<< HEAD
+    width: calc(25% - 20px);
+=======
     width: 100%;
+>>>>>>> d5557992f1c905b8f774d6907a37c029ef4d4590
     height: 250px;
     background: #fff;         
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
@@ -143,7 +147,11 @@
     </style>
 </head>
 <body>
+<<<<<<< HEAD
+{{-- Navbar Section --}}
+=======
     {{-- Navbar Section --}}
+>>>>>>> d5557992f1c905b8f774d6907a37c029ef4d4590
     @include('partials.navbar')
     {{-- End of Navbar Section --}}
     
@@ -251,6 +259,13 @@
                             </div>
                             <div class="rating">
                                 <div class="rating-border"></div>
+<<<<<<< HEAD
+                                <div class="rating-number">4.5</div>
+                            </div>
+                            <div class="product-title">{{ $batunesia->nama_produk }}</div>
+                            <div class="product-category">{{ $batunesia->nama_produk }}</div>
+                            <div class="hidden-price">{{ $batunesia->{'harga_b2I_31+_unit'} }}</div>
+=======
                                 <svg width="14" height="13" viewBox="0 0 14 13" fill="none" xmlns="http://www.w3.org/2000/svg" style="margin-left: 10px;">
                                     <path id="Star 8" d="M6.77703 0L8.29856 4.68281H13.2224L9.23893 7.57695L10.7605 12.2598L6.77703 9.36562L2.79359 12.2598L4.31513 7.57695L0.331691 4.68281H5.25549L6.77703 0Z" fill="#101624"/>
                                     </svg>                                    
@@ -263,6 +278,7 @@
                             @else
                                 <div class="price" style="font-size: 12px">Harga tersembunyi</div>
                             @endif
+>>>>>>> d5557992f1c905b8f774d6907a37c029ef4d4590
                         </div>
                     </a>
                 @empty

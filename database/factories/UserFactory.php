@@ -40,6 +40,7 @@ class UserFactory extends Factory
             'remember_token' => Str::random(10),
             'created_at' => now(),
             'updated_at' => now(),
+            'deskripsi_diri'  => $this->faker->word,
         ];
     }
 

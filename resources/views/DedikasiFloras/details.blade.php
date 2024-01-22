@@ -33,13 +33,9 @@
 </head>
 
 <body>
-    <!-- Navbar Utama -->
-    @include('partials.navbar')
-    <!-- End Navbar Utama -->
-    
     <!-- Hero & Navigation Bar -->
     <header id="hero-navbar">
-        <div class="hero-img d-flex justify-content-center mt-5">
+        <div class="hero-img d-flex justify-content-center">
             <img src="{{ asset('dedikasi-flora/assets/img/showcase/06B-SEC01-LATAR.jpg') }}" alt="">
         </div>
         <div class="content z-1 position-absolute" style="width: 100%;">
@@ -275,7 +271,7 @@
                     <div id="harga-details" class="col-sm-4">
                         <div class="controls text-end mt-5">
                             @php
-                            $prevProduct = \App\Models\Dedikasi_Flora::where('nama_latin', '<', $defloDetail->
+                                $prevProduct = \App\Models\Dedikasi_Flora::where('nama_latin', '<', $defloDetail->
                                 nama_latin)
                                 ->where('stok', '>', 0)
                                 ->orderBy('nama_latin', 'desc')
@@ -286,7 +282,7 @@
                                 ->where('stok', '>', 0)
                                 ->orderBy('nama_latin', 'asc')
                                 ->first();
-                                @endphp
+                            @endphp
 
                                 @if($prevProduct)
                                 <a href="{{ route('deflo.detail', ['id_nurseri' => $prevProduct->id_nurseri]) }}"
@@ -311,7 +307,7 @@
                                             <p>Rp</p>
                                         </th>
                                         <th style="text-align: right;">
-                                            <p>{{ $defloDetail->harga_b2C_1_unit }}</p>
+                                            <p>{{ $defloDetail->harga_b2C_1 }}</p>
                                         </th>
                                     </tr>
                                     <tr>
@@ -319,7 +315,7 @@
                                             <p>Rp</p>
                                         </th>
                                         <th style="text-align: right;">
-                                            <p>{{ $defloDetail->harga_b2C_11_unit }}</p>
+                                            <p>{{ $defloDetail->harga_b2C_11 }}</p>
                                         </th>
                                     </tr>
                                     <tr>
@@ -327,12 +323,12 @@
                                             <p>Rp</p>
                                         </th>
                                         <th style="text-align: right;">
-                                            <p>{{ $defloDetail->harga_b2C_31_unit }}</p>
+                                            <p>{{ $defloDetail->harga_b2C_31 }}</p>
                                         </th>
                                     </tr>
                                 </table>
                                 <div class="add-to-cart py-4" style="margin-top: 60px;">
-                                    <a href="#" onclick="addToCart(event)" class="btn py-0">
+                                    <a href="" class="btn py-0">
                                         <div class="d-flex align-items-center text-white">
                                             <p style="font-size: 30px; font-weight: 700; margin: 0;">+</p>
                                             <p style="font-size: 12px; font-weight: 700; margin: 0;">Tambah Ke Keranjang
@@ -383,23 +379,6 @@
                                     <button class="btn py-0 text-white px-3" onclick="decrease()">
                                         <span><i class="bi bi-chevron-down"></i></span>
                                     </button>
-                                    <script>
-                                    function addToCart(event) {
-                                        event
-                                            .preventDefault(); // Prevent the default behavior of the 'a' tag (page redirection)
-
-                                        var quantity = document.getElementById('quantity').value;
-                                        var defloId = "{{ $defloDetail->id_nurseri }}";
-
-                                        // Creating the URL with the quantity and deflo id
-                                        var url = "{{ route('addcart.deflo', ['id' => ':id', 'qty' => ':qty']) }}"
-                                            .replace(':id', defloId)
-                                            .replace(':qty', quantity);
-
-                                        // Handling action when the "Tambah Ke Keranjang" link is clicked
-                                        window.location.href = url;
-                                    }
-                                    </script>
                                 </div>
                             </div>
                             <div class="col-sm-3 p-0">
@@ -713,6 +692,13 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/numeral.js/2.0.6/numeral.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/js/bootstrap.bundle.min.js"></script>
     <script>
+    const summaryPriceInput = document.getElementById('summaryPrice');
+    let summaryPriceValue = summaryPriceInput.value;
+    summaryPriceInput.value = numeral(summaryPriceValue).format('0,0');
+
+    let count = parseInt(document.getElementById('quantity').value);
+    const decreaseBtn = document.getElementById('kurang');
+
     function increase() {
             count++;
             document.getElementById('quantity').value = count;
@@ -766,13 +752,6 @@
         const totalPrice = price * quantity;
         summaryPriceInput.value = numeral(totalPrice).format('0,0');;
     }
-
-    const summaryPriceInput = document.getElementById('summaryPrice');
-    let summaryPriceValue = summaryPriceInput.value;
-    summaryPriceInput.value = numeral(summaryPriceValue).format('0,0');
-
-    let count = parseInt(document.getElementById('quantity').value);
-    const decreaseBtn = document.getElementById('kurang');
     </script>
     
 </body>

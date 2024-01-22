@@ -5,7 +5,7 @@
         <div class="container" style="padding-top: 25px;">
             <div class="card">
                 <div class="card-header">
-                    <h3>List Artikel</h3>
+                    <h3>Daftar Artikel</h3>
                 </div>
                 <div class="card-body">
                     @if (session('success'))
@@ -16,7 +16,7 @@
                         <div class="alert alert-warning">{{ session('error') }}</div>
                     @endif
                     <p>
-                        <a href="{{ route('artikels.create') }}" class="btn btn-primary">New Artikel</a>
+                        <a href="{{ route('artikels.create') }}" class="btn btn-primary">Tambah Artikel</a>
                     </p>
                     <table id="articles-table" class="table table-bordered text-center">
                         <thead>
@@ -42,13 +42,13 @@
                                                 </div>
                                         </div>
                                     </td>
-                                    <td>
+                                    <td style="vertical-align: middle;">
                                        {{$artikel->pengunjung}}
                                     </td>
-                                    <td>
+                                    <td style="vertical-align: middle;">
                                            {{ $artikel->penulis_artikel }}
                                     </td>
-                                    <td>
+                                    <td style="vertical-align: middle;">
                                         <div class="form-check form-switch">
                                             <form method="post" id="statForm{{ $artikel->id_artikel }}" action="{{ route('artikels.post')}}">
                                                 @csrf
@@ -84,7 +84,7 @@
                             @empty
                                 <tr>
                                     <td colspan="6">
-                                        No record found!
+                                        Tidak ada data!
                                     </td>
                                 </tr>
                             @endforelse
@@ -135,7 +135,6 @@
             console.error("Error: " + errorThrown);
         });
     }
-
     $(document).ready(function() {
         $('#articles-table').DataTable({
                 "iDisplayLength": 10,

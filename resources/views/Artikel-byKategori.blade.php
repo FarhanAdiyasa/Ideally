@@ -92,7 +92,7 @@
                                   <h3 class="mt-3 hover-judul">{{$article->judul_artikel}}</h3>
                                   <p class="hover-tanggal-terbit" >Terbit 20 Oktober 2023</p>
                                   <p class="hover-isi">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi non risus at nibh fringilla dapibus. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Etiam consequat urna et lacus scelerisque, a elementum felis convallis. Aenean lobortis velit ac maximus fermentum.</p>
-                                  <a href="#" class="btn btn-success rounded-pill hover-btn-selengkapnya">Baca Selengkapnya</a>
+                                  <a href="{{ route('landing-artikel.kategori', ['kategori' => $kategori->nama_kategori_artikel]) }}" class="btn btn-success rounded-pill hover-btn-selengkapnya">Baca Selengkapnya</a>
                                 </div>
                               </div>
                             </div>

@@ -23,7 +23,10 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css">
 
     <!-- Custom CSS -->
+<<<<<<< HEAD
+=======
     <link rel="stylesheet" href="{{asset('/css/navbar-style.css')}}">
+>>>>>>> d5557992f1c905b8f774d6907a37c029ef4d4590
     <link rel="stylesheet" href="{{ asset ('agrigard/assets/css/index/style.css') }}">
 
     <!-- Bootstrap JS -->
@@ -31,6 +34,14 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
     <!-- JQuery -->
+<<<<<<< HEAD
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+
+<body>
+    <!-- Header & search -->
+    <section id="header">
+=======
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 </head>
 
@@ -41,6 +52,7 @@
 
     <!-- Header & search -->
     <section id="header" class="mt-5">
+>>>>>>> d5557992f1c905b8f774d6907a37c029ef4d4590
         <div class="container">
             <div class="inner-container top-start bg-light">
                 <div class="row">
@@ -50,7 +62,12 @@
                                 style="width: 100%; margin-top: 25px;">
                         </div>
                         <div class="deskripsi">
+<<<<<<< HEAD
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde sed fugiat nulla earum
+                                asperiores! Quos voluptatum corporis eaque!</p>
+=======
                             <p>Agrigard, mitra pertanian ideal Anda! Siap menjadi rekan konsultasi pertanian Anda! Temukan wadah tanam, alat kerja, media tanam, dan benih terbaik hanya di Agrigard.</p>
+>>>>>>> d5557992f1c905b8f774d6907a37c029ef4d4590
                         </div>
                         <div class="d-flex search">
                             <input type="text" name="" id="search" class="form-control search-input top-start"
@@ -77,49 +94,87 @@
                     <div class="col wrapper">
                         <div class="bg-light rounded-circle" style="height: 25px; width: 25px;"></div>
                         <div class="text-white text-center m-0">
+<<<<<<< HEAD
+                            <p>Pot Plastik</p>
+=======
                             <a href="{{ route('agrigard.kategori', ['kategori' => 'Pot Plastik']) }}">Pot Plastik</a>
+>>>>>>> d5557992f1c905b8f774d6907a37c029ef4d4590
                         </div>
                     </div>
                     <div class="col wrapper">
                         <div class="bg-light rounded-circle" style="height: 25px; width: 25px;"></div>
                         <div class="text-white text-center m-0">
+<<<<<<< HEAD
+                            <p>Pot Plastik</p>
+=======
                         <a href="{{ route('agrigard.kategori', ['kategori' => 'Pot Terracota']) }}">Pot Terracota</a>
+>>>>>>> d5557992f1c905b8f774d6907a37c029ef4d4590
                         </div>
                     </div>
                     <div class="col wrapper">
                         <div class="bg-light rounded-circle" style="height: 25px; width: 25px;"></div>
                         <div class="text-white text-center m-0">
+<<<<<<< HEAD
+                            <p>Pot Terracota</p>
+=======
                         <a href="{{ route('agrigard.kategori', ['kategori' => 'Bibit Tanaman']) }}">Bibit Tanaman</a>
+>>>>>>> d5557992f1c905b8f774d6907a37c029ef4d4590
                         </div>
                     </div>
                     <div class="col wrapper">
                         <div class="bg-light rounded-circle" style="height: 25px; width: 25px;"></div>
                         <div class="text-white text-center m-0">
+<<<<<<< HEAD
+                            <p>Bibit Tanaman</p>
+=======
                         <a href="{{ route('agrigard.kategori', ['kategori' => 'Media Tanam']) }}">Media Tanam</a>
+>>>>>>> d5557992f1c905b8f774d6907a37c029ef4d4590
                         </div>
                     </div>
                     <div class="col wrapper">
                         <div class="bg-light rounded-circle" style="height: 25px; width: 25px;"></div>
                         <div class="text-white text-center m-0">
+<<<<<<< HEAD
+                            <p>Media Tanam</p>
+=======
                         <a href="{{ route('agrigard.kategori', ['kategori' => 'Wadah Tanam']) }}">Wadah Tanam</a>
+>>>>>>> d5557992f1c905b8f774d6907a37c029ef4d4590
                         </div>
                     </div>
                     <div class="col wrapper">
                         <div class="bg-light rounded-circle" style="height: 25px; width: 25px;"></div>
                         <div class="text-white text-center m-0">
+<<<<<<< HEAD
+                            <p>Wadah Tanam</p>
+=======
                         <a href="{{ route('agrigard.kategori', ['kategori' => 'Obat dan Nutrisi']) }}">Obat dan Nutrisi</a>
+>>>>>>> d5557992f1c905b8f774d6907a37c029ef4d4590
                         </div>
                     </div>
                     <div class="col wrapper">
                         <div class="bg-light rounded-circle" style="height: 25px; width: 25px;"></div>
                         <div class="text-white text-center m-0">
+<<<<<<< HEAD
+                            <p>Obat dan Nutrisi</p>
+=======
                         <a href="{{ route('agrigard.kategori', ['kategori' => 'Alat Kerja']) }}">Alat Kerja</a>
+>>>>>>> d5557992f1c905b8f774d6907a37c029ef4d4590
                         </div>
                     </div>
                     <div class="col wrapper">
                         <div class="bg-light rounded-circle" style="height: 25px; width: 25px;"></div>
                         <div class="text-white text-center m-0">
+<<<<<<< HEAD
+                            <p>Alat Kerja</p>
+                        </div>
+                    </div>
+                    <div class="col wrapper">
+                        <div class="bg-light rounded-circle" style="height: 25px; width: 25px;"></div>
+                        <div class="text-white text-center m-0">
+                            <p>Lain - lain</p>
+=======
                             <a href="{{ route('agrigard.kategori', ['kategori' => 'Lain - lain']) }}">Lain - lain</a>
+>>>>>>> d5557992f1c905b8f774d6907a37c029ef4d4590
                         </div>
                     </div>
                 </div>
@@ -508,6 +563,18 @@
                     <div class="col-sm-7 branding">
                         <div class="text-white">
                             <div class="title">
+<<<<<<< HEAD
+                                <p>Jelajahi koleksi produk kami! Temukan solusi dari permasalahan kebun Anda di
+                                    Agrigard!</p>
+                            </div>
+                            <div class="deskripsi">
+                                <p>Telusuri keajaiban dan kualitas produk di Agrigard. Setiap produk mencerminkan solusi
+                                    dan fungsi luar biasa. Temukan lebih banyak di koleksi kami sekarang!</p>
+                            </div>
+                        </div>
+                        <div class="action">
+                            <a href="{{ route('agrigard.showcase') }}" class="btn top-end">Konsultasi Sekarang</a>
+=======
                                 <p>Jelajahi koleksi produk kami!
                                      Temukan solusi dari permasalahan
                                      kebun Anda di Agrigard!</p>
@@ -518,6 +585,7 @@
                         </div>
                         <div class="action">
                             <a href="{{ route('agrigard.showcase') }}" class="btn top-end">Lihat Produk Lainnya</a>
+>>>>>>> d5557992f1c905b8f774d6907a37c029ef4d4590
                         </div>
                     </div>
                 </div>
@@ -558,7 +626,11 @@
         });
     </script>
 
+<<<<<<< HEAD
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+=======
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+>>>>>>> d5557992f1c905b8f774d6907a37c029ef4d4590
 </body>
 
 </html>

@@ -21,12 +21,12 @@
       <div class="col-sm-6">
         <h1>Tambah Produk Dedikasi Flora</h1>
       </div>
-      <div class="col-sm-6">
+      <!-- <div class="col-sm-6">
         <ol class="breadcrumb float-sm-right">
           <li class="breadcrumb-item"><a href="#">Home</a></li>
           <li class="breadcrumb-item active">Advanced Form</li>
         </ol>
-      </div>
+      </div> -->
     </div>
   </div><!-- /.container-fluid -->
 </section>
@@ -151,7 +151,7 @@
         <div class="col-12 col-sm-6">
           <div class="form-group">
             <label>Diameter Tajuk</label>
-              <input type="text" class="form-control" placeholder="Placeholder text" name="diameter_tajuk" value="{{old('diameter_tajuk')}}">
+              <input type="text" class="form-control" placeholder="Masukkan disini" name="diameter_tajuk" value="{{old('diameter_tajuk')}}">
                  @error('diameter_tajuk')
               <small class="text-danger">{{ $message }}</small>
               @enderror

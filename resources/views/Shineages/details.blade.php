@@ -20,7 +20,10 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css">
 
     <!-- Custom CSS -->
+<<<<<<< HEAD
+=======
     <link rel="stylesheet" href="{{asset('/css/navbar-style.css')}}">
+>>>>>>> d5557992f1c905b8f774d6907a37c029ef4d4590
     <link rel="stylesheet" href="{{ asset ('shineage/assets/css/details/style.css') }}">
 
     <!-- Bootstrap JS -->
@@ -28,6 +31,14 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
     <!-- JQuery -->
+<<<<<<< HEAD
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+
+<body>
+    <!-- Logo -->
+    <section id="logo">
+=======
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 </head>
 
@@ -38,6 +49,7 @@
 
     <!-- Logo -->
     <section id="logo" class="mt-5">
+>>>>>>> d5557992f1c905b8f774d6907a37c029ef4d4590
         <div class="container">
             <div class="logo-container bg-yellow">
                 <div class="row g-0">
@@ -316,13 +328,21 @@
                                         </a>
                                 </div>
                                 @endforeach
+<<<<<<< HEAD
+                                <div class="bg-red mt-3 p-2" style="min-height: 15%;">
+=======
                                 <div class="bg-red mt-3 p-2" style="min-height: 10%;">
+>>>>>>> d5557992f1c905b8f774d6907a37c029ef4d4590
                                     <div class="text-white">
                                         <div class="ps-3 mb-1">
                                             <div class="border-start border-4 border-light" style="height: 50px;"></div>
                                         </div>
                                     </div>
+<<<<<<< HEAD
+                                    <a href="" class="btn btn-showcase mt-1">Lihat Produk Lainnya</a>
+=======
                                     <a href="{{ route('shineage.showcase') }}" class="btn btn-showcase mt-1">Lihat Produk Lainnya</a>
+>>>>>>> d5557992f1c905b8f774d6907a37c029ef4d4590
                                 </div>
                             </section>
                             <!-- End Red Section -->
@@ -335,7 +355,11 @@
                                         <p class="fw-bold mb-2" style="font-size: 13px;">Produk-produk Populer</p>
                                     </div>
                                     <div class="ps-2">
+<<<<<<< HEAD
+                                        <div class="border-start border-light border-4" style="height: 85px;"></div>
+=======
                                         <div class="border-start border-light border-4" style="height: 81px;"></div>
+>>>>>>> d5557992f1c905b8f774d6907a37c029ef4d4590
                                     </div>
                                 </div>
                                 @foreach($shineageterkait->slice($itemsPerSection, $itemsPerSection) as $hijau)
@@ -359,8 +383,13 @@
                                         </a>
                                 </div>
                                 @endforeach
+<<<<<<< HEAD
+                                <div class="bg-tosca mt-3 p-2" style="height: 10%;">
+                                    <a href="" class="btn btn-showcase mt-1">Lihat Produk Lainnya</a>
+=======
                                 <div class="bg-tosca mt-3 p-2" style="height: 5.4%;">
                                     <a href="{{ route('shineage.showcase') }}" class="btn btn-showcase mt-1">Lihat Produk Lainnya</a>
+>>>>>>> d5557992f1c905b8f774d6907a37c029ef4d4590
                                 </div>
                             </section>
                             <!-- End Tosca Section -->
@@ -394,12 +423,21 @@
                                         </a>
                                 </div>
                                 @endforeach
+<<<<<<< HEAD
+                                <div class="bg-yellow mt-3 p-2" style="height: 15%;">
+                                    <div class="text-white">
+                                        <div class="ps-3 mb-1">
+                                            <div class="border-start border-4 border-light" style="height: 80px;"></div>
+                                        </div>
+                                        <a href="" class="btn btn-showcase mt-1">Lihat Produk Lainnya</a>
+=======
                                 <div class="bg-yellow mt-3 p-2" style="height: 13.7%;">
                                     <div class="text-white">
                                         <div class="ps-3 mb-1">
                                             <div class="border-start border-4 border-light" style="height: 78px;"></div>
                                         </div>
                                         <a href="{{ route('shineage.showcase') }}" class="btn btn-showcase mt-1">Lihat Produk Lainnya</a>
+>>>>>>> d5557992f1c905b8f774d6907a37c029ef4d4590
                                     </div>
                                 </div>
                             </section>

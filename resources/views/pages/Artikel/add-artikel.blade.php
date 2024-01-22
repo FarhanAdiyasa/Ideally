@@ -24,12 +24,12 @@
       <div class="col-sm-6">
         <h1>Tambah Artikel</h1>
       </div>
-      <div class="col-sm-6">
+      <!-- <div class="col-sm-6">
         <ol class="breadcrumb float-sm-right">
           <li class="breadcrumb-item"><a href="#">Home</a></li>
           <li class="breadcrumb-item active">Advanced Form</li>
         </ol>
-      </div>
+      </div> -->
     </div>
   </div><!-- /.container-fluid -->
 </section>
@@ -233,7 +233,7 @@
             {{-- <div class="col-12 col-sm-6">
               <div class="form-group">
                 <label> Gambar</label>
-                  <textarea type="text" class="form-control" placeholder="Placeholder text" name="keterangan_gambar_artikel" rows="5" >{{old('keterangan_gambar_artikel')}}</textarea>
+                  <textarea type="text" class="form-control" placeholder="Ketikkan disini" name="keterangan_gambar_artikel" rows="5" >{{old('keterangan_gambar_artikel')}}</textarea>
                      @error('keterangan_gambar_artikel')
                   <small class="text-danger">{{ $message }}</small>
                   @enderror
@@ -245,7 +245,7 @@
               <div class="form-group">
                 <label>Keywords Artikel</label>
                 <div class="select2-purple">
-                    <input type="text" class="form-control" placeholder="Placeholder text" name="keywords" value="{{old('keywords')}}">
+                    <input type="text" class="form-control" placeholder="Ketikkan disini" name="keywords" value="{{old('keywords')}}">
                        @error('keywords')
                   <small class="text-danger">{{ $message }}</small>
                   @enderror
@@ -254,7 +254,7 @@
               <div class="form-group">
                 <label>Keywords Artikel</label>
                 <div class="select2-purple">
-                    <input type="text" class="form-control" placeholder="Placeholder text" name="keywords" value="{{old('keywords')}}">
+                    <input type="text" class="form-control" placeholder="Ketikkan disini" name="keywords" value="{{old('keywords')}}">
                        @error('keywords')
                   <small class="text-danger">{{ $message }}</small>
                   @enderror
@@ -355,7 +355,7 @@
                         <div class="form-group">
                           <label>Nama Penulis Artikel <span class="wajib">Wajib</span></label>
                           <div class="select2-purple">
-                              <input type="text" class="form-control" placeholder="Placeholder text" name="penulis_artikel" value="{{ old('penulis_artikel') }}">
+                              <input type="text" class="form-control" placeholder="Ketikkan disini" name="penulis_artikel" value="{{ old('penulis_artikel') }}">
                               @error('penulis_artikel')
                                   <small class="text-danger">{{ $message }}</small>
                               @enderror
@@ -364,7 +364,7 @@
                       <div class="form-group">
                           <label>Profesi Penulis Artikel <span class="wajib">Wajib</span></label>
                           <div class="select2-purple">
-                              <input type="text" class="form-control" placeholder="Placeholder text" name="profesi_penulis_artikel" value="{{ old('profesi_penulis_artikel') }}">
+                              <input type="text" class="form-control" placeholder="Ketikkan disini" name="profesi_penulis_artikel" value="{{ old('profesi_penulis_artikel') }}">
                               @error('profesi_penulis_artikel')
                                   <small class="text-danger">{{ $message }}</small>
                               @enderror

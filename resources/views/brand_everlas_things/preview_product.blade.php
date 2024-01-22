@@ -27,7 +27,11 @@
         <!-- Bootstrap JS -->
         <script src="../js/bootstrap.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<<<<<<< HEAD
+        <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+=======
         <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+>>>>>>> d5557992f1c905b8f774d6907a37c029ef4d4590
 
     <title>Ideally | preview product everlasThing</title>
     <style>

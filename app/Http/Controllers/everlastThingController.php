@@ -129,4 +129,9 @@ class everlastThingController extends Controller
         session()->flash('success', 'Semua produk everlasthings berhasil dihapus dari keranjang!');
         return response()->json(['success' => true], 200); // Memberikan respon ke AJAX
     }
+    public function showcase() {
+
+        $everlas_things = everlas_things::paginate(25); // Meminta paginasi langsung dari model
+        return view('brand_everlas_things.showcase', ['everlast' => $everlas_things]);
+    }
 }
