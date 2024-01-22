@@ -424,7 +424,7 @@
                                 <a href="{{ route('deflo.detail', ['id_nurseri' => $dedikasiFlora->id_nurseri]) }}"
                                     class="card-link">
                                     <div class="card border-0">
-                                        <img src="{{ $dedikasiFlora->gambar_1 }}" class="card-img-top" alt="...">
+                                        <img src="{{ asset($dedikasiFlora->gambar_1) }}" class="card-img-top" alt="...">
                                         <div class="card-body">
                                             <p class="card-text">{{ $dedikasiFlora->nama_latin }} - Panjang {{
                                                 $dedikasiFlora->tinggi }} cm</p>
