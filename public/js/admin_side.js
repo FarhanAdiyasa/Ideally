@@ -183,22 +183,59 @@ $(document).ready(function () {
     });
 });
 if (document.getElementById("default")) {
-    document.getElementById("default").addEventListener("input", function () {
-        var count = this.value.length;
-        var characterCountElement = document.getElementById("characterCount");
+    // Define a function to handle input events
+    function handleInput(inputId, characterCountId) {
+        var inputElement = document.getElementById(inputId);
+        var characterCountElement = document.getElementById(characterCountId);
 
-        characterCountElement.innerText = count;
+        // Check if the element exists
+        if (inputElement && characterCountElement) {
+            // Get the current character count
+            var count = inputElement.value.length;
 
-        if (count > 70) {
-            this.value = this.value.substring(0, 70);
-            characterCountElement.textContent = 70;
+            // Update the counter element
+            characterCountElement.innerText = count;
+
+            // Limit the input to 70 characters
+            if (count > 70) {
+                inputElement.value = inputElement.value.substring(0, 70);
+                characterCountElement.textContent = 70;
+            }
+        }
+    }
+
+    // Call the function for "default" when the page loads
+    document.addEventListener("DOMContentLoaded", function () {
+        handleInput("default", "characterCount");
+
+        // Attach the input event listener to the "default" element
+        var inputElement = document.getElementById("default");
+        if (inputElement) {
+            inputElement.addEventListener("input", function () {
+                handleInput("default", "characterCount");
+            });
         }
     });
-    document.getElementById("default").addEventListener("input", function () {
-        // Get the current character count
-        var count = this.value.length;
 
-        // Update the counter element
-        document.getElementById("characterCount").innerText = count;
+    // Call the function for "default2" when the page loads
+    document.addEventListener("DOMContentLoaded", function () {
+        handleInput("default2", "characterCount2");
+
+        // Attach the input event listener to the "default2" element
+        var inputElement2 = document.getElementById("default2");
+        if (inputElement2) {
+            inputElement2.addEventListener("input", function () {
+                handleInput("default2", "characterCount2");
+            });
+        }
     });
+}
+function validateInput(input) {
+    // Menghapus karakter selain angka
+    input.value = input.value.replace(/[^0-9]/g, "");
+
+    // Memastikan tidak ada angka negatif
+    if (input.value < 0) {
+        input.value = "";
+    }
 }

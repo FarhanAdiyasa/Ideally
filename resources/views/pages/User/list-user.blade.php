@@ -19,16 +19,20 @@
                     <table id="products-table" class="table table-hover table-bordered text-center">
                         <thead>
                             <tr>
+                                <th>No</th>
                                 <th>Nama user</th>
                                 <th>Email</th>
                                 <th>No. Telepon</th>
                                 <th>Role</th>
-                                <th>Actions</th>
+                                <th>Aksi</th>
                             </tr>
                         </thead>
                         <tbody>
                             @forelse ($users as $user)
                                 <tr>
+                                    <td>
+                                        {{ $loop->iteration }}
+                                    </td>
                                     <td>
                                         <div class="row">
                                                 <div>
@@ -91,7 +95,10 @@
     }
 
     $(document).ready(function() {
-        $('#products-table').DataTable();
+        $('#products-table').DataTable({
+            "iDisplayLength": 10,
+        "bLengthChange": false
+        });
     }); 
 
     function store(articleId) {

@@ -2,6 +2,16 @@
 <html lang="en">
 
 <head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-6990JVL0LN"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-6990JVL0LN');
+</script>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ideally - Portal Edukasi</title>
@@ -221,7 +231,7 @@
                                         <div class="card-body">
                                             <a href="/portal-edukasi/baca/{{$article->slug}}" class="hpLink"><h5 class="card-title" style="font-weight: 700;">{{$article->judul_artikel}}</a>
                                             </h5>
-                                            <p class="card-text">{{$article->createdBy->firstname}} {{$article->createdBy->lastname}}</p>
+                                            <p class="card-text">{{$article->penulis_artikel}}</p>
                                             @php
                                             $averageRating = $article->ratingArtikel->avg('rating_artikel');
                                             $averageRating = number_format($averageRating, 1) 
@@ -335,8 +345,11 @@
                             </div>
 
                             <div class="col-5 nama-akun-komentar">
-                                <h3 class="mb-0">{{ session('user_info')->firstname }}</h3>
-                                <p class="text-muted">CPO Ideally Indonesia</p>
+                                @if(auth()->check())
+                                <h3 class="mb-0">{{ auth()->user()->firstname }} {{ auth()->user()->lastname }}</h3>
+                                <p class="text-muted">{{ auth()->user()->profesi }}</p>
+                            @endif
+                            
                             </div>
                             <div class="mb-4"></div>
 
@@ -356,6 +369,7 @@
                                 </div>
                             </div>
                         </form>
+                        <h3 class="text-center" style="color: red; visibility:hidden" id="panjang">Komentar Terlalu Panjang !</h3>
                     </div>
                 </div>
                 <!-- End of Komentar -->
@@ -471,6 +485,7 @@
     <script>
 
         function submitForm(rating, slug) {
+            
             var isAuthenticated = @json(auth()->check());
             if (!isAuthenticated) {
                 // Pengguna tidak terautentikasi, arahkan ke halaman login
@@ -481,7 +496,7 @@
         hiddenInput.setAttribute("type", "hidden");
         hiddenInput.setAttribute("name", "rating");
         hiddenInput.setAttribute("value", rating);
-
+            
         document.getElementById("ratingForm").appendChild(hiddenInput);
             $.ajax({
             type: "POST",
@@ -518,37 +533,51 @@
 
 
     function submitKomentar(slug) {
-        var isAuthenticated = @json(auth()->check());
-            if (!isAuthenticated) {
-                // Pengguna tidak terautentikasi, arahkan ke halaman login
-                window.location.href = '{{ url('auth/login') }}';
-                return;
-            }
-    var komentar = $('#textarea-komentar').val();
-    $.ajax({
-        type: "POST",
-        url: "{{ url('/portal-edukasi/komentar/') }}/" + slug,
-        headers: {
-            'X-CSRF-TOKEN': "{{ csrf_token() }}",
-        },
-        data: {
-            komentar: komentar,
-        },
-        success: function (response) {
-            document.getElementById('suksesRate').style.visibility = 'visible';
-
-            // Call the 'show' function with the provided slug
-            show(slug);
-
-            // Optional: Clear the form after submission
-            $('#komenForm')[0].reset();
-        },
-        error: function (jqXHR, textStatus, errorThrown) {
-            console.error("AJAX Error:", textStatus, errorThrown);
-        },
-    });
-    return false; // Prevent the default form submission
+    var isAuthenticated = @json(auth()->check());
+    if (!isAuthenticated) {
+        // Pengguna tidak terautentikasi, arahkan ke halaman login
+        window.location.href = '{{ url('auth/login') }}';
+        return;
     }
+
+    var komentar = $('#textarea-komentar').val();
+    var panjangNotification = $('#panjang');
+
+    // Check if the comment length exceeds 255 characters
+    if (komentar.length > 255) {
+        panjangNotification.css('visibility', 'visible');
+        
+    } else {
+        // Reset the visibility of the notification
+        panjangNotification.css('visibility', 'hidden');
+
+        $.ajax({
+            type: "POST",
+            url: "{{ url('/portal-edukasi/komentar/') }}/" + slug,
+            headers: {
+                'X-CSRF-TOKEN': "{{ csrf_token() }}",
+            },
+            data: {
+                komentar: komentar,
+            },
+            success: function (response) {
+                document.getElementById('suksesRate').style.visibility = 'visible';
+
+                // Call the 'show' function with the provided slug
+                show(slug);
+
+                // Optional: Clear the form after submission
+                $('#komenForm')[0].reset();
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+                console.error("AJAX Error:", textStatus, errorThrown);
+            },
+        });
+    }
+
+    return false; // Prevent the default form submission
+}
+
   
     </script>
 

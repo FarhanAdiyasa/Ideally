@@ -30,7 +30,7 @@ return new class extends Migration
             $table->string('armada_minimum');
             $table->integer('stok')->default(0); 
             $table->integer('item_terjual')->default(0);
- $table->integer('berat');
+  
             $table->string('penempatan'); 
             $table->text('deskripsi_singkat'); 
             $table->decimal('harga_jual_projek_ideally', 10, 2);

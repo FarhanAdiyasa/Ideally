@@ -24,7 +24,7 @@ class AdminDedikasiFloraController extends Controller
     {
         $dedikasiFloras = Dedikasi_Flora::all();
         
-        foreach ($dedikasiFloras as $dedikasiFlora) {
+        foreach ($dedikasiFloras as $agrigard) {
             $hargaRanges = [];
     
             // Assuming harga columns have a common prefix
@@ -34,9 +34,39 @@ class AdminDedikasiFloraController extends Controller
             $max = null;
     
             // Iterate over harga columns and compute overall range
-            for ($i = 1; $i <= 3; $i++) {  // Assuming 3 levels: b2I, b2B, b2C
+            for ($i = 1; $i <= 31; $i+=10) {  // Assuming 3 levels: b2I, b2B, b2C
                 $columnName = $columnPrefix . 'b2I_' . $i . '_unit';
-                $harga = $dedikasiFlora->{$columnName};  // Get the harga value for the current column
+                $harga = $agrigard->{$columnName};  // Get the harga value for the current column
+    
+                if ($harga !== null) {
+                    if ($min === null || $harga < $min) {
+                        $min = $harga;
+                    }
+    
+                    if ($max === null || $harga > $max) {
+                        $max = $harga;
+                    }
+                }
+               
+            }
+            for ($i = 1; $i <= 31; $i+=10) {  // Assuming 3 levels: b2I, b2B, b2C
+                $columnName = $columnPrefix . 'b2C_' . $i . '_unit';
+                $harga = $agrigard->{$columnName};  // Get the harga value for the current column
+    
+                if ($harga !== null) {
+                    if ($min === null || $harga < $min) {
+                        $min = $harga;
+                    }
+    
+                    if ($max === null || $harga > $max) {
+                        $max = $harga;
+                    }
+                }
+               
+            }
+            for ($i = 1; $i <= 31; $i+=10) {  // Assuming 3 levels: b2I, b2B, b2C
+                $columnName = $columnPrefix . 'b2B_' . $i . '_unit';
+                $harga = $agrigard->{$columnName};  // Get the harga value for the current column
     
                 if ($harga !== null) {
                     if ($min === null || $harga < $min) {
@@ -48,21 +78,21 @@ class AdminDedikasiFloraController extends Controller
                     }
                 }
             }
-    
-            // Add the computed range to the dedikasiFlora object
-            $hargaRanges[] = $min !== null && $max !== null ? $min . ' - ' . $max : 'No data';
-    
-            // Add the computed ranges to the dedikasiFlora object
-            $dedikasiFlora->harga_ranges = $hargaRanges;
+            
+          $hargaRanges[] = $min !== null && $max !== null
+    ? 'Rp. ' . number_format($min, 0, ',', '.') . ' - Rp. ' . number_format($max, 0, ',', '.')
+    : 'No data';
+
+            $agrigard->harga_ranges = $hargaRanges;
         }
     
-        return view('Pages/DedikasiFlora/list-dedikasiFlora', ['dedikasiFloras' => $dedikasiFloras]);
+        return view('Pages/DedikasiFlora/list-dedikasiFlora', ['dedikasiFloras' => $dedikasiFloras, 'active'=>'DedikasiFlora']);
     }
     
     public function view($id)
     {
         $dedikasiFlora = Dedikasi_Flora::findOrFail($id);
-        return view('Pages/DedikasiFlora/detail-dedikasiFlora', ['dedikasiFlora'=>$dedikasiFlora]);
+        return view('Pages/DedikasiFlora/detail-dedikasiFlora', ['dedikasiFlora'=>$dedikasiFlora, 'active'=>'DedikasiFlora']);
     }
 
     /**
@@ -70,7 +100,7 @@ class AdminDedikasiFloraController extends Controller
      */
     public function create()
     {
-        return view('Pages/DedikasiFlora/add-dedikasiFlora');
+        return view('Pages/DedikasiFlora/add-dedikasiFlora', ['active'=>'DedikasiFlora']);
     }
 
     /**
@@ -161,7 +191,11 @@ class AdminDedikasiFloraController extends Controller
         DB::rollback();
        return redirect()->back()->with('error', 'Terjadi kesalahan. Silakan coba lagi nanti.');
     }
-    return redirect()->route('dedikasiFloras')->with('success', 'Data berhasil disimpan!');
+    if($request->tanggal_publikasi == "true"){
+         return redirect()->route('dedikasiFloras')->with('success', 'Produk berhasil disimpan dan diterbitkan.');
+    }else{
+         return redirect()->route('dedikasiFloras')->with('success', 'Produk berhasil disimpan.');
+    }
     }
     
 
@@ -178,7 +212,8 @@ class AdminDedikasiFloraController extends Controller
         $dedikasiFlora = Dedikasi_Flora::findOrFail($id);
         list($warna_bunga_1, $warna_bunga_2) = explode('-', $dedikasiFlora->warna_bunga);
         list($warna_daun_1, $warna_daun_2) = explode('-', $dedikasiFlora->warna_daun);
-        return view('Pages/DedikasiFlora/edit-dedikasiFlora', compact('dedikasiFlora', 'warna_bunga_1', 'warna_bunga_2','warna_daun_1', 'warna_daun_2'));
+        $active = 'DedikasiFlora';
+        return view('Pages/DedikasiFlora/edit-dedikasiFlora',compact('dedikasiFlora', 'warna_bunga_1', 'warna_bunga_2','warna_daun_1', 'warna_daun_2', 'active'));
     }
 
     /**
@@ -231,6 +266,8 @@ class AdminDedikasiFloraController extends Controller
                 $dedikasiFlora->gambar_3 = $photoPaths[2] ?? null;
                 if($request->tanggal_publikasi == "true"){
                     $dedikasiFlora->tanggal_publikasi = now();
+                }else{
+                    $dedikasiFlora->tanggal_publikasi = null;
                 }
                 $harga_jual_projek_ideally = str_replace(['.', ''], '', $request['harga_jual_projek_ideally']);
                 $dedikasiFlora->harga_jual_projek_ideally = $harga_jual_projek_ideally;
@@ -277,13 +314,17 @@ class AdminDedikasiFloraController extends Controller
             DB::rollback();
            return redirect()->back()->with('error', 'Terjadi kesalahan. Silakan coba lagi nanti.');
         }
-        return redirect()->route('dedikasiFloras')->with('success', 'Data berhasil disimpan!');
+        if($request->tanggal_publikasi == "true"){
+            return redirect()->route('dedikasiFloras')->with('success', 'Produk berhasil disimpan dan diterbitkan.');
+       }else{
+            return redirect()->route('dedikasiFloras')->with('success', 'Data berhasil disimpan.');
+       }
     }
 
     public function delete($id)
     {
         $dedikasiFlora = Dedikasi_Flora::findOrFail($id);
-        return view('Pages/DedikasiFlora/delete-dedikasiFlora', ['dedikasiFlora'=>$dedikasiFlora]);
+        return view('Pages/DedikasiFlora/delete-dedikasiFlora', ['dedikasiFlora'=>$dedikasiFlora, 'active'=>'DedikasiFlora']);
     }
 
     public function destroy($id)
@@ -319,7 +360,7 @@ class AdminDedikasiFloraController extends Controller
             return redirect()->back()->with('error', 'Terjadi kesalahan. Silakan coba lagi nanti.');
         }
 
-        return redirect()->route('dedikasiFloras')->with('success', 'Data berhasil dihapus!');
+        return redirect()->route('dedikasiFloras')->with('success', 'Data berhasil dihapus.');
     }
 
     public function post(Request $request)
@@ -335,7 +376,7 @@ class AdminDedikasiFloraController extends Controller
             DB::rollback();
             return redirect()->back()->with('error', 'Terjadi kesalahan. Silakan coba lagi nanti.');
         }
-        return redirect()->route('dedikasiFloras')->with('success', 'Status data berhasil diubah!');
+        return redirect()->route('dedikasiFloras')->with('success', 'Data berhasil diterbitkan.');
     }
     
 }

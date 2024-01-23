@@ -26,7 +26,7 @@ class AdminArtikelController extends Controller
     public function index()
     {
         $artikels = Artikel::all();
-        return view('Pages/Artikel/list-artikel', ["artikels"=>$artikels]);
+        return view('Pages/Artikel/list-artikel', ["artikels"=>$artikels,  "active"=>"artikel"]);
     }
 
     /**
@@ -35,7 +35,7 @@ class AdminArtikelController extends Controller
     public function create()
     {
         $categories = Kategori_Artikel::all();
-        return view('Pages/Artikel/add-artikel', ["categories"=>$categories]);
+        return view('Pages/Artikel/add-artikel', ["categories"=>$categories,  "active"=>"artikel"]);
     }
 
     /**
@@ -99,7 +99,12 @@ class AdminArtikelController extends Controller
             DB::rollback();
            return redirect()->back()->with('error', 'Terjadi kesalahan. Silakan coba lagi nanti.');
         }
-        return redirect()->route('artikels')->with('success', 'Data berhasil disimpan!');
+        if($request->tanggal_publikasi == "true"){
+            return redirect()->route('artikels')->with('success', 'Artikel berhasil disimpan dan diterbitkan.');
+        }else{
+            return redirect()->route('artikels')->with('success', 'Artikel berhasil disimpan.');
+        }
+       
     }
 
     /**
@@ -109,7 +114,7 @@ class AdminArtikelController extends Controller
     {
         $artikel = Artikel::findOrFail($id);
         $komentars = Komentar::where('id_artikel', $id)->get();
-        return view('Pages/Artikel/komentar-artikel', ['artikel' => $artikel, 'komentars' => $komentars]);
+        return view('Pages/Artikel/komentar-artikel', ['artikel' => $artikel, 'komentars' => $komentars,  "active"=>"artikel"]);
     }    
 
     public function hideKomentar(Request $request)
@@ -134,7 +139,7 @@ class AdminArtikelController extends Controller
         $artikel = Artikel::findOrFail($id);
         $categories = Kategori_Artikel::all();
         $sumbers = Sumber_Artikel::where(["id_artikel"=>$artikel->id_artikel])->get();
-        return view('Pages/Artikel/edit-artikel', ['artikel'=>$artikel,"categories"=>$categories, "sumbers"=>$sumbers]);
+        return view('Pages/Artikel/edit-artikel', ['artikel'=>$artikel,"categories"=>$categories, "sumbers"=>$sumbers,  "active"=>"artikel"]);
     }
 
     /**
@@ -189,6 +194,9 @@ class AdminArtikelController extends Controller
                 if($request->tanggal_publikasi == "true"){
                     $artikel->tanggal_publikasi = now();
                 }
+                else{
+                    $artikel->tanggal_publikasi = null;
+                }
                 if ($validatedData['author'] == "sendiri") {
                     $artikel->penulis_artikel = auth()->user()->firstname.' '.auth()->user()->lastname;
                     $artikel->profesi_penulis_artikel = auth()->user()->profesi;
@@ -208,13 +216,17 @@ class AdminArtikelController extends Controller
             DB::rollback();
            return redirect()->back()->with('error', 'Terjadi kesalahan. Silakan coba lagi nanti.');
         }
-        return redirect()->route('artikels')->with('success', 'Data berhasil disimpan!');
+        if($request->tanggal_publikasi == "true"){
+            return redirect()->route('artikels')->with('success', 'Artikel berhasil disimpan dan diterbitkan.');
+        }else{
+            return redirect()->route('artikels')->with('success', 'Artikel berhasil disimpan.');
+        }
     }
 
     public function delete($id)
     {
         $artikel = Artikel::findOrFail($id);
-        return view('Pages/Artikel/delete-artikel', ['artikel'=>$artikel]);
+        return view('Pages/Artikel/delete-artikel', ['artikel'=>$artikel,  "active"=>"artikel"]);
     }
     public function destroy(string $id)
     {
@@ -229,7 +241,7 @@ class AdminArtikelController extends Controller
             return redirect()->back()->with('error', 'Terjadi kesalahan. Silakan coba lagi nanti.');
         }
 
-        return redirect()->route('artikels')->with('success', 'Data berhasil dihapus!');
+        return redirect()->route('artikels')->with('success', 'Data berhasil dihapus.');
     }
     public function preview($slug)
     {
@@ -261,6 +273,6 @@ class AdminArtikelController extends Controller
             DB::rollback();
             return redirect()->back()->with('error', 'Terjadi kesalahan. Silakan coba lagi nanti.');
         }
-        return redirect()->route('artikels')->with('success', 'Status data berhasil diubah!');
+        return redirect()->route('artikels')->with('success', 'Data berhasil diterbitkan.');
     }
 }

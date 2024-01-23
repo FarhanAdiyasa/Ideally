@@ -231,7 +231,7 @@
           <div class="col-12 col-sm-6">
             <div class="form-group">
               <label>Panjang Produk (cm)</label>
-                <input type="number" class="form-control" placeholder="Masukkan Panjang Dalam Bentuk Angka" name="panjang" value="{{old('panjang', $shineage->panjang)}}">
+                <input type="text" oninput="validateInput(this)" class="form-control" placeholder="Masukkan Panjang Dalam Bentuk Angka" name="panjang" value="{{old('panjang', $shineage->panjang)}}">
                    @error('panjang')
                 <small class="text-danger">{{ $message }}</small>
                 @enderror
@@ -242,7 +242,7 @@
           <div class="col-12 col-sm-6">
             <div class="form-group">
               <label>Lebar Produk (cm)</label>
-                <input type="number" class="form-control" placeholder="Masukkan Lebar Dalam Bentuk Angka" name="lebar" value="{{old('lebar', $shineage->lebar)}}">
+                <input type="text" oninput="validateInput(this)" class="form-control" placeholder="Masukkan Lebar Dalam Bentuk Angka" name="lebar" value="{{old('lebar', $shineage->lebar)}}">
                    @error('lebar')
                 <small class="text-danger">{{ $message }}</small>
                 @enderror
@@ -255,7 +255,7 @@
           <div class="col-12 col-sm-6">
             <div class="form-group">
               <label>Diameter Produk (cm)</label>
-                <input type="number" class="form-control" placeholder="Masukkan Diameter Dalam Bentuk Angka" name="diameter" value="{{old('diameter', $shineage->diameter)}}">
+                <input type="text" oninput="validateInput(this)" class="form-control" placeholder="Masukkan Diameter Dalam Bentuk Angka" name="diameter" value="{{old('diameter', $shineage->diameter)}}">
                    @error('diameter')
                 <small class="text-danger">{{ $message }}</small>
                 @enderror
@@ -266,7 +266,7 @@
           <div class="col-12 col-sm-6">
             <div class="form-group">
               <label>Tinggi Produk (cm)</label>
-                <input type="number" class="form-control" placeholder="Masukkan Tinggi Dalam Bentuk Angka" name="tinggi" value="{{old('tinggi', $shineage->tinggi)}}">
+                <input type="text" oninput="validateInput(this)" class="form-control" placeholder="Masukkan Tinggi Dalam Bentuk Angka" name="tinggi" value="{{old('tinggi', $shineage->tinggi)}}">
                    @error('tinggi')
                 <small class="text-danger">{{ $message }}</small>
                 @enderror
@@ -279,8 +279,8 @@
           <div class="col-12 col-sm-6">
             <div class="form-group">
               <label>Berat (gr)</label>
-                <input type="number" class="form-control" placeholder="Ketikkan disini" name="berat" value="{{old('berat', $shineage->berat)}}">
-                   @error('berat')
+                <input type="text" oninput="validateInput(this)" class="form-control" placeholder="Placeholder text" name="berat_gram" value="{{old('berat_gram', $shineage->berat_gram)}}">
+                   @error('berat_gram')
                 <small class="text-danger">{{ $message }}</small>
                 @enderror
             </div>
@@ -388,7 +388,7 @@
         <div class="col-12 col-sm-6">
           <div class="form-group">
             <label>Stok Produk</label>
-              <input type="number" class="form-control" placeholder="Masukkan Stok Dalam Bentuk Angka" name="stok" value="{{old('stok', $shineage->stok)}}">
+              <input type="text" oninput="validateInput(this)" class="form-control" placeholder="Masukkan Stok Dalam Bentuk Angka" name="stok" value="{{old('stok', $shineage->stok)}}">
                  @error('stok')
               <small class="text-danger">{{ $message }}</small>
               @enderror
@@ -446,7 +446,7 @@
           <div class="form-group">
             <div class="harga-input">
               <div class="rp">Rp</div>
-              <input data-unify="TextField" placeholder="Masukkan Harga" type="number"  class="css-3017qm rupiah" name="harga_jual_projek_ideally" value="{{old('harga_jual_projek_ideally',  number_format($shineage->harga_jual_projek_ideally, 0, ',', '.'))}}">
+              <input data-unify="TextField" placeholder="Masukkan Harga" type="text" oninput="validateInput(this)"  class="css-3017qm rupiah" name="harga_jual_projek_ideally" value="{{old('harga_jual_projek_ideally',  number_format($shineage->harga_jual_projek_ideally, 0, ',', '.'))}}">
             </div>
             
                @error('harga_jual_projek_ideally')
@@ -458,12 +458,12 @@
         <!-- /.col -->
       </div>
       <div class="row">
-        <label>Harga Business To Individu :</label>
+        <label>Harga Business To Ideally :</label>
       </div>
       <div class="row">
         <div class="col-md-3">
           <div class="form-group">
-            <p>1+ Units</p>
+            <p>1+ Units <span class="wajib">Wajib</span></p>
           </div>
           <!-- /.form-group -->
         </div>
@@ -487,7 +487,7 @@
       <div class="row">
         <div class="col-md-3">
           <div class="form-group">
-            <p>11+ Units</p>
+            <p>11+ Units <span class="wajib">Wajib</span></p>
            
           </div>
           <!-- /.form-group -->
@@ -513,7 +513,7 @@
       <div class="row">
         <div class="col-md-3">
           <div class="form-group">
-            <p>1+ Units</p>
+            <p>1+ Units <span class="wajib">Wajib</span></p>
            
           </div>
           <!-- /.form-group -->
@@ -536,7 +536,7 @@
       <div class="row">
         <div class="col-md-3">
           <div class="form-group">
-            <p>11+ Units</p>
+            <p>11+ Units <span class="wajib">Wajib</span></p>
            
           </div>
           <!-- /.form-group -->
@@ -562,7 +562,7 @@
       <div class="row">
         <div class="col-md-3">
           <div class="form-group">
-            <p>1+ Units:</p>
+            <p>1+ Units <span class="wajib">Wajib</span></p>
            
           </div>
           <!-- /.form-group -->
@@ -585,7 +585,7 @@
       <div class="row">
         <div class="col-md-3">
           <div class="form-group">
-            <p>11+ Units:</p>
+            <p>11+ Units <span class="wajib">Wajib</span></p>
            
           </div>
           <!-- /.form-group -->

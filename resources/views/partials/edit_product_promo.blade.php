@@ -6,7 +6,8 @@
                 <label for="all">All</label>
                 <input type="checkbox" name="" value="" id="all" class="check-all">
             </th> 
-            <th>Info {{$brand}}</th>
+             <th>No</th>
+                                <th>Info {{$brand}}</th>
             <th>Harga</th>
             <th>Stok</th>
         </tr>
@@ -34,7 +35,7 @@
                 </td>
                 <td>
                     @foreach ($product->harga_ranges as $hargaRange)
-                        <div>{{ $hargaRange }}</div>
+                         <div>{{ $hargaRange }}</div>
                     @endforeach
                 </td>
                 <td>
@@ -58,7 +59,10 @@
 <script>
     $(document).ready(function() {
         // Inisialisasi DataTable
-        var table = $('#products-ss').DataTable();
+        var table = $('#products-ss').DataTable({
+            "iDisplayLength": 10,
+        "bLengthChange": false
+        });
     
         // Update jumlah_checked initially
         updateJumlahChecked();

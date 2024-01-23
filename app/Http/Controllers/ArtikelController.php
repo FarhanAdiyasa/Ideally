@@ -6,9 +6,10 @@ use App\Models\Artikel;
 use App\Models\Komentar;
 use Illuminate\Http\Request;
 use App\Models\Rating_Artikel;
-use App\Models\Kategori_Artikel;
 use App\Models\Sumber_Artikel;
+use App\Models\Kategori_Artikel;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Cache;
 
 
 class ArtikelController extends Controller
@@ -48,7 +49,7 @@ class ArtikelController extends Controller
 
         return view('daftar-artikel', [
             "articles" => Artikel::byKategori($kategori)->filter(request(['sort', 'search']))->paginate(18),
-            "jumlah" => Artikel::count(),
+            "jumlah" => Artikel::byKategori($kategori)->count(),
             "active" => $kategori,
             "sort" => $sort,
             "articles_acak" => Artikel::inRandomOrder()->limit(4)->get(),
@@ -67,10 +68,11 @@ class ArtikelController extends Controller
         $rating = auth()->user()
         ? Rating_Artikel::where(['id_artikel' => $artikel->id_artikel, 'user_id' => auth()->user()->user_id])->first()
         : 0;
-    
-       
-        $artikel->pengunjung =  $artikel->pengunjung+1;
-        $artikel->save();
+        // Mengambil jumlah pengunjung dari cache
+        $artikel->pengunjung = Cache::get('article_' . $slug . '_visitors', 0);
+
+        // Menyimpan jumlah pengunjung ke dalam database
+        DB::table('artikels')->where('id_artikel', $artikel->id_artikel)->increment('pengunjung');
         return view('baca-artikel', [
             "active"=> $active,
             "artikel"=>$artikel,

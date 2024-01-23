@@ -35,7 +35,7 @@ class Artikel extends Model
     }    
     public function komentar()
     {
-        return $this->hasMany(Komentar::class, 'id_artikel');
+        return $this->hasMany(Komentar::class, 'id_artikel', 'id_artikel');
     }
     public function sumberArtikel()
     {
@@ -59,7 +59,7 @@ class Artikel extends Model
         });
         $query->when($filter['search'] ??  false, function ($query, $search) {
             return $query->where('judul_artikel', 'like', '%' . $search . '%')
-            ->orWhere('isi_artikel', 'like', '%' . $search . '%');
+            ->orWhere('isi_artikel', 'like', '%' . $search . '%')->orWhere('keywords', 'like', '%' . $search . '%');
         });
     }
 }

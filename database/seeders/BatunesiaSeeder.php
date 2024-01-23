@@ -2,9 +2,11 @@
 
 namespace Database\Seeders;
 
+use Database\Factories\BatunesiaFactory;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use App\Models\Batunesia;
+use App\Models\Order;
 
 class BatunesiaSeeder extends Seeder
 {
@@ -13,10 +15,6 @@ class BatunesiaSeeder extends Seeder
      */
     public function run(): void
     {
-<<<<<<< HEAD
-        Batunesia::factory(100)->count(100)->create();
-=======
         Batunesia::factory(100)->create();
->>>>>>> d5557992f1c905b8f774d6907a37c029ef4d4590
     }
 }

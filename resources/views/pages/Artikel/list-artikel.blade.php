@@ -21,6 +21,7 @@
                     <table id="articles-table" class="table table-bordered text-center">
                         <thead>
                             <tr>
+                                <th>No</th>
                                 <th>Judul Artikel</th>
                                 <th>Pengunjung</th>
                                 <th>Penulis</th>
@@ -31,9 +32,12 @@
                         <tbody>
                             @forelse ($artikels as $artikel)
                                 <tr>
-                                    <td style="text-align: left; vertical-align: middle;">
-                                        <div class="row" >
-                                                <div>
+                                    <td>
+                                        {{ $loop->iteration }}
+                                    </td>
+                                    <td>
+                                        <div class="row">
+                                                <div class="text-left">
                                                      {{ $artikel->judul_artikel }}
                                                 </div>
                                         </div>
@@ -133,11 +137,10 @@
     }
     $(document).ready(function() {
         $('#articles-table').DataTable({
-            "language": {
-                "url": "//cdn.datatables.net/plug-ins/1.13.7/i18n/id.json"
-            }
+                "iDisplayLength": 10,
+        "bLengthChange": false
         });
-    });
+    }); 
 
     function store(articleId) {
     // Submit the form

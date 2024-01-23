@@ -111,6 +111,9 @@ body {
     font-size: 13px;
     text-align: center;
 }
+.total-item .qty .btn {
+    width: 22px;
+}
 
 .total-item .total-price {
     color: #00B09A;
