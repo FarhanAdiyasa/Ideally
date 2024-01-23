@@ -3672,3 +3672,15 @@
 1706021767-4110-1740203293,1706021767.1302,GET,/daftar-artikel/preview/Storage/Photos/Foto.jpg,,404,475.08096694946,request
 1706021815-0499-1095185169,1706021814.8718,GET,/auth/logout,"App\Http\Controllers\AuthController@logout",302,365.12589454651,request
 1706021815-4640-1049594607,1706021815.2577,GET,/auth/login,"App\Http\Controllers\AuthController@index",200,375.28204917908,request
+1706021827-0576-1023767598,1706021826.8936,POST,/auth/login,"App\Http\Controllers\AuthController@login",302,426.5148639679,request
+1706021827-5555-2127864792,1706021827.3578,GET,/portal-edukasi,"App\Http\Controllers\ArtikelController@index",200,457.65113830566,request
+1706021828-7699-1729061250,1706021828.4966,GET,/home/show/Desain-Taman,"App\Http\Controllers\ArtikelController@show",200,504.14609909058,request
+1706021841-6867-998015807,1706021841.379,GET,/portal-edukasi/Desain-Taman,"App\Http\Controllers\ArtikelController@byKategori",200,763.66901397705,request
+1706021842-7323-1726885853,1706021842.4588,GET,/storage/photos/contoh.png,,404,498.16679954529,request
+1706021844-7927-2093052931,1706021844.5136,GET,/portal-edukasi/baca/minima-quis-nam-vel-facere-iste-in-voluptatem,"App\Http\Controllers\ArtikelController@baca",200,799.82995986938,request
+1706021845-8171-1192997163,1706021845.6347,GET,/storage/photos/contoh.png,,404,363.28506469727,request
+1706021846-2469-1847953683,1706021846.0523,GET,/portal-edukasi/komentar/minima-quis-nam-vel-facere-iste-in-voluptatem,"App\Http\Controllers\ArtikelController@sKomentar",200,420.71199417114,request
+1706021846-8484-732232234,1706021846.6675,GET,/portal-edukasi/baca/Storage/Photos/Foto.jpg,,404,336.8079662323,request
+1706021858-3590-1063579077,1706021858.2087,POST,/portal-edukasi/komentar/minima-quis-nam-vel-facere-iste-in-voluptatem,"App\Http\Controllers\ArtikelController@komentar",200,318.8099861145,request
+1706021858-7377-160369928,1706021858.5593,GET,/portal-edukasi/komentar/minima-quis-nam-vel-facere-iste-in-voluptatem,"App\Http\Controllers\ArtikelController@sKomentar",200,365.63515663147,request
+1706021859-2324-471671372,1706021859.017,GET,/portal-edukasi/baca/Storage/Photos/Foto.jpg,,404,318.89486312866,request
