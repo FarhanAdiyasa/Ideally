@@ -42,8 +42,12 @@ class KonkuritoController extends Controller
     public function show($id_konkurito)
     {
         $konkuritoDetail = Konkurito::findOrFail($id_konkurito);
-        $konkuritoterkait = Konkurito::where('stok', '>', 0)->inRandomOrder()->take(4)->get();
-        return view('konkuritos.details', compact('konkuritoDetail', 'konkuritoterkait'));
+        $konkuritoterkait = Konkurito::where('stok', '>', 0)->where('id_konkurito', '!=', $konkuritoDetail->id_konkurito)->inRandomOrder()->take(20)->get();
+        $konkuritolainnya = Konkurito::where('stok', '>', 0)
+            ->where('id_konkurito', '!=', $konkuritoDetail->id_konkurito)->inRandomOrder()->take(20)->get();
+        $konkuritopopuler = Konkurito::where('stok', '>', 0)
+            ->where('id_konkurito', '!=', $konkuritoDetail->id_konkurito)->inRandomOrder()->take(20)->get();   
+        return view('konkuritos.details', compact('konkuritoDetail', 'konkuritoterkait', 'konkuritolainnya', 'konkuritopopuler'));
     }
 
     /**

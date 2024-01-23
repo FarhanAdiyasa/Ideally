@@ -94,14 +94,12 @@
                             <p>Pot Plastik</p>
 =======
                 <div class="col wrapper">
-                        <div class="bg-light rounded-circle" style="height: 25px; width: 25px;"></div>
                         <div class="text-white text-center m-0">
                             <a href="{{ route('agrigard.kategori', ['kategori' => 'Pot Plastik']) }}">Pot Plastik</a>
 >>>>>>> d5557992f1c905b8f774d6907a37c029ef4d4590
                         </div>
                     </div>
                     <div class="col wrapper">
-                        <div class="bg-light rounded-circle" style="height: 25px; width: 25px;"></div>
                         <div class="text-white text-center m-0">
 <<<<<<< HEAD
                             <p>Pot Plastik</p>
@@ -111,7 +109,6 @@
                         </div>
                     </div>
                     <div class="col wrapper">
-                        <div class="bg-light rounded-circle" style="height: 25px; width: 25px;"></div>
                         <div class="text-white text-center m-0">
 <<<<<<< HEAD
                             <p>Pot Terracota</p>
@@ -121,7 +118,6 @@
                         </div>
                     </div>
                     <div class="col wrapper">
-                        <div class="bg-light rounded-circle" style="height: 25px; width: 25px;"></div>
                         <div class="text-white text-center m-0">
 <<<<<<< HEAD
                             <p>Bibit Tanaman</p>
@@ -131,7 +127,6 @@
                         </div>
                     </div>
                     <div class="col wrapper">
-                        <div class="bg-light rounded-circle" style="height: 25px; width: 25px;"></div>
                         <div class="text-white text-center m-0">
 <<<<<<< HEAD
                             <p>Media Tanam</p>
@@ -141,7 +136,6 @@
                         </div>
                     </div>
                     <div class="col wrapper">
-                        <div class="bg-light rounded-circle" style="height: 25px; width: 25px;"></div>
                         <div class="text-white text-center m-0">
 <<<<<<< HEAD
                             <p>Wadah Tanam</p>
@@ -151,7 +145,6 @@
                         </div>
                     </div>
                     <div class="col wrapper">
-                        <div class="bg-light rounded-circle" style="height: 25px; width: 25px;"></div>
                         <div class="text-white text-center m-0">
 <<<<<<< HEAD
                             <p>Obat dan Nutrisi</p>
@@ -161,7 +154,6 @@
                         </div>
                     </div>
                     <div class="col wrapper">
-                        <div class="bg-light rounded-circle" style="height: 25px; width: 25px;"></div>
                         <div class="text-white text-center m-0">
 <<<<<<< HEAD
                             <p>Alat Kerja</p>
@@ -222,17 +214,7 @@
                 </div>
                 <!-- Pagination -->
                 <div class="mt-5 d-flex justify-content-center">
-                    <nav aria-label="Page navigation example">
-                        <ul class="pagination">
-                            <li class="page-item page-item-prev"><a class="page-link" href="#"
-                                    aria-label="Previous">-</a></li>
-                            <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                            <li class="page-item"><a class="page-link" href="#">2</a></li>
-                            <li class="page-item"><a class="page-link" href="#">3</a></li>
-                            <li class="page-item page-item-next"><a class="page-link" href="#" aria-label="Next">+</a>
-                            </li>
-                        </ul>
-                    </nav>
+                {{ $agrigards->links('partials.agrigard-pagination') }}
                 </div>
                 <!-- End Pagination -->
             </div>

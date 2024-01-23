@@ -92,7 +92,6 @@
             <div class="inner-container top-end bg-orange">
                 <div class="row">
                     <div class="col wrapper">
-                        <div class="bg-light rounded-circle" style="height: 25px; width: 25px;"></div>
                         <div class="text-white text-center m-0">
 <<<<<<< HEAD
                             <p>Pot Plastik</p>
@@ -102,7 +101,6 @@
                         </div>
                     </div>
                     <div class="col wrapper">
-                        <div class="bg-light rounded-circle" style="height: 25px; width: 25px;"></div>
                         <div class="text-white text-center m-0">
 <<<<<<< HEAD
                             <p>Pot Plastik</p>
@@ -112,7 +110,6 @@
                         </div>
                     </div>
                     <div class="col wrapper">
-                        <div class="bg-light rounded-circle" style="height: 25px; width: 25px;"></div>
                         <div class="text-white text-center m-0">
 <<<<<<< HEAD
                             <p>Pot Terracota</p>
@@ -122,7 +119,6 @@
                         </div>
                     </div>
                     <div class="col wrapper">
-                        <div class="bg-light rounded-circle" style="height: 25px; width: 25px;"></div>
                         <div class="text-white text-center m-0">
 <<<<<<< HEAD
                             <p>Bibit Tanaman</p>
@@ -132,7 +128,6 @@
                         </div>
                     </div>
                     <div class="col wrapper">
-                        <div class="bg-light rounded-circle" style="height: 25px; width: 25px;"></div>
                         <div class="text-white text-center m-0">
 <<<<<<< HEAD
                             <p>Media Tanam</p>
@@ -142,7 +137,6 @@
                         </div>
                     </div>
                     <div class="col wrapper">
-                        <div class="bg-light rounded-circle" style="height: 25px; width: 25px;"></div>
                         <div class="text-white text-center m-0">
 <<<<<<< HEAD
                             <p>Wadah Tanam</p>
@@ -152,7 +146,6 @@
                         </div>
                     </div>
                     <div class="col wrapper">
-                        <div class="bg-light rounded-circle" style="height: 25px; width: 25px;"></div>
                         <div class="text-white text-center m-0">
 <<<<<<< HEAD
                             <p>Obat dan Nutrisi</p>
@@ -162,7 +155,6 @@
                         </div>
                     </div>
                     <div class="col wrapper">
-                        <div class="bg-light rounded-circle" style="height: 25px; width: 25px;"></div>
                         <div class="text-white text-center m-0">
 <<<<<<< HEAD
                             <p>Alat Kerja</p>

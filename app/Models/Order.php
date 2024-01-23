@@ -12,6 +12,8 @@ class Order extends Model
 
     protected $fillable = ['user_id', 'total_harga', 'biaya_ongkir', 'grand_total', 'bank', 'status_pembayaran', 'status_pesanan'];
 
+    protected $primaryKey = 'id_order'; 
+
     protected static function booted()
     {
         static::creating(function ($order) {
@@ -29,28 +31,28 @@ class Order extends Model
 
     public function nurseris()
     {
-        return $this->belongsToMany(Dedikasi_Flora::class, 'dedikasi_floras_orders', 'id_order', 'id_nurseri');
+        return $this->belongsToMany(Dedikasi_Flora::class, 'dedikasi_floras_orders', 'id_order', 'id_nurseri')->withPivot('quantity');
     }
 
 
     public function agrigards() {
-        return $this->belongsToMany(Agrigard::class, 'agrigards_orders', 'id_order', 'id_agrigard');
+        return $this->belongsToMany(Agrigard::class, 'agrigards_orders', 'id_order', 'id_agrigard')->withPivot('quantity');
     }
 
     public function batunesias() {
-        return $this->belongsToMany(Batunesia::class, 'batunesias_orders', 'id_order', 'id_batu');
+        return $this->belongsToMany(Batunesia::class, 'batunesias_orders', 'id_order', 'id_batu')->withPivot('quantity');
     }
 
     public function everlas_things() {
-        return $this->belongsToMany(Everlas_Things::class, 'everlas_things_orders', 'id_order', 'id_everlas_things');
+        return $this->belongsToMany(Everlas_Things::class, 'everlas_things_orders', 'id_order', 'id_everlas_things')->withPivot('quantity');
     }
 
     public function konkuritos() {
-        return $this->belongsToMany(Konkurito::class, 'konkuritos_orders', 'id_order', 'id_konkurito');
+        return $this->belongsToMany(Konkurito::class, 'konkuritos_orders', 'id_order', 'id_konkurito')->withPivot('quantity');
     }
 
     public function shineages() {
-        return $this->belongsToMany(Shineage::class, 'shineages_orders', 'id_order', 'id_shineage');
+        return $this->belongsToMany(Shineage::class, 'shineages_orders', 'id_order', 'id_shineage')->withPivot('quantity');
     }
   
     // Define a relationship with the Testimonial model
