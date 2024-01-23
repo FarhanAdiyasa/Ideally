@@ -34,8 +34,8 @@ class PromoController extends Controller
     
     public function view($id)
     {
-        $agrigard = Agrigard::findOrFail($id);
-        return view('Pages/Product/detail-product', ['agrigard'=>$agrigard, "active"=>"promo"]);
+        $promo = Promo::findOrFail($id);
+        return view('Pages/Promo/detail-promo', ['promo'=>$promo, "active"=>"promo"]);
     }
 
     /**

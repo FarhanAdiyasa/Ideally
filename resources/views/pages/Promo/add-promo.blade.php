@@ -563,7 +563,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 const loadProduk =  ()=> {
-  console.log("value");
   var radioButtons = document.getElementsByName('jenis_produk');
   var container = document.getElementById('brandOrproduct'); 
   var title = document.getElementById('brandOrproductT'); 
@@ -586,10 +585,7 @@ function showBrand(brand) {
 }
 function submitPromo(action) {
     var selectedIds = [];
-    var table = $('#products-ss').DataTable({
-            "iDisplayLength": 10,
-        "bLengthChange": false
-        });
+    var table = $('#products-ss').DataTable();
     table.$('input[type="checkbox"]:checked').each(function() {
         var productId = $(this).val();
         selectedIds.push(productId);

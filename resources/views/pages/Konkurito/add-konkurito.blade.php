@@ -52,14 +52,13 @@
         <div class="col-md-3">
           <div class="form-group">
             <label>Nama Produk</label>
-            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sed, odit ab eum enim illo minima deleniti quae ducimus repudiandae sit!</p>
           </div>
           <!-- /.form-group -->
         </div>
         <!-- /.col -->
         <div class="col-md-9">
           <div class="form-group">
-              <input id="default" type="text" class="form-control" placeholder="Masukkan disini" name="nama_produk" id="nama_produk" value="{{old('nama_produk')}}">
+              <input id="default" type="text" class="form-control" placeholder="Masukkan Nama Produk" name="nama_produk" id="nama_produk" value="{{old('nama_produk')}}">
               @error('nama_produk')
               <small class="text-danger">{{ $message }}</small>
               @enderror
@@ -75,7 +74,7 @@
         <div class="col-md-3">
           <div class="form-group">
             <label>Jenis Produk</label>
-            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sed, odit ab eum enim illo minima deleniti quae ducimus repudiandae sit!</p>
+            <p>Pilih jenis produk konkurito yang akan ditambahkan.</p>
           </div>
           <!-- /.form-group -->
         </div>

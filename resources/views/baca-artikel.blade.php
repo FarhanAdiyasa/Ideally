@@ -369,6 +369,7 @@
                                 </div>
                             </div>
                         </form>
+                        <h3 class="text-center" style="color: red; visibility:hidden" id="panjang">Komentar Terlalu Panjang !</h3>
                     </div>
                 </div>
                 <!-- End of Komentar -->
@@ -484,6 +485,7 @@
     <script>
 
         function submitForm(rating, slug) {
+            
             var isAuthenticated = @json(auth()->check());
             if (!isAuthenticated) {
                 // Pengguna tidak terautentikasi, arahkan ke halaman login
@@ -494,7 +496,7 @@
         hiddenInput.setAttribute("type", "hidden");
         hiddenInput.setAttribute("name", "rating");
         hiddenInput.setAttribute("value", rating);
-
+            
         document.getElementById("ratingForm").appendChild(hiddenInput);
             $.ajax({
             type: "POST",
@@ -531,37 +533,51 @@
 
 
     function submitKomentar(slug) {
-        var isAuthenticated = @json(auth()->check());
-            if (!isAuthenticated) {
-                // Pengguna tidak terautentikasi, arahkan ke halaman login
-                window.location.href = '{{ url('auth/login') }}';
-                return;
-            }
-    var komentar = $('#textarea-komentar').val();
-    $.ajax({
-        type: "POST",
-        url: "{{ url('/portal-edukasi/komentar/') }}/" + slug,
-        headers: {
-            'X-CSRF-TOKEN': "{{ csrf_token() }}",
-        },
-        data: {
-            komentar: komentar,
-        },
-        success: function (response) {
-            document.getElementById('suksesRate').style.visibility = 'visible';
-
-            // Call the 'show' function with the provided slug
-            show(slug);
-
-            // Optional: Clear the form after submission
-            $('#komenForm')[0].reset();
-        },
-        error: function (jqXHR, textStatus, errorThrown) {
-            console.error("AJAX Error:", textStatus, errorThrown);
-        },
-    });
-    return false; // Prevent the default form submission
+    var isAuthenticated = @json(auth()->check());
+    if (!isAuthenticated) {
+        // Pengguna tidak terautentikasi, arahkan ke halaman login
+        window.location.href = '{{ url('auth/login') }}';
+        return;
     }
+
+    var komentar = $('#textarea-komentar').val();
+    var panjangNotification = $('#panjang');
+
+    // Check if the comment length exceeds 255 characters
+    if (komentar.length > 255) {
+        panjangNotification.css('visibility', 'visible');
+        
+    } else {
+        // Reset the visibility of the notification
+        panjangNotification.css('visibility', 'hidden');
+
+        $.ajax({
+            type: "POST",
+            url: "{{ url('/portal-edukasi/komentar/') }}/" + slug,
+            headers: {
+                'X-CSRF-TOKEN': "{{ csrf_token() }}",
+            },
+            data: {
+                komentar: komentar,
+            },
+            success: function (response) {
+                document.getElementById('suksesRate').style.visibility = 'visible';
+
+                // Call the 'show' function with the provided slug
+                show(slug);
+
+                // Optional: Clear the form after submission
+                $('#komenForm')[0].reset();
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+                console.error("AJAX Error:", textStatus, errorThrown);
+            },
+        });
+    }
+
+    return false; // Prevent the default form submission
+}
+
   
     </script>
 

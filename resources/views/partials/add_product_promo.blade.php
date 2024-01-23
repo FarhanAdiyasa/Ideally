@@ -69,7 +69,7 @@
         // Inisialisasi DataTable
         var table = $('#products-ss').DataTable({
             "iDisplayLength": 10,
-        "bLengthChange": false
+            "bLengthChange": false
         });
     
         // Update jumlah_checked initially

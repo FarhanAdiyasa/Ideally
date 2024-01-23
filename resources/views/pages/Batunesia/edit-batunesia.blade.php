@@ -54,14 +54,13 @@
           <div class="col-md-3">
             <div class="form-group">
               <label>Nama Produk</label>
-              <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sed, odit ab eum enim illo minima deleniti quae ducimus repudiandae sit!</p>
             </div>
             <!-- /.form-group -->
           </div>
           <!-- /.col -->
           <div class="col-md-9">
             <div class="form-group">
-                <input id="default" type="text" class="form-control" placeholder="Masukkan disini" name="nama_produk" id="nama_produk" value="{{old('nama_produk', $batunesia->nama_produk)}}">
+                <input id="default" type="text" class="form-control" placeholder="Masukkan Nama Produk" name="nama_produk" id="nama_produk" value="{{old('nama_produk', $batunesia->nama_produk)}}">
                 @error('nama_produk')
                 <small class="text-danger">{{ $message }}</small>
                 @enderror
@@ -77,8 +76,8 @@
           <div class="col-md-3">
             <div class="form-group">
               <label>Jenis Produk</label>
-              <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sed, odit ab eum enim illo minima deleniti quae ducimus repudiandae sit!</p>
-            </div>
+              <p>Pilih jenis produk batunesia yang akan ditambahkan.</p>
+              </div>
             <!-- /.form-group -->
           </div>
           <!-- /.col -->
@@ -124,7 +123,7 @@
           <div class="col-12 col-sm-6">
             <div class="form-group">
               <label>Berat (gr)</label>
-                <input type="text" oninput="validateInput(this)" class="form-control" placeholder="Placeholder text" name="berat_gram" value="{{old('berat_gram', $batunesia->berat_gram)}}">
+                <input type="text" oninput="validateInput(this)" class="form-control" placeholder="Masukkan Berat(gr)" name="berat_gram" value="{{old('berat_gram', $batunesia->berat_gram)}}">
                    @error('berat')
                 <small class="text-danger">{{ $message }}</small>
                 @enderror
@@ -258,7 +257,7 @@
         <div class="col-md-3">
           <div class="form-group">
             <label>Gambar Produk</label>
-            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sed, odit ab eum enim illo minima deleniti quae ducimus repudiandae sit!</p>
+            <p>Hanya file dengan format JPEG, PNG, dan JPG yang diterima. Ukuran maksimum file adalah 2 MB. Input gambar akan dihapus jika ada input yang tidak valid dalam formulir ini. Input maksimal 3 gambar</p>
           </div>
           <!-- /.form-group -->
         </div>
@@ -291,14 +290,13 @@
         <div class="col-md-3">
           <div class="form-group">
             <label>Detail Produk</label>
-            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sed, odit ab eum enim illo minima deleniti quae ducimus repudiandae sit!</p>
           </div>
           <!-- /.form-group -->
         </div>
         <!-- /.col -->
         <div class="col-md-9">
           <div class="form-group">
-            <textarea class="form-control" id="" rows="3" placeholder="Detail Produk" name="deskripsi_singkat">{{ old('deskripsi_singkat', $batunesia->deskripsi_singkat) }}</textarea>
+            <textarea class="form-control" id="" rows="3" placeholder="Masukkan Detail Produk" name="deskripsi_singkat">{{ old('deskripsi_singkat', $batunesia->deskripsi_singkat) }}</textarea>
                  @error('deskripsi_singkat')
               <small class="text-danger">{{ $message }}</small>
               @enderror
@@ -311,14 +309,13 @@
         <div class="col-md-3">
           <div class="form-group">
             <label>Penempatan Produk</label>
-            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sed, odit ab eum enim illo minima deleniti quae ducimus repudiandae sit!</p>
           </div>
           <!-- /.form-group -->
         </div>
         <!-- /.col -->
         <div class="col-md-9">
           <div class="form-group">
-            <textarea class="form-control" id="" rows="3" placeholder="Penempatan Produk" name="penempatan">{{old('penempatan', $batunesia->penempatan)}}</textarea>
+            <textarea class="form-control" id="" rows="3" placeholder="Masukkan Penempatan Produk" name="penempatan">{{old('penempatan', $batunesia->penempatan)}}</textarea>
                  @error('penempatan')
               <small class="text-danger">{{ $message }}</small>
               @enderror
@@ -332,7 +329,7 @@
         <div class="col-md-3">
           <div class="form-group">
             <label>Video Produk</label>
-            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sed, odit ab eum enim illo minima deleniti quae ducimus repudiandae sit!</p>
+            <p>Video produk dalam bentuk link youtube</p>
           </div>
           <!-- /.form-group -->
         </div>
@@ -411,7 +408,7 @@
           <div class="form-group">
             <div class="harga-input">
               <div class="rp">Rp</div>
-              <input data-unify="TextField" placeholder="Masukkan Harga" type="text" oninput="validateInput(this)"  class="css-3017qm rupiah" name="harga_jual_projek_ideally" value="{{old('harga_jual_projek_ideally',  number_format($batunesia->harga_jual_projek_ideally, 0, ',', '.'))}}">
+              <input data-unify="TextField" placeholder="Masukkan Harga" type="text" class="css-3017qm rupiah" name="harga_jual_projek_ideally" value="{{old('harga_jual_projek_ideally',  number_format($batunesia->harga_jual_projek_ideally, 0, ',', '.'))}}">
             </div>
                @error('harga_jual_projek_ideally')
               <small class="text-danger">{{ $message }}</small>
