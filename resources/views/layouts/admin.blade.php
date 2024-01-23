@@ -192,7 +192,7 @@
               <a href="{{ route('shineages') }}" class="nav-link @if($active == 'shineage') active @else  @endif">
                 <i class="nav-icon fa fa-solid fa-box-open"></i>
                 <p>
-                  Signage
+                  Shineage
                 </p>
               </a>
             </li>

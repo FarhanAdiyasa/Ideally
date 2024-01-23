@@ -53,8 +53,7 @@
       <div class="row">
         <div class="col-md-3">
           <div class="form-group">
-            <label>Nama Produk</label>
-            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sed, odit ab eum enim illo minima deleniti quae ducimus repudiandae sit!</p>
+            <label>Nama Produk <span class="wajib">Wajib</span></label>
           </div>
           <!-- /.form-group -->
         </div>
@@ -76,8 +75,7 @@
       <div class="row">
         <div class="col-md-3">
           <div class="form-group">
-            <label>Kategori Produk</label>
-            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sed, odit ab eum enim illo minima deleniti quae ducimus repudiandae sit!</p>
+            <label>Kategori Produk <span class="wajib">Wajib</span></label>
           </div>
           <!-- /.form-group -->
         </div>
@@ -106,8 +104,8 @@
       <div class="row">
         <div class="col-12 col-sm-6">
           <div class="form-group">
-            <label>Spesifikasi Produk</label>
-              <input type="text" class="form-control" placeholder="Placeholder text" name="spesifikasi" value="{{old('spesifikasi', $agrigard->spesifikasi)}}">
+            <label>Spesifikasi Produk <span class="wajib">Wajib</span></label>
+              <input type="text" class="form-control" placeholder="Masukkan Spesifikasi" name="spesifikasi" value="{{old('spesifikasi', $agrigard->spesifikasi)}}">
                  @error('spesifikasi')
               <small class="text-danger">{{ $message }}</small>
               @enderror
@@ -117,7 +115,7 @@
         <!-- /.col -->
         <div class="col-12 col-sm-6">
           <div class="form-group">
-            <label>Satuan Produk</label>
+            <label>Satuan Produk <span class="wajib">Wajib</span></label>
             <div class="select2-purple">
               <select class="form-control select2" style="width: 100%;" name="satuan">
                 <option value="pcs" @selected(old('satuan') == 'pcs' || $agrigard->satuan == 'pcs')>pcs</option>
@@ -140,7 +138,7 @@
       <div class="row"> 
         <div class="col-12 col-sm-6">
         <div class="form-group">
-          <label>Berat (gr)</label>
+          <label>Berat (gr) <span class="wajib">Wajib</span></label>
             <input type="text" oninput="validateInput(this)" class="form-control" placeholder="Placeholder text" name="berat_gram" value="{{old('berat_gram', $agrigard->berat_gram)}}">
                @error('berat_gram')
             <small class="text-danger">{{ $message }}</small>
@@ -173,8 +171,8 @@
       <div class="row">
         <div class="col-md-3">
           <div class="form-group">
-            <label>Gambar Produk</label>
-            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sed, odit ab eum enim illo minima deleniti quae ducimus repudiandae sit!</p>
+            <label>Gambar Produk <span class="wajib">Wajib</span></label>
+            <p>Hanya file dengan format JPEG, PNG, dan JPG yang diterima. Ukuran maksimum file adalah 2 MB. Input gambar akan dihapus jika ada input yang tidak valid dalam formulir ini. Input maksimal 3 gambar</p>
           </div>
           <!-- /.form-group -->
         </div>
@@ -198,6 +196,11 @@
           @error('photos')
           <small class="text-danger">{{ $message }}</small>
           @enderror
+          @for ($i = 0; $i < count($errors->get('photos.*')); $i++)
+            @error("photos.$i")
+                <small class="text-danger">{{ $message }}</small>
+            @enderror
+          @endfor
           <!-- /.form-group -->
         </div>
         <!-- /.col -->
@@ -206,8 +209,7 @@
       <div class="row">
         <div class="col-md-3">
           <div class="form-group">
-            <label>Detail Produk</label>
-            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sed, odit ab eum enim illo minima deleniti quae ducimus repudiandae sit!</p>
+            <label>Detail Produk <span class="wajib">Wajib</span></label>
           </div>
           <!-- /.form-group -->
         </div>
@@ -227,8 +229,8 @@
       <div class="row">
         <div class="col-md-3">
           <div class="form-group">
-            <label>Video Produk</label>
-            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sed, odit ab eum enim illo minima deleniti quae ducimus repudiandae sit!</p>
+            <label>Video Produk </label>
+            <p>Video produk dalam bentuk link youtube</p>
           </div>
           <!-- /.form-group -->
         </div>
@@ -248,7 +250,7 @@
       <div class="row">
         <div class="col-12 col-sm-6">
           <div class="form-group">
-            <label>Stok Produk</label>
+            <label>Stok Produk <span class="wajib">Wajib</span></label>
               <input type="text" oninput="validateInput(this)" class="form-control" placeholder="Masukkan Stok Dalam Bentuk Angka" name="stok" value="{{old('stok', $agrigard->stok)}}">
                  @error('stok')
               <small class="text-danger">{{ $message }}</small>
@@ -259,7 +261,7 @@
         <!-- /.col -->
         <div class="col-12 col-sm-6">
           <div class="form-group">
-            <label>Armada Minimum</label>
+            <label>Armada Minimum <span class="wajib">Wajib</span></label>
             <div class="select2-purple">
                 <select class="form-control select2" style="width: 100%;" name="armada_minimum">
                   <option value="Motor" @selected(old('armada_minimum')=='Motor' || $agrigard->armada_minimum == 'Motor')>Motor</option>

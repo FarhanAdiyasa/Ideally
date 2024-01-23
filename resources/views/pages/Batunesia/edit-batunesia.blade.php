@@ -53,7 +53,7 @@
         <div class="row">
           <div class="col-md-3">
             <div class="form-group">
-              <label>Nama Produk</label>
+              <label>Nama Produk <span class="wajib">Wajib</span></label>
             </div>
             <!-- /.form-group -->
           </div>
@@ -75,7 +75,7 @@
         <div class="row">
           <div class="col-md-3">
             <div class="form-group">
-              <label>Jenis Produk</label>
+              <label>Jenis Produk <span class="wajib">Wajib</span></label>
               <p>Pilih jenis produk batunesia yang akan ditambahkan.</p>
               </div>
             <!-- /.form-group -->
@@ -101,7 +101,7 @@
         <div class="row">
           <div class="col-12 col-sm-6">
             <div class="form-group">
-              <label>Satuan Produk</label>
+              <label>Satuan Produk <span class="wajib">Wajib</span></label>
                 <select class="form-control select2" style="width: 100%;" name="satuan">
                   <option value="pcs" @selected(old('satuan', $batunesia->satuan) == 'pcs')>pcs</option>
                   <option value="karung_5_kg" @selected(old('satuan', $batunesia->satuan) == 'karung_5_kg')>karung 5 kg</option>
@@ -122,7 +122,7 @@
           </div>
           <div class="col-12 col-sm-6">
             <div class="form-group">
-              <label>Berat (gr)</label>
+              <label>Berat (gr) <span class="wajib">Wajib</span></label>
                 <input type="text" oninput="validateInput(this)" class="form-control" placeholder="Masukkan Berat(gr)" name="berat_gram" value="{{old('berat_gram', $batunesia->berat_gram)}}">
                    @error('berat')
                 <small class="text-danger">{{ $message }}</small>
@@ -136,7 +136,7 @@
         <div class="row">
           <div class="col-12 col-sm-6">
             <div class="form-group">
-              <label>Warna Produk 1</label>
+              <label>Warna Produk 1 <span class="wajib">Wajib</span></label>
               <select class="form-control select2" style="width: 100%;" name="warna_1">
                 <option value="Putih" @selected(old('warna_1', $batunesia->warna_1) == 'Putih')>⚪ Putih</option>
                 <option value="Krem" @selected(old('warna_1', $batunesia->warna_1) == 'Krem')>🌕 Krem</option>
@@ -153,7 +153,7 @@
         </div>
         <div class="col-12 col-sm-6">
           <div class="form-group">
-            <label>Warna Produk 2</label>
+            <label>Warna Produk 2 <span class="wajib">Wajib</span></label>
             <select class="form-control select2" style="width: 100%;" name="warna_2">
               <option value="Tidak Ada" @selected(old('warna_2', $batunesia->warna_2) == 'Tidak Ada')>✖️ Tidak ada</option>
               <option value="Putih" @selected(old('warna_2', $batunesia->warna_2) == 'Putih')>⚪ Putih</option>
@@ -256,7 +256,7 @@
       <div class="row">
         <div class="col-md-3">
           <div class="form-group">
-            <label>Gambar Produk</label>
+            <label>Gambar Produk <span class="wajib">Wajib</span></label>
             <p>Hanya file dengan format JPEG, PNG, dan JPG yang diterima. Ukuran maksimum file adalah 2 MB. Input gambar akan dihapus jika ada input yang tidak valid dalam formulir ini. Input maksimal 3 gambar</p>
           </div>
           <!-- /.form-group -->
@@ -281,6 +281,11 @@
           @error('photos')
           <small class="text-danger">{{ $message }}</small>
           @enderror
+          @for ($i = 0; $i < count($errors->get('photos.*')); $i++)
+            @error("photos.$i")
+                <small class="text-danger">{{ $message }}</small>
+            @enderror
+          @endfor
           <!-- /.form-group -->
         </div>
         <!-- /.col -->
@@ -289,7 +294,7 @@
       <div class="row">
         <div class="col-md-3">
           <div class="form-group">
-            <label>Detail Produk</label>
+            <label>Detail Produk <span class="wajib">Wajib</span></label>
           </div>
           <!-- /.form-group -->
         </div>
@@ -308,7 +313,7 @@
       <div class="row">
         <div class="col-md-3">
           <div class="form-group">
-            <label>Penempatan Produk</label>
+            <label>Penempatan Produk <span class="wajib">Wajib</span></label>
           </div>
           <!-- /.form-group -->
         </div>
@@ -349,7 +354,7 @@
       <div class="row">
         <div class="col-12 col-sm-6">
           <div class="form-group">
-            <label>Stok Produk</label>
+            <label>Stok Produk <span class="wajib">Wajib</span></label>
               <input type="text" oninput="validateInput(this)" class="form-control" placeholder="Masukkan Stok Dalam Bentuk Angka" name="stok" value="{{old('stok', $batunesia->stok)}}">
                  @error('stok')
               <small class="text-danger">{{ $message }}</small>
@@ -360,7 +365,7 @@
         <!-- /.col -->
         <div class="col-12 col-sm-6">
           <div class="form-group">
-            <label>Armada Minimum</label>
+            <label>Armada Minimum <span class="wajib">Wajib</span></label>
             <div class="select2-purple">
                 <select class="form-control select2" style="width: 100%;" name="armada_minimum">
                   <option value="Motor" @selected(old('armada_minimum')=='Motor' || $batunesia->armada_minimum == 'Motor')>Motor</option>

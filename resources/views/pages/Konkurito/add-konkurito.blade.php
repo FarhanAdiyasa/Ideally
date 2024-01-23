@@ -51,7 +51,7 @@
       <div class="row">
         <div class="col-md-3">
           <div class="form-group">
-            <label>Nama Produk</label>
+            <label>Nama Produk <span class="wajib">Wajib</span></label>
           </div>
           <!-- /.form-group -->
         </div>
@@ -73,7 +73,7 @@
       <div class="row">
         <div class="col-md-3">
           <div class="form-group">
-            <label>Jenis Produk</label>
+            <label>Jenis Produk <span class="wajib">Wajib</span></label>
             <p>Pilih jenis produk konkurito yang akan ditambahkan.</p>
           </div>
           <!-- /.form-group -->
@@ -102,7 +102,7 @@
       <div class="row">
         <div class="col-12 col-sm-6">
           <div class="form-group">
-            <label>Satuan Produk</label>
+            <label>Satuan Produk <span class="wajib">Wajib</span></label>
             <select class="form-control select2" style="width: 100%;" name="satuan">
               <option value="unit" @selected(old('satuan') == 'unit')>unit</option>
               <option value="m" @selected(old('satuan') == 'm')>m</option>
@@ -117,7 +117,7 @@
         <!-- /.col -->
         <div class="col-12 col-sm-6">
           <div class="form-group">
-            <label>Garansi Produk</label>
+            <label>Garansi Produk <span class="wajib">Wajib</span></label>
             <div class="select2-purple">
               <select class="form-control select2" style="width: 100%;" name="garansi">
                 <option value="30 hari" @selected(old('garansi') == '30 hari')>30 hari</option>
@@ -139,7 +139,7 @@
       <div class="row">
         <div class="col-12 col-sm-6">
           <div class="form-group">
-            <label>Warna Produk 1</label>
+            <label>Warna Produk 1 <span class="wajib">Wajib</span></label>
                 <select class="form-control select2" style="width: 100%;" name="warna_1">
                   <option value="Natural" @selected(old('warna_1') == 'Natural')>Natural 🟫</option>
                   <option value="Merah" @selected(old('warna_1') == 'Merah')>Merah 🟥</option>
@@ -157,7 +157,7 @@
       </div>
       <div class="col-12 col-sm-6">
         <div class="form-group">
-          <label>Warna Produk 2</label>
+          <label>Warna Produk 2 <span class="wajib">Wajib</span></label>
               <select class="form-control select2" style="width: 100%;" name="warna_2">
                 <option value="Tidak Ada" @selected(old('warna_2') == 'Tidak Ada')>✖️ Tidak ada</option>
                 <option value="Natural" @selected(old('warna_2') == 'Natural')>Natural 🟫</option>
@@ -254,8 +254,8 @@
         </div>
         <div class="col-12 col-sm-6">
           <div class="form-group">
-            <label>Berat (gr)</label>
-              <input type="text" oninput="validateInput(this)" class="form-control" placeholder="Placeholder text" name="berat_gram" value="{{old('berat_gram')}}">
+            <label>Berat (gr) <span class="wajib">Wajib</span></label>
+              <input type="text" oninput="validateInput(this)" class="form-control" placeholder="Masukkan Berat(gr)" name="berat_gram" value="{{old('berat_gram')}}">
                  @error('berat_gram')
               <small class="text-danger">{{ $message }}</small>
               @enderror
@@ -284,8 +284,8 @@
       <div class="row">
         <div class="col-md-3">
           <div class="form-group">
-            <label>Gambar Produk</label>
-            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sed, odit ab eum enim illo minima deleniti quae ducimus repudiandae sit!</p>
+            <label>Gambar Produk <span class="wajib">Wajib</span></label>
+            <p>Hanya file dengan format JPEG, PNG, dan JPG yang diterima. Ukuran maksimum file adalah 2 MB. Input gambar akan dihapus jika ada input yang tidak valid dalam formulir ini. Input maksimal 3 gambar</p>
           </div>
           <!-- /.form-group -->
         </div>
@@ -298,6 +298,11 @@
           @error('photos')
           <small class="text-danger">{{ $message }}</small>
           @enderror
+          @for ($i = 0; $i < count($errors->get('photos.*')); $i++)
+            @error("photos.$i")
+                <small class="text-danger">{{ $message }}</small>
+            @enderror
+          @endfor
           <!-- /.form-group -->
         </div>
         <div class="col-12 my-3">
@@ -320,15 +325,14 @@
       <div class="row">
         <div class="col-md-3">
           <div class="form-group">
-            <label>Detail Produk</label>
-            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sed, odit ab eum enim illo minima deleniti quae ducimus repudiandae sit!</p>
+            <label>Detail Produk <span class="wajib">Wajib</span></label>
           </div>
           <!-- /.form-group -->
         </div>
         <!-- /.col -->
         <div class="col-md-9">
           <div class="form-group">
-            <textarea class="form-control" id="" rows="3" placeholder="Detail Produk" name="deskripsi_singkat">{{old('deskripsi_singkat')}}</textarea>
+            <textarea class="form-control" id="" rows="3" placeholder="Masukkan Detail Produk" name="deskripsi_singkat">{{old('deskripsi_singkat')}}</textarea>
                  @error('deskripsi_singkat')
               <small class="text-danger">{{ $message }}</small>
               @enderror
@@ -342,7 +346,7 @@
         <div class="col-md-3">
           <div class="form-group">
             <label>Video Produk</label>
-            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sed, odit ab eum enim illo minima deleniti quae ducimus repudiandae sit!</p>
+            <p>Video produk dalam bentuk link youtube</p>
           </div>
           <!-- /.form-group -->
         </div>
@@ -362,7 +366,7 @@
       <div class="row">
         <div class="col-12 col-sm-6">
           <div class="form-group">
-            <label>Stok Produk</label>
+            <label>Stok Produk <span class="wajib">Wajib</span></label>
               <input type="text" oninput="validateInput(this)" class="form-control" placeholder="Masukkan Stok Dalam Bentuk Angka" name="stok" value="{{old('stok')}}">
                  @error('stok')
               <small class="text-danger">{{ $message }}</small>
@@ -373,7 +377,7 @@
         <!-- /.col -->
         <div class="col-12 col-sm-6">
           <div class="form-group">
-            <label>Armada Minimum</label>
+            <label>Armada Minimum <span class="wajib">Wajib</span></label>
             <div class="select2-purple">
               <select class="form-control select2" style="width: 100%;" name="armada_minimum">
                 <option value="Motor" @selected(old('armada_minimum')=='Motor')>Motor</option>

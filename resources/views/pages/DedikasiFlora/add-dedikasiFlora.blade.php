@@ -51,7 +51,7 @@
       <div class="row">
         <div class="col-md-3">
           <div class="form-group">
-            <label>Nama Latin</label>
+            <label>Nama Latin <span class="wajib">Wajib</span> </label>
           </div>
           <!-- /.form-group -->
         </div>
@@ -73,7 +73,7 @@
       <div class="row">
         <div class="col-md-3">
           <div class="form-group">
-            <label>Nama Lokal</label>
+            <label>Nama Lokal <span class="wajib">Wajib</span> </label>
           </div>
           <!-- /.form-group -->
         </div>
@@ -96,7 +96,7 @@
       <div class="row">
         <div class="col-12 col-sm-6">
           <div class="form-group">
-            <label>Spesifikasi Produk</label>
+            <label>Spesifikasi Produk <span class="wajib">Wajib</span> </label>
               <input type="text" class="form-control" placeholder="Masukkan Spesifikasi" name="spesifikasi" value="{{old('spesifikasi')}}">
                  @error('spesifikasi')
               <small class="text-danger">{{ $message }}</small>
@@ -107,7 +107,7 @@
         <!-- /.col -->
         <div class="col-12 col-sm-6">
           <div class="form-group">
-            <label>Satuan Produk</label>
+            <label>Satuan Produk <span class="wajib">Wajib</span> </label>
             <div class="select2-purple">
                 <select class="form-control select2" style="width: 100%;" name="satuan">
                   <option value="plb" @selected(old('satuan') == 'plb')>plb</option>
@@ -150,8 +150,8 @@
       <div class="row">
         <div class="col-12 col-sm-6">
           <div class="form-group">
-            <label>Diameter Tajuk</label>
-              <input type="text" class="form-control" placeholder="Masukkan disini" name="diameter_tajuk" value="{{old('diameter_tajuk')}}">
+            <label>Diameter Tajuk <span class="wajib">Wajib</span></label>
+              <input type="text" class="form-control" placeholder="Masukkan Diameter Tajuk" name="diameter_tajuk" value="{{old('diameter_tajuk')}}">
                  @error('diameter_tajuk')
               <small class="text-danger">{{ $message }}</small>
               @enderror
@@ -161,7 +161,7 @@
         <!-- /.col -->
         <div class="col-12 col-sm-6">
           <div class="form-group">
-            <label>Strata</label>
+            <label>Strata <span class="wajib">Wajib</span> </label>
             <div class="select2-purple">
               <select class="form-control select2" style="width: 100%;" name="strata">
                 <option value="Rumput" @selected(old('strata') == 'Rumput')>Rumput</option>
@@ -185,7 +185,7 @@
       <div class="row">
         <div class="col-12 col-sm-6">
           <div class="form-group">
-            <label>Warna Daun</label>
+            <label>Warna Daun <span class="wajib">Wajib</span> </label>
               <select class="form-control select2" style="width: 100%;" name="warna_daun_1">
                 <option value="Hijau" @selected(old('warna_daun_1') == 'Hijau')>🟩 Hijau</option>
                 <option value="Jingga" @selected(old('warna_daun_1') == 'Jingga')>🟧 Jingga</option>
@@ -202,7 +202,7 @@
         </div>
         <div class="col-12 col-sm-6">
           <div class="form-group">
-            <label>Warna Bunga</label>
+            <label>Warna Bunga <span class="wajib">Wajib</span> </label>
                 <select class="form-control select2" style="width: 100%;" name="warna_bunga_1">
                   <option value="Merah" @selected(old('warna_bunga_1') == 'Merah')>🟥 Merah</option>
                   <option value="Kuning" @selected(old('warna_bunga_1') == 'Kuning')>🟨 Kuning</option>
@@ -237,7 +237,7 @@
       <div class="row">
         <div class="col-12 col-sm-6">
           <div class="form-group">
-            <label>Penyiraman</label>
+            <label>Penyiraman <span class="wajib">Wajib</span> </label>
             <div class="select2-purple">
               <select class="form-control select2" style="width: 100%;" name="penyiraman">
                 <option value="Basah" @selected(old('penyiraman') == 'Basah')>🌊 Basah</option>
@@ -255,7 +255,7 @@
         <!-- /.col -->
         <div class="col-12 col-sm-6">
           <div class="form-group">
-            <label>Penyinaran</label>
+            <label>Penyinaran <span class="wajib">Wajib</span> </label>
             <div class="select2-purple">
               <select class="form-control select2" style="width: 100%;" name="penyinaran">
                 <option value="Penuh" @selected(old('penyinaran') == 'Penuh')>☀️ Penuh</option>
@@ -274,7 +274,7 @@
       <div class="row">
         <div class="col-12 col-sm-6">
           <div class="form-group">
-            <label>Pemupukan</label>
+            <label>Pemupukan <span class="wajib">Wajib</span></label>
             <div class="select2-purple">
               <select class="form-control select2" style="width: 100%;" name="pemupukan">
                 <option value="Extra Intensif" @selected(old('pemupukan') == 'Extra Intensif')>🍖 Extra Intensif</option>
@@ -291,7 +291,7 @@
         </div>
         <div class="col-12 col-sm-6">
           <div class="form-group">
-            <label>Berat (gr)</label>
+            <label>Berat (gr) <span class="wajib">Wajib</span></label>
               <input type="text" oninput="validateInput(this)" class="form-control" placeholder="Masukkan berat" name="berat_gram" value="{{old('berat_gram')}}">
                  @error('berat_gram')
               <small class="text-danger">{{ $message }}</small>
@@ -325,7 +325,7 @@
       <div class="row">
         <div class="col-md-3">
           <div class="form-group">
-            <label>Gambar Produk</label>
+            <label>Gambar Produk <span class="wajib">Wajib</span></label>
             <p>Hanya file dengan format JPEG, PNG, dan JPG yang diterima. Ukuran maksimum file adalah 2 MB. Input gambar akan dihapus jika ada input yang tidak valid dalam formulir ini. Input maksimal 3 gambar</p>
           </div>
           <!-- /.form-group -->
@@ -349,6 +349,11 @@
           @error('photos')
           <small class="text-danger">{{ $message }}</small>
           @enderror
+          @for ($i = 0; $i < count($errors->get('photos.*')); $i++)
+            @error("photos.$i")
+                <small class="text-danger">{{ $message }}</small>
+            @enderror
+          @endfor
           <!-- /.form-group -->
         </div>
         <!-- /.col -->
@@ -357,7 +362,7 @@
       <div class="row">
         <div class="col-md-3">
           <div class="form-group">
-            <label>Detail Produk</label>
+            <label>Detail Produk <span class="wajib">Wajib</span></label>
           </div>
           <!-- /.form-group -->
         </div>
@@ -398,7 +403,7 @@
       <div class="row">
         <div class="col-12 col-sm-6">
           <div class="form-group">
-            <label>Stok Produk</label>
+            <label>Stok Produk <span class="wajib">Wajib</span></label>
               <input type="text" oninput="validateInput(this)" class="form-control" placeholder="Masukkan Stok Produk" name="stok" value="{{old('stok')}}">
                  @error('stok')
               <small class="text-danger">{{ $message }}</small>
@@ -409,7 +414,7 @@
         <!-- /.col -->
         <div class="col-12 col-sm-6">
           <div class="form-group">
-            <label>Armada Minimum</label>
+            <label>Armada Minimum <span class="wajib">Wajib</span></label>
             <div class="select2-purple">
               <select class="form-control select2" style="width: 100%;" name="armada_minimum">
                 <option value="Motor" @selected(old('armada_minimum')=='Motor')>Motor</option>
