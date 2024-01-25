@@ -131,7 +131,7 @@ class AdminArtikelController extends Controller
             DB::rollback();
             return redirect()->back()->with('error', 'Terjadi kesalahan. Silakan coba lagi nanti.');
         }
-        return redirect()->route('artikels')->with('success', 'Status data berhasil diubah!');
+        return redirect()->route('artikels')->with('success', 'Komentar berhasil dihapus!');
         // return redirect()->route('daftar.komentar',['id' => $komentar->id_artikel])->with('success', 'Status data berhasil diubah!');
     }    
     public function edit($id)

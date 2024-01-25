@@ -88,9 +88,7 @@
                 <input type="file" class="form-control" name="gambar_artikel" @error('gambar_artikel') is-invalid @enderror id="selectimage">
               </div>
               @error('gambar_artikel')
-                  <span class="invalid-feedback" role="alert">
-                      <strong>{{ $message }}</strong>
-                  </span>
+              <small class="text-danger">{{ $message }}</small>
               @enderror
               <img id="preview" src="#" alt="your image" class="mt-3" height="300" width="470" style="display:none;"/>
           <!-- /.form-group -->
@@ -304,7 +302,7 @@
 </div>  
 <input type="text" name="tanggal_publikasi" id="tanggal_publikasi" class="form-control" style="display:none;">
 <div class="m-3 d-flex justify-content-end py-4">
-  <button class="btn btn-dark mx-5" type="reset">Batal</button>
+  <button class="btn btn-dark mx-5" type="reset" onclick="location.reload();">Batal</button>
   <button class="btn btn-dark mx-3" type="button" onclick="submitForm('1')">Simpan Dan Terbitkan</button>
   <button class="btn btn-success mx-3" type="button" onclick="submitForm('0')">Simpan</button>
 </div>

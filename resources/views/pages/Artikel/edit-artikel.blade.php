@@ -41,7 +41,7 @@
     @csrf
   <div class="card card-default">
     <div class="card-header">
-      <h3 class="card-title">Informasi Produk</h3>
+      <h3 class="card-title">Informasi Artikel</h3>
 
       <div class="card-tools">
         <button type="button" class="btn btn-tool" data-card-widget="collapse">
@@ -89,9 +89,7 @@
                 <input type="file" class="form-control" name="gambar_artikel" @error('gambar_artikel') is-invalid @enderror id="selectimage">
               </div>
               @error('gambar_artikel')
-                  <span class="invalid-feedback" role="alert">
-                      <strong>{{ $message }}</strong>
-                  </span>
+              <small class="text-danger">{{ $message }}</small>
               @enderror
               <img id="preview" src="{{ asset('storage/' . $artikel->gambar_artikel) }}"  alt="{{$artikel->keterangan_gambar_artikel}}" class="mt-3" height="300" width="470"/>
           <!-- /.form-group -->
@@ -158,7 +156,7 @@
 </div>  
   <div class="card card-default">
     <div class="card-header">
-      <h3 class="card-title">Deskripsi Produk</h3>
+      <h3 class="card-title">Deskripsi Artikel</h3>
 
       <div class="card-tools">
         <button type="button" class="btn btn-tool" data-card-widget="collapse">
@@ -275,7 +273,7 @@
   </div>
   <div class="card card-default">
     <div class="card-header">
-      <h3 class="card-title">Penulis Artikel</h3>
+      <h3 class="card-title">Sumber Artikel</h3>
 
       <div class="card-tools">
         <button type="button" class="btn btn-tool" data-card-widget="collapse">
@@ -312,7 +310,7 @@
 </div>  
 <input type="text" name="tanggal_publikasi" id="tanggal_publikasi" class="form-control" style="display:none;">
 <div class="m-3 d-flex justify-content-end">
-  <button class="btn btn-dark mx-5" type="reset">Batal</button>
+  <button class="btn btn-dark mx-5" type="reset" onclick="refreshPage();">Batal</button>
   <button class="btn btn-dark mx-3" type="button" onclick="submitForm('1')">Simpan Dan Terbitkan</button>
   <button class="btn btn-success mx-3" type="button" onclick="submitForm('0')">Simpan</button>
 </div>
@@ -323,6 +321,10 @@
 @section('scripts_all')
 <script src="{{asset("lte/plugins/summernote/summernote-bs4.min.js")}}"></script>
 <script>
+  function refreshPage() {
+        document.getElementById('agrForm').reset();  // Reset form, jika diperlukan
+        location.reload();  // Reload halaman
+    }
     $('#isi_artikel').summernote({
         placeholder: 'description...',
         tabsize:2,

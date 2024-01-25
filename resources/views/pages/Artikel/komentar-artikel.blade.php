@@ -18,8 +18,8 @@
                    Anda Yakin Ingin Menghapus Komentar Ini?
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                    <button type="button" class="btn btn-danger" id="confirmDelete">Delete</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
+                    <button type="button" class="btn btn-danger" id="confirmDelete">Ya</button>
                 </div>
             </div>
         </div>
@@ -93,7 +93,7 @@
 
     $(document).ready(function() {
         $('#products-table').DataTable({
-            "iDisplayLength": 10,
+            "iDisplayLength": 5,
             "bLengthChange": false
         });
 

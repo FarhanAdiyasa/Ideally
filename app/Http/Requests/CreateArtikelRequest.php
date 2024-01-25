@@ -33,6 +33,34 @@ class CreateArtikelRequest extends FormRequest
             'author' => 'required|string',
         ];
     }
+    
+    public function messages()
+    {
+        return [
+            'judul_artikel.required' => 'Judul artikel wajib diisi.',
+            'judul_artikel.string' => 'Judul artikel harus berupa teks.',
+            'judul_artikel.max' => 'Judul artikel tidak boleh lebih dari :max karakter.',
+            
+            'deskripsi_artikel.required' => 'Deskripsi artikel wajib diisi.',
+            'deskripsi_artikel.string' => 'Deskripsi artikel harus berupa teks.',
+            
+            'isi_artikel.required' => 'Isi artikel wajib diisi.',
+            'isi_artikel.string' => 'Isi artikel harus berupa teks.',
+            
+            'gambar_artikel.required' => 'Gambar artikel wajib diunggah.',
+            'gambar_artikel.image' => 'File yang diunggah harus berupa gambar.',
+            'gambar_artikel.mimes' => 'Format gambar yang diizinkan adalah jpeg, png, jpg.',
+            'gambar_artikel.max' => 'Ukuran gambar tidak boleh lebih dari :max kilobita.',
+            
+            'keterangan_gambar_artikel.string' => 'Keterangan gambar harus berupa teks.',
+            
+            'keywords.string' => 'Keywords harus berupa teks.',
+            
+            'author.required' => 'Nama penulis wajib diisi.',
+            'author.string' => 'Nama penulis harus berupa teks.',
+        ];
+    }
+    
     public function withValidator($validator)
     {
         $validator->sometimes('penulis_artikel', 'required', function ($input) {

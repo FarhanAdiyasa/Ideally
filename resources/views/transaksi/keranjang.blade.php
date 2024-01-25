@@ -25,6 +25,7 @@
     
         <!-- Custom CSS -->
         <!-- <link rel="stylesheet" href="{{ asset('css/navbar-style.css') }}"> -->
+        <link rel="stylesheet" href="{{asset('/css/navbar-style.css')}}">
         <link rel="stylesheet" href="{{ asset('css/keranjang/style.css') }}" rel="stylesheet">
     
     
@@ -38,7 +39,7 @@
     
     <body>
         <!-- Navbar Utama -->
-        <!-- @include('partials.navbar') -->
+        @include('partials.navbar')
         <!-- End Navbar Utama -->
     
         <!-- Header -->

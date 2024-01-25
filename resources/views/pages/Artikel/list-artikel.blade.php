@@ -26,7 +26,7 @@
                                 <th>Pengunjung</th>
                                 <th>Penulis</th>
                                 <th>Status</th>
-                                <th>Aksi</th>
+                                <th style="width: 250px">Aksi</th>
                             </tr>
                         </thead>
                         <tbody>
