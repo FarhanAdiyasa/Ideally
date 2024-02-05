@@ -4215,3 +4215,12 @@ main
 1705149283-3171-1417587949,1705149283.0961,GET,/js/bootstrap.min.js,,404,358.82520675659,request
 1705149283-7230-515640161,1705149283.4778,GET,/photos/contoh.png,,404,443.61901283264,request
 1705149284-5021-509535887,1705149284.0158,GET,/photos/contoh.png,,404,633.80789756775,request
+1705727136-5566-611704453,1705727135.7116,GET,/auth/login,"App\Http\Controllers\AuthController@index",200,9472.8560447693,request
+1705727151-8763-1213143888,1705727151.3965,GET,/auth/redirect,"App\Http\Controllers\AuthController@redirect",302,1367.1159744263,request
+1705727277-0738-1910156287,1705727276.552,GET,/auth/callback?state=gtM5adplseQlODUYqOLaiRzC4cedqFkZKBnErAJb&code=4%2F0AfJohXnrjXp4KzbwKrBqtQM4EixmH9tgctO_jkua-a20SKvtHFa2Ah7Nat9hgexnXts4dg&scope=email+profile+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email+openid+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.profile&authuser=0&prompt=none,"App\Http\Controllers\AuthController@callback",500,3456.582069397,request
+1705727290-7224-132633164,1705727290.4156,GET,/auth/login,"App\Http\Controllers\AuthController@index",200,563.38906288147,request
+1705727294-9651-1991765027,1705727294.6408,GET,/auth/redirect,"App\Http\Controllers\AuthController@redirect",302,539.0989780426,request
+1705727427-4115-1276161,1705727426.8217,GET,/auth/callback?state=hQfWCXZu50ZLSfbLgsL7PUWcrgnoIRlpZpf6xsre&code=4%2F0AfJohXk-LOt3RUgFEDBfpiCFS-pBUiu_jYvKziQzxjulSqVJzcWlwGkeeFNx480i_QDewg&scope=email+profile+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.profile+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email+openid&authuser=0&prompt=none,"App\Http\Controllers\AuthController@callback",500,3177.5240898132,request
+1705727441-7504-1294825607,1705727441.3821,GET,/auth/login,"App\Http\Controllers\AuthController@index",200,635.98489761353,request
+1705727446-0628-1115662873,1705727445.7617,GET,/auth/redirect,"App\Http\Controllers\AuthController@redirect",302,540.7919883728,request
+1705727579-3675-358940683,1705727578.6479,GET,/auth/redirect,"App\Http\Controllers\AuthController@redirect",302,1298.712015152,request

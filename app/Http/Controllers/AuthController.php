@@ -6,6 +6,7 @@ use App\Models\User;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Http\Requests\userRequest;
+use App\Notifications\ideallyNotification;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -88,24 +89,29 @@ class AuthController extends Controller
         return view('sesi/register', ['email' => $email]);
     }
 
-    function create(userRequest $request) {
+    public function create(userRequest $request)
+{
+    $inputData = $request->validated();
+    $user = User::create([
+        'name' => $inputData['name'],
+        'email' => $inputData['email'],
+        'password' => Hash::make($inputData['password']),
+    ]);
 
-        $inputData = $request->validated();
-        $user = User::create($request->all());
-    
-        if ($user) {
-            event(new Registered($user));
-    
-            // Kirim email verifikasi
-            $user->sendEmailVerificationNotification();
-    
-            auth()->login($user);
-            return redirect()->route('verification.notice')->with('success','Akun berhasil dibuat, silahkan verifikasi email Anda');
-        }
-    
-        // Jika terjadi kesalahan dalam pembuatan user, mungkin Anda ingin menambahkan penanganan kesalahan khusus di sini
-        return redirect()->back()->with('error', 'Gagal membuat pengguna, coba lagi nanti')->withInput($inputData);
+    if ($user) {
+        // Mengirim notifikasi email verifikasi
+        $user->notify(new ideallyNotification);
+
+        // Kirim email verifikasi
+        $user->sendEmailVerificationNotification();
+
+        // Setelah pengguna diverifikasi, Anda dapat melakukan login atau melakukan redirect ke halaman verifikasi
+        return redirect()->route('verification.notice')->with('success', 'Akun berhasil dibuat, silakan verifikasi email Anda');
     }
+
+    // Jika terjadi kesalahan dalam pembuatan user, mungkin Anda ingin menambahkan penanganan kesalahan khusus di sini
+    return redirect()->back()->with('error', 'Gagal membuat pengguna, coba lagi nanti')->withInput($inputData);
+}
 
     public function login(Request $request) {
         $request->validate([
