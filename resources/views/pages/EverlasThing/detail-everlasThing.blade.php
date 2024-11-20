@@ -70,8 +70,8 @@
         <nav class="w-100">
         <div class="nav nav-tabs" id="product-tab" role="tablist">
             <a class="nav-item nav-link active" id="product-desc-tab" data-toggle="tab" href="#product-desc" role="tab" aria-controls="product-desc" aria-selected="true">Informasi Produk</a>
-            <a class="nav-item nav-link" id="product-detail-tab" data-toggle="tab" href="#product-detail" role="tab" aria-controls="product-detail" aria-selected="false">Detail Produk dan Harga</a>
-            <a class="nav-item nav-link" id="product-creation-tab" data-toggle="tab" href="#product-creation" role="tab" aria-controls="product-creation" aria-selected="false">Keterangan Tambahan</a>
+            <!-- <a class="nav-item nav-link" id="product-detail-tab" data-toggle="tab" href="#product-detail" role="tab" aria-controls="product-detail" aria-selected="false">Detail Produk dan Harga</a>
+            <a class="nav-item nav-link" id="product-creation-tab" data-toggle="tab" href="#product-creation" role="tab" aria-controls="product-creation" aria-selected="false">Keterangan Tambahan</a> -->
         </div>
         </nav>
         <div class="tab-content p-3" id="nav-tabContent">
@@ -83,32 +83,26 @@
                         <p><strong>Slug:</strong> {{$everlasThing->slug}}</p>
                         <p><strong>Satuan:</strong> {{$everlasThing->satuan}}</p>
                         <p><strong>Deskripsi Singkat:</strong> {{$everlasThing->deskripsi_singkat}}</p>
+                        <p><strong>Armada Minimum:</strong> {{$everlasThing->armada_minimum}}</p>
+                        <p><strong>Stok:</strong> {{$everlasThing->stok}}</p>
+                        <p><strong>Harga Jual Ideally:</strong> Rp. {{$everlasThing->harga_jual_projek_ideally}}</p>
+                        <p><strong>Tanggal Publikasi:</strong> {{$everlasThing->tanggal_publikasi}}</p>
+                        <p><strong>Created By:</strong> {{$everlasThing->created_by}}</p>
+                        <p><strong>Created At:</strong> {{$everlasThing->created_at}}</p>
+                        <p><strong>Updated By:</strong> {{$everlasThing->updated_by}}</p>
+                        <p><strong>Updated At:</strong> {{$everlasThing->updated_at}}</p>
+                        <p><strong>Deleted By:</strong> {{$everlasThing->deleted_by}}</p>
+                        <p><strong>Deleted At:</strong> {{$everlasThing->deleted_at}}</p>
                     </div>
                     <div class="col-md-6">
                         <p><strong>Jenis 1:</strong> {{$everlasThing->jenis_1}}</p>
                         <p><strong>Jenis 2:</strong> {{$everlasThing->jenis_2}}</p>
                         <p><strong>Garansi:</strong> {{$everlasThing->garansi}}</p>
                         <p><strong>Warna:</strong> {{$everlasThing->warna}}</p>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-6">
                         <p><strong>Dimensi:</strong> {{$everlasThing->dimensi}}</p>
                         <p><strong>Material Pendukung:</strong> {{$everlasThing->material_pendukung}}</p>
                         <p><strong>Berat (gram):</strong> {{$everlasThing->berat_gram}}</p>
                         <p><strong>Finishing:</strong> {{$everlasThing->finishing}}</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="tab-pane fade" id="product-detail" role="tabpanel" aria-labelledby="product-detail-tab">
-                <div class="row">    
-                    <div class="col-md-6">
-                        <p><strong>Armada Minimum:</strong> {{$everlasThing->armada_minimum}}</p>
-                        <p><strong>Stok:</strong> {{$everlasThing->stok}}</p>
-                        <p><strong>Harga Jual Ideally:</strong> Rp. {{$everlasThing->harga_jual_projek_ideally}}</p>
-                    </div>
-                    <div class="col-md-6">
                         <p><strong>Harga B2I (11 unit):</strong> Rp. {{$everlasThing->harga_b2I_11_unit}}</p>
                         <p><strong>Harga B2I (1 unit):</strong> Rp. {{$everlasThing->harga_b2I_1_unit}}</p>
                         <p><strong>Harga B2B (11 unit):</strong> Rp. {{$everlasThing->harga_b2B_11_unit}}</p>
@@ -117,24 +111,30 @@
                         <p><strong>Harga B2C (1 unit):</strong> Rp. {{$everlasThing->harga_b2C_1_unit}}</p>
                     </div>
                 </div>
+                <div class="row">
+                    <div class="col-md-6">
+                    </div>
+                </div>
+            </div>
+<!-- 
+            <div class="tab-pane fade" id="product-detail" role="tabpanel" aria-labelledby="product-detail-tab">
+                <div class="row">    
+                    <div class="col-md-6">
+                    </div>
+                    <div class="col-md-6">
+                    </div>
+                </div>
             </div>
 
            <div class="tab-pane fade" id="product-creation" role="tabpanel" aria-labelledby="product-creation-tab">
                 <div class="row">
                     <div class="col-md-6">
-                        <p><strong>Tanggal Publikasi:</strong> {{$everlasThing->tanggal_publikasi}}</p>
-                        <p><strong>Created By:</strong> {{$everlasThing->created_by}}</p>
-                        <p><strong>Created At:</strong> {{$everlasThing->created_at}}</p>
                     </div>
                     <div class="col-md-6">
-                        <p><strong>Updated By:</strong> {{$everlasThing->updated_by}}</p>
-                        <p><strong>Updated At:</strong> {{$everlasThing->updated_at}}</p>
-                        <p><strong>Deleted By:</strong> {{$everlasThing->deleted_by}}</p>
-                        <p><strong>Deleted At:</strong> {{$everlasThing->deleted_at}}</p>
                     </div>
                 </div>
 
-        </div>
+            </div> -->
     </div>
     </div>
 </div>

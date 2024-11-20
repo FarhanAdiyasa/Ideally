@@ -55,8 +55,8 @@
         <nav class="w-100">
         <div class="nav nav-tabs" id="product-tab" role="tablist">
             <a class="nav-item nav-link active" id="product-desc-tab" data-toggle="tab" href="#product-desc" role="tab" aria-controls="product-desc" aria-selected="true">Informasi Produk</a>
-            <a class="nav-item nav-link" id="product-detail-tab" data-toggle="tab" href="#product-detail" role="tab" aria-controls="product-detail" aria-selected="false">Detail Produk dan Harga</a>
-            <a class="nav-item nav-link" id="product-creation-tab" data-toggle="tab" href="#product-creation" role="tab" aria-controls="product-creation" aria-selected="false">Keterangan Tambahan</a>
+            <!-- <a class="nav-item nav-link" id="product-detail-tab" data-toggle="tab" href="#product-detail" role="tab" aria-controls="product-detail" aria-selected="false">Detail Produk dan Harga</a>
+            <a class="nav-item nav-link" id="product-creation-tab" data-toggle="tab" href="#product-creation" role="tab" aria-controls="product-creation" aria-selected="false">Keterangan Tambahan</a> -->
         </div>
         </nav>
         <div class="tab-content p-3" id="nav-tabContent">
@@ -69,6 +69,17 @@
                         <p><strong>Slug:</strong> {{$konkurito->slug}}</p>
                         <p><strong>Garansi:</strong> {{$konkurito->garansi}}</p>
                         <p><strong>Deskripsi Singkat:</strong> {{$konkurito->deskripsi_singkat}}</p>
+                        <p><strong>Armada Minimum:</strong> {{$konkurito->armada_minimum}}</p>
+                        <p><strong>Stok:</strong> {{$konkurito->stok}}</p>
+                        <p><strong>Item Terjual:</strong> {{$konkurito->item_terjual}}</p>
+                        <p><strong>Harga Jual Ideally:</strong> Rp. {{$konkurito->harga_jual_projek_ideally}}</p>
+                        <p><strong>Tanggal Publikasi:</strong> {{$konkurito->tanggal_publikasi}}</p>
+                        <p><strong>Created By:</strong> {{$konkurito->created_by}}</p>
+                        <p><strong>Created At:</strong> {{$konkurito->created_at}}</p>
+                        <p><strong>Updated By:</strong> {{$konkurito->updated_by}}</p>
+                        <p><strong>Updated At:</strong> {{$konkurito->updated_at}}</p>
+                        <p><strong>Deleted By:</strong> {{$konkurito->deleted_by}}</p>
+                        <p><strong>Deleted At:</strong> {{$konkurito->deleted_at}}</p>
                     </div>
                     <div class="col-md-6">
                         <p><strong>Panjang:</strong> {{$konkurito->panjang}}</p>
@@ -81,19 +92,6 @@
                         <p><strong>Warna 2:</strong> {{$konkurito->warna_2}}</p>
                         <p><strong>Berat:</strong> {{$konkurito->berat}}</p>
                         <p><strong>Berat (gram):</strong> {{$konkurito->berat_gram}}</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="tab-pane fade" id="product-detail" role="tabpanel" aria-labelledby="product-detail-tab">
-                <div class="row">    
-                    <div class="col-md-6">
-                        <p><strong>Armada Minimum:</strong> {{$konkurito->armada_minimum}}</p>
-                        <p><strong>Stok:</strong> {{$konkurito->stok}}</p>
-                        <p><strong>Item Terjual:</strong> {{$konkurito->item_terjual}}</p>
-                        <p><strong>Harga Jual Ideally:</strong> Rp. {{$konkurito->harga_jual_projek_ideally}}</p>
-                    </div>
-                    <div class="col-md-6">
                         <p><strong>Harga B2I (11 unit):</strong> Rp. {{$konkurito->harga_b2I_11_unit}}</p>
                         <p><strong>Harga B2I (1 unit):</strong> Rp. {{$konkurito->harga_b2I_1_unit}}</p>
                         <p><strong>Harga B2B (11 unit):</strong> Rp. {{$konkurito->harga_b2B_11_unit}}</p>
@@ -103,23 +101,25 @@
                     </div>
                 </div>
             </div>
+<!-- 
+            <div class="tab-pane fade" id="product-detail" role="tabpanel" aria-labelledby="product-detail-tab">
+                <div class="row">    
+                    <div class="col-md-6">
+                    </div>
+                    <div class="col-md-6">
+                    </div>
+                </div>
+            </div>
 
            <div class="tab-pane fade" id="product-creation" role="tabpanel" aria-labelledby="product-creation-tab">
                 <div class="row">
                     <div class="col-md-6">
-                        <p><strong>Tanggal Publikasi:</strong> {{$konkurito->tanggal_publikasi}}</p>
-                        <p><strong>Created By:</strong> {{$konkurito->created_by}}</p>
-                        <p><strong>Created At:</strong> {{$konkurito->created_at}}</p>
                     </div>
                     <div class="col-md-6">
-                        <p><strong>Updated By:</strong> {{$konkurito->updated_by}}</p>
-                        <p><strong>Updated At:</strong> {{$konkurito->updated_at}}</p>
-                        <p><strong>Deleted By:</strong> {{$konkurito->deleted_by}}</p>
-                        <p><strong>Deleted At:</strong> {{$konkurito->deleted_at}}</p>
                     </div>
                 </div>
 
-        </div>
+        </div> -->
     </div>
     </div>
 </div>

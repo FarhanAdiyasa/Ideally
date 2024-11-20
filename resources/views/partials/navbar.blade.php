@@ -1,4 +1,13 @@
 <head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-6990JVL0LN"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-6990JVL0LN');
+</script>
 
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 <script src="{{asset('/js/navbar.js')}}"></script>

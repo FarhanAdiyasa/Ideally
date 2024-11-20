@@ -1,0 +1,50 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap');
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    background-image: url(../../img/keranjang/image\ 25.png);
+    background-size: 100% auto;
+    background-repeat: no-repeat;
+}
+
+.container {
+    padding: 0 8rem;
+}
+
+.bg-tosca {
+    background-color: #06C195;
+}
+
+.bg-grey {
+    background-color: #727272;
+}
+
+/* Header */
+#header-nav .container {
+    padding: 0 12rem;
+}
+
+.over-light {
+    display: flex;
+    position: absolute;
+    z-index: -999;
+    width: 100%;
+    height: 70px;
+    padding: 0 10rem;
+    margin-top: 3%;
+}
+
+.over-line {
+    display: flex;
+    position: absolute;
+    z-index: -1;
+    width: 100%;
+    height: 10px;
+    margin-top: 7%;
+    justify-content: center;
+}
+
+#header-nav .row {
+    margin-top: 6rem;
+    font-weight: 700;
+}

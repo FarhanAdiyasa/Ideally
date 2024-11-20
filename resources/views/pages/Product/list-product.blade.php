@@ -22,7 +22,7 @@
                     <table id="products-table" class="table table-hover table-bordered text-center">
                         <thead>
                             <tr>
-                                <th>No</th>
+                                 <th>No</th>
                                 <th>Info Agrigard</th>
                                 <th>Harga</th>
                                 <th>Stok</th>
@@ -36,10 +36,10 @@
                             @endphp
                             @forelse ($agrigards as $agrigard)
                                 <tr>
-                                    <td style="vertical-align: middle;">
-                                        {{ $no++ }}
+                                    <td>
+                                        {{ $loop->iteration }}
                                     </td>
-                                    <td style="vertical-align: middle;">
+                                    <td>
                                         <div class="row">
                                             <div class="col-4"><img src="{{  asset('storage/' . $agrigard->gambar_1)}}" width="56" height="56" alt="Product Image"></div>
                                             <div class="col-8">
@@ -54,7 +54,7 @@
                                     </td>
                                     <td style="vertical-align: middle;">
                                         @foreach ($agrigard->harga_ranges as $hargaRange)
-                                            <div>{{ $hargaRange }}</div>
+                                             <div>{{ $hargaRange }}</div>
                                         @endforeach
                                     </td>
                                     <td style="vertical-align: middle;">
@@ -153,11 +153,10 @@
 
     $(document).ready(function() {
         $('#products-table').DataTable({
-            "language": {
-                "url": "//cdn.datatables.net/plug-ins/1.13.7/i18n/id.json"
-            }
+            "iDisplayLength": 10,
+        "bLengthChange": false
         });
-    });
+    });  
     function store(id) {
     $("#statForm" + id).submit();
 

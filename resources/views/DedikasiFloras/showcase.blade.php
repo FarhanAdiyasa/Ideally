@@ -2,6 +2,15 @@
 <html lang="en">
 
 <head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-6990JVL0LN"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-6990JVL0LN');
+</script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dedikasi Flora</title>
@@ -13,10 +22,6 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css">
 
     <!-- Custom CSS -->
-<<<<<<< HEAD
-=======
-    <link rel="stylesheet" href="{{ asset('/css/navbar-style.css') }}">
->>>>>>> d5557992f1c905b8f774d6907a37c029ef4d4590
     <link rel="stylesheet" href="{{ asset ('dedikasi-flora/assets/css/showcase/style.css') }}">
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/css/bootstrap.min.css" rel="stylesheet">
 
@@ -26,19 +31,9 @@
 </head>
 
 <body>
-<<<<<<< HEAD
     <!-- Hero & Navigation Bar -->
     <header id="hero-navbar">
         <div class="hero-img d-flex justify-content-center">
-=======
-    <!-- Navbar Utama -->
-    @include('partials.navbar')
-    <!-- End Navbar Utama -->
-
-    <!-- Hero & Navigation Bar -->
-    <header id="hero-navbar">
-        <div class="hero-img d-flex justify-content-center mt-5">
->>>>>>> d5557992f1c905b8f774d6907a37c029ef4d4590
             <img src="{{ asset ('dedikasi-flora/assets/img/showcase/06B-SEC01-LATAR.jpg') }}" alt="">
         </div>
         <div class="content z-1 position-absolute" style="width: 100%;">
@@ -283,23 +278,13 @@
                                 <th class="left-align"><a
                                         href="{{ route('deflo.kategori', ['warna_daun' => 'Jingga']) }}">Jingga</a></th>
                                 <th class="right-align"><span>{{ $defloShowcase->filter(function ($item) {
-<<<<<<< HEAD
                                         return strcasecmp($item->warna_daun, 'Jingga') === 0; })->count() }}</span></th>
-=======
-                                        return strcasecmp($item->warna_daun, 'Jingga') === 0; })->count() }}</span>
-                                </th>
->>>>>>> d5557992f1c905b8f774d6907a37c029ef4d4590
                             </tr>
                             <tr>
                                 <th class="left-align"><a
                                         href="{{ route('deflo.kategori', ['warna_daun' => 'Kuning']) }}">Kuning</a></th>
                                 <th class="right-align"><span>{{ $defloShowcase->filter(function ($item) {
-<<<<<<< HEAD
                                         return strcasecmp($item->warna_daun, 'Kuning') === 0; })->count() }}</span></th>
-=======
-                                        return strcasecmp($item->warna_daun, 'Kuning') === 0; })->count() }}</span>
-                                </th>
->>>>>>> d5557992f1c905b8f774d6907a37c029ef4d4590
                             </tr>
                             <tr>
                                 <th class="left-align"><a
@@ -338,23 +323,13 @@
                                 <th class="left-align"><a
                                         href="{{ route('deflo.kategori', ['warna_bunga' => 'Merah']) }}">Merah</a></th>
                                 <th class="right-align"><span>{{ $defloShowcase->filter(function ($item) {
-<<<<<<< HEAD
                                         return strcasecmp($item->warna_bunga, 'Merah') === 0; })->count() }}</span></th>
-=======
-                                        return strcasecmp($item->warna_bunga, 'Merah') === 0; })->count() }}</span>
-                                </th>
->>>>>>> d5557992f1c905b8f774d6907a37c029ef4d4590
                             </tr>
                             <tr>
                                 <th class="left-align"><a
                                         href="{{ route('deflo.kategori', ['warna_bunga' => 'Merah Muda']) }}">Merah
                                         Muda</a></th>
-<<<<<<< HEAD
                                 <th class="right-align"><span>{{ $defloShowcase->filter(function ($item) {
-=======
-                                <th class="right-align">
-                                    <span>{{ $defloShowcase->filter(function ($item) {
->>>>>>> d5557992f1c905b8f774d6907a37c029ef4d4590
                                         return strcasecmp($item->warna_bunga, 'Merah Muda') === 0; })->count() }}</span>
                                 </th>
                             </tr>
@@ -378,12 +353,7 @@
                                 <th class="left-align"><a
                                         href="{{ route('deflo.kategori', ['warna_bunga' => 'Hijau']) }}">Hijau</a></th>
                                 <th class="right-align"><span>{{ $defloShowcase->filter(function ($item) {
-<<<<<<< HEAD
                                         return strcasecmp($item->warna_bunga, 'Hijau') === 0; })->count() }}</span></th>
-=======
-                                        return strcasecmp($item->warna_bunga, 'Hijau') === 0; })->count() }}</span>
-                                </th>
->>>>>>> d5557992f1c905b8f774d6907a37c029ef4d4590
                             </tr>
                             <tr>
                                 <th class="left-align"><a
@@ -401,23 +371,13 @@
                                 <th class="left-align"><a
                                         href="{{ route('deflo.kategori', ['warna_bunga' => 'Putih']) }}">Putih</a></th>
                                 <th class="right-align"><span>{{ $defloShowcase->filter(function ($item) {
-<<<<<<< HEAD
                                         return strcasecmp($item->warna_bunga, 'Putih') === 0; })->count() }}</span></th>
-=======
-                                        return strcasecmp($item->warna_bunga, 'Putih') === 0; })->count() }}</span>
-                                </th>
->>>>>>> d5557992f1c905b8f774d6907a37c029ef4d4590
                             </tr>
                             <tr>
                                 <th class="left-align"><a
                                         href="{{ route('deflo.kategori', ['warna_bunga' => 'Hitam']) }}">Hitam</a></th>
                                 <th class="right-align"><span>{{ $defloShowcase->filter(function ($item) {
-<<<<<<< HEAD
                                         return strcasecmp($item->warna_bunga, 'Hitam') === 0; })->count() }}</span></th>
-=======
-                                        return strcasecmp($item->warna_bunga, 'Hitam') === 0; })->count() }}</span>
-                                </th>
->>>>>>> d5557992f1c905b8f774d6907a37c029ef4d4590
                             </tr>
                         </table>
                     </div>
@@ -441,27 +401,17 @@
                         </div>
                         <!-- Sorting -->
                         <div class="col-sm-3 col-6">
-<<<<<<< HEAD
-                        @php
-                        $hargaTinggi = \App\Models\Agrigard::where('stok', '>', 0)
-                        ->orderBy('harga_b2C_1_unit', 'asc')
-                        ->first();
 
-                        $hargaRendah = \App\Models\Agrigard::where('stok', '>', 0)
-                        ->orderBy('harga_b2C_1_unit', 'desc')
-                        ->first();
-                        @endphp
-=======
                             @php
-                            $hargaTinggi = \App\Models\Agrigard::where('stok', '>', 0)
+                            $hargaTinggi = \App\Models\Dedikasi_Flora::where('stok', '>', 0)
                             ->orderBy('harga_b2C_1_unit', 'asc')
                             ->first();
 
-                            $hargaRendah = \App\Models\Agrigard::where('stok', '>', 0)
+                            $hargaRendah = \App\Models\Dedikasi_Flora::where('stok', '>', 0)
                             ->orderBy('harga_b2C_1_unit', 'desc')
                             ->first();
                             @endphp
->>>>>>> d5557992f1c905b8f774d6907a37c029ef4d4590
+
                             <select class="form-select" aria-label="Default select example">
                                 <option selected>Choose</option>
                                 <option value="1">Harga Terendah</option>
@@ -476,9 +426,9 @@
                                 <a href="{{ route('deflo.detail', ['id_nurseri' => $dedikasiFlora->id_nurseri]) }}"
                                     class="card-link">
                                     <div class="card border-0">
-                                        <img src="{{ $dedikasiFlora->gambar_1 }}" class="card-img-top" alt="...">
+                                        <img src="{{ asset($dedikasiFlora->gambar_1) }}" class="card-img-top" alt="...">
                                         <div class="card-body">
-                                            <p class="card-text">{{ $dedikasiFlora->nama_latin }} - Panjang {{
+                                            <p class="card-text">{{ $dedikasiFlora->nama_lokal }} - Panjang {{
                                                 $dedikasiFlora->tinggi }} cm</p>
                                             <p class="text-harga text-white">Harga Tersembunyi</p>
                                             <hr>
@@ -506,34 +456,47 @@
     <!-- End Showcase -->
 
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/js/bootstrap.bundle.min.js"></script>
-<<<<<<< HEAD
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
-    <script>
-        $(document).ready(function ()   // Simpan produk awal untuk digunakan kembali saat input dikosongkan
-            var initialProducts = $('.row.        en('.col-sm-3').get()           $('#example-search-in            , function ()               var searchText = $(this).            e().trim(               var productsCon            .p-1'               var products = initialProducts.slice(); // Gunakan s            a               products.sort(fu                            var textA = $(a).find('.card-text').text().toL                        var textB = $(b).find('.card-text').text().toLowerC                    // Jika pencarian kosong, atur ulang urutan produk berdasarkan posisi asli                if (searchText === '')                       rn initialProducts.indexOf(a) - initialProducts.indexOf(b                                                    .localeCompare(textB                                             ducts            )               if (searchTe                         // Tampilkan                k jika input pencarian koso                   products.forEach                                      productsContaine                               }               } else                  duct            on (produ                      var cardText = $(product).find('                    werCase(                       if (cardText.includes(searchText))                       productsContainer.append(product                                     }                         });
-=======
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 
     <script>
-    $(document).ready(function() // Simpan produk awal untuk digunakan kembali saat input dikosongkan
-        var initialProducts = $('.row.        en('.col - sm - 3 ').get()           $('
-            #example - search - in ,
-            function() var searchText = $(this).e().trim(var productsCon.p -
-                    1 '               var products = initialProducts.slice(); // Gunakan s            a               products.sort(fu                            var textA = $(a).find('
-                    .card - text ').text().toL                        var textB = $(b).find('.card -
-                    text ').text().toLowerC                    // Jika pencarian kosong, atur ulang urutan produk berdasarkan posisi asli                if (searchText === '
-                ')                       rn initialProducts.indexOf(a) - initialProducts.indexOf(b                                                    .localeCompare(textB                                             ducts            )               if (searchTe                         // Tampilkan                k jika input pencarian koso                   products.forEach                                      productsContaine                               }               } else                  duct            on (produ                      var cardText = $(product).find('
-                werCase(
-                    if (cardText.includes(searchText)) productsContainer.append(product
+        $(document).ready(function () {
+            // Simpan produk awal untuk digunakan kembali saat input dikosongkan
+            var initialProducts = $('.row.p-1').children('.col-sm-3').get();
+    
+            $('#example-search-input').on('input', function () {
+                var searchText = $(this).val().toLowerCase().trim();
+                var productsContainer = $('.row.p-1');
+                var products = initialProducts.slice(); // Gunakan salinan produk awal
+    
+                products.sort(function (a, b) {
+                    var textA = $(a).find('.card-text').text().toLowerCase();
+                    var textB = $(b).find('.card-text').text().toLowerCase();
+                    
+                    // Jika pencarian kosong, atur ulang urutan produk berdasarkan posisi aslinya
+                    if (searchText === '') {
+                        return initialProducts.indexOf(a) - initialProducts.indexOf(b);
+                    } else {
+                        return textA.localeCompare(textB);
                     }
                 });
->>>>>>> d5557992f1c905b8f774d6907a37c029ef4d4590
+                productsContainer.empty();
+    
+                if (searchText === '') {
+                    // Tampilkan kembali semua produk jika input pencarian kosong
+                    products.forEach(function (product) {
+                        productsContainer.append(product);
+                    });
+                } else {
+                    products.forEach(function (product) {
+                        var cardText = $(product).find('.card-text').text().toLowerCase();
+                        if (cardText.includes(searchText)) {
+                            productsContainer.append(product);
+                        }
+                    });
+                }
+            });
         });
     </script>
-
-
-
 </body>
 
 </html>

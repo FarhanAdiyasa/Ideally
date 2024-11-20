@@ -55,8 +55,8 @@
         <nav class="w-100">
         <div class="nav nav-tabs" id="product-tab" role="tablist">
             <a class="nav-item nav-link active" id="product-desc-tab" data-toggle="tab" href="#product-desc" role="tab" aria-controls="product-desc" aria-selected="true">Informasi Produk</a>
-            <a class="nav-item nav-link" id="product-detail-tab" data-toggle="tab" href="#product-detail" role="tab" aria-controls="product-detail" aria-selected="false">Detail Produk dan Harga</a>
-            <a class="nav-item nav-link" id="product-creation-tab" data-toggle="tab" href="#product-creation" role="tab" aria-controls="product-creation" aria-selected="false">Keterangan Tambahan</a>
+            <!-- <a class="nav-item nav-link" id="product-detail-tab" data-toggle="tab" href="#product-detail" role="tab" aria-controls="product-detail" aria-selected="false">Detail Produk dan Harga</a>
+            <a class="nav-item nav-link" id="product-creation-tab" data-toggle="tab" href="#product-creation" role="tab" aria-controls="product-creation" aria-selected="false">Keterangan Tambahan</a> -->
         </div>
         </nav>
         <div class="tab-content p-3" id="nav-tabContent">
@@ -68,25 +68,23 @@
                         <p><strong>Kategori:</strong> {{$agrigard->kategori}}</p>
                         <p><strong>Slug:</strong> {{$agrigard->slug}}</p>
                         <p><strong>Deskripsi Singkat:</strong> {{$agrigard->deskripsi_singkat}}</p>
+                        <p><strong>Armada Minimum:</strong> {{$agrigard->armada_minimum}}</p>
+                        <p><strong>Stok:</strong> {{$agrigard->stok}}</p>
+                        <p><strong>Item Terjual:</strong> {{$agrigard->item_terjual}}</p>
+                        <p><strong>Harga Jual Ideally:</strong> Rp. {{$agrigard->harga_jual_projek_ideally}}</p>
+                        <p><strong>Tanggal Publikasi:</strong> {{$agrigard->tanggal_publikasi}}</p>
+                        <p><strong>Created By:</strong> {{$agrigard->created_by}}</p>
+                        <p><strong>Created At:</strong> {{$agrigard->created_at}}</p>
+                        <p><strong>Updated By:</strong> {{$agrigard->updated_by}}</p>
+                        <p><strong>Updated At:</strong> {{$agrigard->updated_at}}</p>
+                        <p><strong>Deleted By:</strong> {{$agrigard->deleted_by}}</p>
+                        <p><strong>Deleted At:</strong> {{$agrigard->deleted_at}}</p>
                     </div>
                     <div class="col-md-6">
                         <p><strong>Spesifikasi:</strong> {{$agrigard->spesifikasi}}</p>
                         <p><strong>Satuan:</strong> {{$agrigard->satuan}}</p>
                         <p><strong>Berat:</strong> {{$agrigard->berat}}</p>
                         <p><strong>Berat (gram):</strong> {{$agrigard->berat_gram}}</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="tab-pane fade" id="product-detail" role="tabpanel" aria-labelledby="product-detail-tab">
-                <div class="row">    
-                    <div class="col-md-6">
-                        <p><strong>Armada Minimum:</strong> {{$agrigard->armada_minimum}}</p>
-                        <p><strong>Stok:</strong> {{$agrigard->stok}}</p>
-                        <p><strong>Item Terjual:</strong> {{$agrigard->item_terjual}}</p>
-                        <p><strong>Harga Jual Ideally:</strong> Rp. {{$agrigard->harga_jual_projek_ideally}}</p>
-                    </div>
-                    <div class="col-md-6">
                         <p><strong>Harga B2I (31 unit):</strong> Rp. {{$agrigard->harga_b2I_31_unit}}</p>
                         <p><strong>Harga B2I (11 unit):</strong> Rp. {{$agrigard->harga_b2I_11_unit}}</p>
                         <p><strong>Harga B2I (1 unit):</strong> Rp. {{$agrigard->harga_b2I_1_unit}}</p>
@@ -99,23 +97,25 @@
                     </div>
                 </div>
             </div>
+<!-- 
+            <div class="tab-pane fade" id="product-detail" role="tabpanel" aria-labelledby="product-detail-tab">
+                <div class="row">    
+                    <div class="col-md-6">
+                    </div>
+                    <div class="col-md-6">
+                    </div>
+                </div>
+            </div>
 
            <div class="tab-pane fade" id="product-creation" role="tabpanel" aria-labelledby="product-creation-tab">
                 <div class="row">
                     <div class="col-md-6">
-                        <p><strong>Tanggal Publikasi:</strong> {{$agrigard->tanggal_publikasi}}</p>
-                        <p><strong>Created By:</strong> {{$agrigard->created_by}}</p>
-                        <p><strong>Created At:</strong> {{$agrigard->created_at}}</p>
                     </div>
                     <div class="col-md-6">
-                        <p><strong>Updated By:</strong> {{$agrigard->updated_by}}</p>
-                        <p><strong>Updated At:</strong> {{$agrigard->updated_at}}</p>
-                        <p><strong>Deleted By:</strong> {{$agrigard->deleted_by}}</p>
-                        <p><strong>Deleted At:</strong> {{$agrigard->deleted_at}}</p>
                     </div>
                 </div>
 
-        </div>
+        </div> -->
     </div>
     </div>
 </div>

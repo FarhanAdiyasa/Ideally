@@ -88,18 +88,19 @@ body {
     padding: 2rem 1rem;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: center;
+    text-align: justify;
 }
 
 .title p {
-    font-size: 12px;
+    font-size: 16px;
     text-transform: uppercase;
     font-weight: 900;
-    margin: 0;
+    margin-bottom: 6px;
 }
 
 .deskripsi p {
-    font-size: 11px;
+    font-size: 14px;
     text-align: justify;
     margin: 0;
 }
@@ -204,15 +205,11 @@ body {
 }
 
 .card-product {
-    margin-bottom: 0;
-}
-.card-product a {
-    text-decoration: none;
-    color: #000000;
+    margin-bottom: 0.7rem;
 }
 
 .card-body {
-    padding-top: 1rem;
+    padding: 1rem;
 }
 
 .card-body p {
@@ -225,7 +222,13 @@ body {
     font-weight: 900;
     margin-bottom: 0;
 }
-  
+ 
+.card-body .deskripsi p {
+    font-weight: 500;
+    margin-bottom: 0;
+    padding-right: 5px;
+}
+
 .card-body .harga p {
     text-transform: uppercase;
     font-weight: 900;
@@ -279,7 +282,7 @@ body {
 }
 
 .description-box.text-white .title-line {
-    border: 1.5px solid rgb(255, 255, 255);
+    border: 1.8px solid rgb(255, 255, 255);
 }
 
 .carousel-inner {

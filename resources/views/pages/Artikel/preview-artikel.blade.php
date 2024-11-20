@@ -2,6 +2,15 @@
 <html lang="en">
 
 <head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-6990JVL0LN"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-6990JVL0LN');
+</script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ideally - Portal Edukasi</title>
@@ -33,11 +42,11 @@
 
 <body>
     <!-- Navbar -->
-    @include('partials.navbar')
+    {{-- @include('partials.navbar') --}}
     <!-- End of Navbar -->
 
     <!-- Headline  -->
-    @include('partials.artikel-header')
+    {{-- @include('partials.artikel-header') --}}
     <!-- End of Headline  -->
     <div class="container">
 
@@ -212,7 +221,7 @@
                                         </div>
                                         <div class="card-body">
                                            </h5>
-                                            <p class="card-text">{{$article->createdBy->firstname}} {{$article->createdBy->lastname}}</p>
+                                            <p class="card-text">{{$article->penulis_artikel}}</p>
                                             @php
                                             $averageRating = $article->ratingArtikel->avg('rating_artikel');
                                             $averageRating = number_format($averageRating, 1) 
@@ -456,10 +465,8 @@
     <script>
 
     $(document).ready(function() {
-    // Get the initial slug from the URL or set it to a default value
         var initialSlug = window.location.pathname.split('/').pop();
-        
-        // Call the 'show' function with the initial slug
+            $('.isi-article a').css('color', '#06c195').css('text-decoration', 'none');
         show(initialSlug);
     });
     function show(slug) {

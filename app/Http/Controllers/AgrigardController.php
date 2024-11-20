@@ -25,7 +25,7 @@ class AgrigardController extends Controller
 
     public function showcase()
     {
-        $agrigards = Agrigard::where('stok', '>', 0)->get();
+        $agrigards = Agrigard::where('stok', '>', 0)->paginate(16);
         return view('agrigards.showcase', compact('agrigards'));
     }
 

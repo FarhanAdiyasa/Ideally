@@ -13,7 +13,8 @@ class everlastThingController extends Controller
      */
     public function index()
     {
-        return view('brand_everlas_things.brand-everlasthing');
+        $everlas_thing = Everlas_Things::where('stok', '>', 0)->take(1)->get();
+        return view('brand_everlas_things.brand-everlasthing', compact('everlas_thing'));
     }
 
     /**

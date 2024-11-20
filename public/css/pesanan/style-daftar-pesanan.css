@@ -1,0 +1,62 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap');
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    background-image: url(../../img/keranjang/image\ 25.png);
+    background-size: 100% auto;
+    background-repeat: no-repeat;
+    padding-bottom: 5rem;
+}
+
+.container {
+    padding: 0 10rem;
+}
+
+.bg-tosca {
+    background-color: #06C195;
+}
+
+.bg-grey {
+    background-color: #727272;
+}
+
+/* Header */
+#header-nav .container {
+    padding: 0 12rem;
+}
+
+.over-light {
+    display: flex;
+    position: absolute;
+    z-index: -999;
+    width: 100%;
+    height: 70px;
+    padding: 0 10rem;
+    margin-top: 8%;
+}
+
+#header-nav {
+    margin-top: 5rem;
+    font-weight: 700;
+}
+
+.img-container {
+    width: 35px;
+    height: 35px;
+    overflow: hidden;
+    border-radius: 5px;
+}
+
+.img-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+.card-pesanan {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 250px;
+}

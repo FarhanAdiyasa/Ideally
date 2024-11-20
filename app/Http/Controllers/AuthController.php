@@ -130,18 +130,15 @@ class AuthController extends Controller
         ];
     
         if (Auth::attempt($infologin)) {
-            // Autentikasi berhasil
             $user = Auth::user();
             session(['user_info' => $user]);
             if ($user->role == "admin") {
-                return Redirect::intended('/dashboard');
+                return redirect('/dashboard');
             } else {
                 return Redirect::intended('/portal-edukasi');
             }
         } else {
-            // Autentikasi gagal
             return redirect('auth/login')->with('error', 'Email atau Password salah!');
-            // Redirect kembali ke halaman 'auth' dengan pesan kesalahan
         }
     
     }

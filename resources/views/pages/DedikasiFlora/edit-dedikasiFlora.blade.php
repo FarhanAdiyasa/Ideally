@@ -53,15 +53,14 @@
         <div class="row">
           <div class="col-md-3">
             <div class="form-group">
-              <label>Nama Latin</label>
-              <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sed, odit ab eum enim illo minima deleniti quae ducimus repudiandae sit!</p>
+              <label>Nama Latin <span class="wajib">Wajib</span></label>
             </div>
             <!-- /.form-group -->
           </div>
           <!-- /.col -->
           <div class="col-md-9">
             <div class="form-group">
-                <input id="default" type="text" class="form-control" placeholder="Masukkan disini" name="nama_latin" id="nama_latin" value="{{old('nama_latin', $dedikasiFlora->nama_latin)}}">
+                <input id="default" type="text" class="form-control" placeholder="Masukkan Nama Latin" name="nama_latin" id="nama_latin" value="{{old('nama_latin', $dedikasiFlora->nama_latin)}}">
                 @error('nama_latin')
                 <small class="text-danger">{{ $message }}</small>
                 @enderror
@@ -76,20 +75,19 @@
         <div class="row">
           <div class="col-md-3">
             <div class="form-group">
-              <label>Nama Lokal</label>
-              <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sed, odit ab eum enim illo minima deleniti quae ducimus repudiandae sit!</p>
+              <label>Nama Lokal <span class="wajib">Wajib</span></label>
             </div>
             <!-- /.form-group -->
           </div>
           <!-- /.col -->
           <div class="col-md-9">
             <div class="form-group">
-                <input id="default" type="text" class="form-control" placeholder="Masukkan disini" name="nama_lokal" id="nama_lokal" value="{{old('nama_lokal', $dedikasiFlora->nama_lokal)}}">
+                <input id="default2" type="text" class="form-control" placeholder="Masukkan Nama Lokal" name="nama_lokal" id="nama_lokal" value="{{old('nama_lokal', $dedikasiFlora->nama_lokal)}}">
                 @error('nama_lokal')
                 <small class="text-danger">{{ $message }}</small>
                 @enderror
                 <div class="float-right d-none d-sm-block">
-                  <span id="characterCount">0</span>/70
+                  <span id="characterCount2">0</span>/70
               </div>
             </div>
             <!-- /.form-group -->
@@ -100,8 +98,8 @@
         <div class="row">
           <div class="col-12 col-sm-6">
             <div class="form-group">
-              <label>Spesifikasi Produk</label>
-                <input type="text" class="form-control" placeholder="Masukkan disini" name="spesifikasi" value="{{old('spesifikasi', $dedikasiFlora->spesifikasi)}}">
+              <label>Spesifikasi Produk <span class="wajib">Wajib</span></label>
+                <input type="text" class="form-control" placeholder="Masukkan Spesifikasi" name="spesifikasi" value="{{old('spesifikasi', $dedikasiFlora->spesifikasi)}}">
                    @error('spesifikasi')
                 <small class="text-danger">{{ $message }}</small>
                 @enderror
@@ -111,7 +109,7 @@
           <!-- /.col -->
           <div class="col-12 col-sm-6">
             <div class="form-group">
-              <label>Satuan Produk</label>
+              <label>Satuan Produk <span class="wajib">Wajib</span></label>
               <div class="select2-purple">
                   <select class="form-control select2" style="width: 100%;" name="satuan">
                     <option value="plb" @selected(old('satuan') == 'plb' || $dedikasiFlora->satuan == 'plb')>plb</option>
@@ -154,7 +152,7 @@
         <div class="row">
           <div class="col-12 col-sm-6">
             <div class="form-group">
-              <label>Diameter Tajuk</label>
+              <label>Diameter Tajuk <span class="wajib">Wajib</span></label>
                 <input type="text" class="form-control" placeholder="Masukkan disini" name="diameter_tajuk" value="{{old('diameter_tajuk', $dedikasiFlora->diameter_tajuk)}}">
                    @error('diameter_tajuk')
                 <small class="text-danger">{{ $message }}</small>
@@ -165,7 +163,7 @@
           <!-- /.col -->
           <div class="col-12 col-sm-6">
             <div class="form-group">
-              <label>Strata</label>
+              <label>Strata <span class="wajib">Wajib</span></label>
               <div class="select2-purple">
                 <select class="form-control select2" style="width: 100%;" name="strata">
                   <option value="Rumput" @selected(old('strata') == 'Rumput'|| $dedikasiFlora->strata == 'Rumput')>Rumput</option>
@@ -189,7 +187,7 @@
         <div class="row">
           <div class="col-12 col-sm-6">
             <div class="form-group">
-              <label>Warna Daun</label>
+              <label>Warna Daun <span class="wajib">Wajib</span></label>
                 <select class="form-control select2" style="width: 100%;" name="warna_daun_1">
                   <option value="Hijau" @selected(old('warna_daun_1') == 'Hijau'|| $warna_daun_1 == 'Hijau')>🟩 Hijau</option>
                   <option value="Jingga" @selected(old('warna_daun_1') == 'Jingga'|| $warna_daun_1 == 'Jingga')>🟧 Jingga</option>
@@ -206,7 +204,7 @@
           </div>
           <div class="col-12 col-sm-6">
             <div class="form-group">
-              <label>Warna Bunga</label>
+              <label>Warna Bunga <span class="wajib">Wajib</span></label>
                   <select class="form-control select2" style="width: 100%;" name="warna_bunga_1">
                     <option value="Merah" @selected(old('warna_bunga_1') == 'Merah'|| $warna_bunga_1 == 'Hijau')>🟥 Merah</option>
                     <option value="Kuning" @selected(old('warna_bunga_1') == 'Kuning'|| $warna_bunga_1 == 'Kuning')>🟨 Kuning</option>
@@ -241,7 +239,7 @@
         <div class="row">
           <div class="col-12 col-sm-6">
             <div class="form-group">
-              <label>Penyiraman</label>
+              <label>Penyiraman <span class="wajib">Wajib</span></label>
               <div class="select2-purple">
                 <select class="form-control select2" style="width: 100%;" name="penyiraman">
                   <option value="Basah" @selected(old('penyiraman'|| $dedikasiFlora->penyiraman) == 'Basah')>🌊 Basah</option>
@@ -259,7 +257,7 @@
           <!-- /.col -->
           <div class="col-12 col-sm-6">
             <div class="form-group">
-              <label>Penyinaran</label>
+              <label>Penyinaran <span class="wajib">Wajib</span></label>
               <div class="select2-purple">
                 <select class="form-control select2" style="width: 100%;" name="penyinaran">
                   <option value="Penuh" @selected(old('penyinaran'|| $dedikasiFlora->penyinaran) == 'Penuh')>☀️ Penuh</option>
@@ -278,7 +276,7 @@
         <div class="row">
           <div class="col-12 col-sm-6">
             <div class="form-group">
-              <label>Pemupukan</label>
+              <label>Pemupukan <span class="wajib">Wajib</span></label>
               <div class="select2-purple">
                 <select class="form-control select2" style="width: 100%;" name="pemupukan">
                   <option value="Penuh" @selected(old('pemupukan') == 'Penuh')>☀️ Penuh</option>
@@ -294,9 +292,9 @@
           </div>
           <div class="col-12 col-sm-6">
             <div class="form-group">
-              <label>Berat (gr)</label>
-                <input type="number" class="form-control" placeholder="Masukkan disini" name="berat" value="{{old('berat', $dedikasiFlora->berat)}}">
-                   @error('berat')
+              <label>Berat (gr) <span class="wajib">Wajib</span></label>
+                <input type="text" oninput="validateInput(this)" class="form-control" placeholder="Masukkan berat" name="berat_gram" value="{{old('berat_gram', $dedikasiFlora->berat_gram)}}">
+                   @error('berat_gram')
                 <small class="text-danger">{{ $message }}</small>
                 @enderror
             </div>
@@ -328,8 +326,8 @@
       <div class="row">
         <div class="col-md-3">
           <div class="form-group">
-            <label>Gambar Produk</label>
-            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sed, odit ab eum enim illo minima deleniti quae ducimus repudiandae sit!</p>
+            <label>Gambar Produk <span class="wajib">Wajib</span></label>
+            <p>Hanya file dengan format JPEG, PNG, dan JPG yang diterima. Ukuran maksimum file adalah 2 MB. Input gambar akan dihapus jika ada input yang tidak valid dalam formulir ini. Input maksimal 3 gambar</p>
           </div>
           <!-- /.form-group -->
         </div>
@@ -353,6 +351,11 @@
           @error('photos')
           <small class="text-danger">{{ $message }}</small>
           @enderror
+          @for ($i = 0; $i < count($errors->get('photos.*')); $i++)
+            @error("photos.$i")
+                <small class="text-danger">{{ $message }}</small>
+            @enderror
+          @endfor
           <!-- /.form-group -->
         </div>
         <!-- /.col -->
@@ -361,8 +364,7 @@
       <div class="row">
         <div class="col-md-3">
           <div class="form-group">
-            <label>Detail Produk</label>
-            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sed, odit ab eum enim illo minima deleniti quae ducimus repudiandae sit!</p>
+            <label>Detail Produk <span class="wajib">Wajib</span></label>
           </div>
           <!-- /.form-group -->
         </div>
@@ -383,14 +385,14 @@
         <div class="col-md-3">
           <div class="form-group">
             <label>Video Produk</label>
-            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sed, odit ab eum enim illo minima deleniti quae ducimus repudiandae sit!</p>
-          </div>
+            <p>Video produk dalam bentuk link youtube</p>
+              </div>
           <!-- /.form-group -->
         </div>
         <!-- /.col -->
         <div class="col-md-9">
           <div class="form-group">
-              <input class="form-control"  id=""  placeholder="Masukkan Url Youtube" name="video" value="{{old('video', $dedikasiFlora->video)}}">
+              <input class="form-control"  id=""  placeholder="Masukkan Video Produk" name="video" value="{{old('video', $dedikasiFlora->video)}}">
                  @error('video')
               <small class="text-danger">{{ $message }}</small>
               @enderror
@@ -403,8 +405,8 @@
       <div class="row">
         <div class="col-12 col-sm-6">
           <div class="form-group">
-            <label>Stok Produk</label>
-              <input type="number" class="form-control" placeholder="Masukkan Stok Dalam Bentuk Angka" name="stok" value="{{old('stok', $dedikasiFlora->stok)}}">
+            <label>Stok Produk <span class="wajib">Wajib</span></label>
+              <input type="text" oninput="validateInput(this)" class="form-control" placeholder="Masukkan Stok Produk" name="stok" value="{{old('stok', $dedikasiFlora->stok)}}">
                  @error('stok')
               <small class="text-danger">{{ $message }}</small>
               @enderror
@@ -414,7 +416,7 @@
         <!-- /.col -->
         <div class="col-12 col-sm-6">
           <div class="form-group">
-            <label>Armada Minimum</label>
+            <label>Armada Minimum <span class="wajib">Wajib</span></label>
             <div class="select2-purple">
                 <select class="form-control select2" style="width: 100%;" name="armada_minimum">
                   <option value="Motor" @selected(old('armada_minimum')=='Motor' || $dedikasiFlora->armada_minimum == 'Motor')>Motor</option>
@@ -462,7 +464,7 @@
           <div class="form-group">
             <div class="harga-input">
               <div class="rp">Rp</div>
-              <input data-unify="TextField" placeholder="Masukkan Harga" type="number"  class="css-3017qm rupiah" name="harga_jual_projek_ideally" value="{{old('harga_jual_projek_ideally',  number_format($dedikasiFlora->harga_jual_projek_ideally, 0, ',', '.'))}}">
+              <input data-unify="TextField" placeholder="Masukkan Harga" type="text" class="css-3017qm rupiah" name="harga_jual_projek_ideally" value="{{old('harga_jual_projek_ideally',  number_format($dedikasiFlora->harga_jual_projek_ideally, 0, ',', '.'))}}">
             </div>
                @error('harga_jual_projek_ideally')
               <small class="text-danger">{{ $message }}</small>
@@ -473,12 +475,12 @@
         <!-- /.col -->
       </div>
       <div class="row">
-        <label>Harga Business To Individu :</label>
+        <label>Harga Business To Ideally :</label>
       </div>
       <div class="row">
         <div class="col-md-3">
           <div class="form-group">
-            <p>1+ Units</p>
+            <p>1+ Units <span class="wajib">Wajib</span></p>
           </div>
           <!-- /.form-group -->
         </div>
@@ -488,7 +490,7 @@
           <div class="form-group">
             <div class="harga-input">
               <div class="rp">Rp</div>
-              <input data-unify="TextField" placeholder="Masukkan Harga" type="number"  class="css-3017qm rupiah" name="harga_b2I_1_unit" value="{{old('harga_b2I_1_unit',  number_format($dedikasiFlora->harga_b2I_1_unit, 0, ',', '.'))}}">
+              <input data-unify="TextField" placeholder="Masukkan Harga" type="text" class="css-3017qm rupiah" name="harga_b2I_1_unit" value="{{old('harga_b2I_1_unit',  number_format($dedikasiFlora->harga_b2I_1_unit, 0, ',', '.'))}}">
             </div>
             
                @error('harga_b2I_1_unit')
@@ -502,7 +504,7 @@
       <div class="row">
         <div class="col-md-3">
           <div class="form-group">
-            <p>11+ Units</p>
+            <p>11+ Units <span class="wajib">Wajib</span></p>
            
           </div>
           <!-- /.form-group -->
@@ -512,7 +514,7 @@
           <div class="form-group">
             <div class="harga-input">
               <div class="rp">Rp</div>
-              <input data-unify="TextField" placeholder="Masukkan Harga" type="number"  class="css-3017qm rupiah" name="harga_b2I_11_unit" value="{{old('harga_b2I_11_unit', number_format($dedikasiFlora->harga_b2I_11_unit, 0, ',', '.'))}}">
+              <input data-unify="TextField" placeholder="Masukkan Harga" type="text" class="css-3017qm rupiah" name="harga_b2I_11_unit" value="{{old('harga_b2I_11_unit', number_format($dedikasiFlora->harga_b2I_11_unit, 0, ',', '.'))}}">
             </div>
                @error('harga_b2I_11_unit')
               <small class="text-danger">{{ $message }}</small>
@@ -525,7 +527,7 @@
       <div class="row">
         <div class="col-md-3">
           <div class="form-group">
-            <p>31+ Units</p>
+            <p>31+ Units <span class="wajib">Wajib</span></p>
            
           </div>
           <!-- /.form-group -->
@@ -535,7 +537,7 @@
           <div class="form-group">
             <div class="harga-input">
               <div class="rp">Rp</div>
-              <input data-unify="TextField" placeholder="Masukkan Harga" type="number"  class="css-3017qm rupiah" name="harga_b2I_31_unit" value="{{old('harga_b2I_31_unit',  number_format($dedikasiFlora->harga_b2I_31_unit, 0, ',', '.'))}}">
+              <input data-unify="TextField" placeholder="Masukkan Harga" type="text" class="css-3017qm rupiah" name="harga_b2I_31_unit" value="{{old('harga_b2I_31_unit',  number_format($dedikasiFlora->harga_b2I_31_unit, 0, ',', '.'))}}">
             </div>
                @error('harga_b2I_31_unit')
               <small class="text-danger">{{ $message }}</small>
@@ -551,7 +553,7 @@
       <div class="row">
         <div class="col-md-3">
           <div class="form-group">
-            <p>1+ Units</p>
+            <p>1+ Units <span class="wajib">Wajib</span></p>
            
           </div>
           <!-- /.form-group -->
@@ -561,7 +563,7 @@
           <div class="form-group">
             <div class="harga-input">
               <div class="rp">Rp</div>
-              <input data-unify="TextField" placeholder="Masukkan Harga" type="number"  class="css-3017qm rupiah" name="harga_b2B_1_unit" value="{{old('harga_b2B_1_unit',  number_format($dedikasiFlora->harga_b2B_1_unit, 0, ',', '.'))}}">
+              <input data-unify="TextField" placeholder="Masukkan Harga" type="text" class="css-3017qm rupiah" name="harga_b2B_1_unit" value="{{old('harga_b2B_1_unit',  number_format($dedikasiFlora->harga_b2B_1_unit, 0, ',', '.'))}}">
             </div>
                @error('harga_b2B_1_unit')
               <small class="text-danger">{{ $message }}</small>
@@ -574,7 +576,7 @@
       <div class="row">
         <div class="col-md-3">
           <div class="form-group">
-            <p>11+ Units</p>
+            <p>11+ Units <span class="wajib">Wajib</span></p>
            
           </div>
           <!-- /.form-group -->
@@ -584,7 +586,7 @@
           <div class="form-group">
             <div class="harga-input">
               <div class="rp">Rp</div>
-              <input data-unify="TextField" placeholder="Masukkan Harga" type="number"  class="css-3017qm rupiah" name="harga_b2B_11_unit" value="{{old('harga_b2B_11_unit',  number_format($dedikasiFlora->harga_b2B_11_unit, 0, ',', '.'))}}">
+              <input data-unify="TextField" placeholder="Masukkan Harga" type="text" class="css-3017qm rupiah" name="harga_b2B_11_unit" value="{{old('harga_b2B_11_unit',  number_format($dedikasiFlora->harga_b2B_11_unit, 0, ',', '.'))}}">
             </div>
                @error('harga_b2B_11_unit')
               <small class="text-danger">{{ $message }}</small>
@@ -597,7 +599,7 @@
       <div class="row">
         <div class="col-md-3">
           <div class="form-group">
-            <p>31+ Units</p>
+            <p>31+ Units <span class="wajib">Wajib</span></p>
            
           </div>
           <!-- /.form-group -->
@@ -607,7 +609,7 @@
           <div class="form-group">
             <div class="harga-input">
               <div class="rp">Rp</div>
-              <input data-unify="TextField" placeholder="Masukkan Harga" type="number"  class="css-3017qm rupiah" name="harga_b2B_31_unit" value="{{old('harga_b2B_31_unit',  number_format($dedikasiFlora->harga_b2B_31_unit, 0, ',', '.'))}}">
+              <input data-unify="TextField" placeholder="Masukkan Harga" type="text" class="css-3017qm rupiah" name="harga_b2B_31_unit" value="{{old('harga_b2B_31_unit',  number_format($dedikasiFlora->harga_b2B_31_unit, 0, ',', '.'))}}">
             </div>
                @error('harga_b2B_31_unit')
               <small class="text-danger">{{ $message }}</small>
@@ -623,7 +625,7 @@
       <div class="row">
         <div class="col-md-3">
           <div class="form-group">
-            <p>1+ Units:</p>
+            <p>1+ Units <span class="wajib">Wajib</span></p>
            
           </div>
           <!-- /.form-group -->
@@ -633,7 +635,7 @@
           <div class="form-group">
             <div class="harga-input">
               <div class="rp">Rp</div>
-              <input data-unify="TextField" placeholder="Masukkan Harga" type="number"  class="css-3017qm rupiah" name="harga_b2C_1_unit" value="{{old('harga_b2C_1_unit',  number_format($dedikasiFlora->harga_b2C_1_unit, 0, ',', '.'))}}">
+              <input data-unify="TextField" placeholder="Masukkan Harga" type="text" class="css-3017qm rupiah" name="harga_b2C_1_unit" value="{{old('harga_b2C_1_unit',  number_format($dedikasiFlora->harga_b2C_1_unit, 0, ',', '.'))}}">
             </div>
                @error('harga_b2C_1_unit')
               <small class="text-danger">{{ $message }}</small>
@@ -646,7 +648,7 @@
       <div class="row">
         <div class="col-md-3">
           <div class="form-group">
-            <p>11+ Units:</p>
+            <p>11+ Units <span class="wajib">Wajib</span></p>
            
           </div>
           <!-- /.form-group -->
@@ -656,7 +658,7 @@
           <div class="form-group">
             <div class="harga-input">
               <div class="rp">Rp</div>
-              <input data-unify="TextField" placeholder="Masukkan Harga" type="number"  class="css-3017qm rupiah" name="harga_b2C_11_unit" value="{{old('harga_b2C_11_unit',  number_format($dedikasiFlora->harga_b2C_11_unit, 0, ',', '.'))}}">
+              <input data-unify="TextField" placeholder="Masukkan Harga" type="text" class="css-3017qm rupiah" name="harga_b2C_11_unit" value="{{old('harga_b2C_11_unit',  number_format($dedikasiFlora->harga_b2C_11_unit, 0, ',', '.'))}}">
             </div>
                @error('harga_b2C_11_unit')
               <small class="text-danger">{{ $message }}</small>
@@ -669,7 +671,7 @@
       <div class="row">
         <div class="col-md-3">
           <div class="form-group">
-            <p>31+ Units:</p>
+            <p>31+ Units <span class="wajib">Wajib</span></p>
            
           </div>
           <!-- /.form-group -->
@@ -679,7 +681,7 @@
           <div class="form-group">
             <div class="harga-input">
               <div class="rp">Rp</div>
-              <input data-unify="TextField" placeholder="Masukkan Harga" type="number"  class="css-3017qm rupiah" name="harga_b2C_31_unit" value="{{old('harga_b2C_31_unit', number_format($dedikasiFlora->harga_b2C_31_unit, 0, ',', '.'))}}">
+              <input data-unify="TextField" placeholder="Masukkan Harga" type="text" class="css-3017qm rupiah" name="harga_b2C_31_unit" value="{{old('harga_b2C_31_unit', number_format($dedikasiFlora->harga_b2C_31_unit, 0, ',', '.'))}}">
             </div>
                @error('harga_b2C_31_unit')
               <small class="text-danger">{{ $message }}</small>

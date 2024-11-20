@@ -55,8 +55,8 @@
         <nav class="w-100">
         <div class="nav nav-tabs" id="product-tab" role="tablist">
             <a class="nav-item nav-link active" id="product-desc-tab" data-toggle="tab" href="#product-desc" role="tab" aria-controls="product-desc" aria-selected="true">Informasi Produk</a>
-            <a class="nav-item nav-link" id="product-detail-tab" data-toggle="tab" href="#product-detail" role="tab" aria-controls="product-detail" aria-selected="false">Detail Produk dan Harga</a>
-            <a class="nav-item nav-link" id="product-creation-tab" data-toggle="tab" href="#product-creation" role="tab" aria-controls="product-creation" aria-selected="false">Keterangan Tambahan</a>
+            <!-- <a class="nav-item nav-link" id="product-detail-tab" data-toggle="tab" href="#product-detail" role="tab" aria-controls="product-detail" aria-selected="false">Detail Produk dan Harga</a>
+            <a class="nav-item nav-link" id="product-creation-tab" data-toggle="tab" href="#product-creation" role="tab" aria-controls="product-creation" aria-selected="false">Keterangan Tambahan</a> -->
         </div>
         </nav>
         <div class="tab-content p-3" id="nav-tabContent">
@@ -72,6 +72,17 @@
                         <p><strong>Satuan:</strong> {{$dedikasiFlora->satuan}}</p>
                         <p><strong>Berat (gram):</strong> {{$dedikasiFlora->berat_gram}}</p>
                         <p><strong>Berat:</strong> {{$dedikasiFlora->berat}}</p>
+                        <p><strong>Armada Minimum:</strong> {{$dedikasiFlora->armada_minimum}}</p>
+                        <p><strong>Stok:</strong> {{$dedikasiFlora->stok}}</p>
+                        <p><strong>Item Terjual:</strong> {{$dedikasiFlora->item_terjual}}</p>
+                        <p><strong>Harga Jual Ideally:</strong> Rp. {{$dedikasiFlora->harga_jual_projek_ideally}}</p>
+                        <p><strong>Tanggal Publikasi:</strong> {{$dedikasiFlora->tanggal_publikasi}}</p>
+                        <p><strong>Created By:</strong> {{$dedikasiFlora->created_by}}</p>
+                        <p><strong>Created At:</strong> {{$dedikasiFlora->created_at}}</p>
+                        <p><strong>Updated By:</strong> {{$dedikasiFlora->updated_by}}</p>
+                        <p><strong>Updated At:</strong> {{$dedikasiFlora->updated_at}}</p>
+                        <p><strong>Deleted By:</strong> {{$dedikasiFlora->deleted_by}}</p>
+                        <p><strong>Deleted At:</strong> {{$dedikasiFlora->deleted_at}}</p>
                     </div>
                     <div class="col-md-6">
                         <p><strong>Diameter Tajuk:</strong> {{$dedikasiFlora->diameter_tajuk}}</p>
@@ -81,19 +92,6 @@
                         <p><strong>Penyiraman:</strong> {{$dedikasiFlora->penyiraman}}</p>
                         <p><strong>Penyinaran:</strong> {{$dedikasiFlora->penyinaran}}</p>
                         <p><strong>Pemupukan:</strong> {{$dedikasiFlora->pemupukan}}</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="tab-pane fade" id="product-detail" role="tabpanel" aria-labelledby="product-detail-tab">
-                <div class="row">    
-                    <div class="col-md-6">
-                        <p><strong>Armada Minimum:</strong> {{$dedikasiFlora->armada_minimum}}</p>
-                        <p><strong>Stok:</strong> {{$dedikasiFlora->stok}}</p>
-                        <p><strong>Item Terjual:</strong> {{$dedikasiFlora->item_terjual}}</p>
-                        <p><strong>Harga Jual Ideally:</strong> Rp. {{$dedikasiFlora->harga_jual_projek_ideally}}</p>
-                    </div>
-                    <div class="col-md-6">
                         <p><strong>Harga B2I (31 unit):</strong> Rp. {{$dedikasiFlora->harga_b2I_31_unit}}</p>
                         <p><strong>Harga B2I (11 unit):</strong> Rp. {{$dedikasiFlora->harga_b2I_11_unit}}</p>
                         <p><strong>Harga B2I (1 unit):</strong> Rp. {{$dedikasiFlora->harga_b2I_1_unit}}</p>
@@ -106,23 +104,24 @@
                     </div>
                 </div>
             </div>
+<!-- 
+            <div class="tab-pane fade" id="product-detail" role="tabpanel" aria-labelledby="product-detail-tab">
+                <div class="row">    
+                    <div class="col-md-6">
+                    </div>
+                    <div class="col-md-6">
+                    </div>
+                </div>
+            </div>
 
            <div class="tab-pane fade" id="product-creation" role="tabpanel" aria-labelledby="product-creation-tab">
                 <div class="row">
                     <div class="col-md-6">
-                        <p><strong>Tanggal Publikasi:</strong> {{$dedikasiFlora->tanggal_publikasi}}</p>
-                        <p><strong>Created By:</strong> {{$dedikasiFlora->created_by}}</p>
-                        <p><strong>Created At:</strong> {{$dedikasiFlora->created_at}}</p>
                     </div>
                     <div class="col-md-6">
-                        <p><strong>Updated By:</strong> {{$dedikasiFlora->updated_by}}</p>
-                        <p><strong>Updated At:</strong> {{$dedikasiFlora->updated_at}}</p>
-                        <p><strong>Deleted By:</strong> {{$dedikasiFlora->deleted_by}}</p>
-                        <p><strong>Deleted At:</strong> {{$dedikasiFlora->deleted_at}}</p>
                     </div>
                 </div>
-
-        </div>
+            </div> -->
     </div>
     </div>
 </div>

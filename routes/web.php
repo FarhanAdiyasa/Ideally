@@ -1,6 +1,8 @@
 <?php
 
 
+use App\Http\Controllers\PembayaranController;
+use App\Http\Controllers\PesananController;
 use App\Models\Artikel;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -29,6 +31,7 @@ use App\Http\Controllers\AdminEverlasThingController;
 use App\Http\Controllers\AdminDedikasiFloraController;
 use App\Http\Controllers\AdminUserController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\TestimoniController;
 
 /*
 |--------------------------------------------------------------------------
@@ -40,25 +43,16 @@ use App\Http\Controllers\DashboardController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+Route::get('/auth/redirect',[AuthController::class, "redirect"])->middleware('guest');
+Route::get('/auth/login',[AuthController::class, "index"])->name('login')->middleware('guest');
+Route::get('/auth/callback',[AuthController::class, "callback"])->middleware('guest');
+Route::get('/auth/logout',[AuthController::class,"logout"])->name('logout')->middleware('auth');;
+Route::post('/auth/login',[AuthController::class,"login"]);
 
 
-Route::get('/portal-edukasi/{kategori}', [ArtikelController::class, 'byKategori'])->name('landing-artikel.kategori');
-Route::get('/portal-edukasi', [ArtikelController::class, 'index'])->name('landing-artikel');
-Route::get('/portal-edukasi/baca/{slug}', [ArtikelController::class, 'baca'])->name('baca-artikel');
-Route::post('/portal-edukasi/rating/{slug}', [ArtikelController::class, 'rating'])->name('rating-artikel')->middleware('auth');
-Route::post('/portal-edukasi/komentar/{slug}', [ArtikelController::class, 'komentar'])->name('komentar-artikel');
-
-// Route::get('/brand', [BrandController::class, 'index'])->name('Brand-Batunesia');
-// //eror
-// Route::get('/detail', [DetailController::class, 'index'])->name('Detail-Batunesia');
-// Route::get('/detail-batunesia/{id_batu}', [DetailController::class, 'showDetail'])->name('Detail-Batunesia');
-
-Auth::routes();
-Route::get('/home/show/{kategori}', [ArtikelController::class, 'show'])->name('home.show');
-Route::get('/portal-edukasi/komentar/{kategori}', [ArtikelController::class, 'sKomentar'])->name('komentar.show');
 
 Route::middleware(['auth', 'role:admin'])->group(function () {
-    Route::get('/', [ArtikelController::class, 'index'])->name('landing-artikel');
+
 Route::get('/dashboard',[DashboardController::class, 'index'])->name('dashboard');;
 //Admin Agrigard
 Route::get('/daftar-produk', [AdminAgrigardController::class, 'index'])->name('daftar-produk');
@@ -144,11 +138,6 @@ Route::post('/post-everlasThing', [AdminEverlasThingController::class, 'post'])-
 Route::get('/delete-everlasThing/{id}', [AdminEverlasThingController::class, 'delete'])->name('everlasThings.delete');
 Route::delete('/destroy-everlasThing/{id}', [AdminEverlasThingController::class, 'destroy'])->name('everlasThings.destroy');
 
-Route::get('agrigard/index',[AgrigardController::class,'indexBrand'])->name('agrigard.utama');
-Route::get('agrigard/showcase',[AgrigardController::class,'showcase'])->name('agrigard.showcase');
-Route::get('agrigard/show/{id_agrigard}',[AgrigardController::class,'details'])->name('agrigard.detail');
-
-Route::get('agrigard/showcase/kategori',[AgrigardController::class,'showcase2'])->name('agrigard.kategori');
 //Promo
 Route::get('/daftar-promo/{id}', [PromoController::class, 'view'])->name('daftar-promo');
 
@@ -160,6 +149,7 @@ Route::get('/edit-promo/{id}/{brand}', [PromoController::class, 'showEdit'])->na
 Route::get('/edit-promo/{id}', [PromoController::class, 'edit'])->name('daftar-promo.edit');
 Route::put('/edit-promo/{id}', [PromoController::class, 'update'])->name('daftar-promo.update');
 Route::post('/post-promo', [PromoController::class, 'post'])->name('daftar-promo.status');
+Route::get('/check-promo-unique/{nama_promo}', [PromoController::class, 'checkPromoUnique']);
 
 Route::get('/delete-promo/{id}', [PromoController::class, 'delete'])->name('daftar-promo.delete');
 Route::delete('/destroy-promo/{id}', [PromoController::class, 'destroy'])->name('daftar-promo.destroy');
@@ -185,6 +175,33 @@ Route::post('/post-artikel', [AdminArtikelController::class, 'post'])->name('art
 Route::get('/cek-komentar/{id}', [AdminArtikelController::class, 'komentar'])->name('daftar.komentar');
 Route::post('/hide-komentar', [AdminArtikelController::class, 'hideKomentar'])->name('komentars.hide');
 });
+
+
+Route::get('/', [ArtikelController::class, 'index']);
+Route::get('/portal-edukasi/{kategori}', [ArtikelController::class, 'byKategori'])->name('landing-artikel.kategori');
+Route::get('/portal-edukasi', [ArtikelController::class, 'index'])->name('landing-artikel');
+Route::get('/portal-edukasi/baca/{slug}', [ArtikelController::class, 'baca'])->name('baca-artikel')->middleware(\App\Http\Middleware\CountVisitors::class);
+Route::post('/portal-edukasi/rating/{slug}', [ArtikelController::class, 'rating'])->name('rating-artikel')->middleware('auth');
+Route::post('/portal-edukasi/komentar/{slug}', [ArtikelController::class, 'komentar'])->name('komentar-artikel');
+
+// Route::get('/brand', [BrandController::class, 'index'])->name('Brand-Batunesia');
+// //eror
+// Route::get('/detail', [DetailController::class, 'index'])->name('Detail-Batunesia');
+// Route::get('/detail-batunesia/{id_batu}', [DetailController::class, 'showDetail'])->name('Detail-Batunesia');
+Route::get('/auth/register', [AuthController::class, 'register'])->name('auth.register');
+Route::post('/auth/create',[AuthController::class,"create"]);
+Route::get('/auth/dashboard/{id}', [AuthController::class, "dashboard"])->middleware('auth');
+// Auth::routes();
+Route::get('/home/show/{kategori}', [ArtikelController::class, 'show'])->name('home.show');
+Route::get('/portal-edukasi/komentar/{kategori}', [ArtikelController::class, 'sKomentar'])->name('komentar.show');
+
+
+Route::get('agrigard/index',[AgrigardController::class,'indexBrand'])->name('agrigard.utama');
+Route::get('agrigard/showcase',[AgrigardController::class,'showcase'])->name('agrigard.showcase');
+Route::get('agrigard/show/{id_agrigard}',[AgrigardController::class,'details'])->name('agrigard.detail');
+Route::get('agrigard/showcase/kategori',[AgrigardController::class,'showcase2'])->name('agrigard.kategori');
+
+
 //batunesia
 Route::get('/batunesia/index', [BatunesiaController::class, 'index'])->name('batunesia.index');
 Route::get('/batunesia/index/showByWhite', [BatunesiaController::class, 'filterByWhite'])->name('batunesia.filterByWhite');
@@ -203,14 +220,7 @@ Route::get('/batunesia/index/showByPotBatu', [BatunesiaController::class, 'filte
 Route::get('/everlasthings/detailProduct', [everlastThingController::class, 'detailProduct'])->name('everlasthings.detailProduct');
 
 //authentikasi login & regis
-Route::get('/auth/redirect',[AuthController::class, "redirect"])->middleware('guest');
-Route::get('/auth/login',[AuthController::class, "index"])->name('login')->middleware('guest');
-Route::get('/auth/callback',[AuthController::class, "callback"])->middleware('guest');
-Route::get('/auth/logout',[AuthController::class,"logout"])->name('logout')->middleware('auth');;
-Route::get('/auth/register', [AuthController::class, 'register'])->name('auth.register');
-Route::post('/auth/create',[AuthController::class,"create"]);
-Route::post('/auth/login',[AuthController::class,"login"]);
-Route::get('/auth/dashboard/{id}', [AuthController::class, "dashboard"])->middleware('auth');
+
 
 
 //route lupa password
@@ -221,7 +231,7 @@ Route::post('reset-password', [AuthController::class, "resetPasswordPost"])->nam
 
 
 //everlasthing
-Route::get('/everlasthings/brand', [everlastThingController::class, 'index'])->name('everlasthings.brand');
+Route::get('/everlasthings/index', [everlastThingController::class, 'index'])->name('everlasthings.brand');
 Route::get('/everlasthings/detailProduct/{id_everlas_things}', [everlastThingController::class, 'detailProduct'])->name('everlasthings.detailProduct');
 Route::get('/everlasthings/showcase', [everlastThingController::class, 'showcase'])->name('everlasthings.showcase');
 Route::get('/tambahEverlasthingsKeKeranjang/{id_everlas_things}/{quantity}', [everlastThingController::class, 'tambahKeKeranjang'])->name('tambahEverlasthingsKeKeranjang');
@@ -278,6 +288,9 @@ Route::get('/detail-batunesia/{id_batu}', [DetailController::class, 'showDetail'
 
 //Keranjang
 Route::get('/keranjang', [TransaksiController::class, 'index'])->name('transaksi.index');
+Route::get('/remove/{cartName}', [TransaksiController::class, 'remove_all'])->name('transaksi.removecart');
+Route::get('/remove/{cartName}/{id}', [TransaksiController::class, 'remove'])->name('transaksi.remove');
+Route::get('/update/{cartName}/{id}/{qty}', [TransaksiController::class, 'update'])->name('transaksi.update');
 
 // ongkir
 Route::post('/calculateOngkir', [TransaksiController::class, 'calculateOngkir'])->name('calculate.ongkir');
@@ -287,3 +300,23 @@ Route::get('/add-cart-deflo/{id}/{qty}', [TransaksiController::class, 'add_cart_
 
 //keranjang agrigard
 Route::get('/add-cart-agrigard/{id}/{qty}', [TransaksiController::class, 'add_cart_agrigard'])->name('addcart.agrigard');
+
+//route testimoni
+Route::get('/order', [TestimoniController::class, 'index'])->name('testimoni.testimoniindex');
+Route::post('/testimoni/store', [TestimoniController::class, 'store'])->name('testimoni.store');
+
+// pembayaran
+Route::get('/pembayaran', [PembayaranController::class, 'index'])->name('index.pembayaran');
+
+
+Route::get('/cek-status/{nomor}/{data}', [PembayaranController::class, 'cekStatus'])->name('konfirmasi.status');
+Route::post('/pembayaran', [PembayaranController::class, 'bayar'])->name('store.bayar');
+// Route::post('/konfirmasi', [PembayaranController::class, 'handle_after']);
+
+// Pesanan
+Route::get('/pesanan/sedang-dikemas', [PesananController::class, 'sedangDikemas'])->name('pesanan.dikemas');
+Route::get('/pesanan/dikirim', [PesananController::class, 'dikirim'])->name('pesanan.dikirim');
+Route::get('/pesanan/selesai', [PesananController::class, 'selesai'])->name('pesanan.selesai');
+Route::get('/pesanan/konfirmasi/{id_order}', [PesananController::class, 'konfirmasiPesanan'])->name('pesanan.konfirmasi');
+Route::get('/pesanan/rinician-pesanan/{id_order}', [PesananController::class, 'rincianPesanan'])->name('pesanan.rincian');
+

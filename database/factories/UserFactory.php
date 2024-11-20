@@ -34,6 +34,8 @@ class UserFactory extends Factory
             'kabupaten' => $this->faker->city,
             'kecamatan' => $this->faker->word,
             'kelurahan' => $this->faker->word,
+            'role' => 'admin',
+            'deskripsi_diri' => $this->faker->word,
             'email_verified_at' => now(),
             'remember_token' => Str::random(10),
             'created_at' => now(),

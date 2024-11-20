@@ -33,7 +33,10 @@ class Konkurito extends Model
         return $this->belongsToMany(Promo::class, 'konkuritos_promos', 'id_konkurito', 'id_promo');
     }
 
-<<<<<<< HEAD
+    public function orders() {
+        return $this->belongsToMany(Order::class, 'konkuritos_orders', 'id_konkurito', 'id_order');
+    }
+
     protected $fillable = [
         'id_konkurito',
         'nama_produk',
@@ -63,7 +66,6 @@ class Konkurito extends Model
         'updated_at',
         'deleted_at',
     ];
-=======
     // protected $fillable = [
     //     'id_konkurito',
     //     'nama_produk',
@@ -93,5 +95,4 @@ class Konkurito extends Model
     //     'updated_at',
     //     'deleted_at',
     // ];
->>>>>>> d5557992f1c905b8f774d6907a37c029ef4d4590
 }

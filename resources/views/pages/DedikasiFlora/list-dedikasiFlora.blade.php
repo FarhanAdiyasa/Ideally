@@ -17,12 +17,12 @@
                     @endif
 
                     <p>
-                        <a href="{{ route('dedikasiFloras.tambah') }}" class="btn btn-primary">Tambah Dedikasi Flora</a>
+                        <a href="{{ route('dedikasiFloras.tambah') }}" class="btn btn-primary">New Dedikasi Flora</a>
                     </p>
                     <table id="products-table" class="table table-hover table-bordered text-center">
                         <thead>
                             <tr>
-                                <th>No</th>
+                                 <th>No</th>
                                 <th>Info Dedikasi Flora</th>
                                 <th>Harga</th>
                                 <th>Stok</th>
@@ -36,25 +36,25 @@
                             @endphp
                             @forelse ($dedikasiFloras as $dedikasiFlora)
                                 <tr>
-                                    <td style="vertical-align: middle;">
-                                        {{ $no++ }}
+                                    <td>
+                                        {{ $loop->iteration }}
                                     </td>
-                                    <td style="vertical-align: middle;">
+                                    <td>
                                         <div class="row">
                                             <div class="col-4"><img src="{{  asset('storage/' . $dedikasiFlora->gambar_1)}}" width="56" height="56" alt="Product Image"></div>
                                             <div class="col-8">
                                                 <div>
-                                                     {{ $dedikasiFlora->nama_latin }}
+                                                    Nama Latin :   {{ $dedikasiFlora->nama_latin }}
                                                 </div>
                                                 <div>
-                                                    nama_lokal : {{ $dedikasiFlora->nama_lokal }}
+                                                    Nama Lokal : {{ $dedikasiFlora->nama_lokal }}
                                                 </div>
                                             </div>
                                         </div>
                                     </td>
                                     <td style="vertical-align: middle;">
                                         @foreach ($dedikasiFlora->harga_ranges as $hargaRange)
-                                            <div>{{ $hargaRange }}</div>
+                                             <div>{{ $hargaRange }}</div>
                                         @endforeach
                                     </td>
                                     <td style="vertical-align: middle;">
@@ -153,11 +153,10 @@
 
     $(document).ready(function() {
         $('#products-table').DataTable({
-            "language": {
-                "url": "//cdn.datatables.net/plug-ins/1.13.7/i18n/id.json"
-            }
+                "iDisplayLength": 10,
+        "bLengthChange": false
         });
-    });
+    });  
     function store(id) {
     $("#statForm" + id).submit();
 

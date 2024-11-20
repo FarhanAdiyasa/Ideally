@@ -70,8 +70,8 @@
         <nav class="w-100">
         <div class="nav nav-tabs" id="product-tab" role="tablist">
             <a class="nav-item nav-link active" id="product-desc-tab" data-toggle="tab" href="#product-desc" role="tab" aria-controls="product-desc" aria-selected="true">Informasi Produk</a>
-            <a class="nav-item nav-link" id="product-detail-tab" data-toggle="tab" href="#product-detail" role="tab" aria-controls="product-detail" aria-selected="false">Detail Produk dan Harga</a>
-            <a class="nav-item nav-link" id="product-creation-tab" data-toggle="tab" href="#product-creation" role="tab" aria-controls="product-creation" aria-selected="false">Keterangan Tambahan</a>
+            <!-- <a class="nav-item nav-link" id="product-detail-tab" data-toggle="tab" href="#product-detail" role="tab" aria-controls="product-detail" aria-selected="false">Detail Produk dan Harga</a>
+            <a class="nav-item nav-link" id="product-creation-tab" data-toggle="tab" href="#product-creation" role="tab" aria-controls="product-creation" aria-selected="false">Keterangan Tambahan</a> -->
         </div>
         </nav>
         <div class="tab-content p-3" id="nav-tabContent">
@@ -89,6 +89,17 @@
                         <p><strong>Material Pendukung:</strong> {{$shineage->material_pendukung}}</p>
                         <p><strong>Finishing:</strong> {{$shineage->finishing}}</p>
                         <p><strong>Deskripsi Singkat:</strong> {{$shineage->deskripsi_singkat}}</p>
+                        <p><strong>Armada Minimum:</strong> {{$shineage->armada_minimum}}</p>
+                        <p><strong>Stok:</strong> {{$shineage->stok}}</p>
+                        <p><strong>Item Terjual:</strong> {{$shineage->item_terjual}}</p>
+                        <p><strong>Harga Jual Ideally:</strong> Rp. {{$shineage->harga_jual_projek_ideally}}</p>
+                        <p><strong>Tanggal Publikasi:</strong> {{$shineage->tanggal_publikasi}}</p>
+                        <p><strong>Created By:</strong> {{$shineage->created_by}}</p>
+                        <p><strong>Created At:</strong> {{$shineage->created_at}}</p>
+                        <p><strong>Updated By:</strong> {{$shineage->updated_by}}</p>
+                        <p><strong>Updated At:</strong> {{$shineage->updated_at}}</p>
+                        <p><strong>Deleted By:</strong> {{$shineage->deleted_by}}</p>
+                        <p><strong>Deleted At:</strong> {{$shineage->deleted_at}}</p>
                     </div>
                     <div class="col-md-6">
                         <p><strong>Panjang:</strong> {{$shineage->panjang}}</p>
@@ -97,19 +108,6 @@
                         <p><strong>Tinggi:</strong> {{$shineage->tinggi}}</p>
                         <p><strong>Berat:</strong> {{$shineage->berat}}</p>
                         <p><strong>Berat (gram):</strong> {{$shineage->berat_gram}}</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="tab-pane fade" id="product-detail" role="tabpanel" aria-labelledby="product-detail-tab">
-                <div class="row">    
-                    <div class="col-md-6">
-                        <p><strong>Armada Minimum:</strong> {{$shineage->armada_minimum}}</p>
-                        <p><strong>Stok:</strong> {{$shineage->stok}}</p>
-                        <p><strong>Item Terjual:</strong> {{$shineage->item_terjual}}</p>
-                        <p><strong>Harga Jual Ideally:</strong> Rp. {{$shineage->harga_jual_projek_ideally}}</p>
-                    </div>
-                    <div class="col-md-6">
                         <p><strong>Harga B2I (11 unit):</strong> Rp. {{$shineage->harga_b2I_11_unit}}</p>
                         <p><strong>Harga B2I (1 unit):</strong> Rp. {{$shineage->harga_b2I_1_unit}}</p>
                         <p><strong>Harga B2B (11 unit):</strong> Rp. {{$shineage->harga_b2B_11_unit}}</p>
@@ -119,23 +117,25 @@
                     </div>
                 </div>
             </div>
+<!-- 
+            <div class="tab-pane fade" id="product-detail" role="tabpanel" aria-labelledby="product-detail-tab">
+                <div class="row">    
+                    <div class="col-md-6">
+                    </div>
+                    <div class="col-md-6">
+                    </div>
+                </div>
+            </div>
 
            <div class="tab-pane fade" id="product-creation" role="tabpanel" aria-labelledby="product-creation-tab">
                 <div class="row">
                     <div class="col-md-6">
-                        <p><strong>Tanggal Publikasi:</strong> {{$shineage->tanggal_publikasi}}</p>
-                        <p><strong>Created By:</strong> {{$shineage->created_by}}</p>
-                        <p><strong>Created At:</strong> {{$shineage->created_at}}</p>
                     </div>
                     <div class="col-md-6">
-                        <p><strong>Updated By:</strong> {{$shineage->updated_by}}</p>
-                        <p><strong>Updated At:</strong> {{$shineage->updated_at}}</p>
-                        <p><strong>Deleted By:</strong> {{$shineage->deleted_by}}</p>
-                        <p><strong>Deleted At:</strong> {{$shineage->deleted_at}}</p>
                     </div>
                 </div>
 
-        </div>
+        </div> -->
     </div>
     </div>
 </div>

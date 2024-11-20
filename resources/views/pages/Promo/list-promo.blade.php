@@ -22,10 +22,10 @@
                     <table id="promos-table" class="table table-hover table-bordered text-center">
                         <thead>
                             <tr>
-                                <th>No</th>
+                                 <th>No</th>
+                                <th>Nama Promo</th>
                                 <th>Info Promo</th>
-                                <th>Harga</th>
-                                <th>Stok</th>
+                                <th>Tanggal Promo</th>
                                 <th>Status</th>
                                 <th>Aksi</th>
                             </tr>
@@ -36,18 +36,26 @@
                             @endphp
                             @forelse ($promos as $promo)
                                 <tr>
-                                    <td style="vertical-align: middle;">
-                                        {{ $no++ }}
+                                    <td>
+                                        {{ $loop->iteration }}
                                     </td>
-                                    <td style="vertical-align: middle;">
-                                        <div class="" style=""> {{$promo->nama_promo}}</div>
+                                    <td>
+                                        <div class=""> {{$promo->nama_promo}}</div>
                                     </td>
-                                    <td style="vertical-align: middle;">
-                                      @if ($promo->tipe_potongan == "nominal")
-                                      Rp. {{$promo->nominal_promo}} 
-                                      @else
-                                      {{$promo->persentase_promo}} %
-                                      @endif
+                                    <td>
+                                        <div class="col-12">
+                                            <div>
+                                                 {{ $promo->tipe_potongan }}
+                                            </div>
+                                            <div>
+                                                @if ($promo->tipe_potongan == "nominal")
+                                                Rp. {{ number_format($promo->nominal_promo, 0, ',', '.') }} 
+                                                @else
+                                                {{$promo->persentase_promo}} %
+                                                @endif
+                                            </div>
+                                        </div>
+                                    
                                     </td>
                                     <td style="vertical-align: middle;">
                                         {{$promo->tanggal_mulai}} -  {{$promo->tanggal_selesai}}
@@ -140,14 +148,13 @@
 
     $(document).ready(function() {
         $('#promos-table').DataTable({
-            "language": {
-                "url": "//cdn.datatables.net/plug-ins/1.13.7/i18n/id.json"
-            }
+                "iDisplayLength": 10,
+        "bLengthChange": false
         });
-    });
-    function store(id) {
-    
-    $("#statForm" +id).submit();
+    });  
+        function store(id) {
+     
+        $("#statForm" +id).submit();
 
     }
     // $(document).ready(function() {
